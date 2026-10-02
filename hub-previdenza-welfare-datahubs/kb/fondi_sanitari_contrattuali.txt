@@ -1,76 +1,197 @@
-TEMA: Fondi sanitari contrattuali — contribuzione obbligatoria
-MACRO AREA: Sanità integrativa
-FONTI: Circ. INPS 77/2025 (ESAL), Circ. INPS 119/2025 (FAFP), Circ. INPS 120/2025 (SANI), Circ. INPS 95/2026 (CARE)
-AGGIORNAMENTO: Settembre 2026
+Hub Previdenza e Welfare — Pagina KB certificata
 
-=== DEFINIZIONE ===
-I fondi sanitari contrattuali sono fondi di assistenza sanitaria integrativa previsti dai contratti collettivi nazionali di lavoro (CCNL). L'adesione è obbligatoria per le aziende che applicano i CCNL che li prevedono. INPS gestisce la riscossione dei contributi tramite il meccanismo F24/UniEmens per i fondi con cui ha stipulato apposite convenzioni.
+Fondi sanitari contrattuali — contribuzione
+obbligatoria
+Fonti: Circolari INPS n. 77/2025, 119/2025, 120/2025, 95/2026 | Ultima verifica: settembre 2026
 
-=== MECCANISMO F24/UNIEMENS ===
-Il meccanismo prevede due adempimenti distinti e complementari:
-1. VERSAMENTO F24: il datore versa i contributi mensili nella sezione INPS del modello F24 con il codice tributo specifico del fondo
-2. ESPOSIZIONE UNIEMENS: il datore espone i contributi nel flusso UniEmens mensile nell'elemento dedicato ai fondi di assistenza sanitaria
-ATTENZIONE: Entrambi gli adempimenti sono obbligatori. L'INPS verifica la coerenza tra F24 e UniEmens e riversa il 98% delle somme al fondo. Il 2% è trattenuto a titolo di ristorno per spese di gestione.
+Perimetro della KB
+Questa KB descrive il meccanismo con cui INPS riscuote i contributi destinati ai fondi sanitari contrattuali,
+sulla base delle convenzioni stipulate con i singoli fondi. Non costituisce un repertorio completo dei fondi
+previsti da tutti i CCNL.
+L'obbligo di contribuzione e la misura del versamento discendono dalla contrattazione collettiva applicata
+dall'impresa. L'INPS, quando esiste una convenzione, svolge il servizio di riscossione e riceve i dati
+tramite il flusso UniEmens.
 
-=== FONDI CONVENZIONATI INPS ===
+1. Da dove nasce l'obbligo di contribuzione
+L'obbligo, la misura e la periodicità del contributo sanitario derivano dal CCNL applicato dall'impresa. Il
+fondo comunica all'INPS la misura del contributo per singolo lavoratore; l'INPS non la determina
+autonomamente.
+• Livello contrattuale/fondo: individua obbligo, misura, periodicità e regole sostanziali.
+• Livello INPS: quando esiste una convenzione, consente la riscossione tramite F24 e la relativa
+esposizione in UniEmens.
+Nota: le fonti INPS non consentono di costruire una mappa completa 'CCNL → fondo obbligatorio → importo'. Per
+questo livello informativo occorre consultare le fonti contrattuali o il fondo direttamente.
 
-1. ENFEA SALUTE (codice F24: ESAL)
-Convenzione: Circ. INPS 77 del 17/4/2025
-Scadenza convenzione: 31 dicembre 2026
-Settore: Piccole e medie imprese (artigianato, piccolo commercio)
-Ente bilaterale: ENFEA (Ente Nazionale Fondazione Employees Assistance)
+2. Il ruolo dell'INPS — esattore per conto del fondo
+Il fondo affida all'INPS il servizio di riscossione. La riscossione avviene contestualmente ai contributi
+previdenziali obbligatori. L'INPS non ha obbligo di esazione coattiva dei contributi del fondo e non
+interviene direttamente nel controllo del datore di lavoro.
+Flusso operativo:
+Previsione contrattuale → contributo dovuto al Fondo → versamento F24 con codice
+specifico → esposizione individuale in UniEmens → controllo coerenza INPS →
+riversamento al Fondo
 
-2. FASIFAR (codice F24: FAFP)
-Convenzione: Circ. INPS 119 del 12/8/2025
-Scadenza convenzione: 31 dicembre 2026
-Settore: Farmaceutico e parafaramceutico
-Ente: Fondo Assistenza Sanitaria Integrativa Farmacisti
+3. Versamento tramite modello F24
+Il versamento avviene nella sezione INPS del modello F24, con una causale specifica per ciascun fondo,
+distintamente dai contributi previdenziali obbligatori. Campi da compilare:
+• Causale contributo: codice del fondo (vedi tabella sotto)
 
-3. FONDOSANI (codice F24: SANI)
-Convenzione: Circ. INPS 120 del 12/8/2025
-Scadenza convenzione: 31 dicembre 2026
-Settore: Terziario, distribuzione e servizi
-Ente: Fondo di Solidarietà per l'Assistenza Sanitaria Integrativa
+• Codice sede: sede INPS competente
+• Matricola INPS: matricola del datore di lavoro
+• Periodo di riferimento: mese/anno di competenza (MM/AAAA); la colonna 'a mm/aaaa' non va
+valorizzata
 
-4. INNOVACARE (codice F24: CARE)
-Convenzione: Circ. INPS 95 del 10/9/2026
-Scadenza convenzione: 31 dicembre 2026
-Settore: Servizi innovativi e tecnologici
-Ente: Fondo Innovacare per l'assistenza sanitaria
+Fondi convenzionati con INPS — codici F24 e UniEmens
+Fondo
 
-=== COME COMPILARE IL MODELLO F24 ===
-Sezione: INPS
-Codice sede: sede INPS competente
-Causale contributo: codice specifico del fondo (ESAL, FAFP, SANI, CARE)
-Matricola INPS: matricola aziendale
-Periodo di riferimento: mese/anno di competenza nel formato MMAAAA
-Importi a debito: importo del contributo mensile dovuto al fondo
+Codice F24
+/ CodConv
 
-=== ESPOSIZIONE UNIEMENS ===
-Nel flusso UniEmens individuale mensile, il datore deve esporre per ciascun lavoratore iscritto al fondo:
-- Elemento specifico fondo assistenza sanitaria
-- Codice fondo
-- Importo quota mensile
-L'omissione in UniEmens genera una discrepanza con il versamento F24 rilevata automaticamente da INPS.
+Convenzione
 
-=== RINNOVO CONVENZIONI ===
-Le convenzioni INPS con i fondi sanitari hanno durata annuale e vengono rinnovate con apposite circolari INPS. Verificare periodicamente le circolari di rinnovo per confermare la validità della convenzione e l'eventuale aggiornamento dei codici o delle procedure.
+Circolare INPS
 
-=== DOMANDE FREQUENTI ===
-D: Qual è il codice F24 per FONDOSANI?
-R: Il codice tributo per FONDOSANI è SANI, da indicare nella sezione INPS del modello F24. Convenzione in vigore fino al 31/12/2026 (Circ. INPS 120/2025).
+Enfea Salute
+(FONDO ASSISTENZA
+SANITARIA CONFAPI)
 
-D: Qual è il codice F24 per ENFEA Salute?
-R: Il codice tributo per ENFEA Salute è ESAL (Circ. INPS 77/2025), valido fino al 31/12/2026.
+ESAL
 
-D: Qual è il codice F24 per FASIFAR?
-R: Il codice tributo per FASIFAR è FAFP (Circ. INPS 119/2025), valido fino al 31/12/2026.
+28/02/2025
+Res. AE 15/E
+del 4/3/2025
 
-D: Qual è il codice F24 per INNOVACARE?
-R: Il codice tributo per INNOVACARE è CARE (Circ. INPS 95/2026), valido fino al 31/12/2026.
+Circ. n. 77
+del 17/04/2025
 
-D: Il versamento F24 è sufficiente o serve anche l'UniEmens?
-R: Entrambi sono obbligatori. Il F24 è il versamento, l'UniEmens è la denuncia. L'INPS verifica la coerenza tra i due e può contestare discrepanze.
+FASIFAR
+(Farmacie Private)
 
-D: Quando scadono le convenzioni dei fondi sanitari con INPS?
-R: Tutte le convenzioni attualmente in vigore (ESAL, FAFP, SANI, CARE) scadono il 31 dicembre 2026.
+FAFP
+
+02/04/2025
+Res. AE 34/E
+del 4/6/2025
+
+Circ. n. 119
+del 12/08/2025
+
+FONDOSANI
+
+SANI
+
+02/04/2025
+Res. AE 34/E
+del 4/6/2025
+
+Circ. n. 120
+del 12/08/2025
+
+INNOVACARE
+(Assistenza Sanitaria
+Integrativa al SSN)
+
+CARE
+
+23/03/2026
+Res. AE 26/E
+del 26/6/2026
+
+Circ. n. 95
+del 10/09/2026
+
+Tutte le convenzioni hanno validità fino al 31/12/2026, rinnovabili per un ulteriore triennio.
+
+4. Esposizione nel flusso UniEmens
+I datori di lavoro di aziende private interessati devono compilare il flusso UniEmens nel percorso:
+→ → → →
+
+Con i seguenti elementi:
+• <CodConv>: codice del fondo (ESAL, FAFP, SANI o CARE)
+• <Importo>: contributo dovuto a livello individuale per il lavoratore, come quota parte del versamento
+F24
+• Attributo <Periodo>: mese di competenza in formato AAAA-MM
+Il percorso UniEmens indicato si applica ai datori di lavoro di aziende private. Per platee diverse (enti pubblici, datori
+agricoli) occorre verificare la specifica circolare del fondo applicabile, non disponibile nelle fonti esaminate.
+
+5. Controlli e riversamento al fondo
+Prima di riversare, INPS verifica la coerenza tra gli importi del flusso UniEmens e quelli del modello F24.
+Riversa al fondo il 98% dei contributi mensili riscossi, al netto dei costi. Il 2% residuo viene trattenuto e
+conguagliato entro maggio dell'anno successivo.
+Il riversamento avviene nel mese successivo all'elaborazione della denuncia UniEmens, previa verifica
+della regolarità contributiva del fondo tramite DURC online.
+
+I rapporti tra fondo e datori di lavoro (restituzione somme, variazioni, omissioni) vanno instaurati
+direttamente tra le parti — l'INPS non interviene in tale contenzioso.
+
+6. Cosa può sapere l'impresa dalle fonti INPS disponibili
+Domanda
+
+Copertura
+
+Come si versa il contributo di un fondo convenzionato?
+
+Sì — F24, codice specifico, istruzioni operative
+
+Come si espone in UniEmens?
+
+Sì — ConvBilat/Conv, CodConv, Importo e Periodo
+
+Qual è il codice del singolo fondo?
+
+Sì — indicato dalla relativa circolare
+
+Chi stabilisce misura e periodicità?
+
+Sì — il fondo/contrattazione collettiva, comunicato all'INPS
+
+Quale fondo è obbligatorio per il mio CCNL?
+
+No — non emerge dalle fonti INPS; consultare il CCNL o il fondo
+
+Come si iscrive ogni dipendente al fondo?
+
+No — le circolari rinviano al fondo per l'attuazione concreta
+
+Conseguenze dell'omesso versamento?
+
+No — l'INPS esclude l'esazione coattiva nelle convenzioni esami
+
+7. Percorso operativo per l'impresa
+1. Identificare il CCNL applicabile
+Verificare quale CCNL si applica all'impresa e cercare la sezione sulla sanità integrativa.
+2. Verificare il fondo obbligatorio
+Consultare il testo del CCNL o il sito del fondo per conoscere il fondo, gli importi e i lavoratori interessati.
+3. Verificare l'esistenza della convenzione INPS
+Controllare se il fondo ha una convenzione INPS attiva con codice F24 assegnato (vedi tabella sezione
+3).
+4. Versare tramite F24
+Usare la causale del fondo nella sezione INPS del modello F24, con sede, matricola e periodo di
+competenza.
+5. Esporre in UniEmens
+Compilare il percorso ConvBilat/Conv con CodConv, Importo e Periodo per ogni lavoratore interessato.
+6. Per tutto il resto
+Iscrizione dipendenti, variazioni, omissioni, casistiche particolari: fare riferimento al fondo e alla
+contrattazione applicabile.
+
+8. Fonti ufficiali
+• Circolare INPS n. 77 del 17/04/2025 — Convenzione INPS-Enfea Salute (ESAL)
+https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2025.04.circolare-numero77-del-17-04-2025_16028.html
+
+• Circolare INPS n. 119 del 12/08/2025 — Convenzione INPS-FASIFAR (FAFP)
+https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2025.08.circolare-numero119-del-12-08-2025_16240.html
+
+• Circolare INPS n. 120 del 12/08/2025 — Convenzione INPS-FONDOSANI (SANI)
+https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2025.08.circolare-numero120-del-12-08-2025_16243.html
+
+• Circolare INPS n. 95 del 10/09/2026 — Convenzione INPS-INNOVACARE (CARE)
+https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2026.09.circolare-numero95-del-10-09-2026_16969.html
+
+• Scheda servizio INPS — Trasmissione UniEmens per datori di lavoro aziende private
+https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.50252.trasmissione-uniemens-per-datori-di-la
+voro-di-aziende-private.html
+
+Hub Previdenza e Welfare — DataHubs S.r.l. | Pagina KB | Settembre 2026
+Documento costruito sulle fonti sopra elencate. KB ampliabile con ulteriori fonti ufficiali.
+
+

@@ -1,65 +1,193 @@
-TEMA: Posizione contributiva e correttezza versamenti
-MACRO AREA: Previdenza
-FONTI: Msg. INPS 2553/2025, Circ. INPS 48/2023, Msg. INPS 1900/2023
-AGGIORNAMENTO: Settembre 2025
-SERVIZIO DB: Riga 94 (Estratto conto), Riga 45 (Ricorsi inquadramento), Riga 58 (Unicità posizione)
+Hub Previdenza e Welfare — Pagina KB certificata
 
-=== ESTRATTO CONTO CONTRIBUTIVO ===
-L'estratto conto contributivo INPS è il documento che riepiloga tutta la storia assicurativa e previdenziale di un lavoratore o di un'azienda. Dal 2025 (Msg. INPS 2553/2025) è disponibile in una nuova modalità di esposizione cronologica integrata, che aggrega le informazioni per periodo di lavoro anziché per gestione previdenziale. Accesso tramite SPID, CIE o CNS dal portale inps.it nella sezione "Estratto conto contributivo/previdenziale".
+Posizione contributiva e correttezza versamenti
+Fonti: DB INPS (ID 57, 93, 44) + Messaggio INPS n. 2553/2025 | Ultima verifica: settembre 2026
 
-=== NUOVA MODALITA 2025 ===
-Il Msg. INPS 2553 del 2/9/2025 ha introdotto la nuova modalità di esposizione cronologica dell'estratto conto. Le principali novità:
-- Visualizzazione unificata per periodo lavorativo (non più per gestione)
-- Integrazione di tutte le gestioni pensionistiche in un unico prospetto
-- Download in formato PDF con firma digitale
-- Possibilità di evidenziare periodi scoperti o anomalie
+1. Cos'è e perché è importante per l'impresa
+La posizione contributiva è il resoconto di tutti i versamenti effettuati dal datore di lavoro a favore dei propri
+dipendenti presso l'INPS. Verificare la correttezza della posizione contributiva significa assicurarsi che tutti
+i contributi versati risultino correttamente accreditati nelle Gestioni previdenziali dei lavoratori.
+Per l'impresa è fondamentale perché:
+• Una posizione irregolare genera DURC negativo, bloccando pagamenti, gare e agevolazioni
+• Gli errori nei versamenti possono portare a sanzioni civili e interessi se non corretti
+tempestivamente
+• La correttezza contributiva protegge i diritti previdenziali dei dipendenti (pensione, invalidità, ecc.)
+• Le anomalie non corrette in tempo possono generare contenziosi con INPS e ricorsi amministrativi
 
-=== UNICITA DELLA POSIZIONE CONTRIBUTIVA ===
-Ogni datore di lavoro deve operare con un'unica posizione contributiva (matricola aziendale) presso la sede INPS competente. In caso di più unità produttive è possibile richiedere l'accentramento contributivo tramite il servizio "Obbligo di unicità della posizione contributiva". Posizioni duplicate o non accentrate possono generare irregolarità nel DURC e nei flussi UniEmens.
+2. Estratto conto contributivo/previdenziale — consultazione
+Il servizio di consultazione dell'estratto conto contributivo/previdenziale consente all'impresa e al
+lavoratore di verificare i periodi contributivi accreditati nelle Gestioni INPS.
 
-=== CORRETTEZZA DEI VERSAMENTI ===
-La correttezza dei versamenti contributivi si verifica attraverso:
-1. Estratto conto aziendale: riepilogo dei versamenti effettuati per competenza
-2. Cassetto previdenziale aziende: monitoraggio in tempo reale della posizione
-3. VeRA (Verifica Regolarità Aziendale): strumento preventivo prima del DURC
-4. UniEmens: flusso mensile che determina la base di calcolo dei contributi
+2.1 Cosa mostra l'estratto conto
+• Tutti i periodi contributivi accreditati in ordine cronologico, con la Gestione/Fondo di riferimento per
+ciascuno
+• Il tipo di contribuzione: obbligatoria, figurativa, volontaria, da riscatto
+• Note su anomalie o condizioni particolari che limitano l'utilizzo di determinati periodi
+• Informazioni su trattamenti pensionistici in atto e vicende assicurative in corso (autorizzazioni
+versamenti volontari, riscatti di laurea)
+• Per chi è iscritto a più Gestioni INPS, un prospetto riepilogativo con visione integrata della posizione
+assicurativa complessiva
 
-=== RICORSI AMMINISTRATIVI ===
-In caso di contestazione di verbali ispettivi, avvisi di addebito o provvedimenti INPS, il datore di lavoro può presentare ricorso amministrativo.
+2.2 Come accedere
+Il servizio è disponibile su www.inps.it con autenticazione tramite SPID (livello 2 o superiore), CIE 3.0,
+CNS o eIDAS.
+In alternativa:
+• Contact Center INPS: numero 803 164 (gratuito da rete fissa) oppure 06 164 164 da rete mobile
+• Patronati e intermediari abilitati: accedono tramite i propri servizi telematici per conto
+dell'assicurato
+Fonte: Scheda servizio INPS — Consultazione Estratto conto contributivo/previdenziale
 
-Termini e organismi (Circ. INPS 48/2023):
-- Ricorsi in materia di inquadramento previdenziale: 90 giorni ai Comitati periferici/centrali gestione lavoratori privati
-- Ricorsi avverso verbali ispettivi: 30 giorni alla Direzione Regionale INPS
-- Ricorsi avverso avvisi di addebito: 40 giorni (opposizione a Tribunale)
+https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.consultazione-estratto-conto-contributivo-previ
+denziale.html
 
-Ricorsi CIGO (Msg. INPS 1900/2023):
-- Termine: 30 giorni dalla notifica del provvedimento di diniego
-- Organismo: Comitato provinciale INPS competente per territorio
-- Modalità: esclusivamente tramite portale telematico INPS "Ricorsi Amministrativi"
+2.3 Novità 2025 — nuova modalità di esposizione (Messaggio INPS n. 2553 del 2
+settembre 2025)
+Nell'ambito del Piano di Evoluzione dei Servizi (PES) 2024, INPS ha rilasciato una nuova modalità di
+esposizione dell'estratto conto contributivo con queste novità:
+• Visione cronologica integrata: i periodi contributivi sono esposti in ordine cronologico con
+indicazione della Gestione/Fondo di riferimento per ciascuno
+• Prospetto riepilogativo multi-gestione: per chi è iscritto a due o più Gestioni INPS, viene mostrato
+un prospetto unico con esposizione cronologica di tutti i periodi. Cliccando sulla lente di ogni periodo si
+accede alla sezione della Gestione corrispondente
+• Principio di unitarietà: l'estratto integra i dati quantitativi con elementi e notizie che definiscono il
+quadro previdenziale completo
+• Segnalazione anomalie: note descrittive su condizioni, limiti di utilizzo dei periodi e anomalie nelle
+informazioni
+• Nuova veste grafica uniforme per tutti i profili utente
+Fonte: Messaggio INPS n. 2553 del 2 settembre 2025 — Evoluzione estratto conto contributivo (Progetto
+PES2024_DCP_MI.10_254)
+https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2025.09.messaggio-numer
+o-2553-del-02-09-2025_16271.html
 
-=== PROCEDURE TELEMATICHE ===
-Tutti i ricorsi amministrativi si presentano esclusivamente tramite il servizio telematico INPS "Ricorsi Amministrativi" accessibile dal portale istituzionale con SPID, CIE o CNS. Non sono più ammessi ricorsi in forma cartacea.
+3. Segnalazioni contributive — come correggere errori
+Tramite gli strumenti sul sito istituzionale INPS è possibile inviare segnalazioni contributive per
+richiedere:
+• L'accredito di periodi mancanti non presenti nell'estratto conto
+• La modifica di periodi errati già presenti
+• La rimozione di errori nella posizione assicurativa
+Accesso: www.inps.it → autenticazione SPID/CIE → Estratto conto → sezione Segnalazioni
 
-=== CASSETTO PREVIDENZIALE AZIENDE ===
-Il Cassetto Previdenziale Aziende è il portale INPS che permette al datore di lavoro e ai suoi intermediari di monitorare:
-- Posizione contributiva aggiornata
-- Flussi UniEmens inviati e anomalie
-- Comunicazioni INPS (autorizzazioni, richieste istruttorie)
-- Autorizzazioni CIGO/CIGS con codici conguaglio
-- Avvisi di addebito e cartelle
+4. Obbligo di unicità della posizione contributiva — accentramento
+contributivo
+Dal 2010 vige il principio di unicità della posizione contributiva: ogni datore di lavoro deve avere
+un'unica posizione INPS, anche se opera con più unità produttive dislocate sul territorio.
 
-=== FLUSSO UNIEMENS ===
-Il flusso UniEmens è la denuncia mensile contributiva che ogni datore di lavoro deve inviare all'INPS entro il giorno 16 del mese successivo a quello di riferimento. Contiene i dati retributivi e contributivi di ogni lavoratore. Errori nel flusso UniEmens generano anomalie nell'estratto conto e possono causare irregolarità nel DURC.
+4.1 Cosa significa per l'impresa
+• Non è più necessario richiedere nuove posizioni contributive per ogni stabilimento o unità operativa
+• È sufficiente registrare nell'anagrafica aziendale i dati del nuovo stabilimento tramite la Procedura
+Iscrizione e Variazione azienda online
+• A ogni nuova unità viene assegnato un numero progressivo da riportare nel flusso UniEmens per i
+lavoratori occupati in quel sito
 
-=== DOMANDE FREQUENTI ===
-D: Come si verifica la correttezza dei versamenti contributivi?
-R: Tramite il Cassetto Previdenziale Aziende su inps.it, consultando l'estratto conto aziendale e verificando la corrispondenza con i flussi UniEmens inviati.
+4.2 Come comunicare le unità operative/produttive
+La comunicazione avviene online tramite la Procedura Iscrizione e Variazione azienda su www.inps.it. È
+possibile anche il caricamento massivo tramite file XML.
+Riferimenti circolari INPS:
+• Circolare INPS n. 172 del 31 dicembre 2010 — istituzione sistema comunicazione unità operative
+• Circolare INPS n. 9 del 19 gennaio 2017 — unità produttive (differenze con unità operative)
+• Circolare INPS n. 56 del 8 marzo 2017 — istruzioni operative unità produttive
+• Messaggio INPS n. 11 del 3 gennaio 2020 — implementazioni procedurali ambiente Internet/Intranet
+Fonte: Scheda servizio INPS — Obbligo di unicità della posizione contributiva
+https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.50203.comunicazione-unit-operativa-unit-prod
+uttiva.html
 
-D: Qual è il termine per presentare ricorso contro un verbale INPS?
-R: 30 giorni per i verbali ispettivi, 90 giorni per i provvedimenti in materia di inquadramento previdenziale. I ricorsi si presentano esclusivamente in forma telematica.
+5. Gestione dei ricorsi amministrativi in materia di inquadramento
+previdenziale
+Quando il datore di lavoro ritiene che l'inquadramento previdenziale attribuito da INPS alla propria azienda
+(categoria, settore, aliquote contributive) sia errato, può presentare ricorso amministrativo.
 
-D: Cosa fare in caso di posizione contributiva duplicata?
-R: Richiedere l'accentramento contributivo presso la sede INPS competente tramite il servizio "Obbligo di unicità della posizione contributiva".
+5.1 Cos'è l'inquadramento previdenziale
+L'inquadramento previdenziale determina:
+• Il codice statistico contributivo (CSC) dell'azienda
+• Le aliquote contributive applicabili
+• L'appartenenza a determinate gestioni (es. CIGO, fondi di solidarietà)
+• L'eventuale obbligo di versamento al Fondo Tesoreria
 
-D: Come accedere all'estratto conto contributivo?
-R: Dal portale inps.it con SPID livello 2, CIE o CNS, nella sezione "Estratto conto contributivo/previdenziale". Dal 2025 la visualizzazione è cronologica integrata (Msg. 2553/2025).
+5.2 Come presentare ricorso
+Il ricorso amministrativo in materia di inquadramento previdenziale si presenta online all'INPS attraverso il
+servizio dedicato. È rivolto a:
+• Aziende che ritengono errato il proprio CSC
+• Aziende che contestano le aliquote contributive applicate
+• Intermediari autorizzati che agiscono per conto dell'azienda
+Fonte: Scheda servizio INPS — Gestione dei ricorsi amministrativi in materia di inquadramento previdenziale
+https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.gestione-dei-ricorsi-amministrativi-in-materiadi-inquadramento-previdenziale.html
+
+6. Cosa deve fare l'impresa — adempimenti pratici
+Verificare periodicamente la posizione contributiva
+Accedere regolarmente all'estratto conto contributivo su INPS con SPID/CIE per verificare che tutti i
+versamenti UniEmens siano correttamente accreditati. Non aspettare che emergano problemi dal DURC
+o da controlli ispettivi.
+
+Segnalare immediatamente le anomalie
+Se l'estratto conto mostra periodi mancanti, errori di accredito o anomalie, inviare una segnalazione
+contributiva tramite il sito INPS. Più si tarda, più difficile è correggere errori del passato.
+Verificare l'unicità della posizione contributiva
+Se l'azienda ha più sedi o stabilimenti, verificare che tutte le unità operative/produttive siano
+correttamente registrate nell'anagrafica INPS e che in UniEmens sia riportato il numero progressivo
+della sede per ogni lavoratore.
+Controllare l'inquadramento previdenziale
+Verificare che il codice statistico contributivo (CSC) assegnato da INPS corrisponda all'attività effettiva
+dell'azienda. Un CSC errato può comportare l'applicazione di aliquote sbagliate o l'obbligo di versamenti
+non dovuti.
+Presentare ricorso in caso di inquadramento errato
+Se INPS ha attribuito un CSC o delle aliquote contributive ritenute errate, presentare ricorso
+amministrativo online entro i termini previsti. Non ignorare la comunicazione INPS sull'inquadramento.
+Conservare la documentazione
+Conservare tutte le ricevute dei versamenti F24, i flussi UniEmens trasmessi e le comunicazioni INPS.
+In caso di contestazione, la documentazione probatoria è fondamentale.
+
+7. Domande frequenti
+D: Come verifico se i contributi versati sono stati accreditati correttamente?
+R: Accedi a www.inps.it con SPID/CIE → Prestazioni e Servizi → Estratto conto contributivo. Con la
+nuova visualizzazione (dal settembre 2025) trovi i periodi in ordine cronologico con la Gestione di
+riferimento. Se sei iscritto a più Gestioni, vedi il prospetto riepilogativo integrato.
+D: Nel estratto conto manca un periodo contributivo — cosa faccio?
+R: Invia una segnalazione contributiva tramite il sito INPS per richiedere l'accredito del periodo
+mancante. Allega la documentazione probatoria (F24, flusso UniEmens, buste paga). L'ufficio INPS
+competente verificherà e, se dovuto, procederà all'accredito.
+D: Ho più sedi aziendali — devo avere una posizione INPS per ognuna?
+R: No. Dal 2010 vige l'obbligo di unicità della posizione contributiva. Devi registrare ogni nuova unità
+operativa/produttiva nell'anagrafica aziendale INPS online. A ogni unità viene assegnato un numero
+progressivo da indicare in UniEmens.
+D: INPS ha classificato la mia azienda in un settore sbagliato — posso contestarlo?
+R: Sì. Puoi presentare ricorso amministrativo in materia di inquadramento previdenziale tramite il
+servizio online INPS. Il ricorso deve essere presentato entro i termini previsti dalla comunicazione INPS.
+In caso di esito negativo, è possibile ricorrere in via giudiziaria.
+D: Un mio dipendente contesta che non ha i contributi per la pensione — di chi è la
+responsabilità?
+R: Il datore di lavoro è responsabile del versamento dei contributi tramite UniEmens. Se INPS ha
+ricevuto i versamenti ma non li ha accreditati, è un problema dell'accredito INPS da risolvere con
+segnalazione contributiva. Se invece il datore non ha versato, è responsabile del danno previdenziale al
+lavoratore.
+D: Cosa succede se la posizione contributiva è irregolare?
+R: L'irregolarità contributiva genera DURC negativo, blocca i pagamenti da parte della PA, esclude
+dall'accesso alle agevolazioni e può portare a sanzioni civili e interessi. INPS può anche avviare
+
+procedure di recupero coattivo del credito tramite avviso di addebito.
+
+8. Fonti ufficiali INPS
+• Scheda servizio INPS — Consultazione Estratto conto contributivo/previdenziale (ID 93)
+https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.consultazione-estratto-conto-contributivo-previ
+denziale.html
+
+• Scheda servizio INPS — Obbligo di unicità della posizione contributiva (ID 57)
+https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.50203.comunicazione-unit-operativa-unit-prod
+uttiva.html
+
+• Scheda servizio INPS — Gestione ricorsi in materia di inquadramento previdenziale (ID 44)
+https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.gestione-dei-ricorsi-amministrativi-in-materiadi-inquadramento-previdenziale.html
+
+• Messaggio INPS n. 2553 del 2 settembre 2025 — Evoluzione estratto conto contributivo
+https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2025.09.messaggio-numer
+o-2553-del-02-09-2025_16271.html
+
+• Circolare INPS n. 172 del 31 dicembre 2010 — Comunicazione unità operative
+https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2010.12.circolare-numero172-del-31-12-2010.html
+
+• Circolare INPS n. 9 del 19 gennaio 2017 — Unità produttive
+https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2017.01.circolare-numero9-del-19-01-2017.html
+
+Hub Previdenza e Welfare — DataHubs S.r.l. | Pagina KB | Settembre 2026
+Fonti: DB INPS (record ID 57, 93, 44) + Messaggio INPS n. 2553 del 2/9/2025
+
+
