@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hub Previdenza e Welfare — DataHubs</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --navy:#0F2A4A;--blue:#1d6fa4;--blue-bg:#EBF5FF;--blue-mid:#BFDBFE;
+  --amber:#92600A;--amber-bg:#FEF8EC;--amber-mid:#FDE68A;
+  --green:#166534;--green-bg:#EDFAF4;--green-mid:#A7F3D0;
+  --gray-50:#F8FAFC;--gray-100:#F1F5F9;--gray-200:#E2E8F0;
+  --gray-400:#94A3B8;--gray-600:#475569;--gray-800:#1E293B;
+  --white:#fff;--accent:#0284C7;
+  --header-h:64px;--sidebar-w:230px;
+  --radius:12px;--shadow:0 2px 8px rgba(0,0,0,.08);--shadow-lg:0 8px 28px rgba(0,0,0,.12);
+}
+html,body{height:100%;font-family:'Inter',sans-serif;background:var(--gray-50);color:var(--gray-800);font-size:14px;}
+
+.header{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--header-h);background:#fff;border-bottom:1px solid var(--gray-200);display:flex;align-items:center;padding:0 28px;gap:20px;box-shadow:0 1px 4px rgba(0,0,0,.06);}
+.h-brand{display:flex;align-items:center;gap:10px;flex-shrink:0;cursor:pointer;text-decoration:none;}
+.h-logo{width:40px;height:40px;background:var(--navy);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;color:#fff;font-family:Georgia,serif;}
+.h-name strong{display:block;font-size:14px;font-weight:700;color:var(--navy);line-height:1.2;}
+.h-name span{display:block;font-size:12px;color:var(--gray-400);}
+.h-dh-logo{height:28px;object-fit:contain;margin-left:8px;border-left:1px solid var(--gray-200);padding-left:14px;}
+.h-search{flex:1;max-width:520px;margin:0 auto;display:flex;align-items:center;background:var(--gray-100);border:1.5px solid var(--gray-200);border-radius:28px;padding:0 6px 0 16px;gap:10px;transition:border-color .15s;}
+.h-search:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px rgba(2,132,199,.1);background:#fff;}
+.h-search input{flex:1;border:none;background:transparent;font-size:14px;color:var(--gray-800);outline:none;padding:10px 0;font-family:'Inter',sans-serif;}
+.h-search input::placeholder{color:var(--gray-400);}
+.search-go{width:34px;height:34px;background:var(--gray-200);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:background .15s;}
+.search-go:hover{background:var(--navy);}
+.search-go svg{width:14px;height:14px;}
+.h-right{margin-left:auto;display:flex;align-items:center;gap:12px;flex-shrink:0;}
+.btn-chisiamo{display:flex;align-items:center;gap:6px;padding:8px 16px;border:1.5px solid var(--gray-200);border-radius:24px;font-size:13px;font-weight:500;color:var(--gray-600);background:#fff;cursor:pointer;transition:border-color .15s;}
+.btn-chisiamo:hover{border-color:var(--navy);color:var(--navy);}
+.btn-logout{display:flex;align-items:center;gap:6px;padding:8px 14px;border:1.5px solid #FECACA;border-radius:24px;font-size:12px;font-weight:500;color:#DC2626;background:#FEF2F2;cursor:pointer;transition:all .15s;}
+.btn-logout:hover{background:#DC2626;color:#fff;border-color:#DC2626;}
+.h-avatar{width:34px;height:34px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;}
+
+.sidebar{width:var(--sidebar-w);background:#fff;border-right:1px solid var(--gray-200);position:fixed;top:var(--header-h);left:0;bottom:0;padding:16px 10px;overflow-y:auto;z-index:50;}
+.sb-item{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:var(--radius);font-size:14px;font-weight:500;color:var(--gray-600);cursor:pointer;margin-bottom:3px;transition:background .12s,color .12s;user-select:none;}
+.sb-item:hover{background:var(--gray-100);color:var(--gray-800);}
+.sb-item.active{background:var(--blue-bg);color:var(--navy);font-weight:600;}
+.sb-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.sb-arrow{margin-left:auto;color:var(--gray-400);}
+.sb-divider{height:1px;background:var(--gray-100);margin:10px 4px;}
+
+.body{display:flex;padding-top:var(--header-h);min-height:100vh;}
+.main{margin-left:var(--sidebar-w);flex:1;min-width:0;}
+.page{display:none;animation:fadeIn .2s ease;}
+.page.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:translateY(0);}}
+
+.hero{margin:24px 28px 0;border-radius:16px;overflow:hidden;display:grid;grid-template-columns:1fr 320px;min-height:230px;box-shadow:var(--shadow-lg);}
+.hero-text{background:linear-gradient(135deg,#0F2A4A 0%,#1B3A5C 100%);padding:38px 36px;display:flex;flex-direction:column;justify-content:center;}
+.hero h1{font-size:28px;font-weight:800;color:#fff;line-height:1.2;margin-bottom:12px;letter-spacing:-.5px;}
+.hero p{font-size:14px;color:rgba(255,255,255,.72);line-height:1.65;max-width:360px;}
+.hero-img{position:relative;overflow:hidden;}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
+.hero-card{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:#fff;border-radius:12px;padding:16px 18px;width:200px;box-shadow:var(--shadow-lg);}
+.hci{display:flex;align-items:flex-start;gap:9px;margin-bottom:10px;font-size:12px;color:var(--gray-600);line-height:1.4;}
+.hci:last-child{margin-bottom:0;}
+.hci-ic{width:24px;height:24px;background:var(--gray-100);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;}
+
+.ai-notice{margin:14px 28px 0;background:#EFF8FF;border:1px solid #BAE0FD;border-radius:var(--radius);padding:11px 16px;display:flex;gap:11px;align-items:flex-start;font-size:12.5px;color:#0c4a6e;line-height:1.55;}
+.ai-notice-icon{width:24px;height:24px;background:#BAE0FD;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700;color:#0c4a6e;font-size:13px;}
+
+.section{margin:24px 28px 0;}
+.section h2{font-size:24px;font-weight:800;color:var(--gray-800);margin-bottom:4px;letter-spacing:-.3px;}
+.section-sub{font-size:13px;color:var(--gray-400);margin-bottom:18px;}
+.macro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.mc{border-radius:16px;padding:22px;cursor:pointer;transition:box-shadow .15s,transform .15s;position:relative;}
+.mc:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px);}
+.mc-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px;}
+.mc-icon{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.mc-icon svg{width:24px;height:24px;}
+.mc-badge{font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;}
+.mc h3{font-size:17px;font-weight:800;color:var(--gray-800);margin-bottom:7px;letter-spacing:-.2px;}
+.mc p{font-size:12.5px;color:var(--gray-600);line-height:1.6;margin-bottom:16px;}
+.mc-link{display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:600;}
+.mc-arrow{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.mc-arrow svg{width:15px;height:15px;}
+
+.info-section{margin:24px 28px 36px;}
+.info-section h2{font-size:20px;font-weight:800;color:var(--gray-800);margin-bottom:16px;}
+.info-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--gray-200);border-radius:var(--radius);background:#fff;overflow:hidden;}
+.info-item{padding:18px 16px;display:flex;flex-direction:column;gap:8px;border-right:1px solid var(--gray-200);}
+.info-item:last-child{border-right:none;}
+.info-icon{font-size:20px;}
+.info-item strong{font-size:12.5px;font-weight:700;color:var(--gray-800);}
+.info-item span{font-size:11.5px;color:var(--gray-400);line-height:1.4;}
+
+.area-wrap{margin:24px 28px 36px;}
+.area-header{background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);padding:20px 24px;display:flex;gap:14px;align-items:center;margin-bottom:18px;}
+.area-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.area-icon svg{width:24px;height:24px;}
+.area-header h1{font-size:21px;font-weight:800;color:var(--navy);margin-bottom:3px;}
+.area-header p{font-size:12.5px;color:var(--gray-400);}
+.area-badges{display:flex;gap:6px;margin-top:7px;}
+.badge{font-size:10.5px;font-weight:600;padding:2px 9px;border-radius:20px;}
+
+.tema{background:#fff;border:1.5px solid var(--gray-200);border-radius:var(--radius);overflow:hidden;margin-bottom:12px;cursor:pointer;transition:border-color .15s,box-shadow .15s;}
+.tema:hover{box-shadow:var(--shadow);border-color:var(--tc,var(--accent));}
+.tema-bar{height:3px;background:var(--tc,var(--accent));}
+.tema-body{padding:18px 22px;}
+.tema-cat{font-size:10px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--tc,var(--accent));margin-bottom:7px;display:flex;align-items:center;gap:6px;}
+.tema-cat::before{content:'';width:12px;height:2px;background:currentColor;display:inline-block;border-radius:1px;}
+.tema h3{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px;line-height:1.3;}
+.tema p{font-size:12.5px;color:var(--gray-600);line-height:1.65;max-width:620px;margin-bottom:12px;}
+.tema-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px;}
+.tema-tag{font-size:10.5px;background:var(--gray-100);color:var(--gray-600);padding:2px 9px;border-radius:20px;font-weight:500;}
+.tema-footer{display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid var(--gray-100);}
+.tema-meta{display:flex;gap:12px;}
+.tema-meta span{font-size:11px;color:var(--gray-400);}
+.tema-open{font-size:12.5px;font-weight:600;color:var(--tc,var(--accent));display:flex;align-items:center;gap:4px;background:none;border:none;cursor:pointer;padding:0;font-family:'Inter',sans-serif;}
+
+.tema-page-header{background:linear-gradient(135deg,#0F2A4A,#1B3A5C);border-radius:16px;padding:28px 32px;margin-bottom:18px;color:#fff;}
+.breadcrumb{font-size:12px;color:rgba(255,255,255,.55);margin-bottom:10px;cursor:pointer;display:flex;align-items:center;gap:5px;}
+.breadcrumb:hover{color:rgba(255,255,255,.85);}
+.tema-page-header h1{font-size:23px;font-weight:800;letter-spacing:-.3px;margin-bottom:7px;}
+.tema-page-header p{font-size:13.5px;color:rgba(255,255,255,.7);line-height:1.6;max-width:560px;}
+.fonti-row{display:flex;gap:7px;margin-top:14px;flex-wrap:wrap;}
+.fonte-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:4px 11px;font-size:11px;color:rgba(255,255,255,.85);text-decoration:none;transition:background .15s;}
+.fonte-badge:hover{background:rgba(255,255,255,.22);}
+
+.kb-section{background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);overflow:hidden;margin-bottom:14px;}
+.kb-section-head{padding:16px 22px;border-bottom:1px solid var(--gray-100);display:flex;align-items:center;gap:9px;}
+.kb-section-head h3{font-size:14px;font-weight:700;color:var(--navy);flex:1;}
+.kb-num{width:24px;height:24px;border-radius:6px;background:var(--blue-bg);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--blue);flex-shrink:0;}
+.kb-body{padding:18px 22px;}
+.kb-text{font-size:13px;color:var(--gray-600);line-height:1.75;margin-bottom:10px;}
+.kb-text:last-child{margin-bottom:0;}
+.kb-hl{background:var(--blue-bg);border-left:3px solid var(--blue);border-radius:0 8px 8px 0;padding:10px 14px;margin:10px 0;font-size:12.5px;color:var(--navy);line-height:1.6;}
+.kb-hl strong{display:block;margin-bottom:3px;font-size:12px;}
+.kb-attn{background:#FFF8EC;border-left:3px solid var(--amber);border-radius:0 8px 8px 0;padding:10px 14px;margin:10px 0;font-size:12.5px;color:#7c4a0a;line-height:1.6;}
+.kb-attn strong{display:block;margin-bottom:3px;font-size:12px;}
+.kb-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:12.5px;}
+.kb-table th{background:var(--navy);color:#fff;padding:9px 12px;text-align:left;font-weight:600;font-size:11.5px;}
+.kb-table td{padding:8px 12px;border-bottom:1px solid var(--gray-100);color:var(--gray-600);vertical-align:top;}
+.kb-table tr:last-child td{border-bottom:none;}
+.kb-table tr:nth-child(even) td{background:var(--gray-50);}
+.kb-ul{margin:7px 0 10px;list-style:none;}
+.kb-ul li{display:flex;gap:7px;font-size:13px;color:var(--gray-600);line-height:1.6;margin-bottom:6px;}
+.kb-ul li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:7px;}
+
+.fonti-box{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--radius);padding:16px 18px;margin-top:16px;}
+.fonti-box-title{font-size:10.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--gray-400);margin-bottom:10px;}
+.fonte-link{display:flex;align-items:center;gap:9px;padding:9px 11px;border-radius:8px;background:#fff;border:1px solid var(--gray-200);margin-bottom:7px;text-decoration:none;transition:border-color .15s,box-shadow .15s;}
+.fonte-link:last-child{margin-bottom:0;}
+.fonte-link:hover{border-color:var(--accent);box-shadow:var(--shadow);}
+.fonte-link-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;}
+.fonte-link-text strong{display:block;font-size:12px;font-weight:600;color:var(--gray-800);}
+.fonte-link-text span{font-size:11px;color:var(--gray-400);}
+.fl-arrow{margin-left:auto;color:var(--gray-400);font-size:13px;}
+
+.cs-card{background:#fff;border:1.5px solid var(--gray-200);border-radius:var(--radius);overflow:hidden;margin-bottom:14px;}
+.cs-bar{height:3px;}
+.cs-body{padding:22px 26px;}
+.cs-cat{font-size:10px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;margin-bottom:9px;display:flex;align-items:center;gap:6px;}
+.cs-cat::before{content:'';width:12px;height:2px;background:currentColor;display:inline-block;border-radius:1px;}
+.cs-card h3{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:9px;}
+.cs-text{font-size:13px;color:var(--gray-600);line-height:1.7;margin-bottom:10px;}
+.cs-rules{background:var(--gray-50);border-radius:9px;padding:16px 18px;margin-top:12px;}
+.cs-rules-title{font-size:11px;font-weight:700;color:var(--navy);margin-bottom:10px;}
+.cs-rule{display:flex;gap:9px;font-size:12.5px;color:var(--gray-600);line-height:1.5;margin-bottom:9px;}
+.cs-rule:last-child{margin-bottom:0;}
+.cs-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:5px;}
+
+.ai-fab{position:fixed;bottom:26px;right:26px;z-index:200;display:flex;flex-direction:column;align-items:flex-end;gap:5px;}
+.ai-fab-label{background:var(--navy);color:#fff;font-size:11.5px;font-weight:500;padding:5px 11px;border-radius:18px;white-space:nowrap;box-shadow:var(--shadow);}
+.ai-fab-btn{width:52px;height:52px;background:var(--navy);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 16px rgba(15,42,74,.35);transition:background .15s,transform .15s;position:relative;}
+.ai-fab-btn:hover{background:#1d6fa4;transform:scale(1.05);}
+.ai-online{position:absolute;top:2px;right:2px;width:12px;height:12px;background:#22c55e;border-radius:50%;border:2px solid #fff;}
+
+.ai-panel{position:fixed;bottom:88px;right:26px;width:340px;z-index:200;background:#fff;border-radius:16px;border:1px solid var(--gray-200);box-shadow:var(--shadow-lg);overflow:hidden;display:none;flex-direction:column;}
+.ai-panel.open{display:flex;}
+.ai-head{background:var(--navy);padding:12px 15px;display:flex;align-items:center;gap:9px;}
+.ai-head-av{width:28px;height:28px;background:rgba(14,165,233,.2);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px;}
+.ai-head strong{font-size:12.5px;color:#fff;display:block;}
+.ai-head span{font-size:10px;color:rgba(255,255,255,.5);}
+.ai-head-x{margin-left:auto;font-size:15px;color:rgba(255,255,255,.4);cursor:pointer;padding:2px 4px;background:none;border:none;color:rgba(255,255,255,.5);}
+.ai-head-x:hover{color:#fff;}
+.ai-msgs{padding:12px;background:var(--gray-50);min-height:130px;max-height:240px;overflow-y:auto;display:flex;flex-direction:column;gap:9px;}
+.msg{display:flex;gap:7px;}
+.msg-av{width:23px;height:23px;background:var(--blue-bg);border-radius:5px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;}
+.msg-b{font-size:12px;line-height:1.6;color:var(--gray-800);background:#fff;border:1px solid var(--gray-200);border-radius:0 7px 7px 7px;padding:8px 10px;max-width:260px;}
+.msg.user{flex-direction:row-reverse;}
+.msg.user .msg-b{background:var(--accent);color:#fff;border-color:var(--accent);border-radius:7px 0 7px 7px;}
+.ai-typing .msg-b{color:var(--gray-400);font-style:italic;}
+.ai-qs{padding:7px 12px;display:flex;flex-wrap:wrap;gap:4px;border-top:1px solid var(--gray-200);background:#fff;}
+.ai-q{font-size:10.5px;padding:3px 8px;border:1px solid var(--gray-200);border-radius:11px;color:var(--gray-600);cursor:pointer;background:var(--gray-50);transition:border-color .12s,color .12s;}
+.ai-q:hover{border-color:var(--accent);color:var(--accent);}
+.ai-inp{display:flex;gap:7px;padding:9px 12px;border-top:1px solid var(--gray-200);background:#fff;}
+.ai-input{flex:1;border:1.5px solid var(--gray-200);border-radius:14px;padding:6px 11px;font-size:12px;outline:none;color:var(--gray-800);transition:border-color .12s;font-family:'Inter',sans-serif;}
+.ai-input:focus{border-color:var(--accent);}
+.ai-send{width:30px;height:30px;background:var(--accent);border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ai-send:disabled{background:var(--gray-400);cursor:not-allowed;}
+.ai-send svg{width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+.ai-disclaimer{font-size:10px;color:var(--gray-400);padding:5px 12px 9px;background:#fff;line-height:1.5;}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <a class="h-brand" href="#" onclick="showPage('home');return false;">
+    <div class="h-logo">H</div>
+    <div class="h-name"><strong>Hub Previdenza</strong><span>e Welfare</span></div>
+  </a>
+  <img src="data:image/jpeg;base64,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" alt="DataHubs" class="h-dh-logo">
+  <div class="h-search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="text" id="search-input" placeholder="Cerca nella Knowledge Base..." onkeydown="if(event.key==='Enter')doSearch()">
+    <button class="search-go" onclick="doSearch()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </button>
+  </div>
+  <div class="h-right">
+    <button class="btn-chisiamo" onclick="showPage('chisiamo')">ⓘ Chi siamo</button>
+    <a href="/logout" class="btn-logout">Esci</a>
+    <div class="h-avatar">OP</div>
+  </div>
+</header>
+
+<div class="body">
+<nav class="sidebar">
+  <div class="sb-item active" id="sb-home" onclick="showPage('home')">
+    <div class="sb-icon" style="background:#EBF5FF;"><svg viewBox="0 0 24 24" fill="none" stroke="#1d6fa4" stroke-width="2" stroke-linecap="round" style="width:16px;height:16px;"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+    Home
+  </div>
+  <div class="sb-divider"></div>
+  <div class="sb-item" id="sb-prev" onclick="showPage('previdenza')">
+    <div class="sb-icon" style="background:#EBF5FF;"><svg viewBox="0 0 24 24" fill="none" stroke="#1d6fa4" stroke-width="2" stroke-linecap="round" style="width:16px;height:16px;"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+    Previdenza <span class="sb-arrow">›</span>
+  </div>
+  <div class="sb-item" id="sb-welf" onclick="showPage('welfare')">
+    <div class="sb-icon" style="background:#FEF8EC;"><svg viewBox="0 0 24 24" fill="none" stroke="#92600A" stroke-width="2" stroke-linecap="round" style="width:16px;height:16px;"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></div>
+    Welfare aziendale <span class="sb-arrow">›</span>
+  </div>
+  <div class="sb-item" id="sb-san" onclick="showPage('sanita')">
+    <div class="sb-icon" style="background:#EDFAF4;"><svg viewBox="0 0 24 24" fill="none" stroke="#166534" stroke-width="2" stroke-linecap="round" style="width:16px;height:16px;"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+    Sanità integrativa <span class="sb-arrow">›</span>
+  </div>
+</nav>
+
+<main class="main">
+
+<!-- HOME -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-text">
+      <h1>Risposte chiare<br>su Previdenza e Welfare</h1>
+      <p>Un unico punto di accesso per orientarti tra norme, adempimenti e servizi INPS dedicati a imprese e professionisti.</p>
+    </div>
+    <div class="hero-img">
+      <img src="data:image/jpeg;base64,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" alt="Operatori al lavoro">
+      <div class="hero-card">
+        <div class="hci"><div class="hci-ic">📄</div><span>Informazioni aggiornate da fonti ufficiali INPS</span></div>
+        <div class="hci"><div class="hci-ic">🗂️</div><span>Temi organizzati per macro aree</span></div>
+        <div class="hci"><div class="hci-ic">🔗</div><span>Link ai servizi e alle procedure</span></div>
+        <div class="hci"><div class="hci-ic">✅</div><span>Risposte chiare e pratiche</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ai-notice">
+    <div class="ai-notice-icon">i</div>
+    <span>L'assistente AI è addestrato sulle fonti INPS ufficiali, dell'Agenzia delle Entrate e del Ministero della Salute certificate in questa Knowledge Base. Ogni risposta include il riferimento alla fonte originale per una consultazione immediata e sicura.</span>
+  </div>
+
+  <div class="section">
+    <h2>Esplora le macro aree</h2>
+    <p class="section-sub">Seleziona l'area di tuo interesse per visualizzare i temi disponibili.</p>
+    <div class="macro-grid">
+      <div class="mc" style="background:#EBF5FF;" onclick="showPage('previdenza')">
+        <div class="mc-top">
+          <div class="mc-icon" style="background:#BFDBFE;"><svg viewBox="0 0 24 24" fill="none" stroke="#1d6fa4" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+          <div class="mc-badge" style="background:#BFDBFE;color:#1d6fa4;">2 temi</div>
+        </div>
+        <h3>Previdenza</h3>
+        <p>Contributi, posizione contributiva, correttezza dei versamenti e adempimenti previdenziali.</p>
+        <div class="mc-link" style="color:#1d6fa4;">Scopri i temi <div class="mc-arrow" style="background:#BFDBFE;"><svg viewBox="0 0 24 24" fill="none" stroke="#1d6fa4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div></div>
+      </div>
+      <div class="mc" style="background:#FEF8EC;" onclick="showPage('welfare')">
+        <div class="mc-top">
+          <div class="mc-icon" style="background:#FDE68A;"><svg viewBox="0 0 24 24" fill="none" stroke="#92600A" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></div>
+          <div class="mc-badge" style="background:#FDE68A;color:#92600A;">2 temi</div>
+        </div>
+        <h3>Welfare aziendale</h3>
+        <p>Strumenti e adempimenti per la gestione del welfare, regolarità contributiva e DURC.</p>
+        <div class="mc-link" style="color:#92600A;">Scopri i temi <div class="mc-arrow" style="background:#FDE68A;"><svg viewBox="0 0 24 24" fill="none" stroke="#92600A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div></div>
+      </div>
+      <div class="mc" style="background:#EDFAF4;" onclick="showPage('sanita')">
+        <div class="mc-top">
+          <div class="mc-icon" style="background:#A7F3D0;"><svg viewBox="0 0 24 24" fill="none" stroke="#166534" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+          <div class="mc-badge" style="background:#A7F3D0;color:#166534;">2 temi</div>
+        </div>
+        <h3>Sanità integrativa</h3>
+        <p>Fondi sanitari contrattuali, contribuzione obbligatoria e adempimenti correlati.</p>
+        <div class="mc-link" style="color:#166534;">Scopri i temi <div class="mc-arrow" style="background:#A7F3D0;"><svg viewBox="0 0 24 24" fill="none" stroke="#166534" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-section">
+    <h2>Informazioni utili</h2>
+    <div class="info-grid">
+      <div class="info-item"><div class="info-icon">📖</div><strong>Fonti certificate</strong><span>INPS, Agenzia delle Entrate, Ministero della Salute</span></div>
+      <div class="info-item"><div class="info-icon">❔</div><strong>Come usare la KB</strong><span>Naviga per macro area o usa la barra di ricerca</span></div>
+      <div class="info-item"><div class="info-icon">🔗</div><strong>Servizi INPS</strong><span>Link diretti alle procedure ufficiali nei temi</span></div>
+      <div class="info-item"><div class="info-icon">🤖</div><strong>Assistente AI</strong><span>Fai domande in linguaggio naturale in basso a destra</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- PREVIDENZA -->
+<div class="page" id="page-previdenza">
+  <div class="area-wrap">
+    <div class="area-header">
+      <div class="area-icon" style="background:#EBF5FF;"><svg viewBox="0 0 24 24" fill="none" stroke="#1d6fa4" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+      <div><h1>Previdenza</h1><p>Posizione contributiva, versamenti, ricorsi e prestazioni previdenziali.</p><div class="area-badges"><span class="badge" style="background:#EBF5FF;color:#1d6fa4;">2 temi</span><span class="badge" style="background:var(--gray-100);color:var(--gray-600);">Fonte: INPS</span></div></div>
+    </div>
+    <div class="tema" style="--tc:#1d6fa4;" onclick="showPage('posizione-contributiva')">
+      <div class="tema-bar"></div><div class="tema-body">
+      <div class="tema-cat">Previdenza · INPS</div>
+      <h3>Posizione contributiva e correttezza versamenti</h3>
+      <p>Estratto conto contributivo, verifica versamenti, ricorsi amministrativi e unicità posizione aziendale. Aggiornato con Msg. INPS 2553/2025.</p>
+      <div class="tema-tags"><span class="tema-tag">Estratto conto</span><span class="tema-tag">Ricorsi INPS</span><span class="tema-tag">UniEmens</span><span class="tema-tag">Cassetto Previdenziale</span></div>
+      <div class="tema-footer"><div class="tema-meta"><span>📄 3 fonti INPS</span><span>📅 Sett 2025</span></div><button class="tema-open">Apri il tema →</button></div>
+      </div>
+    </div>
+    <div class="tema" style="--tc:#1d6fa4;" onclick="showPage('accompagnamento-pensione')">
+      <div class="tema-bar"></div><div class="tema-body">
+      <div class="tema-cat">Previdenza · INPS</div>
+      <h3>Prestazioni di accompagnamento alla pensione</h3>
+      <p>Isopensione, Fondi di solidarietà, requisiti, accordo aziendale, agevolazioni fiscali 2026 e tutele per nuovi requisiti pensionistici (Circ. 41/2026).</p>
+      <div class="tema-tags"><span class="tema-tag">Isopensione</span><span class="tema-tag">Fondi solidarietà</span><span class="tema-tag">Esodo</span><span class="tema-tag">Contributivi puri</span></div>
+      <div class="tema-footer"><div class="tema-meta"><span>📄 5 fonti INPS</span><span>📅 Sett 2026</span></div><button class="tema-open">Apri il tema →</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WELFARE -->
+<div class="page" id="page-welfare">
+  <div class="area-wrap">
+    <div class="area-header">
+      <div class="area-icon" style="background:#FEF8EC;"><svg viewBox="0 0 24 24" fill="none" stroke="#92600A" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>
+      <div><h1>Welfare aziendale</h1><p>Regolarità contributiva, DURC e ammortizzatori sociali.</p><div class="area-badges"><span class="badge" style="background:#FEF8EC;color:#92600A;">2 temi</span><span class="badge" style="background:var(--gray-100);color:var(--gray-600);">Fonte: INPS</span></div></div>
+    </div>
+    <div class="tema" style="--tc:#92600A;" onclick="showPage('durc-online')">
+      <div class="tema-bar"></div><div class="tema-body">
+      <div class="tema-cat" style="color:#92600A;">Welfare aziendale · INPS</div>
+      <h3>DURC Online</h3>
+      <p>Verifica regolarità contributiva, Piattaforma Unica INPS, Ve.R.A., Simulazione DURC, Pre-DURC e Delega Master. Aggiornato con Msg. 3662/2024.</p>
+      <div class="tema-tags"><span class="tema-tag">Ve.R.A.</span><span class="tema-tag">Pre-DURC</span><span class="tema-tag">Delega Master</span><span class="tema-tag">Piattaforma Unica</span></div>
+      <div class="tema-footer"><div class="tema-meta"><span>📄 6 fonti INPS</span><span>📅 Nov 2024</span></div><button class="tema-open" style="color:#92600A;">Apri il tema →</button></div>
+      </div>
+    </div>
+    <div class="tema" style="--tc:#92600A;" onclick="showPage('cigo')">
+      <div class="tema-bar"></div><div class="tema-body">
+      <div class="tema-cat" style="color:#92600A;">Welfare aziendale · INPS</div>
+      <h3>Cassa Integrazione Guadagni Ordinaria (CIGO)</h3>
+      <p>Datori ammessi, causali, OMNIA IS, massimale 2026 (1.423,69 €), contribuzione addizionale, conguaglio UniEmens ed emergenza climatica lug–dic 2026.</p>
+      <div class="tema-tags"><span class="tema-tag">OMNIA IS</span><span class="tema-tag">UniEmens</span><span class="tema-tag">Massimale 2026</span><span class="tema-tag">EONE</span></div>
+      <div class="tema-footer"><div class="tema-meta"><span>📄 4 fonti INPS</span><span>📅 Lug 2026</span></div><button class="tema-open" style="color:#92600A;">Apri il tema →</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SANITÀ -->
+<div class="page" id="page-sanita">
+  <div class="area-wrap">
+    <div class="area-header">
+      <div class="area-icon" style="background:#EDFAF4;"><svg viewBox="0 0 24 24" fill="none" stroke="#166534" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+      <div><h1>Sanità integrativa</h1><p>Fondi sanitari contrattuali INPS e regime fiscale della sanità integrativa.</p><div class="area-badges"><span class="badge" style="background:#EDFAF4;color:#166534;">2 temi</span><span class="badge" style="background:var(--gray-100);color:var(--gray-600);">INPS · AE · Min. Salute</span></div></div>
+    </div>
+    <div class="tema" style="--tc:#166534;" onclick="showPage('fondi-sanitari-contrattuali')">
+      <div class="tema-bar"></div><div class="tema-body">
+      <div class="tema-cat" style="color:#166534;">Sanità integrativa · INPS</div>
+      <h3>Fondi sanitari contrattuali — contribuzione obbligatoria</h3>
+      <p>Meccanismo F24/UniEmens per ENFEA Salute (ESAL), FASIFAR (FAFP), FONDOSANI (SANI), INNOVACARE (CARE). Tutte le convenzioni al 31/12/2026.</p>
+      <div class="tema-tags"><span class="tema-tag">F24</span><span class="tema-tag">UniEmens</span><span class="tema-tag">ESAL · FAFP · SANI · CARE</span></div>
+      <div class="tema-footer"><div class="tema-meta"><span>📄 4 circolari INPS</span><span>📅 Sett 2026</span></div><button class="tema-open" style="color:#166634;">Apri il tema →</button></div>
+      </div>
+    </div>
+    <div class="tema" style="--tc:#166534;" onclick="showPage('sanita-fiscale')">
+      <div class="tema-bar"></div><div class="tema-body">
+      <div class="tema-cat" style="color:#166534;">Sanità integrativa · AE · Min. Salute · INPS</div>
+      <h3>Fondi sanitari — regime fiscale e agevolazioni</h3>
+      <p>Tipologie A e B, deducibilità fino a 3.615,20 € (art. 10 TUIR), non imponibilità (art. 51 TUIR), requisiti 2025, Anagrafe Min. Salute e trattamento contributivo INPS.</p>
+      <div class="tema-tags"><span class="tema-tag">Art. 10 TUIR</span><span class="tema-tag">Art. 51 TUIR</span><span class="tema-tag">Anagrafe fondi</span><span class="tema-tag">3.615,20 €</span></div>
+      <div class="tema-footer"><div class="tema-meta"><span>📄 AE + Min. Salute + INPS</span><span>📅 Mag 2025</span></div><button class="tema-open" style="color:#166634;">Apri il tema →</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGINA TEMA: POSIZIONE CONTRIBUTIVA -->
+<div class="page" id="page-posizione-contributiva">
+  <div class="area-wrap">
+    <div class="tema-page-header">
+      <div class="breadcrumb" onclick="showPage('previdenza')">← Previdenza</div>
+      <h1>Posizione contributiva e correttezza versamenti</h1>
+      <p>Estratto conto, verifica versamenti, unicità posizione aziendale e ricorsi amministrativi INPS.</p>
+      <div class="fonti-row">
+        <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2025.09.messaggio-numero-2553-del-02-09-2025_15215.html" target="_blank">📄 Msg. INPS 2553/2025</a>
+        <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2023.05.circolare-numero-48-del-17-05-2023_14019.html" target="_blank">📄 Circ. INPS 48/2023</a>
+        <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2023.05.messaggio-numero-1900-del-23-05-2023_14164.html" target="_blank">📄 Msg. INPS 1900/2023</a>
+      </div>
+    </div>
+    <div class="kb-section"><div class="kb-section-head"><div class="kb-num">1</div><h3>Estratto conto contributivo</h3></div><div class="kb-body">
+      <p class="kb-text">L'estratto conto contributivo INPS riepiloga tutta la storia assicurativa e previdenziale di un lavoratore o di un'azienda. Dal 2025 (Msg. 2553/2025) è disponibile la nuova modalità di esposizione <strong>cronologica integrata</strong>, che aggrega le informazioni per periodo di lavoro anziché per gestione previdenziale.</p>
+      <div class="kb-hl"><strong>Come accedere</strong>Portale inps.it → "Estratto conto contributivo/previdenziale" con SPID livello 2, CIE o CNS. Disponibile anche tramite intermediari autorizzati con delega aziendale.</div>
+      <p class="kb-text">Le novità 2025 includono: visualizzazione unificata per periodo lavorativo, integrazione di tutte le gestioni in un unico prospetto, download in PDF con firma digitale, evidenziazione automatica di periodi scoperti o anomalie.</p>
+    </div></div>
+    <div class="kb-section"><div class="kb-section-head"><div class="kb-num">2</div><h3>Unicità della posizione contributiva</h3></div><div class="kb-body">
+      <p class="kb-text">Ogni datore di lavoro deve operare con un'unica posizione contributiva (matricola aziendale) presso la sede INPS competente. In caso di più unità produttive è possibile richiedere l'accentramento contributivo tramite il servizio "Obbligo di unicità della posizione contributiva".</p>
+      <div class="kb-attn"><strong>⚠️ Attenzione</strong>Posizioni duplicate o non accentrate generano irregolarità nel DURC e nei flussi UniEmens. Verificare periodicamente la struttura delle posizioni contributive aziendali tramite il Cassetto Previdenziale Aziende.</div>
+    </div></div>
+    <div class="kb-section"><div class="kb-section-head"><div class="kb-num">3</div><h3>Cassetto Previdenziale Aziende</h3></div><div class="kb-body">
+      <p class="kb-text">Il Cassetto Previdenziale Aziende è il portale INPS che permette al datore di lavoro e ai suoi intermediari di monitorare in tempo reale:</p>
+      <ul class="kb-ul">
+        <li>Posizione contributiva aggiornata e estratto conto aziendale</li>
+        <li>Flussi UniEmens inviati e relative anomalie</li>
+        <li>Comunicazioni INPS (autorizzazioni CIGO, richieste istruttorie)</li>
+        <li>Avvisi di addebito, cartelle e provvedimenti</li>
+      </ul>
+    </div></div>
+    <div class="kb-section"><div class="kb-section-head"><div class="kb-num">4</div><h3>Correttezza dei versamenti e flusso UniEmens</h3></div><div class="kb-body">
+      <p class="kb-text">Il flusso UniEmens è la denuncia mensile contributiva che ogni datore di lavoro deve inviare all'INPS entro il giorno <strong>16 del mese successivo</strong> a quello di riferimento. Contiene i dati retributivi e contributivi di ogni lavoratore. Errori nel flusso UniEmens generano anomalie nell'estratto conto e possono causare irregolarità nel DURC.</p>
+      <p class="kb-text">La correttezza dei versamenti si verifica tramite: estratto conto aziendale, Cassetto Previdenziale Aziende, VeR.A. (prima del DURC) e confronto tra F24 versati e UniEmens inviati.</p>
+    </div></div>
+    <div class="kb-section"><div class="kb-section-head"><div class="kb-num">5</div><h3>Ricorsi amministrativi</h3></div><div class="kb-body">
+      <table class="kb-table">
+        <tr><th>Tipo di ricorso</th><th>Organismo</th><th>Termine</th></tr>
+        <tr><td>Inquadramento previdenziale</td><td>Comitati periferici/centrali gestione privata</td><td>90 giorni</td></tr>
+        <tr><td>Verbali ispettivi INPS</td><td>Direzione Regionale INPS</td><td>30 giorni</td></tr>
+        <tr><td>Diniego CIGO</td><td>Comitato provinciale INPS</td><td>30 giorni</td></tr>
+        <tr><td>Avvisi di addebito</td><td>Tribunale competente</td><td>40 giorni</td></tr>
+      </table>
+      <p class="kb-text">Tutti i ricorsi si presentano esclusivamente in forma <strong>telematica</strong> tramite il servizio "Ricorsi Amministrativi" sul portale INPS con SPID, CIE o CNS. Non sono ammessi ricorsi in forma cartacea. (Circ. INPS 48/2023 — Msg. INPS 1900/2023)</p>
+    </div></div>
+    <div class="fonti-box"><div class="fonti-box-title">Fonti ufficiali</div>
+      <a class="fonte-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2025.09.messaggio-numero-2553-del-02-09-2025_15215.html" target="_blank"><div class="fonte-link-icon" style="background:#EBF5FF;">📄</div><div class="fonte-link-text"><strong>Messaggio INPS n. 2553 del 2/9/2025</strong><span>Estratto conto contributivo — nuova modalità cronologica</span></div><span class="fl-arrow">→</span></a>
+      <a class="fonte-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2023.05.circolare-numero-48-del-17-05-2023_14019.html" target="_blank"><div class="fonte-link-icon" style="background:#EBF5FF;">📄</div><div class="fonte-link-text"><strong>Circolare INPS n. 48 del 17/5/2023</strong><span>Ricorsi amministrativi — inquadramento previdenziale</span></div><span class="fl-arrow">→</span></a>
+      <a class="fonte-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2023.05.messaggio-numero-1900-del-23-05-2023_14164.html" target="_blank"><div class="fonte-link-icon" style="background:#EBF5FF;">📄</div><div class="fonte-link-text"><strong>Messaggio INPS n. 1900 del 23/5/2023</strong><span>Ricorsi CIGO — termini e procedura</span></div><span class="fl-arrow">→</span></a>
+      <a class="fonte-link" href="https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.94.estratto-conto-contributivo-previdenziale.html" target="_blank"><div class="fonte-link-icon" style="background:#EBF5FF;">🔗</div><div class="fonte-link-text"><strong>Servizio INPS — Estratto conto contributivo</strong><span>Accesso diretto al servizio</span></div><span class="fl-arrow">→</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- ACCOMPAGNAMENTO PENSIONE -->
+<div class="page" id="page-accompagnamento-pensione">
+  <div class="area-wrap">
+    <div class="tema-page-header">
+      <div class="breadcrumb" onclick="showPage('previdenza')">← Previdenza</div>
+      <h1>Prestazioni di accompagnamento alla pensione</h1>
+      <p>Isopensione, accordo aziendale, procedura INPS, agevolazioni fiscali 2026 e tutele per nuovi requisiti pensionistici.</p>
+      <div class="fonti-row">
+        <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2026.04.circolare-numero-41-del-03-04-2026_16695.html" target="_blank">📄 Circ. INPS 41/2026</a>
+        <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2026.09.messaggio-numero-2829-del-14-09-2026_15371.html" target="_blank">📄 Msg. INPS 2829/2026</a>
+        <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2026.09.circolare-numero-104-del-29-09-2026_16378.html" target="_blank">📄 Circ. INPS 104/2026</a>
+        <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2025.12.circolare-numero-153-del-19-12-2025_16484.html" target="_blank">📄 Circ. INPS 153/2025</a>
+      </div>
+    </div>
+    <div class="kb-section"><div class="kb-section-head"><div class="kb-num">1</div><h3>Cos'è l'isopensione e a chi spetta</h3></div><div class="kb-body">
+      <p class="kb-text">La prestazione di accompagnamento alla pensione (<strong>isopensione</strong>) consente ai datori di lavoro, nell'ambito di processi di ristrutturazione o crisi aziendale, di accompagnare i lavoratori prossimi alla pensione verso l'uscita anticipata. La prestazione è <strong>a totale carico del datore di lavoro</strong> ed è erogata dall'INPS. (art. 4, commi 1-7-ter, L. 92/2012)</p>
+      <div class="kb-hl"><strong>Chi può accedere</strong>Lavoratori dipendenti a tempo indeterminato che maturino i requisiti pensionistici entro <strong>7 anni</strong> dalla cessazione. <strong>I dirigenti sono ammessi</strong> dopo un processo di riduzione del personale con accordo sindacale. I dirigenti sono invece ESCLUSI dalla CIGO.</div>
+    </div></div>
+    <div class="kb-section"><div class="kb-section-head"><div class="kb-num">2</div><h3>Accordo aziendale e procedura</h3></div><div class="kb-body">
+      <ul class="kb-ul">
+        <li><strong>Accordo aziendale</strong>: datore + OO.SS. maggiormente rappresentative nelle ipotesi di eccedenza personale</li>
+        <li><strong>Modulo SC77</strong>: richiesta di accesso alle procedure automatizzate con programma annuale di esodo e lista lavoratori</li>
+        <li><strong>Validazione INPS</strong>: verifica requisiti, rilascio prospetto onere stimato mensile</li>
+        <li><strong>Fideiussione bancaria</strong>: a garanzia degli obblighi verso lavoratori e INPS (o versamento unica soluzione)</li>
+        <li><strong>Modulo AP97</strong>: domanda individuale per ciascun lavoratore, firmata da lavoratore e legale rappresentante</li>
+        <li><strong>Erogazione</strong>: INPS paga mensilmente per 13 mensilità</li>
+      </ul>
+      <div class="kb-attn"><strong>⚠️ Attenzione</strong>Il pagamento cessa alla scadenza del periodo di esodo. NON è prevista la trasformazione automatica in pensione. Il lavoratore deve presentare in tempo utile la domanda di pensione.</div>
+    </div></div>
+    <div class="kb-section"><div class="kb-section-head"><div class="kb-num">3</div><h3>Calcolo importo e regime fiscale ordinario</h3></div><div class="kb-body">
+      <p class="kb-text">La prestazione viene calcolata come la <strong>pensione alla data della cessazione</strong> del rapporto di lavoro, esclusa la contribuzione correlata che il datore versa per il periodo di esodo. Il pagamento è per 13 mensilità in rate mensili anticipate. Il regime fiscale è quello della <strong>tassazione ordinaria IRPEF</strong>. Le prestazioni NON sono soggette a rivalutazione (perequazione) per tutta la loro durata (Circ. 153/2025).</p>
+    </div></div>
+    <div class="kb-section"><div class="kb-section-head"><div class="kb-num">4</div><h3>Agevolazioni fiscali 2026 (Msg. INPS 2829/2026)</h3></div><div class="kb-body">
+      <p class="kb-text">La L. 207/2024 (Legge di Bilancio 2025) ha introdotto due misure fiscali applicate automaticamente dall'INPS come sostituto d'imposta:</p>
+      <table class="kb-table">
+        <tr><th>Misura</th><th>Condizione reddito</th><th>Importo</th></tr>
+        <tr><td><strong>Somma non imponibile</strong></td><td>≤ 8.500 €</td><td>7,1% del reddito</td></tr>
+        <tr><td><strong>Somma non imponibile</strong></td><td>8.500 – 15.000 €</td><td>5,3% del reddito</td></tr>
+        <tr><td><strong>Somma non imponibile</strong></td><td>15.000 – 20.000 €</td><td>4,8% del reddito</td></tr>
+        <tr><td><strong>Ulteriore detrazione</strong></td><td>20.000 – 32.000 €</td><td>1.000 € fissi</td></tr>
+        <tr><td><strong>Ulteriore detrazione</strong></td><td>32.000 – 40.000 €</td><td>Decrescente → 0</td></tr>
+      </table>
+      <p class="kb-text">In caso di recupero in conguaglio, se i benefici non spettano, il recupero avviene in <strong>10 rate</strong> di pari importo quando l'importo supera 60 euro.</p>
+    </div></div>
+    <div class="kb-section"><div class="kb-section-head"><div class="kb-num">5</div><h3>Tutele per nuovi requisiti pensionistici (Circ. INPS 41/2026)</h3></div><div class="kb-body">
+      <p class="kb-text">A seguito dell'innalzamento dei requisiti pensionistici per il biennio 2027-2028 (L. 199/2025), la Circ. 41/2026 prevede il <strong>prolungamento della prestazione</strong> fino alla nuova data di pensionamento, anche oltre il periodo ordinario di durata massima.</p>
+      <div class="kb-attn"><strong>⚠️ Domande già respinte</strong>Le domande già respinte per i lavoratori che hanno cessato l'attività entro il 31 gennaio 2026 possono essere riesaminate su richiesta del datore di lavoro. Verificare la casistica con la sede territoriale INPS.</div>
+    </div></div>
+    <div class="kb-section"><div class="kb-section-head"><div class="kb-num">6</div><h3>Lavoratori contributivi puri (Circ. INPS 104/2026)</h3></div><div class="kb-body">
+      <p class="kb-text">Per i lavoratori il cui primo accredito contributivo decorre dal <strong>1° gennaio 1996</strong> (sistema contributivo puro), la Circ. 104/2026 fornisce istruzioni operative specifiche per la liquidazione delle prestazioni di accompagnamento. I requisiti pensionistici per questi lavoratori prevedono:</p>
+      <ul class="kb-ul">
+        <li>Pensione di vecchiaia: 67 anni + 20 anni di contribuzione + importo ≥ assegno sociale (oppure 71 anni con almeno 5 anni di contribuzione effettiva)</li>
+        <li>Pensione anticipata: 42 anni e 10 mesi (uomini) o 41 anni e 10 mesi (donne)</li>
+      </ul>
+    </div></div>
+    <div class="fonti-box"><div class="fonti-box-title">Fonti ufficiali</div>
+      <a class="fonte-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2026.04.circolare-numero-41-del-03-04-2026_16695.html" target="_blank"><div class="fonte-link-icon" style="background:#EBF5FF;">📄</div><div class="fonte-link-text"><strong>Circolare INPS n. 41 del 3/4/2026</strong><span>Tutele per adeguamento requisiti pensionistici 2027-2028</span></div><span class="fl-arrow">→</span></a>
+      <a class="fonte-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2026.09.messaggio-numero-2829-del-14-09-2026_15371.html" target="_blank"><div class="fonte-link-icon" style="background:#EBF5FF;">📄</div><div class="fonte-link-text"><strong>Messaggio INPS n. 2829 del 14/9/2026</strong><span>Agevolazioni fiscali 2026 — somma non imponibile e detrazione</span></div><span class="fl-arrow">→</span></a>
+      <a class="fonte-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2026.09.circolare-numero-104-del-29-09-2026_16378.html" target="_blank"><div class="fonte-link-icon" style="background:#EBF5FF;">📄</div><div class="fonte-link-text"><strong>Circolare INPS n. 104 del 29/9/2026</strong><span>Liquidazione per lavoratori contributivi puri</span></div><span class="fl-arrow">→</span></a>
+      <a class="fonte-link" href="https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.50577.prestazione-di-accompagnamento-alla-pensione.html" target="_blank"><div class="fonte-link-icon" style="background:#EBF5FF;">🔗</div><div class="fonte-link-text"><strong>Servizio INPS — Accompagnamento alla pensione</strong><span>Scheda servizio con moduli SC77 e AP97</span></div><span class="fl-arrow">→</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- DURC ONLINE -->
+<div class="page" id="page-durc-online">
+  <div class="area-wrap">
+    <div class="tema-page-header" style="background:linear-gradient(135deg,#3d1f00,#92600A);">
+      <div class="breadcrumb" onclick="showPage('welfare')">← Welfare aziendale</div>
+      <h1>DURC Online</h1>
+      <p>Verifica regolarità contributiva, Piattaforma Unica INPS, Ve.R.A., Simulazione DURC, Pre-DURC e Delega Master.</p>
+      <div class="fonti-row">
+        <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2021.10.circolare-numero-146-del-07-10-2021_12005.html" target="_blank">📄 Circ. INPS 146/2021</a>
+        <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2023.12.messaggio-numero-4693-del-28-12-2023_14907.html" target="_blank">📄 Msg. INPS 4693/2023</a>
+        <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2024.11.messaggio-numero-3662-del-05-11-2024_15823.html" target="_blank">📄 Msg. INPS 3662/2024</a>
+      </div>
+    </div>
+    <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#FEF8EC;color:#92600A;">1</div><h3>DURC Online — definizione e validità</h3></div><div class="kb-body">
+      <p class="kb-text">Il DURC Online attesta la regolarità di un'azienda nei confronti di <strong>INPS, INAIL e Cassa Edile</strong>. Ha validità di <strong>120 giorni</strong> dalla data di emissione e può essere usato per tutti gli atti, contratti e procedure previsti dalla normativa durante questo periodo.</p>
+      <div class="kb-hl"><strong>Piattaforma Unica INPS (dal 2 maggio 2024)</strong>Dal 2 maggio 2024 (Msg. 3662/2024) tutte le funzionalità DURC — richiesta, VeRA, Simulazione, Pre-DURC, Delega Master — sono accessibili da un unico punto sul portale INPS.</div>
+    </div></div>
+    <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#FEF8EC;color:#92600A;">2</div><h3>Ve.R.A. — Verifica Regolarità Aziendale</h3></div><div class="kb-body">
+      <p class="kb-text">Il servizio Ve.R.A. permette all'azienda di verificare <strong>in anticipo</strong> la propria posizione contributiva prima di richiedere il DURC. Consente di identificare eventuali irregolarità e sanarle prima che queste compromettano il DURC. Accesso tramite SPID, CIE o CNS dal portale INPS.</p>
+    </div></div>
+    <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#FEF8EC;color:#92600A;">3</div><h3>Simulazione DURC (Msg. INPS 4693/2023)</h3></div><div class="kb-body">
+      <p class="kb-text">La Simulazione DURC permette di simulare l'esito della richiesta identificando irregolarità sanabili. È uno strumento preventivo fondamentale per le aziende che partecipano ad appalti pubblici o hanno necessità frequenti di DURC regolare.</p>
+    </div></div>
+    <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#FEF8EC;color:#92600A;">4</div><h3>Pre-DURC e Delega Master (Msg. INPS 3662/2024)</h3></div><div class="kb-body">
+      <p class="kb-text">Il Pre-DURC notifica il delegato master <strong>30 o 15 giorni prima della scadenza</strong> del DURC tramite PEC, email o SMS. Permette di verificare e sanare eventuali irregolarità prima che il DURC scada.</p>
+      <div class="kb-attn"><strong>⚠️ Chi riceve il Pre-DURC</strong>Solo il soggetto designato come <strong>delegato master</strong> nella Piattaforma Unica INPS. Verificare che la delega sia aggiornata e che il delegato abbia attivi i canali di notifica (PEC, email, SMS).</div>
+      <p class="kb-text">La Delega Master è la designazione di un soggetto (consulente del lavoro o responsabile HR) che gestisce la posizione contributiva aziendale sulla Piattaforma Unica. Va aggiornata periodicamente.</p>
+    </div></div>
+    <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#FEF8EC;color:#92600A;">5</div><h3>Cause di irregolarità e accesso SPID/CIE</h3></div><div class="kb-body">
+      <p class="kb-text">Il DURC risulta irregolare quando esistono: omissioni o ritardi nei versamenti INPS/INAIL superiori a <strong>150 euro</strong>, omissioni nei versamenti alla Cassa Edile (per settore edile), contenziosi in corso non coperti da provvedimenti di sospensione.</p>
+      <p class="kb-text">Dal 2021 (Circ. 146/2021) l'accesso ai servizi INPS, incluso il DURC Online, richiede autenticazione tramite <strong>SPID livello 2, CIE o CNS</strong>. Le vecchie credenziali PIN INPS non sono più valide.</p>
+    </div></div>
+    <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#FEF8EC;color:#92600A;">6</div><h3>App mobile INPS</h3></div><div class="kb-body">
+      <p class="kb-text">Dal 2023 è disponibile la funzione DURC sull'app mobile INPS. Permette la consultazione rapida della propria posizione e la richiesta DURC direttamente da smartphone per i soggetti autorizzati.</p>
+    </div></div>
+    <div class="fonti-box"><div class="fonti-box-title">Fonti ufficiali</div>
+      <a class="fonte-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2024.11.messaggio-numero-3662-del-05-11-2024_15823.html" target="_blank"><div class="fonte-link-icon" style="background:#FEF8EC;">📄</div><div class="fonte-link-text"><strong>Messaggio INPS n. 3662 del 5/11/2024</strong><span>Piattaforma Unica — Pre-DURC, Delega Master, VeRA</span></div><span class="fl-arrow">→</span></a>
+      <a class="fonte-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2023.12.messaggio-numero-4693-del-28-12-2023_14907.html" target="_blank"><div class="fonte-link-icon" style="background:#FEF8EC;">📄</div><div class="fonte-link-text"><strong>Messaggio INPS n. 4693 del 28/12/2023</strong><span>Ve.R.A. e Simulazione DURC</span></div><span class="fl-arrow">→</span></a>
+      <a class="fonte-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2021.10.circolare-numero-146-del-07-10-2021_12005.html" target="_blank"><div class="fonte-link-icon" style="background:#FEF8EC;">📄</div><div class="fonte-link-text"><strong>Circolare INPS n. 146 del 7/10/2021</strong><span>Accesso SPID e CIE ai servizi INPS</span></div><span class="fl-arrow">→</span></a>
+      <a class="fonte-link" href="https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.durc-online-50590.durc-online.html" target="_blank"><div class="fonte-link-icon" style="background:#FEF8EC;">🔗</div><div class="fonte-link-text"><strong>Servizio INPS — DURC Online</strong><span>Accesso diretto alla Piattaforma Unica</span></div><span class="fl-arrow">→</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- CIGO -->
+<div class="page" id="page-cigo">
+  <div class="area-wrap">
+    <div class="tema-page-header" style="background:linear-gradient(135deg,#3d1f00,#92600A);">
+      <div class="breadcrumb" onclick="showPage('welfare')">← Welfare aziendale</div>
+      <h1>Cassa Integrazione Guadagni Ordinaria (CIGO)</h1>
+      <p>Datori ammessi, causali, OMNIA IS, massimali 2026, contribuzione addizionale e conguaglio UniEmens.</p>
+      <div class="fonti-row">
+        <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2026.01.circolare-numero-4-del-28-01-2026_16539.html" target="_blank">📄 Circ. INPS 4/2026</a>
+        <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2025.01.circolare-numero-5-del-20-01-2025_15789.html" target="_blank">📄 Circ. INPS 5/2025</a>
+        <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2026.07.messaggio-numero-2418-del-20-07-2026_16882.html" target="_blank">📄 Msg. INPS 2418/2026</a>
+        <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2025.08.circolare-numero-121-del-13-08-2025_16250.html" target="_blank">📄 Circ. INPS 121/2025</a>
+      </div>
+    </div>
+    <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#FEF8EC;color:#92600A;">1</div><h3>Definizione e datori ammessi</h3></div><div class="kb-body">
+      <p class="kb-text">La CIGO sostiene il reddito dei lavoratori in caso di sospensione o riduzione dell'attività per cause temporanee non imputabili a imprenditore o lavoratori. Prestazione: <strong>80% della retribuzione</strong> per le ore non lavorate entro il massimale mensile.</p>
+      <div class="kb-attn"><strong>⚠️ I dirigenti sono ESCLUSI dalla CIGO</strong>I dirigenti non possono accedere alla CIGO (art. 1, c. 1, D.Lgs. 148/2015). Possono invece accedere all'isopensione (prestazione di accompagnamento alla pensione).</div>
+      <p class="kb-text">Datori ammessi: imprese industriali manifatturiere, di trasporti, estrattive, di installazione di impianti, appalti, cooperative di produzione, edilizia e affini, lapideo e escavazioni, artigiane dell'edilizia, industria boschiva, cooperative agricole, industria alberghiera.</p>
+      <p class="kb-text">Lavoratori beneficiari: tutti i dipendenti delle imprese ammesse con almeno <strong>30 giorni di anzianità</strong> (il requisito non si applica per EONE).</p>
+    </div></div>
+    <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#FEF8EC;color:#92600A;">2</div><h3>Massimali 2026 (Circ. INPS 4/2026)</h3></div><div class="kb-body">
+      <table class="kb-table">
+        <tr><th>Parametro</th><th>Valore 2026</th></tr>
+        <tr><td>Massimale mensile lordo</td><td><strong>1.423,69 €</strong></td></tr>
+        <tr><td>Al netto riduzione 5,84% (L. 41/1986)</td><td>1.340,56 €</td></tr>
+      </table>
+      <p class="kb-text">Il massimale viene rivalutato ogni anno al 100% dell'indice ISTAT FOI. Per il 2025 era 1.322,05 €.</p>
+    </div></div>
+    <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#FEF8EC;color:#92600A;">3</div><h3>Contribuzione addizionale 2025 (Circ. INPS 5/2025)</h3></div><div class="kb-body">
+      <table class="kb-table">
+        <tr><th>Settimane CIGO nel biennio mobile</th><th>Aliquota addizionale</th></tr>
+        <tr><td>Fino a 52 settimane</td><td>9%</td></tr>
+        <tr><td>Da 53 a 104 settimane</td><td>12%</td></tr>
+        <tr><td>Oltre 104 settimane</td><td>15%</td></tr>
+      </table>
+      <p class="kb-text">Il contributo addizionale <strong>NON è dovuto</strong> per periodi connessi a eventi oggettivamente non evitabili (EONE).</p>
+    </div></div>
+    <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#FEF8EC;color:#92600A;">4</div><h3>Domanda su OMNIA IS e termini</h3></div><div class="kb-body">
+      <p class="kb-text">Dal <strong>2 maggio 2024</strong> tutte le domande CIGO si presentano su <strong>OMNIA IS</strong> (Integrated Salariale) dal portale INPS.</p>
+      <ul class="kb-ul">
+        <li>Termine ordinario: entro <strong>15 giorni</strong> dall'inizio della sospensione</li>
+        <li>Termine EONE (meteo, emergenze climatiche): entro la <strong>fine del mese successivo</strong></li>
+      </ul>
+      <p class="kb-text">La domanda deve contenere: matricola aziendale, causale, relazione tecnica, lista lavoratori con data assunzione e livello, verbale consultazione sindacale (ove richiesto), modello SR41.</p>
+    </div></div>
+    <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#FEF8EC;color:#92600A;">5</div><h3>Conguaglio UniEmens</h3></div><div class="kb-body">
+      <p class="kb-text">Codice da indicare in UniEmens: <strong>COR</strong> (Cassa Integrazione Guadagni Ordinaria Richiesta) con il ticket identificativo della domanda nel campo IdentEventoCig.</p>
+      <div class="kb-attn"><strong>⚠️ Termine di decadenza</strong>Il conguaglio deve essere effettuato entro <strong>6 mesi</strong> dalla fine del periodo di paga in corso, dalla scadenza della concessione o dalla data del provvedimento. Superato il termine, il diritto al conguaglio decade.</div>
+      <p class="kb-text">Per periodi CIGO connessi al D.L. 92/2025 (moda, gruppi di imprese in crisi) usare il codice di conguaglio <strong>L149</strong> (Circ. 121/2025).</p>
+    </div></div>
+    <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#FEF8EC;color:#92600A;">6</div><h3>Novità 2026 — CIGO per emergenza climatica (Msg. INPS 2418/2026)</h3></div><div class="kb-body">
+      <p class="kb-text">Il D.L. 107/2026 (art. 6) prevede che per il periodo <strong>1 luglio – 31 dicembre 2026</strong>, i datori dei settori <strong>edile, lapideo e delle escavazioni</strong> possano accedere alla CIGO per EONE (eccezionali ondate di calore incluse) senza che i periodi siano computati nel biennio mobile e <strong>senza contributo addizionale</strong>.</p>
+    </div></div>
+    <div class="fonti-box"><div class="fonti-box-title">Fonti ufficiali</div>
+      <a class="fonte-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2026.01.circolare-numero-4-del-28-01-2026_16539.html" target="_blank"><div class="fonte-link-icon" style="background:#FEF8EC;">📄</div><div class="fonte-link-text"><strong>Circolare INPS n. 4 del 28/1/2026</strong><span>Massimali integrazione salariale 2026</span></div><span class="fl-arrow">→</span></a>
+      <a class="fonte-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2025.01.circolare-numero-5-del-20-01-2025_15789.html" target="_blank"><div class="fonte-link-icon" style="background:#FEF8EC;">📄</div><div class="fonte-link-text"><strong>Circolare INPS n. 5 del 20/1/2025</strong><span>Contribuzione addizionale CIGO 2025</span></div><span class="fl-arrow">→</span></a>
+      <a class="fonte-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2026.07.messaggio-numero-2418-del-20-07-2026_16882.html" target="_blank"><div class="fonte-link-icon" style="background:#FEF8EC;">📄</div><div class="fonte-link-text"><strong>Messaggio INPS n. 2418 del 20/7/2026</strong><span>CIGO emergenza climatica lug–dic 2026</span></div><span class="fl-arrow">→</span></a>
+      <a class="fonte-link" href="https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.50599.cassa-integrazione-guadagni-ordinaria.html" target="_blank"><div class="fonte-link-icon" style="background:#FEF8EC;">🔗</div><div class="fonte-link-text"><strong>Servizio INPS — CIGO e OMNIA IS</strong><span>Accesso alla piattaforma domande</span></div><span class="fl-arrow">→</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- FONDI SANITARI CONTRATTUALI -->
+<div class="page" id="page-fondi-sanitari-contrattuali">
+  <div class="area-wrap">
+    <div class="tema-page-header" style="background:linear-gradient(135deg,#052e16,#166534);">
+      <div class="breadcrumb" onclick="showPage('sanita')">← Sanità integrativa</div>
+      <h1>Fondi sanitari contrattuali — contribuzione obbligatoria</h1>
+      <p>Meccanismo di riscossione INPS tramite F24 e UniEmens per i fondi sanitari convenzionati.</p>
+      <div class="fonti-row">
+        <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2025.04.circolare-numero-77-del-17-04-2025_15876.html" target="_blank">📄 Circ. INPS 77/2025 — ESAL</a>
+        <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2025.08.circolare-numero-119-del-12-08-2025_16191.html" target="_blank">📄 Circ. INPS 119/2025 — FAFP</a>
+        <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2025.08.circolare-numero-120-del-12-08-2025_16192.html" target="_blank">📄 Circ. INPS 120/2025 — SANI</a>
+        <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2026.09.circolare-numero-95-del-10-09-2026_16393.html" target="_blank">📄 Circ. INPS 95/2026 — CARE</a>
+      </div>
+    </div>
+    <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#EDFAF4;color:#166534;">1</div><h3>Fondi convenzionati INPS e codici F24</h3></div><div class="kb-body">
+      <table class="kb-table">
+        <tr><th>Fondo</th><th>Codice F24</th><th>Circolare INPS</th><th>Scadenza convenzione</th></tr>
+        <tr><td>ENFEA Salute</td><td><strong>ESAL</strong></td><td>Circ. 77/2025</td><td>31/12/2026</td></tr>
+        <tr><td>FASIFAR</td><td><strong>FAFP</strong></td><td>Circ. 119/2025</td><td>31/12/2026</td></tr>
+        <tr><td>FONDOSANI</td><td><strong>SANI</strong></td><td>Circ. 120/2025</td><td>31/12/2026</td></tr>
+        <tr><td>INNOVACARE</td><td><strong>CARE</strong></td><td>Circ. 95/2026</td><td>31/12/2026</td></tr>
+      </table>
+      <p class="kb-text">I codici vanno indicati nella sezione INPS del modello F24, con periodo di riferimento nel formato MMAAAA.</p>
+    </div></div>
+    <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#EDFAF4;color:#166534;">2</div><h3>Meccanismo F24 e UniEmens</h3></div><div class="kb-body">
+      <p class="kb-text">Il meccanismo prevede due adempimenti distinti e complementari, entrambi obbligatori:</p>
+      <ul class="kb-ul">
+        <li><strong>Versamento F24</strong>: datore versa i contributi mensili nella sezione INPS con il codice tributo specifico del fondo</li>
+        <li><strong>Esposizione UniEmens</strong>: datore espone i contributi nel flusso UniEmens mensile nell'elemento dedicato ai fondi di assistenza sanitaria</li>
+      </ul>
+      <div class="kb-attn"><strong>⚠️ Doppio adempimento obbligatorio</strong>L'INPS verifica la coerenza tra F24 e UniEmens e riversa il <strong>98%</strong> delle somme al fondo (il 2% è trattenuto per spese di gestione). L'omissione dell'esposizione UniEmens genera discrepanze rilevate automaticamente da INPS.</div>
+    </div></div>
+    <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#EDFAF4;color:#166534;">3</div><h3>Rinnovo convenzioni</h3></div><div class="kb-body">
+      <p class="kb-text">Le convenzioni INPS con i fondi sanitari hanno durata annuale e vengono rinnovate con apposite circolari INPS. Verificare periodicamente le circolari di rinnovo per confermare la validità della convenzione e l'eventuale aggiornamento dei codici o delle procedure. Tutte le convenzioni attualmente in vigore (ESAL, FAFP, SANI, CARE) scadono il <strong>31 dicembre 2026</strong>.</p>
+    </div></div>
+    <div class="fonti-box"><div class="fonti-box-title">Fonti ufficiali</div>
+      <a class="fonte-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2025.04.circolare-numero-77-del-17-04-2025_15876.html" target="_blank"><div class="fonte-link-icon" style="background:#EDFAF4;">📄</div><div class="fonte-link-text"><strong>Circolare INPS n. 77 del 17/4/2025</strong><span>Convenzione ENFEA Salute (ESAL)</span></div><span class="fl-arrow">→</span></a>
+      <a class="fonte-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2025.08.circolare-numero-120-del-12-08-2025_16192.html" target="_blank"><div class="fonte-link-icon" style="background:#EDFAF4;">📄</div><div class="fonte-link-text"><strong>Circolare INPS n. 120 del 12/8/2025</strong><span>Convenzione FONDOSANI (SANI)</span></div><span class="fl-arrow">→</span></a>
+      <a class="fonte-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2026.09.circolare-numero-95-del-10-09-2026_16393.html" target="_blank"><div class="fonte-link-icon" style="background:#EDFAF4;">📄</div><div class="fonte-link-text"><strong>Circolare INPS n. 95 del 10/9/2026</strong><span>Convenzione INNOVACARE (CARE)</span></div><span class="fl-arrow">→</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- SANITÀ FISCALE -->
+<div class="page" id="page-sanita-fiscale">
+  <div class="area-wrap">
+    <div class="tema-page-header" style="background:linear-gradient(135deg,#052e16,#166534);">
+      <div class="breadcrumb" onclick="showPage('sanita')">← Sanità integrativa</div>
+      <h1>Fondi sanitari — regime fiscale e agevolazioni</h1>
+      <p>Tipologie A e B, deducibilità fino a 3.615,20 €, Anagrafe Min. Salute e trattamento contributivo INPS. Aggiornato con Circ. AE 4/E 2025.</p>
+      <div class="fonti-row">
+        <a class="fonte-badge" href="https://www.agenziaentrate.gov.it/portale/web/guest/normativa-e-prassi/circolari/2025/circolare-n.-4-e-del-16-maggio-2025" target="_blank">📄 Circ. AE 4/E 2025</a>
+        <a class="fonte-badge" href="https://www.salute.gov.it/new/it/servizi-online/ps-afis-02/anagrafe-fondi-sanitari-integrativi/" target="_blank">🏥 Anagrafe Min. Salute</a>
+        <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.1997.12.circolare-numero-263-del-24-12-1997_263.html" target="_blank">📄 Circ. INPS 263/1997</a>
+      </div>
+    </div>
+    <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#EDFAF4;color:#166534;">1</div><h3>Tipologie di fondi e regime fiscale</h3></div><div class="kb-body">
+      <table class="kb-table">
+        <tr><th>Tipologia</th><th>Art. TUIR</th><th>Prestazioni</th><th>Beneficio</th><th>Limite</th></tr>
+        <tr><td><strong>Tipologia A</strong><br>Fondi integrativi SSN</td><td>Art. 10, c. 1, e-ter)</td><td>Solo EXTRA LEA</td><td>Deducibilità IRPEF</td><td>3.615,20 €/anno</td></tr>
+        <tr><td><strong>Tipologia B</strong><br>Enti/Casse fine assistenziale</td><td>Art. 51, c. 2, a)</td><td>Anche LEA</td><td>Non concorre al reddito lavoro dipendente</td><td>3.615,20 €/anno</td></tr>
+      </table>
+      <div class="kb-hl"><strong>Plafond unico condiviso</strong>Il limite di 3.615,20 € è UNICO per entrambe le tipologie. I contributi versati ai sensi dell'art. 10 e dell'art. 51 concorrono allo stesso plafond e non si sommano. Il beneficio si estende ai contributi per familiari fiscalmente a carico. Fonte: Circ. AE 4/E del 16/5/2025</div>
+    </div></div>
+    <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#EDFAF4;color:#166534;">2</div><h3>Requisiti 2025 obbligatori (D.Lgs. 192/2024)</h3></div><div class="kb-body">
+      <p class="kb-text">Dal 2025 le agevolazioni fiscali richiedono due requisiti obbligatori per ENTRAMBE le tipologie:</p>
+      <ul class="kb-ul">
+        <li>Iscrizione all'<strong>Anagrafe dei fondi sanitari integrativi</strong> del Ministero della Salute (attestato annuale rinnovabile da gennaio a luglio)</li>
+        <li>Operatività secondo il <strong>principio di mutualità e solidarietà</strong> tra gli iscritti</li>
+      </ul>
+      <div class="kb-attn"><strong>⚠️ Fondi assicurativi puri</strong>Le polizze individuali non soddisfano il requisito di mutualità e solidarietà e non danno diritto alle agevolazioni fiscali. Verificare sempre che il fondo abbia l'attestato dell'Anagrafe del Ministero della Salute valido per l'anno corrente.</div>
+    </div></div>
+    <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#EDFAF4;color:#166534;">3</div><h3>Anagrafe dei fondi sanitari integrativi</h3></div><div class="kb-body">
+      <p class="kb-text">Istituita con D.M. Salute 31/3/2008, regolamentata dal D.M. 27/10/2009. L'iscrizione avviene tramite il sistema SIAF (Sistema Informativo Anagrafe Fondi Sanitari) dal 1° gennaio al 31 luglio di ogni anno. Il Ministero rilascia l'attestato con valenza annuale.</p>
+      <p class="kb-text">Contatti: dgprog@postacert.sanita.it — fondisanitari@sanita.it — Assistenza SIAF: Tel. 800 88681</p>
+    </div></div>
+    <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#EDFAF4;color:#166534;">4</div><h3>Trattamento contributivo INPS (Circ. INPS 263/1997)</h3></div><div class="kb-body">
+      <ul class="kb-ul">
+        <li><strong>Quota datore</strong>: esclusa dall'imponibile contributivo previdenziale, soggetta al contributo di solidarietà del <strong>10%</strong></li>
+        <li><strong>Quota lavoratore</strong>: rimane nella retribuzione imponibile, paga contribuzione ordinaria INPS</li>
+      </ul>
+      <p class="kb-text">Il trattamento contributivo e quello fiscale operano su basi diverse e vanno verificati separatamente. Un versamento può essere fiscalmente agevolato ma contribuisce comunque (quota lavoratore) o è soggetto a solidarietà (quota datore).</p>
+    </div></div>
+    <div class="fonti-box"><div class="fonti-box-title">Fonti ufficiali</div>
+      <a class="fonte-link" href="https://www.agenziaentrate.gov.it/portale/web/guest/normativa-e-prassi/circolari/2025/circolare-n.-4-e-del-16-maggio-2025" target="_blank"><div class="fonte-link-icon" style="background:#EDFAF4;">📄</div><div class="fonte-link-text"><strong>Circolare AE n. 4/E del 16/5/2025</strong><span>IRPEF e redditi lavoro dipendente — fondi sanitari par. 2.1</span></div><span class="fl-arrow">→</span></a>
+      <a class="fonte-link" href="https://www.salute.gov.it/new/it/servizi-online/ps-afis-02/anagrafe-fondi-sanitari-integrativi/" target="_blank"><div class="fonte-link-icon" style="background:#EDFAF4;">🏥</div><div class="fonte-link-text"><strong>Ministero della Salute — Anagrafe fondi sanitari</strong><span>Procedura di iscrizione, rinnovo e attestato</span></div><span class="fl-arrow">→</span></a>
+      <a class="fonte-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.1997.12.circolare-numero-263-del-24-12-1997_263.html" target="_blank"><div class="fonte-link-icon" style="background:#EDFAF4;">📄</div><div class="fonte-link-text"><strong>Circolare INPS n. 263 del 24/12/1997</strong><span>Unificazione basi imponibili fiscale e previdenziale</span></div><span class="fl-arrow">→</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- CHI SIAMO -->
+<div class="page" id="page-chisiamo">
+  <div class="area-wrap">
+    <div class="area-header" style="margin-bottom:20px;">
+      <div class="area-icon" style="background:#EBF5FF;"><svg viewBox="0 0 24 24" fill="none" stroke="#1d6fa4" stroke-width="2" stroke-linecap="round" style="width:24px;height:24px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+      <div><h1>Chi siamo</h1><p>Hub Previdenza e Welfare — un progetto DataHubs S.r.l.</p></div>
+    </div>
+    <div class="cs-card"><div class="cs-bar" style="background:#1d6fa4;"></div><div class="cs-body"><div class="cs-cat" style="color:#1d6fa4;">Il progetto</div><h3>Hub Digitale</h3><p class="cs-text">Ambiente digitale privato, organizzato per macroaree tematiche, che raccoglie e rende fruibili i contenuti certificati prodotti dal Centro Studi. Non è un archivio statico: è un ecosistema cognitivo che si aggiorna e propone contenuti in base al profilo dell'utente.</p><p class="cs-text">La Knowledge Base è alimentata da circolari e messaggi degli enti previdenziali, testi normativi e decreti, guide operative, output del Centro Studi e buone prassi raccolte dalle imprese. DataHubs S.r.l. ne cura la strutturazione, la semantizzazione e la preparazione per l'ingestione nella KB.</p></div></div>
+    <div class="cs-card"><div class="cs-bar" style="background:#0284C7;"></div><div class="cs-body"><div class="cs-cat" style="color:#0284C7;">L'assistente</div><h3>P&amp;W Advisor</h3><p class="cs-text">Sistema che permette agli operatori del Polo di interrogare la KB e ottenere risposte accurate, contestualizzate e tracciate alla fonte. Combina assistente conversazionale AI, motore di ricerca semantico e navigazione per categoria.</p><div class="cs-rules"><div class="cs-rules-title">Regole di comportamento</div><div class="cs-rule"><div class="cs-dot" style="background:#0284C7;"></div><span>Risponde esclusivamente sulla base della Knowledge Base certificata — nessuna informazione al di fuori del perimetro.</span></div><div class="cs-rule"><div class="cs-dot" style="background:#0284C7;"></div><span>Non genera mai informazioni non presenti nella KB. Se la domanda non è coperta rimanda alla sede territoriale competente.</span></div><div class="cs-rule"><div class="cs-dot" style="background:#0284C7;"></div><span>Indica sempre la fonte e la data di aggiornamento per ogni informazione restituita.</span></div><div class="cs-rule"><div class="cs-dot" style="background:#0284C7;"></div><span>Adatta la lunghezza della risposta: breve per sintesi, dettagliata per approfondimenti.</span></div><div class="cs-rule"><div class="cs-dot" style="background:#0284C7;"></div><span>Mantiene il contesto della conversazione per domande di follow-up.</span></div></div></div></div>
+    <div class="cs-card" style="margin-bottom:36px;"><div class="cs-bar" style="background:#059669;"></div><div class="cs-body"><div class="cs-cat" style="color:#059669;">Obiettivo</div><h3>Il risultato atteso</h3><p class="cs-text">Un sistema operativo, affidabile e manutenibile che consenta agli operatori del Polo di rispondere a qualsiasi richiesta da parte delle sedi territoriali in materia previdenziale e di welfare — attingendo a una base di conoscenza certificata, senza mai uscire dal perimetro della KB validata da DataHubs.</p></div></div>
+  </div>
+</div>
+
+</main>
+</div>
+
+<!-- AI FAB -->
+<div class="ai-fab">
+  <div class="ai-fab-label">Assistente virtuale</div>
+  <button class="ai-fab-btn" onclick="toggleAI()">
+    <svg viewBox="0 0 32 32" fill="none" style="width:24px;height:24px;">
+      <circle cx="16" cy="16" r="7" fill="#7DD3FC" opacity=".9"/>
+      <circle cx="16" cy="16" r="3.5" fill="#e0f2fe"/>
+      <path d="M16 4v4M16 24v4M4 16h4M24 16h4" stroke="#7DD3FC" stroke-width="2" stroke-linecap="round"/>
+      <path d="M8.34 8.34l2.83 2.83M20.83 20.83l2.83 2.83M8.34 23.66l2.83-2.83M20.83 11.17l2.83-2.83" stroke="#7DD3FC" stroke-width="1.5" stroke-linecap="round" opacity=".5"/>
+    </svg>
+    <div class="ai-online"></div>
+  </button>
+</div>
+
+<div class="ai-panel" id="ai-panel">
+  <div class="ai-head">
+    <div class="ai-head-av">🤖</div>
+    <div><strong>P&amp;W Advisor</strong><span>KB certificata · Attivo</span></div>
+    <button class="ai-head-x" onclick="toggleAI()">✕</button>
+  </div>
+  <div class="ai-msgs" id="ai-msgs">
+    <div class="msg"><div class="msg-av">🤖</div><div class="msg-b">Ciao! Sono il tuo assistente virtuale dell'Hub Previdenza e Welfare. Posso aiutarti a orientarti tra le informazioni, gli adempimenti e i servizi presenti in questa Knowledge Base. Come posso aiutarti?</div></div>
+  </div>
+  <div class="ai-qs">
+    <span class="ai-q" onclick="sendMsg('Come funziona il Pre-DURC?')">Pre-DURC?</span>
+    <span class="ai-q" onclick="sendMsg('Massimale CIGO 2026?')">Massimale CIGO?</span>
+    <span class="ai-q" onclick="sendMsg('Codice F24 FONDOSANI?')">Codice SANI?</span>
+    <span class="ai-q" onclick="sendMsg('Deducibilità fondi sanitari?')">Deducibilità?</span>
+    <span class="ai-q" onclick="sendMsg('Cos\'è l\'isopensione?')">Isopensione?</span>
+  </div>
+  <div class="ai-inp">
+    <input class="ai-input" id="ai-input" placeholder="Scrivi una domanda..." onkeydown="if(event.key==='Enter')sendMsg()">
+    <button class="ai-send" id="ai-send-btn" onclick="sendMsg()">
+      <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </div>
+  <div class="ai-disclaimer">L'assistente AI è addestrato sulle fonti INPS ufficiali, dell'Agenzia delle Entrate e del Ministero della Salute certificate in questa Knowledge Base. Ogni risposta include il riferimento alla fonte originale per una consultazione immediata e sicura.</div>
+</div>
+
+<script>
+const allPages = ['home','previdenza','welfare','sanita','chisiamo',
+  'posizione-contributiva','accompagnamento-pensione',
+  'durc-online','cigo','fondi-sanitari-contrattuali','sanita-fiscale'];
+const sbMap = {home:'sb-home',previdenza:'sb-prev',welfare:'sb-welf',sanita:'sb-san'};
+
+function showPage(name) {
+  allPages.forEach(p => {
+    const el = document.getElementById('page-'+p);
+    if(el) el.classList.toggle('active', p===name);
+  });
+  Object.keys(sbMap).forEach(k => {
+    const sb = document.getElementById(sbMap[k]);
+    if(sb) sb.classList.toggle('active', k===name);
+  });
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function doSearch() {
+  const q = document.getElementById('search-input').value.trim().toLowerCase();
+  if(!q) return;
+  const map = {
+    'durc':'durc-online','pre-durc':'durc-online','vera':'durc-online','regolarità':'durc-online',
+    'cigo':'cigo','cassa integrazione':'cigo','massimale':'cigo','omnia':'cigo','ammortizzatore':'cigo',
+    'isopensione':'accompagnamento-pensione','esodo':'accompagnamento-pensione','accompagnamento':'accompagnamento-pensione',
+    'estratto conto':'posizione-contributiva','ricorso':'posizione-contributiva','versamenti':'posizione-contributiva','uniemens':'posizione-contributiva',
+    'esal':'fondi-sanitari-contrattuali','sani':'fondi-sanitari-contrattuali','fafp':'fondi-sanitari-contrattuali','care':'fondi-sanitari-contrattuali','fondosani':'fondi-sanitari-contrattuali',
+    'deducib':'sanita-fiscale','tuir':'sanita-fiscale','anagrafe':'sanita-fiscale','3615':'sanita-fiscale'
+  };
+  for(const [k,v] of Object.entries(map)) {
+    if(q.includes(k)) { showPage(v); document.getElementById('search-input').value=''; return; }
+  }
+  alert('Nessun risultato per "'+q+'". Prova: DURC, CIGO, isopensione, estratto conto, fondi sanitari, deducibilità.');
+}
+
+function toggleAI() {
+  document.getElementById('ai-panel').classList.toggle('open');
+}
+
+let conversationHistory = [];
+
+async function sendMsg(txt) {
+  const input = document.getElementById('ai-input');
+  const q = txt || input.value.trim();
+  if(!q) return;
+  input.value = '';
+  
+  const msgs = document.getElementById('ai-msgs');
+  msgs.innerHTML += `<div class="msg user"><div class="msg-b">${q}</div></div>`;
+  const lid = 'l'+Date.now();
+  msgs.innerHTML += `<div class="msg ai-typing" id="${lid}"><div class="msg-av">🤖</div><div class="msg-b">Ricerco nella Knowledge Base...</div></div>`;
+  msgs.scrollTop = msgs.scrollHeight;
+  
+  document.getElementById('ai-send-btn').disabled = true;
+  conversationHistory.push({role: 'user', content: q});
+  
+  try {
+    const res = await fetch('/ask', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({messages: conversationHistory})
+    });
+    const data = await res.json();
+    const answer = data.response || 'Mi dispiace, si è verificato un errore. Riprova.';
+    conversationHistory.push({role: 'assistant', content: answer});
+    document.getElementById(lid).outerHTML = `<div class="msg"><div class="msg-av">🤖</div><div class="msg-b">${answer.replace(/\n/g,'<br>')}</div></div>`;
+  } catch(e) {
+    document.getElementById(lid).outerHTML = `<div class="msg"><div class="msg-av">🤖</div><div class="msg-b" style="color:#DC2626;">Errore di connessione. Verifica la tua connessione e riprova.</div></div>`;
+  }
+  
+  document.getElementById('ai-send-btn').disabled = false;
+  msgs.scrollTop = msgs.scrollHeight;
+}
+</script>
+</body>
+</html>

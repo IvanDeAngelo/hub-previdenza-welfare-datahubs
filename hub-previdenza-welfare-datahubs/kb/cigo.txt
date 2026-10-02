@@ -1,0 +1,72 @@
+TEMA: Cassa Integrazione Guadagni Ordinaria (CIGO)
+MACRO AREA: Welfare aziendale
+FONTI: Circ. INPS 5/2025, Circ. INPS 4/2026, Circ. INPS 121/2025, Msg. INPS 2418/2026
+AGGIORNAMENTO: Luglio 2026
+SERVIZIO DB: Riga 15
+
+=== DEFINIZIONE ===
+La Cassa Integrazione Guadagni Ordinaria (CIGO) è l'ammortizzatore sociale che sostiene il reddito dei lavoratori in caso di sospensione o riduzione dell'attività lavorativa per cause temporanee, transitorie e non imputabili all'imprenditore o ai lavoratori. La prestazione è pari all'80% della retribuzione globale che sarebbe spettata per le ore non lavorate, entro il massimale mensile INPS.
+Riferimento normativo: D.Lgs. 14 settembre 2015, n. 148, artt. 10-18.
+
+=== CHI PUO ACCEDERE - DATORI DI LAVORO ===
+Imprese industriali manifatturiere, di trasporti, estrattive, di installazione di impianti, produzione e distribuzione di energia e gas, appalti e cooperative di produzione e lavoro, imprese dell'edilizia e affini, lapideo e escavazioni, imprese artigiane dell'edilizia e settori affini, imprese dell'industria boschiva, forestale e del vivaismo, cooperative agricole, aziende dell'industria alberghiera e settori collegati.
+ATTENZIONE: I DIRIGENTI SONO ESCLUSI dalla CIGO (art. 1, c. 1, D.Lgs. 148/2015).
+
+=== LAVORATORI BENEFICIARI ===
+Tutti i lavoratori dipendenti delle imprese ammesse con anzianità di effettivo lavoro di almeno 30 giorni presso l'unità produttiva per la quale è richiesta la CIGO alla data di presentazione della domanda. Per eventi oggettivamente non evitabili (EONE) il requisito dei 30 giorni non si applica.
+
+=== CAUSALI AMMESSE ===
+- Situazioni aziendali dovute a eventi transitori e non imputabili all'imprenditore o ai lavoratori
+- Situazioni temporanee di mercato: calo di ordini, difficoltà di approvvigionamento
+- Eventi oggettivamente non evitabili (EONE): eventi meteo, emergenze climatiche
+
+=== NOVITA 2026 - EMERGENZA CLIMATICA ===
+Il D.L. 107/2026 (art. 6), illustrato con Msg. INPS 2418 del 20/7/2026, prevede che per il periodo 1 luglio - 31 dicembre 2026 i datori di lavoro dei settori edile, lapideo e delle escavazioni possano accedere alla CIGO per EONE (eventi climatici eccezionali incluse straordinarie ondate di calore) senza che i periodi siano computati ai fini del limite massimo di durata e senza contributo addizionale dovuto.
+
+=== DURATA MASSIMA ===
+52 settimane nel biennio mobile (art. 12, D.Lgs. 148/2015). I periodi connessi a EONE non vengono computati nel limite. La durata di ciascuna concessione non può superare 13 settimane, prorogabili fino al limite massimo.
+
+=== MASSIMALI 2026 ===
+Dal 1 gennaio 2026 (Circ. INPS 4/2026) vige un massimale unico:
+- Massimale mensile lordo: 1.423,69 euro
+- Al netto riduzione 5,84% (L. 41/1986): 1.340,56 euro
+Il massimale viene rivalutato ogni anno al 100% dell'indice ISTAT prezzi al consumo (FOI). Per il 2025 il massimale era 1.322,05 euro.
+
+=== CONTRIBUZIONE ADDIZIONALE 2025 ===
+Dal 1 gennaio 2025 (Circ. INPS 5/2025) le aliquote sono:
+- Fino a 52 settimane nel biennio mobile: 9%
+- Da 53 a 104 settimane: 12%
+- Oltre 104 settimane: 15%
+Il contributo addizionale NON è dovuto per periodi connessi a EONE.
+
+=== DOMANDA SU OMNIA IS ===
+Dal 2 maggio 2024 tutte le domande CIGO si presentano esclusivamente sulla piattaforma OMNIA IS (Integrated Salariale), accessibile dal portale INPS nella sezione Servizi per aziende e consulenti.
+Termini di presentazione:
+- Per eventi ordinari: entro 15 giorni dall'inizio della sospensione
+- Per EONE (meteo, emergenze climatiche): entro la fine del mese successivo
+La domanda deve contenere: matricola aziendale, causale, relazione tecnica, lista nominativa lavoratori, verbale consultazione sindacale (ove richiesto), prospetto CIGO modello SR41.
+
+=== CONGUAGLIO UNIEMENS ===
+Modalità standard: l'azienda anticipa l'importo in busta paga e lo recupera conguagliandolo nel flusso UniEmens mensile. Il codice da indicare in UniEmens è COR (Cassa Integrazione Guadagni Ordinaria Richiesta), con il ticket identificativo della domanda nel campo IdentEventoCig.
+ATTENZIONE: Il conguaglio deve essere effettuato entro 6 mesi a pena di decadenza.
+Per periodi CIGO D.L. 92/2025 (moda, gruppi di imprese) usare codice L149 (Circ. 121/2025).
+
+=== PERCORSO OPERATIVO ===
+1. Verificare che l'impresa rientri nei settori ammessi
+2. Identificare la causale corretta
+3. Informativa sindacale (ove richiesta): esame congiunto con OO.SS. aziendali
+4. Presentare domanda su OMNIA IS con relazione tecnica e lista lavoratori
+5. Ricevere il ticket INPS da riportare in UniEmens
+6. Gestire il flusso UniEmens mensile con codice COR
+7. Ricevere autorizzazione INPS via Cassetto Previdenziale con codice conguaglio
+8. Conguagliare entro 6 mesi con il codice ricevuto
+
+=== DOMANDE FREQUENTI ===
+D: I dirigenti possono accedere alla CIGO?
+R: No. I dirigenti sono esclusi dalla CIGO. Possono invece accedere all'isopensione (prestazione di accompagnamento alla pensione).
+
+D: Qual è il massimale CIGO per il 2026?
+R: Il massimale lordo mensile 2026 è 1.423,69 euro (1.340,56 euro al netto della riduzione del 5,84%).
+
+D: Come si presenta la domanda CIGO?
+R: Esclusivamente sulla piattaforma OMNIA IS dal portale INPS, entro 15 giorni dall'inizio dell'evento (o entro fine mese successivo per EONE).

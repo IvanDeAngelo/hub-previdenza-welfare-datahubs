@@ -1,0 +1,77 @@
+TEMA: Prestazioni di accompagnamento alla pensione (Isopensione)
+MACRO AREA: Previdenza
+FONTI: Circ. INPS 119/2013, Circ. INPS 153/2025, Circ. INPS 41/2026, Msg. INPS 2829/2026, Circ. INPS 104/2026
+AGGIORNAMENTO: Settembre 2026
+SERVIZIO DB: Riga 61
+
+=== DEFINIZIONE ===
+La prestazione di accompagnamento alla pensione (isopensione) è uno strumento che consente ai datori di lavoro, nell'ambito di processi di ristrutturazione, crisi o riorganizzazione aziendale, di accompagnare i lavoratori prossimi alla pensione verso l'uscita anticipata. La prestazione è a totale carico del datore di lavoro ed è erogata dall'INPS.
+Base normativa: art. 4, commi 1-7-ter, Legge 28 giugno 2012, n. 92 (Legge Fornero) e successive modifiche.
+
+=== A CHI SI RIVOLGE ===
+Lavoratori ammessi:
+- Lavoratori dipendenti a tempo indeterminato che maturino i requisiti minimi per la pensione (anticipata, vecchiaia o ai sensi dell'art. 24, c. 15-bis, L. 214/2011) entro un massimo di 7 anni dalla cessazione del rapporto di lavoro
+- Dirigenti in esubero a seguito di un processo di riduzione del personale conclusosi con accordo sindacale
+
+Datori di lavoro ammessi:
+- Imprese con più di 15 dipendenti medi (per lavoratori non dirigenti)
+- Per i dirigenti non è previsto il requisito dimensionale, ma l'accordo sindacale con associazione sindacale per contratto collettivo di categoria
+
+NOTA IMPORTANTE: I dirigenti sono ESCLUSI dalla CIGO ma AMMESSI all'isopensione.
+
+=== ACCORDO AZIENDALE ===
+L'accesso alla prestazione richiede un accordo aziendale stipulato tra il datore di lavoro e le organizzazioni sindacali maggiormente rappresentative a livello aziendale, nelle ipotesi di eccedenza di personale. L'accordo deve essere validato dall'INPS.
+
+=== PROCEDURA ===
+1. Il datore presenta alla sede INPS il modulo SC77 con richiesta di accesso alle procedure automatizzate, programma annuale di esodo, lista lavoratori e accordo aziendale
+2. INPS verifica i requisiti, valida l'accordo e rilascia il prospetto con l'onere stimato mensile
+3. Il datore stipula la fideiussione bancaria (o versamento unica soluzione)
+4. Dopo accettazione fideiussione, il datore presenta le domande individuali con modulo AP97 per ciascun lavoratore
+5. INPS eroga mensilmente la prestazione per 13 mensilità
+
+=== DECORRENZA E DURATA ===
+La prestazione decorre dal mese successivo alla risoluzione del rapporto di lavoro, indipendentemente dalla data di presentazione della domanda. Non deve sussistere soluzione di continuità tra cessazione del rapporto e decorrenza della prestazione. Il pagamento cessa alla scadenza: NON è prevista la trasformazione automatica in pensione. Il lavoratore deve presentare in tempo utile la domanda di pensione.
+
+=== CALCOLO IMPORTO ===
+La prestazione viene calcolata come la pensione alla data della cessazione del rapporto di lavoro, esclusa la contribuzione correlata che il datore si impegna a versare per il periodo di esodo. Il pagamento è corrisposto per 13 mensilità in rate mensili anticipate. Il regime fiscale è quello della tassazione ordinaria IRPEF.
+
+=== AGEVOLAZIONI FISCALI 2026 (Msg. INPS 2829/2026) ===
+La Legge di Bilancio 2025 (L. 207/2024, art. 1, commi 4-9) ha introdotto due misure fiscali applicate automaticamente dall'INPS come sostituto d'imposta:
+
+Somma non imponibile (per redditi complessivi fino a 20.000 euro):
+- 7,1% del reddito se reddito fino a 8.500 euro
+- 5,3% se reddito tra 8.500 e 15.000 euro
+- 4,8% se reddito tra 15.000 e 20.000 euro
+
+Ulteriore detrazione (per redditi tra 20.000 e 40.000 euro):
+- 1.000 euro se reddito tra 20.000 e 32.000 euro
+- Importo decrescente se reddito tra 32.000 e 40.000 euro (si azzera a 40.000 euro)
+
+In sede di conguaglio, se i benefici non spettano, il recupero avviene in 10 rate di pari importo quando l'importo supera 60 euro.
+
+=== TUTELE PER NUOVI REQUISITI PENSIONISTICI (Circ. INPS 41/2026) ===
+A seguito dell'innalzamento dei requisiti pensionistici per il biennio 2027-2028 (L. 199/2025), la Circ. 41/2026 prevede:
+- Prolungamento della prestazione fino alla nuova data di pensionamento, anche oltre il periodo ordinario di durata massima
+- Per lavoratori che hanno cessato l'attività entro il 31 gennaio 2026 sulla base dei requisiti vigenti: le domande devono essere accolte; quelle già respinte possono essere riesaminate su richiesta del datore di lavoro
+- Tutele specifiche per l'allungamento della finestra di decorrenza della pensione anticipata per iscritti alle Casse CPDEL, CPS, CPI e CPUG
+
+=== LAVORATORI CONTRIBUTIVI PURI (Circ. INPS 104/2026) ===
+Per i lavoratori il cui primo accredito contributivo decorre dal 1 gennaio 1996 (sistema contributivo puro), la Circ. 104/2026 fornisce istruzioni operative per la liquidazione delle prestazioni di accompagnamento. I requisiti pensionistici per questi lavoratori sono:
+- Pensione di vecchiaia: 67 anni + 20 anni di contribuzione + importo pensione maggiore o uguale all'assegno sociale (oppure 71 anni con almeno 5 anni di contribuzione effettiva)
+- Pensione anticipata: 42 anni e 10 mesi (uomini) o 41 anni e 10 mesi (donne)
+
+=== GESTIONE PRESTAZIONI 2026 (Circ. INPS 153/2025) ===
+Le prestazioni di accompagnamento NON sono soggette a rivalutazione (perequazione) per tutta la loro durata, a differenza delle pensioni ordinarie. La Circ. 153/2025 disciplina le modalità gestionali per l'anno 2026.
+
+=== DOMANDE FREQUENTI ===
+D: I dirigenti possono accedere all'isopensione?
+R: Sì. I dirigenti in esubero possono accedere all'isopensione dopo un processo di riduzione del personale conclusosi con accordo con un'associazione sindacale per contratto collettivo di categoria. I dirigenti sono invece esclusi dalla CIGO.
+
+D: Qual è la durata massima dell'isopensione?
+R: La prestazione può durare fino a 7 anni, cioè il periodo massimo entro cui il lavoratore deve maturare i requisiti pensionistici dalla cessazione del rapporto.
+
+D: L'isopensione si trasforma automaticamente in pensione?
+R: No. Il pagamento cessa alla scadenza del periodo di esodo. Il lavoratore deve presentare in tempo utile la domanda di pensione separatamente.
+
+D: Cosa cambia con le tutele della Circ. 41/2026?
+R: Per i lavoratori già in esodo penalizzati dall'innalzamento dei requisiti pensionistici 2027-2028, la prestazione viene prolungata fino alla nuova data di pensionamento, anche oltre la durata massima ordinaria.

@@ -1,0 +1,73 @@
+TEMA: Fondi sanitari — regime fiscale e agevolazioni
+MACRO AREA: Sanità integrativa
+FONTI: Circ. AE 4/E del 16/5/2025, D.M. Salute 31/3/2008, D.M. Salute 27/10/2009, Circ. INPS 263/1997
+AGGIORNAMENTO: Maggio 2025
+
+=== TIPOLOGIE DI FONDI SANITARI ===
+
+TIPOLOGIA A — Fondi integrativi del SSN (art. 10, c. 1, lett. e-ter) TUIR):
+- Erogano prestazioni EXTRA LEA (non comprese nei livelli essenziali di assistenza)
+- Beneficio fiscale: deducibilità IRPEF fino a 3.615,20 euro annui
+- Riferimento normativo: art. 9, D.Lgs. 502/1992
+
+TIPOLOGIA B — Enti, Casse e Società di mutuo soccorso a fine assistenziale (art. 51, c. 2, lett. a) TUIR):
+- Possono erogare anche prestazioni LEA (incluse nei livelli essenziali)
+- Beneficio fiscale: i contributi datore non concorrono al reddito di lavoro dipendente fino a 3.615,20 euro annui
+- Requisito: conformità a disposizioni di contratti collettivi (art. 51, D.Lgs. 81/2015) o regolamento aziendale
+
+=== REQUISITI 2025 PER LE AGEVOLAZIONI (D.Lgs. 192/2024) ===
+Dal 2025 le agevolazioni fiscali richiedono due requisiti obbligatori per ENTRAMBE le tipologie:
+1. Iscrizione all'Anagrafe dei fondi sanitari integrativi del Ministero della Salute (attestato annuale)
+2. Operatività secondo il principio di mutualità e solidarietà tra gli iscritti
+ATTENZIONE: I fondi assicurativi puri (polizze individuali) non soddisfano il requisito di mutualità e solidarietà e non danno diritto alle agevolazioni fiscali.
+Fonte: Circ. AE 4/E del 16/5/2025, par. 2.1
+
+=== PLAFOND UNICO 3.615,20 EURO ===
+Il limite di 3.615,20 euro è UNICO e CONDIVISO tra:
+- Contributi versati ai sensi dell'art. 10 (Tipologia A)
+- Contributi versati ai sensi dell'art. 51 (Tipologia B)
+I due importi NON si sommano: il plafond è uno solo per entrambe le tipologie. Il beneficio si estende anche ai contributi versati per familiari fiscalmente a carico del lavoratore.
+
+=== ANAGRAFE DEI FONDI SANITARI INTEGRATIVI ===
+Istituita con D.M. Ministero della Salute del 31 marzo 2008, regolamentata dal D.M. 27 ottobre 2009.
+Dal 2025 l'iscrizione è condizione necessaria per le agevolazioni fiscali.
+
+Come funziona:
+- Iscrizione telematica tramite sistema SIAF (Sistema Informativo Anagrafe Fondi Sanitari)
+- La domanda si presenta dal 1 gennaio al 31 luglio di ciascun anno
+- Il Ministero rilascia l'attestato di iscrizione con valenza annuale (da rinnovare ogni anno)
+- L'agevolazione fiscale si applica solo con attestato valido
+
+Contatti Ministero della Salute:
+- Email: dgprog@postacert.sanita.it - fondisanitari@sanita.it
+- Assistenza tecnica SIAF: servicedesk.mds@medilifegroupspa.com - Tel. 800 88681
+
+=== TRATTAMENTO CONTRIBUTIVO INPS (Circ. INPS 263/1997) ===
+Il trattamento contributivo dei versamenti ai fondi sanitari è il seguente:
+- Quota a carico del datore di lavoro: ESCLUSA dall'imponibile contributivo previdenziale, ma soggetta al contributo di solidarietà del 10%
+- Quota a carico del lavoratore: rimane nella retribuzione imponibile e paga contribuzione ordinaria INPS
+ATTENZIONE: Il trattamento contributivo e quello fiscale operano su basi diverse. Un versamento può essere fiscalmente agevolato ma contribuisce comunque (quota lavoratore) o è soggetto a solidarietà (quota datore). Vanno verificati separatamente.
+
+=== DIFFERENZA FONDI CONTRATTUALI VS VOLONTARI ===
+Fondi contrattuali INPS (ESAL, FAFP, SANI, CARE):
+- Obbligo di adesione da CCNL
+- Versamento tramite F24 e UniEmens con INPS come intermediario
+- Meccanismo automatico di riscossione e riversamento
+
+Fondi volontari/aziendali (art. 10 e art. 51 TUIR):
+- Scelta volontaria del datore o accordo aziendale
+- Versamento diretto al fondo, senza ruolo INPS
+- Agevolazione fiscale subordinata a iscrizione Anagrafe dal 2025
+
+=== DOMANDE FREQUENTI ===
+D: Fino a quanto sono deducibili i contributi ai fondi sanitari?
+R: I contributi versati a fondi sanitari iscritti all'Anagrafe del Ministero della Salute sono deducibili fino a 3.615,20 euro annui (art. 10 TUIR) o non concorrono al reddito di lavoro dipendente (art. 51 TUIR). Il plafond è unico e condiviso tra le due tipologie. Fonte: Circ. AE 4/E del 16/5/2025.
+
+D: Cosa cambia dal 2025 per le agevolazioni fiscali sui fondi sanitari?
+R: Dal 2025 (D.Lgs. 192/2024) è obbligatoria l'iscrizione all'Anagrafe del Ministero della Salute e il fondo deve operare secondo il principio di mutualità e solidarietà. Senza questi requisiti le agevolazioni non spettano.
+
+D: Il versamento del datore a un fondo sanitario è soggetto a contributi INPS?
+R: La quota datore è esclusa dall'imponibile contributivo ma soggetta al contributo di solidarietà del 10%. La quota lavoratore rimane in imponibile ordinario INPS. (Circ. INPS 263/1997)
+
+D: Come si verifica se un fondo è iscritto all'Anagrafe del Ministero della Salute?
+R: Consultando il sito del Ministero della Salute nella sezione dedicata all'Anagrafe dei fondi sanitari integrativi, dove sono elencati tutti i fondi con attestato valido per l'anno in corso.

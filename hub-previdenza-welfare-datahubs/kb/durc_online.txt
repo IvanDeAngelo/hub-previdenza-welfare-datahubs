@@ -1,0 +1,55 @@
+TEMA: DURC Online
+MACRO AREA: Welfare aziendale
+FONTI: Circ. INPS 146/2021, Msg. INPS 4693/2023, CS App Mobile 2023, Msg. INPS 3662/2024, CS Pre-DURC 2024, Manuale VeRA
+AGGIORNAMENTO: Novembre 2024
+SERVIZIO DB: Riga 23
+
+=== DEFINIZIONE ===
+Il DURC Online (Documento Unico di Regolarità Contributiva) è il documento che attesta la regolarità di un'azienda nei confronti di INPS, INAIL e Cassa Edile. Ha validità di 120 giorni dalla data di emissione. Dal 2 maggio 2024 tutte le richieste avvengono tramite la nuova Piattaforma Unica INPS (Msg. 3662/2024).
+
+=== CHI PUO RICHIEDERLO ===
+- Stazioni appaltanti e amministrazioni pubbliche
+- Datori di lavoro (per verifica propria posizione)
+- Lavoratori autonomi
+- Chiunque conosca il codice fiscale dell'azienda (il DURC è consultabile pubblicamente)
+
+=== VALIDITA ===
+120 giorni dalla data di rilascio. Durante questo periodo può essere utilizzato per tutti gli atti, contratti e procedure previsti dalla normativa.
+
+=== PIATTAFORMA UNICA INPS (dal 2 maggio 2024) ===
+Dal 2 maggio 2024 (Msg. INPS 3662/2024) è attiva la nuova Piattaforma Unica per la gestione del DURC Online. Tutte le funzionalità precedenti (richiesta DURC, VeRA, Simulazione, Pre-DURC, Delega Master) sono ora accessibili da un unico punto di accesso sul portale INPS.
+
+=== VERA (VERIFICA REGOLARITA AZIENDALE) ===
+Il servizio VeRA permette all'azienda di verificare in anticipo la propria posizione contributiva prima di richiedere il DURC. Consente di identificare eventuali irregolarità e sanarle prima che queste compromettano il DURC. Accesso tramite SPID, CIE o CNS.
+
+=== SIMULAZIONE DURC ===
+Introdotta con Msg. INPS 4693/2023, la Simulazione DURC permette di simulare l'esito della richiesta identificando irregolarità sanabili. È uno strumento preventivo fondamentale per le aziende che partecipano ad appalti pubblici.
+
+=== PRE-DURC ===
+Il Pre-DURC (Msg. INPS 3662/2024) è una notifica automatica che avvisa il delegato master 30 o 15 giorni prima della scadenza del DURC tramite PEC, email o SMS. Permette di verificare e sanare eventuali irregolarità prima della scadenza. Il Pre-DURC viene notificato solo al soggetto designato come delegato master nella Piattaforma Unica.
+
+=== DELEGA MASTER ===
+La Delega Master è la designazione di un soggetto (tipicamente il consulente del lavoro o il responsabile HR) che riceve le notifiche Pre-DURC e gestisce la posizione contributiva aziendale sulla Piattaforma Unica INPS. Va aggiornata periodicamente e il delegato deve avere attivi i canali di notifica (PEC, email, SMS).
+
+=== APP MOBILE INPS ===
+Dal agosto 2023 (CS App Mobile) è disponibile la funzione DURC sull'app mobile INPS. Permette la consultazione rapida della propria posizione e la richiesta DURC direttamente da smartphone.
+
+=== ACCESSO SPID/CIE ===
+Dal 2021 (Circ. 146/2021) l'accesso ai servizi INPS, incluso il DURC Online, richiede autenticazione tramite SPID di livello 2, CIE (Carta d'Identità Elettronica) o CNS (Carta Nazionale dei Servizi). Le vecchie credenziali PIN INPS non sono più valide.
+
+=== CAUSE DI IRREGOLARITA ===
+Il DURC risulta irregolare quando esistono:
+- Omissioni o ritardi nei versamenti contributivi INPS/INAIL superiori a euro 150
+- Omissioni nei versamenti alla Cassa Edile (per settore edile)
+- Contenziosi in corso non coperti da provvedimenti di sospensione
+Prima di richiedere il DURC, verificare sempre tramite VeRA l'assenza di irregolarità.
+
+=== DOMANDE FREQUENTI ===
+D: Il DURC scaduto si rinnova automaticamente?
+R: No. Alla scadenza dei 120 giorni va richiesto un nuovo DURC. Il Pre-DURC avvisa 30 o 15 giorni prima della scadenza.
+
+D: Posso usare un DURC scaduto?
+R: No. Un DURC scaduto non è valido per nessuna finalità. Va richiesto nuovo DURC.
+
+D: Quanto tempo ci vuole per ottenere il DURC?
+R: Il DURC Online viene rilasciato in tempo reale se la posizione è regolare. In caso di irregolarità l'INPS invia un preavviso di irregolarità con 15 giorni per regolarizzare.

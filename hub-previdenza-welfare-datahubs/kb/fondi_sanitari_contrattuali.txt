@@ -1,0 +1,76 @@
+TEMA: Fondi sanitari contrattuali — contribuzione obbligatoria
+MACRO AREA: Sanità integrativa
+FONTI: Circ. INPS 77/2025 (ESAL), Circ. INPS 119/2025 (FAFP), Circ. INPS 120/2025 (SANI), Circ. INPS 95/2026 (CARE)
+AGGIORNAMENTO: Settembre 2026
+
+=== DEFINIZIONE ===
+I fondi sanitari contrattuali sono fondi di assistenza sanitaria integrativa previsti dai contratti collettivi nazionali di lavoro (CCNL). L'adesione è obbligatoria per le aziende che applicano i CCNL che li prevedono. INPS gestisce la riscossione dei contributi tramite il meccanismo F24/UniEmens per i fondi con cui ha stipulato apposite convenzioni.
+
+=== MECCANISMO F24/UNIEMENS ===
+Il meccanismo prevede due adempimenti distinti e complementari:
+1. VERSAMENTO F24: il datore versa i contributi mensili nella sezione INPS del modello F24 con il codice tributo specifico del fondo
+2. ESPOSIZIONE UNIEMENS: il datore espone i contributi nel flusso UniEmens mensile nell'elemento dedicato ai fondi di assistenza sanitaria
+ATTENZIONE: Entrambi gli adempimenti sono obbligatori. L'INPS verifica la coerenza tra F24 e UniEmens e riversa il 98% delle somme al fondo. Il 2% è trattenuto a titolo di ristorno per spese di gestione.
+
+=== FONDI CONVENZIONATI INPS ===
+
+1. ENFEA SALUTE (codice F24: ESAL)
+Convenzione: Circ. INPS 77 del 17/4/2025
+Scadenza convenzione: 31 dicembre 2026
+Settore: Piccole e medie imprese (artigianato, piccolo commercio)
+Ente bilaterale: ENFEA (Ente Nazionale Fondazione Employees Assistance)
+
+2. FASIFAR (codice F24: FAFP)
+Convenzione: Circ. INPS 119 del 12/8/2025
+Scadenza convenzione: 31 dicembre 2026
+Settore: Farmaceutico e parafaramceutico
+Ente: Fondo Assistenza Sanitaria Integrativa Farmacisti
+
+3. FONDOSANI (codice F24: SANI)
+Convenzione: Circ. INPS 120 del 12/8/2025
+Scadenza convenzione: 31 dicembre 2026
+Settore: Terziario, distribuzione e servizi
+Ente: Fondo di Solidarietà per l'Assistenza Sanitaria Integrativa
+
+4. INNOVACARE (codice F24: CARE)
+Convenzione: Circ. INPS 95 del 10/9/2026
+Scadenza convenzione: 31 dicembre 2026
+Settore: Servizi innovativi e tecnologici
+Ente: Fondo Innovacare per l'assistenza sanitaria
+
+=== COME COMPILARE IL MODELLO F24 ===
+Sezione: INPS
+Codice sede: sede INPS competente
+Causale contributo: codice specifico del fondo (ESAL, FAFP, SANI, CARE)
+Matricola INPS: matricola aziendale
+Periodo di riferimento: mese/anno di competenza nel formato MMAAAA
+Importi a debito: importo del contributo mensile dovuto al fondo
+
+=== ESPOSIZIONE UNIEMENS ===
+Nel flusso UniEmens individuale mensile, il datore deve esporre per ciascun lavoratore iscritto al fondo:
+- Elemento specifico fondo assistenza sanitaria
+- Codice fondo
+- Importo quota mensile
+L'omissione in UniEmens genera una discrepanza con il versamento F24 rilevata automaticamente da INPS.
+
+=== RINNOVO CONVENZIONI ===
+Le convenzioni INPS con i fondi sanitari hanno durata annuale e vengono rinnovate con apposite circolari INPS. Verificare periodicamente le circolari di rinnovo per confermare la validità della convenzione e l'eventuale aggiornamento dei codici o delle procedure.
+
+=== DOMANDE FREQUENTI ===
+D: Qual è il codice F24 per FONDOSANI?
+R: Il codice tributo per FONDOSANI è SANI, da indicare nella sezione INPS del modello F24. Convenzione in vigore fino al 31/12/2026 (Circ. INPS 120/2025).
+
+D: Qual è il codice F24 per ENFEA Salute?
+R: Il codice tributo per ENFEA Salute è ESAL (Circ. INPS 77/2025), valido fino al 31/12/2026.
+
+D: Qual è il codice F24 per FASIFAR?
+R: Il codice tributo per FASIFAR è FAFP (Circ. INPS 119/2025), valido fino al 31/12/2026.
+
+D: Qual è il codice F24 per INNOVACARE?
+R: Il codice tributo per INNOVACARE è CARE (Circ. INPS 95/2026), valido fino al 31/12/2026.
+
+D: Il versamento F24 è sufficiente o serve anche l'UniEmens?
+R: Entrambi sono obbligatori. Il F24 è il versamento, l'UniEmens è la denuncia. L'INPS verifica la coerenza tra i due e può contestare discrepanze.
+
+D: Quando scadono le convenzioni dei fondi sanitari con INPS?
+R: Tutte le convenzioni attualmente in vigore (ESAL, FAFP, SANI, CARE) scadono il 31 dicembre 2026.

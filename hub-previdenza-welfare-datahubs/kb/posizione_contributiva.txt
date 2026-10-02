@@ -1,0 +1,65 @@
+TEMA: Posizione contributiva e correttezza versamenti
+MACRO AREA: Previdenza
+FONTI: Msg. INPS 2553/2025, Circ. INPS 48/2023, Msg. INPS 1900/2023
+AGGIORNAMENTO: Settembre 2025
+SERVIZIO DB: Riga 94 (Estratto conto), Riga 45 (Ricorsi inquadramento), Riga 58 (Unicità posizione)
+
+=== ESTRATTO CONTO CONTRIBUTIVO ===
+L'estratto conto contributivo INPS è il documento che riepiloga tutta la storia assicurativa e previdenziale di un lavoratore o di un'azienda. Dal 2025 (Msg. INPS 2553/2025) è disponibile in una nuova modalità di esposizione cronologica integrata, che aggrega le informazioni per periodo di lavoro anziché per gestione previdenziale. Accesso tramite SPID, CIE o CNS dal portale inps.it nella sezione "Estratto conto contributivo/previdenziale".
+
+=== NUOVA MODALITA 2025 ===
+Il Msg. INPS 2553 del 2/9/2025 ha introdotto la nuova modalità di esposizione cronologica dell'estratto conto. Le principali novità:
+- Visualizzazione unificata per periodo lavorativo (non più per gestione)
+- Integrazione di tutte le gestioni pensionistiche in un unico prospetto
+- Download in formato PDF con firma digitale
+- Possibilità di evidenziare periodi scoperti o anomalie
+
+=== UNICITA DELLA POSIZIONE CONTRIBUTIVA ===
+Ogni datore di lavoro deve operare con un'unica posizione contributiva (matricola aziendale) presso la sede INPS competente. In caso di più unità produttive è possibile richiedere l'accentramento contributivo tramite il servizio "Obbligo di unicità della posizione contributiva". Posizioni duplicate o non accentrate possono generare irregolarità nel DURC e nei flussi UniEmens.
+
+=== CORRETTEZZA DEI VERSAMENTI ===
+La correttezza dei versamenti contributivi si verifica attraverso:
+1. Estratto conto aziendale: riepilogo dei versamenti effettuati per competenza
+2. Cassetto previdenziale aziende: monitoraggio in tempo reale della posizione
+3. VeRA (Verifica Regolarità Aziendale): strumento preventivo prima del DURC
+4. UniEmens: flusso mensile che determina la base di calcolo dei contributi
+
+=== RICORSI AMMINISTRATIVI ===
+In caso di contestazione di verbali ispettivi, avvisi di addebito o provvedimenti INPS, il datore di lavoro può presentare ricorso amministrativo.
+
+Termini e organismi (Circ. INPS 48/2023):
+- Ricorsi in materia di inquadramento previdenziale: 90 giorni ai Comitati periferici/centrali gestione lavoratori privati
+- Ricorsi avverso verbali ispettivi: 30 giorni alla Direzione Regionale INPS
+- Ricorsi avverso avvisi di addebito: 40 giorni (opposizione a Tribunale)
+
+Ricorsi CIGO (Msg. INPS 1900/2023):
+- Termine: 30 giorni dalla notifica del provvedimento di diniego
+- Organismo: Comitato provinciale INPS competente per territorio
+- Modalità: esclusivamente tramite portale telematico INPS "Ricorsi Amministrativi"
+
+=== PROCEDURE TELEMATICHE ===
+Tutti i ricorsi amministrativi si presentano esclusivamente tramite il servizio telematico INPS "Ricorsi Amministrativi" accessibile dal portale istituzionale con SPID, CIE o CNS. Non sono più ammessi ricorsi in forma cartacea.
+
+=== CASSETTO PREVIDENZIALE AZIENDE ===
+Il Cassetto Previdenziale Aziende è il portale INPS che permette al datore di lavoro e ai suoi intermediari di monitorare:
+- Posizione contributiva aggiornata
+- Flussi UniEmens inviati e anomalie
+- Comunicazioni INPS (autorizzazioni, richieste istruttorie)
+- Autorizzazioni CIGO/CIGS con codici conguaglio
+- Avvisi di addebito e cartelle
+
+=== FLUSSO UNIEMENS ===
+Il flusso UniEmens è la denuncia mensile contributiva che ogni datore di lavoro deve inviare all'INPS entro il giorno 16 del mese successivo a quello di riferimento. Contiene i dati retributivi e contributivi di ogni lavoratore. Errori nel flusso UniEmens generano anomalie nell'estratto conto e possono causare irregolarità nel DURC.
+
+=== DOMANDE FREQUENTI ===
+D: Come si verifica la correttezza dei versamenti contributivi?
+R: Tramite il Cassetto Previdenziale Aziende su inps.it, consultando l'estratto conto aziendale e verificando la corrispondenza con i flussi UniEmens inviati.
+
+D: Qual è il termine per presentare ricorso contro un verbale INPS?
+R: 30 giorni per i verbali ispettivi, 90 giorni per i provvedimenti in materia di inquadramento previdenziale. I ricorsi si presentano esclusivamente in forma telematica.
+
+D: Cosa fare in caso di posizione contributiva duplicata?
+R: Richiedere l'accentramento contributivo presso la sede INPS competente tramite il servizio "Obbligo di unicità della posizione contributiva".
+
+D: Come accedere all'estratto conto contributivo?
+R: Dal portale inps.it con SPID livello 2, CIE o CNS, nella sezione "Estratto conto contributivo/previdenziale". Dal 2025 la visualizzazione è cronologica integrata (Msg. 2553/2025).
