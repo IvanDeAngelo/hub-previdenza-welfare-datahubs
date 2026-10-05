@@ -138,3 +138,17 @@ Per i periodi CIGO connessi a D.L. 92/2025 (moda, gruppi di imprese) utilizzare 
 - Circolare INPS n. 121 del 13/8/2025 — D.L. 92/2025: aree di crisi, filiera moda, istruzioni UniEmens
 - Messaggio INPS n. 2418 del 20/7/2026 — CIGO per emergenza climatica D.L. 107/2026
 - Scheda servizio INPS — CIGO con piattaforma OMNIA IS (dal 2 maggio 2024)
+
+---
+
+## Servizi INPS collegati (DB Imprese e Professionisti)
+
+| Servizio | Categoria DB | Link |
+|---|---|---|
+| Cassa integrazione guadagni ordinaria (CIGO) | Cassa Integrazione | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.50599.cassa-integrazione-guadagni-ordinaria.html) |
+| Cassa integrazione guadagni straordinaria (CIGS) | Cassa Integrazione | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.50596.cassa-integrazione-guadagni-straordinaria.html) |
+| Cassa integrazione guadagni in deroga (CIGD) | Cassa Integrazione | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.cassa-integrazione-guadagni-in-deroga-50278.cassa-integrazione-guadagni-in-deroga.html) |
+| Consultazione integrazioni salariali (CIS) | Integrazioni salariali | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.consultazione-integrazioni-salariali-cis-.html) |
+| Cruscotto UniEmens CIG e Fondi solidarietà | Integrazioni salariali | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.cruscotto-uniemens-cig-e-fondi-solidariet-.cruscotto-uniemens-cig-e-fondi-solidariet-.html) |
+
+> Le domande CIGO si presentano tramite la piattaforma OMNIA IS (attiva dal 2 maggio 2024). Accesso con SPID, CIE o CNS — Desktop Virtuale per aziende e intermediari abilitati.

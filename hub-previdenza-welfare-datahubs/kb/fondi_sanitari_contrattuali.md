@@ -92,3 +92,15 @@ I rapporti tra fondo e datori di lavoro (restituzione somme, variazioni, omissio
 - Circolare INPS n. 120 del 12/08/2025 — Convenzione INPS-FONDOSANI (SANI)
 - Circolare INPS n. 95 del 10/09/2026 — Convenzione INPS-INNOVACARE (CARE)
 - Scheda servizio INPS — Trasmissione UniEmens per datori di lavoro aziende private
+
+---
+
+## Servizi INPS collegati (DB Imprese e Professionisti)
+
+Per i fondi sanitari contrattuali con convenzione INPS, il versamento avviene tramite UniEmens. Non esiste un servizio INPS dedicato ai fondi sanitari: il canale operativo è la **trasmissione UniEmens** standard per i datori di lavoro privati.
+
+| Servizio | Categoria DB | Link |
+|---|---|---|
+| Trasmissione UniEmens — datori di lavoro aziende private | Comunicazioni per adempimenti contributivi | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.trasmissione-uniemens-per-datori-di-lavoro-di-aziende-private.html) |
+
+> Il codice convenzione (CodConv) da usare in UniEmens è specifico per ciascun fondo: vedi tabella fondi con convenzione attiva nella sezione 4 della KB.

@@ -109,3 +109,17 @@ La tematica è trasversale: nessuno dei tre record, preso singolarmente, copre l
 - INPS — Circolare n. 48 del 17 maggio 2023, Regolamento in materia di ricorsi amministrativi di competenza dei Comitati dell'INPS
 - INPS — Messaggio n. 1900 del 23 maggio 2023, precisazioni alla Circolare n. 48/2023
 - Record/servizi INPS: Consultazione Estratto conto contributivo/previdenziale; Gestione ricorsi amministrativi in materia di inquadramento previdenziale; Obbligo di unicità della posizione contributiva — accentramento contributivo
+
+---
+
+## Servizi INPS collegati (DB Imprese e Professionisti)
+
+| Servizio | Categoria DB | Link |
+|---|---|---|
+| Consultazione estratto conto contributivo previdenziale | Posizione contributiva | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.consultazione-estratto-conto-contributivo-previdenziale-50119.consultazione-estratto-conto-contributivo-previdenziale.html) |
+| Gestione ricorsi amministrativi — inquadramento previdenziale | Rimborsi / Debiti contributivi | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.gestione-dei-ricorsi-amministrativi-in-materia-di-inquadramento-previdenziale.html) |
+| Gestione ricorsi amministrativi — organismi centrali entrate contributive | Rimborsi / Debiti contributivi | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.gestione-dei-ricorsi-amministrativi-rivolti-agli-organismi-centrali-in-materia-di-entrate-contributive.html) |
+| Certificazione debiti contributivi (Ve.R.A.) | Debiti contributivi | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.certificazione-dei-debiti-contributivi-vera.html) |
+| Ricorsi amministrativi | Rimborsi / Debiti contributivi | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.ricorsi-amministrativi.html) |
+
+> Accesso ai servizi tramite SPID, CIE o CNS — area riservata MyINPS o Desktop Virtuale per aziende e intermediari.

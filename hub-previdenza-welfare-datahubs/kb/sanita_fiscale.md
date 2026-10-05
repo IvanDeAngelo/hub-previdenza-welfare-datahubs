@@ -128,3 +128,16 @@ L'Anagrafe è istituita presso il Ministero della Salute con D.M. 31 marzo 2008,
 - D.M. Ministero della Salute del 27 ottobre 2009 — Procedure e modalità funzionamento Anagrafe
 - Circolare INPS n. 263 del 24 dicembre 1997 — Unificazione basi imponibili fiscale e previdenziale
 - Ministero della Salute — pagina Fondi sanitari integrativi: salute.gov.it
+
+---
+
+## Servizi INPS collegati (DB Imprese e Professionisti)
+
+Il regime fiscale dei fondi sanitari integrativi è disciplinato dal TUIR e dall'Agenzia delle Entrate: **non esistono servizi INPS dedicati** a questo tema. L'impatto previdenziale si gestisce tramite UniEmens (esclusione dall'imponibile contributivo).
+
+| Servizio | Note | Link |
+|---|---|---|
+| Trasmissione UniEmens — datori di lavoro aziende private | Per l'esclusione contributiva dei contributi al fondo | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.trasmissione-uniemens-per-datori-di-lavoro-di-aziende-private.html) |
+| Agenzia delle Entrate — Redditi di lavoro dipendente | Riferimento fiscale principale (Circ. 4/E 2025) | [agenziaentrate.gov.it](https://www.agenziaentrate.gov.it) |
+| Anagrafe fondi sanitari — Ministero della Salute | Iscrizione e verifica fondi riconosciuti | [salute.gov.it](https://www.salute.gov.it) |
+

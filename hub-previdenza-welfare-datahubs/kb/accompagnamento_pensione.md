@@ -136,3 +136,15 @@ Dopo l'accettazione della fideiussione, presenta le domande individuali per cias
 - Messaggio INPS n. 2829 del 14/9/2026 — Agevolazioni fiscali 2026
 - Circolare INPS n. 104 del 29/9/2026 — Liquidazione per lavoratori privi di anzianità contributiva al 31/12/1995
 - Record DB Servizi INPS — Riga 61: Prestazione di accompagnamento alla pensione
+
+---
+
+## Servizi INPS collegati (DB Imprese e Professionisti)
+
+| Servizio | Categoria DB | Link |
+|---|---|---|
+| Prestazione di accompagnamento alla pensione (isopensione) | Sostegno lavoratori licenziati | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.prestazione-di-accompagnamento-alla-pensione.html) |
+| Assegno straordinario di sostegno al reddito | Sostegno lavoratori licenziati | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.assegno-straordinario-di-sostegno-al-reddito.html) |
+| Portale prestazioni esodo | Sostegno lavoratori licenziati | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.portale-prestazioni-esodo.html) |
+
+> Accesso tramite SPID, CIE o CNS — area riservata MyINPS. Per le domande di isopensione l'azienda trasmette l'accordo sindacale via PEC alla sede INPS competente.
