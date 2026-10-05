@@ -1,97 +1,138 @@
-# Prestazioni di accompagnamento alla pensione (Isopensione)
+# Prestazioni di accompagnamento alla pensione
 
-**Macro area:** Previdenza | **Aggiornamento:** Settembre 2026
+**Fonti:** Circ. INPS n. 119/2013 · Circ. 153/2025 · Circ. 41/2026 · Msg. 2829/2026 · Circ. 104/2026 | Record DB: Riga 61 | Settembre 2026
 
 ---
 
-La prestazione di accompagnamento alla pensione — comunemente chiamata **isopensione** — consente ai datori di lavoro, nell'ambito di processi di ristrutturazione o crisi aziendale, di accompagnare i lavoratori prossimi alla pensione verso l'uscita anticipata. La prestazione è **a totale carico del datore di lavoro** ed è erogata dall'INPS.
+**Perimetro della KB**
+
+La KB descrive le prestazioni di accompagnamento alla pensione (isopensione) previste dall'art. 4, commi 1-7-ter, della Legge n. 92/2012, gli assegni straordinari dei Fondi di solidarietà bilaterali (art. 26, D.Lgs. 148/2015) e le relative istruzioni operative INPS. Non sostituisce il testo di legge né i contratti collettivi applicabili.
+
+## 1. Cos'è la prestazione di accompagnamento alla pensione (isopensione)
+
+La prestazione di accompagnamento alla pensione (c.d. isopensione) è uno strumento che consente ai datori di lavoro, nell'ambito di processi di ristrutturazione, crisi o riorganizzazione aziendale, di accompagnare i lavoratori prossimi alla pensione verso l'uscita anticipata dal lavoro. La prestazione è **a totale carico del datore di lavoro** ed è erogata dall'INPS.
 
 *Base normativa: art. 4, commi 1-7-ter, Legge 28 giugno 2012, n. 92 (Legge Fornero) e successive modifiche*
 
-## Chi può accedere
+## 2. A chi si rivolge
 
-### Lavoratori ammessi
+La prestazione è rivolta a:
 
-Lavoratori dipendenti a tempo indeterminato che maturino i requisiti minimi per la pensione entro un massimo di **7 anni** dalla cessazione del rapporto di lavoro.
+- Lavoratori dipendenti a tempo indeterminato che maturino i requisiti minimi per la pensione entro un massimo di **7 anni** dalla cessazione del rapporto di lavoro
+- **Dirigenti in esubero** a seguito di un processo di riduzione del personale conclusosi con accordo sindacale
+- Datori di lavoro con più di **15 dipendenti medi** (per i lavoratori non dirigenti)
 
-> **I dirigenti sono AMMESSI** all'isopensione dopo un processo di riduzione del personale conclusosi con accordo sindacale. I dirigenti sono invece **ESCLUSI dalla CIGO**.
+## 3. Requisiti e accordo aziendale
 
-### Datori di lavoro ammessi
+L'accesso alla prestazione richiede un **accordo aziendale** stipulato tra il datore di lavoro e le organizzazioni sindacali maggiormente rappresentative a livello aziendale. L'accordo deve essere validato dall'INPS.
 
-Imprese con più di **15 dipendenti medi** (per lavoratori non dirigenti). Per i dirigenti non è previsto il requisito dimensionale, ma è necessario l'accordo sindacale con l'associazione di categoria.
+Il datore di lavoro deve presentare alla sede INPS competente:
 
-## Accordo aziendale e procedura
+- Il **modulo SC77** con richiesta di accesso alle procedure automatizzate
+- Il programma annuale di esodo e l'elenco dei lavoratori interessati
+- L'accordo aziendale
+- La **fideiussione bancaria** (o versamento in unica soluzione) a garanzia degli obblighi verso i lavoratori e l'INPS
 
-L'accesso richiede un **accordo aziendale** stipulato tra il datore e le organizzazioni sindacali maggiormente rappresentative, nelle ipotesi di eccedenza di personale.
+L'INPS rilascia al datore di lavoro un prospetto con l'onere stimato mensile del programma di esodo annuale, necessario per la stipula della fideiussione.
 
-**Iter procedurale:**
+*Fonte: Circ. INPS 119/2013 — istruzioni operative per la gestione pensionistica privata*
 
-1. Stipula accordo aziendale con OO.SS.
-2. Presentazione **modulo SC77** all'INPS con programma annuale di esodo e lista lavoratori
-3. Validazione INPS: verifica requisiti e rilascio prospetto con onere stimato mensile
-4. Stipula **fideiussione bancaria** a garanzia (o versamento in unica soluzione)
-5. Dopo accettazione fideiussione, presentazione domande individuali con **modulo AP97**
-6. Erogazione mensile INPS per 13 mensilità
+## 4. Decorrenza e durata
 
-> **Attenzione:** il pagamento cessa alla scadenza del periodo di esodo. NON è prevista la trasformazione automatica in pensione. Il lavoratore deve presentare in tempo utile la domanda di pensione separatamente.
+La prestazione decorre dal mese successivo alla risoluzione del rapporto di lavoro, indipendentemente dalla data di presentazione della domanda. Non deve sussistere soluzione di continuità tra la cessazione del rapporto e la decorrenza della prestazione.
 
-## Calcolo dell'importo
+Il pagamento cessa alla scadenza del periodo di esodo: **non è prevista la trasformazione automatica in pensione**. Il lavoratore deve presentare in tempo utile la domanda di pensione.
 
-La prestazione viene calcolata come la **pensione alla data della cessazione** del rapporto di lavoro, esclusa la contribuzione correlata che il datore versa per il periodo di esodo. Il pagamento avviene per 13 mensilità in rate mensili anticipate.
+> **Aggiornamento 2026:** a seguito dell'innalzamento dei requisiti pensionistici per il biennio 2027-2028 (Legge 199/2025), alcuni lavoratori già in esodo rischiavano di restare senza assegno tra la scadenza dell'isopensione e la nuova data di pensionamento. La **Circ. 41/2026** prevede il prolungamento della prestazione fino alla nuova data di pensionamento, anche oltre il periodo ordinario di durata massima.
 
-Il regime fiscale è quello della **tassazione ordinaria IRPEF**. Le prestazioni NON sono soggette a rivalutazione (perequazione) per tutta la loro durata (Circ. 153/2025).
+## 5. Tutele specifiche introdotte dalla Circolare 41/2026
 
-## Agevolazioni fiscali 2026
+La circolare introduce tutele specifiche per due categorie di lavoratori:
 
-La L. 207/2024 (Legge di Bilancio 2025) ha introdotto due misure fiscali applicate automaticamente dall'INPS come sostituto d'imposta (Msg. INPS 2829/2026):
+- Lavoratori che, sulla base dei requisiti e delle stime vigenti fino al 2025, hanno cessato l'attività entro il **31 gennaio 2026** e risultano penalizzati dai nuovi requisiti → le domande di isopensione devono essere accolte; quelle già respinte possono essere riesaminate su richiesta del datore di lavoro
+- Lavoratori interessati dall'allungamento della finestra di decorrenza della pensione anticipata in quanto iscritti alle Casse **CPDEL, CPS, CPI e CPUG** (3 mesi per chi matura i requisiti entro il 2024, 4 entro il 2025, 5 entro il 2026, 7 entro il 2027, 9 mesi dal 2028)
 
-**Somma non imponibile** (per redditi complessivi fino a 20.000 €):
+*Fonte: Circ. INPS 41 del 3/4/2026*
 
-| Fascia di reddito | Percentuale non imponibile |
-|---|---|
-| Fino a 8.500 € | 7,1% del reddito |
-| Da 8.500 a 15.000 € | 5,3% del reddito |
-| Da 15.000 a 20.000 € | 4,8% del reddito |
+## 6. Quanto spetta
 
-**Ulteriore detrazione** (per redditi tra 20.000 e 40.000 €):
+La prestazione viene calcolata come la pensione alla data della cessazione del rapporto di lavoro, esclusa la contribuzione correlata che il datore di lavoro si impegna a versare per il periodo di esodo. Il pagamento è corrisposto per **13 mensilità** in rate mensili anticipate.
 
-| Fascia di reddito | Importo detrazione |
-|---|---|
-| Da 20.000 a 32.000 € | 1.000 € fissi |
-| Da 32.000 a 40.000 € | Importo decrescente fino a 0 |
+Il regime fiscale è quello della **tassazione ordinaria IRPEF**. Le prestazioni non sono soggette a rivalutazione (perequazione) per tutta la loro durata *(Circ. 153/2025)*.
 
-In sede di conguaglio, se i benefici non spettano, il recupero avviene in **10 rate** di pari importo quando l'importo supera 60 euro.
+## 7. Agevolazioni fiscali 2026 — somma non imponibile e ulteriore detrazione
 
-## Tutele per nuovi requisiti pensionistici — Circ. INPS 41/2026
+La Legge di Bilancio 2025 (L. 207/2024) ha introdotto due misure fiscali applicabili anche alle prestazioni di accompagnamento alla pensione, riconosciute automaticamente dall'INPS come sostituto d'imposta:
 
-A seguito dell'innalzamento dei requisiti pensionistici per il biennio 2027-2028 (L. 199/2025), la Circ. 41/2026 prevede il **prolungamento della prestazione** fino alla nuova data di pensionamento, anche oltre il periodo ordinario di durata massima.
+**Somma non imponibile** (per redditi complessivi ≤ 20.000 euro):
+- 7,1% del reddito di lavoro dipendente se ≤ 8.500 euro
+- 5,3% se tra 8.500 e 15.000 euro
+- 4,8% se tra 15.000 e 20.000 euro
 
-> **Domande già respinte:** le domande già respinte per lavoratori che hanno cessato l'attività entro il 31 gennaio 2026 possono essere riesaminate su richiesta del datore. Verificare la casistica con la sede territoriale INPS.
+**Ulteriore detrazione** (per redditi complessivi tra 20.000 e 40.000 euro):
+- 1.000 euro se il reddito è tra 20.000 e 32.000 euro
+- Importo decrescente se il reddito è tra 32.000 e 40.000 euro (si azzera a 40.000 euro)
 
-La circolare prevede tutele specifiche anche per l'allungamento della finestra di decorrenza della pensione anticipata per iscritti alle Casse CPDEL, CPS, CPI e CPUG.
+In sede di conguaglio, se i benefici risultano non spettanti, il recupero avviene in **10 rate** di pari importo (quando l'importo supera 60 euro).
 
-## Lavoratori contributivi puri — Circ. INPS 104/2026
+*Fonte: Msg. INPS 2829 del 14/9/2026*
 
-Per i lavoratori con primo accredito contributivo dal **1° gennaio 1996** (sistema contributivo puro), la Circ. 104/2026 fornisce istruzioni operative per la liquidazione.
+## 8. Liquidazione per lavoratori privi di anzianità contributiva al 31/12/1995 (contributivi puri)
 
-I requisiti pensionistici per questi lavoratori:
-- **Pensione di vecchiaia:** 67 anni + 20 anni di contribuzione + importo ≥ assegno sociale (oppure 71 anni con almeno 5 anni di contribuzione effettiva)
-- **Pensione anticipata:** 42 anni e 10 mesi (uomini) o 41 anni e 10 mesi (donne)
+Per i lavoratori il cui primo accredito contributivo decorre dal **1° gennaio 1996**, il trattamento pensionistico è calcolato interamente con il sistema contributivo.
 
-## Domande frequenti
+Per accedere alla pensione di vecchiaia occorre: 67 anni di età + 20 anni di contribuzione + importo pensione ≥ assegno sociale (o 71 anni con almeno 5 anni di contribuzione effettiva). Per la pensione anticipata: 42 anni e 10 mesi (uomini) o 41 anni e 10 mesi (donne) di contribuzione.
 
-**I dirigenti possono accedere all'isopensione?**
-Sì. I dirigenti in esubero possono accedere all'isopensione dopo un processo di riduzione del personale conclusosi con accordo sindacale. I dirigenti sono invece esclusi dalla CIGO.
+La Circ. 104/2026 fornisce le istruzioni operative per la liquidazione delle prestazioni di accompagnamento alla pensione (isopensione e assegni straordinari Fondi di solidarietà) a favore di questi lavoratori.
 
-**Qual è la durata massima dell'isopensione?**
-Fino a 7 anni dalla cessazione del rapporto di lavoro, cioè il periodo massimo entro cui il lavoratore deve maturare i requisiti pensionistici.
+*Fonte: Circ. INPS 104 del 29/9/2026*
 
-**L'isopensione si trasforma automaticamente in pensione?**
-No. Il pagamento cessa alla scadenza. Il lavoratore deve presentare in tempo utile la domanda di pensione separatamente.
+## 9. Gestione delle prestazioni di accompagnamento per l'anno 2026
 
-**Cosa cambia con la Circ. 41/2026?**
-Per i lavoratori già in esodo penalizzati dall'innalzamento dei requisiti 2027-2028, la prestazione viene prolungata fino alla nuova data di pensionamento, anche oltre la durata massima ordinaria.
+La Circ. 153/2025 disciplina le modalità gestionali delle prestazioni di accompagnamento a pensione per l'anno 2026. Da notare che le prestazioni di accompagnamento **non sono soggette a rivalutazione (perequazione)** per tutta la loro durata, a differenza delle pensioni ordinarie.
 
----
+*Fonte: Circ. INPS 153 del 19/12/2025*
 
-*Fonti: Circ. INPS 119/2013 — Circ. INPS 153/2025 — Circ. INPS 41/2026 — Msg. INPS 2829/2026 — Circ. INPS 104/2026 — L. 207/2024*
+## 10. Come fare domanda
+
+Il datore di lavoro presenta alla sede INPS competente:
+
+- Modulo **SC77** con richiesta di accesso alle procedure
+- Programma annuale di esodo + elenco lavoratori + accordo aziendale
+- Fideiussione bancaria (schema allegato al Msg. INPS 216/2016)
+
+Dopo l'accettazione della fideiussione, presenta le domande individuali per ciascun lavoratore. Il lavoratore (con il datore) presenta il **Modulo AP97** — domanda di prestazione di esodo, firmata dal lavoratore e dal legale rappresentante dell'azienda.
+
+## 11. Percorso operativo
+
+1. **Accordo aziendale** — Datore + sindacati stipulano l'accordo di esodo nelle ipotesi di eccedenza di personale.
+2. **Richiesta accesso INPS** — Datore presenta il modulo SC77 alla sede INPS competente con programma di esodo e accordo.
+3. **Validazione INPS** — INPS verifica requisiti del datore, valida l'accordo e rilascia il prospetto con l'onere stimato mensile.
+4. **Fideiussione** — Datore stipula la fideiussione bancaria (o versamento in unica soluzione) a garanzia degli obblighi.
+5. **Domanda individuale** — Datore + lavoratore presentano il modulo AP97 alla sede INPS.
+6. **Erogazione** — INPS eroga mensilmente la prestazione al lavoratore per 13 mensilità all'anno.
+7. **Domanda di pensione** — Il lavoratore presenta in tempo utile la domanda di pensione — la prestazione NON si trasforma automaticamente.
+
+## 12. Copertura della KB e limiti delle fonti
+
+| Informazione | Coperta? | Fonte |
+|---|---|---|
+| Requisiti di accesso e platea beneficiari | Sì | Circ. 119/2013 |
+| Accordo aziendale e procedura INPS | Sì | Circ. 119/2013 |
+| Calcolo importo e regime fiscale | Sì | Record DB riga 61 |
+| Agevolazioni fiscali 2026 (bonus + detrazione) | Sì | Msg. 2829/2026 |
+| Prolungamento tutele per nuovi requisiti 2027-28 | Sì | Circ. 41/2026 |
+| Liquidazione per contributivi puri | Sì | Circ. 104/2026 |
+| Gestione prestazioni anno 2026 | Sì | Circ. 153/2025 |
+| Assegni straordinari Fondi solidarietà settoriali | Parziale | Circ. 41/2026 (principi generali) |
+| Gestione Dipendenti Pubblici e Spettacolo | Non coperta | Richiedono circolari dedicate |
+
+## 13. Fonti ufficiali
+
+- Legge 28 giugno 2012, n. 92, art. 4, commi 1-7-ter — Isopensione
+- Circolare INPS n. 119 del 1/8/2013 — Istruzioni operative isopensione
+- Circolare INPS n. 153 del 19/12/2025 — Gestione prestazioni di accompagnamento per l'anno 2026
+- Circolare INPS n. 41 del 3/4/2026 — Tutele per adeguamento requisiti pensionistici 2027-2028
+- Messaggio INPS n. 2829 del 14/9/2026 — Agevolazioni fiscali 2026
+- Circolare INPS n. 104 del 29/9/2026 — Liquidazione per lavoratori privi di anzianità contributiva al 31/12/1995
+- Record DB Servizi INPS — Riga 61: Prestazione di accompagnamento alla pensione

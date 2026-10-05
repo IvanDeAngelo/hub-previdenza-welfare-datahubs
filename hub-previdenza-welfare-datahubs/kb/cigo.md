@@ -1,102 +1,140 @@
 # Cassa Integrazione Guadagni Ordinaria (CIGO)
 
-**Macro area:** Welfare aziendale | **Aggiornamento:** Luglio 2026
+**Fonti:** Circ. INPS n. 5/2025 · Circ. n. 4/2026 · Circ. n. 121/2025 · Msg. n. 2418/2026 | Record DB: Riga 15 | Ottobre 2026
 
 ---
 
-La **Cassa Integrazione Guadagni Ordinaria (CIGO)** è l'ammortizzatore sociale che sostiene il reddito dei lavoratori in caso di sospensione o riduzione dell'attività lavorativa per cause temporanee, transitorie e non imputabili all'imprenditore o ai lavoratori.
+**Perimetro della KB**
 
-La prestazione è pari all'**80% della retribuzione globale** che sarebbe spettata per le ore non lavorate, entro il massimale mensile stabilito dall'INPS.
+La KB descrive la CIGO dal punto di vista del datore di lavoro: chi può accedervi, per quali causali, come presentare domanda, come gestire il conguaglio in UniEmens, contribuzione addizionale e massimali aggiornati. Non copre CIGS, FIS o Fondi di solidarietà bilaterali, che richiedono KB dedicate.
 
-*Riferimento normativo: D.Lgs. 14 settembre 2015, n. 148, artt. 10-18*
+## 1. Cos'è la CIGO
 
-## Chi può accedere
+La Cassa Integrazione Guadagni Ordinaria (CIGO) è l'ammortizzatore sociale che sostiene il reddito dei lavoratori in caso di sospensione o riduzione dell'attività lavorativa per cause temporanee, transitorie e non imputabili all'imprenditore o ai lavoratori.
 
-### Datori di lavoro ammessi
+La prestazione è pari all'**80% della retribuzione globale** che sarebbe spettata al lavoratore per le ore non lavorate, entro il limite del massimale mensile stabilito dall'INPS.
 
-Imprese industriali manifatturiere, di trasporti, estrattive, di installazione di impianti, produzione e distribuzione di energia e gas, appalti e cooperative di produzione e lavoro, imprese dell'edilizia e affini, lapideo e escavazioni, imprese artigiane dell'edilizia, industria boschiva e forestale, cooperative agricole, aziende dell'industria alberghiera.
+*Riferimento normativo: D.Lgs. 14 settembre 2015, n. 148 (Testo Unico Ammortizzatori Sociali), artt. 10-18*
 
-> **I dirigenti sono ESCLUSI dalla CIGO** (art. 1, c. 1, D.Lgs. 148/2015). Possono invece accedere all'isopensione — prestazione di accompagnamento alla pensione.
+## 2. Chi può accedere — datori di lavoro e lavoratori
 
-### Lavoratori beneficiari
+**Datori di lavoro ammessi** (art. 10, D.Lgs. 148/2015): imprese industriali manifatturiere, di trasporti, estrattive, di installazione di impianti, produzione e distribuzione di energia e gas, appalti e cooperative di produzione e lavoro, imprese dell'edilizia e affini, lapideo e escavazioni, imprese artigiane dell'edilizia e settori affini, industria boschiva, forestale e del vivaismo, cooperative agricole, aziende dell'industria alberghiera e settori collegati.
 
-Tutti i lavoratori dipendenti delle imprese ammesse con anzianità di effettivo lavoro di **almeno 30 giorni** presso l'unità produttiva. Per gli eventi oggettivamente non evitabili (EONE) il requisito dei 30 giorni non si applica.
+**Lavoratori ammessi:** tutti i lavoratori dipendenti delle imprese ammesse, con anzianità di effettivo lavoro di almeno **30 giorni** presso l'unità produttiva per la quale è richiesta la CIGO alla data di presentazione della domanda.
 
-## Causali ammesse
+> **I dirigenti sono esclusi dalla CIGO** (art. 1, c. 1, D.Lgs. 148/2015).
 
-- **Situazioni aziendali dovute a eventi transitori** non imputabili all'imprenditore o ai lavoratori
-- **Situazioni temporanee di mercato:** calo di ordini, difficoltà di approvvigionamento
-- **Eventi oggettivamente non evitabili (EONE):** eventi meteo, emergenze climatiche
+*Nota: per le richieste connesse a eventi oggettivamente non evitabili (EONE) — tra cui le emergenze climatiche — il requisito dei 30 giorni non si applica.*
 
-## Durata massima
+## 3. Causali — quando si può richiedere la CIGO
+
+Le causali ammesse (D.M. 95442/2016) sono:
+
+- Situazioni aziendali dovute a **eventi transitori e non imputabili** all'imprenditore o ai lavoratori — inclusi eventi meteorologici, mancanza di materie prime o commesse, crisi di mercato temporanee
+- **Situazioni temporanee di mercato** — calo di ordini, difficoltà di approvvigionamento
+- **Eventi oggettivamente non evitabili (EONE)** — in particolare eventi meteo e, dal luglio 2026, eccezionali situazioni climatiche incluse le straordinarie ondate di calore
+
+**Novità 2026 — Emergenza climatica (Msg. 2418/2026):** il D.L. 107/2026 (art. 6) prevede che per il periodo **1° luglio – 31 dicembre 2026**, i datori dei settori edile, lapideo e delle escavazioni possano accedere alla CIGO per EONE senza che i periodi siano computati ai fini del limite massimo di durata. Nessun contributo addizionale dovuto per questi eventi.
+
+## 4. Durata massima
 
 La CIGO può essere concessa per un massimo di **52 settimane nel biennio mobile** (art. 12, D.Lgs. 148/2015). I periodi connessi a EONE non vengono computati nel limite. La durata di ciascuna concessione non può superare 13 settimane, prorogabili fino al limite massimo.
 
-## Massimali 2026
+## 5. Massimali 2026
 
-Dal 1° gennaio 2026 (Circ. INPS 4/2026) vige un massimale unico:
+Dal 1° gennaio 2026 (Circ. INPS 4/2026) vige un massimale unico indipendentemente dalla retribuzione del lavoratore:
 
-| Trattamento | Importo mensile |
+| Trattamento | Massimale mensile lordo 2026 |
 |---|---|
-| Massimale lordo | **1.423,69 €** |
-| Al netto riduzione 5,84% (L. 41/1986) | **1.340,56 €** |
+| CIGO — importo lordo | **1.423,69 €** |
+| CIGO — al netto riduzione 5,84% (L. 41/1986) | **1.340,56 €** |
 
-Il massimale viene rivalutato ogni anno al 100% dell'indice ISTAT FOI. Per il 2025 era 1.322,05 €.
+Il massimale viene rivalutato ogni anno al 100% dell'indice ISTAT prezzi al consumo (FOI). Per il 2025 il massimale era 1.322,05 €.
 
-## Contribuzione addizionale 2025
+## 6. Contribuzione addizionale a carico del datore
 
-Il datore che utilizza la CIGO versa un contributo addizionale calcolato sul trattamento corrisposto (Circ. INPS 5/2025):
+Il datore di lavoro che utilizza la CIGO versa un contributo addizionale calcolato sul trattamento di integrazione salariale corrisposto (art. 5, D.Lgs. 148/2015). Dal 1° gennaio 2025 (Circ. 5/2025) le aliquote sono:
 
-| Settimane nel biennio mobile | Aliquota |
+| Settimane di CIGO utilizzate nel biennio mobile | Aliquota addizionale |
 |---|---|
 | Fino a 52 settimane | 9% |
 | Da 53 a 104 settimane | 12% |
 | Oltre 104 settimane | 15% |
 
-> **Il contributo addizionale NON è dovuto** per periodi connessi a eventi oggettivamente non evitabili (EONE).
+> **Il contributo addizionale non è dovuto** per periodi connessi a eventi oggettivamente non evitabili (EONE), incluse le emergenze climatiche.
 
-## Come presentare la domanda — OMNIA IS
+## 7. Come presentare la domanda — piattaforma OMNIA IS
 
-Dal **2 maggio 2024** tutte le domande CIGO si presentano esclusivamente sulla piattaforma **OMNIA IS** (Integrated Salariale), accessibile dal portale INPS nella sezione Servizi per aziende e consulenti.
+Dal **2 maggio 2024** tutte le domande di CIGO si presentano esclusivamente sulla nuova piattaforma **OMNIA IS** (Integrated Salariale), accessibile dal portale INPS → Servizi per aziende e consulenti.
 
 **Termini di presentazione:**
-- Per eventi ordinari: entro **15 giorni** dall'inizio della sospensione
-- Per EONE (meteo, emergenze climatiche): entro la **fine del mese successivo**
+- Per eventi ordinari: entro **15 giorni** dall'inizio del periodo di sospensione o riduzione
+- Per eventi EONE (meteo, emergenze climatiche): entro la **fine del mese successivo** a quello in cui ha avuto inizio l'evento
 
 **La domanda deve contenere:**
-- Matricola aziendale e causale della richiesta
-- Relazione tecnica descrittiva delle cause
-- Lista nominativa dei lavoratori beneficiari
+- Matricola aziendale
+- Causale della richiesta
+- Relazione tecnica descrittiva delle cause della riduzione/sospensione
+- Lista nominativa dei lavoratori beneficiari (con data assunzione e livello contrattuale)
 - Verbale di consultazione sindacale (ove richiesto dalla causale)
 - Prospetto CIGO — modello SR41
 
-## Conguaglio UniEmens
+## 8. Modalità di pagamento e conguaglio UniEmens
 
-La modalità standard prevede che l'azienda anticipi l'importo in busta paga e lo recuperi conguagliandolo nel flusso UniEmens mensile.
+Il pagamento ai lavoratori avviene in due modalità:
 
-Il codice da indicare in UniEmens è **COR** (Cassa Integrazione Guadagni Ordinaria Richiesta), con il ticket identificativo della domanda nel campo IdentEventoCig.
+- **Conguaglio (modalità standard):** l'azienda anticipa l'importo in busta paga e lo recupera conguagliandolo nel flusso UniEmens mensile. Il codice di conguaglio viene comunicato dall'INPS tramite il servizio di comunicazione bidirezionale nel Cassetto Previdenziale Aziende unitamente all'autorizzazione.
+- **Pagamento diretto INPS:** quando l'impresa non è in grado di anticipare le somme — richiede specifica documentazione delle difficoltà finanziarie.
 
-> **Il conguaglio deve essere effettuato entro 6 mesi** dalla fine del periodo di paga, dalla scadenza della concessione o dalla data del provvedimento — a pena di decadenza.
+**Esposizione in UniEmens:** durante i periodi di CIGO il datore deve indicare nel flusso UniEmens individuale:
+- CodiceEventoGiorn: codice **COR** (Cassa Integrazione Guadagni Ordinaria Richiesta) — sia prima che dopo l'autorizzazione
+- TipoEventoCIG: codice T + il ticket identificativo della domanda in IdentEventoCig
+- Retribuzione teorica, orario contrattuale e ore lavorabili
 
-Per i periodi CIGO connessi a D.L. 92/2025 (moda, gruppi di imprese in crisi) usare il codice **L149** (Circ. 121/2025).
+> **Il conguaglio deve essere effettuato entro 6 mesi** dalla fine del periodo di paga in corso, dalla scadenza della concessione o dalla data del provvedimento di concessione se successivo — a pena di decadenza.
 
-## Novità 2026 — Emergenza climatica
+Per i periodi CIGO connessi a D.L. 92/2025 (moda, gruppi di imprese) utilizzare codice di conguaglio **L149**. *(Fonte: Circ. INPS 121 del 13/8/2025)*
 
-Il **D.L. 107/2026** (art. 6), illustrato con Msg. INPS 2418 del 20/7/2026, prevede che per il periodo **1° luglio – 31 dicembre 2026** i datori dei settori **edile, lapideo e delle escavazioni** possano accedere alla CIGO per EONE (straordinarie ondate di calore incluse) senza:
-- computare i periodi nel biennio mobile
-- versare il contributo addizionale
+## 9. Novità recenti — sintesi operativa
 
-## Percorso operativo per il datore
+| Data | Fonte | Contenuto |
+|---|---|---|
+| Gen 2025 | Circ. 5/2025 | Riduzione contribuzione addizionale CIGO — nuove aliquote 9/12/15% |
+| Gen 2026 | Circ. 4/2026 | Massimale CIGO 2026: 1.423,69 € lordi (rivalutazione +1,5% ISTAT) |
+| Ago 2025 | Circ. 121/2025 | D.L. 92/2025: esonero addizionale per aree crisi; CIGO filiera moda; istruzioni UniEmens codice L149 |
+| Lug 2026 | Msg. 2418/2026 | D.L. 107/2026: CIGO per emergenza climatica (1/7-31/12/2026) — edile, lapideo, escavazioni |
 
-1. Verificare che l'impresa rientri nei settori ammessi e i lavoratori abbiano 30 giorni di anzianità
-2. Identificare la causale corretta
-3. Informativa sindacale (ove richiesta): esame congiunto con OO.SS. aziendali
-4. Presentare domanda su OMNIA IS con relazione tecnica e lista lavoratori
-5. Ricevere il ticket INPS da riportare in UniEmens nel campo IdentEventoCig
-6. Gestire il flusso UniEmens mensile con codice COR
-7. Ricevere autorizzazione INPS via Cassetto Previdenziale con codice di conguaglio
-8. Conguagliare entro 6 mesi con il codice ricevuto
+## 10. Percorso operativo per il datore di lavoro
 
----
+1. **Verificare l'accesso** — Controllare che l'impresa rientri nei settori ammessi e che i lavoratori abbiano almeno 30 giorni di anzianità (salvo EONE).
+2. **Identificare la causale** — Individuare la causale corretta tra quelle previste dal D.M. 95442/2016 — la causale determina termini e adempimenti.
+3. **Informativa sindacale** — Per molte causali è richiesto un esame congiunto con le OO.SS. aziendali. Redigere il verbale di consultazione.
+4. **Presentare domanda su OMNIA IS** — Accedere a inps.it → OMNIA IS → Crea domanda → selezionare CIGO. Allegare relazione tecnica, lista lavoratori, verbale sindacale, modello SR41.
+5. **Ricevere il ticket INPS** — La piattaforma rilascia un ticket identificativo da riportare in UniEmens nel campo IdentEventoCig.
+6. **Gestire il flusso UniEmens** — Esporre mensilmente i dati CIG: codice COR, ticket, retribuzione teorica, ore non lavorate.
+7. **Ricevere autorizzazione INPS** — L'INPS comunica l'autorizzazione via Cassetto Previdenziale Aziende con il codice di conguaglio specifico.
+8. **Conguagliare entro 6 mesi** — Recuperare in UniEmens le somme anticipate ai lavoratori usando il codice di conguaglio ricevuto — entro 6 mesi a pena di decadenza.
 
-*Fonti: Circ. INPS 5/2025 — Circ. INPS 4/2026 — Circ. INPS 121/2025 — Msg. INPS 2418/2026 — D.Lgs. 148/2015*
+## 11. Copertura della KB e limiti
+
+| Informazione | Coperta? | Fonte |
+|---|---|---|
+| Datori ammessi e lavoratori beneficiari | Sì | D.Lgs. 148/2015 |
+| Causali ordinarie e EONE | Sì | D.M. 95442/2016 + Msg. 2418/2026 |
+| Durata massima e biennio mobile | Sì | Art. 12 D.Lgs. 148/2015 |
+| Massimale 2026 | Sì | Circ. 4/2026 |
+| Contribuzione addizionale 2025 | Sì | Circ. 5/2025 |
+| Procedura OMNIA IS | Sì | Scheda servizio INPS |
+| Conguaglio UniEmens e codici | Sì | Circ. 121/2025 |
+| CIGO emergenza climatica lug-dic 2026 | Sì | Msg. 2418/2026 |
+| CIGS, FIS, Fondi di solidarietà | No | Richiedono KB dedicate |
+
+## 12. Fonti ufficiali
+
+- D.Lgs. 14 settembre 2015, n. 148 — Testo Unico Ammortizzatori Sociali (artt. 10-18 per la CIGO)
+- D.M. 95442/2016 — Causali CIGO
+- Circolare INPS n. 5 del 20/1/2025 — Contribuzione addizionale CIGO/CIGS/CIGD 2025 e FIS
+- Circolare INPS n. 4 del 28/1/2026 — Massimali trattamenti integrazione salariale 2026
+- Circolare INPS n. 121 del 13/8/2025 — D.L. 92/2025: aree di crisi, filiera moda, istruzioni UniEmens
+- Messaggio INPS n. 2418 del 20/7/2026 — CIGO per emergenza climatica D.L. 107/2026
+- Scheda servizio INPS — CIGO con piattaforma OMNIA IS (dal 2 maggio 2024)
