@@ -46,6 +46,7 @@ html,body{height:100%;font-family:'Inter',sans-serif;background:var(--gray-50);c
 .hamburger:hover{border-color:var(--navy);}
 .hamburger span{display:block;height:2px;background:var(--gray-600);border-radius:2px;transition:all .25s;}
 .hamburger:hover span{background:var(--navy);}
+#back-btn:hover{border-color:var(--navy);color:var(--navy);}
 
 /* THEME TOGGLE */
 .theme-toggle{width:34px;height:34px;background:var(--gray-100);border:1.5px solid var(--gray-200);border-radius:8px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .15s;}
@@ -264,6 +265,10 @@ body.dark .ai-qs,body.dark .ai-inp,body.dark .ai-disclaimer{background:#1e293b;b
 .kb-article table tr:last-child td{border-bottom:none;}
 .kb-article table tr:nth-child(even) td{background:var(--gray-50);}
 .kb-article hr{border:none;border-top:1px solid var(--gray-200);margin:20px 0;}
+.kb-article a{color:var(--accent);text-decoration:underline;text-underline-offset:2px;font-weight:500;transition:color .15s;}
+.kb-article a:hover{color:var(--navy);}
+.kb-article table td a{color:var(--accent);text-decoration:underline;text-underline-offset:2px;font-weight:500;}
+.kb-article table td a:hover{color:var(--navy);}
 .kb-article em{color:var(--gray-400);font-size:12px;}
 </style>
 </head>
@@ -272,6 +277,10 @@ body.dark .ai-qs,body.dark .ai-inp,body.dark .ai-disclaimer{background:#1e293b;b
 <header class="header">
   <button class="hamburger" id="hamburger-btn" onclick="toggleSidebar()" title="Menu">
     <span></span><span></span><span></span>
+  </button>
+  <button id="back-btn" onclick="goBack()" title="Pagina precedente" style="display:none;align-items:center;gap:6px;padding:7px 13px;border:1.5px solid var(--gray-200);border-radius:20px;font-size:12.5px;font-weight:500;color:var(--gray-600);background:#fff;cursor:pointer;transition:all .15s;flex-shrink:0;">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    Indietro
   </button>
   <a class="h-brand" href="#" onclick="showPage('home');return false;">
     <div class="h-logo">H</div>
@@ -680,7 +689,12 @@ const allPages=['home','previdenza','welfare','sanita','chisiamo',
   'durc-online','cigo','fondi-sanitari-contrattuali','sanita-fiscale'];
 const sbMap={home:'sb-home',previdenza:'sb-prev',welfare:'sb-welf',sanita:'sb-san'};
 
-function showPage(name){
+let navStack=[];
+let currentPage='home';
+
+function showPage(name, addToStack=true){
+  if(addToStack && name!==currentPage) navStack.push(currentPage);
+  currentPage=name;
   allPages.forEach(p=>{
     const el=document.getElementById('page-'+p);
     if(el) el.classList.toggle('active',p===name);
@@ -689,7 +703,15 @@ function showPage(name){
     const sb=document.getElementById(sbMap[k]);
     if(sb) sb.classList.toggle('active',k===name);
   });
+  const btn=document.getElementById('back-btn');
+  if(btn) btn.style.display=navStack.length>0?'flex':'none';
   window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function goBack(){
+  if(navStack.length===0) return;
+  const prev=navStack.pop();
+  showPage(prev, false);
 }
 
 function toggleSidebar(){
