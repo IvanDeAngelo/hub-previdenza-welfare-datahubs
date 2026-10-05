@@ -1,5 +1,5 @@
 import os
-import re
+import markdown
 import anthropic
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify, Response, stream_with_context
 
@@ -11,118 +11,34 @@ USERS = {
 }
 
 KB_FILES = {
-    'posizione_contributiva': 'posizione_contributiva.txt',
-    'accompagnamento_pensione': 'accompagnamento_pensione.txt',
-    'durc_online': 'durc_online.txt',
-    'cigo': 'cigo.txt',
-    'fondi_sanitari_contrattuali': 'fondi_sanitari_contrattuali.txt',
-    'sanita_fiscale': 'sanita_fiscale.txt',
+    'posizione_contributiva': 'posizione_contributiva.md',
+    'accompagnamento_pensione': 'accompagnamento_pensione.md',
+    'durc_online': 'durc_online.md',
+    'cigo': 'cigo.md',
+    'fondi_sanitari_contrattuali': 'fondi_sanitari_contrattuali.md',
+    'sanita_fiscale': 'sanita_fiscale.md',
 }
 
-def txt_to_html(text):
-    """Converte il testo della KB in HTML formattato."""
-    lines = text.split('\n')
-    html = []
-    in_table = False
-    
-    for line in lines:
-        line = line.strip()
-        
-        # Salta righe vuote consecutive
-        if not line:
-            if html and html[-1] != '<br>':
-                html.append('<br>')
-            continue
-        
-        # Intestazione principale (=== TITOLO ===)
-        if line.startswith('===') and line.endswith('==='):
-            title = line.strip('= ').strip()
-            html.append(f'<h3 class="kb-section-title">{title}</h3>')
-            continue
-        
-        # Riga separatore
-        if line.startswith('---'):
-            continue
-            
-        # Metadati iniziali (TEMA:, MACRO AREA:, ecc.)
-        if re.match(r'^(TEMA|MACRO AREA|FONTI|AGGIORNAMENTO|SERVIZIO DB):', line):
-            key, _, val = line.partition(':')
-            html.append(f'<p class="kb-meta"><strong>{key}:</strong>{val}</p>')
-            continue
-        
-        # Righe tabella (contengono |)
-        if '|' in line and line.count('|') >= 2:
-            if not in_table:
-                html.append('<table class="kb-table"><tbody>')
-                in_table = True
-            cells = [c.strip() for c in line.split('|') if c.strip()]
-            row = ''.join(f'<td>{c}</td>' for c in cells)
-            html.append(f'<tr>{row}</tr>')
-            continue
-        else:
-            if in_table:
-                html.append('</tbody></table>')
-                in_table = False
-        
-        # Bullet point
-        if line.startswith('• ') or line.startswith('- '):
-            content = line[2:]
-            # Grassetto per parti in maiuscolo o tra **
-            content = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', content)
-            html.append(f'<li>{content}</li>')
-            continue
-        
-        # Domanda FAQ (D:)
-        if line.startswith('D:'):
-            html.append(f'<p class="kb-faq-q"><strong>{line}</strong></p>')
-            continue
-        
-        # Risposta FAQ (R:)
-        if line.startswith('R:'):
-            html.append(f'<p class="kb-faq-a">{line}</p>')
-            continue
-        
-        # Riga normale — applica grassetto
-        line = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', line)
-        html.append(f'<p>{line}</p>')
-    
-    if in_table:
-        html.append('</tbody></table>')
-    
-    # Raggruppa i <li> in <ul>
-    result = '\n'.join(html)
-    result = re.sub(r'(<li>.*?</li>\n?)+', lambda m: f'<ul class="kb-ul">{m.group()}</ul>', result, flags=re.DOTALL)
-    
-    return result
-
-
 def load_kb():
-    kb = {}
+    kb_html = {}
+    kb_raw = {}
     kb_dir = os.path.join(os.path.dirname(__file__), 'kb')
     for key, fname in KB_FILES.items():
         fpath = os.path.join(kb_dir, fname)
         if os.path.exists(fpath):
             with open(fpath, 'r', encoding='utf-8') as f:
                 raw = f.read()
-                kb[key] = txt_to_html(raw)
+                kb_raw[key] = raw
+                kb_html[key] = markdown.markdown(
+                    raw,
+                    extensions=['tables', 'nl2br']
+                )
         else:
-            kb[key] = '<p>Contenuto non disponibile.</p>'
-    return kb
+            kb_html[key] = '<p>Contenuto non disponibile.</p>'
+            kb_raw[key] = ''
+    return kb_html, kb_raw
 
-def load_kb_raw():
-    kb = {}
-    kb_dir = os.path.join(os.path.dirname(__file__), 'kb')
-    for key, fname in KB_FILES.items():
-        fpath = os.path.join(kb_dir, fname)
-        if os.path.exists(fpath):
-            with open(fpath, 'r', encoding='utf-8') as f:
-                kb[key] = f.read()
-        else:
-            kb[key] = ''
-    return kb
-
-KB = load_kb()
-KB_RAW = load_kb_raw()
+KB, KB_RAW = load_kb()
 
 SYSTEM_PROMPT = """Sei il P&W Advisor, l'assistente virtuale dell'Hub Previdenza e Welfare di DataHubs S.r.l.
 
