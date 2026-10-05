@@ -68,8 +68,8 @@ html,body{height:100%;font-family:'Inter',sans-serif;background:var(--gray-50);c
 .hero p{font-size:13.5px;color:rgba(255,255,255,.7);line-height:1.65;max-width:340px;}
 .hero-img{position:relative;overflow:hidden;}
 .hero-img img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
-.hero-card{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:#fff;border-radius:10px;padding:14px 16px;width:190px;box-shadow:var(--shadow-lg);}
-.hci{display:flex;align-items:flex-start;gap:8px;margin-bottom:9px;font-size:11.5px;color:var(--gray-600);line-height:1.4;}
+.hero-card{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.97);border-radius:10px;padding:14px 16px;width:200px;box-shadow:0 4px 20px rgba(0,0,0,0.25);backdrop-filter:blur(4px);}
+.hci{display:flex;align-items:flex-start;gap:8px;margin-bottom:9px;font-size:12px;color:#1E293B;line-height:1.4;font-weight:500;}
 .hci:last-child{margin-bottom:0;}
 .hci-ic{width:22px;height:22px;background:var(--gray-100);border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;}
 
@@ -216,16 +216,26 @@ html,body{height:100%;font-family:'Inter',sans-serif;background:var(--gray-50);c
 .ai-send:disabled{background:var(--gray-400);cursor:not-allowed;}
 .ai-send svg{width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
 .ai-disclaimer{font-size:10px;color:var(--gray-400);padding:5px 12px 9px;background:#fff;line-height:1.5;}
-.kb-dynamic{font-size:13px;color:var(--gray-600);line-height:1.75;}
-.kb-dynamic p{margin-bottom:8px;}
-.kb-dynamic h3.kb-section-title{font-size:14px;font-weight:700;color:var(--navy);margin:16px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--gray-200);}
-.kb-dynamic .kb-meta{font-size:11px;color:var(--gray-400);margin-bottom:4px;}
-.kb-dynamic .kb-faq-q{color:var(--navy);font-size:13px;margin-top:12px;margin-bottom:4px;}
-.kb-dynamic .kb-faq-a{margin-bottom:10px;}
-.kb-dynamic ul.kb-ul{list-style:none;margin:6px 0 10px;}
-.kb-dynamic ul.kb-ul li{display:flex;gap:7px;margin-bottom:5px;}
-.kb-dynamic ul.kb-ul li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:7px;}
-.kb-dynamic br{display:none;}
+.kb-article{font-size:14px;color:#334155;line-height:1.8;max-width:760px;}
+.kb-article h1{font-size:22px;font-weight:800;color:var(--navy);margin:0 0 6px;}
+.kb-article h2{font-size:17px;font-weight:700;color:var(--navy);margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--gray-200);}
+.kb-article h3{font-size:14.5px;font-weight:700;color:var(--navy);margin:20px 0 8px;}
+.kb-article p{margin-bottom:12px;line-height:1.8;}
+.kb-article strong{color:var(--gray-800);}
+.kb-article blockquote{background:#FFF8EC;border-left:3px solid var(--amber);border-radius:0 8px 8px 0;padding:10px 16px;margin:14px 0;font-size:13px;color:#7c4a0a;line-height:1.6;}
+.kb-article blockquote p{margin-bottom:0;}
+.kb-article ul{list-style:none;margin:8px 0 14px;padding:0;}
+.kb-article ul li{display:flex;gap:8px;margin-bottom:7px;font-size:13.5px;color:#475569;line-height:1.65;}
+.kb-article ul li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:8px;}
+.kb-article ol{margin:8px 0 14px;padding-left:20px;}
+.kb-article ol li{margin-bottom:7px;font-size:13.5px;color:#475569;line-height:1.65;}
+.kb-article table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
+.kb-article table th{background:var(--navy);color:#fff;padding:9px 14px;text-align:left;font-weight:600;font-size:12px;}
+.kb-article table td{padding:8px 14px;border-bottom:1px solid var(--gray-100);color:#475569;vertical-align:top;}
+.kb-article table tr:last-child td{border-bottom:none;}
+.kb-article table tr:nth-child(even) td{background:var(--gray-50);}
+.kb-article hr{border:none;border-top:1px solid var(--gray-200);margin:20px 0;}
+.kb-article em{color:var(--gray-400);font-size:12px;}
 </style>
 </head>
 <body>
@@ -445,7 +455,7 @@ html,body{height:100%;font-family:'Inter',sans-serif;background:var(--gray-50);c
     </div>
   </div>
   <div class="kb-section"><div class="kb-section-head"><div class="kb-num">📄</div><h3>Contenuto completo della Knowledge Base</h3></div><div class="kb-body">
-    <div class="kb-dynamic">{{ kb.posizione_contributiva | safe }}</div>
+    <div class="kb-article">{{ kb.posizione_contributiva | safe }}</div>
   </div></div>
   <div class="fonti-box"><div class="fonti-box-title">Fonti ufficiali</div>
     <a class="fonte-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank"><div class="fonte-link-icon" style="background:#EBF5FF;">📄</div><div class="fonte-link-text"><strong>Circolari e messaggi INPS</strong><span>Cerca: Msg. 2553/2025, Circ. 48/2023, Msg. 1900/2023</span></div><span class="fl-arrow">→</span></a>
@@ -466,7 +476,7 @@ html,body{height:100%;font-family:'Inter',sans-serif;background:var(--gray-50);c
     </div>
   </div>
   <div class="kb-section"><div class="kb-section-head"><div class="kb-num">📄</div><h3>Contenuto completo della Knowledge Base</h3></div><div class="kb-body">
-    <div class="kb-dynamic">{{ kb.accompagnamento_pensione | safe }}</div>
+    <div class="kb-article">{{ kb.accompagnamento_pensione | safe }}</div>
   </div></div>
   <div class="fonti-box"><div class="fonti-box-title">Fonti ufficiali</div>
     <a class="fonte-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank"><div class="fonte-link-icon" style="background:#EBF5FF;">📄</div><div class="fonte-link-text"><strong>Circolari e messaggi INPS</strong><span>Cerca: Circ. 119/2013, Circ. 153/2025, Circ. 41/2026, Msg. 2829/2026, Circ. 104/2026</span></div><span class="fl-arrow">→</span></a>
@@ -487,7 +497,7 @@ html,body{height:100%;font-family:'Inter',sans-serif;background:var(--gray-50);c
     </div>
   </div>
   <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#FEF8EC;color:#92600A;">📄</div><h3>Contenuto completo della Knowledge Base</h3></div><div class="kb-body">
-    <div class="kb-dynamic">{{ kb.durc_online | safe }}</div>
+    <div class="kb-article">{{ kb.durc_online | safe }}</div>
   </div></div>
   <div class="fonti-box"><div class="fonti-box-title">Fonti ufficiali</div>
     <a class="fonte-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank"><div class="fonte-link-icon" style="background:#FEF8EC;">📄</div><div class="fonte-link-text"><strong>Circolari e messaggi INPS</strong><span>Cerca: Circ. 146/2021, Msg. 4693/2023, Msg. 3662/2024</span></div><span class="fl-arrow">→</span></a>
@@ -508,7 +518,7 @@ html,body{height:100%;font-family:'Inter',sans-serif;background:var(--gray-50);c
     </div>
   </div>
   <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#FEF8EC;color:#92600A;">📄</div><h3>Contenuto completo della Knowledge Base</h3></div><div class="kb-body">
-    <div class="kb-dynamic">{{ kb.cigo | safe }}</div>
+    <div class="kb-article">{{ kb.cigo | safe }}</div>
   </div></div>
   <div class="fonti-box"><div class="fonti-box-title">Fonti ufficiali</div>
     <a class="fonte-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank"><div class="fonte-link-icon" style="background:#FEF8EC;">📄</div><div class="fonte-link-text"><strong>Circolari e messaggi INPS</strong><span>Cerca: Circ. 5/2025, Circ. 4/2026, Circ. 121/2025, Msg. 2418/2026</span></div><span class="fl-arrow">→</span></a>
@@ -529,7 +539,7 @@ html,body{height:100%;font-family:'Inter',sans-serif;background:var(--gray-50);c
     </div>
   </div>
   <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#EDFAF4;color:#166534;">📄</div><h3>Contenuto completo della Knowledge Base</h3></div><div class="kb-body">
-    <div class="kb-dynamic">{{ kb.fondi_sanitari_contrattuali | safe }}</div>
+    <div class="kb-article">{{ kb.fondi_sanitari_contrattuali | safe }}</div>
   </div></div>
   <div class="fonti-box"><div class="fonti-box-title">Fonti ufficiali</div>
     <a class="fonte-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank"><div class="fonte-link-icon" style="background:#EDFAF4;">📄</div><div class="fonte-link-text"><strong>Circolari INPS — Fondi sanitari convenzionati</strong><span>Cerca: Circ. 77/2025, 119/2025, 120/2025, 95/2026</span></div><span class="fl-arrow">→</span></a>
@@ -549,7 +559,7 @@ html,body{height:100%;font-family:'Inter',sans-serif;background:var(--gray-50);c
     </div>
   </div>
   <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#EDFAF4;color:#166534;">📄</div><h3>Contenuto completo della Knowledge Base</h3></div><div class="kb-body">
-    <div class="kb-dynamic">{{ kb.sanita_fiscale | safe }}</div>
+    <div class="kb-article">{{ kb.sanita_fiscale | safe }}</div>
   </div></div>
   <div class="fonti-box"><div class="fonti-box-title">Fonti ufficiali</div>
     <a class="fonte-link" href="https://www.agenziaentrate.gov.it/portale/web/guest/normativa-e-prassi/circolari" target="_blank"><div class="fonte-link-icon" style="background:#EDFAF4;">📄</div><div class="fonte-link-text"><strong>Agenzia delle Entrate — Circolari</strong><span>Cerca Circolare n. 4/E del 16 maggio 2025</span></div><span class="fl-arrow">→</span></a>
