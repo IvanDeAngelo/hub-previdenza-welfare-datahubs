@@ -59,7 +59,7 @@ Riferimenti istituzionali sempre validi (non richiedono KB):
 - Sito INPS: https://www.inps.it
 - Agenzia delle Entrate: https://www.agenziaentrate.gov.it
 - Ministero della Salute: https://www.salute.gov.it
-- Portale servizi INPS per aziende: https://www.inps.it/it/it/datori-di-lavoro-e-aziende.html
+- Portale servizi INPS per aziende e consulenti: https://www.inps.it — dalla homepage seleziona "Aziende, consulenti e professionisti" nella sezione Servizi online
 
 Knowledge Base disponibile:
 
