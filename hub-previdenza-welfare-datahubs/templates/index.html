@@ -162,19 +162,19 @@ body.dark .ai-qs,body.dark .ai-inp,body.dark .ai-disclaimer{background:#1e293b;b
 .tema-open{font-size:12.5px;font-weight:600;color:var(--tc,var(--accent));background:none;border:none;cursor:pointer;padding:0;font-family:'Inter',sans-serif;}
 
 /* PAGINA TEMA */
-.tema-page-header{background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);padding:20px 24px;margin-bottom:12px;border-left:4px solid var(--tc,var(--accent));}
-.breadcrumb{font-size:11.5px;color:var(--gray-400);margin-bottom:8px;cursor:pointer;display:inline-flex;align-items:center;gap:4px;transition:color .12s;}
-.breadcrumb:hover{color:var(--tc,var(--accent));}
+.tema-page-header{background:var(--tc-bg,#EBF5FF);border:1px solid var(--gray-200);border-radius:var(--radius);padding:20px 24px;margin-bottom:12px;border-left:4px solid var(--tc,var(--accent));}
+.breadcrumb{font-size:11.5px;color:var(--tc,var(--accent));opacity:.8;margin-bottom:8px;cursor:pointer;display:inline-flex;align-items:center;gap:4px;transition:opacity .12s;font-weight:600;}
+.breadcrumb:hover{opacity:1;}
 .tema-page-header h1{font-size:20px;font-weight:800;color:var(--navy);letter-spacing:-.3px;margin:0 0 5px;}
-.tema-page-header>p{font-size:13px;color:var(--gray-400);line-height:1.55;margin:0;}
+.tema-page-header>p{font-size:13px;color:var(--gray-600);line-height:1.55;margin:0;}
 .fonti-row{display:none;}
 /* KB DOC LAYOUT */
 .kb-doc-layout{display:grid;grid-template-columns:192px 1fr;gap:12px;align-items:start;}
-.kb-toc{position:sticky;top:76px;background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);padding:14px 0;max-height:calc(100vh - 100px);overflow-y:auto;}
-.kb-toc-title{font-size:10px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--gray-400);padding:0 14px 10px;border-bottom:1px solid var(--gray-100);margin-bottom:8px;}
+.kb-toc{position:sticky;top:76px;background:var(--tc-bg,#EBF5FF);border:1px solid var(--gray-200);border-radius:var(--radius);padding:14px 0;max-height:calc(100vh - 100px);overflow-y:auto;}
+.kb-toc-title{font-size:10px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--tc,var(--accent));padding:0 14px 10px;border-bottom:1px solid rgba(0,0,0,.07);margin-bottom:8px;}
 .kb-toc a{display:block;font-size:12px;color:var(--gray-600);padding:5px 14px;text-decoration:none;border-left:2px solid transparent;transition:color .12s,border-color .12s,background .12s;line-height:1.4;}
-.kb-toc a:hover{color:var(--tc,var(--accent));background:var(--gray-50);}
-.kb-toc a.toc-active{color:var(--tc,var(--accent));border-left-color:var(--tc,var(--accent));font-weight:600;background:var(--gray-50);}
+.kb-toc a:hover{color:var(--tc,var(--accent));background:rgba(0,0,0,.04);}
+.kb-toc a.toc-active{color:var(--tc,var(--accent));border-left-color:var(--tc,var(--accent));font-weight:600;background:rgba(0,0,0,.06);}
 .kb-toc a.toc-h3{padding-left:24px;font-size:11px;color:var(--gray-400);}
 .kb-doc-main{min-width:0;background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);overflow:hidden;}
 /* KB SECTIONS */
@@ -513,7 +513,7 @@ body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);bac
 
 <!-- POSIZIONE CONTRIBUTIVA -->
 <div class="page" id="page-posizione-contributiva"><div class="area-wrap">
-  <div class="tema-page-header">
+  <div class="tema-page-header" style="--tc:#1d6fa4;--tc-bg:#EBF5FF;">
     <div class="breadcrumb" onclick="showPage('previdenza')">← Previdenza</div>
     <h1>Posizione contributiva e correttezza versamenti</h1>
     <p>Estratto conto, verifica versamenti, unicità posizione aziendale e ricorsi amministrativi INPS.</p>
@@ -528,7 +528,7 @@ body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);bac
     <button class="kb-toc-mobile-btn" onclick="toggleTocMobile(this)">📋 In questa guida <span>▾</span></button>
     <div class="kb-toc-mobile-list" id="toc-posizione-mobile-list"></div>
   </div>
-  <div class="kb-doc-layout" style="--tc:#1d6fa4;">
+  <div class="kb-doc-layout" style="--tc:#1d6fa4;--tc-bg:#EBF5FF;">
     <div class="kb-toc" id="toc-posizione"><div class="kb-toc-title">In questa guida</div></div>
     <div class="kb-doc-main">
       <div class="kb-section"><div class="kb-section-head"><div class="kb-num">📄</div><h3>Contenuto completo della Knowledge Base</h3></div><div class="kb-body">
@@ -544,7 +544,7 @@ body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);bac
 
 <!-- ACCOMPAGNAMENTO PENSIONE -->
 <div class="page" id="page-accompagnamento-pensione"><div class="area-wrap">
-  <div class="tema-page-header">
+  <div class="tema-page-header" style="--tc:#1d6fa4;--tc-bg:#EBF5FF;">
     <div class="breadcrumb" onclick="showPage('previdenza')">← Previdenza</div>
     <h1>Prestazioni di accompagnamento alla pensione</h1>
     <p>Isopensione, accordo aziendale, procedura INPS, agevolazioni fiscali 2026 e tutele per nuovi requisiti pensionistici.</p>
@@ -560,7 +560,7 @@ body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);bac
     <button class="kb-toc-mobile-btn" onclick="toggleTocMobile(this)">📋 In questa guida <span>▾</span></button>
     <div class="kb-toc-mobile-list" id="toc-accompagnamento-mobile-list"></div>
   </div>
-  <div class="kb-doc-layout" style="--tc:#1d6fa4;">
+  <div class="kb-doc-layout" style="--tc:#1d6fa4;--tc-bg:#EBF5FF;">
     <div class="kb-toc" id="toc-accompagnamento"><div class="kb-toc-title">In questa guida</div></div>
     <div class="kb-doc-main">
       <div class="kb-section"><div class="kb-section-head"><div class="kb-num">📄</div><h3>Contenuto completo della Knowledge Base</h3></div><div class="kb-body">
@@ -576,7 +576,7 @@ body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);bac
 
 <!-- DURC ONLINE -->
 <div class="page" id="page-durc-online"><div class="area-wrap">
-  <div class="tema-page-header" style="--tc:#92600A;">
+  <div class="tema-page-header" style="--tc:#92600A;--tc-bg:#FEF8EC;">
     <div class="breadcrumb" onclick="showPage('welfare')">← Welfare aziendale</div>
     <h1>DURC Online</h1>
     <p>Verifica regolarità contributiva, Piattaforma Unica INPS, Ve.R.A., Simulazione DURC, Pre-DURC e Delega Master.</p>
@@ -591,7 +591,7 @@ body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);bac
     <button class="kb-toc-mobile-btn" onclick="toggleTocMobile(this)">📋 In questa guida <span>▾</span></button>
     <div class="kb-toc-mobile-list" id="toc-durc-mobile-list"></div>
   </div>
-  <div class="kb-doc-layout" style="--tc:#92600A;">
+  <div class="kb-doc-layout" style="--tc:#92600A;--tc-bg:#FEF8EC;">
     <div class="kb-toc" id="toc-durc"><div class="kb-toc-title">In questa guida</div></div>
     <div class="kb-doc-main">
       <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#FEF8EC;color:#92600A;">📄</div><h3>Contenuto completo della Knowledge Base</h3></div><div class="kb-body">
@@ -608,7 +608,7 @@ body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);bac
 
 <!-- CIGO -->
 <div class="page" id="page-cigo"><div class="area-wrap">
-  <div class="tema-page-header" style="--tc:#92600A;">
+  <div class="tema-page-header" style="--tc:#92600A;--tc-bg:#FEF8EC;">
     <div class="breadcrumb" onclick="showPage('welfare')">← Welfare aziendale</div>
     <h1>Cassa Integrazione Guadagni Ordinaria (CIGO)</h1>
     <p>Datori ammessi, causali, OMNIA IS, massimali 2026, contribuzione addizionale e conguaglio UniEmens.</p>
@@ -623,7 +623,7 @@ body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);bac
     <button class="kb-toc-mobile-btn" onclick="toggleTocMobile(this)">📋 In questa guida <span>▾</span></button>
     <div class="kb-toc-mobile-list" id="toc-cigo-mobile-list"></div>
   </div>
-  <div class="kb-doc-layout" style="--tc:#92600A;">
+  <div class="kb-doc-layout" style="--tc:#92600A;--tc-bg:#FEF8EC;">
     <div class="kb-toc" id="toc-cigo"><div class="kb-toc-title">In questa guida</div></div>
     <div class="kb-doc-main">
       <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#FEF8EC;color:#92600A;">📄</div><h3>Contenuto completo della Knowledge Base</h3></div><div class="kb-body">
@@ -639,7 +639,7 @@ body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);bac
 
 <!-- FONDI SANITARI CONTRATTUALI -->
 <div class="page" id="page-fondi-sanitari-contrattuali"><div class="area-wrap">
-  <div class="tema-page-header" style="background:linear-gradient(135deg,#052e16,#166534);">
+  <div class="tema-page-header" style="--tc:#166534;--tc-bg:#EDFAF4;">
     <div class="breadcrumb" onclick="showPage('sanita')">← Sanità integrativa</div>
     <h1>Fondi sanitari contrattuali — contribuzione obbligatoria</h1>
     <p>Meccanismo di riscossione INPS tramite F24 e UniEmens per i fondi sanitari convenzionati.</p>
@@ -654,7 +654,7 @@ body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);bac
     <button class="kb-toc-mobile-btn" onclick="toggleTocMobile(this)">📋 In questa guida <span>▾</span></button>
     <div class="kb-toc-mobile-list" id="toc-fondi-mobile-list"></div>
   </div>
-  <div class="kb-doc-layout" style="--tc:#166534;">
+  <div class="kb-doc-layout" style="--tc:#166534;--tc-bg:#EDFAF4;">
     <div class="kb-toc" id="toc-fondi"><div class="kb-toc-title">In questa guida</div></div>
     <div class="kb-doc-main">
       <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#EDFAF4;color:#166534;">📄</div><h3>Contenuto completo della Knowledge Base</h3></div><div class="kb-body">
@@ -670,7 +670,7 @@ body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);bac
 
 <!-- SANITÀ FISCALE -->
 <div class="page" id="page-sanita-fiscale"><div class="area-wrap">
-  <div class="tema-page-header" style="background:linear-gradient(135deg,#052e16,#166534);">
+  <div class="tema-page-header" style="--tc:#166534;--tc-bg:#EDFAF4;">
     <div class="breadcrumb" onclick="showPage('sanita')">← Sanità integrativa</div>
     <h1>Fondi sanitari — regime fiscale e agevolazioni</h1>
     <p>Tipologie A e B, deducibilità fino a 3.615,20 €, Anagrafe Min. Salute e trattamento contributivo INPS.</p>
@@ -685,7 +685,7 @@ body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);bac
     <button class="kb-toc-mobile-btn" onclick="toggleTocMobile(this)">📋 In questa guida <span>▾</span></button>
     <div class="kb-toc-mobile-list" id="toc-sfiscale-mobile-list"></div>
   </div>
-  <div class="kb-doc-layout" style="--tc:#166534;">
+  <div class="kb-doc-layout" style="--tc:#166534;--tc-bg:#EDFAF4;">
     <div class="kb-toc" id="toc-sfiscale"><div class="kb-toc-title">In questa guida</div></div>
     <div class="kb-doc-main">
       <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#EDFAF4;color:#166534;">📄</div><h3>Contenuto completo della Knowledge Base</h3></div><div class="kb-body">
