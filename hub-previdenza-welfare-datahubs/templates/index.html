@@ -22,7 +22,8 @@ html,body{height:100%;font-family:'Inter',sans-serif;background:var(--gray-50);c
 /* HEADER */
 .header{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--header-h);background:#fff;border-bottom:1px solid var(--gray-200);display:flex;align-items:center;padding:0 20px;gap:16px;box-shadow:0 1px 4px rgba(0,0,0,.06);}
 .h-brand{display:flex;align-items:center;gap:10px;flex-shrink:0;cursor:pointer;text-decoration:none;}
-.h-logo{width:38px;height:38px;background:var(--navy);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:800;color:#fff;font-family:Georgia,serif;flex-shrink:0;}
+.h-logo{height:38px;display:flex;align-items:center;flex-shrink:0;}
+.h-logo img{height:38px;width:auto;object-fit:contain;}
 .h-name strong{display:block;font-size:13px;font-weight:700;color:var(--navy);line-height:1.2;}
 .h-name span{display:block;font-size:11px;color:var(--gray-400);}
 .h-search{width:380px;display:flex;align-items:center;background:var(--gray-100);border:1.5px solid var(--gray-200);border-radius:24px;padding:0 6px 0 14px;gap:8px;transition:border-color .15s;}
@@ -283,12 +284,12 @@ body.dark .ai-qs,body.dark .ai-inp,body.dark .ai-disclaimer{background:#1e293b;b
     Indietro
   </button>
   <a class="h-brand" href="#" onclick="showPage('home');return false;">
-    <div class="h-logo">H</div>
+    <div class="h-logo"><img src="/static/images/Logo HUB Previdenza e Welfare.png" alt="Hub Previdenza e Welfare"></div>
     <div class="h-name"><strong>Hub Previdenza</strong><span>e Welfare</span></div>
   </a>
   <div class="h-search">
     <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-    <input type="text" id="search-input" placeholder="Cerca nella Knowledge Base..." onkeydown="if(event.key==='Enter')doSearch()">
+    <input type="text" id="search-input" placeholder="Cerca nella base documentale..." onkeydown="if(event.key==='Enter')doSearch()">
     <button class="search-go" onclick="doSearch()">
       <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </button>
@@ -350,7 +351,7 @@ body.dark .ai-qs,body.dark .ai-inp,body.dark .ai-disclaimer{background:#1e293b;b
 
   <div class="ai-notice">
     <div class="ai-notice-icon">i</div>
-    <span>L'assistente AI è addestrato sulle fonti INPS ufficiali, dell'Agenzia delle Entrate e del Ministero della Salute certificate in questa Knowledge Base. Ogni risposta include il riferimento alla fonte originale per una consultazione immediata e sicura.</span>
+    <span>L'assistente AI è addestrato sulle fonti INPS ufficiali, dell'Agenzia delle Entrate e del Ministero della Salute certificate nella base documentale. Ogni risposta include il riferimento alla fonte originale per una consultazione immediata e sicura.</span>
   </div>
 
   <div class="section">
@@ -391,7 +392,7 @@ body.dark .ai-qs,body.dark .ai-inp,body.dark .ai-disclaimer{background:#1e293b;b
     <h2>Informazioni utili</h2>
     <div class="info-grid">
       <div class="info-item"><div class="info-icon">📖</div><strong>Fonti certificate</strong><span>INPS, Agenzia delle Entrate, Ministero della Salute</span></div>
-      <div class="info-item"><div class="info-icon">❔</div><strong>Come usare la KB</strong><span>Naviga per macro area o cerca con la barra in alto</span></div>
+      <div class="info-item"><div class="info-icon">❔</div><strong>Come usare la base documentale</strong><span>Naviga per macro area o cerca con la barra in alto</span></div>
       <div class="info-item"><div class="info-icon">🔗</div><strong>Servizi INPS</strong><span>Link diretti alle procedure ufficiali nei temi</span></div>
       <div class="info-item"><div class="info-icon">🤖</div><strong>Assistente AI</strong><span>Fai domande in linguaggio naturale — bottone in basso a destra</span></div>
     </div>
@@ -622,15 +623,15 @@ body.dark .ai-qs,body.dark .ai-inp,body.dark .ai-disclaimer{background:#1e293b;b
   <div class="cs-card"><div class="cs-bar" style="background:#1d6fa4;"></div><div class="cs-body">
     <div class="cs-cat" style="color:#1d6fa4;">Il progetto</div><h3>Hub Digitale</h3>
     <p class="cs-text">Ambiente digitale privato, organizzato per macroaree tematiche, che raccoglie e rende fruibili i contenuti certificati prodotti dal Centro Studi. Non è un archivio statico: è un ecosistema cognitivo che si aggiorna e propone contenuti in base al profilo dell'utente.</p>
-    <p class="cs-text">La Knowledge Base è alimentata da circolari e messaggi degli enti previdenziali, testi normativi e decreti, guide operative, output del Centro Studi e buone prassi raccolte dalle imprese. DataHubs S.r.l. ne cura la strutturazione, la semantizzazione e la preparazione per l'ingestione nella KB.</p>
+    <p class="cs-text">La base documentale è alimentata da circolari e messaggi degli enti previdenziali, testi normativi e decreti, guide operative, output del Centro Studi e buone prassi raccolte dalle imprese. DataHubs S.r.l. ne cura la strutturazione, la semantizzazione e la preparazione per l'ingestione nella base documentale.</p>
   </div></div>
   <div class="cs-card"><div class="cs-bar" style="background:#0284C7;"></div><div class="cs-body">
     <div class="cs-cat" style="color:#0284C7;">L'assistente</div><h3>P&amp;W Advisor</h3>
-    <p class="cs-text">Sistema che permette agli operatori del Polo di interrogare la KB e ottenere risposte accurate, contestualizzate e tracciate alla fonte. Combina assistente conversazionale AI, motore di ricerca semantico e navigazione per categoria.</p>
+    <p class="cs-text">Sistema che permette agli operatori del Polo di interrogare la base documentale e ottenere risposte accurate, contestualizzate e tracciate alla fonte. Combina assistente conversazionale AI, motore di ricerca semantico e navigazione per categoria.</p>
     <div class="cs-rules">
       <div class="cs-rules-title">Regole di comportamento</div>
-      <div class="cs-rule"><div class="cs-dot" style="background:#0284C7;"></div><span>Risponde esclusivamente sulla base della Knowledge Base certificata — nessuna informazione al di fuori del perimetro.</span></div>
-      <div class="cs-rule"><div class="cs-dot" style="background:#0284C7;"></div><span>Non genera mai informazioni non presenti nella KB. Se la domanda non è coperta rimanda alla sede territoriale competente.</span></div>
+      <div class="cs-rule"><div class="cs-dot" style="background:#0284C7;"></div><span>Risponde esclusivamente sulla base della documentazione certificata — nessuna informazione al di fuori del perimetro.</span></div>
+      <div class="cs-rule"><div class="cs-dot" style="background:#0284C7;"></div><span>Non genera mai informazioni non presenti nella base documentale. Se la domanda non è coperta rimanda alla sede territoriale competente.</span></div>
       <div class="cs-rule"><div class="cs-dot" style="background:#0284C7;"></div><span>Indica sempre la fonte e la data di aggiornamento per ogni informazione restituita.</span></div>
       <div class="cs-rule"><div class="cs-dot" style="background:#0284C7;"></div><span>Adatta la lunghezza della risposta: breve per sintesi, dettagliata per approfondimenti.</span></div>
       <div class="cs-rule"><div class="cs-dot" style="background:#0284C7;"></div><span>Mantiene il contesto della conversazione per domande di follow-up.</span></div>
@@ -638,7 +639,7 @@ body.dark .ai-qs,body.dark .ai-inp,body.dark .ai-disclaimer{background:#1e293b;b
   </div></div>
   <div class="cs-card" style="margin-bottom:36px;"><div class="cs-bar" style="background:#059669;"></div><div class="cs-body">
     <div class="cs-cat" style="color:#059669;">Obiettivo</div><h3>Il risultato atteso</h3>
-    <p class="cs-text">Un sistema operativo, affidabile e manutenibile che consenta agli operatori del Polo di rispondere a qualsiasi richiesta da parte delle sedi territoriali in materia previdenziale e di welfare — attingendo a una base di conoscenza certificata, senza mai uscire dal perimetro della KB validata da DataHubs.</p>
+    <p class="cs-text">Un sistema operativo, affidabile e manutenibile che consenta agli operatori del Polo di rispondere a qualsiasi richiesta da parte delle sedi territoriali in materia previdenziale e di welfare — attingendo alla base documentale certificata, senza mai uscire dal perimetro validato da DataHubs.</p>
   </div></div>
 </div></div>
 
@@ -661,7 +662,7 @@ body.dark .ai-qs,body.dark .ai-inp,body.dark .ai-disclaimer{background:#1e293b;b
 <div class="ai-panel" id="ai-panel">
   <div class="ai-head">
     <div class="ai-head-av">🤖</div>
-    <div><strong>P&amp;W Advisor</strong><span>KB certificata · Attivo</span></div>
+    <div><strong>P&amp;W Advisor</strong><span>Base documentale certificata · Attivo</span></div>
     <button class="ai-head-x" onclick="toggleAI()">✕</button>
   </div>
   <div class="ai-msgs" id="ai-msgs">
@@ -680,7 +681,7 @@ body.dark .ai-qs,body.dark .ai-inp,body.dark .ai-disclaimer{background:#1e293b;b
       <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
     </button>
   </div>
-  <div class="ai-disclaimer">L'assistente AI è addestrato sulle fonti INPS ufficiali, dell'Agenzia delle Entrate e del Ministero della Salute certificate in questa Knowledge Base. Ogni risposta include il riferimento alla fonte originale per una consultazione immediata e sicura.</div>
+  <div class="ai-disclaimer">L'assistente AI è addestrato sulle fonti INPS ufficiali, dell'Agenzia delle Entrate e del Ministero della Salute certificate nella base documentale. Ogni risposta include il riferimento alla fonte originale per una consultazione immediata e sicura.</div>
 </div>
 
 <script>
