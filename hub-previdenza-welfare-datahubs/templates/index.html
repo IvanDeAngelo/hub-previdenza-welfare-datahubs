@@ -137,7 +137,7 @@ body.dark .ai-qs,body.dark .ai-inp,body.dark .ai-disclaimer{background:#1e293b;b
 
 /* AREA PAGE */
 .area-wrap{margin:20px 24px 36px;}
-.area-header{background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);padding:18px 22px;display:flex;gap:14px;align-items:center;margin-bottom:16px;}
+.area-header{background:var(--ah-bg,#fff);border:1px solid var(--gray-200);border-radius:var(--radius);padding:18px 22px;display:flex;gap:14px;align-items:center;margin-bottom:16px;border-left:4px solid var(--ah-tc,var(--accent));}
 .area-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .area-icon svg{width:22px;height:22px;}
 .area-header h1{font-size:20px;font-weight:800;color:var(--navy);margin-bottom:3px;}
@@ -146,7 +146,7 @@ body.dark .ai-qs,body.dark .ai-inp,body.dark .ai-disclaimer{background:#1e293b;b
 .badge{font-size:10.5px;font-weight:600;padding:2px 9px;border-radius:20px;}
 
 /* TEMA CARD */
-.tema{background:#fff;border:1.5px solid var(--gray-200);border-radius:var(--radius);overflow:hidden;margin-bottom:12px;cursor:pointer;transition:border-color .15s,box-shadow .15s;}
+.tema{background:var(--tc-bg,#fff);border:1.5px solid var(--gray-200);border-radius:var(--radius);overflow:hidden;margin-bottom:12px;cursor:pointer;transition:border-color .15s,box-shadow .15s;}
 .tema:hover{box-shadow:var(--shadow);border-color:var(--tc,var(--accent));}
 .tema-bar{height:3px;background:var(--tc,var(--accent));}
 .tema-body{padding:18px 20px;}
@@ -239,7 +239,7 @@ body.dark .ai-qs,body.dark .ai-inp,body.dark .ai-disclaimer{background:#1e293b;b
 .ai-msgs{padding:12px;background:var(--gray-50);min-height:120px;max-height:220px;overflow-y:auto;display:flex;flex-direction:column;gap:9px;}
 .msg{display:flex;gap:7px;}
 .msg-av{width:22px;height:22px;background:var(--blue-bg);border-radius:5px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;}
-.msg-b{font-size:12px;line-height:1.6;color:var(--gray-800);background:#fff;border:1px solid var(--gray-200);border-radius:0 7px 7px 7px;padding:7px 10px;max-width:250px;}
+.msg-b{font-size:12px;line-height:1.6;color:var(--gray-800);background:#EBF5FF;border:1px solid #BFDBFE;border-radius:0 7px 7px 7px;padding:7px 10px;max-width:250px;}
 .msg.user{flex-direction:row-reverse;}
 .msg.user .msg-b{background:var(--accent);color:#fff;border-color:var(--accent);border-radius:7px 0 7px 7px;}
 .ai-qs{padding:7px 12px;display:flex;flex-wrap:wrap;gap:4px;border-top:1px solid var(--gray-200);background:#fff;}
@@ -427,12 +427,12 @@ body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);bac
 <!-- PREVIDENZA -->
 <div class="page" id="page-previdenza">
   <div class="area-wrap">
-    <div class="area-header">
+    <div class="area-header" style="--ah-bg:#EBF5FF;--ah-tc:#1d6fa4;">
       <div class="area-icon" style="background:#EBF5FF;"><svg viewBox="0 0 24 24" fill="none" stroke="#1d6fa4" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
       <div><h1>Previdenza</h1><p>Posizione contributiva, versamenti, ricorsi e prestazioni previdenziali.</p>
       <div class="area-badges"><span class="badge" style="background:#EBF5FF;color:#1d6fa4;">2 temi</span><span class="badge" style="background:var(--gray-100);color:var(--gray-600);">Fonte: INPS</span></div></div>
     </div>
-    <div class="tema" style="--tc:#1d6fa4;" onclick="showPage('posizione-contributiva')">
+    <div class="tema" style="--tc:#1d6fa4;--tc-bg:#EBF5FF;" onclick="showPage('posizione-contributiva')">
       <div class="tema-bar"></div><div class="tema-body">
       <div class="tema-cat">Previdenza · INPS</div>
       <h3>Posizione contributiva e correttezza versamenti</h3>
@@ -441,7 +441,7 @@ body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);bac
       <div class="tema-footer"><div class="tema-meta"><span>📄 3 fonti INPS</span><span>📅 Sett 2025</span></div><button class="tema-open">Apri il tema →</button></div>
       </div>
     </div>
-    <div class="tema" style="--tc:#1d6fa4;" onclick="showPage('accompagnamento-pensione')">
+    <div class="tema" style="--tc:#1d6fa4;--tc-bg:#EBF5FF;" onclick="showPage('accompagnamento-pensione')">
       <div class="tema-bar"></div><div class="tema-body">
       <div class="tema-cat">Previdenza · INPS</div>
       <h3>Prestazioni di accompagnamento alla pensione</h3>
@@ -456,12 +456,12 @@ body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);bac
 <!-- WELFARE -->
 <div class="page" id="page-welfare">
   <div class="area-wrap">
-    <div class="area-header">
+    <div class="area-header" style="--ah-bg:#FEF8EC;--ah-tc:#92600A;">
       <div class="area-icon" style="background:#FEF8EC;"><svg viewBox="0 0 24 24" fill="none" stroke="#92600A" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>
       <div><h1>Welfare aziendale</h1><p>Regolarità contributiva, DURC e ammortizzatori sociali.</p>
       <div class="area-badges"><span class="badge" style="background:#FEF8EC;color:#92600A;">2 temi</span><span class="badge" style="background:var(--gray-100);color:var(--gray-600);">Fonte: INPS</span></div></div>
     </div>
-    <div class="tema" style="--tc:#92600A;" onclick="showPage('durc-online')">
+    <div class="tema" style="--tc:#92600A;--tc-bg:#FEF8EC;" onclick="showPage('durc-online')">
       <div class="tema-bar"></div><div class="tema-body">
       <div class="tema-cat" style="color:#92600A;">Welfare aziendale · INPS</div>
       <h3>DURC Online</h3>
@@ -470,7 +470,7 @@ body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);bac
       <div class="tema-footer"><div class="tema-meta"><span>📄 6 fonti INPS</span><span>📅 Nov 2024</span></div><button class="tema-open" style="color:#92600A;">Apri il tema →</button></div>
       </div>
     </div>
-    <div class="tema" style="--tc:#92600A;" onclick="showPage('cigo')">
+    <div class="tema" style="--tc:#92600A;--tc-bg:#FEF8EC;" onclick="showPage('cigo')">
       <div class="tema-bar"></div><div class="tema-body">
       <div class="tema-cat" style="color:#92600A;">Welfare aziendale · INPS</div>
       <h3>Cassa Integrazione Guadagni Ordinaria (CIGO)</h3>
@@ -485,12 +485,12 @@ body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);bac
 <!-- SANITÀ -->
 <div class="page" id="page-sanita">
   <div class="area-wrap">
-    <div class="area-header">
+    <div class="area-header" style="--ah-bg:#EDFAF4;--ah-tc:#166534;">
       <div class="area-icon" style="background:#EDFAF4;"><svg viewBox="0 0 24 24" fill="none" stroke="#166534" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
       <div><h1>Sanità integrativa</h1><p>Fondi sanitari contrattuali INPS e regime fiscale della sanità integrativa.</p>
       <div class="area-badges"><span class="badge" style="background:#EDFAF4;color:#166534;">2 temi</span><span class="badge" style="background:var(--gray-100);color:var(--gray-600);">INPS · AE · Min. Salute</span></div></div>
     </div>
-    <div class="tema" style="--tc:#166534;" onclick="showPage('fondi-sanitari-contrattuali')">
+    <div class="tema" style="--tc:#166534;--tc-bg:#EDFAF4;" onclick="showPage('fondi-sanitari-contrattuali')">
       <div class="tema-bar"></div><div class="tema-body">
       <div class="tema-cat" style="color:#166534;">Sanità integrativa · INPS</div>
       <h3>Fondi sanitari contrattuali — contribuzione obbligatoria</h3>
@@ -499,7 +499,7 @@ body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);bac
       <div class="tema-footer"><div class="tema-meta"><span>📄 4 circolari INPS</span><span>📅 Sett 2026</span></div><button class="tema-open" style="color:#166534;">Apri il tema →</button></div>
       </div>
     </div>
-    <div class="tema" style="--tc:#166534;" onclick="showPage('sanita-fiscale')">
+    <div class="tema" style="--tc:#166534;--tc-bg:#EDFAF4;" onclick="showPage('sanita-fiscale')">
       <div class="tema-bar"></div><div class="tema-body">
       <div class="tema-cat" style="color:#166534;">Sanità integrativa · AE · Min. Salute · INPS</div>
       <h3>Fondi sanitari — regime fiscale e agevolazioni</h3>
