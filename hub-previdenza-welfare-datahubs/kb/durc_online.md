@@ -125,6 +125,6 @@ Il valore della piattaforma non consiste nel sostituire il DURC Online, ma nel f
 | Servizio | Categoria DB | Link |
 |---|---|---|
 | DURC Online | Certificazioni e riconoscimenti | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.50130.durc-online.html) |
-| Certificazione debiti contributivi (Ve.R.A.) | Debiti contributivi | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.certificazione-dei-debiti-contributivi-vera.html) |
+| Certificazione debiti contributivi (Ve.R.A.) | Debiti contributivi | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.certificazione-dei-debiti-contributivi-vera-56089.certificazione-dei-debiti-contributivi-vera.html) |
 
 > Il DURC Online è accessibile anche tramite App INPS Mobile. La funzione Ve.R.A. (verifica regolarità attiva) permette all'azienda di verificare in anticipo la propria posizione prima dell'emissione del DURC.
