@@ -87,11 +87,11 @@ I rapporti tra fondo e datori di lavoro (restituzione somme, variazioni, omissio
 
 ## 9. Fonti ufficiali
 
-- Circolare INPS n. 77 del 17/04/2025 — Convenzione INPS-Enfea Salute (ESAL)
-- Circolare INPS n. 119 del 12/08/2025 — Convenzione INPS-FASIFAR (FAFP)
-- Circolare INPS n. 120 del 12/08/2025 — Convenzione INPS-FONDOSANI (SANI)
-- Circolare INPS n. 95 del 10/09/2026 — Convenzione INPS-INNOVACARE (CARE)
-- Scheda servizio INPS — Trasmissione UniEmens per datori di lavoro aziende private
+- [Circolare INPS n. 77 del 17/04/2025](https://www.inps.it) — Convenzione INPS-Enfea Salute (ESAL)
+- [Circolare INPS n. 119 del 12/08/2025](https://www.inps.it) — Convenzione INPS-FASIFAR (FAFP)
+- [Circolare INPS n. 120 del 12/08/2025](https://www.inps.it) — Convenzione INPS-FONDOSANI (SANI)
+- [Circolare INPS n. 95 del 10/09/2026](https://www.inps.it) — Convenzione INPS-INNOVACARE (CARE)
+- [Scheda servizio INPS — Trasmissione UniEmens per datori di lavoro aziende private](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.trasmissione-uniemens-per-datori-di-lavoro-di-aziende-private.html)
 
 ---
 
@@ -103,4 +103,4 @@ Per i fondi sanitari contrattuali con convenzione INPS, il versamento avviene tr
 |---|---|---|
 | Trasmissione UniEmens — datori di lavoro aziende private | Comunicazioni per adempimenti contributivi | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.trasmissione-uniemens-per-datori-di-lavoro-di-aziende-private.html) |
 
-> Il codice convenzione (CodConv) da usare in UniEmens è specifico per ciascun fondo: vedi tabella fondi con convenzione attiva nella sezione 4 della KB.
+> Il codice convenzione (CodConv) da usare in UniEmens è specifico per ciascun fondo: vedi tabella fondi con convenzione attiva nella sezione 4 della presente documentazione.

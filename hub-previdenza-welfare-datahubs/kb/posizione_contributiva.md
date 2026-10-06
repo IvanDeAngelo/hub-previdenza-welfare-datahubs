@@ -105,10 +105,10 @@ La tematica è trasversale: nessuno dei tre record, preso singolarmente, copre l
 
 ## 12. Fonti utilizzate
 
-- INPS — Messaggio n. 2553 del 2 settembre 2025, Evoluzione estratto conto contributivo
-- INPS — Circolare n. 48 del 17 maggio 2023, Regolamento in materia di ricorsi amministrativi di competenza dei Comitati dell'INPS
-- INPS — Messaggio n. 1900 del 23 maggio 2023, precisazioni alla Circolare n. 48/2023
-- Record/servizi INPS: Consultazione Estratto conto contributivo/previdenziale; Gestione ricorsi amministrativi in materia di inquadramento previdenziale; Obbligo di unicità della posizione contributiva — accentramento contributivo
+- [INPS — Messaggio n. 2553 del 2 settembre 2025](https://www.inps.it) — Evoluzione estratto conto contributivo
+- [INPS — Circolare n. 48 del 17 maggio 2023](https://www.inps.it) — Regolamento in materia di ricorsi amministrativi di competenza dei Comitati dell'INPS
+- [INPS — Messaggio n. 1900 del 23 maggio 2023](https://www.inps.it) — Precisazioni alla Circolare n. 48/2023
+- Servizi INPS: [Consultazione Estratto conto contributivo/previdenziale](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.consultazione-estratto-conto-contributivo-previdenziale-50119.consultazione-estratto-conto-contributivo-previdenziale.html) · [Gestione ricorsi amministrativi — inquadramento previdenziale](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.gestione-dei-ricorsi-amministrativi-in-materia-di-inquadramento-previdenziale.html) · [Accentramento contributivo](https://www.inps.it)
 
 ---
 

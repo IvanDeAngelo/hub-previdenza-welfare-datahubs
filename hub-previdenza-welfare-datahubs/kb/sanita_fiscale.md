@@ -121,13 +121,13 @@ L'Anagrafe è istituita presso il Ministero della Salute con D.M. 31 marzo 2008,
 
 ## 10. Fonti ufficiali
 
-- Circolare Agenzia delle Entrate n. 4/E del 16 maggio 2025 — Novità IRPEF e redditi di lavoro dipendente (D.Lgs. 192/2024 e L. 207/2024), par. 2.1
-- D.Lgs. 13 dicembre 2024, n. 192 — Riforma fiscale: modifica artt. 10 e 51 TUIR
-- TUIR (D.P.R. 917/1986) — Art. 10, c. 1, lett. e-ter) e Art. 51, c. 2, lett. a)
-- D.M. Ministero della Salute del 31 marzo 2008 — Istituzione Anagrafe fondi sanitari integrativi
-- D.M. Ministero della Salute del 27 ottobre 2009 — Procedure e modalità funzionamento Anagrafe
-- Circolare INPS n. 263 del 24 dicembre 1997 — Unificazione basi imponibili fiscale e previdenziale
-- Ministero della Salute — pagina Fondi sanitari integrativi: salute.gov.it
+- [Circolare Agenzia delle Entrate n. 4/E del 16 maggio 2025](https://www.agenziaentrate.gov.it) — Novità IRPEF e redditi di lavoro dipendente (D.Lgs. 192/2024 e L. 207/2024), par. 2.1
+- [D.Lgs. 13 dicembre 2024, n. 192](https://www.normattiva.it) — Riforma fiscale: modifica artt. 10 e 51 TUIR
+- [TUIR (D.P.R. 917/1986)](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.del.presidente.della.repubblica:1986-12-22;917) — Art. 10, c. 1, lett. e-ter) e Art. 51, c. 2, lett. a)
+- [D.M. Ministero della Salute del 31 marzo 2008](https://www.salute.gov.it) — Istituzione Anagrafe fondi sanitari integrativi
+- [D.M. Ministero della Salute del 27 ottobre 2009](https://www.salute.gov.it) — Procedure e modalità funzionamento Anagrafe
+- [Circolare INPS n. 263 del 24 dicembre 1997](https://www.inps.it) — Unificazione basi imponibili fiscale e previdenziale
+- [Ministero della Salute — Fondi sanitari integrativi](https://www.salute.gov.it)
 
 ---
 

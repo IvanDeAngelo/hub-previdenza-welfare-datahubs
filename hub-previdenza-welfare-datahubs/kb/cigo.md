@@ -131,13 +131,13 @@ Per i periodi CIGO connessi a D.L. 92/2025 (moda, gruppi di imprese) utilizzare 
 
 ## 12. Fonti ufficiali
 
-- D.Lgs. 14 settembre 2015, n. 148 — Testo Unico Ammortizzatori Sociali (artt. 10-18 per la CIGO)
-- D.M. 95442/2016 — Causali CIGO
-- Circolare INPS n. 5 del 20/1/2025 — Contribuzione addizionale CIGO/CIGS/CIGD 2025 e FIS
-- Circolare INPS n. 4 del 28/1/2026 — Massimali trattamenti integrazione salariale 2026
-- Circolare INPS n. 121 del 13/8/2025 — D.L. 92/2025: aree di crisi, filiera moda, istruzioni UniEmens
-- Messaggio INPS n. 2418 del 20/7/2026 — CIGO per emergenza climatica D.L. 107/2026
-- Scheda servizio INPS — CIGO con piattaforma OMNIA IS (dal 2 maggio 2024)
+- [D.Lgs. 14 settembre 2015, n. 148](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2015-09-14;148) — Testo Unico Ammortizzatori Sociali (artt. 10-18 per la CIGO)
+- [D.M. 95442/2016](https://www.inps.it) — Causali CIGO
+- [Circolare INPS n. 5 del 20/1/2025](https://www.inps.it) — Contribuzione addizionale CIGO/CIGS/CIGD 2025 e FIS
+- [Circolare INPS n. 4 del 28/1/2026](https://www.inps.it) — Massimali trattamenti integrazione salariale 2026
+- [Circolare INPS n. 121 del 13/8/2025](https://www.inps.it) — D.L. 92/2025: aree di crisi, filiera moda, istruzioni UniEmens
+- [Messaggio INPS n. 2418 del 20/7/2026](https://www.inps.it) — CIGO per emergenza climatica D.L. 107/2026
+- [Scheda servizio INPS — CIGO (piattaforma OMNIA IS)](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.50599.cassa-integrazione-guadagni-ordinaria.html)
 
 ---
 

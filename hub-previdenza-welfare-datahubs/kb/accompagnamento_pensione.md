@@ -129,13 +129,13 @@ Dopo l'accettazione della fideiussione, presenta le domande individuali per cias
 
 ## 13. Fonti ufficiali
 
-- Legge 28 giugno 2012, n. 92, art. 4, commi 1-7-ter — Isopensione
-- Circolare INPS n. 119 del 1/8/2013 — Istruzioni operative isopensione
-- Circolare INPS n. 153 del 19/12/2025 — Gestione prestazioni di accompagnamento per l'anno 2026
-- Circolare INPS n. 41 del 3/4/2026 — Tutele per adeguamento requisiti pensionistici 2027-2028
-- Messaggio INPS n. 2829 del 14/9/2026 — Agevolazioni fiscali 2026
-- Circolare INPS n. 104 del 29/9/2026 — Liquidazione per lavoratori privi di anzianità contributiva al 31/12/1995
-- Record DB Servizi INPS — Riga 61: Prestazione di accompagnamento alla pensione
+- [Legge 28 giugno 2012, n. 92](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2012-06-28;92), art. 4, commi 1-7-ter — Isopensione
+- [Circolare INPS n. 119 del 1/8/2013](https://www.inps.it) — Istruzioni operative isopensione
+- [Circolare INPS n. 153 del 19/12/2025](https://www.inps.it) — Gestione prestazioni di accompagnamento per l'anno 2026
+- [Circolare INPS n. 41 del 3/4/2026](https://www.inps.it) — Tutele per adeguamento requisiti pensionistici 2027-2028
+- [Messaggio INPS n. 2829 del 14/9/2026](https://www.inps.it) — Agevolazioni fiscali 2026
+- [Circolare INPS n. 104 del 29/9/2026](https://www.inps.it) — Liquidazione per lavoratori privi di anzianità contributiva al 31/12/1995
+- Servizi INPS: [Prestazione di accompagnamento alla pensione](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.prestazione-di-accompagnamento-alla-pensione.html)
 
 ---
 

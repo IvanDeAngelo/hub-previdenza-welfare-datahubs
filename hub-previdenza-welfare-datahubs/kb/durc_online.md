@@ -108,17 +108,17 @@ Il valore della piattaforma non consiste nel sostituire il DURC Online, ma nel f
 
 ## 12. Fonti ufficiali di riferimento
 
-| Fonte | Contenuto per la KB |
+| Fonte | Contenuto |
 |---|---|
-| D.M. 30 gennaio 2015 | Disciplina di riferimento del DURC Online |
-| Circolare INPS n. 126/2015 | Prime istruzioni operative sul DURC Online |
-| Circolare INPS n. 17/2017 | Aggiornamenti alla disciplina operativa |
-| Circolare INPS n. 146/2021 | Accesso al servizio tramite SPID, CIE e CNS |
-| Comunicato INPS 23/08/2023 | Consultazione del DURC tramite App INPS Mobile |
-| Messaggio INPS n. 4693/2023 | Progetto di verifica e gestione interattiva della regolarità |
-| Comunicato INPS 28/06/2024 | Nuove funzionalità e Pre-DURC |
-| Messaggio INPS n. 3662/2024 | Piattaforma Unica, Ve.R.A., Simulazione DURC, Delega Master, Pre-DURC |
-| Scheda servizio INPS DURC Online | Descrizione e accesso al servizio |
+| [D.M. 30 gennaio 2015](https://www.normattiva.it) | Disciplina di riferimento del DURC Online |
+| [Circolare INPS n. 126/2015](https://www.inps.it) | Prime istruzioni operative sul DURC Online |
+| [Circolare INPS n. 17/2017](https://www.inps.it) | Aggiornamenti alla disciplina operativa |
+| [Circolare INPS n. 146/2021](https://www.inps.it) | Accesso al servizio tramite SPID, CIE e CNS |
+| [Comunicato INPS 23/08/2023](https://www.inps.it) | Consultazione del DURC tramite App INPS Mobile |
+| [Messaggio INPS n. 4693/2023](https://www.inps.it) | Progetto di verifica e gestione interattiva della regolarità |
+| [Comunicato INPS 28/06/2024](https://www.inps.it) | Nuove funzionalità e Pre-DURC |
+| [Messaggio INPS n. 3662/2024](https://www.inps.it) | Piattaforma Unica, Ve.R.A., Simulazione DURC, Delega Master, Pre-DURC |
+| [Scheda servizio INPS DURC Online](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.50130.durc-online.html) | Descrizione e accesso al servizio |
 
 ---
 
