@@ -2,7 +2,7 @@
 
 *Guida al servizio, funzionamento, Ve.R.A., Simulazione DURC e Pre-DURC*
 
-**Fonti:** D.M. 30/1/2015 · Circ. INPS 126/2015 · Circ. INPS 146/2021 · Comunicato INPS 23/8/2023 · Msg. INPS 4693/2023 · Comunicato INPS 28/6/2024 · Msg. INPS 3662/2024 | Aggiornamento: settembre 2026
+*Aggiornamento: settembre 2026*
 
 ---
 
