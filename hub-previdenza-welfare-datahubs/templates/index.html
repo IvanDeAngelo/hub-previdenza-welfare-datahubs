@@ -161,22 +161,27 @@ body.dark .ai-qs,body.dark .ai-inp,body.dark .ai-disclaimer{background:#1e293b;b
 .tema-meta span{font-size:11px;color:var(--gray-400);}
 .tema-open{font-size:12.5px;font-weight:600;color:var(--tc,var(--accent));background:none;border:none;cursor:pointer;padding:0;font-family:'Inter',sans-serif;}
 
-/* PAGINA TEMA */
-.tema-page-header{background:linear-gradient(135deg,#0F2A4A,#1B3A5C);border-radius:14px;padding:26px 30px;margin-bottom:16px;color:#fff;}
-.breadcrumb{font-size:12px;color:rgba(255,255,255,.5);margin-bottom:10px;cursor:pointer;display:flex;align-items:center;gap:5px;}
-.breadcrumb:hover{color:rgba(255,255,255,.8);}
-.tema-page-header h1{font-size:22px;font-weight:800;letter-spacing:-.3px;margin-bottom:7px;}
-.tema-page-header p{font-size:13px;color:rgba(255,255,255,.7);line-height:1.6;max-width:540px;}
-.fonti-row{display:flex;gap:7px;margin-top:14px;flex-wrap:wrap;}
-.fonte-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:4px 11px;font-size:11px;color:rgba(255,255,255,.85);text-decoration:none;transition:background .15s;}
-.fonte-badge:hover{background:rgba(255,255,255,.22);}
-
+/* ── PAGINA TEMA – HEADER COMPATTO ── */
+.tema-page-header{background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);padding:20px 24px;margin-bottom:0;border-left:4px solid var(--tc,var(--accent));}
+.breadcrumb{font-size:11.5px;color:var(--gray-400);margin-bottom:8px;cursor:pointer;display:inline-flex;align-items:center;gap:4px;transition:color .12s;}
+.breadcrumb:hover{color:var(--tc,var(--accent));}
+.tema-page-header h1{font-size:20px;font-weight:800;color:var(--navy);letter-spacing:-.3px;margin:0 0 5px;}
+.tema-page-header>p{font-size:13px;color:var(--gray-400);line-height:1.55;margin:0;}
+.fonti-row{display:none;}
+/* ── LAYOUT 3 COLONNE ── */
+.kb-doc-layout{display:grid;grid-template-columns:200px 1fr;gap:0;margin-top:12px;align-items:start;}
+.kb-toc{position:sticky;top:76px;background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);padding:14px 0;max-height:calc(100vh - 100px);overflow-y:auto;align-self:start;}
+.kb-toc-title{font-size:10px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--gray-400);padding:0 16px 10px;border-bottom:1px solid var(--gray-100);margin-bottom:8px;}
+.kb-toc a{display:block;font-size:12px;color:var(--gray-600);padding:5px 16px;text-decoration:none;border-left:2px solid transparent;transition:color .12s,border-color .12s,background .12s;line-height:1.4;}
+.kb-toc a:hover{color:var(--tc,var(--accent));background:var(--gray-50);}
+.kb-toc a.toc-active{color:var(--tc,var(--accent));border-left-color:var(--tc,var(--accent));font-weight:600;background:var(--gray-50);}
+.kb-toc a.toc-h3{padding-left:26px;font-size:11.5px;color:var(--gray-400);}
+.kb-doc-main{min-width:0;background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);overflow:hidden;margin-left:12px;}
 /* KB SECTIONS */
-.kb-section{background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);overflow:hidden;margin-bottom:12px;}
-.kb-section-head{padding:14px 20px;border-bottom:1px solid var(--gray-100);display:flex;align-items:center;gap:9px;}
-.kb-section-head h3{font-size:14px;font-weight:700;color:var(--navy);flex:1;}
-.kb-num{width:24px;height:24px;border-radius:6px;background:var(--blue-bg);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--blue);flex-shrink:0;}
-.kb-body{padding:16px 20px;}
+.kb-section{background:transparent;border:none;border-radius:0;overflow:visible;margin-bottom:0;}
+.kb-section-head{display:none;}
+.kb-body{padding:28px 36px 32px;}
+.kb-num{display:none;}
 .kb-text{font-size:13px;color:var(--gray-600);line-height:1.75;margin-bottom:10px;}
 .kb-text:last-child{margin-bottom:0;}
 .kb-hl{background:var(--blue-bg);border-left:3px solid var(--blue);border-radius:0 8px 8px 0;padding:10px 14px;margin:10px 0;font-size:12.5px;color:var(--navy);line-height:1.6;}
@@ -191,18 +196,16 @@ body.dark .ai-qs,body.dark .ai-inp,body.dark .ai-disclaimer{background:#1e293b;b
 .kb-ul{margin:7px 0 10px;list-style:none;}
 .kb-ul li{display:flex;gap:7px;font-size:13px;color:var(--gray-600);line-height:1.6;margin-bottom:6px;}
 .kb-ul li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:7px;}
-
 /* FONTI BOX */
-.fonti-box{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--radius);padding:14px 16px;margin-top:16px;}
+.fonti-box{background:var(--gray-50);border-top:1px solid var(--gray-200);border-radius:0 0 var(--radius) var(--radius);padding:16px 20px;margin-top:0;}
 .fonti-box-title{font-size:10px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--gray-400);margin-bottom:10px;}
 .fonte-link{display:flex;align-items:center;gap:9px;padding:9px 11px;border-radius:8px;background:#fff;border:1px solid var(--gray-200);margin-bottom:7px;text-decoration:none;transition:border-color .15s,box-shadow .15s;}
 .fonte-link:last-child{margin-bottom:0;}
-.fonte-link:hover{border-color:var(--accent);box-shadow:var(--shadow);}
+.fonte-link:hover{border-color:var(--tc,var(--accent));box-shadow:var(--shadow);}
 .fonte-link-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;}
 .fonte-link-text strong{display:block;font-size:12px;font-weight:600;color:var(--gray-800);}
 .fonte-link-text span{font-size:11px;color:var(--gray-400);}
 .fl-arrow{margin-left:auto;color:var(--gray-400);font-size:13px;}
-
 /* CHI SIAMO */
 .cs-card{background:#fff;border:1.5px solid var(--gray-200);border-radius:var(--radius);overflow:hidden;margin-bottom:12px;}
 .cs-bar{height:3px;}
@@ -216,61 +219,57 @@ body.dark .ai-qs,body.dark .ai-inp,body.dark .ai-disclaimer{background:#1e293b;b
 .cs-rule{display:flex;gap:9px;font-size:12.5px;color:var(--gray-600);line-height:1.5;margin-bottom:9px;}
 .cs-rule:last-child{margin-bottom:0;}
 .cs-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:5px;}
-
-/* AI FAB */
-.ai-fab{position:fixed;bottom:24px;right:24px;z-index:200;display:flex;flex-direction:column;align-items:flex-end;gap:5px;}
-.ai-fab-label{background:var(--navy);color:#fff;font-size:11px;font-weight:500;padding:4px 10px;border-radius:16px;white-space:nowrap;box-shadow:var(--shadow);}
-.ai-fab-btn{width:50px;height:50px;background:var(--navy);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 16px rgba(15,42,74,.35);transition:background .15s,transform .15s;position:relative;}
-.ai-fab-btn:hover{background:#1d6fa4;transform:scale(1.05);}
-.ai-online{position:absolute;top:2px;right:2px;width:11px;height:11px;background:#22c55e;border-radius:50%;border:2px solid #fff;}
-.ai-panel{position:fixed;bottom:84px;right:24px;width:330px;z-index:200;background:#fff;border-radius:14px;border:1px solid var(--gray-200);box-shadow:var(--shadow-lg);overflow:hidden;display:none;flex-direction:column;}
-.ai-panel.open{display:flex;}
-.ai-head{background:var(--navy);padding:11px 14px;display:flex;align-items:center;gap:9px;}
-.ai-head-av{width:28px;height:28px;background:rgba(14,165,233,.2);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px;}
-.ai-head strong{font-size:12.5px;color:#fff;display:block;}
-.ai-head span{font-size:10px;color:rgba(255,255,255,.5);}
-.ai-head-x{margin-left:auto;font-size:15px;cursor:pointer;padding:2px 4px;background:none;border:none;color:rgba(255,255,255,.5);}
-.ai-head-x:hover{color:#fff;}
-.ai-msgs{padding:12px;background:var(--gray-50);min-height:120px;max-height:220px;overflow-y:auto;display:flex;flex-direction:column;gap:9px;}
-.msg{display:flex;gap:7px;}
-.msg-av{width:22px;height:22px;background:var(--blue-bg);border-radius:5px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;}
-.msg-b{font-size:12px;line-height:1.6;color:var(--gray-800);background:#fff;border:1px solid var(--gray-200);border-radius:0 7px 7px 7px;padding:7px 10px;max-width:250px;}
-.msg.user{flex-direction:row-reverse;}
-.msg.user .msg-b{background:var(--accent);color:#fff;border-color:var(--accent);border-radius:7px 0 7px 7px;}
-.ai-qs{padding:7px 12px;display:flex;flex-wrap:wrap;gap:4px;border-top:1px solid var(--gray-200);background:#fff;}
-.ai-q{font-size:10.5px;padding:3px 8px;border:1px solid var(--gray-200);border-radius:11px;color:var(--gray-600);cursor:pointer;background:var(--gray-50);transition:border-color .12s,color .12s;}
-.ai-q:hover{border-color:var(--accent);color:var(--accent);}
-.ai-inp{display:flex;gap:7px;padding:9px 12px;border-top:1px solid var(--gray-200);background:#fff;}
-.ai-input{flex:1;border:1.5px solid var(--gray-200);border-radius:14px;padding:6px 11px;font-size:12px;outline:none;color:var(--gray-800);transition:border-color .12s;font-family:'Inter',sans-serif;}
-.ai-input:focus{border-color:var(--accent);}
-.ai-send{width:28px;height:28px;background:var(--accent);border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.ai-send:disabled{background:var(--gray-400);cursor:not-allowed;}
-.ai-send svg{width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
-.ai-disclaimer{font-size:10px;color:var(--gray-400);padding:5px 12px 9px;background:#fff;line-height:1.5;}
-.kb-article{font-size:14px;color:#334155;line-height:1.8;max-width:760px;}
-.kb-article h1{font-size:22px;font-weight:800;color:var(--navy);margin:0 0 6px;}
-.kb-article h2{font-size:17px;font-weight:700;color:var(--navy);margin:28px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--gray-200);}
-.kb-article h3{font-size:14.5px;font-weight:700;color:var(--navy);margin:20px 0 8px;}
-.kb-article p{margin-bottom:12px;line-height:1.8;}
-.kb-article strong{color:var(--gray-800);}
-.kb-article blockquote{background:#FFF8EC;border-left:3px solid var(--amber);border-radius:0 8px 8px 0;padding:10px 16px;margin:14px 0;font-size:13px;color:#7c4a0a;line-height:1.6;}
+/* KB ARTICLE */
+.kb-article{font-size:14.5px;color:#334155;line-height:1.9;max-width:100%;}
+.kb-article h1{font-size:21px;font-weight:800;color:var(--navy);margin:0 0 8px;letter-spacing:-.3px;}
+.kb-article h2{font-size:16px;font-weight:700;color:var(--navy);margin:36px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--gray-100);display:flex;align-items:center;gap:8px;}
+.kb-article h2::before{content:'';width:3px;height:18px;background:var(--tc,var(--accent));border-radius:2px;flex-shrink:0;}
+.kb-article h3{font-size:14px;font-weight:700;color:var(--gray-800);margin:24px 0 8px;}
+.kb-article p{margin-bottom:14px;line-height:1.9;}
+.kb-article strong{color:var(--navy);font-weight:600;}
+.kb-article blockquote{background:#FAFAF8;border-left:3px solid var(--tc,var(--amber));border-radius:0 8px 8px 0;padding:12px 18px;margin:18px 0;font-size:13.5px;color:#5a4a2a;line-height:1.7;}
 .kb-article blockquote p{margin-bottom:0;}
-.kb-article ul{list-style:none;margin:8px 0 14px;padding:0;}
-.kb-article ul li{display:flex;gap:8px;margin-bottom:7px;font-size:13.5px;color:#475569;line-height:1.65;}
-.kb-article ul li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:8px;}
-.kb-article ol{margin:8px 0 14px;padding-left:20px;}
-.kb-article ol li{margin-bottom:7px;font-size:13.5px;color:#475569;line-height:1.65;}
-.kb-article table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
-.kb-article table th{background:var(--navy);color:#fff;padding:9px 14px;text-align:left;font-weight:600;font-size:12px;}
-.kb-article table td{padding:8px 14px;border-bottom:1px solid var(--gray-100);color:#475569;vertical-align:top;}
+.kb-article ul{list-style:none;margin:10px 0 18px;padding:0;}
+.kb-article ul li{display:flex;gap:10px;margin-bottom:9px;font-size:14px;color:#475569;line-height:1.7;}
+.kb-article ul li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--tc,var(--accent));flex-shrink:0;margin-top:9px;}
+.kb-article ol{margin:10px 0 18px;padding-left:22px;}
+.kb-article ol li{margin-bottom:9px;font-size:14px;color:#475569;line-height:1.7;}
+.kb-article table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13px;display:block;overflow-x:auto;}
+.kb-article table th{background:var(--navy);color:#fff;padding:10px 16px;text-align:left;font-weight:600;font-size:12px;white-space:nowrap;}
+.kb-article table td{padding:9px 16px;border-bottom:1px solid var(--gray-100);color:#475569;vertical-align:top;}
 .kb-article table tr:last-child td{border-bottom:none;}
 .kb-article table tr:nth-child(even) td{background:var(--gray-50);}
-.kb-article hr{border:none;border-top:1px solid var(--gray-200);margin:20px 0;}
-.kb-article a{color:var(--accent);text-decoration:underline;text-underline-offset:2px;font-weight:500;transition:color .15s;}
+.kb-article hr{border:none;border-top:1px solid var(--gray-100);margin:28px 0;}
+.kb-article a{color:var(--tc,var(--accent));text-decoration:underline;text-underline-offset:2px;font-weight:500;transition:color .15s;}
 .kb-article a:hover{color:var(--navy);}
-.kb-article table td a{color:var(--accent);text-decoration:underline;text-underline-offset:2px;font-weight:500;}
+.kb-article table td a{color:var(--tc,var(--accent));text-decoration:underline;text-underline-offset:2px;font-weight:500;}
 .kb-article table td a:hover{color:var(--navy);}
-.kb-article em{color:var(--gray-400);font-size:12px;}
+.kb-article em{color:var(--gray-400);font-size:13px;}
+/* TOC MOBILE */
+.kb-toc-mobile{display:none;background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);margin-top:12px;margin-bottom:12px;overflow:hidden;}
+.kb-toc-mobile-btn{width:100%;background:none;border:none;padding:12px 16px;font-size:12.5px;font-weight:700;color:var(--navy);cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-family:'Inter',sans-serif;}
+.kb-toc-mobile-list{display:none;padding:0 0 10px;}
+.kb-toc-mobile-list.open{display:block;}
+.kb-toc-mobile-list a{display:block;font-size:12.5px;color:var(--gray-600);padding:6px 16px;text-decoration:none;}
+.kb-toc-mobile-list a:hover{color:var(--tc,var(--accent));}
+/* DARK MODE */
+body.dark .tema-page-header{background:#1e293b;border-color:#334155;}
+body.dark .kb-doc-main{background:#1e293b;border-color:#334155;}
+body.dark .kb-toc{background:#1e293b;border-color:#334155;}
+body.dark .kb-toc a{color:#94a3b8;}
+body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);background:#0f172a;}
+body.dark .kb-article{color:#cbd5e1;}
+body.dark .kb-article h1,body.dark .kb-article h2,body.dark .kb-article h3{color:#7DD3FC;}
+body.dark .kb-article blockquote{background:#1a1a0f;color:#d4b48a;}
+body.dark .fonti-box{background:#0f172a;border-color:#334155;}
+body.dark .fonte-link{background:#1e293b;border-color:#334155;}
+/* RESPONSIVE */
+@media(max-width:900px){
+.kb-doc-layout{grid-template-columns:1fr;}
+.kb-toc{display:none;}
+.kb-toc-mobile{display:block;}
+.kb-doc-main{margin-left:0;}
+.kb-body{padding:20px 20px 24px;}}
 </style>
 </head>
 <body>
@@ -487,10 +486,19 @@ body.dark .ai-qs,body.dark .ai-inp,body.dark .ai-disclaimer{background:#1e293b;b
 </div>
 
 <!-- POSIZIONE CONTRIBUTIVA -->
-<div class="page" id="page-posizione-contributiva"><div class="area-wrap">
-  <div class="tema-page-header">
+<div class="page" id="page-posizione-contributiva"><div class="area-wrap"><div class="tema-page-header" style="--tc:#1d6fa4;">
     <div class="breadcrumb" onclick="showPage('previdenza')">← Previdenza</div>
-    <h1>Posizione contributiva e correttezza versamenti</h1>
+    
+  <div class="kb-toc-mobile" id="toc-posizione-mobile">
+    <button class="kb-toc-mobile-btn" onclick="toggleTocMobile('toc-posizione-mobile')">📋 In questa guida <span>▾</span></button>
+    <div class="kb-toc-mobile-list" id="toc-posizione-mobile-list"></div>
+  </div>
+  <div class="kb-doc-layout" style="--tc:#1d6fa4;">
+    <div class="kb-toc" id="toc-posizione">
+      <div class="kb-toc-title">In questa guida</div>
+    </div>
+    <div class="kb-doc-main">
+<h1>Posizione contributiva e correttezza versamenti</h1>
     <p>Estratto conto, verifica versamenti, unicità posizione aziendale e ricorsi amministrativi INPS.</p>
     <div class="fonti-row">
       <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank">📄 Msg. INPS 2553/2025</a>
@@ -500,17 +508,28 @@ body.dark .ai-qs,body.dark .ai-inp,body.dark .ai-disclaimer{background:#1e293b;b
   </div>
   <div class="kb-section"><div class="kb-section-head"><div class="kb-num">📄</div><h3>Contenuto completo della Knowledge Base</h3></div><div class="kb-body">
     <div class="kb-article">{{ kb.posizione_contributiva | safe }}</div>
-  </div></div>
+      </div>
+  </div>
+</div></div>
   <div class="fonti-box"><div class="fonti-box-title">Fonti ufficiali</div>
     <a class="fonte-link" href="https://www.inps.it" target="_blank"><div class="fonte-link-icon" style="background:#EBF5FF;">🔗</div><div class="fonte-link-text"><strong>Portale INPS — Estratto conto contributivo</strong><span>inps.it → cerca "estratto conto contributivo"</span></div><span class="fl-arrow">→</span></a>
     <a class="fonte-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank"><div class="fonte-link-icon" style="background:#EBF5FF;">📄</div><div class="fonte-link-text"><strong>Archivio circolari e messaggi INPS</strong><span>Cerca: Msg. 2553/2025 · Circ. 48/2023 · Msg. 1900/2023</span></div><span class="fl-arrow">→</span></a>
   </div></div></div>
 
 <!-- ACCOMPAGNAMENTO PENSIONE -->
-<div class="page" id="page-accompagnamento-pensione"><div class="area-wrap">
-  <div class="tema-page-header">
+<div class="page" id="page-accompagnamento-pensione"><div class="area-wrap"><div class="tema-page-header" style="--tc:#1d6fa4;">
     <div class="breadcrumb" onclick="showPage('previdenza')">← Previdenza</div>
-    <h1>Prestazioni di accompagnamento alla pensione</h1>
+    
+  <div class="kb-toc-mobile" id="toc-accompagnamento-mobile">
+    <button class="kb-toc-mobile-btn" onclick="toggleTocMobile('toc-accompagnamento-mobile')">📋 In questa guida <span>▾</span></button>
+    <div class="kb-toc-mobile-list" id="toc-accompagnamento-mobile-list"></div>
+  </div>
+  <div class="kb-doc-layout" style="--tc:#1d6fa4;">
+    <div class="kb-toc" id="toc-accompagnamento">
+      <div class="kb-toc-title">In questa guida</div>
+    </div>
+    <div class="kb-doc-main">
+<h1>Prestazioni di accompagnamento alla pensione</h1>
     <p>Isopensione, accordo aziendale, procedura INPS, agevolazioni fiscali 2026 e tutele per nuovi requisiti pensionistici.</p>
     <div class="fonti-row">
       <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank">📄 Circ. INPS 119/2013</a>
@@ -521,7 +540,9 @@ body.dark .ai-qs,body.dark .ai-inp,body.dark .ai-disclaimer{background:#1e293b;b
   </div>
   <div class="kb-section"><div class="kb-section-head"><div class="kb-num">📄</div><h3>Contenuto completo della Knowledge Base</h3></div><div class="kb-body">
     <div class="kb-article">{{ kb.accompagnamento_pensione | safe }}</div>
-  </div></div>
+      </div>
+  </div>
+</div></div>
   <div class="fonti-box"><div class="fonti-box-title">Fonti ufficiali</div>
     <a class="fonte-link" href="https://www.inps.it" target="_blank"><div class="fonte-link-icon" style="background:#EBF5FF;">🔗</div><div class="fonte-link-text"><strong>Portale INPS — Prestazioni di esodo</strong><span>inps.it → cerca "prestazioni di esodo accompagnamento pensione"</span></div><span class="fl-arrow">→</span></a>
     <a class="fonte-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank"><div class="fonte-link-icon" style="background:#EBF5FF;">📄</div><div class="fonte-link-text"><strong>Archivio circolari e messaggi INPS</strong><span>Cerca: Circ. 41/2026 · Msg. 2829/2026 · Circ. 104/2026 · Circ. 119/2013</span></div><span class="fl-arrow">→</span></a>
@@ -529,15 +550,26 @@ body.dark .ai-qs,body.dark .ai-inp,body.dark .ai-disclaimer{background:#1e293b;b
 </div></div>
 
 <!-- DURC ONLINE -->
-<div class="page" id="page-durc-online"><div class="area-wrap">
-  <div class="tema-page-header" style="background:linear-gradient(135deg,#3d1f00,#92600A);">
+<div class="page" id="page-durc-online"><div class="area-wrap"><div class="tema-page-header" style="--tc:#92600A;">
     <div class="breadcrumb" onclick="showPage('welfare')">← Welfare aziendale</div>
-    <h1>DURC Online</h1>
+    
+  <div class="kb-toc-mobile" id="toc-durc-mobile">
+    <button class="kb-toc-mobile-btn" onclick="toggleTocMobile('toc-durc-mobile')">📋 In questa guida <span>▾</span></button>
+    <div class="kb-toc-mobile-list" id="toc-durc-mobile-list"></div>
+  </div>
+  <div class="kb-doc-layout" style="--tc:#92600A;">
+    <div class="kb-toc" id="toc-durc">
+      <div class="kb-toc-title">In questa guida</div>
+    </div>
+    <div class="kb-doc-main">
+<h1>DURC Online</h1>
     <p>Verifica regolarità contributiva, Piattaforma Unica INPS, Ve.R.A., Simulazione DURC, Pre-DURC e Delega Master.</p>
   </div>
   <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#FEF8EC;color:#92600A;">📄</div><h3>Contenuto completo della documentazione</h3></div><div class="kb-body">
     <div class="kb-article">{{ kb.durc_online | safe }}</div>
-  </div></div>
+      </div>
+  </div>
+</div></div>
   <div class="fonti-box"><div class="fonti-box-title">Fonti ufficiali</div>
     <a class="fonte-link" href="https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.50130.durc-online.html" target="_blank"><div class="fonte-link-icon" style="background:#FEF8EC;">🔗</div><div class="fonte-link-text"><strong>Scheda servizio INPS — DURC Online</strong><span>Descrizione e accesso al servizio</span></div><span class="fl-arrow">→</span></a>
     <a class="fonte-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2021.10.circolare-numero-146-del-07-10-2021_13542.html" target="_blank"><div class="fonte-link-icon" style="background:#FEF8EC;">📄</div><div class="fonte-link-text"><strong>Circolare INPS n. 146 del 07/10/2021</strong><span>Accesso tramite SPID, CIE e CNS</span></div><span class="fl-arrow">→</span></a>
@@ -549,10 +581,19 @@ body.dark .ai-qs,body.dark .ai-inp,body.dark .ai-disclaimer{background:#1e293b;b
 </div></div>
 
 <!-- CIGO -->
-<div class="page" id="page-cigo"><div class="area-wrap">
-  <div class="tema-page-header" style="background:linear-gradient(135deg,#3d1f00,#92600A);">
+<div class="page" id="page-cigo"><div class="area-wrap"><div class="tema-page-header" style="--tc:#92600A;">
     <div class="breadcrumb" onclick="showPage('welfare')">← Welfare aziendale</div>
-    <h1>Cassa Integrazione Guadagni Ordinaria (CIGO)</h1>
+    
+  <div class="kb-toc-mobile" id="toc-cigo-mobile">
+    <button class="kb-toc-mobile-btn" onclick="toggleTocMobile('toc-cigo-mobile')">📋 In questa guida <span>▾</span></button>
+    <div class="kb-toc-mobile-list" id="toc-cigo-mobile-list"></div>
+  </div>
+  <div class="kb-doc-layout" style="--tc:#92600A;">
+    <div class="kb-toc" id="toc-cigo">
+      <div class="kb-toc-title">In questa guida</div>
+    </div>
+    <div class="kb-doc-main">
+<h1>Cassa Integrazione Guadagni Ordinaria (CIGO)</h1>
     <p>Datori ammessi, causali, OMNIA IS, massimali 2026, contribuzione addizionale e conguaglio UniEmens.</p>
     <div class="fonti-row">
       <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank">📄 Circ. INPS 4/2026</a>
@@ -562,7 +603,9 @@ body.dark .ai-qs,body.dark .ai-inp,body.dark .ai-disclaimer{background:#1e293b;b
   </div>
   <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#FEF8EC;color:#92600A;">📄</div><h3>Contenuto completo della Knowledge Base</h3></div><div class="kb-body">
     <div class="kb-article">{{ kb.cigo | safe }}</div>
-  </div></div>
+      </div>
+  </div>
+</div></div>
   <div class="fonti-box"><div class="fonti-box-title">Fonti ufficiali</div>
     <a class="fonte-link" href="https://www.inps.it" target="_blank"><div class="fonte-link-icon" style="background:#FEF8EC;">🔗</div><div class="fonte-link-text"><strong>Portale INPS — CIGO / OMNIA IS</strong><span>inps.it → cerca "cassa integrazione ordinaria OMNIA IS"</span></div><span class="fl-arrow">→</span></a>
     <a class="fonte-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank"><div class="fonte-link-icon" style="background:#FEF8EC;">📄</div><div class="fonte-link-text"><strong>Archivio circolari e messaggi INPS</strong><span>Cerca: Circ. 4/2026 · Circ. 5/2025 · Circ. 121/2025 · Msg. 2418/2026</span></div><span class="fl-arrow">→</span></a>
@@ -570,10 +613,19 @@ body.dark .ai-qs,body.dark .ai-inp,body.dark .ai-disclaimer{background:#1e293b;b
 </div></div>
 
 <!-- FONDI SANITARI CONTRATTUALI -->
-<div class="page" id="page-fondi-sanitari-contrattuali"><div class="area-wrap">
-  <div class="tema-page-header" style="background:linear-gradient(135deg,#052e16,#166534);">
+<div class="page" id="page-fondi-sanitari-contrattuali"><div class="area-wrap"><div class="tema-page-header" style="--tc:#166534;">
     <div class="breadcrumb" onclick="showPage('sanita')">← Sanità integrativa</div>
-    <h1>Fondi sanitari contrattuali — contribuzione obbligatoria</h1>
+    
+  <div class="kb-toc-mobile" id="toc-fondi-mobile">
+    <button class="kb-toc-mobile-btn" onclick="toggleTocMobile('toc-fondi-mobile')">📋 In questa guida <span>▾</span></button>
+    <div class="kb-toc-mobile-list" id="toc-fondi-mobile-list"></div>
+  </div>
+  <div class="kb-doc-layout" style="--tc:#166534;">
+    <div class="kb-toc" id="toc-fondi">
+      <div class="kb-toc-title">In questa guida</div>
+    </div>
+    <div class="kb-doc-main">
+<h1>Fondi sanitari contrattuali — contribuzione obbligatoria</h1>
     <p>Meccanismo di riscossione INPS tramite F24 e UniEmens per i fondi sanitari convenzionati.</p>
     <div class="fonti-row">
       <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank">📄 Circ. INPS 77/2025 — ESAL</a>
@@ -583,7 +635,9 @@ body.dark .ai-qs,body.dark .ai-inp,body.dark .ai-disclaimer{background:#1e293b;b
   </div>
   <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#EDFAF4;color:#166534;">📄</div><h3>Contenuto completo della Knowledge Base</h3></div><div class="kb-body">
     <div class="kb-article">{{ kb.fondi_sanitari_contrattuali | safe }}</div>
-  </div></div>
+      </div>
+  </div>
+</div></div>
   <div class="fonti-box"><div class="fonti-box-title">Fonti ufficiali</div>
     <a class="fonte-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank"><div class="fonte-link-icon" style="background:#EDFAF4;">📄</div><div class="fonte-link-text"><strong>Archivio circolari e messaggi INPS</strong><span>Cerca: Circ. 77/2025 (ESAL) · Circ. 119/2025 (FAFP) · Circ. 120/2025 (SANI) · Circ. 95/2026 (CARE)</span></div><span class="fl-arrow">→</span></a>
     <a class="fonte-link" href="https://www.agenziaentrate.gov.it/portale/web/guest/home" target="_blank"><div class="fonte-link-icon" style="background:#EDFAF4;">🔗</div><div class="fonte-link-text"><strong>Agenzia delle Entrate</strong><span>Risoluzioni AE sui codici tributo fondi sanitari</span></div><span class="fl-arrow">→</span></a>
@@ -591,10 +645,19 @@ body.dark .ai-qs,body.dark .ai-inp,body.dark .ai-disclaimer{background:#1e293b;b
 </div></div>
 
 <!-- SANITÀ FISCALE -->
-<div class="page" id="page-sanita-fiscale"><div class="area-wrap">
-  <div class="tema-page-header" style="background:linear-gradient(135deg,#052e16,#166534);">
+<div class="page" id="page-sanita-fiscale"><div class="area-wrap"><div class="tema-page-header" style="--tc:#166534;">
     <div class="breadcrumb" onclick="showPage('sanita')">← Sanità integrativa</div>
-    <h1>Fondi sanitari — regime fiscale e agevolazioni</h1>
+    
+  <div class="kb-toc-mobile" id="toc-sfiscale-mobile">
+    <button class="kb-toc-mobile-btn" onclick="toggleTocMobile('toc-sfiscale-mobile')">📋 In questa guida <span>▾</span></button>
+    <div class="kb-toc-mobile-list" id="toc-sfiscale-mobile-list"></div>
+  </div>
+  <div class="kb-doc-layout" style="--tc:#166534;">
+    <div class="kb-toc" id="toc-sfiscale">
+      <div class="kb-toc-title">In questa guida</div>
+    </div>
+    <div class="kb-doc-main">
+<h1>Fondi sanitari — regime fiscale e agevolazioni</h1>
     <p>Tipologie A e B, deducibilità fino a 3.615,20 €, Anagrafe Min. Salute e trattamento contributivo INPS.</p>
     <div class="fonti-row">
       <a class="fonte-badge" href="https://www.agenziaentrate.gov.it/portale/web/guest/normativa-e-prassi/circolari" target="_blank">📄 Circ. AE 4/E 2025</a>
@@ -604,7 +667,9 @@ body.dark .ai-qs,body.dark .ai-inp,body.dark .ai-disclaimer{background:#1e293b;b
   </div>
   <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#EDFAF4;color:#166534;">📄</div><h3>Contenuto completo della Knowledge Base</h3></div><div class="kb-body">
     <div class="kb-article">{{ kb.sanita_fiscale | safe }}</div>
-  </div></div>
+      </div>
+  </div>
+</div></div>
   <div class="fonti-box"><div class="fonti-box-title">Fonti ufficiali</div>
     <a class="fonte-link" href="https://www.agenziaentrate.gov.it/portale/web/guest/normativa-e-prassi/circolari" target="_blank"><div class="fonte-link-icon" style="background:#EDFAF4;">📄</div><div class="fonte-link-text"><strong>Agenzia delle Entrate — Circolari</strong><span>Cerca Circolare n. 4/E del 16 maggio 2025 (regime fiscale fondi sanitari)</span></div><span class="fl-arrow">→</span></a>
     <a class="fonte-link" href="https://www.salute.gov.it/portale/temi/p2_6.jsp?lingua=italiano&id=4605&area=sanitaIntegrativa&menu=vuoto" target="_blank"><div class="fonte-link-icon" style="background:#EDFAF4;">🏥</div><div class="fonte-link-text"><strong>Ministero della Salute — Anagrafe fondi sanitari</strong><span>Elenco fondi iscritti con attestato valido e procedura SIAF</span></div><span class="fl-arrow">→</span></a>
@@ -806,6 +871,104 @@ async function sendMsg(txt){
   }
   document.getElementById('ai-send-btn').disabled=false;
   msgs.scrollTop=msgs.scrollHeight;
+}
+
+/* ── TOC AUTOMATICO ── */
+const tocMap = {
+  'posizione-contributiva': 'toc-posizione',
+  'accompagnamento-pensione': 'toc-accompagnamento',
+  'durc-online': 'toc-durc',
+  'cigo': 'toc-cigo',
+  'fondi-sanitari-contrattuali': 'toc-fondi',
+  'sanita-fiscale': 'toc-sfiscale'
+};
+
+function buildToc(pageId) {
+  const tocId = tocMap[pageId];
+  if (!tocId) return;
+  const toc = document.getElementById(tocId);
+  if (!toc) return;
+
+  const page = document.getElementById('page-' + pageId);
+  if (!page) return;
+
+  const headings = page.querySelectorAll('.kb-article h2, .kb-article h3');
+  if (!headings.length) return;
+
+  // Rimuovi voci precedenti (tranne il titolo)
+  toc.querySelectorAll('a').forEach(a => a.remove());
+
+  // Versione mobile
+  const mobileList = document.getElementById(tocId + '-mobile-list');
+  if (mobileList) mobileList.innerHTML = '';
+
+  headings.forEach((h, i) => {
+    if (!h.id) h.id = 'sec-' + pageId + '-' + i;
+    const isH3 = h.tagName === 'H3';
+    const text = h.textContent.replace(/^[\s\u200B]+/, '').trim();
+
+    const a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.textContent = text;
+    if (isH3) a.classList.add('toc-h3');
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      h.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+    toc.appendChild(a);
+
+    if (mobileList) {
+      const am = a.cloneNode(true);
+      am.addEventListener('click', function(e) {
+        e.preventDefault();
+        h.scrollIntoView({behavior:'smooth', block:'start'});
+        const list = document.getElementById(tocId + '-mobile-list');
+        if (list) list.classList.remove('open');
+      });
+      mobileList.appendChild(am);
+    }
+  });
+}
+
+function updateActiveToc(pageId) {
+  const tocId = tocMap[pageId];
+  if (!tocId) return;
+  const toc = document.getElementById(tocId);
+  if (!toc) return;
+  const page = document.getElementById('page-' + pageId);
+  if (!page) return;
+
+  const headings = Array.from(page.querySelectorAll('.kb-article h2, .kb-article h3'));
+  if (!headings.length) return;
+
+  const scrollY = window.scrollY + 100;
+  let active = headings[0];
+  for (const h of headings) {
+    if (h.getBoundingClientRect().top + window.scrollY <= scrollY) active = h;
+  }
+
+  toc.querySelectorAll('a').forEach(a => {
+    a.classList.toggle('toc-active', a.getAttribute('href') === '#' + active.id);
+  });
+}
+
+// Hook su showPage per costruire il TOC quando si apre una pagina tema
+const _origShowPage = showPage;
+function showPage(name, addToStack=true) {
+  _origShowPage(name, addToStack);
+  if (tocMap[name]) {
+    setTimeout(() => buildToc(name), 50);
+  }
+}
+
+// Scroll listener
+window.addEventListener('scroll', () => {
+  if (tocMap[currentPage]) updateActiveToc(currentPage);
+}, {passive: true});
+
+function toggleTocMobile(containerId) {
+  const list = document.getElementById(containerId + '-list');
+  if (list) list.classList.toggle('open');
 }
 </script>
 </body>
