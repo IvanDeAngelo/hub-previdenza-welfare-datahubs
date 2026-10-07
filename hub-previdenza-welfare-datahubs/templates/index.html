@@ -89,19 +89,19 @@ html,body{height:100%;font-family:'Inter',sans-serif;background:#F4F7FB;color:va
 
 /* ═══ HOME — AREE EDITORIALI ═══ */
 .home-areas{background:#fff;}
-.home-area-row{display:grid;grid-template-columns:1fr 1fr;min-height:340px;cursor:pointer;transition:background .2s;}
+.home-area-row{display:grid;grid-template-columns:1fr 1fr;min-height:320px;cursor:pointer;transition:background .2s;max-width:100%;}
 .home-area-row:not(:last-child){border-bottom:1px solid var(--gray-100);}
 .home-area-row:hover{background:#FAFBFF;}
 .home-area-row:hover .area-cta-arrow{transform:translateX(5px);}
-.home-area-text{padding:56px 64px;display:flex;flex-direction:column;justify-content:center;}
+.home-area-text{padding:52px 56px;display:flex;flex-direction:column;justify-content:center;}
 .home-area-num{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
 .home-area-num span{display:inline-block;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;}
-.home-area-title{font-size:34px;font-weight:800;color:var(--navy);letter-spacing:-1px;line-height:1.1;margin-bottom:14px;}
+.home-area-title{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:-.8px;line-height:1.15;margin-bottom:12px;}
 .home-area-desc{font-size:15px;color:var(--gray-600);line-height:1.7;margin-bottom:28px;max-width:420px;}
 .area-cta{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;text-decoration:none;border:none;background:none;cursor:pointer;font-family:'Inter',sans-serif;padding:0;}
 .area-cta-arrow{display:inline-flex;width:28px;height:28px;border-radius:50%;align-items:center;justify-content:center;transition:transform .2s;}
 .area-cta-arrow svg{width:13px;height:13px;}
-.home-area-visual{display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.home-area-visual{display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;min-height:280px;}
 
 /* ═══ HOME — STRIP INFO ═══ */
 .home-strip{background:var(--navy);padding:48px 0;}
@@ -117,47 +117,53 @@ html,body{height:100%;font-family:'Inter',sans-serif;background:#F4F7FB;color:va
 .area-editorial-eyebrow::before{content:'←';margin-right:2px;}
 .area-editorial-title{font-size:48px;font-weight:800;letter-spacing:-2px;line-height:1.05;margin-bottom:16px;}
 .area-editorial-desc{font-size:16px;color:var(--gray-600);line-height:1.7;max-width:560px;}
-.area-temi-section{max-width:900px;margin:0 auto;padding:0 48px 64px;}
-.area-temi-label{font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--gray-400);margin-bottom:32px;padding-top:16px;border-top:1px solid var(--gray-200);}
-/* Blocchi articolo orizzontali */
-.tema-editorial{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:start;padding:32px 0;border-bottom:1px solid var(--gray-100);cursor:pointer;transition:background .15s;}
-.tema-editorial:first-child{padding-top:0;}
-.tema-editorial:hover .tema-ed-arrow{transform:translateX(5px);opacity:1;}
-.tema-ed-left{}
-.tema-ed-cat{font-size:10.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
-.tema-ed-cat::before{content:'';width:16px;height:2px;background:currentColor;border-radius:1px;}
-.tema-ed-title{font-size:22px;font-weight:800;color:var(--navy);letter-spacing:-.5px;line-height:1.2;margin-bottom:10px;transition:color .15s;}
+.area-temi-section{padding:0 0 64px;}
+.area-temi-label{font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--gray-400);margin-bottom:28px;padding:24px 56px 0;border-top:1px solid var(--gray-100);}
+/* Card griglia 2 colonne */
+.temi-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:0;padding:0 56px 0;}
+.tema-editorial{display:flex;flex-direction:column;background:#fff;border:1px solid var(--gray-100);border-radius:16px;overflow:hidden;cursor:pointer;transition:box-shadow .2s,transform .2s;margin-bottom:20px;}
+.tema-editorial:hover{box-shadow:0 8px 32px rgba(0,0,0,.1);transform:translateY(-3px);}
+.tema-editorial:hover .tema-ed-arrow{transform:translateX(4px);opacity:1;border-color:var(--tc,var(--accent));}
 .tema-editorial:hover .tema-ed-title{color:var(--tc,var(--accent));}
-.tema-ed-desc{font-size:14px;color:var(--gray-600);line-height:1.7;margin-bottom:14px;max-width:560px;}
-.tema-ed-tags{display:flex;gap:6px;flex-wrap:wrap;}
-.tema-ed-tag{font-size:11px;background:var(--gray-100);color:var(--gray-600);padding:3px 10px;border-radius:20px;font-weight:500;}
+/* Banda colorata in cima alla card */
+.tema-ed-band{height:4px;background:var(--tc,var(--accent));}
+/* Illustrazione nella card */
+.tema-ed-visual{height:140px;display:flex;align-items:center;justify-content:center;background:var(--tc-bg,#F7FBFF);position:relative;overflow:hidden;}
+.tema-ed-body{padding:24px 24px 20px;display:flex;flex-direction:column;flex:1;}
+.tema-ed-cat{font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.tema-ed-cat::before{content:'';width:14px;height:2px;background:currentColor;border-radius:1px;}
+.tema-ed-title{font-size:19px;font-weight:800;color:var(--navy);letter-spacing:-.4px;line-height:1.2;margin-bottom:10px;transition:color .2s;}
+.tema-ed-desc{font-size:13.5px;color:var(--gray-600);line-height:1.7;margin-bottom:16px;flex:1;}
+.tema-ed-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:16px;}
+.tema-ed-tag{font-size:10.5px;background:var(--tc-bg,var(--gray-100));color:var(--tc,var(--gray-600));padding:3px 10px;border-radius:20px;font-weight:600;}
+.tema-ed-footer{display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px solid var(--gray-100);}
+.tema-ed-meta{font-size:11px;color:var(--gray-400);line-height:1.5;}
 .tema-ed-right{display:flex;flex-direction:column;align-items:flex-end;gap:12px;padding-top:4px;}
-.tema-ed-arrow{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--gray-200);display:flex;align-items:center;justify-content:center;transition:transform .2s,opacity .2s,border-color .2s;opacity:.5;}
-.tema-ed-arrow svg{width:14px;height:14px;}
-.tema-ed-meta{font-size:11px;color:var(--gray-400);text-align:right;line-height:1.6;}
+.tema-ed-arrow{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--gray-200);display:flex;align-items:center;justify-content:center;transition:transform .2s,opacity .2s,border-color .2s;opacity:.6;}
+.tema-ed-arrow svg{width:13px;height:13px;}
 
 /* ═══ PAGINA TEMA — ARTICOLO ═══ */
 .article-page{max-width:100%;}
 /* Progress bar */
-.article-header{padding:48px 0 36px;position:relative;}
-.article-header-inner{max-width:740px;margin:0 auto;padding:0 48px;}
+.article-header{padding:0;position:relative;border-left:none;}
+.article-header-inner{max-width:100%;padding:48px 56px 36px;border-bottom:none;background:var(--tc-bg,#F7FBFF);}
 .article-breadcrumb{font-size:12px;font-weight:600;letter-spacing:.3px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;margin-bottom:20px;transition:opacity .15s;border:none;background:none;padding:0;font-family:'Inter',sans-serif;}
 .article-breadcrumb:hover{opacity:.7;}
 .article-breadcrumb::before{content:'←';font-size:14px;}
 .article-category{font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:6px;}
 .article-category::before{content:'';width:20px;height:2.5px;background:currentColor;border-radius:1px;}
-.article-title{font-size:38px;font-weight:800;color:var(--navy);letter-spacing:-1.5px;line-height:1.1;margin-bottom:14px;}
+.article-title{font-size:36px;font-weight:800;color:var(--navy);letter-spacing:-1px;line-height:1.1;margin-bottom:16px;}
 .article-desc{font-size:17px;color:var(--gray-500,#64748b);line-height:1.65;margin-bottom:28px;}
 /* Strip "In questa guida" orizzontale */
-.article-toc-strip{border-top:1px solid var(--gray-100);border-bottom:1px solid var(--gray-100);padding:14px 0;margin-bottom:0;}
-.article-toc-strip-inner{max-width:740px;margin:0 auto;padding:0 48px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.article-toc-strip{background:#fff;border-bottom:1px solid var(--gray-100);padding:12px 0;position:sticky;top:60px;z-index:10;}
+.article-toc-strip-inner{max-width:100%;padding:0 56px;display:flex;align-items:center;gap:12px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
 .article-toc-label{font-size:10.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--gray-400);white-space:nowrap;flex-shrink:0;}
 .article-toc-links{display:flex;gap:6px;flex-wrap:wrap;}
-.article-toc-links a{font-size:12.5px;color:var(--gray-600);text-decoration:none;padding:4px 12px;border-radius:20px;background:var(--gray-100);transition:background .15s,color .15s;border:none;font-weight:500;}
+.article-toc-links a{font-size:12px;color:var(--gray-600);text-decoration:none;padding:5px 14px;border-radius:20px;background:var(--gray-100);transition:background .2s,color .2s;border:none;font-weight:500;white-space:nowrap;}
 .article-toc-links a:hover{background:var(--tc-bg,var(--blue-bg));color:var(--tc,var(--accent));}
 .article-toc-links a.toc-active{background:var(--tc-bg,var(--blue-bg));color:var(--tc,var(--accent));font-weight:600;}
 /* Corpo articolo */
-.article-body{max-width:740px;margin:0 auto;padding:48px 48px 64px;}
+.article-body{max-width:760px;margin:0 auto;padding:52px 56px 72px;}
 /* Fonti in fondo come firma */
 .article-footer{border-top:2px solid var(--gray-100);margin:0;padding:0;}
 .article-footer-inner{max-width:740px;margin:0 auto;padding:32px 48px 56px;}
@@ -174,9 +180,9 @@ html,body{height:100%;font-family:'Inter',sans-serif;background:#F4F7FB;color:va
 /* ═══ KB ARTICLE typography ═══ */
 .kb-article{font-size:17px;color:#2D3748;line-height:1.85;max-width:100%;}
 .kb-article h1{display:none;}
-.kb-article h2{font-size:22px;font-weight:800;color:var(--navy);margin:52px 0 16px;letter-spacing:-.5px;line-height:1.2;}
+.kb-article h2{font-size:21px;font-weight:800;color:var(--navy);margin:56px 0 16px;letter-spacing:-.4px;line-height:1.2;padding-top:32px;border-top:1px solid var(--gray-100);}
 .kb-article h2::before{display:none;}
-.kb-article h2::after{content:'';display:block;width:36px;height:3px;background:var(--tc,var(--accent));border-radius:2px;margin-top:10px;}
+.kb-article h2::after{content:'';display:block;width:32px;height:3px;background:var(--tc,var(--accent));border-radius:2px;margin-top:8px;}
 .kb-article h3{font-size:17px;font-weight:700;color:var(--navy);margin:32px 0 10px;}
 .kb-article p{margin-bottom:18px;line-height:1.85;}
 .kb-article strong{color:var(--navy);font-weight:700;}
@@ -732,34 +738,61 @@ body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);bac
       <div class="area-editorial-desc">Contributi, posizione contributiva, correttezza dei versamenti e adempimenti previdenziali.</div>
     </div>
   </div>
-  <div class="area-temi-section">
+    <div class="area-temi-section">
     <div class="area-temi-label">Esplora i temi</div>
-    <div class="tema-editorial" style="--tc:#1d6fa4;" onclick="showPage('posizione-contributiva')">
-      <div class="tema-ed-left">
+    <div class="temi-cards">
+    <div class="tema-editorial" style="--tc:#1d6fa4;--tc-bg:#EBF5FF;" onclick="showPage('posizione-contributiva')">
+      <div class="tema-ed-band"></div>
+      <div class="tema-ed-visual">
+        <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+  <circle cx="60" cy="60" r="30" stroke="#1d6fa4" stroke-width="1.5" opacity=".15"/>
+  <circle cx="60" cy="60" r="50" stroke="#1d6fa4" stroke-width="1" opacity=".07"/>
+  <circle cx="60" cy="60" r="5" fill="#1d6fa4" opacity=".4"/>
+  <circle cx="30" cy="40" r="3" fill="#1d6fa4" opacity=".25"/>
+  <circle cx="90" cy="45" r="3" fill="#1d6fa4" opacity=".25"/>
+  <circle cx="40" cy="85" r="3" fill="#1d6fa4" opacity=".2"/>
+  <circle cx="85" cy="80" r="3" fill="#1d6fa4" opacity=".2"/>
+  <line x1="60" y1="60" x2="30" y2="40" stroke="#1d6fa4" stroke-width="1" opacity=".12"/>
+  <line x1="60" y1="60" x2="90" y2="45" stroke="#1d6fa4" stroke-width="1" opacity=".12"/>
+  <line x1="60" y1="60" x2="40" y2="85" stroke="#1d6fa4" stroke-width="1" opacity=".12"/>
+  <line x1="60" y1="60" x2="85" y2="80" stroke="#1d6fa4" stroke-width="1" opacity=".12"/>
+</svg>
+      </div>
+      <div class="tema-ed-body">
         <div class="tema-ed-cat" style="color:#1d6fa4;">Previdenza · INPS</div>
         <div class="tema-ed-title">Posizione contributiva e correttezza versamenti</div>
-        <div class="tema-ed-desc">Estratto conto contributivo, verifica versamenti, ricorsi amministrativi e unicità posizione aziendale. Aggiornato con Msg. INPS 2553/2025.</div>
+        <div class="tema-ed-desc">Estratto conto contributivo, verifica versamenti, ricorsi amministrativi e unicità posizione aziendale.</div>
         <div class="tema-ed-tags"><span class="tema-ed-tag">Estratto conto</span><span class="tema-ed-tag">Ricorsi INPS</span><span class="tema-ed-tag">UniEmens</span><span class="tema-ed-tag">Cassetto Previdenziale</span></div>
-      </div>
-      <div class="tema-ed-right">
-        <div class="tema-ed-arrow" style="border-color:#1d6fa4;"><svg viewBox="0 0 24 24" fill="none" stroke="#1d6fa4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-        <div class="tema-ed-meta">3 fonti INPS · Sett 2025</div>
+        <div class="tema-ed-footer">
+          <div class="tema-ed-meta">3 fonti · Sett 2025</div>
+          <div class="tema-ed-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#1d6fa4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
       </div>
     </div>
-    <div class="tema-editorial" style="--tc:#1d6fa4;" onclick="showPage('accompagnamento-pensione')">
-      <div class="tema-ed-left">
+    <div class="tema-editorial" style="--tc:#1d6fa4;--tc-bg:#EBF5FF;" onclick="showPage('accompagnamento-pensione')">
+      <div class="tema-ed-band"></div>
+      <div class="tema-ed-visual">
+        <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+  <path d="M20 95 Q40 30 60 40 Q80 50 100 25" stroke="#1d6fa4" stroke-width="2" opacity=".2" stroke-linecap="round"/>
+  <circle cx="20" cy="95" r="4" fill="#1d6fa4" opacity=".3"/>
+  <circle cx="60" cy="40" r="4" fill="#1d6fa4" opacity=".3"/>
+  <circle cx="100" cy="25" r="4" fill="#1d6fa4" opacity=".3"/>
+  <circle cx="60" cy="60" r="40" stroke="#1d6fa4" stroke-width="1" opacity=".06"/>
+</svg>
+      </div>
+      <div class="tema-ed-body">
         <div class="tema-ed-cat" style="color:#1d6fa4;">Previdenza · INPS</div>
         <div class="tema-ed-title">Prestazioni di accompagnamento alla pensione</div>
-        <div class="tema-ed-desc">Isopensione, Fondi di solidarietà, requisiti, accordo aziendale, agevolazioni fiscali 2026 e tutele per nuovi requisiti pensionistici (Circ. 41/2026).</div>
+        <div class="tema-ed-desc">Isopensione, Fondi di solidarietà, requisiti, accordo aziendale e agevolazioni fiscali 2026.</div>
         <div class="tema-ed-tags"><span class="tema-ed-tag">Isopensione</span><span class="tema-ed-tag">Fondi solidarietà</span><span class="tema-ed-tag">Esodo</span><span class="tema-ed-tag">Contributivi puri</span></div>
-      </div>
-      <div class="tema-ed-right">
-        <div class="tema-ed-arrow" style="border-color:#1d6fa4;"><svg viewBox="0 0 24 24" fill="none" stroke="#1d6fa4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-        <div class="tema-ed-meta">5 fonti INPS · Sett 2026</div>
+        <div class="tema-ed-footer">
+          <div class="tema-ed-meta">5 fonti · Sett 2026</div>
+          <div class="tema-ed-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#1d6fa4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
       </div>
     </div>
+    </div>
   </div>
-</div>
 
 <!-- WELFARE -->
 <div class="page" id="page-welfare">
@@ -770,34 +803,56 @@ body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);bac
       <div class="area-editorial-desc">Regolarità contributiva, DURC e ammortizzatori sociali.</div>
     </div>
   </div>
-  <div class="area-temi-section">
+    <div class="area-temi-section">
     <div class="area-temi-label">Esplora i temi</div>
-    <div class="tema-editorial" style="--tc:#92600A;" onclick="showPage('durc-online')">
-      <div class="tema-ed-left">
+    <div class="temi-cards">
+    <div class="tema-editorial" style="--tc:#92600A;--tc-bg:#FEF8EC;" onclick="showPage('durc-online')">
+      <div class="tema-ed-band"></div>
+      <div class="tema-ed-visual">
+        <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+  <rect x="30" y="25" width="60" height="70" rx="6" stroke="#92600A" stroke-width="1.5" opacity=".18"/>
+  <line x1="42" y1="45" x2="78" y2="45" stroke="#92600A" stroke-width="1.5" opacity=".2"/>
+  <line x1="42" y1="58" x2="78" y2="58" stroke="#92600A" stroke-width="1.5" opacity=".15"/>
+  <line x1="42" y1="71" x2="62" y2="71" stroke="#92600A" stroke-width="1.5" opacity=".12"/>
+  <circle cx="60" cy="87" r="8" fill="#92600A" opacity=".12"/>
+  <path d="M56 87 L59 90 L65 84" stroke="#92600A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/>
+</svg>
+      </div>
+      <div class="tema-ed-body">
         <div class="tema-ed-cat" style="color:#92600A;">Welfare aziendale · INPS</div>
         <div class="tema-ed-title">DURC Online</div>
         <div class="tema-ed-desc">Verifica regolarità contributiva, Piattaforma Unica INPS, Ve.R.A., Simulazione DURC, Pre-DURC e Delega Master.</div>
         <div class="tema-ed-tags"><span class="tema-ed-tag">Ve.R.A.</span><span class="tema-ed-tag">Pre-DURC</span><span class="tema-ed-tag">Delega Master</span><span class="tema-ed-tag">Piattaforma Unica</span></div>
-      </div>
-      <div class="tema-ed-right">
-        <div class="tema-ed-arrow" style="border-color:#92600A;"><svg viewBox="0 0 24 24" fill="none" stroke="#92600A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-        <div class="tema-ed-meta">6 fonti INPS · Nov 2024</div>
+        <div class="tema-ed-footer">
+          <div class="tema-ed-meta">6 fonti · Nov 2024</div>
+          <div class="tema-ed-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#92600A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
       </div>
     </div>
-    <div class="tema-editorial" style="--tc:#92600A;" onclick="showPage('cigo')">
-      <div class="tema-ed-left">
+    <div class="tema-editorial" style="--tc:#92600A;--tc-bg:#FEF8EC;" onclick="showPage('cigo')">
+      <div class="tema-ed-band"></div>
+      <div class="tema-ed-visual">
+        <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+  <rect x="18" y="55" width="16" height="40" rx="3" fill="#92600A" opacity=".15"/>
+  <rect x="42" y="40" width="16" height="55" rx="3" fill="#92600A" opacity=".2"/>
+  <rect x="66" y="28" width="16" height="67" rx="3" fill="#92600A" opacity=".25"/>
+  <rect x="90" y="45" width="16" height="50" rx="3" fill="#92600A" opacity=".18"/>
+  <line x1="18" y1="100" x2="106" y2="100" stroke="#92600A" stroke-width="1" opacity=".15"/>
+</svg>
+      </div>
+      <div class="tema-ed-body">
         <div class="tema-ed-cat" style="color:#92600A;">Welfare aziendale · INPS</div>
         <div class="tema-ed-title">Cassa Integrazione Guadagni Ordinaria (CIGO)</div>
-        <div class="tema-ed-desc">Datori ammessi, causali, OMNIA IS, massimale 2026 (1.423,69 €), contribuzione addizionale, conguaglio UniEmens ed emergenza climatica lug–dic 2026.</div>
+        <div class="tema-ed-desc">Datori ammessi, causali, OMNIA IS, massimale 2026 (1.423,69 €), contribuzione addizionale e UniEmens.</div>
         <div class="tema-ed-tags"><span class="tema-ed-tag">OMNIA IS</span><span class="tema-ed-tag">UniEmens</span><span class="tema-ed-tag">Massimale 2026</span><span class="tema-ed-tag">EONE</span></div>
-      </div>
-      <div class="tema-ed-right">
-        <div class="tema-ed-arrow" style="border-color:#92600A;"><svg viewBox="0 0 24 24" fill="none" stroke="#92600A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-        <div class="tema-ed-meta">4 fonti INPS · Lug 2026</div>
+        <div class="tema-ed-footer">
+          <div class="tema-ed-meta">4 fonti · Lug 2026</div>
+          <div class="tema-ed-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#92600A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
       </div>
     </div>
+    </div>
   </div>
-</div>
 
 <!-- SANITÀ -->
 <div class="page" id="page-sanita">
@@ -808,34 +863,57 @@ body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);bac
       <div class="area-editorial-desc">Fondi sanitari contrattuali INPS e regime fiscale della sanità integrativa.</div>
     </div>
   </div>
-  <div class="area-temi-section">
+    <div class="area-temi-section">
     <div class="area-temi-label">Esplora i temi</div>
-    <div class="tema-editorial" style="--tc:#166534;" onclick="showPage('fondi-sanitari-contrattuali')">
-      <div class="tema-ed-left">
+    <div class="temi-cards">
+    <div class="tema-editorial" style="--tc:#166534;--tc-bg:#EDFAF4;" onclick="showPage('fondi-sanitari-contrattuali')">
+      <div class="tema-ed-band"></div>
+      <div class="tema-ed-visual">
+        <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+  <circle cx="60" cy="60" r="35" stroke="#166534" stroke-width="1.5" opacity=".12"/>
+  <circle cx="60" cy="60" r="20" stroke="#166534" stroke-width="1.5" opacity=".18"/>
+  <line x1="60" y1="40" x2="60" y2="80" stroke="#166534" stroke-width="2" opacity=".3"/>
+  <line x1="40" y1="60" x2="80" y2="60" stroke="#166534" stroke-width="2" opacity=".3"/>
+  <circle cx="60" cy="60" r="5" fill="#166534" opacity=".25"/>
+</svg>
+      </div>
+      <div class="tema-ed-body">
         <div class="tema-ed-cat" style="color:#166534;">Sanità integrativa · INPS</div>
         <div class="tema-ed-title">Fondi sanitari contrattuali — contribuzione obbligatoria</div>
-        <div class="tema-ed-desc">Meccanismo F24/UniEmens per ENFEA Salute (ESAL), FASIFAR (FAFP), FONDOSANI (SANI), INNOVACARE (CARE). Convenzioni al 31/12/2026.</div>
+        <div class="tema-ed-desc">Meccanismo F24/UniEmens per ENFEA Salute, FASIFAR, FONDOSANI, INNOVACARE. Convenzioni al 31/12/2026.</div>
         <div class="tema-ed-tags"><span class="tema-ed-tag">F24</span><span class="tema-ed-tag">UniEmens</span><span class="tema-ed-tag">ESAL · FAFP · SANI · CARE</span></div>
-      </div>
-      <div class="tema-ed-right">
-        <div class="tema-ed-arrow" style="border-color:#166534;"><svg viewBox="0 0 24 24" fill="none" stroke="#166534" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-        <div class="tema-ed-meta">4 circolari INPS · Sett 2026</div>
+        <div class="tema-ed-footer">
+          <div class="tema-ed-meta">4 circolari · Sett 2026</div>
+          <div class="tema-ed-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#166534" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
       </div>
     </div>
-    <div class="tema-editorial" style="--tc:#166534;" onclick="showPage('sanita-fiscale')">
-      <div class="tema-ed-left">
+    <div class="tema-editorial" style="--tc:#166534;--tc-bg:#EDFAF4;" onclick="showPage('sanita-fiscale')">
+      <div class="tema-ed-band"></div>
+      <div class="tema-ed-visual">
+        <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+  <path d="M20 80 L45 45 L65 62 L85 30 L100 40" stroke="#166534" stroke-width="2" opacity=".2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="20" cy="80" r="3.5" fill="#166534" opacity=".3"/>
+  <circle cx="45" cy="45" r="3.5" fill="#166534" opacity=".3"/>
+  <circle cx="65" cy="62" r="3.5" fill="#166534" opacity=".3"/>
+  <circle cx="85" cy="30" r="3.5" fill="#166534" opacity=".3"/>
+  <circle cx="100" cy="40" r="3.5" fill="#166534" opacity=".3"/>
+  <line x1="18" y1="95" x2="102" y2="95" stroke="#166534" stroke-width="1" opacity=".1"/>
+</svg>
+      </div>
+      <div class="tema-ed-body">
         <div class="tema-ed-cat" style="color:#166534;">Sanità integrativa · AE · Min. Salute</div>
         <div class="tema-ed-title">Fondi sanitari — regime fiscale e agevolazioni</div>
-        <div class="tema-ed-desc">Tipologie A e B, deducibilità fino a 3.615,20 € (art. 10 TUIR), non imponibilità (art. 51 TUIR), Anagrafe Min. Salute e trattamento contributivo INPS.</div>
+        <div class="tema-ed-desc">Tipologie A e B, deducibilità fino a 3.615,20 € (art. 10 TUIR), non imponibilità (art. 51 TUIR) e Anagrafe Min. Salute.</div>
         <div class="tema-ed-tags"><span class="tema-ed-tag">Art. 10 TUIR</span><span class="tema-ed-tag">Art. 51 TUIR</span><span class="tema-ed-tag">Anagrafe fondi</span><span class="tema-ed-tag">3.615,20 €</span></div>
-      </div>
-      <div class="tema-ed-right">
-        <div class="tema-ed-arrow" style="border-color:#166534;"><svg viewBox="0 0 24 24" fill="none" stroke="#166534" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-        <div class="tema-ed-meta">AE + Min. Salute + INPS · Mag 2025</div>
+        <div class="tema-ed-footer">
+          <div class="tema-ed-meta">AE + Min. Salute · Mag 2025</div>
+          <div class="tema-ed-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#166534" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
       </div>
     </div>
+    </div>
   </div>
-</div>
 
 <div class="page" id="page-posizione-contributiva"><div class="area-wrap">
   <div class="article-page" style="--tc:#1d6fa4;--tc-bg:#EBF5FF;">
@@ -1337,7 +1415,7 @@ function buildToc(pageId){
     const text=h.textContent.trim();
     const a=document.createElement('a');
     a.href='#'+h.id;
-    a.textContent=text.length>40?text.substring(0,38)+'…':text;
+    const clean=text.replace(/^\d+\.\s*/,'');a.textContent=clean.length>36?clean.substring(0,34)+'…':clean;
     a.addEventListener('click',function(e){
       e.preventDefault();
       const top=h.getBoundingClientRect().top+window.scrollY-80;
