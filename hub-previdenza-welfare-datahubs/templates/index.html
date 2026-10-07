@@ -17,17 +17,24 @@
   --header-h:60px;--sidebar-w:220px;
   --radius:10px;--shadow:0 2px 8px rgba(0,0,0,.08);--shadow-lg:0 8px 24px rgba(0,0,0,.12);
 }
-html,body{height:100%;font-family:'Inter',sans-serif;background:var(--gray-50);color:var(--gray-800);font-size:14px;}
+html,body{height:100%;font-family:'Inter',sans-serif;background:#F4F7FB;color:var(--gray-800);font-size:14px;}
 
 /* HEADER */
-.header{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--header-h);background:#fff;border-bottom:1px solid var(--gray-200);display:flex;align-items:center;padding:0 20px;gap:16px;box-shadow:0 1px 4px rgba(0,0,0,.06);}
+.header{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--header-h);background:#fff;border-bottom:1px solid var(--gray-200);display:flex;align-items:center;padding:0 32px;gap:20px;box-shadow:0 1px 3px rgba(0,0,0,.05);}
 .h-brand{display:flex;align-items:center;gap:10px;flex-shrink:0;cursor:pointer;text-decoration:none;}
-.h-logo{height:38px;display:flex;align-items:center;flex-shrink:0;}
-.h-logo img{height:38px;width:auto;object-fit:contain;}
+.h-logo{height:36px;display:flex;align-items:center;flex-shrink:0;}
+.h-logo img{height:36px;width:auto;object-fit:contain;}
 .h-name strong{display:block;font-size:13px;font-weight:700;color:var(--navy);line-height:1.2;}
 .h-name span{display:block;font-size:11px;color:var(--gray-400);}
-.h-search{width:380px;display:flex;align-items:center;background:var(--gray-100);border:1.5px solid var(--gray-200);border-radius:24px;padding:0 6px 0 14px;gap:8px;transition:border-color .15s;}
-.h-search:focus-within{border-color:var(--accent);background:#fff;}
+/* NAV LINKS MACROAREE */
+.h-nav{display:flex;align-items:center;gap:4px;margin-left:8px;}
+.h-nav-item{padding:6px 14px;border-radius:20px;font-size:13px;font-weight:500;color:var(--gray-600);cursor:pointer;transition:color .15s,background .15s;white-space:nowrap;border:none;background:none;font-family:'Inter',sans-serif;}
+.h-nav-item:hover{color:var(--navy);background:var(--gray-100);}
+.h-nav-item.active{color:var(--navy);font-weight:600;background:var(--blue-bg);}
+.h-nav-sep{width:1px;height:16px;background:var(--gray-200);margin:0 6px;}
+/* SEARCH */
+.h-search{flex:1;max-width:360px;display:flex;align-items:center;background:var(--gray-100);border:1.5px solid var(--gray-200);border-radius:24px;padding:0 6px 0 14px;gap:8px;transition:border-color .2s,box-shadow .2s;}
+.h-search:focus-within{border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px rgba(2,132,199,.1);}
 .h-search svg{width:15px;height:15px;flex-shrink:0;stroke:var(--gray-400);fill:none;stroke-width:2;stroke-linecap:round;}
 .h-search input{flex:1;border:none;background:transparent;font-size:13px;color:var(--gray-800);outline:none;padding:9px 0;font-family:'Inter',sans-serif;}
 .h-search input::placeholder{color:var(--gray-400);}
@@ -36,7 +43,7 @@ html,body{height:100%;font-family:'Inter',sans-serif;background:var(--gray-50);c
 .search-go:hover svg{stroke:#fff;}
 .search-go svg{width:13px;height:13px;stroke:var(--gray-600);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
 .h-right{margin-left:auto;display:flex;align-items:center;gap:10px;flex-shrink:0;}
-.btn-chisiamo{display:flex;align-items:center;gap:5px;padding:7px 14px;border:1.5px solid var(--gray-200);border-radius:20px;font-size:12.5px;font-weight:500;color:var(--gray-600);background:#fff;cursor:pointer;transition:border-color .15s;}
+.btn-chisiamo{display:flex;align-items:center;gap:5px;padding:7px 14px;border:1.5px solid var(--gray-200);border-radius:20px;font-size:12.5px;font-weight:500;color:var(--gray-600);background:#fff;cursor:pointer;transition:border-color .15s,color .15s;}
 .btn-chisiamo:hover{border-color:var(--navy);color:var(--navy);}
 .btn-logout{padding:7px 14px;border:1.5px solid #FECACA;border-radius:20px;font-size:12px;font-weight:500;color:#DC2626;background:#FEF2F2;cursor:pointer;transition:all .15s;text-decoration:none;}
 .btn-logout:hover{background:#DC2626;color:#fff;border-color:#DC2626;}
@@ -88,55 +95,79 @@ body.dark .ai-qs,body.dark .ai-inp,body.dark .ai-disclaimer{background:#1e293b;b
 /* LAYOUT */
 .body{display:flex;padding-top:var(--header-h);min-height:100vh;}
 .main{margin-left:var(--sidebar-w);flex:1;min-width:0;}
+.main.no-sidebar{margin-left:0;}
 .page{display:none;animation:fi .2s ease;}
 .page.active{display:block;}
 @keyframes fi{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:translateY(0);}}
 
 /* HERO */
-.hero{margin:20px 24px 0;border-radius:14px;overflow:hidden;position:relative;min-height:220px;box-shadow:var(--shadow-lg);}
-.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,25,47,0.82) 0%,rgba(15,42,74,0.65) 60%,rgba(10,25,47,0.55) 100%);}
-.hero-content{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:36px 36px;gap:32px;min-height:220px;}
+.hero{margin:0;padding:72px 48px 64px;position:relative;overflow:hidden;background:#0F2A4A;}
+.hero-bg{display:none;}
+.hero-overlay{display:none;}
+/* Decorazione geometrica astratta */
+.hero::before{content:'';position:absolute;top:-60px;right:-40px;width:420px;height:420px;border-radius:50%;border:1.5px solid rgba(255,255,255,.06);pointer-events:none;}
+.hero::after{content:'';position:absolute;top:20px;right:60px;width:260px;height:260px;border-radius:50%;border:1.5px solid rgba(255,255,255,.05);pointer-events:none;}
+.hero-dots{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;overflow:hidden;}
+.hero-content{position:relative;z-index:2;max-width:1100px;margin:0 auto;}
+.hero-label{font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:20px;display:flex;align-items:center;gap:8px;}
+.hero-label::before{content:'';width:24px;height:1.5px;background:rgba(255,255,255,.3);display:inline-block;}
+.hero h1{font-size:44px;font-weight:800;color:#fff;line-height:1.1;margin-bottom:18px;letter-spacing:-1px;max-width:680px;}
+.hero h1 em{font-style:normal;color:#7DD3FC;}
+.hero-sub{font-size:16px;color:rgba(255,255,255,.65);line-height:1.7;max-width:520px;margin-bottom:36px;}
+/* Search bar hero */
+.hero-search{display:flex;align-items:center;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.18);border-radius:12px;padding:0 8px 0 20px;gap:12px;max-width:560px;backdrop-filter:blur(8px);transition:border-color .2s,background .2s;}
+.hero-search:focus-within{border-color:rgba(255,255,255,.45);background:rgba(255,255,255,.15);}
+.hero-search svg{width:17px;height:17px;stroke:rgba(255,255,255,.5);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0;}
+.hero-search input{flex:1;border:none;background:transparent;font-size:15px;color:#fff;outline:none;padding:14px 0;font-family:'Inter',sans-serif;}
+.hero-search input::placeholder{color:rgba(255,255,255,.4);}
+.hero-search-btn{padding:9px 20px;background:#fff;color:var(--navy);border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:background .15s,transform .15s;flex-shrink:0;}
+.hero-search-btn:hover{background:#EBF5FF;transform:translateX(1px);}
+.hero-features{display:flex;gap:28px;margin-top:32px;flex-wrap:wrap;}
+.hero-feat{display:flex;align-items:center;gap:8px;font-size:12.5px;color:rgba(255,255,255,.5);}
+.hero-feat::before{content:'';width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.3);}
 .hero-left{flex:1;}
-.hero h1{font-size:26px;font-weight:800;color:#fff;line-height:1.2;margin-bottom:12px;letter-spacing:-.5px;}
-.hero p{font-size:13.5px;color:rgba(255,255,255,.8);line-height:1.65;max-width:340px;}
-.hero-right{display:flex;flex-direction:column;gap:10px;flex-shrink:0;}
-.hci{display:flex;align-items:center;gap:10px;font-size:12.5px;color:#fff;line-height:1.4;font-weight:500;}
-.hci-ic{width:28px;height:28px;background:rgba(255,255,255,0.15);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;backdrop-filter:blur(4px);}
+.hero-right{display:none;}
+.hci{display:none;}
+.hci-ic{display:none;}
 
 /* AI NOTICE */
-.ai-notice{margin:14px 24px 0;background:#EFF8FF;border:1px solid #BAE0FD;border-radius:var(--radius);padding:10px 16px;display:flex;gap:10px;align-items:flex-start;font-size:12.5px;color:#0c4a6e;line-height:1.55;}
-.ai-notice-icon{width:22px;height:22px;background:#BAE0FD;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700;color:#0c4a6e;font-size:12px;}
+.ai-notice{background:#fff;border-top:1px solid var(--gray-100);border-bottom:1px solid var(--gray-100);padding:12px 48px;display:flex;gap:10px;align-items:center;font-size:12px;color:var(--gray-400);line-height:1.5;}
+.ai-notice-icon{width:20px;height:20px;background:var(--blue-bg);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700;color:var(--blue);font-size:11px;}
 
 /* SEZIONI HOME */
-.section{margin:22px 24px 0;}
-.section h2{font-size:22px;font-weight:800;color:var(--gray-800);margin-bottom:4px;letter-spacing:-.3px;}
-.section-sub{font-size:13px;color:var(--gray-400);margin-bottom:16px;}
-.macro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
-.mc{border-radius:14px;padding:20px;cursor:pointer;transition:box-shadow .15s,transform .15s;}
-.mc:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px);}
-.mc-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px;}
-.mc-icon{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
-.mc-icon svg{width:22px;height:22px;}
-.mc-badge{font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;}
-.mc h3{font-size:16px;font-weight:800;color:var(--gray-800);margin-bottom:7px;letter-spacing:-.2px;}
-.mc p{font-size:12.5px;color:var(--gray-600);line-height:1.6;margin-bottom:16px;}
-.mc-link{display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:600;}
-.mc-arrow{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
-.mc-arrow svg{width:14px;height:14px;}
+.section{margin:0;padding:64px 48px;}
+.home-section-label{font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gray-400);margin-bottom:10px;}
+.section h2{font-size:30px;font-weight:800;color:var(--navy);margin-bottom:6px;letter-spacing:-.5px;}
+.section-sub{font-size:15px;color:var(--gray-600);margin-bottom:48px;line-height:1.6;}
+.macro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--gray-200);border-radius:16px;overflow:hidden;}
+.mc{background:#fff;padding:40px 36px;cursor:pointer;transition:background .15s;}
+.mc:hover{background:#F7FBFF;}
+.mc-num{font-size:11px;font-weight:700;letter-spacing:1px;color:var(--gray-400);margin-bottom:24px;display:flex;align-items:center;gap:8px;}
+.mc-num::after{content:'';flex:1;height:1px;background:var(--gray-200);}
+.mc-top{display:none;}
+.mc-icon{display:none;}
+.mc-badge{display:none;}
+.mc h3{font-size:22px;font-weight:800;color:var(--navy);margin-bottom:10px;letter-spacing:-.4px;line-height:1.2;}
+.mc p{font-size:14px;color:var(--gray-600);line-height:1.7;margin-bottom:28px;}
+.mc-link{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;transition:gap .15s;}
+.mc:hover .mc-link{gap:12px;}
+.mc-arrow{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .15s;}
+.mc:hover .mc-arrow{transform:translateX(3px);}
+.mc-arrow svg{width:13px;height:13px;}
 
 /* INFO UTILI */
-.info-section{margin:22px 24px 36px;}
-.info-section h2{font-size:20px;font-weight:800;color:var(--gray-800);margin-bottom:14px;}
-.info-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--gray-200);border-radius:var(--radius);background:#fff;overflow:hidden;}
-.info-item{padding:16px 14px;display:flex;flex-direction:column;gap:8px;border-right:1px solid var(--gray-200);}
+.info-section{margin:0;padding:0 48px 64px;}
+.info-section h2{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:20px;}
+.info-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--gray-200);border-radius:14px;background:#fff;overflow:hidden;box-shadow:var(--shadow);}
+.info-item{padding:24px 20px;display:flex;flex-direction:column;gap:10px;border-right:1px solid var(--gray-100);transition:background .15s;}
 .info-item:last-child{border-right:none;}
-.info-icon{font-size:18px;}
-.info-item strong{font-size:12.5px;font-weight:700;color:var(--gray-800);}
-.info-item span{font-size:11.5px;color:var(--gray-400);line-height:1.4;}
+.info-item:hover{background:var(--gray-50);}
+.info-icon{font-size:20px;}
+.info-item strong{font-size:13px;font-weight:700;color:var(--gray-800);}
+.info-item span{font-size:12px;color:var(--gray-400);line-height:1.5;}
 
 /* AREA PAGE */
-.area-wrap{margin:20px 24px 36px;}
+.area-wrap{margin:0;padding:40px 48px 56px;}
 .area-header{background:var(--ah-bg,#fff);border:1px solid var(--gray-200);border-radius:var(--radius);padding:24px 28px;display:flex;gap:16px;align-items:center;margin-bottom:16px;border-left:5px solid var(--ah-tc,var(--accent));}
 .area-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .area-icon svg{width:22px;height:22px;}
@@ -146,14 +177,15 @@ body.dark .ai-qs,body.dark .ai-inp,body.dark .ai-disclaimer{background:#1e293b;b
 .badge{font-size:10.5px;font-weight:600;padding:2px 9px;border-radius:20px;}
 
 /* TEMA CARD */
-.tema{background:#fff;border:1.5px solid var(--gray-200);border-radius:var(--radius);overflow:hidden;margin-bottom:12px;cursor:pointer;transition:border-color .15s,box-shadow .15s;}
-.tema{border-left:3px solid var(--tc,var(--accent));}.tema:hover{box-shadow:var(--shadow);border-color:var(--tc,var(--accent));}
+.temi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:24px;}
+.tema{background:#fff;border:1.5px solid var(--gray-200);border-radius:14px;overflow:hidden;cursor:pointer;transition:border-color .2s,box-shadow .2s,transform .2s;margin-bottom:0;}
+.tema{border-left:3px solid var(--tc,var(--accent));}.tema:hover{box-shadow:var(--shadow-lg);border-color:var(--tc,var(--accent));transform:translateY(-2px);}
 .tema-bar{height:3px;background:var(--tc,var(--accent));}
-.tema-body{padding:18px 20px;}
+.tema-body{padding:24px 24px 20px;}
 .tema-cat{font-size:10px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--tc,var(--accent));margin-bottom:7px;display:flex;align-items:center;gap:6px;}
 .tema-cat::before{content:'';width:12px;height:2px;background:currentColor;display:inline-block;border-radius:1px;}
-.tema h3{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px;line-height:1.3;}
-.tema p{font-size:12.5px;color:var(--gray-600);line-height:1.65;max-width:600px;margin-bottom:12px;}
+.tema h3{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:8px;line-height:1.3;}
+.tema p{font-size:13px;color:var(--gray-600);line-height:1.7;max-width:600px;margin-bottom:14px;}
 .tema-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px;}
 .tema-tag{font-size:10.5px;background:var(--gray-100);color:var(--gray-600);padding:2px 8px;border-radius:20px;font-weight:500;}
 .tema-footer{display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid var(--gray-100);}
@@ -319,6 +351,13 @@ body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);bac
       <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </button>
   </div>
+  <div class="h-nav">
+    <button class="h-nav-item" onclick="showPage('previdenza')">Previdenza</button>
+    <div class="h-nav-sep"></div>
+    <button class="h-nav-item" onclick="showPage('welfare')">Welfare aziendale</button>
+    <div class="h-nav-sep"></div>
+    <button class="h-nav-item" onclick="showPage('sanita')">Sanità integrativa</button>
+  </div>
   <div class="h-right">
     <button class="theme-toggle" id="theme-btn" onclick="toggleTheme()" title="Cambia tema">☀️</button>
     <button class="btn-chisiamo" onclick="showPage('chisiamo')">ⓘ Chi siamo</button>
@@ -358,18 +397,19 @@ body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);bac
 <!-- HOME -->
 <div class="page active" id="page-home">
   <div class="hero">
-    <img src="/static/images/hero.png" alt="Operatori" class="hero-bg">
-    <div class="hero-overlay"></div>
     <div class="hero-content">
-      <div class="hero-left">
-        <h1>Risposte chiare<br>su Previdenza e Welfare</h1>
-        <p>Un unico punto di accesso per orientarti tra norme, adempimenti e servizi INPS dedicati a imprese e professionisti.</p>
+      <div class="hero-label">Hub Previdenza e Welfare · DataHubs</div>
+      <h1>Previdenza e Welfare,<br><em>più semplici da capire.</em></h1>
+      <p class="hero-sub">Un unico punto di accesso per orientarti tra norme, adempimenti e servizi INPS dedicati a imprese e professionisti.</p>
+      <div class="hero-search" id="hero-search-wrap">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="hero-search-input" placeholder="Cerca nella Knowledge Base…" oninput="document.getElementById('search-input').value=this.value;handleSearch()">
+        <button class="hero-search-btn" onclick="document.getElementById('search-input').value=document.getElementById('hero-search-input').value;handleSearch()">Cerca</button>
       </div>
-      <div class="hero-right">
-        <div class="hci"><div class="hci-ic">📄</div><span>Informazioni da fonti ufficiali INPS</span></div>
-        <div class="hci"><div class="hci-ic">🗂️</div><span>Temi organizzati per macro aree</span></div>
-        <div class="hci"><div class="hci-ic">🔗</div><span>Link ai servizi e alle procedure</span></div>
-        <div class="hci"><div class="hci-ic">✅</div><span>Risposte chiare e pratiche</span></div>
+      <div class="hero-features">
+        <span class="hero-feat">Fonti INPS certificate</span>
+        <span class="hero-feat">Aggiornato 2026</span>
+        <span class="hero-feat">Assistente AI integrato</span>
       </div>
     </div>
   </div>
@@ -380,35 +420,33 @@ body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);bac
   </div>
 
   <div class="section">
-    <h2>Esplora le macro aree</h2>
-    <p class="section-sub">Seleziona l'area di tuo interesse per visualizzare i temi disponibili.</p>
+    <div class="home-section-label">Aree tematiche</div>
+    <h2>Esplora le aree</h2>
+    <p class="section-sub">Seleziona l'area di tuo interesse per accedere ai temi disponibili.</p>
     <div class="macro-grid">
-      <div class="mc" style="background:#EBF5FF;" onclick="showPage('previdenza')">
-        <div class="mc-top">
-          <div class="mc-icon" style="background:#BFDBFE;"><svg viewBox="0 0 24 24" fill="none" stroke="#1d6fa4" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
-          <div class="mc-badge" style="background:#BFDBFE;color:#1d6fa4;">2 temi</div>
-        </div>
-        <h3>Previdenza</h3>
+      <div class="mc" onclick="showPage('previdenza')">
+        <div class="mc-num" style="color:#1d6fa4;">01</div>
+        <h3 style="color:#0F2A4A;">Previdenza</h3>
         <p>Contributi, posizione contributiva, correttezza dei versamenti e adempimenti previdenziali.</p>
-        <div class="mc-link" style="color:#1d6fa4;">Scopri i temi <div class="mc-arrow" style="background:#BFDBFE;"><svg viewBox="0 0 24 24" fill="none" stroke="#1d6fa4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div></div>
-      </div>
-      <div class="mc" style="background:#FEF8EC;" onclick="showPage('welfare')">
-        <div class="mc-top">
-          <div class="mc-icon" style="background:#FDE68A;"><svg viewBox="0 0 24 24" fill="none" stroke="#92600A" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></div>
-          <div class="mc-badge" style="background:#FDE68A;color:#92600A;">2 temi</div>
+        <div class="mc-link" style="color:#1d6fa4;">Esplora Previdenza
+          <div class="mc-arrow" style="background:#EBF5FF;"><svg viewBox="0 0 24 24" fill="none" stroke="#1d6fa4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
         </div>
-        <h3>Welfare aziendale</h3>
+      </div>
+      <div class="mc" onclick="showPage('welfare')">
+        <div class="mc-num" style="color:#92600A;">02</div>
+        <h3 style="color:#0F2A4A;">Welfare aziendale</h3>
         <p>Strumenti e adempimenti per il welfare, regolarità contributiva e DURC.</p>
-        <div class="mc-link" style="color:#92600A;">Scopri i temi <div class="mc-arrow" style="background:#FDE68A;"><svg viewBox="0 0 24 24" fill="none" stroke="#92600A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div></div>
-      </div>
-      <div class="mc" style="background:#EDFAF4;" onclick="showPage('sanita')">
-        <div class="mc-top">
-          <div class="mc-icon" style="background:#A7F3D0;"><svg viewBox="0 0 24 24" fill="none" stroke="#166534" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
-          <div class="mc-badge" style="background:#A7F3D0;color:#166534;">2 temi</div>
+        <div class="mc-link" style="color:#92600A;">Esplora Welfare
+          <div class="mc-arrow" style="background:#FEF8EC;"><svg viewBox="0 0 24 24" fill="none" stroke="#92600A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
         </div>
-        <h3>Sanità integrativa</h3>
+      </div>
+      <div class="mc" onclick="showPage('sanita')">
+        <div class="mc-num" style="color:#166534;">03</div>
+        <h3 style="color:#0F2A4A;">Sanità integrativa</h3>
         <p>Fondi sanitari contrattuali, contribuzione obbligatoria e adempimenti correlati.</p>
-        <div class="mc-link" style="color:#166534;">Scopri i temi <div class="mc-arrow" style="background:#A7F3D0;"><svg viewBox="0 0 24 24" fill="none" stroke="#166534" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div></div>
+        <div class="mc-link" style="color:#166534;">Esplora Sanità
+          <div class="mc-arrow" style="background:#EDFAF4;"><svg viewBox="0 0 24 24" fill="none" stroke="#166534" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
       </div>
     </div>
   </div>
@@ -432,6 +470,7 @@ body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);bac
       <div><h1>Previdenza</h1><p>Posizione contributiva, versamenti, ricorsi e prestazioni previdenziali.</p>
       <div class="area-badges"><span class="badge" style="background:#EBF5FF;color:#1d6fa4;">2 temi</span><span class="badge" style="background:var(--gray-100);color:var(--gray-600);">Fonte: INPS</span></div></div>
     </div>
+    <div class="temi-grid">
     <div class="tema" style="--tc:#1d6fa4;--tc-bg:#EBF5FF;" onclick="showPage('posizione-contributiva')">
       <div class="tema-bar"></div><div class="tema-body">
       <div class="tema-cat">Previdenza · INPS</div>
@@ -448,7 +487,8 @@ body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);bac
       <p>Isopensione, Fondi di solidarietà, requisiti, accordo aziendale, agevolazioni fiscali 2026 e tutele per nuovi requisiti pensionistici (Circ. 41/2026).</p>
       <div class="tema-tags"><span class="tema-tag">Isopensione</span><span class="tema-tag">Fondi solidarietà</span><span class="tema-tag">Esodo</span><span class="tema-tag">Contributivi puri</span></div>
       <div class="tema-footer"><div class="tema-meta"><span>📄 5 fonti INPS</span><span>📅 Sett 2026</span></div><button class="tema-open">Apri il tema →</button></div>
-      </div>
+      
+  </div></div>
     </div>
   </div>
 </div>
@@ -461,6 +501,7 @@ body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);bac
       <div><h1>Welfare aziendale</h1><p>Regolarità contributiva, DURC e ammortizzatori sociali.</p>
       <div class="area-badges"><span class="badge" style="background:#FEF8EC;color:#92600A;">2 temi</span><span class="badge" style="background:var(--gray-100);color:var(--gray-600);">Fonte: INPS</span></div></div>
     </div>
+    <div class="temi-grid">
     <div class="tema" style="--tc:#92600A;--tc-bg:#FEF8EC;" onclick="showPage('durc-online')">
       <div class="tema-bar"></div><div class="tema-body">
       <div class="tema-cat" style="color:#92600A;">Welfare aziendale · INPS</div>
@@ -477,7 +518,8 @@ body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);bac
       <p>Datori ammessi, causali, OMNIA IS, massimale 2026 (1.423,69 €), contribuzione addizionale, conguaglio UniEmens ed emergenza climatica lug–dic 2026.</p>
       <div class="tema-tags"><span class="tema-tag">OMNIA IS</span><span class="tema-tag">UniEmens</span><span class="tema-tag">Massimale 2026</span><span class="tema-tag">EONE</span></div>
       <div class="tema-footer"><div class="tema-meta"><span>📄 4 fonti INPS</span><span>📅 Lug 2026</span></div><button class="tema-open" style="color:#92600A;">Apri il tema →</button></div>
-      </div>
+      
+  </div></div>
     </div>
   </div>
 </div>
@@ -490,6 +532,7 @@ body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);bac
       <div><h1>Sanità integrativa</h1><p>Fondi sanitari contrattuali INPS e regime fiscale della sanità integrativa.</p>
       <div class="area-badges"><span class="badge" style="background:#EDFAF4;color:#166534;">2 temi</span><span class="badge" style="background:var(--gray-100);color:var(--gray-600);">INPS · AE · Min. Salute</span></div></div>
     </div>
+    <div class="temi-grid">
     <div class="tema" style="--tc:#166534;--tc-bg:#EDFAF4;" onclick="showPage('fondi-sanitari-contrattuali')">
       <div class="tema-bar"></div><div class="tema-body">
       <div class="tema-cat" style="color:#166534;">Sanità integrativa · INPS</div>
@@ -506,7 +549,8 @@ body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);bac
       <p>Tipologie A e B, deducibilità fino a 3.615,20 € (art. 10 TUIR), non imponibilità (art. 51 TUIR), Anagrafe Min. Salute e trattamento contributivo INPS.</p>
       <div class="tema-tags"><span class="tema-tag">Art. 10 TUIR</span><span class="tema-tag">Art. 51 TUIR</span><span class="tema-tag">Anagrafe fondi</span><span class="tema-tag">3.615,20 €</span></div>
       <div class="tema-footer"><div class="tema-meta"><span>📄 AE + Min. Salute + INPS</span><span>📅 Mag 2025</span></div><button class="tema-open" style="color:#166534;">Apri il tema →</button></div>
-      </div>
+      
+  </div></div>
     </div>
   </div>
 </div>
