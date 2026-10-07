@@ -55,10 +55,203 @@ html,body{height:100%;font-family:'Inter',sans-serif;background:#F4F7FB;color:va
 .hamburger span{display:block;height:2px;background:var(--gray-600);border-radius:2px;transition:all .25s;}
 .hamburger:hover span{background:var(--navy);}
 #back-btn:hover{border-color:var(--navy);color:var(--navy);}
-
 /* THEME TOGGLE */
 .theme-toggle{width:34px;height:34px;background:var(--gray-100);border:1.5px solid var(--gray-200);border-radius:8px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .15s;}
 .theme-toggle:hover{border-color:var(--navy);background:var(--blue-bg);}
+
+/* ═══ READING PROGRESS BAR ═══ */
+#read-progress{position:fixed;top:var(--header-h);left:0;width:0%;height:3px;background:var(--tc,var(--accent));z-index:300;transition:width .1s linear;border-radius:0 2px 2px 0;}
+
+/* ═══ LAYOUT SENZA SIDEBAR ═══ */
+.sidebar{display:none;}
+.main{margin-left:0 !important;flex:1;min-width:0;}
+
+/* ═══ HOME — HERO EDITORIALE ═══ */
+.hero{padding:80px 0 72px;background:#0F2A4A;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;border:1px solid rgba(255,255,255,.04);top:-200px;right:-100px;pointer-events:none;}
+.hero::after{content:'';position:absolute;width:380px;height:380px;border-radius:50%;border:1px solid rgba(255,255,255,.06);top:40px;right:80px;pointer-events:none;}
+.hero-inner{max-width:900px;margin:0 auto;padding:0 48px;position:relative;z-index:2;}
+.hero-eyebrow{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:24px;display:flex;align-items:center;gap:10px;}
+.hero-eyebrow::before{content:'';width:28px;height:1.5px;background:rgba(255,255,255,.25);}
+.hero h1{font-size:52px;font-weight:800;color:#fff;line-height:1.05;letter-spacing:-2px;margin-bottom:20px;max-width:700px;}
+.hero h1 em{font-style:normal;color:#7DD3FC;}
+.hero-desc{font-size:17px;color:rgba(255,255,255,.55);line-height:1.7;max-width:500px;margin-bottom:40px;}
+.hero-searchbar{display:flex;align-items:center;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.15);border-radius:14px;padding:6px 6px 6px 22px;max-width:580px;gap:12px;backdrop-filter:blur(12px);transition:border-color .2s,background .2s;}
+.hero-searchbar:focus-within{border-color:rgba(125,211,252,.4);background:rgba(255,255,255,.12);}
+.hero-searchbar svg{width:18px;height:18px;stroke:rgba(255,255,255,.4);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0;}
+.hero-searchbar input{flex:1;border:none;background:transparent;font-size:16px;color:#fff;outline:none;padding:10px 0;font-family:'Inter',sans-serif;}
+.hero-searchbar input::placeholder{color:rgba(255,255,255,.35);}
+.hero-searchbar-btn{background:#fff;color:var(--navy);border:none;border-radius:10px;padding:10px 22px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;transition:background .15s,transform .15s;}
+.hero-searchbar-btn:hover{background:#EBF5FF;transform:translateX(2px);}
+.hero-stats{display:flex;gap:40px;margin-top:48px;padding-top:40px;border-top:1px solid rgba(255,255,255,.07);}
+.hero-stat-n{display:block;font-size:28px;font-weight:800;color:#fff;letter-spacing:-1px;line-height:1;}
+.hero-stat-l{display:block;font-size:11px;color:rgba(255,255,255,.35);margin-top:4px;letter-spacing:.3px;}
+
+/* ═══ HOME — AREE EDITORIALI ═══ */
+.home-areas{background:#fff;}
+.home-area-row{display:grid;grid-template-columns:1fr 1fr;min-height:340px;cursor:pointer;transition:background .2s;}
+.home-area-row:not(:last-child){border-bottom:1px solid var(--gray-100);}
+.home-area-row:hover{background:#FAFBFF;}
+.home-area-row:hover .area-cta-arrow{transform:translateX(5px);}
+.home-area-text{padding:56px 64px;display:flex;flex-direction:column;justify-content:center;}
+.home-area-num{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.home-area-num span{display:inline-block;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;}
+.home-area-title{font-size:34px;font-weight:800;color:var(--navy);letter-spacing:-1px;line-height:1.1;margin-bottom:14px;}
+.home-area-desc{font-size:15px;color:var(--gray-600);line-height:1.7;margin-bottom:28px;max-width:420px;}
+.area-cta{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;text-decoration:none;border:none;background:none;cursor:pointer;font-family:'Inter',sans-serif;padding:0;}
+.area-cta-arrow{display:inline-flex;width:28px;height:28px;border-radius:50%;align-items:center;justify-content:center;transition:transform .2s;}
+.area-cta-arrow svg{width:13px;height:13px;}
+.home-area-visual{display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+
+/* ═══ HOME — STRIP INFO ═══ */
+.home-strip{background:var(--navy);padding:48px 0;}
+.home-strip-inner{max-width:900px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;}
+.strip-item{color:rgba(255,255,255,.6);font-size:13px;line-height:1.5;}
+.strip-item strong{display:block;font-size:15px;font-weight:700;color:#fff;margin-bottom:4px;}
+
+/* ═══ PAGINA AREA — EDITORIALE ═══ */
+.area-editorial-header{padding:64px 0 48px;position:relative;overflow:hidden;}
+.area-editorial-inner{max-width:900px;margin:0 auto;padding:0 48px;}
+.area-editorial-eyebrow{font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:8px;cursor:pointer;transition:opacity .15s;}
+.area-editorial-eyebrow:hover{opacity:.7;}
+.area-editorial-eyebrow::before{content:'←';margin-right:2px;}
+.area-editorial-title{font-size:48px;font-weight:800;letter-spacing:-2px;line-height:1.05;margin-bottom:16px;}
+.area-editorial-desc{font-size:16px;color:var(--gray-600);line-height:1.7;max-width:560px;}
+.area-temi-section{max-width:900px;margin:0 auto;padding:0 48px 64px;}
+.area-temi-label{font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--gray-400);margin-bottom:32px;padding-top:16px;border-top:1px solid var(--gray-200);}
+/* Blocchi articolo orizzontali */
+.tema-editorial{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:start;padding:32px 0;border-bottom:1px solid var(--gray-100);cursor:pointer;transition:background .15s;}
+.tema-editorial:first-child{padding-top:0;}
+.tema-editorial:hover .tema-ed-arrow{transform:translateX(5px);opacity:1;}
+.tema-ed-left{}
+.tema-ed-cat{font-size:10.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.tema-ed-cat::before{content:'';width:16px;height:2px;background:currentColor;border-radius:1px;}
+.tema-ed-title{font-size:22px;font-weight:800;color:var(--navy);letter-spacing:-.5px;line-height:1.2;margin-bottom:10px;transition:color .15s;}
+.tema-editorial:hover .tema-ed-title{color:var(--tc,var(--accent));}
+.tema-ed-desc{font-size:14px;color:var(--gray-600);line-height:1.7;margin-bottom:14px;max-width:560px;}
+.tema-ed-tags{display:flex;gap:6px;flex-wrap:wrap;}
+.tema-ed-tag{font-size:11px;background:var(--gray-100);color:var(--gray-600);padding:3px 10px;border-radius:20px;font-weight:500;}
+.tema-ed-right{display:flex;flex-direction:column;align-items:flex-end;gap:12px;padding-top:4px;}
+.tema-ed-arrow{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--gray-200);display:flex;align-items:center;justify-content:center;transition:transform .2s,opacity .2s,border-color .2s;opacity:.5;}
+.tema-ed-arrow svg{width:14px;height:14px;}
+.tema-ed-meta{font-size:11px;color:var(--gray-400);text-align:right;line-height:1.6;}
+
+/* ═══ PAGINA TEMA — ARTICOLO ═══ */
+.article-page{max-width:100%;}
+/* Progress bar */
+.article-header{padding:48px 0 36px;position:relative;}
+.article-header-inner{max-width:740px;margin:0 auto;padding:0 48px;}
+.article-breadcrumb{font-size:12px;font-weight:600;letter-spacing:.3px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;margin-bottom:20px;transition:opacity .15s;border:none;background:none;padding:0;font-family:'Inter',sans-serif;}
+.article-breadcrumb:hover{opacity:.7;}
+.article-breadcrumb::before{content:'←';font-size:14px;}
+.article-category{font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:6px;}
+.article-category::before{content:'';width:20px;height:2.5px;background:currentColor;border-radius:1px;}
+.article-title{font-size:38px;font-weight:800;color:var(--navy);letter-spacing:-1.5px;line-height:1.1;margin-bottom:14px;}
+.article-desc{font-size:17px;color:var(--gray-500,#64748b);line-height:1.65;margin-bottom:28px;}
+/* Strip "In questa guida" orizzontale */
+.article-toc-strip{border-top:1px solid var(--gray-100);border-bottom:1px solid var(--gray-100);padding:14px 0;margin-bottom:0;}
+.article-toc-strip-inner{max-width:740px;margin:0 auto;padding:0 48px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.article-toc-label{font-size:10.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--gray-400);white-space:nowrap;flex-shrink:0;}
+.article-toc-links{display:flex;gap:6px;flex-wrap:wrap;}
+.article-toc-links a{font-size:12.5px;color:var(--gray-600);text-decoration:none;padding:4px 12px;border-radius:20px;background:var(--gray-100);transition:background .15s,color .15s;border:none;font-weight:500;}
+.article-toc-links a:hover{background:var(--tc-bg,var(--blue-bg));color:var(--tc,var(--accent));}
+.article-toc-links a.toc-active{background:var(--tc-bg,var(--blue-bg));color:var(--tc,var(--accent));font-weight:600;}
+/* Corpo articolo */
+.article-body{max-width:740px;margin:0 auto;padding:48px 48px 64px;}
+/* Fonti in fondo come firma */
+.article-footer{border-top:2px solid var(--gray-100);margin:0;padding:0;}
+.article-footer-inner{max-width:740px;margin:0 auto;padding:32px 48px 56px;}
+.article-footer-label{font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gray-400);margin-bottom:16px;}
+.article-sources{display:flex;flex-direction:column;gap:8px;}
+.article-source-link{display:flex;align-items:center;gap:12px;text-decoration:none;padding:12px 16px;border-radius:10px;border:1px solid var(--gray-100);background:#fff;transition:border-color .15s,box-shadow .15s;}
+.article-source-link:hover{border-color:var(--tc,var(--accent));box-shadow:0 2px 12px rgba(0,0,0,.06);}
+.article-source-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;}
+.article-source-text strong{display:block;font-size:13px;font-weight:600;color:var(--gray-800);}
+.article-source-text span{font-size:11.5px;color:var(--gray-400);}
+.article-source-arrow{margin-left:auto;color:var(--gray-300);font-size:16px;transition:transform .15s;}
+.article-source-link:hover .article-source-arrow{transform:translateX(3px);color:var(--tc,var(--accent));}
+
+/* ═══ KB ARTICLE typography ═══ */
+.kb-article{font-size:17px;color:#2D3748;line-height:1.85;max-width:100%;}
+.kb-article h1{display:none;}
+.kb-article h2{font-size:22px;font-weight:800;color:var(--navy);margin:52px 0 16px;letter-spacing:-.5px;line-height:1.2;}
+.kb-article h2::before{display:none;}
+.kb-article h2::after{content:'';display:block;width:36px;height:3px;background:var(--tc,var(--accent));border-radius:2px;margin-top:10px;}
+.kb-article h3{font-size:17px;font-weight:700;color:var(--navy);margin:32px 0 10px;}
+.kb-article p{margin-bottom:18px;line-height:1.85;}
+.kb-article strong{color:var(--navy);font-weight:700;}
+.kb-article em{color:var(--gray-400);font-size:15px;}
+.kb-article blockquote{border-left:3px solid var(--tc,var(--accent));padding:4px 0 4px 24px;margin:28px 0;font-size:17px;color:var(--gray-600);line-height:1.7;font-style:italic;}
+.kb-article blockquote p{margin-bottom:0;}
+.kb-article ul{list-style:none;margin:12px 0 22px;padding:0;}
+.kb-article ul li{display:flex;gap:14px;margin-bottom:12px;font-size:17px;color:#2D3748;line-height:1.75;}
+.kb-article ul li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--tc,var(--accent));flex-shrink:0;margin-top:10px;}
+.kb-article ol{margin:12px 0 22px;padding-left:24px;}
+.kb-article ol li{margin-bottom:12px;font-size:17px;color:#2D3748;line-height:1.75;}
+.kb-article table{width:100%;border-collapse:collapse;margin:24px 0;font-size:14px;display:block;overflow-x:auto;}
+.kb-article table th{background:var(--navy);color:#fff;padding:12px 18px;text-align:left;font-weight:600;font-size:13px;white-space:nowrap;letter-spacing:.2px;}
+.kb-article table td{padding:11px 18px;border-bottom:1px solid var(--gray-100);color:#475569;vertical-align:top;line-height:1.6;}
+.kb-article table tr:last-child td{border-bottom:none;}
+.kb-article table tr:nth-child(even) td{background:#FAFBFD;}
+.kb-article hr{border:none;border-top:1px solid var(--gray-100);margin:36px 0;}
+.kb-article a{color:var(--tc,var(--accent));text-decoration:underline;text-underline-offset:3px;font-weight:500;transition:color .15s;}
+.kb-article a:hover{color:var(--navy);}
+.kb-article table td a{color:var(--tc,var(--accent));text-decoration:underline;}
+.kb-article code{background:var(--gray-100);border-radius:5px;padding:2px 7px;font-size:15px;font-family:monospace;color:var(--navy);}
+
+/* Nascondi elementi vecchi non più usati */
+.kb-doc-layout{display:block !important;}
+.kb-toc{display:none !important;}
+.kb-toc-mobile{display:none !important;}
+.kb-doc-main{background:transparent !important;border:none !important;border-radius:0 !important;margin:0 !important;}
+.kb-body{padding:0 !important;}
+.kb-section-head{display:none !important;}
+.kb-num{display:none !important;}
+.tema-page-header{display:none !important;}
+.area-wrap{margin:0 !important;padding:0 !important;}
+.fonti-box{display:none !important;}
+.fonte-link{display:none !important;}
+.fonti-row{display:none !important;}
+.ai-notice{display:none !important;}
+.section{margin:0;padding:0;}
+.macro-grid{display:none;}
+.info-section{display:none;}
+.temi-grid{display:none;}
+.area-header{display:none !important;}
+
+/* ═══ CHI SIAMO (mantieni) ═══ */
+.cs-card{background:#fff;border:1.5px solid var(--gray-200);border-radius:var(--radius);overflow:hidden;margin-bottom:12px;}
+.cs-bar{height:3px;}
+.cs-body{padding:20px 24px;}
+.cs-cat{font-size:10px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;margin-bottom:9px;display:flex;align-items:center;gap:6px;}
+.cs-cat::before{content:'';width:12px;height:2px;background:currentColor;display:inline-block;border-radius:1px;}
+.cs-card h3{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:9px;}
+.cs-text{font-size:13px;color:var(--gray-600);line-height:1.7;margin-bottom:10px;}
+.cs-rules{background:var(--gray-50);border-radius:9px;padding:14px 16px;margin-top:12px;}
+.cs-rules-title{font-size:11px;font-weight:700;color:var(--navy);margin-bottom:10px;}
+.cs-rule{display:flex;gap:9px;font-size:12.5px;color:var(--gray-600);line-height:1.5;margin-bottom:9px;}
+.cs-rule:last-child{margin-bottom:0;}
+.cs-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:5px;}
+
+/* ═══ FADE-IN ON SCROLL ═══ */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:900px){
+  .hero h1{font-size:32px;letter-spacing:-1px;}
+  .hero-inner,.article-header-inner,.article-body,.article-footer-inner,.article-toc-strip-inner,.area-editorial-inner,.area-temi-section{padding-left:24px;padding-right:24px;}
+  .home-area-row{grid-template-columns:1fr;}
+  .home-area-visual{display:none;}
+  .home-area-text{padding:36px 24px;}
+  .home-area-title{font-size:24px;}
+  .home-strip-inner{grid-template-columns:repeat(2,1fr);padding:0 24px;}
+  .area-editorial-title{font-size:30px;}
+  .article-title{font-size:26px;}
+  .kb-article{font-size:16px;}
+  .h-nav{display:none;}
+  .hero-stats{gap:24px;}
+}
 
 /* DARK MODE */
 body.dark{--navy:#7DD3FC;--blue:#7DD3FC;--blue-bg:#0f2a3f;--blue-mid:#1e3a4f;--gray-50:#0f172a;--gray-100:#1e293b;--gray-200:#334155;--gray-400:#64748b;--gray-600:#94a3b8;--gray-800:#e2e8f0;--white:#1e293b;--accent:#38bdf8;}
@@ -366,6 +559,7 @@ body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);bac
   </div>
 </header>
 
+<div id="read-progress"></div>
 <div class="body">
 <nav class="sidebar" id="sidebar">
   <div class="sb-brand">
@@ -396,350 +590,489 @@ body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);bac
 
 <!-- HOME -->
 <div class="page active" id="page-home">
+
+  <!-- HERO -->
   <div class="hero">
-    <div class="hero-content">
-      <div class="hero-label">Hub Previdenza e Welfare · DataHubs</div>
-      <h1>Previdenza e Welfare,<br><em>più semplici da capire.</em></h1>
-      <p class="hero-sub">Un unico punto di accesso per orientarti tra norme, adempimenti e servizi INPS dedicati a imprese e professionisti.</p>
-      <div class="hero-search" id="hero-search-wrap">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Hub Previdenza e Welfare · DataHubs</div>
+      <h1>Previdenza e Welfare,<br><em>più semplici<br>da capire.</em></h1>
+      <p class="hero-desc">Un unico punto di accesso per orientarti tra norme, adempimenti e servizi INPS dedicati a imprese e professionisti.</p>
+      <div class="hero-searchbar" id="hero-sb">
         <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="text" id="hero-search-input" placeholder="Cerca nella Knowledge Base…" oninput="document.getElementById('search-input').value=this.value;handleSearch()">
-        <button class="hero-search-btn" onclick="document.getElementById('search-input').value=document.getElementById('hero-search-input').value;handleSearch()">Cerca</button>
+        <input id="hero-q" type="text" placeholder="Cerca nella Knowledge Base…" oninput="document.getElementById('search-input').value=this.value;handleSearch()">
+        <button class="hero-searchbar-btn" onclick="document.getElementById('search-input').value=document.getElementById('hero-q').value;handleSearch()">Cerca →</button>
       </div>
-      <div class="hero-features">
-        <span class="hero-feat">Fonti INPS certificate</span>
-        <span class="hero-feat">Aggiornato 2026</span>
-        <span class="hero-feat">Assistente AI integrato</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="ai-notice">
-    <div class="ai-notice-icon">i</div>
-    <span>L'assistente AI è addestrato sulle fonti INPS ufficiali, dell'Agenzia delle Entrate e del Ministero della Salute certificate nella base documentale. Ogni risposta include il riferimento alla fonte originale per una consultazione immediata e sicura.</span>
-  </div>
-
-  <div class="section">
-    <div class="home-section-label">Aree tematiche</div>
-    <h2>Esplora le aree</h2>
-    <p class="section-sub">Seleziona l'area di tuo interesse per accedere ai temi disponibili.</p>
-    <div class="macro-grid">
-      <div class="mc" onclick="showPage('previdenza')">
-        <div class="mc-num" style="color:#1d6fa4;">01</div>
-        <h3 style="color:#0F2A4A;">Previdenza</h3>
-        <p>Contributi, posizione contributiva, correttezza dei versamenti e adempimenti previdenziali.</p>
-        <div class="mc-link" style="color:#1d6fa4;">Esplora Previdenza
-          <div class="mc-arrow" style="background:#EBF5FF;"><svg viewBox="0 0 24 24" fill="none" stroke="#1d6fa4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-        </div>
-      </div>
-      <div class="mc" onclick="showPage('welfare')">
-        <div class="mc-num" style="color:#92600A;">02</div>
-        <h3 style="color:#0F2A4A;">Welfare aziendale</h3>
-        <p>Strumenti e adempimenti per il welfare, regolarità contributiva e DURC.</p>
-        <div class="mc-link" style="color:#92600A;">Esplora Welfare
-          <div class="mc-arrow" style="background:#FEF8EC;"><svg viewBox="0 0 24 24" fill="none" stroke="#92600A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-        </div>
-      </div>
-      <div class="mc" onclick="showPage('sanita')">
-        <div class="mc-num" style="color:#166534;">03</div>
-        <h3 style="color:#0F2A4A;">Sanità integrativa</h3>
-        <p>Fondi sanitari contrattuali, contribuzione obbligatoria e adempimenti correlati.</p>
-        <div class="mc-link" style="color:#166534;">Esplora Sanità
-          <div class="mc-arrow" style="background:#EDFAF4;"><svg viewBox="0 0 24 24" fill="none" stroke="#166534" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-        </div>
+      <div class="hero-stats">
+        <div><span class="hero-stat-n">6</span><span class="hero-stat-l">Temi certificati</span></div>
+        <div><span class="hero-stat-n">3</span><span class="hero-stat-l">Aree tematiche</span></div>
+        <div><span class="hero-stat-n">INPS</span><span class="hero-stat-l">Fonte principale</span></div>
+        <div><span class="hero-stat-n">AI</span><span class="hero-stat-l">Assistente integrato</span></div>
       </div>
     </div>
   </div>
 
-  <div class="info-section">
-    <h2>Informazioni utili</h2>
-    <div class="info-grid">
-      <div class="info-item"><div class="info-icon">📖</div><strong>Fonti certificate</strong><span>INPS, Agenzia delle Entrate, Ministero della Salute</span></div>
-      <div class="info-item"><div class="info-icon">❔</div><strong>Come usare la base documentale</strong><span>Naviga per macro area o cerca con la barra in alto</span></div>
-      <div class="info-item"><div class="info-icon">🔗</div><strong>Servizi INPS</strong><span>Link diretti alle procedure ufficiali nei temi</span></div>
-      <div class="info-item"><div class="info-icon">🤖</div><strong>Assistente AI</strong><span>Fai domande in linguaggio naturale — bottone in basso a destra</span></div>
+  <!-- AREE EDITORIALI -->
+  <div class="home-areas">
+    <!-- PREVIDENZA -->
+    <div class="home-area-row fade-in" onclick="showPage('previdenza')">
+      <div class="home-area-text">
+        <div class="home-area-num" style="color:#1d6fa4;">
+          <span style="background:#EBF5FF;color:#1d6fa4;">01</span>
+          Previdenza
+        </div>
+        <div class="home-area-title">Contributi e posizione previdenziale</div>
+        <div class="home-area-desc">Estratto conto contributivo, correttezza dei versamenti, ricorsi e prestazioni di accompagnamento alla pensione.</div>
+        <button class="area-cta" style="color:#1d6fa4;" onclick="showPage('previdenza')">
+          Esplora Previdenza
+          <span class="area-cta-arrow" style="background:#EBF5FF;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1d6fa4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </button>
+      </div>
+      <div class="home-area-visual" style="background:#F7FBFF;">
+        <svg width="220" height="220" viewBox="0 0 220 220" fill="none">
+          <circle cx="110" cy="110" r="4" fill="#1d6fa4" opacity=".7"/>
+          <circle cx="60" cy="70" r="3" fill="#1d6fa4" opacity=".5"/>
+          <circle cx="160" cy="80" r="3" fill="#1d6fa4" opacity=".5"/>
+          <circle cx="80" cy="160" r="3" fill="#1d6fa4" opacity=".4"/>
+          <circle cx="155" cy="150" r="3" fill="#1d6fa4" opacity=".4"/>
+          <circle cx="40" cy="130" r="2.5" fill="#1d6fa4" opacity=".3"/>
+          <circle cx="180" cy="120" r="2.5" fill="#1d6fa4" opacity=".3"/>
+          <line x1="110" y1="110" x2="60" y2="70" stroke="#1d6fa4" stroke-width="1" opacity=".15"/>
+          <line x1="110" y1="110" x2="160" y2="80" stroke="#1d6fa4" stroke-width="1" opacity=".15"/>
+          <line x1="110" y1="110" x2="80" y2="160" stroke="#1d6fa4" stroke-width="1" opacity=".15"/>
+          <line x1="110" y1="110" x2="155" y2="150" stroke="#1d6fa4" stroke-width="1" opacity=".15"/>
+          <line x1="60" y1="70" x2="40" y2="130" stroke="#1d6fa4" stroke-width="1" opacity=".1"/>
+          <line x1="160" y1="80" x2="180" y2="120" stroke="#1d6fa4" stroke-width="1" opacity=".1"/>
+          <circle cx="110" cy="110" r="40" stroke="#1d6fa4" stroke-width="1" stroke-dasharray="4 6" opacity=".12"/>
+          <circle cx="110" cy="110" r="70" stroke="#1d6fa4" stroke-width="1" opacity=".06"/>
+        </svg>
+      </div>
+    </div>
+    <!-- WELFARE -->
+    <div class="home-area-row fade-in" onclick="showPage('welfare')">
+      <div class="home-area-visual" style="background:#FFFDF5;">
+        <svg width="220" height="220" viewBox="0 0 220 220" fill="none">
+          <rect x="70" y="90" width="80" height="60" rx="8" stroke="#92600A" stroke-width="1.5" opacity=".2"/>
+          <rect x="86" y="78" width="20" height="14" rx="4" stroke="#92600A" stroke-width="1.5" opacity=".2"/>
+          <rect x="114" y="78" width="20" height="14" rx="4" stroke="#92600A" stroke-width="1.5" opacity=".2"/>
+          <line x1="70" y1="115" x2="150" y2="115" stroke="#92600A" stroke-width="1.5" opacity=".15"/>
+          <circle cx="110" cy="125" r="8" fill="#92600A" opacity=".15"/>
+          <line x1="110" y1="117" x2="110" y2="133" stroke="#92600A" stroke-width="1.5" opacity=".4"/>
+          <line x1="102" y1="125" x2="118" y2="125" stroke="#92600A" stroke-width="1.5" opacity=".4"/>
+          <circle cx="110" cy="110" r="70" stroke="#92600A" stroke-width="1" opacity=".05"/>
+          <circle cx="110" cy="110" r="45" stroke="#92600A" stroke-width="1" stroke-dasharray="3 8" opacity=".1"/>
+        </svg>
+      </div>
+      <div class="home-area-text">
+        <div class="home-area-num" style="color:#92600A;">
+          <span style="background:#FEF8EC;color:#92600A;">02</span>
+          Welfare aziendale
+        </div>
+        <div class="home-area-title">Regolarità contributiva e ammortizzatori</div>
+        <div class="home-area-desc">DURC Online, Pre-DURC, Ve.R.A., Cassa Integrazione Guadagni Ordinaria e gestione delle irregolarità contributive.</div>
+        <button class="area-cta" style="color:#92600A;" onclick="showPage('welfare')">
+          Esplora Welfare
+          <span class="area-cta-arrow" style="background:#FEF8EC;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#92600A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </button>
+      </div>
+    </div>
+    <!-- SANITÀ -->
+    <div class="home-area-row fade-in" onclick="showPage('sanita')">
+      <div class="home-area-text">
+        <div class="home-area-num" style="color:#166534;">
+          <span style="background:#EDFAF4;color:#166534;">03</span>
+          Sanità integrativa
+        </div>
+        <div class="home-area-title">Fondi sanitari e regime fiscale</div>
+        <div class="home-area-desc">Contribuzione obbligatoria ai fondi contrattuali, meccanismo F24/UniEmens, deducibilità fiscale e Anagrafe Ministero della Salute.</div>
+        <button class="area-cta" style="color:#166534;" onclick="showPage('sanita')">
+          Esplora Sanità
+          <span class="area-cta-arrow" style="background:#EDFAF4;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#166534" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </button>
+      </div>
+      <div class="home-area-visual" style="background:#F4FBF7;">
+        <svg width="220" height="220" viewBox="0 0 220 220" fill="none">
+          <path d="M110 60 C85 60 65 80 65 105 C65 135 110 165 110 165 C110 165 155 135 155 105 C155 80 135 60 110 60Z" stroke="#166534" stroke-width="1.5" opacity=".15"/>
+          <line x1="110" y1="95" x2="110" y2="125" stroke="#166534" stroke-width="2" opacity=".35"/>
+          <line x1="95" y1="110" x2="125" y2="110" stroke="#166534" stroke-width="2" opacity=".35"/>
+          <circle cx="110" cy="110" r="70" stroke="#166534" stroke-width="1" opacity=".05"/>
+          <circle cx="110" cy="110" r="50" stroke="#166534" stroke-width="1" stroke-dasharray="3 7" opacity=".1"/>
+          <circle cx="80" cy="75" r="3" fill="#166534" opacity=".2"/>
+          <circle cx="140" cy="75" r="3" fill="#166534" opacity=".2"/>
+          <circle cx="65" cy="115" r="2.5" fill="#166534" opacity=".2"/>
+          <circle cx="155" cy="115" r="2.5" fill="#166534" opacity=".2"/>
+        </svg>
+      </div>
     </div>
   </div>
+
+  <!-- STRIP DATI -->
+  <div class="home-strip">
+    <div class="home-strip-inner">
+      <div class="strip-item fade-in"><strong>Fonti certificate</strong>INPS, Agenzia delle Entrate, Ministero della Salute</div>
+      <div class="strip-item fade-in"><strong>Come consultare</strong>Naviga per area o cerca con la barra in alto</div>
+      <div class="strip-item fade-in"><strong>Servizi collegati</strong>Link diretti alle procedure INPS in ogni tema</div>
+      <div class="strip-item fade-in"><strong>Assistente AI</strong>Fai domande in linguaggio naturale — in basso a destra</div>
+    </div>
+  </div>
+
 </div>
 
 <!-- PREVIDENZA -->
 <div class="page" id="page-previdenza">
-  <div class="area-wrap">
-    <div class="area-header" style="--ah-bg:#EBF5FF;--ah-tc:#1d6fa4;">
-      <div class="area-icon" style="background:#EBF5FF;"><svg viewBox="0 0 24 24" fill="none" stroke="#1d6fa4" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
-      <div><h1>Previdenza</h1><p>Posizione contributiva, versamenti, ricorsi e prestazioni previdenziali.</p>
-      <div class="area-badges"><span class="badge" style="background:#EBF5FF;color:#1d6fa4;">2 temi</span><span class="badge" style="background:var(--gray-100);color:var(--gray-600);">Fonte: INPS</span></div></div>
+  <div class="area-editorial-header" style="background:#EBF5FF;">
+    <div class="area-editorial-inner">
+      <div class="area-editorial-eyebrow" style="color:#1d6fa4;" onclick="showPage('home')">Home</div>
+      <div class="area-editorial-title" style="color:#1d6fa4;">Previdenza</div>
+      <div class="area-editorial-desc">Contributi, posizione contributiva, correttezza dei versamenti e adempimenti previdenziali.</div>
     </div>
-    <div class="temi-grid">
-    <div class="tema" style="--tc:#1d6fa4;--tc-bg:#EBF5FF;" onclick="showPage('posizione-contributiva')">
-      <div class="tema-bar"></div><div class="tema-body">
-      <div class="tema-cat">Previdenza · INPS</div>
-      <h3>Posizione contributiva e correttezza versamenti</h3>
-      <p>Estratto conto contributivo, verifica versamenti, ricorsi amministrativi e unicità posizione aziendale. Aggiornato con Msg. INPS 2553/2025.</p>
-      <div class="tema-tags"><span class="tema-tag">Estratto conto</span><span class="tema-tag">Ricorsi INPS</span><span class="tema-tag">UniEmens</span><span class="tema-tag">Cassetto Previdenziale</span></div>
-      <div class="tema-footer"><div class="tema-meta"><span>📄 3 fonti INPS</span><span>📅 Sett 2025</span></div><button class="tema-open">Apri il tema →</button></div>
+  </div>
+  <div class="area-temi-section">
+    <div class="area-temi-label">Esplora i temi</div>
+    <div class="tema-editorial" style="--tc:#1d6fa4;" onclick="showPage('posizione-contributiva')">
+      <div class="tema-ed-left">
+        <div class="tema-ed-cat" style="color:#1d6fa4;">Previdenza · INPS</div>
+        <div class="tema-ed-title">Posizione contributiva e correttezza versamenti</div>
+        <div class="tema-ed-desc">Estratto conto contributivo, verifica versamenti, ricorsi amministrativi e unicità posizione aziendale. Aggiornato con Msg. INPS 2553/2025.</div>
+        <div class="tema-ed-tags"><span class="tema-ed-tag">Estratto conto</span><span class="tema-ed-tag">Ricorsi INPS</span><span class="tema-ed-tag">UniEmens</span><span class="tema-ed-tag">Cassetto Previdenziale</span></div>
+      </div>
+      <div class="tema-ed-right">
+        <div class="tema-ed-arrow" style="border-color:#1d6fa4;"><svg viewBox="0 0 24 24" fill="none" stroke="#1d6fa4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        <div class="tema-ed-meta">3 fonti INPS · Sett 2025</div>
       </div>
     </div>
-    <div class="tema" style="--tc:#1d6fa4;--tc-bg:#EBF5FF;" onclick="showPage('accompagnamento-pensione')">
-      <div class="tema-bar"></div><div class="tema-body">
-      <div class="tema-cat">Previdenza · INPS</div>
-      <h3>Prestazioni di accompagnamento alla pensione</h3>
-      <p>Isopensione, Fondi di solidarietà, requisiti, accordo aziendale, agevolazioni fiscali 2026 e tutele per nuovi requisiti pensionistici (Circ. 41/2026).</p>
-      <div class="tema-tags"><span class="tema-tag">Isopensione</span><span class="tema-tag">Fondi solidarietà</span><span class="tema-tag">Esodo</span><span class="tema-tag">Contributivi puri</span></div>
-      <div class="tema-footer"><div class="tema-meta"><span>📄 5 fonti INPS</span><span>📅 Sett 2026</span></div><button class="tema-open">Apri il tema →</button></div>
-      
-  </div></div>
+    <div class="tema-editorial" style="--tc:#1d6fa4;" onclick="showPage('accompagnamento-pensione')">
+      <div class="tema-ed-left">
+        <div class="tema-ed-cat" style="color:#1d6fa4;">Previdenza · INPS</div>
+        <div class="tema-ed-title">Prestazioni di accompagnamento alla pensione</div>
+        <div class="tema-ed-desc">Isopensione, Fondi di solidarietà, requisiti, accordo aziendale, agevolazioni fiscali 2026 e tutele per nuovi requisiti pensionistici (Circ. 41/2026).</div>
+        <div class="tema-ed-tags"><span class="tema-ed-tag">Isopensione</span><span class="tema-ed-tag">Fondi solidarietà</span><span class="tema-ed-tag">Esodo</span><span class="tema-ed-tag">Contributivi puri</span></div>
+      </div>
+      <div class="tema-ed-right">
+        <div class="tema-ed-arrow" style="border-color:#1d6fa4;"><svg viewBox="0 0 24 24" fill="none" stroke="#1d6fa4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        <div class="tema-ed-meta">5 fonti INPS · Sett 2026</div>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- WELFARE -->
 <div class="page" id="page-welfare">
-  <div class="area-wrap">
-    <div class="area-header" style="--ah-bg:#FEF8EC;--ah-tc:#92600A;">
-      <div class="area-icon" style="background:#FEF8EC;"><svg viewBox="0 0 24 24" fill="none" stroke="#92600A" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>
-      <div><h1>Welfare aziendale</h1><p>Regolarità contributiva, DURC e ammortizzatori sociali.</p>
-      <div class="area-badges"><span class="badge" style="background:#FEF8EC;color:#92600A;">2 temi</span><span class="badge" style="background:var(--gray-100);color:var(--gray-600);">Fonte: INPS</span></div></div>
+  <div class="area-editorial-header" style="background:#FEF8EC;">
+    <div class="area-editorial-inner">
+      <div class="area-editorial-eyebrow" style="color:#92600A;" onclick="showPage('home')">Home</div>
+      <div class="area-editorial-title" style="color:#92600A;">Welfare aziendale</div>
+      <div class="area-editorial-desc">Regolarità contributiva, DURC e ammortizzatori sociali.</div>
     </div>
-    <div class="temi-grid">
-    <div class="tema" style="--tc:#92600A;--tc-bg:#FEF8EC;" onclick="showPage('durc-online')">
-      <div class="tema-bar"></div><div class="tema-body">
-      <div class="tema-cat" style="color:#92600A;">Welfare aziendale · INPS</div>
-      <h3>DURC Online</h3>
-      <p>Verifica regolarità contributiva, Piattaforma Unica INPS, Ve.R.A., Simulazione DURC, Pre-DURC e Delega Master.</p>
-      <div class="tema-tags"><span class="tema-tag">Ve.R.A.</span><span class="tema-tag">Pre-DURC</span><span class="tema-tag">Delega Master</span><span class="tema-tag">Piattaforma Unica</span></div>
-      <div class="tema-footer"><div class="tema-meta"><span>📄 6 fonti INPS</span><span>📅 Nov 2024</span></div><button class="tema-open" style="color:#92600A;">Apri il tema →</button></div>
+  </div>
+  <div class="area-temi-section">
+    <div class="area-temi-label">Esplora i temi</div>
+    <div class="tema-editorial" style="--tc:#92600A;" onclick="showPage('durc-online')">
+      <div class="tema-ed-left">
+        <div class="tema-ed-cat" style="color:#92600A;">Welfare aziendale · INPS</div>
+        <div class="tema-ed-title">DURC Online</div>
+        <div class="tema-ed-desc">Verifica regolarità contributiva, Piattaforma Unica INPS, Ve.R.A., Simulazione DURC, Pre-DURC e Delega Master.</div>
+        <div class="tema-ed-tags"><span class="tema-ed-tag">Ve.R.A.</span><span class="tema-ed-tag">Pre-DURC</span><span class="tema-ed-tag">Delega Master</span><span class="tema-ed-tag">Piattaforma Unica</span></div>
+      </div>
+      <div class="tema-ed-right">
+        <div class="tema-ed-arrow" style="border-color:#92600A;"><svg viewBox="0 0 24 24" fill="none" stroke="#92600A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        <div class="tema-ed-meta">6 fonti INPS · Nov 2024</div>
       </div>
     </div>
-    <div class="tema" style="--tc:#92600A;--tc-bg:#FEF8EC;" onclick="showPage('cigo')">
-      <div class="tema-bar"></div><div class="tema-body">
-      <div class="tema-cat" style="color:#92600A;">Welfare aziendale · INPS</div>
-      <h3>Cassa Integrazione Guadagni Ordinaria (CIGO)</h3>
-      <p>Datori ammessi, causali, OMNIA IS, massimale 2026 (1.423,69 €), contribuzione addizionale, conguaglio UniEmens ed emergenza climatica lug–dic 2026.</p>
-      <div class="tema-tags"><span class="tema-tag">OMNIA IS</span><span class="tema-tag">UniEmens</span><span class="tema-tag">Massimale 2026</span><span class="tema-tag">EONE</span></div>
-      <div class="tema-footer"><div class="tema-meta"><span>📄 4 fonti INPS</span><span>📅 Lug 2026</span></div><button class="tema-open" style="color:#92600A;">Apri il tema →</button></div>
-      
-  </div></div>
+    <div class="tema-editorial" style="--tc:#92600A;" onclick="showPage('cigo')">
+      <div class="tema-ed-left">
+        <div class="tema-ed-cat" style="color:#92600A;">Welfare aziendale · INPS</div>
+        <div class="tema-ed-title">Cassa Integrazione Guadagni Ordinaria (CIGO)</div>
+        <div class="tema-ed-desc">Datori ammessi, causali, OMNIA IS, massimale 2026 (1.423,69 €), contribuzione addizionale, conguaglio UniEmens ed emergenza climatica lug–dic 2026.</div>
+        <div class="tema-ed-tags"><span class="tema-ed-tag">OMNIA IS</span><span class="tema-ed-tag">UniEmens</span><span class="tema-ed-tag">Massimale 2026</span><span class="tema-ed-tag">EONE</span></div>
+      </div>
+      <div class="tema-ed-right">
+        <div class="tema-ed-arrow" style="border-color:#92600A;"><svg viewBox="0 0 24 24" fill="none" stroke="#92600A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        <div class="tema-ed-meta">4 fonti INPS · Lug 2026</div>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- SANITÀ -->
 <div class="page" id="page-sanita">
-  <div class="area-wrap">
-    <div class="area-header" style="--ah-bg:#EDFAF4;--ah-tc:#166534;">
-      <div class="area-icon" style="background:#EDFAF4;"><svg viewBox="0 0 24 24" fill="none" stroke="#166534" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
-      <div><h1>Sanità integrativa</h1><p>Fondi sanitari contrattuali INPS e regime fiscale della sanità integrativa.</p>
-      <div class="area-badges"><span class="badge" style="background:#EDFAF4;color:#166534;">2 temi</span><span class="badge" style="background:var(--gray-100);color:var(--gray-600);">INPS · AE · Min. Salute</span></div></div>
+  <div class="area-editorial-header" style="background:#EDFAF4;">
+    <div class="area-editorial-inner">
+      <div class="area-editorial-eyebrow" style="color:#166534;" onclick="showPage('home')">Home</div>
+      <div class="area-editorial-title" style="color:#166534;">Sanità integrativa</div>
+      <div class="area-editorial-desc">Fondi sanitari contrattuali INPS e regime fiscale della sanità integrativa.</div>
     </div>
-    <div class="temi-grid">
-    <div class="tema" style="--tc:#166534;--tc-bg:#EDFAF4;" onclick="showPage('fondi-sanitari-contrattuali')">
-      <div class="tema-bar"></div><div class="tema-body">
-      <div class="tema-cat" style="color:#166534;">Sanità integrativa · INPS</div>
-      <h3>Fondi sanitari contrattuali — contribuzione obbligatoria</h3>
-      <p>Meccanismo F24/UniEmens per ENFEA Salute (ESAL), FASIFAR (FAFP), FONDOSANI (SANI), INNOVACARE (CARE). Convenzioni al 31/12/2026.</p>
-      <div class="tema-tags"><span class="tema-tag">F24</span><span class="tema-tag">UniEmens</span><span class="tema-tag">ESAL · FAFP · SANI · CARE</span></div>
-      <div class="tema-footer"><div class="tema-meta"><span>📄 4 circolari INPS</span><span>📅 Sett 2026</span></div><button class="tema-open" style="color:#166534;">Apri il tema →</button></div>
+  </div>
+  <div class="area-temi-section">
+    <div class="area-temi-label">Esplora i temi</div>
+    <div class="tema-editorial" style="--tc:#166534;" onclick="showPage('fondi-sanitari-contrattuali')">
+      <div class="tema-ed-left">
+        <div class="tema-ed-cat" style="color:#166534;">Sanità integrativa · INPS</div>
+        <div class="tema-ed-title">Fondi sanitari contrattuali — contribuzione obbligatoria</div>
+        <div class="tema-ed-desc">Meccanismo F24/UniEmens per ENFEA Salute (ESAL), FASIFAR (FAFP), FONDOSANI (SANI), INNOVACARE (CARE). Convenzioni al 31/12/2026.</div>
+        <div class="tema-ed-tags"><span class="tema-ed-tag">F24</span><span class="tema-ed-tag">UniEmens</span><span class="tema-ed-tag">ESAL · FAFP · SANI · CARE</span></div>
+      </div>
+      <div class="tema-ed-right">
+        <div class="tema-ed-arrow" style="border-color:#166534;"><svg viewBox="0 0 24 24" fill="none" stroke="#166534" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        <div class="tema-ed-meta">4 circolari INPS · Sett 2026</div>
       </div>
     </div>
-    <div class="tema" style="--tc:#166534;--tc-bg:#EDFAF4;" onclick="showPage('sanita-fiscale')">
-      <div class="tema-bar"></div><div class="tema-body">
-      <div class="tema-cat" style="color:#166534;">Sanità integrativa · AE · Min. Salute · INPS</div>
-      <h3>Fondi sanitari — regime fiscale e agevolazioni</h3>
-      <p>Tipologie A e B, deducibilità fino a 3.615,20 € (art. 10 TUIR), non imponibilità (art. 51 TUIR), Anagrafe Min. Salute e trattamento contributivo INPS.</p>
-      <div class="tema-tags"><span class="tema-tag">Art. 10 TUIR</span><span class="tema-tag">Art. 51 TUIR</span><span class="tema-tag">Anagrafe fondi</span><span class="tema-tag">3.615,20 €</span></div>
-      <div class="tema-footer"><div class="tema-meta"><span>📄 AE + Min. Salute + INPS</span><span>📅 Mag 2025</span></div><button class="tema-open" style="color:#166534;">Apri il tema →</button></div>
-      
-  </div></div>
+    <div class="tema-editorial" style="--tc:#166534;" onclick="showPage('sanita-fiscale')">
+      <div class="tema-ed-left">
+        <div class="tema-ed-cat" style="color:#166534;">Sanità integrativa · AE · Min. Salute</div>
+        <div class="tema-ed-title">Fondi sanitari — regime fiscale e agevolazioni</div>
+        <div class="tema-ed-desc">Tipologie A e B, deducibilità fino a 3.615,20 € (art. 10 TUIR), non imponibilità (art. 51 TUIR), Anagrafe Min. Salute e trattamento contributivo INPS.</div>
+        <div class="tema-ed-tags"><span class="tema-ed-tag">Art. 10 TUIR</span><span class="tema-ed-tag">Art. 51 TUIR</span><span class="tema-ed-tag">Anagrafe fondi</span><span class="tema-ed-tag">3.615,20 €</span></div>
+      </div>
+      <div class="tema-ed-right">
+        <div class="tema-ed-arrow" style="border-color:#166534;"><svg viewBox="0 0 24 24" fill="none" stroke="#166534" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        <div class="tema-ed-meta">AE + Min. Salute + INPS · Mag 2025</div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- POSIZIONE CONTRIBUTIVA -->
 <div class="page" id="page-posizione-contributiva"><div class="area-wrap">
-  <div class="tema-page-header" style="--tc:#1d6fa4;--tc-bg:#EBF5FF;">
-    <div class="breadcrumb" onclick="showPage('previdenza')">← Previdenza</div>
-    <h1>Posizione contributiva e correttezza versamenti</h1>
-    <p>Estratto conto, verifica versamenti, unicità posizione aziendale e ricorsi amministrativi INPS.</p>
-    <div class="fonti-row">
-      <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank">📄 Msg. INPS 2553/2025</a>
-      <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank">📄 Circ. INPS 48/2023</a>
-      <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank">📄 Msg. INPS 1900/2023</a>
+  <div class="article-page" style="--tc:#1d6fa4;--tc-bg:#EBF5FF;">
+    <div class="article-header">
+      <div class="article-header-inner">
+        <button class="article-breadcrumb" style="color:#1d6fa4;" onclick="showPage('previdenza')">Previdenza</button>
+        <div class="article-category" style="color:#1d6fa4;">Previdenza · INPS</div>
+        <h1 class="article-title">Posizione contributiva e correttezza versamenti</h1>
+        <p class="article-desc">Estratto conto contributivo, verifica versamenti, ricorsi amministrativi e unicità posizione aziendale.</p>
+      </div>
     </div>
-  </div>
-  
-  <div class="kb-toc-mobile">
-    <button class="kb-toc-mobile-btn" onclick="toggleTocMobile(this)">📋 In questa guida <span>▾</span></button>
-    <div class="kb-toc-mobile-list" id="toc-posizione-mobile-list"></div>
-  </div>
-  <div class="kb-doc-layout" style="--tc:#1d6fa4;--tc-bg:#EBF5FF;">
-    <div class="kb-toc" id="toc-posizione"><div class="kb-toc-title">In questa guida</div></div>
-    <div class="kb-doc-main">
-      <div class="kb-section"><div class="kb-section-head"><div class="kb-num">📄</div><h3>Contenuto completo della Knowledge Base</h3></div><div class="kb-body">
-    <div class="kb-article">{{ kb.posizione_contributiva | safe }}</div>
-  </div></div>
-      <div class="fonti-box"><div class="fonti-box-title">Fonti ufficiali</div>
-    <a class="fonte-link" href="https://www.inps.it" target="_blank"><div class="fonte-link-icon" style="background:#EBF5FF;">🔗</div><div class="fonte-link-text"><strong>Portale INPS — Estratto conto contributivo</strong><span>inps.it → cerca "estratto conto contributivo"</span></div><span class="fl-arrow">→</span></a>
-    <a class="fonte-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank"><div class="fonte-link-icon" style="background:#EBF5FF;">📄</div><div class="fonte-link-text"><strong>Archivio circolari e messaggi INPS</strong><span>Cerca: Msg. 2553/2025 · Circ. 48/2023 · Msg. 1900/2023</span></div><span class="fl-arrow">→</span></a>
-  </div>
+    <div class="article-toc-strip" id="toc-strip-posizione-contributiva">
+      <div class="article-toc-strip-inner">
+        <span class="article-toc-label">In questa guida</span>
+        <div class="article-toc-links" id="toc-links-posizione-contributiva"></div>
+      </div>
+    </div>
+    <div class="article-body">
+      <div class="kb-article" id="kb-posizione-contributiva">{{ kb.posizione_contributiva | safe }}</div>
+    </div>
+    <div class="article-footer">
+      <div class="article-footer-inner">
+        <div class="article-footer-label">Fonti ufficiali</div>
+        <div class="article-sources">
+      <a class="article-source-link" href="https://www.inps.it" target="_blank">
+        <div class="article-source-icon" style="background:#EBF5FF;">🔗</div>
+        <div class="article-source-text"><strong>Portale INPS — Estratto conto contributivo</strong><span>inps.it → cerca "estratto conto contributivo"</span></div>
+        <span class="article-source-arrow">→</span>
+      </a>
+      <a class="article-source-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank">
+        <div class="article-source-icon" style="background:#EBF5FF;">📄</div>
+        <div class="article-source-text"><strong>Archivio circolari e messaggi INPS</strong><span>Cerca: Msg. 2553/2025 · Circ. 48/2023 · Msg. 1900/2023</span></div>
+        <span class="article-source-arrow">→</span>
+      </a>
+        </div>
+      </div>
     </div>
   </div>
 </div></div>
 
-<!-- ACCOMPAGNAMENTO PENSIONE -->
 <div class="page" id="page-accompagnamento-pensione"><div class="area-wrap">
-  <div class="tema-page-header" style="--tc:#1d6fa4;--tc-bg:#EBF5FF;">
-    <div class="breadcrumb" onclick="showPage('previdenza')">← Previdenza</div>
-    <h1>Prestazioni di accompagnamento alla pensione</h1>
-    <p>Isopensione, accordo aziendale, procedura INPS, agevolazioni fiscali 2026 e tutele per nuovi requisiti pensionistici.</p>
-    <div class="fonti-row">
-      <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank">📄 Circ. INPS 119/2013</a>
-      <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank">📄 Circ. INPS 41/2026</a>
-      <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank">📄 Msg. INPS 2829/2026</a>
-      <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank">📄 Circ. INPS 104/2026</a>
+  <div class="article-page" style="--tc:#1d6fa4;--tc-bg:#EBF5FF;">
+    <div class="article-header">
+      <div class="article-header-inner">
+        <button class="article-breadcrumb" style="color:#1d6fa4;" onclick="showPage('previdenza')">Previdenza</button>
+        <div class="article-category" style="color:#1d6fa4;">Previdenza · INPS</div>
+        <h1 class="article-title">Prestazioni di accompagnamento alla pensione</h1>
+        <p class="article-desc">Isopensione, accordo aziendale, procedura INPS, agevolazioni fiscali 2026 e tutele per nuovi requisiti pensionistici.</p>
+      </div>
     </div>
-  </div>
-  
-  <div class="kb-toc-mobile">
-    <button class="kb-toc-mobile-btn" onclick="toggleTocMobile(this)">📋 In questa guida <span>▾</span></button>
-    <div class="kb-toc-mobile-list" id="toc-accompagnamento-mobile-list"></div>
-  </div>
-  <div class="kb-doc-layout" style="--tc:#1d6fa4;--tc-bg:#EBF5FF;">
-    <div class="kb-toc" id="toc-accompagnamento"><div class="kb-toc-title">In questa guida</div></div>
-    <div class="kb-doc-main">
-      <div class="kb-section"><div class="kb-section-head"><div class="kb-num">📄</div><h3>Contenuto completo della Knowledge Base</h3></div><div class="kb-body">
-    <div class="kb-article">{{ kb.accompagnamento_pensione | safe }}</div>
-  </div></div>
-      <div class="fonti-box"><div class="fonti-box-title">Fonti ufficiali</div>
-    <a class="fonte-link" href="https://www.inps.it" target="_blank"><div class="fonte-link-icon" style="background:#EBF5FF;">🔗</div><div class="fonte-link-text"><strong>Portale INPS — Prestazioni di esodo</strong><span>inps.it → cerca "prestazioni di esodo accompagnamento pensione"</span></div><span class="fl-arrow">→</span></a>
-    <a class="fonte-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank"><div class="fonte-link-icon" style="background:#EBF5FF;">📄</div><div class="fonte-link-text"><strong>Archivio circolari e messaggi INPS</strong><span>Cerca: Circ. 41/2026 · Msg. 2829/2026 · Circ. 104/2026 · Circ. 119/2013</span></div><span class="fl-arrow">→</span></a>
-  </div>
+    <div class="article-toc-strip" id="toc-strip-accompagnamento-pensione">
+      <div class="article-toc-strip-inner">
+        <span class="article-toc-label">In questa guida</span>
+        <div class="article-toc-links" id="toc-links-accompagnamento-pensione"></div>
+      </div>
+    </div>
+    <div class="article-body">
+      <div class="kb-article" id="kb-accompagnamento-pensione">{{ kb.accompagnamento_pensione | safe }}</div>
+    </div>
+    <div class="article-footer">
+      <div class="article-footer-inner">
+        <div class="article-footer-label">Fonti ufficiali</div>
+        <div class="article-sources">
+      <a class="article-source-link" href="https://www.inps.it" target="_blank">
+        <div class="article-source-icon" style="background:#EBF5FF;">🔗</div>
+        <div class="article-source-text"><strong>Portale INPS — Prestazioni di esodo</strong><span>inps.it → cerca "prestazioni di esodo accompagnamento pensione"</span></div>
+        <span class="article-source-arrow">→</span>
+      </a>
+      <a class="article-source-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank">
+        <div class="article-source-icon" style="background:#EBF5FF;">📄</div>
+        <div class="article-source-text"><strong>Archivio circolari INPS</strong><span>Cerca: Circ. 41/2026 · Msg. 2829/2026 · Circ. 104/2026 · Circ. 119/2013</span></div>
+        <span class="article-source-arrow">→</span>
+      </a>
+        </div>
+      </div>
     </div>
   </div>
 </div></div>
 
-<!-- DURC ONLINE -->
 <div class="page" id="page-durc-online"><div class="area-wrap">
-  <div class="tema-page-header" style="--tc:#92600A;--tc-bg:#FEF8EC;">
-    <div class="breadcrumb" onclick="showPage('welfare')">← Welfare aziendale</div>
-    <h1>DURC Online</h1>
-    <p>Verifica regolarità contributiva, Piattaforma Unica INPS, Ve.R.A., Simulazione DURC, Pre-DURC e Delega Master.</p>
-    <div class="fonti-row">
-      <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank">📄 Circ. INPS 146/2021</a>
-      <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank">📄 Msg. INPS 4693/2023</a>
-      <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank">📄 Msg. INPS 3662/2024</a>
+  <div class="article-page" style="--tc:#92600A;--tc-bg:#FEF8EC;">
+    <div class="article-header">
+      <div class="article-header-inner">
+        <button class="article-breadcrumb" style="color:#92600A;" onclick="showPage('welfare')">Welfare aziendale</button>
+        <div class="article-category" style="color:#92600A;">Welfare aziendale · INPS</div>
+        <h1 class="article-title">DURC Online</h1>
+        <p class="article-desc">Verifica regolarità contributiva, Piattaforma Unica INPS, Ve.R.A., Simulazione DURC, Pre-DURC e Delega Master.</p>
+      </div>
     </div>
-  </div>
-  
-  <div class="kb-toc-mobile">
-    <button class="kb-toc-mobile-btn" onclick="toggleTocMobile(this)">📋 In questa guida <span>▾</span></button>
-    <div class="kb-toc-mobile-list" id="toc-durc-mobile-list"></div>
-  </div>
-  <div class="kb-doc-layout" style="--tc:#92600A;--tc-bg:#FEF8EC;">
-    <div class="kb-toc" id="toc-durc"><div class="kb-toc-title">In questa guida</div></div>
-    <div class="kb-doc-main">
-      <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#FEF8EC;color:#92600A;">📄</div><h3>Contenuto completo della Knowledge Base</h3></div><div class="kb-body">
-    <div class="kb-article">{{ kb.durc_online | safe }}</div>
-  </div></div>
-      <div class="fonti-box"><div class="fonti-box-title">Fonti ufficiali</div>
-    <a class="fonte-link" href="https://www.inps.it" target="_blank"><div class="fonte-link-icon" style="background:#FEF8EC;">🔗</div><div class="fonte-link-text"><strong>Portale INPS — DURC Online</strong><span>inps.it → Prestazioni e Servizi → cerca "DURC Online"</span></div><span class="fl-arrow">→</span></a>
-    <a class="fonte-link" href="https://www.inail.it/cs/internet/attivita/prevenzione-e-sicurezza/durc-online.html" target="_blank"><div class="fonte-link-icon" style="background:#FEF8EC;">🔗</div><div class="fonte-link-text"><strong>Portale INAIL — DURC Online</strong><span>Accesso alternativo al servizio tramite portale INAIL</span></div><span class="fl-arrow">→</span></a>
-    <a class="fonte-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank"><div class="fonte-link-icon" style="background:#FEF8EC;">📄</div><div class="fonte-link-text"><strong>Archivio circolari e messaggi INPS</strong><span>Cerca: Msg. 3662/2024 · Msg. 4693/2023 · Circ. 146/2021</span></div><span class="fl-arrow">→</span></a>
-  </div>
+    <div class="article-toc-strip" id="toc-strip-durc-online">
+      <div class="article-toc-strip-inner">
+        <span class="article-toc-label">In questa guida</span>
+        <div class="article-toc-links" id="toc-links-durc-online"></div>
+      </div>
+    </div>
+    <div class="article-body">
+      <div class="kb-article" id="kb-durc-online">{{ kb.durc_online | safe }}</div>
+    </div>
+    <div class="article-footer">
+      <div class="article-footer-inner">
+        <div class="article-footer-label">Fonti ufficiali</div>
+        <div class="article-sources">
+      <a class="article-source-link" href="https://www.inps.it" target="_blank">
+        <div class="article-source-icon" style="background:#FEF8EC;">🔗</div>
+        <div class="article-source-text"><strong>Portale INPS — DURC Online</strong><span>inps.it → Prestazioni e Servizi → cerca "DURC Online"</span></div>
+        <span class="article-source-arrow">→</span>
+      </a>
+      <a class="article-source-link" href="https://www.inail.it/cs/internet/attivita/prevenzione-e-sicurezza/durc-online.html" target="_blank">
+        <div class="article-source-icon" style="background:#FEF8EC;">🔗</div>
+        <div class="article-source-text"><strong>Portale INAIL — DURC Online</strong><span>Accesso alternativo tramite portale INAIL</span></div>
+        <span class="article-source-arrow">→</span>
+      </a>
+      <a class="article-source-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank">
+        <div class="article-source-icon" style="background:#FEF8EC;">📄</div>
+        <div class="article-source-text"><strong>Archivio circolari INPS</strong><span>Cerca: Msg. 3662/2024 · Msg. 4693/2023 · Circ. 146/2021</span></div>
+        <span class="article-source-arrow">→</span>
+      </a>
+        </div>
+      </div>
     </div>
   </div>
 </div></div>
 
-<!-- CIGO -->
 <div class="page" id="page-cigo"><div class="area-wrap">
-  <div class="tema-page-header" style="--tc:#92600A;--tc-bg:#FEF8EC;">
-    <div class="breadcrumb" onclick="showPage('welfare')">← Welfare aziendale</div>
-    <h1>Cassa Integrazione Guadagni Ordinaria (CIGO)</h1>
-    <p>Datori ammessi, causali, OMNIA IS, massimali 2026, contribuzione addizionale e conguaglio UniEmens.</p>
-    <div class="fonti-row">
-      <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank">📄 Circ. INPS 4/2026</a>
-      <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank">📄 Circ. INPS 5/2025</a>
-      <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank">📄 Msg. INPS 2418/2026</a>
+  <div class="article-page" style="--tc:#92600A;--tc-bg:#FEF8EC;">
+    <div class="article-header">
+      <div class="article-header-inner">
+        <button class="article-breadcrumb" style="color:#92600A;" onclick="showPage('welfare')">Welfare aziendale</button>
+        <div class="article-category" style="color:#92600A;">Welfare aziendale · INPS</div>
+        <h1 class="article-title">Cassa Integrazione Guadagni Ordinaria (CIGO)</h1>
+        <p class="article-desc">Datori ammessi, causali, OMNIA IS, massimali 2026, contribuzione addizionale e conguaglio UniEmens.</p>
+      </div>
     </div>
-  </div>
-  
-  <div class="kb-toc-mobile">
-    <button class="kb-toc-mobile-btn" onclick="toggleTocMobile(this)">📋 In questa guida <span>▾</span></button>
-    <div class="kb-toc-mobile-list" id="toc-cigo-mobile-list"></div>
-  </div>
-  <div class="kb-doc-layout" style="--tc:#92600A;--tc-bg:#FEF8EC;">
-    <div class="kb-toc" id="toc-cigo"><div class="kb-toc-title">In questa guida</div></div>
-    <div class="kb-doc-main">
-      <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#FEF8EC;color:#92600A;">📄</div><h3>Contenuto completo della Knowledge Base</h3></div><div class="kb-body">
-    <div class="kb-article">{{ kb.cigo | safe }}</div>
-  </div></div>
-      <div class="fonti-box"><div class="fonti-box-title">Fonti ufficiali</div>
-    <a class="fonte-link" href="https://www.inps.it" target="_blank"><div class="fonte-link-icon" style="background:#FEF8EC;">🔗</div><div class="fonte-link-text"><strong>Portale INPS — CIGO / OMNIA IS</strong><span>inps.it → cerca "cassa integrazione ordinaria OMNIA IS"</span></div><span class="fl-arrow">→</span></a>
-    <a class="fonte-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank"><div class="fonte-link-icon" style="background:#FEF8EC;">📄</div><div class="fonte-link-text"><strong>Archivio circolari e messaggi INPS</strong><span>Cerca: Circ. 4/2026 · Circ. 5/2025 · Circ. 121/2025 · Msg. 2418/2026</span></div><span class="fl-arrow">→</span></a>
-  </div>
+    <div class="article-toc-strip" id="toc-strip-cigo">
+      <div class="article-toc-strip-inner">
+        <span class="article-toc-label">In questa guida</span>
+        <div class="article-toc-links" id="toc-links-cigo"></div>
+      </div>
+    </div>
+    <div class="article-body">
+      <div class="kb-article" id="kb-cigo">{{ kb.cigo | safe }}</div>
+    </div>
+    <div class="article-footer">
+      <div class="article-footer-inner">
+        <div class="article-footer-label">Fonti ufficiali</div>
+        <div class="article-sources">
+      <a class="article-source-link" href="https://www.inps.it" target="_blank">
+        <div class="article-source-icon" style="background:#FEF8EC;">🔗</div>
+        <div class="article-source-text"><strong>Portale INPS — Cassa Integrazione</strong><span>inps.it → cerca "CIGO cassa integrazione ordinaria"</span></div>
+        <span class="article-source-arrow">→</span>
+      </a>
+      <a class="article-source-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank">
+        <div class="article-source-icon" style="background:#FEF8EC;">📄</div>
+        <div class="article-source-text"><strong>Archivio circolari INPS</strong><span>Cerca: Circ. 5/2025 · Circ. 4/2026 · Msg. 2207/2026</span></div>
+        <span class="article-source-arrow">→</span>
+      </a>
+        </div>
+      </div>
     </div>
   </div>
 </div></div>
 
 <!-- FONDI SANITARI CONTRATTUALI -->
 <div class="page" id="page-fondi-sanitari-contrattuali"><div class="area-wrap">
-  <div class="tema-page-header" style="--tc:#166534;--tc-bg:#EDFAF4;">
-    <div class="breadcrumb" onclick="showPage('sanita')">← Sanità integrativa</div>
-    <h1>Fondi sanitari contrattuali — contribuzione obbligatoria</h1>
-    <p>Meccanismo di riscossione INPS tramite F24 e UniEmens per i fondi sanitari convenzionati.</p>
-    <div class="fonti-row">
-      <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank">📄 Circ. INPS 77/2025 — ESAL</a>
-      <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank">📄 Circ. INPS 120/2025 — SANI</a>
-      <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank">📄 Circ. INPS 95/2026 — CARE</a>
+  <div class="article-page" style="--tc:#166534;--tc-bg:#EDFAF4;">
+    <div class="article-header">
+      <div class="article-header-inner">
+        <button class="article-breadcrumb" style="color:#166534;" onclick="showPage('sanita')">Sanità integrativa</button>
+        <div class="article-category" style="color:#166534;">Sanità integrativa · INPS</div>
+        <h1 class="article-title">Fondi sanitari contrattuali — contribuzione obbligatoria</h1>
+        <p class="article-desc">Meccanismo F24/UniEmens per i principali fondi sanitari contrattuali. Convenzioni al 31/12/2026.</p>
+      </div>
     </div>
-  </div>
-  
-  <div class="kb-toc-mobile">
-    <button class="kb-toc-mobile-btn" onclick="toggleTocMobile(this)">📋 In questa guida <span>▾</span></button>
-    <div class="kb-toc-mobile-list" id="toc-fondi-mobile-list"></div>
-  </div>
-  <div class="kb-doc-layout" style="--tc:#166534;--tc-bg:#EDFAF4;">
-    <div class="kb-toc" id="toc-fondi"><div class="kb-toc-title">In questa guida</div></div>
-    <div class="kb-doc-main">
-      <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#EDFAF4;color:#166534;">📄</div><h3>Contenuto completo della Knowledge Base</h3></div><div class="kb-body">
-    <div class="kb-article">{{ kb.fondi_sanitari_contrattuali | safe }}</div>
-  </div></div>
-      <div class="fonti-box"><div class="fonti-box-title">Fonti ufficiali</div>
-    <a class="fonte-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank"><div class="fonte-link-icon" style="background:#EDFAF4;">📄</div><div class="fonte-link-text"><strong>Archivio circolari e messaggi INPS</strong><span>Cerca: Circ. 77/2025 (ESAL) · Circ. 119/2025 (FAFP) · Circ. 120/2025 (SANI) · Circ. 95/2026 (CARE)</span></div><span class="fl-arrow">→</span></a>
-    <a class="fonte-link" href="https://www.agenziaentrate.gov.it/portale/web/guest/home" target="_blank"><div class="fonte-link-icon" style="background:#EDFAF4;">🔗</div><div class="fonte-link-text"><strong>Agenzia delle Entrate</strong><span>Risoluzioni AE sui codici tributo fondi sanitari</span></div><span class="fl-arrow">→</span></a>
-  </div>
+    <div class="article-toc-strip" id="toc-strip-fondi-sanitari-contrattuali">
+      <div class="article-toc-strip-inner">
+        <span class="article-toc-label">In questa guida</span>
+        <div class="article-toc-links" id="toc-links-fondi-sanitari-contrattuali"></div>
+      </div>
+    </div>
+    <div class="article-body">
+      <div class="kb-article" id="kb-fondi-sanitari-contrattuali">{{ kb.fondi_sanitari_contrattuali | safe }}</div>
+    </div>
+    <div class="article-footer">
+      <div class="article-footer-inner">
+        <div class="article-footer-label">Fonti ufficiali</div>
+        <div class="article-sources">
+      <a class="article-source-link" href="https://www.inps.it" target="_blank">
+        <div class="article-source-icon" style="background:#EDFAF4;">🔗</div>
+        <div class="article-source-text"><strong>Portale INPS — UniEmens</strong><span>inps.it → cerca "UniEmens datori di lavoro privati"</span></div>
+        <span class="article-source-arrow">→</span>
+      </a>
+      <a class="article-source-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank">
+        <div class="article-source-icon" style="background:#EDFAF4;">📄</div>
+        <div class="article-source-text"><strong>Archivio circolari INPS</strong><span>Cerca le circolari sui fondi sanitari contrattuali</span></div>
+        <span class="article-source-arrow">→</span>
+      </a>
+        </div>
+      </div>
     </div>
   </div>
 </div></div>
 
-<!-- SANITÀ FISCALE -->
 <div class="page" id="page-sanita-fiscale"><div class="area-wrap">
-  <div class="tema-page-header" style="--tc:#166534;--tc-bg:#EDFAF4;">
-    <div class="breadcrumb" onclick="showPage('sanita')">← Sanità integrativa</div>
-    <h1>Fondi sanitari — regime fiscale e agevolazioni</h1>
-    <p>Tipologie A e B, deducibilità fino a 3.615,20 €, Anagrafe Min. Salute e trattamento contributivo INPS.</p>
-    <div class="fonti-row">
-      <a class="fonte-badge" href="https://www.agenziaentrate.gov.it/portale/web/guest/normativa-e-prassi/circolari" target="_blank">📄 Circ. AE 4/E 2025</a>
-      <a class="fonte-badge" href="https://www.salute.gov.it/portale/temi/p2_6.jsp?lingua=italiano&id=4605&area=sanitaIntegrativa&menu=vuoto" target="_blank">🏥 Min. Salute</a>
-      <a class="fonte-badge" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank">📄 Circ. INPS 263/1997</a>
+  <div class="article-page" style="--tc:#166534;--tc-bg:#EDFAF4;">
+    <div class="article-header">
+      <div class="article-header-inner">
+        <button class="article-breadcrumb" style="color:#166534;" onclick="showPage('sanita')">Sanità integrativa</button>
+        <div class="article-category" style="color:#166534;">Sanità integrativa · AE · Min. Salute · INPS</div>
+        <h1 class="article-title">Fondi sanitari — regime fiscale e agevolazioni</h1>
+        <p class="article-desc">Tipologie A e B, deducibilità art. 10 TUIR, non imponibilità art. 51 TUIR e Anagrafe Ministero della Salute.</p>
+      </div>
     </div>
-  </div>
-  
-  <div class="kb-toc-mobile">
-    <button class="kb-toc-mobile-btn" onclick="toggleTocMobile(this)">📋 In questa guida <span>▾</span></button>
-    <div class="kb-toc-mobile-list" id="toc-sfiscale-mobile-list"></div>
-  </div>
-  <div class="kb-doc-layout" style="--tc:#166534;--tc-bg:#EDFAF4;">
-    <div class="kb-toc" id="toc-sfiscale"><div class="kb-toc-title">In questa guida</div></div>
-    <div class="kb-doc-main">
-      <div class="kb-section"><div class="kb-section-head"><div class="kb-num" style="background:#EDFAF4;color:#166534;">📄</div><h3>Contenuto completo della Knowledge Base</h3></div><div class="kb-body">
-    <div class="kb-article">{{ kb.sanita_fiscale | safe }}</div>
-  </div></div>
-      <div class="fonti-box"><div class="fonti-box-title">Fonti ufficiali</div>
-    <a class="fonte-link" href="https://www.agenziaentrate.gov.it/portale/web/guest/normativa-e-prassi/circolari" target="_blank"><div class="fonte-link-icon" style="background:#EDFAF4;">📄</div><div class="fonte-link-text"><strong>Agenzia delle Entrate — Circolari</strong><span>Cerca Circolare n. 4/E del 16 maggio 2025 (regime fiscale fondi sanitari)</span></div><span class="fl-arrow">→</span></a>
-    <a class="fonte-link" href="https://www.salute.gov.it/portale/temi/p2_6.jsp?lingua=italiano&id=4605&area=sanitaIntegrativa&menu=vuoto" target="_blank"><div class="fonte-link-icon" style="background:#EDFAF4;">🏥</div><div class="fonte-link-text"><strong>Ministero della Salute — Anagrafe fondi sanitari</strong><span>Elenco fondi iscritti con attestato valido e procedura SIAF</span></div><span class="fl-arrow">→</span></a>
-    <a class="fonte-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank"><div class="fonte-link-icon" style="background:#EDFAF4;">📄</div><div class="fonte-link-text"><strong>Archivio circolari e messaggi INPS</strong><span>Cerca: Circ. 263 del 24/12/1997 — trattamento contributivo fondi sanitari</span></div><span class="fl-arrow">→</span></a>
-  </div>
+    <div class="article-toc-strip" id="toc-strip-sanita-fiscale">
+      <div class="article-toc-strip-inner">
+        <span class="article-toc-label">In questa guida</span>
+        <div class="article-toc-links" id="toc-links-sanita-fiscale"></div>
+      </div>
+    </div>
+    <div class="article-body">
+      <div class="kb-article" id="kb-sanita-fiscale">{{ kb.sanita_fiscale | safe }}</div>
+    </div>
+    <div class="article-footer">
+      <div class="article-footer-inner">
+        <div class="article-footer-label">Fonti ufficiali</div>
+        <div class="article-sources">
+      <a class="article-source-link" href="https://www.agenziaentrate.gov.it" target="_blank">
+        <div class="article-source-icon" style="background:#EDFAF4;">🔗</div>
+        <div class="article-source-text"><strong>Agenzia delle Entrate</strong><span>agenziaentrate.gov.it → cerca "fondi sanitari deducibilità"</span></div>
+        <span class="article-source-arrow">→</span>
+      </a>
+      <a class="article-source-link" href="https://www.salute.gov.it" target="_blank">
+        <div class="article-source-icon" style="background:#EDFAF4;">🔗</div>
+        <div class="article-source-text"><strong>Ministero della Salute — Anagrafe fondi sanitari</strong><span>salute.gov.it → Temi → Fondi sanitari integrativi</span></div>
+        <span class="article-source-arrow">→</span>
+      </a>
+        </div>
+      </div>
     </div>
   </div>
 </div></div>
@@ -838,8 +1171,7 @@ function showPage(name, addToStack=true){
   if(btn) btn.style.display=navStack.length>0?'flex':'none';
   window.scrollTo({top:0,behavior:'smooth'});
   // TOC automatico per pagine tema
-  const tocPages=['posizione-contributiva','accompagnamento-pensione','durc-online','cigo','fondi-sanitari-contrattuali','sanita-fiscale'];
-  if(tocPages.includes(name)) setTimeout(()=>buildToc(name),80);
+  setTimeout(()=>{buildToc(name);updateProgressBar();initFadeIn();},80);
 }
 
 function goBack(){
@@ -984,6 +1316,79 @@ function updateActiveToc(){
 }
 
 window.addEventListener('scroll',updateActiveToc,{passive:true});
+
+function toggleTocMobile(btnEl){
+  const list=btnEl.nextElementSibling;if(list)list.classList.toggle('open');
+}
+/* ── TOC ORIZZONTALE + PROGRESS BAR + FADE-IN ── */
+const articlePages=['posizione-contributiva','accompagnamento-pensione','durc-online','cigo','fondi-sanitari-contrattuali','sanita-fiscale'];
+
+function buildToc(pageId){
+  if(!articlePages.includes(pageId))return;
+  const container=document.getElementById('toc-links-'+pageId);
+  if(!container)return;
+  const kb=document.getElementById('kb-'+pageId);
+  if(!kb)return;
+  const headings=Array.from(kb.querySelectorAll('h2'));
+  container.innerHTML='';
+  headings.forEach((h,i)=>{
+    if(!h.id)h.id='sec-'+pageId+'-'+i;
+    // Rimuovi testo del ::after (non serve)
+    const text=h.textContent.trim();
+    const a=document.createElement('a');
+    a.href='#'+h.id;
+    a.textContent=text.length>40?text.substring(0,38)+'…':text;
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      const top=h.getBoundingClientRect().top+window.scrollY-80;
+      window.scrollTo({top,behavior:'smooth'});
+    });
+    container.appendChild(a);
+  });
+}
+
+function updateActiveToc(){
+  if(!articlePages.includes(currentPage))return;
+  const container=document.getElementById('toc-links-'+currentPage);
+  if(!container)return;
+  const kb=document.getElementById('kb-'+currentPage);
+  if(!kb)return;
+  const headings=Array.from(kb.querySelectorAll('h2'));
+  const scrollY=window.scrollY+100;
+  let active=null;
+  for(const h of headings){
+    if(h.getBoundingClientRect().top+window.scrollY<=scrollY)active=h;
+  }
+  container.querySelectorAll('a').forEach(a=>{
+    a.classList.toggle('toc-active',active&&a.getAttribute('href')==='#'+active.id);
+  });
+}
+
+function updateProgressBar(){
+  const bar=document.getElementById('read-progress');
+  if(!bar)return;
+  if(!articlePages.includes(currentPage)){bar.style.width='0%';return;}
+  const h=document.documentElement;
+  const pct=Math.min(100,(h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100);
+  bar.style.width=pct+'%';
+  // Colore dinamico dal tema
+  const page=document.getElementById('page-'+currentPage);
+  if(page){
+    const tc=getComputedStyle(page.querySelector('.article-page')||page).getPropertyValue('--tc').trim();
+    if(tc)bar.style.background=tc;
+  }
+}
+
+function initFadeIn(){
+  const els=document.querySelectorAll('.fade-in');
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+  },{threshold:0.1});
+  els.forEach(el=>obs.observe(el));
+}
+
+window.addEventListener('scroll',()=>{updateActiveToc();updateProgressBar();},{passive:true});
+document.addEventListener('DOMContentLoaded',initFadeIn);
 
 function toggleTocMobile(btnEl){
   const list=btnEl.nextElementSibling;if(list)list.classList.toggle('open');
