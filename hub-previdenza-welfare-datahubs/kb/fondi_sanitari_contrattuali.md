@@ -87,20 +87,20 @@ I rapporti tra fondo e datori di lavoro (restituzione somme, variazioni, omissio
 
 ## 9. Fonti ufficiali
 
-- [Circolare INPS n. 77 del 17/04/2025](https://www.inps.it) — Convenzione INPS-Enfea Salute (ESAL)
-- [Circolare INPS n. 119 del 12/08/2025](https://www.inps.it) — Convenzione INPS-FASIFAR (FAFP)
-- [Circolare INPS n. 120 del 12/08/2025](https://www.inps.it) — Convenzione INPS-FONDOSANI (SANI)
-- [Circolare INPS n. 95 del 10/09/2026](https://www.inps.it) — Convenzione INPS-INNOVACARE (CARE)
-- [Scheda servizio INPS — Trasmissione UniEmens per datori di lavoro aziende private](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.trasmissione-uniemens-per-datori-di-lavoro-di-aziende-private.html)
+- [Circolare INPS n. 77 del 17/04/2025](https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2025.04.circolare-numero-77-del-17-04-2025_14899.html) — Convenzione INPS-Enfea Salute (ESAL)
+- [Circolare INPS n. 119 del 12/08/2025](https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2025.08.circolare-numero-119-del-12-08-2025_15007.html) — Convenzione INPS-FASIFAR (FAFP)
+- [Circolare INPS n. 120 del 12/08/2025](https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2025.08.circolare-numero-120-del-12-08-2025_15008.html) — Convenzione INPS-FONDOSANI (SANI)
+- [Circolare INPS n. 95 del 10/09/2026](https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2026.09.circolare-numero-95-del-10-09-2026_15366.html) — Convenzione INPS-INNOVACARE (CARE)
+- [Scheda servizio INPS — Trasmissione UniEmens per datori di lavoro aziende private](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.50252.trasmissione-uniemens-per-datori-di-lavoro-di-aziende-private.html)
 
 ---
 
-## Servizi INPS collegati (DB Imprese e Professionisti)
+## Servizi INPS collegati
 
 Per i fondi sanitari contrattuali con convenzione INPS, il versamento avviene tramite UniEmens. Non esiste un servizio INPS dedicato ai fondi sanitari: il canale operativo è la **trasmissione UniEmens** standard per i datori di lavoro privati.
 
-| Servizio | Categoria DB | Link |
+| Servizio | Categoria | Link |
 |---|---|---|
-| Trasmissione UniEmens — datori di lavoro aziende private | Comunicazioni per adempimenti contributivi | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.trasmissione-uniemens-per-datori-di-lavoro-di-aziende-private.html) |
+| Trasmissione UniEmens — datori di lavoro aziende private | Comunicazioni per adempimenti contributivi | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.50252.trasmissione-uniemens-per-datori-di-lavoro-di-aziende-private.html) |
 
 > Il codice convenzione (CodConv) da usare in UniEmens è specifico per ciascun fondo: vedi tabella fondi con convenzione attiva nella sezione 4 della presente documentazione.

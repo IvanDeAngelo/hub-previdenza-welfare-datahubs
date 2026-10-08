@@ -1,6 +1,6 @@
 # Posizione contributiva e correttezza versamenti
 
-*Guida di sintesi costruita sui servizi INPS mappati e sulla documentazione ufficiale allegata*
+*Guida di sintesi basata sulla documentazione ufficiale INPS*
 
 **Fonti:** Msg. INPS n. 2553 del 2/9/2025 · Circ. INPS n. 48 del 17/5/2023 · Msg. INPS n. 1900 del 23/5/2023
 
@@ -105,21 +105,21 @@ La tematica è trasversale: nessuno dei tre record, preso singolarmente, copre l
 
 ## 12. Fonti utilizzate
 
-- [INPS — Messaggio n. 2553 del 2 settembre 2025](https://www.inps.it) — Evoluzione estratto conto contributivo
-- [INPS — Circolare n. 48 del 17 maggio 2023](https://www.inps.it) — Regolamento in materia di ricorsi amministrativi di competenza dei Comitati dell'INPS
-- [INPS — Messaggio n. 1900 del 23 maggio 2023](https://www.inps.it) — Precisazioni alla Circolare n. 48/2023
-- Servizi INPS: [Consultazione Estratto conto contributivo/previdenziale](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.consultazione-estratto-conto-contributivo-previdenziale-50119.consultazione-estratto-conto-contributivo-previdenziale.html) · [Gestione ricorsi amministrativi — inquadramento previdenziale](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.gestione-dei-ricorsi-amministrativi-in-materia-di-inquadramento-previdenziale.html) · [Accentramento contributivo](https://www.inps.it)
+- [INPS — Messaggio n. 2553 del 2 settembre 2025](https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2025.09.messaggio-numero-2553-del-02-09-2025_15013.html) — Evoluzione estratto conto contributivo
+- [INPS — Circolare n. 48 del 17 maggio 2023](https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2023.05.circolare-numero-48-del-17-05-2023_14161.html) — Regolamento in materia di ricorsi amministrativi di competenza dei Comitati dell'INPS
+- [INPS — Messaggio n. 1900 del 23 maggio 2023](https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2023.05.messaggio-numero-1900-del-23-05-2023_14164.html) — Precisazioni alla Circolare n. 48/2023
+- Servizi INPS: [Consultazione Estratto conto contributivo/previdenziale](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.consultazione-estratto-conto-contributivo-previdenziale-50119.consultazione-estratto-conto-contributivo-previdenziale.html) · [Gestione ricorsi amministrativi — inquadramento previdenziale](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.55617.gestione-dei-ricorsi-amministrativi-in-materia-di-inquadramento-previdenziale.html) · [Accentramento contributivo](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.50210.obbligo-di-unicit-della-posizione-contributiva-accentramento-contributivo.html)
 
 ---
 
-## Servizi INPS collegati (DB Imprese e Professionisti)
+## Servizi INPS collegati
 
-| Servizio | Categoria DB | Link |
+| Servizio | Categoria | Link |
 |---|---|---|
 | Consultazione estratto conto contributivo previdenziale | Posizione contributiva | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.consultazione-estratto-conto-contributivo-previdenziale-50119.consultazione-estratto-conto-contributivo-previdenziale.html) |
-| Gestione ricorsi amministrativi — inquadramento previdenziale | Rimborsi / Debiti contributivi | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.gestione-dei-ricorsi-amministrativi-in-materia-di-inquadramento-previdenziale.html) |
-| Gestione ricorsi amministrativi — organismi centrali entrate contributive | Rimborsi / Debiti contributivi | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.gestione-dei-ricorsi-amministrativi-rivolti-agli-organismi-centrali-in-materia-di-entrate-contributive.html) |
-| Certificazione debiti contributivi (Ve.R.A.) | Debiti contributivi | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.certificazione-dei-debiti-contributivi-vera.html) |
+| Gestione ricorsi amministrativi — inquadramento previdenziale | Rimborsi / Debiti contributivi | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.55617.gestione-dei-ricorsi-amministrativi-in-materia-di-inquadramento-previdenziale.html) |
+| Gestione ricorsi amministrativi — organismi centrali entrate contributive | Rimborsi / Debiti contributivi | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.55608.gestione-dei-ricorsi-amministrativi-rivolti-agli-organismi-centrali-in-materia-di-entrate-contributive.html) |
+| Certificazione debiti contributivi (Ve.R.A.) | Debiti contributivi | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.certificazione-dei-debiti-contributivi-vera-56089.certificazione-dei-debiti-contributivi-vera.html) |
 | Ricorsi amministrativi | Rimborsi / Debiti contributivi | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.ricorsi-amministrativi.html) |
 
 > Accesso ai servizi tramite SPID, CIE o CNS — area riservata MyINPS o Desktop Virtuale per aziende e intermediari.

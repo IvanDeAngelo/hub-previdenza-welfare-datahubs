@@ -120,9 +120,9 @@ Il valore della piattaforma non consiste nel sostituire il DURC Online, ma nel f
 
 ---
 
-## Servizi INPS collegati (DB Imprese e Professionisti)
+## Servizi INPS collegati
 
-| Servizio | Categoria DB | Link |
+| Servizio | Categoria | Link |
 |---|---|---|
 | DURC Online | Certificazioni e riconoscimenti | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.50130.durc-online.html) |
 | Certificazione debiti contributivi (Ve.R.A.) | Debiti contributivi | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.certificazione-dei-debiti-contributivi-vera-56089.certificazione-dei-debiti-contributivi-vera.html) |

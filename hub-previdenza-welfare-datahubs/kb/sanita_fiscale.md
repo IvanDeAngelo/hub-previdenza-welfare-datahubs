@@ -121,23 +121,23 @@ L'Anagrafe è istituita presso il Ministero della Salute con D.M. 31 marzo 2008,
 
 ## 10. Fonti ufficiali
 
-- [Circolare Agenzia delle Entrate n. 4/E del 16 maggio 2025](https://www.agenziaentrate.gov.it) — Novità IRPEF e redditi di lavoro dipendente (D.Lgs. 192/2024 e L. 207/2024), par. 2.1
-- [D.Lgs. 13 dicembre 2024, n. 192](https://www.normattiva.it) — Riforma fiscale: modifica artt. 10 e 51 TUIR
+- [Circolare Agenzia delle Entrate n. 4/E del 16 maggio 2025](https://www.agenziaentrate.gov.it/portale/documents/20143/8410823/Circolare+lavoro+dipendente+LB2025+DD+IRPEF+n.+4+del+16+maggio+2025.pdf/36979eaa-9fc5-a4ec-a7aa-136497c53f91?t=1747405979604) — Novità IRPEF e redditi di lavoro dipendente (D.Lgs. 192/2024 e L. 207/2024), par. 2.1
+- [D.Lgs. 13 dicembre 2024, n. 192](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2024-12-13;192) — Riforma fiscale: modifica artt. 10 e 51 TUIR
 - [TUIR (D.P.R. 917/1986)](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.del.presidente.della.repubblica:1986-12-22;917) — Art. 10, c. 1, lett. e-ter) e Art. 51, c. 2, lett. a)
-- [D.M. Ministero della Salute del 31 marzo 2008](https://www.salute.gov.it) — Istituzione Anagrafe fondi sanitari integrativi
-- [D.M. Ministero della Salute del 27 ottobre 2009](https://www.salute.gov.it) — Procedure e modalità funzionamento Anagrafe
-- [Circolare INPS n. 263 del 24 dicembre 1997](https://www.inps.it) — Unificazione basi imponibili fiscale e previdenziale
-- [Ministero della Salute — Fondi sanitari integrativi](https://www.salute.gov.it)
+- [D.M. Ministero della Salute del 31 marzo 2008](https://www.gazzettaufficiale.it/atto/serie_generale/caricaDettaglioAtto/originario?atto.dataPubblicazioneGazzetta=2008-06-18&atto.codiceRedazionale=08A04131&elenco30giorni=false) — Istituzione Anagrafe fondi sanitari integrativi
+- [D.M. Ministero della Salute del 27 ottobre 2009](https://www.gazzettaufficiale.it/atto/serie_generale/caricaDettaglioAtto/originario?atto.dataPubblicazioneGazzetta=2010-01-16&atto.codiceRedazionale=10A00199) — Procedure e modalità funzionamento Anagrafe
+- [Circolare INPS n. 263 del 24 dicembre 1997](https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.1997.12.circolare-numero-263-del-24-12-1997_5021.html) — Unificazione basi imponibili fiscale e previdenziale
+- [Ministero della Salute — Fondi sanitari integrativi](https://www.salute.gov.it/new/it/tema/programmazione-e-finanziamento-del-ssn/fondi-sanitari-integrativi/)
 
 ---
 
-## Servizi INPS collegati (DB Imprese e Professionisti)
+## Servizi INPS collegati
 
 Il regime fiscale dei fondi sanitari integrativi è disciplinato dal TUIR e dall'Agenzia delle Entrate: **non esistono servizi INPS dedicati** a questo tema. L'impatto previdenziale si gestisce tramite UniEmens (esclusione dall'imponibile contributivo).
 
 | Servizio | Note | Link |
 |---|---|---|
-| Trasmissione UniEmens — datori di lavoro aziende private | Per l'esclusione contributiva dei contributi al fondo | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.trasmissione-uniemens-per-datori-di-lavoro-di-aziende-private.html) |
-| Agenzia delle Entrate — Redditi di lavoro dipendente | Riferimento fiscale principale (Circ. 4/E 2025) | [agenziaentrate.gov.it](https://www.agenziaentrate.gov.it) |
-| Anagrafe fondi sanitari — Ministero della Salute | Iscrizione e verifica fondi riconosciuti | [salute.gov.it](https://www.salute.gov.it) |
+| Trasmissione UniEmens — datori di lavoro aziende private | Per l'esclusione contributiva dei contributi al fondo | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.50252.trasmissione-uniemens-per-datori-di-lavoro-di-aziende-private.html) |
+| Agenzia delle Entrate — Redditi di lavoro dipendente | Riferimento fiscale principale (Circ. 4/E 2025) | [Circolare 4/E 2025](https://www.agenziaentrate.gov.it/portale/documents/20143/8410823/Circolare+lavoro+dipendente+LB2025+DD+IRPEF+n.+4+del+16+maggio+2025.pdf/36979eaa-9fc5-a4ec-a7aa-136497c53f91?t=1747405979604) |
+| Anagrafe fondi sanitari — Ministero della Salute | Iscrizione e verifica fondi riconosciuti | [salute.gov.it](https://www.salute.gov.it/new/it/tema/programmazione-e-finanziamento-del-ssn/fondi-sanitari-integrativi/) |
 

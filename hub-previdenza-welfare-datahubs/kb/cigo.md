@@ -1,6 +1,6 @@
 # Cassa Integrazione Guadagni Ordinaria (CIGO)
 
-**Fonti:** Circ. INPS n. 5/2025 · Circ. n. 4/2026 · Circ. n. 121/2025 · Msg. n. 2418/2026 | Record DB: Riga 15 | Ottobre 2026
+**Fonti:** Circ. INPS n. 5/2025 · Circ. n. 4/2026 · Circ. n. 121/2025 · Msg. n. 2418/2026 | Ottobre 2026
 
 ---
 
@@ -132,22 +132,21 @@ Per i periodi CIGO connessi a D.L. 92/2025 (moda, gruppi di imprese) utilizzare 
 ## 12. Fonti ufficiali
 
 - [D.Lgs. 14 settembre 2015, n. 148](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2015-09-14;148) — Testo Unico Ammortizzatori Sociali (artt. 10-18 per la CIGO)
-- [D.M. 95442/2016](https://www.inps.it) — Causali CIGO
-- [Circolare INPS n. 5 del 20/1/2025](https://www.inps.it) — Contribuzione addizionale CIGO/CIGS/CIGD 2025 e FIS
-- [Circolare INPS n. 4 del 28/1/2026](https://www.inps.it) — Massimali trattamenti integrazione salariale 2026
-- [Circolare INPS n. 121 del 13/8/2025](https://www.inps.it) — D.L. 92/2025: aree di crisi, filiera moda, istruzioni UniEmens
-- [Messaggio INPS n. 2418 del 20/7/2026](https://www.inps.it) — CIGO per emergenza climatica D.L. 107/2026
+- [D.M. 95442/2016](https://www.lavoro.gov.it/documenti-e-norme/normative/Documents/2016/Decreto-Ministeriale-15-aprile-n-95442.pdf) — Causali CIGO
+- [Circolare INPS n. 5 del 20/1/2025](https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2025.01.circolare-numero-5-del-20-01-2025_14781.html) — Contribuzione addizionale CIGO/CIGS/CIGD 2025 e FIS
+- [Circolare INPS n. 4 del 28/1/2026](https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2026.01.circolare-numero-4-del-28-01-2026_15147.html) — Massimali trattamenti integrazione salariale 2026
+- [Circolare INPS n. 121 del 13/8/2025](https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2025.08.circolare-numero-121-del-13-08-2025_15009.html) — D.L. 92/2025: aree di crisi, filiera moda, istruzioni UniEmens
+- [Messaggio INPS n. 2418 del 20/7/2026](https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2026.07.messaggio-numero-2418-del-20-07-2026_15325.html) — CIGO per emergenza climatica D.L. 107/2026
 - [Scheda servizio INPS — CIGO (piattaforma OMNIA IS)](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.50599.cassa-integrazione-guadagni-ordinaria.html)
 
 ---
 
-## Servizi INPS collegati (DB Imprese e Professionisti)
+## Servizi INPS collegati
 
-| Servizio | Categoria DB | Link |
+| Servizio | Categoria | Link |
 |---|---|---|
 | Cassa integrazione guadagni ordinaria (CIGO) | Cassa Integrazione | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.50599.cassa-integrazione-guadagni-ordinaria.html) |
 | Cassa integrazione guadagni straordinaria (CIGS) | Cassa Integrazione | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.50596.cassa-integrazione-guadagni-straordinaria.html) |
-| Cassa integrazione guadagni in deroga (CIGD) | Cassa Integrazione | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.cassa-integrazione-guadagni-in-deroga-50278.cassa-integrazione-guadagni-in-deroga.html) |
 | Consultazione integrazioni salariali (CIS) | Integrazioni salariali | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.consultazione-integrazioni-salariali-cis-.html) |
 | Cruscotto UniEmens CIG e Fondi solidarietà | Integrazioni salariali | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.cruscotto-uniemens-cig-e-fondi-solidariet-.cruscotto-uniemens-cig-e-fondi-solidariet-.html) |
 

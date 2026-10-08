@@ -1,6 +1,6 @@
 # Prestazioni di accompagnamento alla pensione
 
-**Fonti:** Circ. INPS n. 119/2013 · Circ. 153/2025 · Circ. 41/2026 · Msg. 2829/2026 · Circ. 104/2026 | Record DB: Riga 61 | Settembre 2026
+**Fonti:** L. 92/2012, art. 4 · Circ. INPS n. 119/2013 · Circ. 153/2025 · Circ. 41/2026 · Msg. 2829/2026 · Circ. 104/2026 | Settembre 2026
 
 ---
 
@@ -119,7 +119,7 @@ Dopo l'accettazione della fideiussione, presenta le domande individuali per cias
 |---|---|---|
 | Requisiti di accesso e platea beneficiari | Sì | Circ. 119/2013 |
 | Accordo aziendale e procedura INPS | Sì | Circ. 119/2013 |
-| Calcolo importo e regime fiscale | Sì | Record DB riga 61 |
+| Calcolo importo e regime fiscale | Sì | Circ. 153/2025 |
 | Agevolazioni fiscali 2026 (bonus + detrazione) | Sì | Msg. 2829/2026 |
 | Prolungamento tutele per nuovi requisiti 2027-28 | Sì | Circ. 41/2026 |
 | Liquidazione per contributivi puri | Sì | Circ. 104/2026 |
@@ -130,21 +130,21 @@ Dopo l'accettazione della fideiussione, presenta le domande individuali per cias
 ## 13. Fonti ufficiali
 
 - [Legge 28 giugno 2012, n. 92](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2012-06-28;92), art. 4, commi 1-7-ter — Isopensione
-- [Circolare INPS n. 119 del 1/8/2013](https://www.inps.it) — Istruzioni operative isopensione
-- [Circolare INPS n. 153 del 19/12/2025](https://www.inps.it) — Gestione prestazioni di accompagnamento per l'anno 2026
-- [Circolare INPS n. 41 del 3/4/2026](https://www.inps.it) — Tutele per adeguamento requisiti pensionistici 2027-2028
-- [Messaggio INPS n. 2829 del 14/9/2026](https://www.inps.it) — Agevolazioni fiscali 2026
-- [Circolare INPS n. 104 del 29/9/2026](https://www.inps.it) — Liquidazione per lavoratori privi di anzianità contributiva al 31/12/1995
-- Servizi INPS: [Prestazione di accompagnamento alla pensione](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.prestazione-di-accompagnamento-alla-pensione.html)
+- [Circolare INPS n. 119 del 1/8/2013](https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2013.08.circolare-numero-119-del-01-08-2013_847.html) — Istruzioni operative isopensione
+- [Circolare INPS n. 153 del 19/12/2025](https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2025.12.circolare-numero-153-del-19-12-2025_15109.html) — Gestione prestazioni di accompagnamento per l'anno 2026
+- [Circolare INPS n. 41 del 3/4/2026](https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2026.04.circolare-numero-41-del-03-04-2026_15226.html) — Tutele per adeguamento requisiti pensionistici 2027-2028
+- [Messaggio INPS n. 2829 del 14/9/2026](https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2026.09.messaggio-numero-2829-del-14-09-2026_15371.html) — Agevolazioni fiscali 2026
+- [Circolare INPS n. 104 del 29/9/2026](https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2026.09.circolare-numero-104-del-29-09-2026_16378.html) — Liquidazione per lavoratori privi di anzianità contributiva al 31/12/1995
+- Servizi INPS: [Prestazione di accompagnamento alla pensione](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.50577.prestazione-di-accompagnamento-alla-pensione.html)
 
 ---
 
-## Servizi INPS collegati (DB Imprese e Professionisti)
+## Servizi INPS collegati
 
-| Servizio | Categoria DB | Link |
+| Servizio | Categoria | Link |
 |---|---|---|
-| Prestazione di accompagnamento alla pensione (isopensione) | Sostegno lavoratori licenziati | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.prestazione-di-accompagnamento-alla-pensione.html) |
-| Assegno straordinario di sostegno al reddito | Sostegno lavoratori licenziati | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.assegno-straordinario-di-sostegno-al-reddito.html) |
-| Portale prestazioni esodo | Sostegno lavoratori licenziati | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.portale-prestazioni-esodo.html) |
+| Prestazione di accompagnamento alla pensione (isopensione) | Sostegno lavoratori licenziati | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.50577.prestazione-di-accompagnamento-alla-pensione.html) |
+| Assegno straordinario di sostegno al reddito | Sostegno lavoratori licenziati | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.50298.assegno-straordinario-di-sostegno-al-reddito.html) |
+| Portale prestazioni esodo | Sostegno lavoratori licenziati | [Apri servizio](https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.50292.portale-prestazioni-esodo.html) |
 
 > Accesso tramite SPID, CIE o CNS — area riservata MyINPS. Per le domande di isopensione l'azienda trasmette l'accordo sindacale via PEC alla sede INPS competente.
