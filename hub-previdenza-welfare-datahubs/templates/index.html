@@ -8,1194 +8,649 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --navy:#0F2A4A;--blue:#1d6fa4;--blue-bg:#EBF5FF;--blue-mid:#BFDBFE;
-  --amber:#92600A;--amber-bg:#FEF8EC;--amber-mid:#FDE68A;
-  --green:#166534;--green-bg:#EDFAF4;--green-mid:#A7F3D0;
-  --gray-50:#F8FAFC;--gray-100:#F1F5F9;--gray-200:#E2E8F0;
-  --gray-400:#94A3B8;--gray-600:#475569;--gray-800:#1E293B;
-  --white:#fff;--accent:#0284C7;
-  --header-h:60px;--sidebar-w:220px;
-  --radius:10px;--shadow:0 2px 8px rgba(0,0,0,.08);--shadow-lg:0 8px 24px rgba(0,0,0,.12);
+  --navy:#0F2A4A;--accent:#0284C7;
+  --blue:#1d6fa4;--blue-bg:#EBF5FF;
+  --amber:#92600A;--amber-bg:#FEF8EC;
+  --green:#166534;--green-bg:#EDFAF4;
+  --bg:#F4F7FB;--surface:#fff;--surface-2:#F8FAFC;
+  --text:#1E293B;--text-soft:#475569;--muted:#94A3B8;
+  --border:#E2E8F0;--border-soft:#F1F5F9;
+  --title:#0F2A4A;
+  --header-h:64px;--sidebar-w:250px;--content-max:1180px;
+  --radius:14px;--shadow:0 2px 8px rgba(15,42,74,.06);--shadow-lg:0 10px 28px rgba(15,42,74,.12);
 }
-html,body{height:100%;font-family:'Inter',sans-serif;background:#F4F7FB;color:var(--gray-800);font-size:14px;}
+body.dark{
+  --bg:#0F172A;--surface:#1E293B;--surface-2:#172033;
+  --text:#E2E8F0;--text-soft:#CBD5E1;--muted:#8193AB;
+  --border:#334155;--border-soft:#253247;
+  --title:#F1F5F9;
+  --blue-bg:#14304A;--amber-bg:#3A2C10;--green-bg:#123524;
+  --blue:#60A5FA;--amber:#F2B544;--green:#4ADE80;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.5;min-height:100vh;}
+button{font-family:inherit;}
+a{color:inherit;}
 
-/* HEADER */
-.header{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--header-h);background:#fff;border-bottom:1px solid var(--gray-200);display:flex;align-items:center;padding:0 32px;gap:20px;box-shadow:0 1px 3px rgba(0,0,0,.05);}
-.h-brand{display:flex;align-items:center;gap:10px;flex-shrink:0;cursor:pointer;text-decoration:none;}
-.h-logo{height:36px;display:flex;align-items:center;flex-shrink:0;}
-.h-logo img{height:36px;width:auto;object-fit:contain;}
-.h-name strong{display:block;font-size:13px;font-weight:700;color:var(--navy);line-height:1.2;}
-.h-name span{display:block;font-size:11px;color:var(--gray-400);}
-/* NAV LINKS MACROAREE */
-.h-nav{display:flex;align-items:center;gap:4px;margin-left:8px;}
-.h-nav-item{padding:6px 14px;border-radius:20px;font-size:13px;font-weight:500;color:var(--gray-600);cursor:pointer;transition:color .15s,background .15s;white-space:nowrap;border:none;background:none;font-family:'Inter',sans-serif;}
-.h-nav-item:hover{color:var(--navy);background:var(--gray-100);}
-.h-nav-item.active{color:var(--navy);font-weight:600;background:var(--blue-bg);}
-.h-nav-sep{width:1px;height:16px;background:var(--gray-200);margin:0 6px;}
-/* SEARCH */
-.h-search{flex:1;max-width:360px;display:flex;align-items:center;background:var(--gray-100);border:1.5px solid var(--gray-200);border-radius:24px;padding:0 6px 0 14px;gap:8px;transition:border-color .2s,box-shadow .2s;}
-.h-search:focus-within{border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px rgba(2,132,199,.1);}
-.h-search svg{width:15px;height:15px;flex-shrink:0;stroke:var(--gray-400);fill:none;stroke-width:2;stroke-linecap:round;}
-.h-search input{flex:1;border:none;background:transparent;font-size:13px;color:var(--gray-800);outline:none;padding:9px 0;font-family:'Inter',sans-serif;}
-.h-search input::placeholder{color:var(--gray-400);}
-.search-go{width:30px;height:30px;background:var(--gray-200);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:background .15s;}
+/* ── AREA COLORS ── */
+.c-prev{--tc:var(--blue);--tc-bg:var(--blue-bg);}
+.c-welf{--tc:var(--amber);--tc-bg:var(--amber-bg);}
+.c-san{--tc:var(--green);--tc-bg:var(--green-bg);}
+
+/* ── HEADER ── */
+.header{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--header-h);background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 20px;gap:14px;}
+.icon-btn{width:38px;height:38px;border:1.5px solid var(--border);background:var(--surface);border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-soft);flex-shrink:0;transition:border-color .15s,background .15s;}
+.icon-btn:hover{border-color:var(--title);color:var(--title);}
+.icon-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.back-btn{display:none;align-items:center;gap:6px;height:38px;padding:0 14px 0 10px;border:1.5px solid var(--border);border-radius:20px;background:var(--surface);color:var(--text-soft);font-size:13px;font-weight:500;cursor:pointer;flex-shrink:0;}
+.back-btn:hover{border-color:var(--title);color:var(--title);}
+.back-btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
+.h-brand{display:flex;align-items:center;gap:10px;flex-shrink:0;text-decoration:none;cursor:pointer;}
+.h-brand img{height:36px;width:auto;}
+.h-name strong{display:block;font-size:14px;font-weight:700;color:var(--title);line-height:1.2;}
+.h-name span{display:block;font-size:11.5px;color:var(--muted);}
+.h-search{flex:1;max-width:380px;min-width:180px;display:flex;align-items:center;background:var(--surface-2);border:1.5px solid var(--border);border-radius:24px;padding:0 5px 0 14px;gap:8px;}
+.h-search:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px rgba(2,132,199,.12);}
+.h-search svg{width:15px;height:15px;stroke:var(--muted);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0;}
+.h-search input{flex:1;min-width:0;border:none;background:transparent;font-size:13.5px;color:var(--text);outline:none;padding:9px 0;font-family:inherit;}
+.h-search input::placeholder{color:var(--muted);}
+.search-go{width:30px;height:30px;background:var(--border);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;}
 .search-go:hover{background:var(--navy);}
+.search-go svg{width:13px;height:13px;stroke:var(--text-soft);stroke-width:2.5;}
 .search-go:hover svg{stroke:#fff;}
-.search-go svg{width:13px;height:13px;stroke:var(--gray-600);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
-.h-right{margin-left:auto;display:flex;align-items:center;gap:10px;flex-shrink:0;}
-.btn-chisiamo{display:flex;align-items:center;gap:5px;padding:7px 14px;border:1.5px solid var(--gray-200);border-radius:20px;font-size:12.5px;font-weight:500;color:var(--gray-600);background:#fff;cursor:pointer;transition:border-color .15s,color .15s;}
-.btn-chisiamo:hover{border-color:var(--navy);color:var(--navy);}
-.btn-logout{padding:7px 14px;border:1.5px solid #FECACA;border-radius:20px;font-size:12px;font-weight:500;color:#DC2626;background:#FEF2F2;cursor:pointer;transition:all .15s;text-decoration:none;}
+.h-nav{display:flex;align-items:center;gap:2px;}
+.h-nav-item{padding:7px 13px;border-radius:20px;font-size:13.5px;font-weight:500;color:var(--text-soft);cursor:pointer;border:none;background:none;white-space:nowrap;}
+.h-nav-item:hover{color:var(--title);background:var(--border-soft);}
+.h-nav-item.active{color:var(--tc);background:var(--tc-bg);font-weight:600;}
+.h-right{margin-left:auto;display:flex;align-items:center;gap:8px;flex-shrink:0;}
+.theme-toggle{font-size:16px;}
+.btn-pill{display:flex;align-items:center;gap:5px;height:36px;padding:0 14px;border:1.5px solid var(--border);border-radius:20px;font-size:13px;font-weight:500;color:var(--text-soft);background:var(--surface);cursor:pointer;text-decoration:none;white-space:nowrap;}
+.btn-pill:hover{border-color:var(--title);color:var(--title);}
+.btn-logout{border-color:#FECACA;color:#DC2626;background:#FEF2F2;}
 .btn-logout:hover{background:#DC2626;color:#fff;border-color:#DC2626;}
-.h-avatar{width:32px;height:32px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;}
+.h-avatar{width:34px;height:34px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:700;color:#fff;flex-shrink:0;}
+#read-progress{position:fixed;top:var(--header-h);left:0;height:3px;width:0;background:var(--accent);z-index:101;transition:width .1s linear;}
 
-/* HAMBURGER */
-.hamburger{display:flex;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;background:none;border:1.5px solid var(--gray-200);border-radius:8px;cursor:pointer;padding:6px 7px;flex-shrink:0;transition:border-color .15s;}
-.hamburger:hover{border-color:var(--navy);}
-.hamburger span{display:block;height:2px;background:var(--gray-600);border-radius:2px;transition:all .25s;}
-.hamburger:hover span{background:var(--navy);}
-#back-btn:hover{border-color:var(--navy);color:var(--navy);}
-/* THEME TOGGLE */
-.theme-toggle{width:34px;height:34px;background:var(--gray-100);border:1.5px solid var(--gray-200);border-radius:8px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .15s;}
-.theme-toggle:hover{border-color:var(--navy);background:var(--blue-bg);}
+/* ── SIDEBAR ── */
+.sidebar{position:fixed;top:var(--header-h);left:0;bottom:0;width:var(--sidebar-w);background:var(--surface);border-right:1px solid var(--border);z-index:90;display:flex;flex-direction:column;transition:transform .25s ease;overflow-y:auto;}
+body.sb-collapsed .sidebar{transform:translateX(-100%);}
+.sb-brand{padding:18px 18px 14px;border-bottom:1px solid var(--border-soft);}
+.sb-brand img{height:44px;width:auto;display:block;}
+.sb-nav{padding:12px 10px 24px;}
+.sb-label{font-size:10.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);padding:14px 12px 6px;}
+.sb-item{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:10px;font-size:14px;font-weight:500;color:var(--text-soft);cursor:pointer;user-select:none;}
+.sb-item:hover{background:var(--border-soft);color:var(--title);}
+.sb-item.active{background:var(--tc-bg,var(--blue-bg));color:var(--title);font-weight:600;}
+.sb-icon{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--tc-bg,var(--blue-bg));}
+.sb-icon svg{width:16px;height:16px;stroke:var(--tc,var(--blue));fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.sb-sub{margin:2px 0 8px 25px;padding-left:14px;border-left:2px solid var(--border-soft);}
+.sb-subitem{display:block;padding:6px 10px;border-radius:8px;font-size:13px;color:var(--text-soft);cursor:pointer;line-height:1.35;}
+.sb-subitem:hover{color:var(--title);background:var(--border-soft);}
+.sb-subitem.active{color:var(--tc);font-weight:600;background:var(--tc-bg);}
 
-/* ═══ READING PROGRESS BAR ═══ */
-#read-progress{position:fixed;top:var(--header-h);left:0;width:0%;height:3px;background:var(--tc,var(--accent));z-index:300;transition:width .1s linear;border-radius:0 2px 2px 0;}
+/* ── LAYOUT ── */
+.main{margin-left:var(--sidebar-w);padding-top:var(--header-h);min-width:0;transition:margin-left .25s ease;}
+body.sb-collapsed .main{margin-left:0;}
+.page{display:none;}
+.page.active{display:block;animation:fade .25s ease;}
+@keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+.wrap{max-width:var(--content-max);margin:0 auto;padding:0 40px;}
 
-/* ═══ LAYOUT SENZA SIDEBAR ═══ */
-.sidebar{display:none;}
-.main{margin-left:0 !important;flex:1;min-width:0;}
-
-/* ═══ HOME — HERO EDITORIALE ═══ */
-.hero{padding:80px 0 72px;background:#0F2A4A;position:relative;overflow:hidden;}
-.hero::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;border:1px solid rgba(255,255,255,.04);top:-200px;right:-100px;pointer-events:none;}
-.hero::after{content:'';position:absolute;width:380px;height:380px;border-radius:50%;border:1px solid rgba(255,255,255,.06);top:40px;right:80px;pointer-events:none;}
-.hero-inner{max-width:900px;margin:0 auto;padding:0 48px;position:relative;z-index:2;}
-.hero-eyebrow{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:24px;display:flex;align-items:center;gap:10px;}
-.hero-eyebrow::before{content:'';width:28px;height:1.5px;background:rgba(255,255,255,.25);}
-.hero h1{font-size:52px;font-weight:800;color:#fff;line-height:1.05;letter-spacing:-2px;margin-bottom:20px;max-width:700px;}
+/* ── HOME HERO ── */
+.hero{background:var(--navy);position:relative;overflow:hidden;}
+.hero::after{content:'';position:absolute;right:-120px;top:-120px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(125,211,252,.16),transparent 65%);pointer-events:none;}
+.hero .wrap{position:relative;z-index:1;padding-top:64px;padding-bottom:56px;}
+.hero-eyebrow{font-size:11.5px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:18px;}
+.hero h1{font-size:46px;font-weight:800;color:#fff;line-height:1.08;letter-spacing:-1.5px;margin-bottom:18px;max-width:720px;}
 .hero h1 em{font-style:normal;color:#7DD3FC;}
-.hero-desc{font-size:17px;color:rgba(255,255,255,.55);line-height:1.7;max-width:500px;margin-bottom:40px;}
-.hero-searchbar{display:flex;align-items:center;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.15);border-radius:14px;padding:6px 6px 6px 22px;max-width:580px;gap:12px;backdrop-filter:blur(12px);transition:border-color .2s,background .2s;}
-.hero-searchbar:focus-within{border-color:rgba(125,211,252,.4);background:rgba(255,255,255,.12);}
-.hero-searchbar svg{width:18px;height:18px;stroke:rgba(255,255,255,.4);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0;}
-.hero-searchbar input{flex:1;border:none;background:transparent;font-size:16px;color:#fff;outline:none;padding:10px 0;font-family:'Inter',sans-serif;}
-.hero-searchbar input::placeholder{color:rgba(255,255,255,.35);}
-.hero-searchbar-btn{background:#fff;color:var(--navy);border:none;border-radius:10px;padding:10px 22px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;transition:background .15s,transform .15s;}
-.hero-searchbar-btn:hover{background:#EBF5FF;transform:translateX(2px);}
-.hero-stats{display:flex;gap:40px;margin-top:48px;padding-top:40px;border-top:1px solid rgba(255,255,255,.07);}
-.hero-stat-n{display:block;font-size:28px;font-weight:800;color:#fff;letter-spacing:-1px;line-height:1;}
-.hero-stat-l{display:block;font-size:11px;color:rgba(255,255,255,.35);margin-top:4px;letter-spacing:.3px;}
+.hero-desc{font-size:17px;color:rgba(255,255,255,.75);line-height:1.65;max-width:600px;margin-bottom:30px;}
+.hero-searchbar{display:flex;align-items:center;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);border-radius:12px;padding:6px 6px 6px 18px;max-width:600px;gap:12px;}
+.hero-searchbar:focus-within{border-color:rgba(255,255,255,.5);}
+.hero-searchbar svg{width:17px;height:17px;stroke:rgba(255,255,255,.55);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0;}
+.hero-searchbar input{flex:1;min-width:0;border:none;background:transparent;font-size:15px;color:#fff;outline:none;padding:10px 0;font-family:inherit;}
+.hero-searchbar input::placeholder{color:rgba(255,255,255,.45);}
+.hero-searchbar button{background:#fff;color:var(--navy);border:none;border-radius:8px;padding:10px 20px;font-size:13.5px;font-weight:700;cursor:pointer;white-space:nowrap;}
+.hero-searchbar button:hover{background:#E0F2FE;}
+.hero-stats{display:flex;flex-wrap:wrap;gap:20px 48px;margin-top:40px;padding-top:28px;border-top:1px solid rgba(255,255,255,.12);}
+.hero-stat strong{display:block;font-size:24px;font-weight:800;color:#fff;letter-spacing:-.5px;line-height:1.1;}
+.hero-stat span{display:block;font-size:12.5px;color:rgba(255,255,255,.55);margin-top:4px;}
 
-/* ═══ HOME — AREE EDITORIALI ═══ */
-.home-areas{background:#fff;}
-.home-area-row{display:grid;grid-template-columns:1fr 1fr;min-height:320px;cursor:pointer;transition:background .2s;max-width:100%;}
-.home-area-row:not(:last-child){border-bottom:1px solid var(--gray-100);}
-.home-area-row:hover{background:#FAFBFF;}
-.home-area-row:hover .area-cta-arrow{transform:translateX(5px);}
-.home-area-text{padding:52px 56px;display:flex;flex-direction:column;justify-content:center;}
-.home-area-num{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
-.home-area-num span{display:inline-block;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;}
-.home-area-title{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:-.8px;line-height:1.15;margin-bottom:12px;}
-.home-area-desc{font-size:15px;color:var(--gray-600);line-height:1.7;margin-bottom:28px;max-width:420px;}
-.area-cta{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;text-decoration:none;border:none;background:none;cursor:pointer;font-family:'Inter',sans-serif;padding:0;}
-.area-cta-arrow{display:inline-flex;width:28px;height:28px;border-radius:50%;align-items:center;justify-content:center;transition:transform .2s;}
-.area-cta-arrow svg{width:13px;height:13px;}
-.home-area-visual{display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;min-height:280px;}
+/* ── HOME AREE ── */
+.section{padding:56px 0 24px;}
+.section-head{margin-bottom:26px;}
+.section-eyebrow{font-size:11.5px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
+.section-title{font-size:28px;font-weight:800;color:var(--title);letter-spacing:-.6px;}
+.section-sub{font-size:15px;color:var(--text-soft);margin-top:6px;max-width:640px;}
+.areas-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;}
+.area-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:box-shadow .2s,transform .2s,border-color .2s;}
+.area-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px);border-color:var(--tc);}
+.area-card-top{background:var(--tc-bg);padding:26px 26px 22px;border-top:4px solid var(--tc);position:relative;}
+.area-num{position:absolute;top:22px;right:24px;font-size:13px;font-weight:800;color:var(--tc);opacity:.55;}
+.area-ic{width:48px;height:48px;border-radius:12px;background:var(--surface);display:flex;align-items:center;justify-content:center;margin-bottom:16px;box-shadow:var(--shadow);}
+.area-ic svg{width:24px;height:24px;stroke:var(--tc);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.area-card h3{font-size:23px;font-weight:800;color:var(--title);letter-spacing:-.5px;margin-bottom:8px;}
+.area-card-top p{font-size:14.5px;color:var(--text-soft);line-height:1.6;}
+.area-card-body{padding:18px 26px 22px;flex:1;display:flex;flex-direction:column;}
+.area-temi-lbl{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.area-tema-link{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border-soft);font-size:14.5px;font-weight:500;color:var(--text);cursor:pointer;}
+.area-tema-link:last-of-type{border-bottom:none;}
+.area-tema-link::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--tc);flex-shrink:0;}
+.area-tema-link:hover{color:var(--tc);}
+.area-cta{margin-top:auto;padding-top:16px;display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--tc);}
+.area-cta svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s;}
+.area-card:hover .area-cta svg{transform:translateX(4px);}
 
-/* ═══ HOME — STRIP INFO ═══ */
-.home-strip{background:var(--navy);padding:48px 0;}
-.home-strip-inner{max-width:900px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;}
-.strip-item{color:rgba(255,255,255,.6);font-size:13px;line-height:1.5;}
-.strip-item strong{display:block;font-size:15px;font-weight:700;color:#fff;margin-bottom:4px;}
+.info-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin:32px 0 64px;}
+.info-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 20px;}
+.info-item strong{display:block;font-size:14px;font-weight:700;color:var(--title);margin-bottom:4px;}
+.info-item span{font-size:13.5px;color:var(--text-soft);line-height:1.55;}
 
-/* ═══ PAGINA AREA — EDITORIALE ═══ */
-.area-editorial-header{padding:64px 0 48px;position:relative;overflow:hidden;}
-.area-editorial-inner{max-width:900px;margin:0 auto;padding:0 48px;}
-.area-editorial-eyebrow{font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:8px;cursor:pointer;transition:opacity .15s;}
-.area-editorial-eyebrow:hover{opacity:.7;}
-.area-editorial-eyebrow::before{content:'←';margin-right:2px;}
-.area-editorial-title{font-size:48px;font-weight:800;letter-spacing:-2px;line-height:1.05;margin-bottom:16px;}
-.area-editorial-desc{font-size:16px;color:var(--gray-600);line-height:1.7;max-width:560px;}
-.area-temi-section{padding:0 0 64px;}
-.area-temi-label{font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--gray-400);margin-bottom:28px;padding:24px 56px 0;border-top:1px solid var(--gray-100);}
-/* Card griglia 2 colonne */
-.temi-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:0;padding:0 56px 0;}
-.tema-editorial{display:flex;flex-direction:column;background:#fff;border:1px solid var(--gray-100);border-radius:16px;overflow:hidden;cursor:pointer;transition:box-shadow .2s,transform .2s;margin-bottom:20px;}
-.tema-editorial:hover{box-shadow:0 8px 32px rgba(0,0,0,.1);transform:translateY(-3px);}
-.tema-editorial:hover .tema-ed-arrow{transform:translateX(4px);opacity:1;border-color:var(--tc,var(--accent));}
-.tema-editorial:hover .tema-ed-title{color:var(--tc,var(--accent));}
-/* Banda colorata in cima alla card */
-.tema-ed-band{height:4px;background:var(--tc,var(--accent));}
-/* Illustrazione nella card */
-.tema-ed-visual{height:140px;display:flex;align-items:center;justify-content:center;background:var(--tc-bg,#F7FBFF);position:relative;overflow:hidden;}
-.tema-ed-body{padding:24px 24px 20px;display:flex;flex-direction:column;flex:1;}
-.tema-ed-cat{font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
-.tema-ed-cat::before{content:'';width:14px;height:2px;background:currentColor;border-radius:1px;}
-.tema-ed-title{font-size:19px;font-weight:800;color:var(--navy);letter-spacing:-.4px;line-height:1.2;margin-bottom:10px;transition:color .2s;}
-.tema-ed-desc{font-size:13.5px;color:var(--gray-600);line-height:1.7;margin-bottom:16px;flex:1;}
-.tema-ed-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:16px;}
-.tema-ed-tag{font-size:10.5px;background:var(--tc-bg,var(--gray-100));color:var(--tc,var(--gray-600));padding:3px 10px;border-radius:20px;font-weight:600;}
-.tema-ed-footer{display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px solid var(--gray-100);}
-.tema-ed-meta{font-size:11px;color:var(--gray-400);line-height:1.5;}
-.tema-ed-right{display:flex;flex-direction:column;align-items:flex-end;gap:12px;padding-top:4px;}
-.tema-ed-arrow{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--gray-200);display:flex;align-items:center;justify-content:center;transition:transform .2s,opacity .2s,border-color .2s;opacity:.6;}
-.tema-ed-arrow svg{width:13px;height:13px;}
+/* ── PAGINA AREA ── */
+.page-head{background:var(--tc-bg);border-bottom:1px solid var(--border);}
+.page-head .wrap{padding-top:40px;padding-bottom:36px;}
+.crumb{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--tc);background:none;border:none;cursor:pointer;margin-bottom:14px;padding:0;}
+.crumb:hover{text-decoration:underline;text-underline-offset:3px;}
+.crumb svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+.page-head h1{font-size:40px;font-weight:800;color:var(--title);letter-spacing:-1px;line-height:1.1;margin-bottom:10px;}
+.page-head .lead{font-size:16.5px;color:var(--text-soft);line-height:1.6;max-width:700px;}
+.page-head .cat{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--tc);margin-bottom:8px;}
+.temi-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;padding:36px 0 64px;}
+.tema-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);border-top:4px solid var(--tc);padding:24px 26px 20px;cursor:pointer;display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s,border-color .2s;}
+.tema-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px);border-color:var(--tc);}
+.tema-cat{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--tc);margin-bottom:10px;}
+.tema-card h3{font-size:19px;font-weight:700;color:var(--title);line-height:1.3;margin-bottom:8px;}
+.tema-card p{font-size:14.5px;color:var(--text-soft);line-height:1.6;margin-bottom:14px;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;}
+.tag{font-size:12px;font-weight:600;color:var(--tc);background:var(--tc-bg);padding:4px 10px;border-radius:20px;}
+.tema-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px solid var(--border-soft);font-size:12.5px;color:var(--muted);}
+.tema-open{display:flex;align-items:center;gap:6px;font-size:13.5px;font-weight:700;color:var(--tc);}
+.tema-open svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s;}
+.tema-card:hover .tema-open svg{transform:translateX(4px);}
 
-/* ═══ PAGINA TEMA — ARTICOLO ═══ */
-.article-page{max-width:100%;}
-/* Progress bar */
-.article-header{padding:0;position:relative;border-left:none;}
-.article-header-inner{max-width:100%;padding:48px 56px 36px;border-bottom:none;background:var(--tc-bg,#F7FBFF);}
-.article-breadcrumb{font-size:12px;font-weight:600;letter-spacing:.3px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;margin-bottom:20px;transition:opacity .15s;border:none;background:none;padding:0;font-family:'Inter',sans-serif;}
-.article-breadcrumb:hover{opacity:.7;}
-.article-breadcrumb::before{content:'←';font-size:14px;}
-.article-category{font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:6px;}
-.article-category::before{content:'';width:20px;height:2.5px;background:currentColor;border-radius:1px;}
-.article-title{font-size:36px;font-weight:800;color:var(--navy);letter-spacing:-1px;line-height:1.1;margin-bottom:16px;}
-.article-desc{font-size:17px;color:var(--gray-500,#64748b);line-height:1.65;margin-bottom:28px;}
-/* Strip "In questa guida" orizzontale */
-.article-toc-strip{background:#fff;border-bottom:1px solid var(--gray-100);padding:12px 0;position:sticky;top:60px;z-index:10;}
-.article-toc-strip-inner{max-width:100%;padding:0 56px;display:flex;align-items:center;gap:12px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
-.article-toc-label{font-size:10.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--gray-400);white-space:nowrap;flex-shrink:0;}
-.article-toc-links{display:flex;gap:6px;flex-wrap:wrap;}
-.article-toc-links a{font-size:12px;color:var(--gray-600);text-decoration:none;padding:5px 14px;border-radius:20px;background:var(--gray-100);transition:background .2s,color .2s;border:none;font-weight:500;white-space:nowrap;}
-.article-toc-links a:hover{background:var(--tc-bg,var(--blue-bg));color:var(--tc,var(--accent));}
-.article-toc-links a.toc-active{background:var(--tc-bg,var(--blue-bg));color:var(--tc,var(--accent));font-weight:600;}
-/* Corpo articolo */
-.article-body{max-width:760px;margin:0 auto;padding:52px 56px 72px;}
-/* Fonti in fondo come firma */
-.article-footer{border-top:2px solid var(--gray-100);margin:0;padding:0;}
-.article-footer-inner{max-width:740px;margin:0 auto;padding:32px 48px 56px;}
-.article-footer-label{font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gray-400);margin-bottom:16px;}
-.article-sources{display:flex;flex-direction:column;gap:8px;}
-.article-source-link{display:flex;align-items:center;gap:12px;text-decoration:none;padding:12px 16px;border-radius:10px;border:1px solid var(--gray-100);background:#fff;transition:border-color .15s,box-shadow .15s;}
-.article-source-link:hover{border-color:var(--tc,var(--accent));box-shadow:0 2px 12px rgba(0,0,0,.06);}
-.article-source-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;}
-.article-source-text strong{display:block;font-size:13px;font-weight:600;color:var(--gray-800);}
-.article-source-text span{font-size:11.5px;color:var(--gray-400);}
-.article-source-arrow{margin-left:auto;color:var(--gray-300);font-size:16px;transition:transform .15s;}
-.article-source-link:hover .article-source-arrow{transform:translateX(3px);color:var(--tc,var(--accent));}
-
-/* ═══ KB ARTICLE typography ═══ */
-.kb-article{font-size:17px;color:#2D3748;line-height:1.85;max-width:100%;}
+/* ── PAGINA TEMA ── */
+.toc-strip{position:sticky;top:var(--header-h);z-index:20;background:var(--surface);border-bottom:1px solid var(--border);}
+.toc-strip .wrap{display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:none;padding-top:10px;padding-bottom:10px;}
+.toc-strip .wrap::-webkit-scrollbar{display:none;}
+.toc-label{font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);white-space:nowrap;flex-shrink:0;margin-right:4px;}
+.toc-links{display:flex;gap:6px;}
+.toc-links a{font-size:12.5px;color:var(--text-soft);text-decoration:none;padding:5px 12px;border-radius:20px;background:var(--border-soft);white-space:nowrap;font-weight:500;}
+.toc-links a:hover,.toc-links a.toc-active{background:var(--tc-bg);color:var(--tc);font-weight:600;}
+.article-body{max-width:820px;padding-top:12px;padding-bottom:40px;}
+.kb-article{font-size:16.5px;color:var(--text);line-height:1.8;}
 .kb-article h1{display:none;}
-.kb-article h2{font-size:21px;font-weight:800;color:var(--navy);margin:56px 0 16px;letter-spacing:-.4px;line-height:1.2;padding-top:32px;border-top:1px solid var(--gray-100);}
-.kb-article h2::before{display:none;}
-.kb-article h2::after{content:'';display:block;width:32px;height:3px;background:var(--tc,var(--accent));border-radius:2px;margin-top:8px;}
-.kb-article h3{font-size:17px;font-weight:700;color:var(--navy);margin:32px 0 10px;}
-.kb-article p{margin-bottom:18px;line-height:1.85;}
-.kb-article strong{color:var(--navy);font-weight:700;}
-.kb-article em{color:var(--gray-400);font-size:15px;}
-.kb-article blockquote{border-left:3px solid var(--tc,var(--accent));padding:4px 0 4px 24px;margin:28px 0;font-size:17px;color:var(--gray-600);line-height:1.7;font-style:italic;}
-.kb-article blockquote p{margin-bottom:0;}
-.kb-article ul{list-style:none;margin:12px 0 22px;padding:0;}
-.kb-article ul li{display:flex;gap:14px;margin-bottom:12px;font-size:17px;color:#2D3748;line-height:1.75;}
-.kb-article ul li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--tc,var(--accent));flex-shrink:0;margin-top:10px;}
-.kb-article ol{margin:12px 0 22px;padding-left:24px;}
-.kb-article ol li{margin-bottom:12px;font-size:17px;color:#2D3748;line-height:1.75;}
-.kb-article table{width:100%;border-collapse:collapse;margin:24px 0;font-size:14px;display:block;overflow-x:auto;}
-.kb-article table th{background:var(--navy);color:#fff;padding:12px 18px;text-align:left;font-weight:600;font-size:13px;white-space:nowrap;letter-spacing:.2px;}
-.kb-article table td{padding:11px 18px;border-bottom:1px solid var(--gray-100);color:#475569;vertical-align:top;line-height:1.6;}
-.kb-article table tr:last-child td{border-bottom:none;}
-.kb-article table tr:nth-child(even) td{background:#FAFBFD;}
-.kb-article hr{border:none;border-top:1px solid var(--gray-100);margin:36px 0;}
-.kb-article a{color:var(--tc,var(--accent));text-decoration:underline;text-underline-offset:3px;font-weight:500;transition:color .15s;}
-.kb-article a:hover{color:var(--navy);}
-.kb-article table td a{color:var(--tc,var(--accent));text-decoration:underline;}
-.kb-article code{background:var(--gray-100);border-radius:5px;padding:2px 7px;font-size:15px;font-family:monospace;color:var(--navy);}
+.kb-article h2{font-size:22px;font-weight:800;color:var(--title);margin:44px 0 14px;letter-spacing:-.3px;line-height:1.25;padding-top:28px;border-top:1px solid var(--border);scroll-margin-top:130px;}
+.kb-article h2::after{content:'';display:block;width:32px;height:3px;background:var(--tc);border-radius:2px;margin-top:9px;}
+.kb-article h3{font-size:17.5px;font-weight:700;color:var(--title);margin:26px 0 10px;scroll-margin-top:130px;}
+.kb-article p{margin-bottom:16px;}
+.kb-article strong{color:var(--title);font-weight:700;}
+.kb-article em{color:var(--text-soft);font-size:15px;}
+.kb-article ul{list-style:none;margin:10px 0 20px;}
+.kb-article ul li{position:relative;padding-left:20px;margin-bottom:10px;}
+.kb-article ul li::before{content:'';position:absolute;left:2px;top:11px;width:6px;height:6px;border-radius:50%;background:var(--tc);}
+.kb-article ol{margin:10px 0 20px;padding-left:24px;}
+.kb-article ol li{margin-bottom:10px;}
+.kb-article blockquote{border-left:3px solid var(--tc);background:var(--tc-bg);padding:14px 20px;margin:22px 0;border-radius:0 10px 10px 0;color:var(--text);}
+.kb-article blockquote p{margin:0;}
+.kb-article table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px;display:block;overflow-x:auto;}
+.kb-article th{background:var(--navy);color:#fff;padding:11px 16px;text-align:left;font-weight:600;font-size:13px;}
+.kb-article td{padding:10px 16px;border-bottom:1px solid var(--border);color:var(--text-soft);vertical-align:top;line-height:1.55;}
+.kb-article tr:nth-child(even) td{background:var(--surface-2);}
+.kb-article hr{border:none;border-top:1px solid var(--border);margin:28px 0;}
+.kb-article a{color:var(--tc);text-decoration:underline;text-underline-offset:3px;font-weight:500;}
+.kb-article code{background:var(--border-soft);border-radius:5px;padding:1px 6px;font-size:14px;}
+.sources{max-width:820px;padding-bottom:72px;}
+.sources-lbl{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
+.source-link{display:flex;align-items:center;gap:14px;background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:14px 18px;margin-bottom:10px;text-decoration:none;}
+.source-link:hover{border-color:var(--tc);}
+.source-ic{width:36px;height:36px;border-radius:9px;background:var(--tc-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;}
+.source-link strong{display:block;font-size:14.5px;color:var(--title);}
+.source-link span{font-size:13px;color:var(--text-soft);}
+.source-arrow{margin-left:auto;color:var(--tc);font-weight:700;}
 
-/* Nascondi elementi vecchi non più usati */
-.kb-doc-layout{display:block !important;}
-.kb-toc{display:none !important;}
-.kb-toc-mobile{display:none !important;}
-.kb-doc-main{background:transparent !important;border:none !important;border-radius:0 !important;margin:0 !important;}
-.kb-body{padding:0 !important;}
-.kb-section-head{display:none !important;}
-.kb-num{display:none !important;}
-.tema-page-header{display:none !important;}
-.area-wrap{margin:0 !important;padding:0 !important;}
-.fonti-box{display:none !important;}
-.fonte-link{display:none !important;}
-.fonti-row{display:none !important;}
-.ai-notice{display:none !important;}
-.section{margin:0;padding:0;}
-.macro-grid{display:none;}
-.info-section{display:none;}
-.temi-grid{display:none;}
-.area-header{display:none !important;}
+/* ── CHI SIAMO ── */
+.cs-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);border-left:4px solid var(--tc);padding:26px 30px;margin-bottom:18px;}
+.cs-card h3{font-size:20px;font-weight:800;color:var(--title);margin-bottom:10px;}
+.cs-card p{font-size:15px;color:var(--text-soft);line-height:1.7;margin-bottom:10px;}
+.cs-rules{margin-top:14px;background:var(--surface-2);border-radius:10px;padding:16px 18px;}
+.cs-rules-title{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.cs-rule{display:flex;gap:10px;font-size:14px;color:var(--text-soft);line-height:1.55;margin-bottom:8px;}
+.cs-rule::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--tc);flex-shrink:0;margin-top:8px;}
 
-/* ═══ CHI SIAMO (mantieni) ═══ */
-.cs-card{background:#fff;border:1.5px solid var(--gray-200);border-radius:var(--radius);overflow:hidden;margin-bottom:12px;}
-.cs-bar{height:3px;}
-.cs-body{padding:20px 24px;}
-.cs-cat{font-size:10px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;margin-bottom:9px;display:flex;align-items:center;gap:6px;}
-.cs-cat::before{content:'';width:12px;height:2px;background:currentColor;display:inline-block;border-radius:1px;}
-.cs-card h3{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:9px;}
-.cs-text{font-size:13px;color:var(--gray-600);line-height:1.7;margin-bottom:10px;}
-.cs-rules{background:var(--gray-50);border-radius:9px;padding:14px 16px;margin-top:12px;}
-.cs-rules-title{font-size:11px;font-weight:700;color:var(--navy);margin-bottom:10px;}
-.cs-rule{display:flex;gap:9px;font-size:12.5px;color:var(--gray-600);line-height:1.5;margin-bottom:9px;}
-.cs-rule:last-child{margin-bottom:0;}
-.cs-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:5px;}
-
-/* ═══ FADE-IN ON SCROLL ═══ */
-.fade-in{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease;}
-.fade-in.visible{opacity:1;transform:translateY(0);}
-
-/* ═══ RESPONSIVE ═══ */
-@media(max-width:900px){
-  .hero h1{font-size:32px;letter-spacing:-1px;}
-  .hero-inner,.article-header-inner,.article-body,.article-footer-inner,.article-toc-strip-inner,.area-editorial-inner,.area-temi-section{padding-left:24px;padding-right:24px;}
-  .home-area-row{grid-template-columns:1fr;}
-  .home-area-visual{display:none;}
-  .home-area-text{padding:36px 24px;}
-  .home-area-title{font-size:24px;}
-  .home-strip-inner{grid-template-columns:repeat(2,1fr);padding:0 24px;}
-  .area-editorial-title{font-size:30px;}
-  .article-title{font-size:26px;}
-  .kb-article{font-size:16px;}
-  .h-nav{display:none;}
-  .hero-stats{gap:24px;}
-}
-
-/* DARK MODE */
-body.dark{--navy:#7DD3FC;--blue:#7DD3FC;--blue-bg:#0f2a3f;--blue-mid:#1e3a4f;--gray-50:#0f172a;--gray-100:#1e293b;--gray-200:#334155;--gray-400:#64748b;--gray-600:#94a3b8;--gray-800:#e2e8f0;--white:#1e293b;--accent:#38bdf8;}
-body.dark .header{background:#1e293b;border-color:#334155;}
-body.dark .sidebar{background:#1e293b;border-color:#334155;}
-body.dark .sb-item{color:#94a3b8;}
-body.dark .sb-item:hover{background:#0f2a3f;}
-body.dark .sb-item.active{background:#0f2a3f;}
-body.dark .main{background:#0f172a;}
-body.dark .mc{filter:brightness(0.85);}
-body.dark .kb-section,body.dark .cs-card,body.dark .tema,body.dark .area-header,body.dark .info-grid,body.dark .fonti-box{background:#1e293b;border-color:#334155;}
-body.dark .fonte-link{background:#0f172a;border-color:#334155;}
-body.dark .ai-panel{background:#1e293b;border-color:#334155;}
-body.dark .ai-msgs{background:#0f172a;}
-body.dark .msg-b{background:#1e293b;border-color:#334155;color:#e2e8f0;}
-body.dark .ai-qs,body.dark .ai-inp,body.dark .ai-disclaimer{background:#1e293b;border-color:#334155;}
-
-/* SIDEBAR */
-.sidebar{width:var(--sidebar-w);background:#fff;border-right:1px solid var(--gray-200);position:fixed;top:var(--header-h);left:0;bottom:0;display:flex;flex-direction:column;z-index:50;transition:transform .25s ease;}
-.sidebar.collapsed{transform:translateX(-100%);}
-.main{transition:margin-left .25s ease;}
-.main.expanded{margin-left:0;}
-.sb-brand{padding:16px 14px;border-bottom:1px solid var(--gray-100);}
-.sb-dh-logo{width:100%;max-height:40px;object-fit:contain;object-position:left;}
-.sb-nav{padding:12px 8px;flex:1;overflow-y:auto;}
-.sb-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:var(--radius);font-size:13.5px;font-weight:500;color:var(--gray-600);cursor:pointer;margin-bottom:2px;transition:background .12s,color .12s;user-select:none;}
-.sb-item:hover{background:var(--gray-100);color:var(--gray-800);}
-.sb-item.active{background:var(--blue-bg);color:var(--navy);font-weight:600;}
-.sb-icon{width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.sb-icon svg{width:16px;height:16px;}
-.sb-arrow{margin-left:auto;color:var(--gray-400);font-size:12px;}
-.sb-divider{height:1px;background:var(--gray-100);margin:8px 4px;}
-
-/* LAYOUT */
-.body{display:flex;padding-top:var(--header-h);min-height:100vh;}
-.main{margin-left:var(--sidebar-w);flex:1;min-width:0;}
-.main.no-sidebar{margin-left:0;}
-.page{display:none;animation:fi .2s ease;}
-.page.active{display:block;}
-@keyframes fi{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:translateY(0);}}
-
-/* HERO */
-.hero{margin:0;padding:72px 48px 64px;position:relative;overflow:hidden;background:#0F2A4A;}
-.hero-bg{display:none;}
-.hero-overlay{display:none;}
-/* Decorazione geometrica astratta */
-.hero::before{content:'';position:absolute;top:-60px;right:-40px;width:420px;height:420px;border-radius:50%;border:1.5px solid rgba(255,255,255,.06);pointer-events:none;}
-.hero::after{content:'';position:absolute;top:20px;right:60px;width:260px;height:260px;border-radius:50%;border:1.5px solid rgba(255,255,255,.05);pointer-events:none;}
-.hero-dots{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;overflow:hidden;}
-.hero-content{position:relative;z-index:2;max-width:1100px;margin:0 auto;}
-.hero-label{font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:20px;display:flex;align-items:center;gap:8px;}
-.hero-label::before{content:'';width:24px;height:1.5px;background:rgba(255,255,255,.3);display:inline-block;}
-.hero h1{font-size:44px;font-weight:800;color:#fff;line-height:1.1;margin-bottom:18px;letter-spacing:-1px;max-width:680px;}
-.hero h1 em{font-style:normal;color:#7DD3FC;}
-.hero-sub{font-size:16px;color:rgba(255,255,255,.65);line-height:1.7;max-width:520px;margin-bottom:36px;}
-/* Search bar hero */
-.hero-search{display:flex;align-items:center;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.18);border-radius:12px;padding:0 8px 0 20px;gap:12px;max-width:560px;backdrop-filter:blur(8px);transition:border-color .2s,background .2s;}
-.hero-search:focus-within{border-color:rgba(255,255,255,.45);background:rgba(255,255,255,.15);}
-.hero-search svg{width:17px;height:17px;stroke:rgba(255,255,255,.5);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0;}
-.hero-search input{flex:1;border:none;background:transparent;font-size:15px;color:#fff;outline:none;padding:14px 0;font-family:'Inter',sans-serif;}
-.hero-search input::placeholder{color:rgba(255,255,255,.4);}
-.hero-search-btn{padding:9px 20px;background:#fff;color:var(--navy);border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:background .15s,transform .15s;flex-shrink:0;}
-.hero-search-btn:hover{background:#EBF5FF;transform:translateX(1px);}
-.hero-features{display:flex;gap:28px;margin-top:32px;flex-wrap:wrap;}
-.hero-feat{display:flex;align-items:center;gap:8px;font-size:12.5px;color:rgba(255,255,255,.5);}
-.hero-feat::before{content:'';width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.3);}
-.hero-left{flex:1;}
-.hero-right{display:none;}
-.hci{display:none;}
-.hci-ic{display:none;}
-
-/* AI NOTICE */
-.ai-notice{background:#fff;border-top:1px solid var(--gray-100);border-bottom:1px solid var(--gray-100);padding:12px 48px;display:flex;gap:10px;align-items:center;font-size:12px;color:var(--gray-400);line-height:1.5;}
-.ai-notice-icon{width:20px;height:20px;background:var(--blue-bg);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700;color:var(--blue);font-size:11px;}
-
-/* SEZIONI HOME */
-.section{margin:0;padding:64px 48px;}
-.home-section-label{font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gray-400);margin-bottom:10px;}
-.section h2{font-size:30px;font-weight:800;color:var(--navy);margin-bottom:6px;letter-spacing:-.5px;}
-.section-sub{font-size:15px;color:var(--gray-600);margin-bottom:48px;line-height:1.6;}
-.macro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--gray-200);border-radius:16px;overflow:hidden;}
-.mc{background:#fff;padding:40px 36px;cursor:pointer;transition:background .15s;}
-.mc:hover{background:#F7FBFF;}
-.mc-num{font-size:11px;font-weight:700;letter-spacing:1px;color:var(--gray-400);margin-bottom:24px;display:flex;align-items:center;gap:8px;}
-.mc-num::after{content:'';flex:1;height:1px;background:var(--gray-200);}
-.mc-top{display:none;}
-.mc-icon{display:none;}
-.mc-badge{display:none;}
-.mc h3{font-size:22px;font-weight:800;color:var(--navy);margin-bottom:10px;letter-spacing:-.4px;line-height:1.2;}
-.mc p{font-size:14px;color:var(--gray-600);line-height:1.7;margin-bottom:28px;}
-.mc-link{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;transition:gap .15s;}
-.mc:hover .mc-link{gap:12px;}
-.mc-arrow{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .15s;}
-.mc:hover .mc-arrow{transform:translateX(3px);}
-.mc-arrow svg{width:13px;height:13px;}
-
-/* INFO UTILI */
-.info-section{margin:0;padding:0 48px 64px;}
-.info-section h2{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:20px;}
-.info-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--gray-200);border-radius:14px;background:#fff;overflow:hidden;box-shadow:var(--shadow);}
-.info-item{padding:24px 20px;display:flex;flex-direction:column;gap:10px;border-right:1px solid var(--gray-100);transition:background .15s;}
-.info-item:last-child{border-right:none;}
-.info-item:hover{background:var(--gray-50);}
-.info-icon{font-size:20px;}
-.info-item strong{font-size:13px;font-weight:700;color:var(--gray-800);}
-.info-item span{font-size:12px;color:var(--gray-400);line-height:1.5;}
-
-/* AREA PAGE */
-.area-wrap{margin:0;padding:40px 48px 56px;}
-.area-header{background:var(--ah-bg,#fff);border:1px solid var(--gray-200);border-radius:var(--radius);padding:24px 28px;display:flex;gap:16px;align-items:center;margin-bottom:16px;border-left:5px solid var(--ah-tc,var(--accent));}
-.area-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.area-icon svg{width:22px;height:22px;}
-.area-header h1{font-size:24px;font-weight:800;color:var(--navy);margin-bottom:5px;}
-.area-header p{font-size:13.5px;color:var(--gray-600);margin-bottom:6px;}
-.area-badges{display:flex;gap:6px;margin-top:6px;}
-.badge{font-size:10.5px;font-weight:600;padding:2px 9px;border-radius:20px;}
-
-/* TEMA CARD */
-.temi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:24px;}
-.tema{background:#fff;border:1.5px solid var(--gray-200);border-radius:14px;overflow:hidden;cursor:pointer;transition:border-color .2s,box-shadow .2s,transform .2s;margin-bottom:0;}
-.tema{border-left:3px solid var(--tc,var(--accent));}.tema:hover{box-shadow:var(--shadow-lg);border-color:var(--tc,var(--accent));transform:translateY(-2px);}
-.tema-bar{height:3px;background:var(--tc,var(--accent));}
-.tema-body{padding:24px 24px 20px;}
-.tema-cat{font-size:10px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--tc,var(--accent));margin-bottom:7px;display:flex;align-items:center;gap:6px;}
-.tema-cat::before{content:'';width:12px;height:2px;background:currentColor;display:inline-block;border-radius:1px;}
-.tema h3{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:8px;line-height:1.3;}
-.tema p{font-size:13px;color:var(--gray-600);line-height:1.7;max-width:600px;margin-bottom:14px;}
-.tema-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px;}
-.tema-tag{font-size:10.5px;background:var(--gray-100);color:var(--gray-600);padding:2px 8px;border-radius:20px;font-weight:500;}
-.tema-footer{display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid var(--gray-100);}
-.tema-meta{display:flex;gap:12px;}
-.tema-meta span{font-size:11px;color:var(--gray-400);}
-.tema-open{font-size:12.5px;font-weight:600;color:var(--tc,var(--accent));background:none;border:none;cursor:pointer;padding:0;font-family:'Inter',sans-serif;}
-
-/* PAGINA TEMA */
-.tema-page-header{background:var(--tc-bg,#EBF5FF);border:1px solid var(--gray-200);border-radius:var(--radius);padding:20px 24px;margin-bottom:12px;border-left:4px solid var(--tc,var(--accent));}
-.breadcrumb{font-size:11.5px;color:var(--tc,var(--accent));opacity:.8;margin-bottom:8px;cursor:pointer;display:inline-flex;align-items:center;gap:4px;transition:opacity .12s;font-weight:600;}
-.breadcrumb:hover{opacity:1;}
-.tema-page-header h1{font-size:20px;font-weight:800;color:var(--navy);letter-spacing:-.3px;margin:0 0 5px;}
-.tema-page-header>p{font-size:13px;color:var(--gray-600);line-height:1.55;margin:0;}
-.fonti-row{display:none;}
-/* KB DOC LAYOUT */
-.kb-doc-layout{display:grid;grid-template-columns:192px 1fr;gap:12px;align-items:start;}
-.kb-toc{position:sticky;top:76px;background:var(--tc-bg,#EBF5FF);border:1px solid var(--gray-200);border-radius:var(--radius);padding:14px 0;max-height:calc(100vh - 100px);overflow-y:auto;}
-.kb-toc-title{font-size:10px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--tc,var(--accent));padding:0 14px 10px;border-bottom:1px solid rgba(0,0,0,.07);margin-bottom:8px;}
-.kb-toc a{display:block;font-size:12px;color:var(--gray-600);padding:5px 14px;text-decoration:none;border-left:2px solid transparent;transition:color .12s,border-color .12s,background .12s;line-height:1.4;}
-.kb-toc a:hover{color:var(--tc,var(--accent));background:rgba(0,0,0,.04);}
-.kb-toc a.toc-active{color:var(--tc,var(--accent));border-left-color:var(--tc,var(--accent));font-weight:600;background:rgba(0,0,0,.06);}
-.kb-toc a.toc-h3{padding-left:24px;font-size:11px;color:var(--gray-400);}
-.kb-doc-main{min-width:0;background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);overflow:hidden;}
-/* KB SECTIONS */
-.kb-section{background:transparent;border:none;border-radius:0;overflow:visible;margin-bottom:0;}
-.kb-section-head{display:none;}
-.kb-num{display:none;}
-.kb-body{padding:28px 32px 32px;}
-.kb-text{font-size:13px;color:var(--gray-600);line-height:1.75;margin-bottom:10px;}
-.kb-text:last-child{margin-bottom:0;}
-.kb-hl{background:var(--blue-bg);border-left:3px solid var(--blue);border-radius:0 8px 8px 0;padding:10px 14px;margin:10px 0;font-size:12.5px;color:var(--navy);line-height:1.6;}
-.kb-hl strong{display:block;margin-bottom:3px;font-size:12px;}
-.kb-attn{background:#FFF8EC;border-left:3px solid var(--amber);border-radius:0 8px 8px 0;padding:10px 14px;margin:10px 0;font-size:12.5px;color:#7c4a0a;line-height:1.6;}
-.kb-attn strong{display:block;margin-bottom:3px;font-size:12px;}
-.kb-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:12.5px;}
-.kb-table th{background:var(--navy);color:#fff;padding:8px 12px;text-align:left;font-weight:600;font-size:11.5px;}
-.kb-table td{padding:8px 12px;border-bottom:1px solid var(--gray-100);color:var(--gray-600);vertical-align:top;}
-.kb-table tr:last-child td{border-bottom:none;}
-.kb-table tr:nth-child(even) td{background:var(--gray-50);}
-.kb-ul{margin:7px 0 10px;list-style:none;}
-.kb-ul li{display:flex;gap:7px;font-size:13px;color:var(--gray-600);line-height:1.6;margin-bottom:6px;}
-.kb-ul li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:7px;}
-
-/* FONTI BOX */
-.fonti-box{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--radius);padding:14px 16px;margin-top:16px;}
-.fonti-box-title{font-size:10px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--gray-400);margin-bottom:10px;}
-.fonte-link{display:flex;align-items:center;gap:9px;padding:9px 11px;border-radius:8px;background:#fff;border:1px solid var(--gray-200);margin-bottom:7px;text-decoration:none;transition:border-color .15s,box-shadow .15s;}
-.fonte-link:last-child{margin-bottom:0;}
-.fonte-link:hover{border-color:var(--accent);box-shadow:var(--shadow);}
-.fonte-link-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;}
-.fonte-link-text strong{display:block;font-size:12px;font-weight:600;color:var(--gray-800);}
-.fonte-link-text span{font-size:11px;color:var(--gray-400);}
-.fl-arrow{margin-left:auto;color:var(--gray-400);font-size:13px;}
-
-/* CHI SIAMO */
-.cs-card{background:#fff;border:1.5px solid var(--gray-200);border-radius:var(--radius);overflow:hidden;margin-bottom:12px;}
-.cs-bar{height:3px;}
-.cs-body{padding:20px 24px;}
-.cs-cat{font-size:10px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;margin-bottom:9px;display:flex;align-items:center;gap:6px;}
-.cs-cat::before{content:'';width:12px;height:2px;background:currentColor;display:inline-block;border-radius:1px;}
-.cs-card h3{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:9px;}
-.cs-text{font-size:13px;color:var(--gray-600);line-height:1.7;margin-bottom:10px;}
-.cs-rules{background:var(--gray-50);border-radius:9px;padding:14px 16px;margin-top:12px;}
-.cs-rules-title{font-size:11px;font-weight:700;color:var(--navy);margin-bottom:10px;}
-.cs-rule{display:flex;gap:9px;font-size:12.5px;color:var(--gray-600);line-height:1.5;margin-bottom:9px;}
-.cs-rule:last-child{margin-bottom:0;}
-.cs-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:5px;}
-
-/* AI FAB */
-.ai-fab{position:fixed;bottom:24px;right:24px;z-index:200;display:flex;flex-direction:column;align-items:flex-end;gap:5px;}
-.ai-fab-label{background:var(--navy);color:#fff;font-size:11px;font-weight:500;padding:4px 10px;border-radius:16px;white-space:nowrap;box-shadow:var(--shadow);}
-.ai-fab-btn{width:50px;height:50px;background:var(--navy);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 16px rgba(15,42,74,.35);transition:background .15s,transform .15s;position:relative;}
-.ai-fab-btn:hover{background:#1d6fa4;transform:scale(1.05);}
-.ai-online{position:absolute;top:2px;right:2px;width:11px;height:11px;background:#22c55e;border-radius:50%;border:2px solid #fff;}
-.ai-panel{position:fixed;bottom:84px;right:24px;width:330px;z-index:200;background:#fff;border-radius:14px;border:1px solid var(--gray-200);box-shadow:var(--shadow-lg);overflow:hidden;display:none;flex-direction:column;}
+/* ── AI ── */
+.ai-fab{position:fixed;bottom:24px;right:24px;z-index:200;display:flex;flex-direction:column;align-items:flex-end;gap:6px;}
+.ai-fab-label{background:var(--navy);color:#fff;font-size:12px;font-weight:600;padding:5px 12px;border-radius:16px;box-shadow:var(--shadow);}
+.ai-fab-btn{width:54px;height:54px;background:var(--navy);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 16px rgba(15,42,74,.35);position:relative;transition:transform .15s;}
+.ai-fab-btn:hover{transform:scale(1.06);}
+.ai-online{position:absolute;top:2px;right:2px;width:12px;height:12px;background:#22c55e;border-radius:50%;border:2px solid #fff;}
+.ai-panel{position:fixed;bottom:96px;right:24px;width:370px;max-width:calc(100vw - 32px);max-height:calc(100vh - 140px);z-index:200;background:var(--surface);border-radius:14px;border:1px solid var(--border);box-shadow:var(--shadow-lg);overflow:hidden;display:none;flex-direction:column;}
 .ai-panel.open{display:flex;}
-.ai-head{background:var(--navy);padding:11px 14px;display:flex;align-items:center;gap:9px;}
-.ai-head-av{width:28px;height:28px;background:rgba(14,165,233,.2);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px;}
-.ai-head strong{font-size:12.5px;color:#fff;display:block;}
-.ai-head span{font-size:10px;color:rgba(255,255,255,.5);}
-.ai-head-x{margin-left:auto;font-size:15px;cursor:pointer;padding:2px 4px;background:none;border:none;color:rgba(255,255,255,.5);}
-.ai-head-x:hover{color:#fff;}
-.ai-msgs{padding:12px;background:var(--gray-50);min-height:120px;max-height:220px;overflow-y:auto;display:flex;flex-direction:column;gap:9px;}
-.msg{display:flex;gap:7px;}
-.msg-av{width:22px;height:22px;background:var(--blue-bg);border-radius:5px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;}
-.msg-b{font-size:12px;line-height:1.6;color:var(--gray-800);background:#EBF5FF;border:1px solid #BFDBFE;border-radius:0 7px 7px 7px;padding:7px 10px;max-width:250px;}
-.msg.user{flex-direction:row-reverse;}
-.msg.user .msg-b{background:var(--accent);color:#fff;border-color:var(--accent);border-radius:7px 0 7px 7px;}
-.ai-qs{padding:7px 12px;display:flex;flex-wrap:wrap;gap:4px;border-top:1px solid var(--gray-200);background:#fff;}
-.ai-q{font-size:10.5px;padding:3px 8px;border:1px solid var(--gray-200);border-radius:11px;color:var(--gray-600);cursor:pointer;background:var(--gray-50);transition:border-color .12s,color .12s;}
-.ai-q:hover{border-color:var(--accent);color:var(--accent);}
-.ai-inp{display:flex;gap:7px;padding:9px 12px;border-top:1px solid var(--gray-200);background:#fff;}
-.ai-input{flex:1;border:1.5px solid var(--gray-200);border-radius:14px;padding:6px 11px;font-size:12px;outline:none;color:var(--gray-800);transition:border-color .12s;font-family:'Inter',sans-serif;}
+.ai-head{background:var(--navy);padding:12px 14px;display:flex;align-items:center;gap:10px;}
+.ai-head-av{width:30px;height:30px;background:rgba(14,165,233,.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;}
+.ai-head strong{font-size:13px;color:#fff;display:block;}
+.ai-head span{font-size:11px;color:rgba(255,255,255,.55);}
+.ai-head-x{margin-left:auto;font-size:15px;cursor:pointer;background:none;border:none;color:rgba(255,255,255,.6);}
+.ai-msgs{flex:1;min-height:200px;max-height:380px;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;}
+.msg{display:flex;gap:8px;align-items:flex-start;}
+.msg-av{width:26px;height:26px;border-radius:7px;background:var(--blue-bg);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
+.msg-b{background:var(--surface-2);border:1px solid var(--border);border-radius:4px 12px 12px 12px;padding:10px 12px;font-size:13.5px;line-height:1.55;color:var(--text);max-width:88%;word-wrap:break-word;}
+.msg.user{justify-content:flex-end;}
+.msg.user .msg-b{background:var(--navy);color:#fff;border-color:var(--navy);border-radius:12px 4px 12px 12px;}
+.ai-qs{display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 10px;}
+.ai-q{font-size:12px;padding:5px 10px;border-radius:16px;background:var(--blue-bg);color:var(--blue);cursor:pointer;font-weight:500;}
+.ai-inp{display:flex;gap:8px;padding:10px 12px;border-top:1px solid var(--border);}
+.ai-input{flex:1;border:1.5px solid var(--border);border-radius:20px;padding:9px 14px;font-size:13.5px;outline:none;font-family:inherit;background:var(--surface);color:var(--text);}
 .ai-input:focus{border-color:var(--accent);}
-.ai-send{width:28px;height:28px;background:var(--accent);border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.ai-send:disabled{background:var(--gray-400);cursor:not-allowed;}
-.ai-send svg{width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
-.ai-disclaimer{font-size:10px;color:var(--gray-400);padding:5px 12px 9px;background:#fff;line-height:1.5;}
-.kb-article{font-size:14.5px;color:#334155;line-height:1.9;max-width:100%;}
-.kb-article h1{font-size:21px;font-weight:800;color:var(--navy);margin:0 0 8px;letter-spacing:-.3px;}
-.kb-article h2{font-size:17.5px;font-weight:700;color:var(--navy);margin:40px 0 14px;padding-bottom:10px;border-bottom:2px solid var(--gray-100);display:flex;align-items:center;gap:8px;}
-.kb-article h2::before{content:'';width:3px;height:18px;background:var(--tc,var(--accent));border-radius:2px;flex-shrink:0;}
-.kb-article h3{font-size:15px;font-weight:700;color:var(--gray-800);margin:26px 0 9px;}
-.kb-article p{margin-bottom:14px;line-height:1.9;}
-.kb-article strong{color:var(--navy);font-weight:600;}
-.kb-article blockquote{background:#FAFAF8;border-left:3px solid var(--tc,var(--amber));border-radius:0 8px 8px 0;padding:12px 18px;margin:18px 0;font-size:13.5px;color:#5a4a2a;line-height:1.7;}
-.kb-article blockquote p{margin-bottom:0;}
-.kb-article ul{list-style:none;margin:10px 0 18px;padding:0;}
-.kb-article ul li{display:flex;gap:10px;margin-bottom:9px;font-size:14px;color:#475569;line-height:1.7;}
-.kb-article ul li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--tc,var(--accent));flex-shrink:0;margin-top:9px;}
-.kb-article ol{margin:10px 0 18px;padding-left:22px;}
-.kb-article ol li{margin-bottom:9px;font-size:14px;color:#475569;line-height:1.7;}
-.kb-article table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13px;display:block;overflow-x:auto;}
-.kb-article table th{background:var(--navy);color:#fff;padding:10px 16px;text-align:left;font-weight:600;font-size:12px;white-space:nowrap;}
-.kb-article table td{padding:9px 16px;border-bottom:1px solid var(--gray-100);color:#475569;vertical-align:top;}
-.kb-article table tr:last-child td{border-bottom:none;}
-.kb-article table tr:nth-child(even) td{background:var(--gray-50);}
-.kb-article hr{border:none;border-top:1px solid var(--gray-100);margin:28px 0;}
-.kb-article a{color:var(--tc,var(--accent));text-decoration:underline;text-underline-offset:2px;font-weight:500;transition:color .15s;}
-.kb-article a:hover{color:var(--navy);}
-.kb-article table td a{color:var(--tc,var(--accent));text-decoration:underline;text-underline-offset:2px;font-weight:500;}
-.kb-article table td a:hover{color:var(--navy);}
-.kb-article em{color:var(--gray-400);font-size:13px;}
-/* TOC MOBILE */
-.kb-toc-mobile{display:none;background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);margin-bottom:12px;overflow:hidden;}
-.kb-toc-mobile-btn{width:100%;background:none;border:none;padding:12px 16px;font-size:12.5px;font-weight:700;color:var(--navy);cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-family:'Inter',sans-serif;}
-.kb-toc-mobile-list{display:none;padding:0 0 10px;}
-.kb-toc-mobile-list.open{display:block;}
-.kb-toc-mobile-list a{display:block;font-size:12.5px;color:var(--gray-600);padding:6px 16px;text-decoration:none;}
-.kb-toc-mobile-list a:hover{color:var(--tc,var(--accent));}
-/* DARK MODE TOC */
-body.dark .tema-page-header{background:#1e293b;border-color:#334155;}
-body.dark .kb-doc-main{background:#1e293b;border-color:#334155;}
-body.dark .kb-toc{background:#1e293b;border-color:#334155;}
-body.dark .kb-toc a{color:#94a3b8;}
-body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);background:#0f172a;}
-/* RESPONSIVE */
-@media(max-width:900px){
-.kb-doc-layout{grid-template-columns:1fr;}
-.kb-toc{display:none;}
-.kb-toc-mobile{display:block;}
-.kb-body{padding:20px 20px 24px;}}
+.ai-send{width:38px;height:38px;border-radius:50%;background:var(--navy);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.ai-send:disabled{opacity:.5;}
+.ai-send svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.ai-disclaimer{font-size:10.5px;color:var(--muted);padding:0 14px 12px;line-height:1.45;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1500px){.h-nav{display:none;}}
+@media(max-width:1180px){
+  .areas-grid{grid-template-columns:1fr;}
+  .info-strip{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .btn-chisiamo-txt{display:none;}
+}
+@media(max-width:980px){
+  .sidebar{transform:translateX(-100%);box-shadow:var(--shadow-lg);}
+  body.sb-open .sidebar{transform:none;}
+  .main,body.sb-collapsed .main{margin-left:0;}
+  .h-name{display:none;}
+  .temi-grid{grid-template-columns:1fr;}
+}
+@media(max-width:700px){
+  .wrap{padding:0 18px;}
+  .hero h1{font-size:32px;}
+  .page-head h1{font-size:30px;}
+  .h-search,.btn-chisiamo,.h-avatar{display:none;}
+  .info-strip{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
 
 <header class="header">
-  <button class="hamburger" id="hamburger-btn" onclick="toggleSidebar()" title="Menu">
-    <span></span><span></span><span></span>
+  <button class="icon-btn" onclick="toggleSidebar()" title="Menu">
+    <svg viewBox="0 0 24 24"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
   </button>
-  <button id="back-btn" onclick="goBack()" title="Pagina precedente" style="display:none;align-items:center;gap:6px;padding:7px 13px;border:1.5px solid var(--gray-200);border-radius:20px;font-size:12.5px;font-weight:500;color:var(--gray-600);background:#fff;cursor:pointer;transition:all .15s;flex-shrink:0;">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-    Indietro
+  <button class="back-btn" id="back-btn" onclick="goBack()">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Indietro
   </button>
-  <a class="h-brand" href="#" onclick="showPage('home');return false;">
-    <div class="h-logo"><img src="/static/images/Logo HUB Previdenza e Welfare.png" alt="Hub Previdenza e Welfare"></div>
+  <a class="h-brand" onclick="showPage('home');return false;" href="#">
+    <img src="/static/images/Logo HUB Previdenza e Welfare.png" alt="Hub Previdenza e Welfare">
     <div class="h-name"><strong>Hub Previdenza</strong><span>e Welfare</span></div>
   </a>
   <div class="h-search">
     <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
     <input type="text" id="search-input" placeholder="Cerca nella base documentale..." onkeydown="if(event.key==='Enter')doSearch()">
-    <button class="search-go" onclick="doSearch()">
-      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-    </button>
+    <button class="search-go" onclick="doSearch()" title="Cerca"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
   </div>
-  <div class="h-nav">
-    <button class="h-nav-item" onclick="showPage('previdenza')">Previdenza</button>
-    <div class="h-nav-sep"></div>
-    <button class="h-nav-item" onclick="showPage('welfare')">Welfare aziendale</button>
-    <div class="h-nav-sep"></div>
-    <button class="h-nav-item" onclick="showPage('sanita')">Sanità integrativa</button>
-  </div>
+  <nav class="h-nav">
+    <button class="h-nav-item c-prev" data-area="previdenza" onclick="showPage('previdenza')">Previdenza</button>
+    <button class="h-nav-item c-welf" data-area="welfare" onclick="showPage('welfare')">Welfare aziendale</button>
+    <button class="h-nav-item c-san" data-area="sanita" onclick="showPage('sanita')">Sanità integrativa</button>
+  </nav>
   <div class="h-right">
-    <button class="theme-toggle" id="theme-btn" onclick="toggleTheme()" title="Cambia tema">☀️</button>
-    <button class="btn-chisiamo" onclick="showPage('chisiamo')">ⓘ Chi siamo</button>
-    <a href="/logout" class="btn-logout">Esci</a>
+    <button class="icon-btn theme-toggle" id="theme-btn" onclick="toggleTheme()" title="Cambia tema">☀️</button>
+    <button class="btn-pill btn-chisiamo" onclick="showPage('chisiamo')">ⓘ <span class="btn-chisiamo-txt">Chi siamo</span></button>
+    <a href="/logout" class="btn-pill btn-logout">Esci</a>
     <div class="h-avatar">OP</div>
   </div>
 </header>
-
 <div id="read-progress"></div>
-<div class="body">
-<nav class="sidebar" id="sidebar">
-  <div class="sb-brand">
-    <img src="/static/images/datahubs_logo.jpg" alt="DataHubs" class="sb-dh-logo">
-  </div>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sb-brand"><img src="/static/images/datahubs_logo.jpg" alt="DataHubs"></div>
   <div class="sb-nav">
-    <div class="sb-item active" id="sb-home" onclick="showPage('home')">
-      <div class="sb-icon" style="background:#EBF5FF;"><svg viewBox="0 0 24 24" fill="none" stroke="#1d6fa4" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-      Home
+    <div class="sb-item" data-nav="home" onclick="showPage('home')">
+      <div class="sb-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>Home
     </div>
-    <div class="sb-divider"></div>
-    <div class="sb-item" id="sb-prev" onclick="showPage('previdenza')">
-      <div class="sb-icon" style="background:#EBF5FF;"><svg viewBox="0 0 24 24" fill="none" stroke="#1d6fa4" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
-      Previdenza <span class="sb-arrow">›</span>
+    <div class="sb-label">Aree tematiche</div>
+    <div class="c-prev">
+      <div class="sb-item" data-nav="previdenza" onclick="showPage('previdenza')">
+        <div class="sb-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>Previdenza
+      </div>
+      <div class="sb-sub">
+        <span class="sb-subitem" data-nav="posizione-contributiva" onclick="showPage('posizione-contributiva')">Posizione contributiva</span>
+        <span class="sb-subitem" data-nav="accompagnamento-pensione" onclick="showPage('accompagnamento-pensione')">Accompagnamento alla pensione</span>
+      </div>
     </div>
-    <div class="sb-item" id="sb-welf" onclick="showPage('welfare')">
-      <div class="sb-icon" style="background:#FEF8EC;"><svg viewBox="0 0 24 24" fill="none" stroke="#92600A" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></div>
-      Welfare aziendale <span class="sb-arrow">›</span>
+    <div class="c-welf">
+      <div class="sb-item" data-nav="welfare" onclick="showPage('welfare')">
+        <div class="sb-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg></div>Welfare aziendale
+      </div>
+      <div class="sb-sub">
+        <span class="sb-subitem" data-nav="durc-online" onclick="showPage('durc-online')">DURC Online</span>
+        <span class="sb-subitem" data-nav="cigo" onclick="showPage('cigo')">Cassa Integrazione (CIGO)</span>
+      </div>
     </div>
-    <div class="sb-item" id="sb-san" onclick="showPage('sanita')">
-      <div class="sb-icon" style="background:#EDFAF4;"><svg viewBox="0 0 24 24" fill="none" stroke="#166534" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
-      Sanità integrativa <span class="sb-arrow">›</span>
+    <div class="c-san">
+      <div class="sb-item" data-nav="sanita" onclick="showPage('sanita')">
+        <div class="sb-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>Sanità integrativa
+      </div>
+      <div class="sb-sub">
+        <span class="sb-subitem" data-nav="fondi-sanitari-contrattuali" onclick="showPage('fondi-sanitari-contrattuali')">Fondi sanitari contrattuali</span>
+        <span class="sb-subitem" data-nav="sanita-fiscale" onclick="showPage('sanita-fiscale')">Regime fiscale</span>
+      </div>
     </div>
   </div>
-</nav>
+</aside>
 
 <main class="main">
 
-<!-- HOME -->
-<div class="page active" id="page-home">
-
-  <!-- HERO -->
+<!-- ═════════ HOME ═════════ -->
+<section class="page active" id="page-home">
   <div class="hero">
-    <div class="hero-inner">
+    <div class="wrap">
       <div class="hero-eyebrow">Hub Previdenza e Welfare · DataHubs</div>
-      <h1>Previdenza e Welfare,<br><em>più semplici<br>da capire.</em></h1>
-      <p class="hero-desc">Un unico punto di accesso per orientarti tra norme, adempimenti e servizi INPS dedicati a imprese e professionisti.</p>
-      <div class="hero-searchbar" id="hero-sb">
+      <h1>Previdenza e Welfare,<br><em>più semplici da capire.</em></h1>
+      <p class="hero-desc">Un unico punto di accesso per orientarti tra norme, adempimenti e servizi di INPS, Agenzia delle Entrate e Ministero della Salute.</p>
+      <div class="hero-searchbar">
         <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input id="hero-q" type="text" placeholder="Cerca nella Knowledge Base…" oninput="document.getElementById('search-input').value=this.value;handleSearch()">
-        <button class="hero-searchbar-btn" onclick="document.getElementById('search-input').value=document.getElementById('hero-q').value;handleSearch()">Cerca →</button>
+        <input id="hero-q" type="text" placeholder="Cerca un tema: DURC, CIGO, isopensione, fondi sanitari…" onkeydown="if(event.key==='Enter')doSearch(this.value)">
+        <button onclick="doSearch(document.getElementById('hero-q').value)">Cerca →</button>
       </div>
       <div class="hero-stats">
-        <div><span class="hero-stat-n">6</span><span class="hero-stat-l">Temi certificati</span></div>
-        <div><span class="hero-stat-n">3</span><span class="hero-stat-l">Aree tematiche</span></div>
-        <div><span class="hero-stat-n">INPS</span><span class="hero-stat-l">Fonte principale</span></div>
-        <div><span class="hero-stat-n">AI</span><span class="hero-stat-l">Assistente integrato</span></div>
+        <div class="hero-stat"><strong>3</strong><span>Aree tematiche</span></div>
+        <div class="hero-stat"><strong>6</strong><span>Temi certificati</span></div>
+        <div class="hero-stat"><strong>INPS · AE · Min. Salute</strong><span>Fonti ufficiali</span></div>
+        <div class="hero-stat"><strong>AI</strong><span>Assistente integrato</span></div>
       </div>
     </div>
   </div>
 
-  <!-- AREE EDITORIALI -->
-  <div class="home-areas">
-    <!-- PREVIDENZA -->
-    <div class="home-area-row fade-in" onclick="showPage('previdenza')">
-      <div class="home-area-text">
-        <div class="home-area-num" style="color:#1d6fa4;">
-          <span style="background:#EBF5FF;color:#1d6fa4;">01</span>
-          Previdenza
-        </div>
-        <div class="home-area-title">Contributi e posizione previdenziale</div>
-        <div class="home-area-desc">Estratto conto contributivo, correttezza dei versamenti, ricorsi e prestazioni di accompagnamento alla pensione.</div>
-        <button class="area-cta" style="color:#1d6fa4;" onclick="showPage('previdenza')">
-          Esplora Previdenza
-          <span class="area-cta-arrow" style="background:#EBF5FF;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1d6fa4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </span>
-        </button>
+  <div class="wrap">
+    <div class="section">
+      <div class="section-head">
+        <div class="section-eyebrow">Esplora</div>
+        <div class="section-title">Le aree tematiche</div>
+        <div class="section-sub">Scegli un'area per vedere tutti i temi, oppure apri direttamente un tema.</div>
       </div>
-      <div class="home-area-visual" style="background:#F7FBFF;">
-        <svg width="220" height="220" viewBox="0 0 220 220" fill="none">
-          <circle cx="110" cy="110" r="4" fill="#1d6fa4" opacity=".7"/>
-          <circle cx="60" cy="70" r="3" fill="#1d6fa4" opacity=".5"/>
-          <circle cx="160" cy="80" r="3" fill="#1d6fa4" opacity=".5"/>
-          <circle cx="80" cy="160" r="3" fill="#1d6fa4" opacity=".4"/>
-          <circle cx="155" cy="150" r="3" fill="#1d6fa4" opacity=".4"/>
-          <circle cx="40" cy="130" r="2.5" fill="#1d6fa4" opacity=".3"/>
-          <circle cx="180" cy="120" r="2.5" fill="#1d6fa4" opacity=".3"/>
-          <line x1="110" y1="110" x2="60" y2="70" stroke="#1d6fa4" stroke-width="1" opacity=".15"/>
-          <line x1="110" y1="110" x2="160" y2="80" stroke="#1d6fa4" stroke-width="1" opacity=".15"/>
-          <line x1="110" y1="110" x2="80" y2="160" stroke="#1d6fa4" stroke-width="1" opacity=".15"/>
-          <line x1="110" y1="110" x2="155" y2="150" stroke="#1d6fa4" stroke-width="1" opacity=".15"/>
-          <line x1="60" y1="70" x2="40" y2="130" stroke="#1d6fa4" stroke-width="1" opacity=".1"/>
-          <line x1="160" y1="80" x2="180" y2="120" stroke="#1d6fa4" stroke-width="1" opacity=".1"/>
-          <circle cx="110" cy="110" r="40" stroke="#1d6fa4" stroke-width="1" stroke-dasharray="4 6" opacity=".12"/>
-          <circle cx="110" cy="110" r="70" stroke="#1d6fa4" stroke-width="1" opacity=".06"/>
-        </svg>
+      <div class="areas-grid">
+        <div class="area-card c-prev" onclick="showPage('previdenza')">
+          <div class="area-card-top">
+            <div class="area-num">01</div>
+            <div class="area-ic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+            <h3>Previdenza</h3>
+            <p>Contributi, posizione contributiva, correttezza dei versamenti e accompagnamento alla pensione.</p>
+          </div>
+          <div class="area-card-body">
+            <div class="area-temi-lbl">Temi</div>
+            <div class="area-tema-link" onclick="event.stopPropagation();showPage('posizione-contributiva')">Posizione contributiva e correttezza versamenti</div>
+            <div class="area-tema-link" onclick="event.stopPropagation();showPage('accompagnamento-pensione')">Prestazioni di accompagnamento alla pensione</div>
+            <div class="area-cta">Esplora Previdenza <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+          </div>
+        </div>
+        <div class="area-card c-welf" onclick="showPage('welfare')">
+          <div class="area-card-top">
+            <div class="area-num">02</div>
+            <div class="area-ic"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg></div>
+            <h3>Welfare aziendale</h3>
+            <p>Regolarità contributiva, DURC e ammortizzatori sociali per le imprese.</p>
+          </div>
+          <div class="area-card-body">
+            <div class="area-temi-lbl">Temi</div>
+            <div class="area-tema-link" onclick="event.stopPropagation();showPage('durc-online')">DURC Online</div>
+            <div class="area-tema-link" onclick="event.stopPropagation();showPage('cigo')">Cassa Integrazione Guadagni Ordinaria (CIGO)</div>
+            <div class="area-cta">Esplora Welfare aziendale <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+          </div>
+        </div>
+        <div class="area-card c-san" onclick="showPage('sanita')">
+          <div class="area-card-top">
+            <div class="area-num">03</div>
+            <div class="area-ic"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+            <h3>Sanità integrativa</h3>
+            <p>Fondi sanitari contrattuali e regime fiscale della sanità integrativa.</p>
+          </div>
+          <div class="area-card-body">
+            <div class="area-temi-lbl">Temi</div>
+            <div class="area-tema-link" onclick="event.stopPropagation();showPage('fondi-sanitari-contrattuali')">Fondi sanitari contrattuali — contribuzione obbligatoria</div>
+            <div class="area-tema-link" onclick="event.stopPropagation();showPage('sanita-fiscale')">Fondi sanitari — regime fiscale e agevolazioni</div>
+            <div class="area-cta">Esplora Sanità integrativa <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+          </div>
+        </div>
       </div>
     </div>
-    <!-- WELFARE -->
-    <div class="home-area-row fade-in" onclick="showPage('welfare')">
-      <div class="home-area-visual" style="background:#FFFDF5;">
-        <svg width="220" height="220" viewBox="0 0 220 220" fill="none">
-          <rect x="70" y="90" width="80" height="60" rx="8" stroke="#92600A" stroke-width="1.5" opacity=".2"/>
-          <rect x="86" y="78" width="20" height="14" rx="4" stroke="#92600A" stroke-width="1.5" opacity=".2"/>
-          <rect x="114" y="78" width="20" height="14" rx="4" stroke="#92600A" stroke-width="1.5" opacity=".2"/>
-          <line x1="70" y1="115" x2="150" y2="115" stroke="#92600A" stroke-width="1.5" opacity=".15"/>
-          <circle cx="110" cy="125" r="8" fill="#92600A" opacity=".15"/>
-          <line x1="110" y1="117" x2="110" y2="133" stroke="#92600A" stroke-width="1.5" opacity=".4"/>
-          <line x1="102" y1="125" x2="118" y2="125" stroke="#92600A" stroke-width="1.5" opacity=".4"/>
-          <circle cx="110" cy="110" r="70" stroke="#92600A" stroke-width="1" opacity=".05"/>
-          <circle cx="110" cy="110" r="45" stroke="#92600A" stroke-width="1" stroke-dasharray="3 8" opacity=".1"/>
-        </svg>
-      </div>
-      <div class="home-area-text">
-        <div class="home-area-num" style="color:#92600A;">
-          <span style="background:#FEF8EC;color:#92600A;">02</span>
-          Welfare aziendale
-        </div>
-        <div class="home-area-title">Regolarità contributiva e ammortizzatori</div>
-        <div class="home-area-desc">DURC Online, Pre-DURC, Ve.R.A., Cassa Integrazione Guadagni Ordinaria e gestione delle irregolarità contributive.</div>
-        <button class="area-cta" style="color:#92600A;" onclick="showPage('welfare')">
-          Esplora Welfare
-          <span class="area-cta-arrow" style="background:#FEF8EC;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#92600A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </span>
-        </button>
-      </div>
-    </div>
-    <!-- SANITÀ -->
-    <div class="home-area-row fade-in" onclick="showPage('sanita')">
-      <div class="home-area-text">
-        <div class="home-area-num" style="color:#166534;">
-          <span style="background:#EDFAF4;color:#166534;">03</span>
-          Sanità integrativa
-        </div>
-        <div class="home-area-title">Fondi sanitari e regime fiscale</div>
-        <div class="home-area-desc">Contribuzione obbligatoria ai fondi contrattuali, meccanismo F24/UniEmens, deducibilità fiscale e Anagrafe Ministero della Salute.</div>
-        <button class="area-cta" style="color:#166534;" onclick="showPage('sanita')">
-          Esplora Sanità
-          <span class="area-cta-arrow" style="background:#EDFAF4;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#166534" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </span>
-        </button>
-      </div>
-      <div class="home-area-visual" style="background:#F4FBF7;">
-        <svg width="220" height="220" viewBox="0 0 220 220" fill="none">
-          <path d="M110 60 C85 60 65 80 65 105 C65 135 110 165 110 165 C110 165 155 135 155 105 C155 80 135 60 110 60Z" stroke="#166534" stroke-width="1.5" opacity=".15"/>
-          <line x1="110" y1="95" x2="110" y2="125" stroke="#166534" stroke-width="2" opacity=".35"/>
-          <line x1="95" y1="110" x2="125" y2="110" stroke="#166534" stroke-width="2" opacity=".35"/>
-          <circle cx="110" cy="110" r="70" stroke="#166534" stroke-width="1" opacity=".05"/>
-          <circle cx="110" cy="110" r="50" stroke="#166534" stroke-width="1" stroke-dasharray="3 7" opacity=".1"/>
-          <circle cx="80" cy="75" r="3" fill="#166534" opacity=".2"/>
-          <circle cx="140" cy="75" r="3" fill="#166534" opacity=".2"/>
-          <circle cx="65" cy="115" r="2.5" fill="#166534" opacity=".2"/>
-          <circle cx="155" cy="115" r="2.5" fill="#166534" opacity=".2"/>
-        </svg>
-      </div>
-    </div>
-  </div>
 
-  <!-- STRIP DATI -->
-  <div class="home-strip">
-    <div class="home-strip-inner">
-      <div class="strip-item fade-in"><strong>Fonti certificate</strong>INPS, Agenzia delle Entrate, Ministero della Salute</div>
-      <div class="strip-item fade-in"><strong>Come consultare</strong>Naviga per area o cerca con la barra in alto</div>
-      <div class="strip-item fade-in"><strong>Servizi collegati</strong>Link diretti alle procedure INPS in ogni tema</div>
-      <div class="strip-item fade-in"><strong>Assistente AI</strong>Fai domande in linguaggio naturale — in basso a destra</div>
+    <div class="info-strip">
+      <div class="info-item"><strong>Fonti certificate</strong><span>INPS, Agenzia delle Entrate, Ministero della Salute</span></div>
+      <div class="info-item"><strong>Come consultare</strong><span>Naviga per area o cerca un argomento dalla barra in alto</span></div>
+      <div class="info-item"><strong>Servizi collegati</strong><span>In ogni tema i link ai servizi e alle procedure ufficiali</span></div>
+      <div class="info-item"><strong>Assistente AI</strong><span>Domande in linguaggio naturale — in basso a destra</span></div>
     </div>
   </div>
+</section>
 
-</div>
-
-<!-- PREVIDENZA -->
-<div class="page" id="page-previdenza">
-  <div class="area-editorial-header" style="background:#EBF5FF;">
-    <div class="area-editorial-inner">
-      <div class="area-editorial-eyebrow" style="color:#1d6fa4;" onclick="showPage('home')">Home</div>
-      <div class="area-editorial-title" style="color:#1d6fa4;">Previdenza</div>
-      <div class="area-editorial-desc">Contributi, posizione contributiva, correttezza dei versamenti e adempimenti previdenziali.</div>
-    </div>
-  </div>
-    <div class="area-temi-section">
-    <div class="area-temi-label">Esplora i temi</div>
-    <div class="temi-cards">
-    <div class="tema-editorial" style="--tc:#1d6fa4;--tc-bg:#EBF5FF;" onclick="showPage('posizione-contributiva')">
-      <div class="tema-ed-band"></div>
-      <div class="tema-ed-visual">
-        <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
-  <circle cx="60" cy="60" r="30" stroke="#1d6fa4" stroke-width="1.5" opacity=".15"/>
-  <circle cx="60" cy="60" r="50" stroke="#1d6fa4" stroke-width="1" opacity=".07"/>
-  <circle cx="60" cy="60" r="5" fill="#1d6fa4" opacity=".4"/>
-  <circle cx="30" cy="40" r="3" fill="#1d6fa4" opacity=".25"/>
-  <circle cx="90" cy="45" r="3" fill="#1d6fa4" opacity=".25"/>
-  <circle cx="40" cy="85" r="3" fill="#1d6fa4" opacity=".2"/>
-  <circle cx="85" cy="80" r="3" fill="#1d6fa4" opacity=".2"/>
-  <line x1="60" y1="60" x2="30" y2="40" stroke="#1d6fa4" stroke-width="1" opacity=".12"/>
-  <line x1="60" y1="60" x2="90" y2="45" stroke="#1d6fa4" stroke-width="1" opacity=".12"/>
-  <line x1="60" y1="60" x2="40" y2="85" stroke="#1d6fa4" stroke-width="1" opacity=".12"/>
-  <line x1="60" y1="60" x2="85" y2="80" stroke="#1d6fa4" stroke-width="1" opacity=".12"/>
-</svg>
-      </div>
-      <div class="tema-ed-body">
-        <div class="tema-ed-cat" style="color:#1d6fa4;">Previdenza · INPS</div>
-        <div class="tema-ed-title">Posizione contributiva e correttezza versamenti</div>
-        <div class="tema-ed-desc">Estratto conto contributivo, verifica versamenti, ricorsi amministrativi e unicità posizione aziendale.</div>
-        <div class="tema-ed-tags"><span class="tema-ed-tag">Estratto conto</span><span class="tema-ed-tag">Ricorsi INPS</span><span class="tema-ed-tag">UniEmens</span><span class="tema-ed-tag">Cassetto Previdenziale</span></div>
-        <div class="tema-ed-footer">
-          <div class="tema-ed-meta">3 fonti · Sett 2025</div>
-          <div class="tema-ed-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#1d6fa4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-        </div>
-      </div>
-    </div>
-    <div class="tema-editorial" style="--tc:#1d6fa4;--tc-bg:#EBF5FF;" onclick="showPage('accompagnamento-pensione')">
-      <div class="tema-ed-band"></div>
-      <div class="tema-ed-visual">
-        <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
-  <path d="M20 95 Q40 30 60 40 Q80 50 100 25" stroke="#1d6fa4" stroke-width="2" opacity=".2" stroke-linecap="round"/>
-  <circle cx="20" cy="95" r="4" fill="#1d6fa4" opacity=".3"/>
-  <circle cx="60" cy="40" r="4" fill="#1d6fa4" opacity=".3"/>
-  <circle cx="100" cy="25" r="4" fill="#1d6fa4" opacity=".3"/>
-  <circle cx="60" cy="60" r="40" stroke="#1d6fa4" stroke-width="1" opacity=".06"/>
-</svg>
-      </div>
-      <div class="tema-ed-body">
-        <div class="tema-ed-cat" style="color:#1d6fa4;">Previdenza · INPS</div>
-        <div class="tema-ed-title">Prestazioni di accompagnamento alla pensione</div>
-        <div class="tema-ed-desc">Isopensione, Fondi di solidarietà, requisiti, accordo aziendale e agevolazioni fiscali 2026.</div>
-        <div class="tema-ed-tags"><span class="tema-ed-tag">Isopensione</span><span class="tema-ed-tag">Fondi solidarietà</span><span class="tema-ed-tag">Esodo</span><span class="tema-ed-tag">Contributivi puri</span></div>
-        <div class="tema-ed-footer">
-          <div class="tema-ed-meta">5 fonti · Sett 2026</div>
-          <div class="tema-ed-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#1d6fa4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-        </div>
-      </div>
-    </div>
-    </div>
-  </div>
-
-<!-- WELFARE -->
-<div class="page" id="page-welfare">
-  <div class="area-editorial-header" style="background:#FEF8EC;">
-    <div class="area-editorial-inner">
-      <div class="area-editorial-eyebrow" style="color:#92600A;" onclick="showPage('home')">Home</div>
-      <div class="area-editorial-title" style="color:#92600A;">Welfare aziendale</div>
-      <div class="area-editorial-desc">Regolarità contributiva, DURC e ammortizzatori sociali.</div>
-    </div>
-  </div>
-    <div class="area-temi-section">
-    <div class="area-temi-label">Esplora i temi</div>
-    <div class="temi-cards">
-    <div class="tema-editorial" style="--tc:#92600A;--tc-bg:#FEF8EC;" onclick="showPage('durc-online')">
-      <div class="tema-ed-band"></div>
-      <div class="tema-ed-visual">
-        <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
-  <rect x="30" y="25" width="60" height="70" rx="6" stroke="#92600A" stroke-width="1.5" opacity=".18"/>
-  <line x1="42" y1="45" x2="78" y2="45" stroke="#92600A" stroke-width="1.5" opacity=".2"/>
-  <line x1="42" y1="58" x2="78" y2="58" stroke="#92600A" stroke-width="1.5" opacity=".15"/>
-  <line x1="42" y1="71" x2="62" y2="71" stroke="#92600A" stroke-width="1.5" opacity=".12"/>
-  <circle cx="60" cy="87" r="8" fill="#92600A" opacity=".12"/>
-  <path d="M56 87 L59 90 L65 84" stroke="#92600A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/>
-</svg>
-      </div>
-      <div class="tema-ed-body">
-        <div class="tema-ed-cat" style="color:#92600A;">Welfare aziendale · INPS</div>
-        <div class="tema-ed-title">DURC Online</div>
-        <div class="tema-ed-desc">Verifica regolarità contributiva, Piattaforma Unica INPS, Ve.R.A., Simulazione DURC, Pre-DURC e Delega Master.</div>
-        <div class="tema-ed-tags"><span class="tema-ed-tag">Ve.R.A.</span><span class="tema-ed-tag">Pre-DURC</span><span class="tema-ed-tag">Delega Master</span><span class="tema-ed-tag">Piattaforma Unica</span></div>
-        <div class="tema-ed-footer">
-          <div class="tema-ed-meta">6 fonti · Nov 2024</div>
-          <div class="tema-ed-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#92600A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-        </div>
-      </div>
-    </div>
-    <div class="tema-editorial" style="--tc:#92600A;--tc-bg:#FEF8EC;" onclick="showPage('cigo')">
-      <div class="tema-ed-band"></div>
-      <div class="tema-ed-visual">
-        <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
-  <rect x="18" y="55" width="16" height="40" rx="3" fill="#92600A" opacity=".15"/>
-  <rect x="42" y="40" width="16" height="55" rx="3" fill="#92600A" opacity=".2"/>
-  <rect x="66" y="28" width="16" height="67" rx="3" fill="#92600A" opacity=".25"/>
-  <rect x="90" y="45" width="16" height="50" rx="3" fill="#92600A" opacity=".18"/>
-  <line x1="18" y1="100" x2="106" y2="100" stroke="#92600A" stroke-width="1" opacity=".15"/>
-</svg>
-      </div>
-      <div class="tema-ed-body">
-        <div class="tema-ed-cat" style="color:#92600A;">Welfare aziendale · INPS</div>
-        <div class="tema-ed-title">Cassa Integrazione Guadagni Ordinaria (CIGO)</div>
-        <div class="tema-ed-desc">Datori ammessi, causali, OMNIA IS, massimale 2026 (1.423,69 €), contribuzione addizionale e UniEmens.</div>
-        <div class="tema-ed-tags"><span class="tema-ed-tag">OMNIA IS</span><span class="tema-ed-tag">UniEmens</span><span class="tema-ed-tag">Massimale 2026</span><span class="tema-ed-tag">EONE</span></div>
-        <div class="tema-ed-footer">
-          <div class="tema-ed-meta">4 fonti · Lug 2026</div>
-          <div class="tema-ed-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#92600A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-        </div>
-      </div>
-    </div>
-    </div>
-  </div>
-
-<!-- SANITÀ -->
-<div class="page" id="page-sanita">
-  <div class="area-editorial-header" style="background:#EDFAF4;">
-    <div class="area-editorial-inner">
-      <div class="area-editorial-eyebrow" style="color:#166534;" onclick="showPage('home')">Home</div>
-      <div class="area-editorial-title" style="color:#166534;">Sanità integrativa</div>
-      <div class="area-editorial-desc">Fondi sanitari contrattuali INPS e regime fiscale della sanità integrativa.</div>
-    </div>
-  </div>
-    <div class="area-temi-section">
-    <div class="area-temi-label">Esplora i temi</div>
-    <div class="temi-cards">
-    <div class="tema-editorial" style="--tc:#166534;--tc-bg:#EDFAF4;" onclick="showPage('fondi-sanitari-contrattuali')">
-      <div class="tema-ed-band"></div>
-      <div class="tema-ed-visual">
-        <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
-  <circle cx="60" cy="60" r="35" stroke="#166534" stroke-width="1.5" opacity=".12"/>
-  <circle cx="60" cy="60" r="20" stroke="#166534" stroke-width="1.5" opacity=".18"/>
-  <line x1="60" y1="40" x2="60" y2="80" stroke="#166534" stroke-width="2" opacity=".3"/>
-  <line x1="40" y1="60" x2="80" y2="60" stroke="#166534" stroke-width="2" opacity=".3"/>
-  <circle cx="60" cy="60" r="5" fill="#166534" opacity=".25"/>
-</svg>
-      </div>
-      <div class="tema-ed-body">
-        <div class="tema-ed-cat" style="color:#166534;">Sanità integrativa · INPS</div>
-        <div class="tema-ed-title">Fondi sanitari contrattuali — contribuzione obbligatoria</div>
-        <div class="tema-ed-desc">Meccanismo F24/UniEmens per ENFEA Salute, FASIFAR, FONDOSANI, INNOVACARE. Convenzioni al 31/12/2026.</div>
-        <div class="tema-ed-tags"><span class="tema-ed-tag">F24</span><span class="tema-ed-tag">UniEmens</span><span class="tema-ed-tag">ESAL · FAFP · SANI · CARE</span></div>
-        <div class="tema-ed-footer">
-          <div class="tema-ed-meta">4 circolari · Sett 2026</div>
-          <div class="tema-ed-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#166534" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-        </div>
-      </div>
-    </div>
-    <div class="tema-editorial" style="--tc:#166534;--tc-bg:#EDFAF4;" onclick="showPage('sanita-fiscale')">
-      <div class="tema-ed-band"></div>
-      <div class="tema-ed-visual">
-        <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
-  <path d="M20 80 L45 45 L65 62 L85 30 L100 40" stroke="#166534" stroke-width="2" opacity=".2" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="20" cy="80" r="3.5" fill="#166534" opacity=".3"/>
-  <circle cx="45" cy="45" r="3.5" fill="#166534" opacity=".3"/>
-  <circle cx="65" cy="62" r="3.5" fill="#166534" opacity=".3"/>
-  <circle cx="85" cy="30" r="3.5" fill="#166534" opacity=".3"/>
-  <circle cx="100" cy="40" r="3.5" fill="#166534" opacity=".3"/>
-  <line x1="18" y1="95" x2="102" y2="95" stroke="#166534" stroke-width="1" opacity=".1"/>
-</svg>
-      </div>
-      <div class="tema-ed-body">
-        <div class="tema-ed-cat" style="color:#166534;">Sanità integrativa · AE · Min. Salute</div>
-        <div class="tema-ed-title">Fondi sanitari — regime fiscale e agevolazioni</div>
-        <div class="tema-ed-desc">Tipologie A e B, deducibilità fino a 3.615,20 € (art. 10 TUIR), non imponibilità (art. 51 TUIR) e Anagrafe Min. Salute.</div>
-        <div class="tema-ed-tags"><span class="tema-ed-tag">Art. 10 TUIR</span><span class="tema-ed-tag">Art. 51 TUIR</span><span class="tema-ed-tag">Anagrafe fondi</span><span class="tema-ed-tag">3.615,20 €</span></div>
-        <div class="tema-ed-footer">
-          <div class="tema-ed-meta">AE + Min. Salute · Mag 2025</div>
-          <div class="tema-ed-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#166534" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-        </div>
-      </div>
-    </div>
-    </div>
-  </div>
-
-<div class="page" id="page-posizione-contributiva"><div class="area-wrap">
-  <div class="article-page" style="--tc:#1d6fa4;--tc-bg:#EBF5FF;">
-    <div class="article-header">
-      <div class="article-header-inner">
-        <button class="article-breadcrumb" style="color:#1d6fa4;" onclick="showPage('previdenza')">Previdenza</button>
-        <div class="article-category" style="color:#1d6fa4;">Previdenza · INPS</div>
-        <h1 class="article-title">Posizione contributiva e correttezza versamenti</h1>
-        <p class="article-desc">Estratto conto contributivo, verifica versamenti, ricorsi amministrativi e unicità posizione aziendale.</p>
-      </div>
-    </div>
-    <div class="article-toc-strip" id="toc-strip-posizione-contributiva">
-      <div class="article-toc-strip-inner">
-        <span class="article-toc-label">In questa guida</span>
-        <div class="article-toc-links" id="toc-links-posizione-contributiva"></div>
-      </div>
-    </div>
-    <div class="article-body">
-      <div class="kb-article" id="kb-posizione-contributiva">{{ kb.posizione_contributiva | safe }}</div>
-    </div>
-    <div class="article-footer">
-      <div class="article-footer-inner">
-        <div class="article-footer-label">Fonti ufficiali</div>
-        <div class="article-sources">
-      <a class="article-source-link" href="https://www.inps.it" target="_blank">
-        <div class="article-source-icon" style="background:#EBF5FF;">🔗</div>
-        <div class="article-source-text"><strong>Portale INPS — Estratto conto contributivo</strong><span>inps.it → cerca "estratto conto contributivo"</span></div>
-        <span class="article-source-arrow">→</span>
-      </a>
-      <a class="article-source-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank">
-        <div class="article-source-icon" style="background:#EBF5FF;">📄</div>
-        <div class="article-source-text"><strong>Archivio circolari e messaggi INPS</strong><span>Cerca: Msg. 2553/2025 · Circ. 48/2023 · Msg. 1900/2023</span></div>
-        <span class="article-source-arrow">→</span>
-      </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div></div>
-
-<div class="page" id="page-accompagnamento-pensione"><div class="area-wrap">
-  <div class="article-page" style="--tc:#1d6fa4;--tc-bg:#EBF5FF;">
-    <div class="article-header">
-      <div class="article-header-inner">
-        <button class="article-breadcrumb" style="color:#1d6fa4;" onclick="showPage('previdenza')">Previdenza</button>
-        <div class="article-category" style="color:#1d6fa4;">Previdenza · INPS</div>
-        <h1 class="article-title">Prestazioni di accompagnamento alla pensione</h1>
-        <p class="article-desc">Isopensione, accordo aziendale, procedura INPS, agevolazioni fiscali 2026 e tutele per nuovi requisiti pensionistici.</p>
-      </div>
-    </div>
-    <div class="article-toc-strip" id="toc-strip-accompagnamento-pensione">
-      <div class="article-toc-strip-inner">
-        <span class="article-toc-label">In questa guida</span>
-        <div class="article-toc-links" id="toc-links-accompagnamento-pensione"></div>
-      </div>
-    </div>
-    <div class="article-body">
-      <div class="kb-article" id="kb-accompagnamento-pensione">{{ kb.accompagnamento_pensione | safe }}</div>
-    </div>
-    <div class="article-footer">
-      <div class="article-footer-inner">
-        <div class="article-footer-label">Fonti ufficiali</div>
-        <div class="article-sources">
-      <a class="article-source-link" href="https://www.inps.it" target="_blank">
-        <div class="article-source-icon" style="background:#EBF5FF;">🔗</div>
-        <div class="article-source-text"><strong>Portale INPS — Prestazioni di esodo</strong><span>inps.it → cerca "prestazioni di esodo accompagnamento pensione"</span></div>
-        <span class="article-source-arrow">→</span>
-      </a>
-      <a class="article-source-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank">
-        <div class="article-source-icon" style="background:#EBF5FF;">📄</div>
-        <div class="article-source-text"><strong>Archivio circolari INPS</strong><span>Cerca: Circ. 41/2026 · Msg. 2829/2026 · Circ. 104/2026 · Circ. 119/2013</span></div>
-        <span class="article-source-arrow">→</span>
-      </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div></div>
-
-<div class="page" id="page-durc-online"><div class="area-wrap">
-  <div class="article-page" style="--tc:#92600A;--tc-bg:#FEF8EC;">
-    <div class="article-header">
-      <div class="article-header-inner">
-        <button class="article-breadcrumb" style="color:#92600A;" onclick="showPage('welfare')">Welfare aziendale</button>
-        <div class="article-category" style="color:#92600A;">Welfare aziendale · INPS</div>
-        <h1 class="article-title">DURC Online</h1>
-        <p class="article-desc">Verifica regolarità contributiva, Piattaforma Unica INPS, Ve.R.A., Simulazione DURC, Pre-DURC e Delega Master.</p>
-      </div>
-    </div>
-    <div class="article-toc-strip" id="toc-strip-durc-online">
-      <div class="article-toc-strip-inner">
-        <span class="article-toc-label">In questa guida</span>
-        <div class="article-toc-links" id="toc-links-durc-online"></div>
-      </div>
-    </div>
-    <div class="article-body">
-      <div class="kb-article" id="kb-durc-online">{{ kb.durc_online | safe }}</div>
-    </div>
-    <div class="article-footer">
-      <div class="article-footer-inner">
-        <div class="article-footer-label">Fonti ufficiali</div>
-        <div class="article-sources">
-      <a class="article-source-link" href="https://www.inps.it" target="_blank">
-        <div class="article-source-icon" style="background:#FEF8EC;">🔗</div>
-        <div class="article-source-text"><strong>Portale INPS — DURC Online</strong><span>inps.it → Prestazioni e Servizi → cerca "DURC Online"</span></div>
-        <span class="article-source-arrow">→</span>
-      </a>
-      <a class="article-source-link" href="https://www.inail.it/cs/internet/attivita/prevenzione-e-sicurezza/durc-online.html" target="_blank">
-        <div class="article-source-icon" style="background:#FEF8EC;">🔗</div>
-        <div class="article-source-text"><strong>Portale INAIL — DURC Online</strong><span>Accesso alternativo tramite portale INAIL</span></div>
-        <span class="article-source-arrow">→</span>
-      </a>
-      <a class="article-source-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank">
-        <div class="article-source-icon" style="background:#FEF8EC;">📄</div>
-        <div class="article-source-text"><strong>Archivio circolari INPS</strong><span>Cerca: Msg. 3662/2024 · Msg. 4693/2023 · Circ. 146/2021</span></div>
-        <span class="article-source-arrow">→</span>
-      </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div></div>
-
-<div class="page" id="page-cigo"><div class="area-wrap">
-  <div class="article-page" style="--tc:#92600A;--tc-bg:#FEF8EC;">
-    <div class="article-header">
-      <div class="article-header-inner">
-        <button class="article-breadcrumb" style="color:#92600A;" onclick="showPage('welfare')">Welfare aziendale</button>
-        <div class="article-category" style="color:#92600A;">Welfare aziendale · INPS</div>
-        <h1 class="article-title">Cassa Integrazione Guadagni Ordinaria (CIGO)</h1>
-        <p class="article-desc">Datori ammessi, causali, OMNIA IS, massimali 2026, contribuzione addizionale e conguaglio UniEmens.</p>
-      </div>
-    </div>
-    <div class="article-toc-strip" id="toc-strip-cigo">
-      <div class="article-toc-strip-inner">
-        <span class="article-toc-label">In questa guida</span>
-        <div class="article-toc-links" id="toc-links-cigo"></div>
-      </div>
-    </div>
-    <div class="article-body">
-      <div class="kb-article" id="kb-cigo">{{ kb.cigo | safe }}</div>
-    </div>
-    <div class="article-footer">
-      <div class="article-footer-inner">
-        <div class="article-footer-label">Fonti ufficiali</div>
-        <div class="article-sources">
-      <a class="article-source-link" href="https://www.inps.it" target="_blank">
-        <div class="article-source-icon" style="background:#FEF8EC;">🔗</div>
-        <div class="article-source-text"><strong>Portale INPS — Cassa Integrazione</strong><span>inps.it → cerca "CIGO cassa integrazione ordinaria"</span></div>
-        <span class="article-source-arrow">→</span>
-      </a>
-      <a class="article-source-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank">
-        <div class="article-source-icon" style="background:#FEF8EC;">📄</div>
-        <div class="article-source-text"><strong>Archivio circolari INPS</strong><span>Cerca: Circ. 5/2025 · Circ. 4/2026 · Msg. 2207/2026</span></div>
-        <span class="article-source-arrow">→</span>
-      </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div></div>
-
-<!-- FONDI SANITARI CONTRATTUALI -->
-<div class="page" id="page-fondi-sanitari-contrattuali"><div class="area-wrap">
-  <div class="article-page" style="--tc:#166534;--tc-bg:#EDFAF4;">
-    <div class="article-header">
-      <div class="article-header-inner">
-        <button class="article-breadcrumb" style="color:#166534;" onclick="showPage('sanita')">Sanità integrativa</button>
-        <div class="article-category" style="color:#166534;">Sanità integrativa · INPS</div>
-        <h1 class="article-title">Fondi sanitari contrattuali — contribuzione obbligatoria</h1>
-        <p class="article-desc">Meccanismo F24/UniEmens per i principali fondi sanitari contrattuali. Convenzioni al 31/12/2026.</p>
-      </div>
-    </div>
-    <div class="article-toc-strip" id="toc-strip-fondi-sanitari-contrattuali">
-      <div class="article-toc-strip-inner">
-        <span class="article-toc-label">In questa guida</span>
-        <div class="article-toc-links" id="toc-links-fondi-sanitari-contrattuali"></div>
-      </div>
-    </div>
-    <div class="article-body">
-      <div class="kb-article" id="kb-fondi-sanitari-contrattuali">{{ kb.fondi_sanitari_contrattuali | safe }}</div>
-    </div>
-    <div class="article-footer">
-      <div class="article-footer-inner">
-        <div class="article-footer-label">Fonti ufficiali</div>
-        <div class="article-sources">
-      <a class="article-source-link" href="https://www.inps.it" target="_blank">
-        <div class="article-source-icon" style="background:#EDFAF4;">🔗</div>
-        <div class="article-source-text"><strong>Portale INPS — UniEmens</strong><span>inps.it → cerca "UniEmens datori di lavoro privati"</span></div>
-        <span class="article-source-arrow">→</span>
-      </a>
-      <a class="article-source-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank">
-        <div class="article-source-icon" style="background:#EDFAF4;">📄</div>
-        <div class="article-source-text"><strong>Archivio circolari INPS</strong><span>Cerca le circolari sui fondi sanitari contrattuali</span></div>
-        <span class="article-source-arrow">→</span>
-      </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div></div>
-
-<div class="page" id="page-sanita-fiscale"><div class="area-wrap">
-  <div class="article-page" style="--tc:#166534;--tc-bg:#EDFAF4;">
-    <div class="article-header">
-      <div class="article-header-inner">
-        <button class="article-breadcrumb" style="color:#166534;" onclick="showPage('sanita')">Sanità integrativa</button>
-        <div class="article-category" style="color:#166534;">Sanità integrativa · AE · Min. Salute · INPS</div>
-        <h1 class="article-title">Fondi sanitari — regime fiscale e agevolazioni</h1>
-        <p class="article-desc">Tipologie A e B, deducibilità art. 10 TUIR, non imponibilità art. 51 TUIR e Anagrafe Ministero della Salute.</p>
-      </div>
-    </div>
-    <div class="article-toc-strip" id="toc-strip-sanita-fiscale">
-      <div class="article-toc-strip-inner">
-        <span class="article-toc-label">In questa guida</span>
-        <div class="article-toc-links" id="toc-links-sanita-fiscale"></div>
-      </div>
-    </div>
-    <div class="article-body">
-      <div class="kb-article" id="kb-sanita-fiscale">{{ kb.sanita_fiscale | safe }}</div>
-    </div>
-    <div class="article-footer">
-      <div class="article-footer-inner">
-        <div class="article-footer-label">Fonti ufficiali</div>
-        <div class="article-sources">
-      <a class="article-source-link" href="https://www.agenziaentrate.gov.it" target="_blank">
-        <div class="article-source-icon" style="background:#EDFAF4;">🔗</div>
-        <div class="article-source-text"><strong>Agenzia delle Entrate</strong><span>agenziaentrate.gov.it → cerca "fondi sanitari deducibilità"</span></div>
-        <span class="article-source-arrow">→</span>
-      </a>
-      <a class="article-source-link" href="https://www.salute.gov.it" target="_blank">
-        <div class="article-source-icon" style="background:#EDFAF4;">🔗</div>
-        <div class="article-source-text"><strong>Ministero della Salute — Anagrafe fondi sanitari</strong><span>salute.gov.it → Temi → Fondi sanitari integrativi</span></div>
-        <span class="article-source-arrow">→</span>
-      </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div></div>
-
-<!-- CHI SIAMO -->
-<div class="page" id="page-chisiamo"><div class="area-wrap">
-  <div class="area-header" style="margin-bottom:18px;">
-    <div class="area-icon" style="background:#EBF5FF;"><svg viewBox="0 0 24 24" fill="none" stroke="#1d6fa4" stroke-width="2" stroke-linecap="round" style="width:22px;height:22px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
-    <div><h1>Chi siamo</h1><p>Hub Previdenza e Welfare — un progetto DataHubs S.r.l.</p></div>
-  </div>
-  <div class="cs-card"><div class="cs-bar" style="background:#1d6fa4;"></div><div class="cs-body">
-    <div class="cs-cat" style="color:#1d6fa4;">Il progetto</div><h3>Hub Digitale</h3>
-    <p class="cs-text">Ambiente digitale privato, organizzato per macroaree tematiche, che raccoglie e rende fruibili i contenuti certificati prodotti dal Centro Studi. Non è un archivio statico: è un ecosistema cognitivo che si aggiorna e propone contenuti in base al profilo dell'utente.</p>
-    <p class="cs-text">La base documentale è alimentata da circolari e messaggi degli enti previdenziali, testi normativi e decreti, guide operative, output del Centro Studi e buone prassi raccolte dalle imprese. DataHubs S.r.l. ne cura la strutturazione, la semantizzazione e la preparazione per l'ingestione nella base documentale.</p>
+<!-- ═════════ AREA: PREVIDENZA ═════════ -->
+<section class="page c-prev" id="page-previdenza">
+  <div class="page-head"><div class="wrap">
+    <button class="crumb" onclick="showPage('home')"><svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Home</button>
+    <h1>Previdenza</h1>
+    <p class="lead">Contributi, posizione contributiva, correttezza dei versamenti e adempimenti previdenziali.</p>
   </div></div>
-  <div class="cs-card"><div class="cs-bar" style="background:#0284C7;"></div><div class="cs-body">
-    <div class="cs-cat" style="color:#0284C7;">L'assistente</div><h3>P&amp;W Advisor</h3>
-    <p class="cs-text">Sistema che permette agli operatori del Polo di interrogare la base documentale e ottenere risposte accurate, contestualizzate e tracciate alla fonte. Combina assistente conversazionale AI, motore di ricerca semantico e navigazione per categoria.</p>
-    <div class="cs-rules">
-      <div class="cs-rules-title">Regole di comportamento</div>
-      <div class="cs-rule"><div class="cs-dot" style="background:#0284C7;"></div><span>Risponde esclusivamente sulla base della documentazione certificata — nessuna informazione al di fuori del perimetro.</span></div>
-      <div class="cs-rule"><div class="cs-dot" style="background:#0284C7;"></div><span>Non genera mai informazioni non presenti nella base documentale. Se la domanda non è coperta rimanda alla sede territoriale competente.</span></div>
-      <div class="cs-rule"><div class="cs-dot" style="background:#0284C7;"></div><span>Indica sempre la fonte e la data di aggiornamento per ogni informazione restituita.</span></div>
-      <div class="cs-rule"><div class="cs-dot" style="background:#0284C7;"></div><span>Adatta la lunghezza della risposta: breve per sintesi, dettagliata per approfondimenti.</span></div>
-      <div class="cs-rule"><div class="cs-dot" style="background:#0284C7;"></div><span>Mantiene il contesto della conversazione per domande di follow-up.</span></div>
+  <div class="wrap"><div class="temi-grid">
+    <div class="tema-card" onclick="showPage('posizione-contributiva')">
+      <div class="tema-cat">Previdenza · INPS</div>
+      <h3>Posizione contributiva e correttezza versamenti</h3>
+      <p>Estratto conto contributivo, verifica versamenti, ricorsi amministrativi e unicità della posizione aziendale.</p>
+      <div class="tags"><span class="tag">Estratto conto</span><span class="tag">Ricorsi INPS</span><span class="tag">UniEmens</span><span class="tag">Cassetto Previdenziale</span></div>
+      <div class="tema-foot"><span>3 fonti · Set 2025</span><span class="tema-open">Apri il tema <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></div>
+    </div>
+    <div class="tema-card" onclick="showPage('accompagnamento-pensione')">
+      <div class="tema-cat">Previdenza · INPS</div>
+      <h3>Prestazioni di accompagnamento alla pensione</h3>
+      <p>Isopensione, Fondi di solidarietà, requisiti, accordo aziendale e agevolazioni fiscali 2026.</p>
+      <div class="tags"><span class="tag">Isopensione</span><span class="tag">Fondi solidarietà</span><span class="tag">Esodo</span><span class="tag">Contributivi puri</span></div>
+      <div class="tema-foot"><span>5 fonti · Set 2026</span><span class="tema-open">Apri il tema <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></div>
     </div>
   </div></div>
-  <div class="cs-card" style="margin-bottom:36px;"><div class="cs-bar" style="background:#059669;"></div><div class="cs-body">
-    <div class="cs-cat" style="color:#059669;">Obiettivo</div><h3>Il risultato atteso</h3>
-    <p class="cs-text">Un sistema operativo, affidabile e manutenibile che consenta agli operatori del Polo di rispondere a qualsiasi richiesta da parte delle sedi territoriali in materia previdenziale e di welfare — attingendo alla base documentale certificata, senza mai uscire dal perimetro validato da DataHubs.</p>
+</section>
+
+<!-- ═════════ AREA: WELFARE ═════════ -->
+<section class="page c-welf" id="page-welfare">
+  <div class="page-head"><div class="wrap">
+    <button class="crumb" onclick="showPage('home')"><svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Home</button>
+    <h1>Welfare aziendale</h1>
+    <p class="lead">Regolarità contributiva, DURC e ammortizzatori sociali.</p>
   </div></div>
-</div></div>
+  <div class="wrap"><div class="temi-grid">
+    <div class="tema-card" onclick="showPage('durc-online')">
+      <div class="tema-cat">Welfare aziendale · INPS</div>
+      <h3>DURC Online</h3>
+      <p>Verifica regolarità contributiva, Piattaforma Unica INPS, Ve.R.A., Simulazione DURC, Pre-DURC e Delega Master.</p>
+      <div class="tags"><span class="tag">Ve.R.A.</span><span class="tag">Pre-DURC</span><span class="tag">Delega Master</span><span class="tag">Piattaforma Unica</span></div>
+      <div class="tema-foot"><span>6 fonti · Nov 2024</span><span class="tema-open">Apri il tema <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></div>
+    </div>
+    <div class="tema-card" onclick="showPage('cigo')">
+      <div class="tema-cat">Welfare aziendale · INPS</div>
+      <h3>Cassa Integrazione Guadagni Ordinaria (CIGO)</h3>
+      <p>Datori ammessi, causali, OMNIA IS, massimale 2026 (1.423,69 €), contribuzione addizionale e UniEmens.</p>
+      <div class="tags"><span class="tag">OMNIA IS</span><span class="tag">UniEmens</span><span class="tag">Massimale 2026</span><span class="tag">EONE</span></div>
+      <div class="tema-foot"><span>4 fonti · Lug 2026</span><span class="tema-open">Apri il tema <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ═════════ AREA: SANITÀ ═════════ -->
+<section class="page c-san" id="page-sanita">
+  <div class="page-head"><div class="wrap">
+    <button class="crumb" onclick="showPage('home')"><svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Home</button>
+    <h1>Sanità integrativa</h1>
+    <p class="lead">Fondi sanitari contrattuali e regime fiscale della sanità integrativa.</p>
+  </div></div>
+  <div class="wrap"><div class="temi-grid">
+    <div class="tema-card" onclick="showPage('fondi-sanitari-contrattuali')">
+      <div class="tema-cat">Sanità integrativa · INPS</div>
+      <h3>Fondi sanitari contrattuali — contribuzione obbligatoria</h3>
+      <p>Meccanismo F24/UniEmens per ENFEA Salute, FASIFAR, FONDOSANI, INNOVACARE. Convenzioni al 31/12/2026.</p>
+      <div class="tags"><span class="tag">F24</span><span class="tag">UniEmens</span><span class="tag">ESAL · FAFP · SANI · CARE</span></div>
+      <div class="tema-foot"><span>4 circolari · Set 2026</span><span class="tema-open">Apri il tema <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></div>
+    </div>
+    <div class="tema-card" onclick="showPage('sanita-fiscale')">
+      <div class="tema-cat">Sanità integrativa · AE · Min. Salute</div>
+      <h3>Fondi sanitari — regime fiscale e agevolazioni</h3>
+      <p>Tipologie A e B, deducibilità fino a 3.615,20 € (art. 10 TUIR), non imponibilità (art. 51 TUIR) e Anagrafe Min. Salute.</p>
+      <div class="tags"><span class="tag">Art. 10 TUIR</span><span class="tag">Art. 51 TUIR</span><span class="tag">Anagrafe fondi</span><span class="tag">3.615,20 €</span></div>
+      <div class="tema-foot"><span>AE + Min. Salute · Mag 2025</span><span class="tema-open">Apri il tema <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ═════════ TEMA: POSIZIONE CONTRIBUTIVA ═════════ -->
+<section class="page c-prev article" id="page-posizione-contributiva">
+  <div class="page-head"><div class="wrap">
+    <button class="crumb" onclick="showPage('previdenza')"><svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Previdenza</button>
+    <div class="cat">Previdenza · INPS</div>
+    <h1>Posizione contributiva e correttezza versamenti</h1>
+    <p class="lead">Estratto conto contributivo, verifica versamenti, ricorsi amministrativi e unicità della posizione aziendale.</p>
+  </div></div>
+  <div class="toc-strip"><div class="wrap"><span class="toc-label">In questa guida</span><div class="toc-links" id="toc-links-posizione-contributiva"></div></div></div>
+  <div class="wrap">
+    <div class="article-body"><div class="kb-article" id="kb-posizione-contributiva">{{ kb.posizione_contributiva | safe }}</div></div>
+    <div class="sources">
+      <div class="sources-lbl">Fonti ufficiali</div>
+      <a class="source-link" href="https://www.inps.it" target="_blank" rel="noopener"><div class="source-ic">🔗</div><div><strong>Portale INPS — Estratto conto contributivo</strong><span>inps.it → cerca "estratto conto contributivo"</span></div><span class="source-arrow">→</span></a>
+      <a class="source-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank" rel="noopener"><div class="source-ic">📄</div><div><strong>Archivio circolari e messaggi INPS</strong><span>Cerca: Msg. 2553/2025 · Circ. 48/2023 · Msg. 1900/2023</span></div><span class="source-arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ TEMA: ACCOMPAGNAMENTO PENSIONE ═════════ -->
+<section class="page c-prev article" id="page-accompagnamento-pensione">
+  <div class="page-head"><div class="wrap">
+    <button class="crumb" onclick="showPage('previdenza')"><svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Previdenza</button>
+    <div class="cat">Previdenza · INPS</div>
+    <h1>Prestazioni di accompagnamento alla pensione</h1>
+    <p class="lead">Isopensione, accordo aziendale, procedura INPS, agevolazioni fiscali 2026 e tutele per nuovi requisiti pensionistici.</p>
+  </div></div>
+  <div class="toc-strip"><div class="wrap"><span class="toc-label">In questa guida</span><div class="toc-links" id="toc-links-accompagnamento-pensione"></div></div></div>
+  <div class="wrap">
+    <div class="article-body"><div class="kb-article" id="kb-accompagnamento-pensione">{{ kb.accompagnamento_pensione | safe }}</div></div>
+    <div class="sources">
+      <div class="sources-lbl">Fonti ufficiali</div>
+      <a class="source-link" href="https://www.inps.it" target="_blank" rel="noopener"><div class="source-ic">🔗</div><div><strong>Portale INPS — Prestazioni di esodo</strong><span>inps.it → cerca "prestazioni di esodo accompagnamento pensione"</span></div><span class="source-arrow">→</span></a>
+      <a class="source-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank" rel="noopener"><div class="source-ic">📄</div><div><strong>Archivio circolari INPS</strong><span>Cerca: Circ. 41/2026 · Msg. 2829/2026 · Circ. 104/2026 · Circ. 119/2013</span></div><span class="source-arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ TEMA: DURC ═════════ -->
+<section class="page c-welf article" id="page-durc-online">
+  <div class="page-head"><div class="wrap">
+    <button class="crumb" onclick="showPage('welfare')"><svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Welfare aziendale</button>
+    <div class="cat">Welfare aziendale · INPS</div>
+    <h1>DURC Online</h1>
+    <p class="lead">Verifica regolarità contributiva, Piattaforma Unica INPS, Ve.R.A., Simulazione DURC, Pre-DURC e Delega Master.</p>
+  </div></div>
+  <div class="toc-strip"><div class="wrap"><span class="toc-label">In questa guida</span><div class="toc-links" id="toc-links-durc-online"></div></div></div>
+  <div class="wrap">
+    <div class="article-body"><div class="kb-article" id="kb-durc-online">{{ kb.durc_online | safe }}</div></div>
+    <div class="sources">
+      <div class="sources-lbl">Fonti ufficiali</div>
+      <a class="source-link" href="https://www.inps.it" target="_blank" rel="noopener"><div class="source-ic">🔗</div><div><strong>Portale INPS — DURC Online</strong><span>inps.it → Prestazioni e Servizi → cerca "DURC Online"</span></div><span class="source-arrow">→</span></a>
+      <a class="source-link" href="https://www.inail.it/cs/internet/attivita/prevenzione-e-sicurezza/durc-online.html" target="_blank" rel="noopener"><div class="source-ic">🔗</div><div><strong>Portale INAIL — DURC Online</strong><span>Accesso alternativo tramite portale INAIL</span></div><span class="source-arrow">→</span></a>
+      <a class="source-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank" rel="noopener"><div class="source-ic">📄</div><div><strong>Archivio circolari INPS</strong><span>Cerca: Msg. 3662/2024 · Msg. 4693/2023 · Circ. 146/2021</span></div><span class="source-arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ TEMA: CIGO ═════════ -->
+<section class="page c-welf article" id="page-cigo">
+  <div class="page-head"><div class="wrap">
+    <button class="crumb" onclick="showPage('welfare')"><svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Welfare aziendale</button>
+    <div class="cat">Welfare aziendale · INPS</div>
+    <h1>Cassa Integrazione Guadagni Ordinaria (CIGO)</h1>
+    <p class="lead">Datori ammessi, causali, OMNIA IS, massimali 2026, contribuzione addizionale e conguaglio UniEmens.</p>
+  </div></div>
+  <div class="toc-strip"><div class="wrap"><span class="toc-label">In questa guida</span><div class="toc-links" id="toc-links-cigo"></div></div></div>
+  <div class="wrap">
+    <div class="article-body"><div class="kb-article" id="kb-cigo">{{ kb.cigo | safe }}</div></div>
+    <div class="sources">
+      <div class="sources-lbl">Fonti ufficiali</div>
+      <a class="source-link" href="https://www.inps.it" target="_blank" rel="noopener"><div class="source-ic">🔗</div><div><strong>Portale INPS — Cassa Integrazione</strong><span>inps.it → cerca "CIGO cassa integrazione ordinaria"</span></div><span class="source-arrow">→</span></a>
+      <a class="source-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank" rel="noopener"><div class="source-ic">📄</div><div><strong>Archivio circolari INPS</strong><span>Cerca: Circ. 5/2025 · Circ. 4/2026 · Msg. 2207/2026</span></div><span class="source-arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ TEMA: FONDI SANITARI CONTRATTUALI ═════════ -->
+<section class="page c-san article" id="page-fondi-sanitari-contrattuali">
+  <div class="page-head"><div class="wrap">
+    <button class="crumb" onclick="showPage('sanita')"><svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Sanità integrativa</button>
+    <div class="cat">Sanità integrativa · INPS</div>
+    <h1>Fondi sanitari contrattuali — contribuzione obbligatoria</h1>
+    <p class="lead">Meccanismo F24/UniEmens per i principali fondi sanitari contrattuali. Convenzioni al 31/12/2026.</p>
+  </div></div>
+  <div class="toc-strip"><div class="wrap"><span class="toc-label">In questa guida</span><div class="toc-links" id="toc-links-fondi-sanitari-contrattuali"></div></div></div>
+  <div class="wrap">
+    <div class="article-body"><div class="kb-article" id="kb-fondi-sanitari-contrattuali">{{ kb.fondi_sanitari_contrattuali | safe }}</div></div>
+    <div class="sources">
+      <div class="sources-lbl">Fonti ufficiali</div>
+      <a class="source-link" href="https://www.inps.it" target="_blank" rel="noopener"><div class="source-ic">🔗</div><div><strong>Portale INPS — UniEmens</strong><span>inps.it → cerca "UniEmens datori di lavoro privati"</span></div><span class="source-arrow">→</span></a>
+      <a class="source-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank" rel="noopener"><div class="source-ic">📄</div><div><strong>Archivio circolari INPS</strong><span>Cerca le circolari sui fondi sanitari contrattuali</span></div><span class="source-arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ TEMA: SANITÀ FISCALE ═════════ -->
+<section class="page c-san article" id="page-sanita-fiscale">
+  <div class="page-head"><div class="wrap">
+    <button class="crumb" onclick="showPage('sanita')"><svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Sanità integrativa</button>
+    <div class="cat">Sanità integrativa · AE · Min. Salute · INPS</div>
+    <h1>Fondi sanitari — regime fiscale e agevolazioni</h1>
+    <p class="lead">Tipologie A e B, deducibilità art. 10 TUIR, non imponibilità art. 51 TUIR e Anagrafe Ministero della Salute.</p>
+  </div></div>
+  <div class="toc-strip"><div class="wrap"><span class="toc-label">In questa guida</span><div class="toc-links" id="toc-links-sanita-fiscale"></div></div></div>
+  <div class="wrap">
+    <div class="article-body"><div class="kb-article" id="kb-sanita-fiscale">{{ kb.sanita_fiscale | safe }}</div></div>
+    <div class="sources">
+      <div class="sources-lbl">Fonti ufficiali</div>
+      <a class="source-link" href="https://www.agenziaentrate.gov.it" target="_blank" rel="noopener"><div class="source-ic">🔗</div><div><strong>Agenzia delle Entrate</strong><span>agenziaentrate.gov.it → cerca "fondi sanitari deducibilità"</span></div><span class="source-arrow">→</span></a>
+      <a class="source-link" href="https://www.salute.gov.it" target="_blank" rel="noopener"><div class="source-ic">🔗</div><div><strong>Ministero della Salute — Anagrafe fondi sanitari</strong><span>salute.gov.it → Temi → Fondi sanitari integrativi</span></div><span class="source-arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ CHI SIAMO ═════════ -->
+<section class="page c-prev" id="page-chisiamo">
+  <div class="page-head"><div class="wrap">
+    <button class="crumb" onclick="showPage('home')"><svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Home</button>
+    <h1>Chi siamo</h1>
+    <p class="lead">Hub Previdenza e Welfare — un progetto DataHubs S.r.l.</p>
+  </div></div>
+  <div class="wrap" style="padding-top:32px;padding-bottom:64px;max-width:900px;">
+    <div class="cs-card c-prev">
+      <div class="tema-cat">Il progetto</div><h3>Hub Digitale</h3>
+      <p>Ambiente digitale privato, organizzato per macroaree tematiche, che raccoglie e rende fruibili i contenuti certificati prodotti dal Centro Studi. Non è un archivio statico: è un ecosistema cognitivo che si aggiorna e propone contenuti in base al profilo dell'utente.</p>
+      <p>La base documentale è alimentata da circolari e messaggi degli enti previdenziali, testi normativi e decreti, guide operative, output del Centro Studi e buone prassi raccolte dalle imprese. DataHubs S.r.l. ne cura la strutturazione, la semantizzazione e la preparazione per l'ingestione nella base documentale.</p>
+    </div>
+    <div class="cs-card c-welf">
+      <div class="tema-cat">L'assistente</div><h3>P&amp;W Advisor</h3>
+      <p>Sistema che permette agli operatori del Polo di interrogare la base documentale e ottenere risposte accurate, contestualizzate e tracciate alla fonte. Combina assistente conversazionale AI, motore di ricerca semantico e navigazione per categoria.</p>
+      <div class="cs-rules">
+        <div class="cs-rules-title">Regole di comportamento</div>
+        <div class="cs-rule">Risponde esclusivamente sulla base della documentazione certificata — nessuna informazione al di fuori del perimetro.</div>
+        <div class="cs-rule">Non genera mai informazioni non presenti nella base documentale. Se la domanda non è coperta rimanda alla sede territoriale competente.</div>
+        <div class="cs-rule">Indica sempre la fonte e la data di aggiornamento per ogni informazione restituita.</div>
+        <div class="cs-rule">Adatta la lunghezza della risposta: breve per sintesi, dettagliata per approfondimenti.</div>
+        <div class="cs-rule">Mantiene il contesto della conversazione per domande di follow-up.</div>
+      </div>
+    </div>
+    <div class="cs-card c-san">
+      <div class="tema-cat">Obiettivo</div><h3>Il risultato atteso</h3>
+      <p>Un sistema operativo, affidabile e manutenibile che consenta agli operatori del Polo di rispondere a qualsiasi richiesta da parte delle sedi territoriali in materia previdenziale e di welfare — attingendo alla base documentale certificata, senza mai uscire dal perimetro validato da DataHubs.</p>
+    </div>
+  </div>
+</section>
 
 </main>
-</div>
 
-<!-- AI FAB -->
+<!-- ═════════ ASSISTENTE AI ═════════ -->
 <div class="ai-fab">
   <div class="ai-fab-label">Assistente virtuale</div>
-  <button class="ai-fab-btn" onclick="toggleAI()">
-    <svg viewBox="0 0 32 32" fill="none" style="width:22px;height:22px;">
-      <circle cx="16" cy="16" r="7" fill="#7DD3FC" opacity=".9"/>
-      <circle cx="16" cy="16" r="3.5" fill="#e0f2fe"/>
-      <path d="M16 4v4M16 24v4M4 16h4M24 16h4" stroke="#7DD3FC" stroke-width="2" stroke-linecap="round"/>
-    </svg>
+  <button class="ai-fab-btn" onclick="toggleAI()" title="Apri l'assistente">
+    <svg viewBox="0 0 32 32" fill="none" style="width:24px;height:24px;"><circle cx="16" cy="16" r="7" fill="#7DD3FC" opacity=".9"/><circle cx="16" cy="16" r="3.5" fill="#e0f2fe"/><path d="M16 4v4M16 24v4M4 16h4M24 16h4" stroke="#7DD3FC" stroke-width="2" stroke-linecap="round"/></svg>
     <div class="ai-online"></div>
   </button>
 </div>
@@ -1218,259 +673,186 @@ body.dark .kb-toc a:hover,body.dark .kb-toc a.toc-active{color:var(--accent);bac
   </div>
   <div class="ai-inp">
     <input class="ai-input" id="ai-input" placeholder="Scrivi una domanda..." onkeydown="if(event.key==='Enter')sendMsg()">
-    <button class="ai-send" id="ai-send-btn" onclick="sendMsg()">
-      <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-    </button>
+    <button class="ai-send" id="ai-send-btn" onclick="sendMsg()"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
   </div>
-  <div class="ai-disclaimer">L'assistente AI è addestrato sulle fonti INPS ufficiali, dell'Agenzia delle Entrate e del Ministero della Salute certificate nella base documentale. Ogni risposta include il riferimento alla fonte originale per una consultazione immediata e sicura.</div>
+  <div class="ai-disclaimer">L'assistente risponde sulla base delle fonti ufficiali INPS, Agenzia delle Entrate e Ministero della Salute certificate nella base documentale, indicando il riferimento alla fonte.</div>
 </div>
 
 <script>
-const allPages=['home','previdenza','welfare','sanita','chisiamo',
-  'posizione-contributiva','accompagnamento-pensione',
-  'durc-online','cigo','fondi-sanitari-contrattuali','sanita-fiscale'];
-const sbMap={home:'sb-home',previdenza:'sb-prev',welfare:'sb-welf',sanita:'sb-san'};
-
+const PAGES={
+  'home':{area:null},
+  'previdenza':{area:'previdenza'},'welfare':{area:'welfare'},'sanita':{area:'sanita'},
+  'posizione-contributiva':{area:'previdenza',article:true},
+  'accompagnamento-pensione':{area:'previdenza',article:true},
+  'durc-online':{area:'welfare',article:true},
+  'cigo':{area:'welfare',article:true},
+  'fondi-sanitari-contrattuali':{area:'sanita',article:true},
+  'sanita-fiscale':{area:'sanita',article:true},
+  'chisiamo':{area:null}
+};
 let navStack=[];
 let currentPage='home';
 
 function showPage(name, addToStack=true){
+  if(!PAGES[name]) return;
   if(addToStack && name!==currentPage) navStack.push(currentPage);
   currentPage=name;
-  allPages.forEach(p=>{
-    const el=document.getElementById('page-'+p);
-    if(el) el.classList.toggle('active',p===name);
+  document.querySelectorAll('.page').forEach(el=>el.classList.toggle('active',el.id==='page-'+name));
+  const area=PAGES[name].area;
+  document.querySelectorAll('[data-nav]').forEach(el=>{
+    const k=el.dataset.nav;
+    el.classList.toggle('active', k===name);
   });
-  Object.keys(sbMap).forEach(k=>{
-    const sb=document.getElementById(sbMap[k]);
-    if(sb) sb.classList.toggle('active',k===name);
-  });
-  const btn=document.getElementById('back-btn');
-  if(btn) btn.style.display=navStack.length>0?'flex':'none';
-  window.scrollTo({top:0,behavior:'smooth'});
-  // TOC automatico per pagine tema
-  setTimeout(()=>{buildToc(name);updateProgressBar();initFadeIn();},80);
+  document.querySelectorAll('.h-nav-item').forEach(el=>el.classList.toggle('active',el.dataset.area===area));
+  document.getElementById('back-btn').style.display=navStack.length?'flex':'none';
+  if(window.innerWidth<=980) document.body.classList.remove('sb-open');
+  window.scrollTo(0,0);
+  if(PAGES[name].article) buildToc(name);
+  updateProgress();
 }
 
 function goBack(){
-  if(navStack.length===0) return;
-  const prev=navStack.pop();
-  showPage(prev, false);
+  if(!navStack.length) return;
+  showPage(navStack.pop(), false);
 }
 
 function toggleSidebar(){
-  const sb=document.getElementById('sidebar');
-  const main=document.querySelector('.main');
-  sb.classList.toggle('collapsed');
-  main.classList.toggle('expanded');
+  if(window.innerWidth<=980) document.body.classList.toggle('sb-open');
+  else document.body.classList.toggle('sb-collapsed');
 }
 
 function toggleTheme(){
-  const body=document.body;
-  const btn=document.getElementById('theme-btn');
-  body.classList.toggle('dark');
-  btn.textContent=body.classList.contains('dark')?'🌙':'☀️';
-  localStorage.setItem('theme',body.classList.contains('dark')?'dark':'light');
+  const dark=document.body.classList.toggle('dark');
+  document.getElementById('theme-btn').textContent=dark?'🌙':'☀️';
+  try{localStorage.setItem('theme',dark?'dark':'light');}catch(e){}
 }
-
-// Ripristina tema salvato
 (function(){
-  const t=localStorage.getItem('theme');
-  if(t==='dark'){document.body.classList.add('dark');document.getElementById('theme-btn').textContent='🌙';}
+  try{
+    if(localStorage.getItem('theme')==='dark'){
+      document.body.classList.add('dark');
+      document.getElementById('theme-btn').textContent='🌙';
+    }
+  }catch(e){}
 })();
 
-function doSearch(){
-  const q=document.getElementById('search-input').value.trim().toLowerCase();
+const SEARCH_MAP={
+  'pre-durc':'durc-online','durc':'durc-online','vera':'durc-online','ve.r.a':'durc-online','piattaforma unica':'durc-online','regolarità':'durc-online','delega master':'durc-online',
+  'cigo':'cigo','cassa integrazione':'cigo','massimale':'cigo','omnia':'cigo','eone':'cigo','ammortizzator':'cigo',
+  'isopensione':'accompagnamento-pensione','esodo':'accompagnamento-pensione','accompagnamento':'accompagnamento-pensione','pensione':'accompagnamento-pensione','solidariet':'accompagnamento-pensione',
+  'estratto conto':'posizione-contributiva','ricors':'posizione-contributiva','uniemens':'posizione-contributiva','cassetto':'posizione-contributiva','versament':'posizione-contributiva','posizione contributiva':'posizione-contributiva',
+  'deducib':'sanita-fiscale','tuir':'sanita-fiscale','anagrafe':'sanita-fiscale','3615':'sanita-fiscale','3.615':'sanita-fiscale','fiscal':'sanita-fiscale',
+  'esal':'fondi-sanitari-contrattuali','fafp':'fondi-sanitari-contrattuali','fondosani':'fondi-sanitari-contrattuali','innovacare':'fondi-sanitari-contrattuali','f24':'fondi-sanitari-contrattuali','fondi sanitari':'fondi-sanitari-contrattuali','fondo sanitario':'fondi-sanitari-contrattuali',
+  'previdenza':'previdenza','welfare':'welfare','sanità':'sanita','sanita':'sanita'
+};
+function doSearch(text){
+  const input=document.getElementById('search-input');
+  const q=(text!==undefined?text:input.value).trim().toLowerCase();
   if(!q) return;
-  const map={
-    'durc':'durc-online','pre-durc':'durc-online','vera':'durc-online','piattaforma unica':'durc-online',
-    'cigo':'cigo','cassa integrazione':'cigo','massimale':'cigo','omnia':'cigo',
-    'isopensione':'accompagnamento-pensione','esodo':'accompagnamento-pensione','accompagnamento':'accompagnamento-pensione',
-    'estratto conto':'posizione-contributiva','ricorso':'posizione-contributiva','uniemens':'posizione-contributiva','cassetto':'posizione-contributiva',
-    'esal':'fondi-sanitari-contrattuali','sani':'fondi-sanitari-contrattuali','fafp':'fondi-sanitari-contrattuali','care':'fondi-sanitari-contrattuali','fondosani':'fondi-sanitari-contrattuali',
-    'deducib':'sanita-fiscale','tuir':'sanita-fiscale','anagrafe':'sanita-fiscale','3615':'sanita-fiscale','3.615':'sanita-fiscale'
-  };
-  for(const [k,v] of Object.entries(map)){
-    if(q.includes(k)){showPage(v);document.getElementById('search-input').value='';return;}
+  for(const [k,v] of Object.entries(SEARCH_MAP)){
+    if(q.includes(k)){showPage(v);input.value='';const h=document.getElementById('hero-q');if(h)h.value='';return;}
   }
-  alert('Nessun risultato per "'+q+'". Prova: DURC, CIGO, isopensione, estratto conto, fondi sanitari.');
+  alert('Nessun tema trovato per "'+q+'". Prova: DURC, CIGO, isopensione, estratto conto, fondi sanitari — oppure chiedi all\'assistente virtuale.');
 }
 
+/* ── TOC + progress ── */
+function buildToc(pageId){
+  const box=document.getElementById('toc-links-'+pageId);
+  const kb=document.getElementById('kb-'+pageId);
+  if(!box||!kb) return;
+  box.innerHTML='';
+  kb.querySelectorAll('h2').forEach((h,i)=>{
+    if(!h.id) h.id='sec-'+pageId+'-'+i;
+    const t=h.textContent.trim().replace(/^\d+\.\s*/,'');
+    const a=document.createElement('a');
+    a.href='#'+h.id;
+    a.textContent=t.length>38?t.slice(0,36)+'…':t;
+    a.title=t;
+    a.onclick=e=>{e.preventDefault();window.scrollTo({top:h.getBoundingClientRect().top+window.scrollY-130,behavior:'smooth'});};
+    box.appendChild(a);
+  });
+}
+function updateToc(){
+  if(!PAGES[currentPage].article) return;
+  const box=document.getElementById('toc-links-'+currentPage);
+  const kb=document.getElementById('kb-'+currentPage);
+  if(!box||!kb) return;
+  let active=null;
+  kb.querySelectorAll('h2').forEach(h=>{if(h.getBoundingClientRect().top<=140) active=h;});
+  box.querySelectorAll('a').forEach(a=>a.classList.toggle('toc-active',!!active&&a.getAttribute('href')==='#'+active.id));
+  const act=box.querySelector('.toc-active');
+  if(act) act.scrollIntoView({block:'nearest',inline:'nearest'});
+}
+function updateProgress(){
+  const bar=document.getElementById('read-progress');
+  if(!PAGES[currentPage].article){bar.style.width='0';return;}
+  const d=document.documentElement;
+  const max=d.scrollHeight-d.clientHeight;
+  bar.style.width=(max>0?Math.min(100,window.scrollY/max*100):0)+'%';
+  const page=document.getElementById('page-'+currentPage);
+  bar.style.background=getComputedStyle(page).getPropertyValue('--tc').trim()||'var(--accent)';
+}
+window.addEventListener('scroll',()=>{updateToc();updateProgress();},{passive:true});
+
+/* ── ASSISTENTE AI ── */
 function toggleAI(){
-  document.getElementById('ai-panel').classList.toggle('open');
+  const p=document.getElementById('ai-panel');
+  p.classList.toggle('open');
+  if(p.classList.contains('open')) document.getElementById('ai-input').focus();
 }
-
+function escapeHtml(s){return s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+function linkify(text){
+  return text.replace(/(https?:\/\/[^\s<>"]+|www\.[^\s<>"]+\.[a-z]{2,}[^\s<>"]*)/gi,function(url){
+    const clean=url.replace(/[.,;:)]+$/,'');
+    const tail=url.slice(clean.length);
+    const href=clean.startsWith('http')?clean:'https://'+clean;
+    return '<a href="'+href+'" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline;">'+clean+'</a>'+tail;
+  });
+}
 let history=[];
-
 async function sendMsg(txt){
-  function linkify(text){
-    return text.replace(/(https?:\/\/[^\s<>"]+|www\.[^\s<>"]+\.[a-z]{2,}[^\s<>"]*)/gi, function(url){
-      const href = url.startsWith('http') ? url : 'https://' + url;
-      return '<a href="'+href+'" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline;">'+url+'</a>';
-    });
-  }
-
   const input=document.getElementById('ai-input');
-  const q=txt||input.value.trim();
+  const q=(txt||input.value).trim();
   if(!q) return;
   input.value='';
+  const panel=document.getElementById('ai-panel');
+  if(!panel.classList.contains('open')) panel.classList.add('open');
   const msgs=document.getElementById('ai-msgs');
-  msgs.innerHTML+=`<div class="msg user"><div class="msg-b">${q}</div></div>`;
+  msgs.insertAdjacentHTML('beforeend',`<div class="msg user"><div class="msg-b">${escapeHtml(q)}</div></div>`);
   const lid='l'+Date.now();
-  msgs.innerHTML+=`<div class="msg" id="${lid}"><div class="msg-av">🤖</div><div class="msg-b"></div></div>`;
+  msgs.insertAdjacentHTML('beforeend',`<div class="msg" id="${lid}"><div class="msg-av">🤖</div><div class="msg-b">…</div></div>`);
   msgs.scrollTop=msgs.scrollHeight;
-  document.getElementById('ai-send-btn').disabled=true;
+  const sendBtn=document.getElementById('ai-send-btn');
+  sendBtn.disabled=true;
   history.push({role:'user',content:q});
-  
   const bubble=document.querySelector('#'+lid+' .msg-b');
   let full='';
-  
   try{
     const res=await fetch('/ask',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:history})});
+    if(!res.ok||!res.body) throw new Error('HTTP '+res.status);
     const reader=res.body.getReader();
     const decoder=new TextDecoder();
-    
+    let raw='';
+    const parse=r=>r.split('data: ').slice(1).map(x=>x.endsWith('\n\n')?x.slice(0,-2):x).filter(x=>x!=='[DONE]').join('');
     while(true){
       const {done,value}=await reader.read();
       if(done) break;
-      const chunk=decoder.decode(value);
-      const lines=chunk.split('\n');
-      for(const line of lines){
-        if(line.startsWith('data: ')){
-          const text=line.slice(6);
-          if(text==='[DONE]') break;
-          full+=text;
-          bubble.innerHTML=linkify(full).replace(/\n/g,'<br>');
-          msgs.scrollTop=msgs.scrollHeight;
-        }
-      }
+      raw+=decoder.decode(value,{stream:true});
+      full=parse(raw);
+      bubble.innerHTML=linkify(escapeHtml(full.replace(/^\n+/,''))).replace(/\n/g,'<br>');
+      msgs.scrollTop=msgs.scrollHeight;
     }
+    full=parse(raw).trim();
+    if(!full) throw new Error('vuota');
     history.push({role:'assistant',content:full});
   }catch(e){
-    bubble.innerHTML='<span style="color:#DC2626;">Errore di connessione. Verifica la tua connessione e riprova.</span>';
+    history.pop();
+    bubble.innerHTML='<span style="color:#DC2626;">Errore di connessione. Riprova tra qualche istante.</span>';
   }
-  document.getElementById('ai-send-btn').disabled=false;
+  sendBtn.disabled=false;
   msgs.scrollTop=msgs.scrollHeight;
 }
 
-/* ── TOC AUTOMATICO ── */
-const tocMap={'posizione-contributiva':'toc-posizione','accompagnamento-pensione':'toc-accompagnamento','durc-online':'toc-durc','cigo':'toc-cigo','fondi-sanitari-contrattuali':'toc-fondi','sanita-fiscale':'toc-sfiscale'};
-
-function buildToc(pageId){
-  const tocId=tocMap[pageId];if(!tocId)return;
-  const toc=document.getElementById(tocId);if(!toc)return;
-  const page=document.getElementById('page-'+pageId);if(!page)return;
-  const headings=Array.from(page.querySelectorAll('.kb-article h2,.kb-article h3'));
-  if(!headings.length)return;
-  toc.querySelectorAll('a').forEach(a=>a.remove());
-  const mobileList=document.getElementById(tocId+'-mobile-list');
-  if(mobileList)mobileList.innerHTML='';
-  headings.forEach((h,i)=>{
-    if(!h.id)h.id='sec-'+pageId+'-'+i;
-    const text=h.textContent.trim();
-    const a=document.createElement('a');
-    a.href='#'+h.id;a.textContent=text;
-    if(h.tagName==='H3')a.classList.add('toc-h3');
-    a.addEventListener('click',function(e){e.preventDefault();h.scrollIntoView({behavior:'smooth',block:'start'});});
-    toc.appendChild(a);
-    if(mobileList){
-      const am=a.cloneNode(true);
-      am.addEventListener('click',function(e){e.preventDefault();h.scrollIntoView({behavior:'smooth',block:'start'});document.getElementById(tocId+'-mobile-list').classList.remove('open');});
-      mobileList.appendChild(am);
-    }
-  });
-}
-
-function updateActiveToc(){
-  const tocId=tocMap[currentPage];if(!tocId)return;
-  const toc=document.getElementById(tocId);if(!toc)return;
-  const page=document.getElementById('page-'+currentPage);if(!page)return;
-  const headings=Array.from(page.querySelectorAll('.kb-article h2,.kb-article h3'));
-  if(!headings.length)return;
-  const scrollY=window.scrollY+100;
-  let active=headings[0];
-  for(const h of headings){if(h.getBoundingClientRect().top+window.scrollY<=scrollY)active=h;}
-  toc.querySelectorAll('a').forEach(a=>a.classList.toggle('toc-active',a.getAttribute('href')==='#'+active.id));
-}
-
-window.addEventListener('scroll',updateActiveToc,{passive:true});
-
-function toggleTocMobile(btnEl){
-  const list=btnEl.nextElementSibling;if(list)list.classList.toggle('open');
-}
-/* ── TOC ORIZZONTALE + PROGRESS BAR + FADE-IN ── */
-const articlePages=['posizione-contributiva','accompagnamento-pensione','durc-online','cigo','fondi-sanitari-contrattuali','sanita-fiscale'];
-
-function buildToc(pageId){
-  if(!articlePages.includes(pageId))return;
-  const container=document.getElementById('toc-links-'+pageId);
-  if(!container)return;
-  const kb=document.getElementById('kb-'+pageId);
-  if(!kb)return;
-  const headings=Array.from(kb.querySelectorAll('h2'));
-  container.innerHTML='';
-  headings.forEach((h,i)=>{
-    if(!h.id)h.id='sec-'+pageId+'-'+i;
-    // Rimuovi testo del ::after (non serve)
-    const text=h.textContent.trim();
-    const a=document.createElement('a');
-    a.href='#'+h.id;
-    const clean=text.replace(/^\d+\.\s*/,'');a.textContent=clean.length>36?clean.substring(0,34)+'…':clean;
-    a.addEventListener('click',function(e){
-      e.preventDefault();
-      const top=h.getBoundingClientRect().top+window.scrollY-80;
-      window.scrollTo({top,behavior:'smooth'});
-    });
-    container.appendChild(a);
-  });
-}
-
-function updateActiveToc(){
-  if(!articlePages.includes(currentPage))return;
-  const container=document.getElementById('toc-links-'+currentPage);
-  if(!container)return;
-  const kb=document.getElementById('kb-'+currentPage);
-  if(!kb)return;
-  const headings=Array.from(kb.querySelectorAll('h2'));
-  const scrollY=window.scrollY+100;
-  let active=null;
-  for(const h of headings){
-    if(h.getBoundingClientRect().top+window.scrollY<=scrollY)active=h;
-  }
-  container.querySelectorAll('a').forEach(a=>{
-    a.classList.toggle('toc-active',active&&a.getAttribute('href')==='#'+active.id);
-  });
-}
-
-function updateProgressBar(){
-  const bar=document.getElementById('read-progress');
-  if(!bar)return;
-  if(!articlePages.includes(currentPage)){bar.style.width='0%';return;}
-  const h=document.documentElement;
-  const pct=Math.min(100,(h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100);
-  bar.style.width=pct+'%';
-  // Colore dinamico dal tema
-  const page=document.getElementById('page-'+currentPage);
-  if(page){
-    const tc=getComputedStyle(page.querySelector('.article-page')||page).getPropertyValue('--tc').trim();
-    if(tc)bar.style.background=tc;
-  }
-}
-
-function initFadeIn(){
-  const els=document.querySelectorAll('.fade-in');
-  const obs=new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
-  },{threshold:0.1});
-  els.forEach(el=>obs.observe(el));
-}
-
-window.addEventListener('scroll',()=>{updateActiveToc();updateProgressBar();},{passive:true});
-document.addEventListener('DOMContentLoaded',initFadeIn);
-
-function toggleTocMobile(btnEl){
-  const list=btnEl.nextElementSibling;if(list)list.classList.toggle('open');
-}
+showPage('home',false);
 </script>
 </body>
 </html>
