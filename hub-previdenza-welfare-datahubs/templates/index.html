@@ -4,232 +4,248 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hub Previdenza e Welfare — DataHubs</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --navy:#0F2A4A;--accent:#0284C7;
+  --brand:#1F5F9E;--brand-dark:#174A7C;--navy:#0F2A4A;--hot:#C8102E;
   --blue:#1d6fa4;--blue-bg:#EBF5FF;
   --amber:#92600A;--amber-bg:#FEF8EC;
   --green:#166534;--green-bg:#EDFAF4;
-  --bg:#F4F7FB;--surface:#fff;--surface-2:#F8FAFC;
-  --text:#1E293B;--text-soft:#475569;--muted:#94A3B8;
-  --border:#E2E8F0;--border-soft:#F1F5F9;
-  --title:#0F2A4A;
-  --header-h:64px;--sidebar-w:250px;--content-max:1180px;
-  --radius:14px;--shadow:0 2px 8px rgba(15,42,74,.06);--shadow-lg:0 10px 28px rgba(15,42,74,.12);
+  --bg:#fff;--surface:#fff;--surface-2:#F5F7FA;
+  --text:#222B36;--text-soft:#4B5563;--muted:#8A94A3;
+  --border:#E3E7EC;--title:#111A24;
+  --max:1320px;
+  --serif:'Source Serif 4',Georgia,serif;
 }
 body.dark{
-  --bg:#0F172A;--surface:#1E293B;--surface-2:#172033;
-  --text:#E2E8F0;--text-soft:#CBD5E1;--muted:#8193AB;
-  --border:#334155;--border-soft:#253247;
-  --title:#F1F5F9;
+  --bg:#0F172A;--surface:#162033;--surface-2:#1B2638;
+  --text:#E2E8F0;--text-soft:#C3CCD8;--muted:#8193AB;
+  --border:#2C3A50;--title:#F1F5F9;
   --blue-bg:#14304A;--amber-bg:#3A2C10;--green-bg:#123524;
   --blue:#60A5FA;--amber:#F2B544;--green:#4ADE80;
 }
 html{scroll-behavior:smooth;}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.5;min-height:100vh;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.5;}
 button{font-family:inherit;}
-a{color:inherit;}
-
-/* ── AREA COLORS ── */
+a{color:inherit;text-decoration:none;}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 32px;}
 .c-prev{--tc:var(--blue);--tc-bg:var(--blue-bg);}
 .c-welf{--tc:var(--amber);--tc-bg:var(--amber-bg);}
 .c-san{--tc:var(--green);--tc-bg:var(--green-bg);}
 
-/* ── HEADER ── */
-.header{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--header-h);background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 20px;gap:14px;}
-.icon-btn{width:38px;height:38px;border:1.5px solid var(--border);background:var(--surface);border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-soft);flex-shrink:0;transition:border-color .15s,background .15s;}
-.icon-btn:hover{border-color:var(--title);color:var(--title);}
-.icon-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
-.back-btn{display:none;align-items:center;gap:6px;height:38px;padding:0 14px 0 10px;border:1.5px solid var(--border);border-radius:20px;background:var(--surface);color:var(--text-soft);font-size:13px;font-weight:500;cursor:pointer;flex-shrink:0;}
-.back-btn:hover{border-color:var(--title);color:var(--title);}
-.back-btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
-.h-brand{display:flex;align-items:center;gap:10px;flex-shrink:0;text-decoration:none;cursor:pointer;}
-.h-brand img{height:36px;width:auto;}
-.h-name strong{display:block;font-size:14px;font-weight:700;color:var(--title);line-height:1.2;}
-.h-name span{display:block;font-size:11.5px;color:var(--muted);}
-.h-search{flex:1;max-width:380px;min-width:180px;display:flex;align-items:center;background:var(--surface-2);border:1.5px solid var(--border);border-radius:24px;padding:0 5px 0 14px;gap:8px;}
-.h-search:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px rgba(2,132,199,.12);}
-.h-search svg{width:15px;height:15px;stroke:var(--muted);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0;}
-.h-search input{flex:1;min-width:0;border:none;background:transparent;font-size:13.5px;color:var(--text);outline:none;padding:9px 0;font-family:inherit;}
-.h-search input::placeholder{color:var(--muted);}
-.search-go{width:30px;height:30px;background:var(--border);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;}
-.search-go:hover{background:var(--navy);}
-.search-go svg{width:13px;height:13px;stroke:var(--text-soft);stroke-width:2.5;}
-.search-go:hover svg{stroke:#fff;}
-.h-nav{display:flex;align-items:center;gap:2px;}
-.h-nav-item{padding:7px 13px;border-radius:20px;font-size:13.5px;font-weight:500;color:var(--text-soft);cursor:pointer;border:none;background:none;white-space:nowrap;}
-.h-nav-item:hover{color:var(--title);background:var(--border-soft);}
-.h-nav-item.active{color:var(--tc);background:var(--tc-bg);font-weight:600;}
-.h-right{margin-left:auto;display:flex;align-items:center;gap:8px;flex-shrink:0;}
-.theme-toggle{font-size:16px;}
-.btn-pill{display:flex;align-items:center;gap:5px;height:36px;padding:0 14px;border:1.5px solid var(--border);border-radius:20px;font-size:13px;font-weight:500;color:var(--text-soft);background:var(--surface);cursor:pointer;text-decoration:none;white-space:nowrap;}
-.btn-pill:hover{border-color:var(--title);color:var(--title);}
-.btn-logout{border-color:#FECACA;color:#DC2626;background:#FEF2F2;}
-.btn-logout:hover{background:#DC2626;color:#fff;border-color:#DC2626;}
-.h-avatar{width:34px;height:34px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:700;color:#fff;flex-shrink:0;}
-#read-progress{position:fixed;top:var(--header-h);left:0;height:3px;width:0;background:var(--accent);z-index:101;transition:width .1s linear;}
+/* ── TOP BAR ── */
+.topbar{background:var(--brand);color:#fff;position:sticky;top:0;z-index:100;}
+.topbar .wrap{display:flex;align-items:center;gap:18px;height:52px;}
+.tb-btn{display:flex;align-items:center;gap:7px;background:none;border:none;color:#fff;font-size:14px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;cursor:pointer;white-space:nowrap;padding:6px 0;}
+.tb-btn:hover{opacity:.85;}
+.tb-btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;}
+#back-btn{display:none;}
+.tb-search{display:flex;align-items:center;background:#fff;border-radius:22px;padding:0 6px 0 16px;width:300px;height:36px;}
+.tb-search input{flex:1;min-width:0;border:none;outline:none;font-size:14px;font-family:inherit;color:#222;background:transparent;}
+.tb-search button{background:none;border:none;cursor:pointer;width:28px;height:28px;display:flex;align-items:center;justify-content:center;}
+.tb-search svg{width:17px;height:17px;stroke:#111;fill:none;stroke-width:2.4;stroke-linecap:round;}
+.tb-right{margin-left:auto;display:flex;align-items:center;gap:6px;}
+.tb-right .tb-btn{padding:6px 10px;}
+.tb-sep{width:1px;height:18px;background:rgba(255,255,255,.3);}
+.tb-avatar{width:32px;height:32px;border-radius:50%;background:#fff;color:var(--brand);font-size:11.5px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-left:6px;}
 
-/* ── SIDEBAR ── */
-.sidebar{position:fixed;top:var(--header-h);left:0;bottom:0;width:var(--sidebar-w);background:var(--surface);border-right:1px solid var(--border);z-index:90;display:flex;flex-direction:column;transition:transform .25s ease;overflow-y:auto;}
-body.sb-collapsed .sidebar{transform:translateX(-100%);}
-.sb-brand{padding:18px 18px 14px;border-bottom:1px solid var(--border-soft);}
-.sb-brand img{height:44px;width:auto;display:block;}
-.sb-nav{padding:12px 10px 24px;}
-.sb-label{font-size:10.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);padding:14px 12px 6px;}
-.sb-item{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:10px;font-size:14px;font-weight:500;color:var(--text-soft);cursor:pointer;user-select:none;}
-.sb-item:hover{background:var(--border-soft);color:var(--title);}
-.sb-item.active{background:var(--tc-bg,var(--blue-bg));color:var(--title);font-weight:600;}
-.sb-icon{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--tc-bg,var(--blue-bg));}
-.sb-icon svg{width:16px;height:16px;stroke:var(--tc,var(--blue));fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
-.sb-sub{margin:2px 0 8px 25px;padding-left:14px;border-left:2px solid var(--border-soft);}
-.sb-subitem{display:block;padding:6px 10px;border-radius:8px;font-size:13px;color:var(--text-soft);cursor:pointer;line-height:1.35;}
-.sb-subitem:hover{color:var(--title);background:var(--border-soft);}
-.sb-subitem.active{color:var(--tc);font-weight:600;background:var(--tc-bg);}
+/* dropdown argomenti */
+.menu-pop{position:absolute;top:52px;left:0;right:0;background:var(--surface);border-bottom:1px solid var(--border);box-shadow:0 14px 30px rgba(0,0,0,.12);display:none;color:var(--text);}
+.menu-pop.open{display:block;}
+.menu-pop .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;padding-top:26px;padding-bottom:28px;height:auto;align-items:start;}
+.menu-col h4{font-size:13px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--tc);border-bottom:3px solid var(--tc);padding-bottom:8px;margin-bottom:10px;cursor:pointer;}
+.menu-col a{display:block;padding:7px 0;font-size:15px;font-weight:500;color:var(--title);cursor:pointer;border-bottom:1px solid var(--border);}
+.menu-col a:hover{color:var(--tc);}
 
-/* ── LAYOUT ── */
-.main{margin-left:var(--sidebar-w);padding-top:var(--header-h);min-width:0;transition:margin-left .25s ease;}
-body.sb-collapsed .main{margin-left:0;}
+/* ── MASTHEAD ── */
+.masthead .wrap{display:flex;align-items:center;justify-content:space-between;gap:30px;padding-top:18px;padding-bottom:18px;}
+.logo{display:flex;align-items:center;gap:14px;cursor:pointer;}
+.logo img{height:64px;width:auto;}
+.logo-txt strong{display:block;font-family:var(--serif);font-size:30px;font-weight:700;color:var(--title);line-height:1;letter-spacing:-.5px;}
+.logo-txt span{display:block;font-size:12.5px;font-weight:600;letter-spacing:2.2px;text-transform:uppercase;color:var(--muted);margin-top:6px;}
+.banner{flex:0 1 760px;display:flex;align-items:center;gap:20px;background:linear-gradient(110deg,#0F2A4A 0%,#1F5F9E 100%);border-radius:4px;padding:16px 22px;color:#fff;cursor:pointer;min-height:96px;overflow:hidden;position:relative;}
+.banner::after{content:'';position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(125,211,252,.25),transparent 70%);}
+.banner-txt strong{display:block;font-size:24px;font-weight:800;letter-spacing:-.3px;line-height:1.15;}
+.banner-txt span{display:block;font-size:15px;color:rgba(255,255,255,.8);margin-top:4px;}
+.banner-cta{margin-left:auto;background:#22A06B;color:#fff;font-weight:800;font-size:16px;padding:12px 24px;border-radius:26px;white-space:nowrap;position:relative;z-index:1;}
+.banner:hover .banner-cta{background:#1B8A5B;}
+
+/* ── SECTION NAV ── */
+.secnav{background:var(--surface-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.secnav .wrap{display:flex;align-items:center;gap:6px;height:62px;overflow-x:auto;scrollbar-width:none;}
+.secnav a{font-size:17px;font-weight:800;text-transform:uppercase;color:var(--title);padding:8px 10px;cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;}
+.secnav a:hover{color:var(--tc,var(--brand));}
+.secnav a.active{color:var(--tc);border-bottom-color:var(--tc);}
+.secnav .spacer{flex:1;}
+
+/* ── TICKER ── */
+.ticker{background:var(--navy);color:#fff;}
+.ticker .wrap{display:flex;align-items:center;gap:8px;height:44px;font-size:14.5px;font-weight:600;cursor:pointer;white-space:nowrap;overflow:hidden;}
+.ticker b{color:#FACC15;}
+.ticker span{overflow:hidden;text-overflow:ellipsis;}
+.ticker .wrap:hover span{text-decoration:underline;}
+
+/* ── PAGES ── */
 .page{display:none;}
-.page.active{display:block;animation:fade .25s ease;}
-@keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
-.wrap{max-width:var(--content-max);margin:0 auto;padding:0 40px;}
+.page.active{display:block;}
+main{padding:24px 0 60px;}
 
-/* ── HOME HERO ── */
-.hero{background:var(--navy);position:relative;overflow:hidden;}
-.hero::after{content:'';position:absolute;right:-120px;top:-120px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(125,211,252,.16),transparent 65%);pointer-events:none;}
-.hero .wrap{position:relative;z-index:1;padding-top:64px;padding-bottom:56px;}
-.hero-eyebrow{font-size:11.5px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:18px;}
-.hero h1{font-size:46px;font-weight:800;color:#fff;line-height:1.08;letter-spacing:-1.5px;margin-bottom:18px;max-width:720px;}
-.hero h1 em{font-style:normal;color:#7DD3FC;}
-.hero-desc{font-size:17px;color:rgba(255,255,255,.75);line-height:1.65;max-width:600px;margin-bottom:30px;}
-.hero-searchbar{display:flex;align-items:center;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);border-radius:12px;padding:6px 6px 6px 18px;max-width:600px;gap:12px;}
-.hero-searchbar:focus-within{border-color:rgba(255,255,255,.5);}
-.hero-searchbar svg{width:17px;height:17px;stroke:rgba(255,255,255,.55);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0;}
-.hero-searchbar input{flex:1;min-width:0;border:none;background:transparent;font-size:15px;color:#fff;outline:none;padding:10px 0;font-family:inherit;}
-.hero-searchbar input::placeholder{color:rgba(255,255,255,.45);}
-.hero-searchbar button{background:#fff;color:var(--navy);border:none;border-radius:8px;padding:10px 20px;font-size:13.5px;font-weight:700;cursor:pointer;white-space:nowrap;}
-.hero-searchbar button:hover{background:#E0F2FE;}
-.hero-stats{display:flex;flex-wrap:wrap;gap:20px 48px;margin-top:40px;padding-top:28px;border-top:1px solid rgba(255,255,255,.12);}
-.hero-stat strong{display:block;font-size:24px;font-weight:800;color:#fff;letter-spacing:-.5px;line-height:1.1;}
-.hero-stat span{display:block;font-size:12.5px;color:rgba(255,255,255,.55);margin-top:4px;}
+/* ── MEDIA ── */
+.media{position:relative;overflow:hidden;background:var(--tc-bg);display:block;}
+.media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;}
+.media.noimg{background:linear-gradient(135deg,var(--tc) 0%,var(--navy) 120%);}
+.media.noimg::after{content:attr(data-label);position:absolute;left:16px;bottom:12px;color:rgba(255,255,255,.9);font-weight:800;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
+.art:hover .media img{transform:scale(1.03);}
+.kicker{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--tc);}
+.badge{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:#22A06B;border-radius:4px;padding:2px 7px;margin-right:6px;}
+.byline{font-size:13.5px;color:var(--muted);}
+.art{cursor:pointer;display:block;}
+.art h2,.art h3{color:var(--title);transition:color .15s;}
+.art:hover h2,.art:hover h3{color:var(--tc);}
 
-/* ── HOME AREE ── */
-.section{padding:56px 0 24px;}
-.section-head{margin-bottom:26px;}
-.section-eyebrow{font-size:11.5px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
-.section-title{font-size:28px;font-weight:800;color:var(--title);letter-spacing:-.6px;}
-.section-sub{font-size:15px;color:var(--text-soft);margin-top:6px;max-width:640px;}
-.areas-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;}
-.area-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:box-shadow .2s,transform .2s,border-color .2s;}
-.area-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px);border-color:var(--tc);}
-.area-card-top{background:var(--tc-bg);padding:26px 26px 22px;border-top:4px solid var(--tc);position:relative;}
-.area-num{position:absolute;top:22px;right:24px;font-size:13px;font-weight:800;color:var(--tc);opacity:.55;}
-.area-ic{width:48px;height:48px;border-radius:12px;background:var(--surface);display:flex;align-items:center;justify-content:center;margin-bottom:16px;box-shadow:var(--shadow);}
-.area-ic svg{width:24px;height:24px;stroke:var(--tc);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
-.area-card h3{font-size:23px;font-weight:800;color:var(--title);letter-spacing:-.5px;margin-bottom:8px;}
-.area-card-top p{font-size:14.5px;color:var(--text-soft);line-height:1.6;}
-.area-card-body{padding:18px 26px 22px;flex:1;display:flex;flex-direction:column;}
-.area-temi-lbl{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
-.area-tema-link{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border-soft);font-size:14.5px;font-weight:500;color:var(--text);cursor:pointer;}
-.area-tema-link:last-of-type{border-bottom:none;}
-.area-tema-link::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--tc);flex-shrink:0;}
-.area-tema-link:hover{color:var(--tc);}
-.area-cta{margin-top:auto;padding-top:16px;display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--tc);}
-.area-cta svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s;}
-.area-card:hover .area-cta svg{transform:translateX(4px);}
+/* ── HOME GRID ── */
+.home-grid{display:grid;grid-template-columns:300px minmax(0,1fr) 300px;gap:36px;}
+.box-head{font-size:18px;font-weight:700;color:#fff;background:var(--hot);padding:8px 12px;}
+.box-head.blue{background:var(--brand);}
+.box-head.navy{background:var(--navy);}
+.side-list .art{padding:16px 0;border-bottom:1px solid var(--border);}
+.side-list .art h3{font-size:16px;font-weight:600;line-height:1.38;margin:6px 0 4px;}
+.side-feature .media{aspect-ratio:3/2;}
+.side-feature h3{font-size:17px;font-weight:600;line-height:1.38;margin:12px 0 4px;}
+.side-feature{padding-bottom:6px;}
+.lead .media{aspect-ratio:16/10;}
+.lead h2{font-size:30px;font-weight:600;line-height:1.25;margin:16px 0 10px;letter-spacing:-.3px;}
+.lead p{font-size:17px;color:var(--text-soft);line-height:1.65;margin-top:6px;}
+.lead{padding-bottom:22px;}
+.row-art{display:grid;grid-template-columns:150px minmax(0,1fr);gap:20px;padding:22px 0;border-top:1px solid var(--border);}
+.row-art .media{aspect-ratio:1/1;}
+.row-art h3{font-size:21px;font-weight:600;line-height:1.3;margin:4px 0 8px;}
+.row-art p{font-size:15px;color:var(--text-soft);line-height:1.6;}
 
-.info-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin:32px 0 64px;}
-.info-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 20px;}
-.info-item strong{display:block;font-size:14px;font-weight:700;color:var(--title);margin-bottom:4px;}
-.info-item span{font-size:13.5px;color:var(--text-soft);line-height:1.55;}
+/* right column */
+.promo{display:block;background:linear-gradient(160deg,#0F2A4A 0%,#1F5F9E 100%);color:#fff;padding:24px 22px;cursor:pointer;margin-bottom:28px;}
+.promo h4{font-size:22px;font-weight:800;line-height:1.2;color:#fff;margin-bottom:10px;text-transform:uppercase;}
+.promo p{font-size:14px;color:rgba(255,255,255,.85);line-height:1.55;margin-bottom:14px;}
+.promo .chips span{display:inline-block;background:rgba(255,255,255,.14);border-radius:4px;padding:4px 9px;font-size:12.5px;font-weight:600;margin:0 4px 6px 0;}
+.promo .btn{display:inline-block;margin-top:10px;background:var(--hot);color:#fff;font-weight:800;font-size:14px;padding:10px 20px;border-radius:22px;text-transform:uppercase;}
+.prontuario{margin-bottom:28px;}
+.pr-item{display:block;padding:14px 0;border-bottom:1px solid var(--border);cursor:pointer;}
+.pr-item strong{display:block;font-size:22px;font-weight:800;color:var(--tc);letter-spacing:-.3px;}
+.pr-item span{display:block;font-size:14.5px;font-weight:600;color:var(--title);line-height:1.35;margin-top:2px;}
+.pr-item em{display:block;font-style:normal;font-size:12.5px;color:var(--muted);margin-top:2px;}
+.pr-item:hover span{color:var(--tc);}
+.area-links .al{display:flex;align-items:center;padding:12px 0;border-bottom:1px solid var(--border);font-weight:700;color:var(--title);cursor:pointer;}
+.area-links .al::before{content:'';width:10px;height:10px;background:var(--tc);margin-right:10px;flex-shrink:0;}
+.area-links .al span{flex:1;}
+.area-links .al:hover{color:var(--tc);}
 
-/* ── PAGINA AREA ── */
-.page-head{background:var(--tc-bg);border-bottom:1px solid var(--border);}
-.page-head .wrap{padding-top:40px;padding-bottom:36px;}
-.crumb{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--tc);background:none;border:none;cursor:pointer;margin-bottom:14px;padding:0;}
-.crumb:hover{text-decoration:underline;text-underline-offset:3px;}
-.crumb svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
-.page-head h1{font-size:40px;font-weight:800;color:var(--title);letter-spacing:-1px;line-height:1.1;margin-bottom:10px;}
-.page-head .lead{font-size:16.5px;color:var(--text-soft);line-height:1.6;max-width:700px;}
-.page-head .cat{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--tc);margin-bottom:8px;}
-.temi-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;padding:36px 0 64px;}
-.tema-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);border-top:4px solid var(--tc);padding:24px 26px 20px;cursor:pointer;display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s,border-color .2s;}
-.tema-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px);border-color:var(--tc);}
-.tema-cat{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--tc);margin-bottom:10px;}
-.tema-card h3{font-size:19px;font-weight:700;color:var(--title);line-height:1.3;margin-bottom:8px;}
-.tema-card p{font-size:14.5px;color:var(--text-soft);line-height:1.6;margin-bottom:14px;}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;}
-.tag{font-size:12px;font-weight:600;color:var(--tc);background:var(--tc-bg);padding:4px 10px;border-radius:20px;}
-.tema-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px solid var(--border-soft);font-size:12.5px;color:var(--muted);}
-.tema-open{display:flex;align-items:center;gap:6px;font-size:13.5px;font-weight:700;color:var(--tc);}
-.tema-open svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s;}
-.tema-card:hover .tema-open svg{transform:translateX(4px);}
+/* sections per area in home */
+.home-sections{margin-top:44px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px;}
+.sec-head{display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid var(--tc);margin-bottom:16px;}
+.sec-head h3{font-size:17px;font-weight:800;text-transform:uppercase;color:#fff;background:var(--tc);padding:6px 12px;cursor:pointer;}
+.sec-head a{font-size:13px;font-weight:700;color:var(--tc);cursor:pointer;}
+.card-art .media{aspect-ratio:16/9;}
+.card-art h3{font-size:18px;font-weight:600;line-height:1.35;margin:12px 0 6px;}
+.card-art p{font-size:14px;color:var(--text-soft);line-height:1.55;}
+.card-art + .card-art{margin-top:18px;padding-top:18px;border-top:1px solid var(--border);}
+.card-art.compact{display:grid;grid-template-columns:110px minmax(0,1fr);gap:14px;}
+.card-art.compact .media{aspect-ratio:4/3;}
+.card-art.compact h3{font-size:15.5px;margin:2px 0 4px;}
 
-/* ── PAGINA TEMA ── */
-.toc-strip{position:sticky;top:var(--header-h);z-index:20;background:var(--surface);border-bottom:1px solid var(--border);}
-.toc-strip .wrap{display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:none;padding-top:10px;padding-bottom:10px;}
-.toc-strip .wrap::-webkit-scrollbar{display:none;}
-.toc-label{font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);white-space:nowrap;flex-shrink:0;margin-right:4px;}
-.toc-links{display:flex;gap:6px;}
-.toc-links a{font-size:12.5px;color:var(--text-soft);text-decoration:none;padding:5px 12px;border-radius:20px;background:var(--border-soft);white-space:nowrap;font-weight:500;}
-.toc-links a:hover,.toc-links a.toc-active{background:var(--tc-bg);color:var(--tc);font-weight:600;}
-.article-body{max-width:820px;padding-top:12px;padding-bottom:40px;}
-.kb-article{font-size:16.5px;color:var(--text);line-height:1.8;}
+/* ── AREA PAGE ── */
+.area-title{border-bottom:3px solid var(--tc);margin-bottom:24px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px;}
+.area-title h1{font-size:34px;font-weight:800;text-transform:uppercase;color:var(--tc);letter-spacing:-.3px;padding-bottom:8px;}
+.area-title p{font-size:15px;color:var(--text-soft);padding-bottom:12px;max-width:560px;text-align:right;}
+.area-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:44px;}
+
+/* ── ARTICLE PAGE ── */
+.crumbs{display:flex;align-items:center;flex-wrap:wrap;gap:8px;font-size:15px;font-weight:600;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.crumbs a{color:var(--brand);cursor:pointer;display:inline-flex;align-items:center;}
+body.dark .crumbs a{color:#7DB4EA;}
+.crumbs a:hover{text-decoration:underline;}
+.crumbs svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+.art-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:56px;}
+.art-main{max-width:880px;min-width:0;}
+.art-main h1{font-size:44px;font-weight:600;line-height:1.18;color:var(--title);letter-spacing:-.6px;margin-bottom:22px;}
+.meta{font-size:16px;color:var(--text-soft);line-height:1.9;}
+.meta a{color:var(--brand);}
+body.dark .meta a{color:#7DB4EA;}
+.meta svg{width:16px;height:16px;stroke:var(--muted);fill:none;stroke-width:2;vertical-align:-2px;margin-right:5px;}
+.in-art{margin:22px 0 4px;}
+.in-art .lbl{font-size:18px;color:var(--text-soft);margin-bottom:10px;}
+.in-art ul{padding-left:22px;}
+.in-art li{font-size:18px;line-height:1.5;margin-bottom:8px;color:var(--text-soft);}
+.in-art li a{color:var(--brand);cursor:pointer;}
+body.dark .in-art li a{color:#7DB4EA;}
+.in-art li a:hover{text-decoration:underline;}
+.share{display:flex;align-items:center;justify-content:space-between;gap:16px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:16px 0;margin:22px 0 26px;}
+.share .lbl{font-size:15px;color:var(--text-soft);}
+.share-btns{display:flex;gap:10px;}
+.share-btns button{width:52px;height:46px;border:none;border-radius:3px;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.share-btns button svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.share-btns .s-mail{background:#3B82F6;}.share-btns .s-link{background:#111;}.share-btns .s-print{background:#475569;}.share-btns .s-ai{background:#22A06B;}
+.art-figure{float:right;width:48%;margin:4px 0 18px 30px;}
+.art-figure .media{aspect-ratio:4/3;}
+.art-figure figcaption{font-size:12.5px;color:var(--muted);margin-top:6px;}
+.kb-article{font-size:18.5px;line-height:1.75;color:var(--text);}
+.kb-article::after{content:'';display:block;clear:both;}
 .kb-article h1{display:none;}
-.kb-article h2{font-size:22px;font-weight:800;color:var(--title);margin:44px 0 14px;letter-spacing:-.3px;line-height:1.25;padding-top:28px;border-top:1px solid var(--border);scroll-margin-top:130px;}
-.kb-article h2::after{content:'';display:block;width:32px;height:3px;background:var(--tc);border-radius:2px;margin-top:9px;}
-.kb-article h3{font-size:17.5px;font-weight:700;color:var(--title);margin:26px 0 10px;scroll-margin-top:130px;}
-.kb-article p{margin-bottom:16px;}
-.kb-article strong{color:var(--title);font-weight:700;}
-.kb-article em{color:var(--text-soft);font-size:15px;}
-.kb-article ul{list-style:none;margin:10px 0 20px;}
-.kb-article ul li{position:relative;padding-left:20px;margin-bottom:10px;}
-.kb-article ul li::before{content:'';position:absolute;left:2px;top:11px;width:6px;height:6px;border-radius:50%;background:var(--tc);}
-.kb-article ol{margin:10px 0 20px;padding-left:24px;}
-.kb-article ol li{margin-bottom:10px;}
-.kb-article blockquote{border-left:3px solid var(--tc);background:var(--tc-bg);padding:14px 20px;margin:22px 0;border-radius:0 10px 10px 0;color:var(--text);}
+.kb-article h2{font-size:27px;font-weight:600;color:var(--title);line-height:1.3;margin:40px 0 14px;scroll-margin-top:70px;}
+.kb-article h3{font-size:21px;font-weight:600;color:var(--title);margin:26px 0 10px;scroll-margin-top:70px;}
+.kb-article p{margin-bottom:18px;}
+.kb-article strong{font-weight:700;color:var(--title);}
+.kb-article em{color:var(--text-soft);}
+.kb-article ul,.kb-article ol{margin:6px 0 20px 26px;}
+.kb-article li{margin-bottom:8px;}
+.kb-article li::marker{color:var(--tc);}
+.kb-article blockquote{border-left:4px solid var(--tc);background:var(--tc-bg);padding:16px 22px;margin:24px 0;}
 .kb-article blockquote p{margin:0;}
-.kb-article table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px;display:block;overflow-x:auto;}
-.kb-article th{background:var(--navy);color:#fff;padding:11px 16px;text-align:left;font-weight:600;font-size:13px;}
-.kb-article td{padding:10px 16px;border-bottom:1px solid var(--border);color:var(--text-soft);vertical-align:top;line-height:1.55;}
+.kb-article table{width:100%;border-collapse:collapse;margin:22px 0;font-size:15px;display:block;overflow-x:auto;}
+.kb-article th{background:var(--navy);color:#fff;padding:11px 14px;text-align:left;font-weight:600;}
+.kb-article td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.55;}
 .kb-article tr:nth-child(even) td{background:var(--surface-2);}
 .kb-article hr{border:none;border-top:1px solid var(--border);margin:28px 0;}
-.kb-article a{color:var(--tc);text-decoration:underline;text-underline-offset:3px;font-weight:500;}
-.kb-article code{background:var(--border-soft);border-radius:5px;padding:1px 6px;font-size:14px;}
-.sources{max-width:820px;padding-bottom:72px;}
-.sources-lbl{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
-.source-link{display:flex;align-items:center;gap:14px;background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:14px 18px;margin-bottom:10px;text-decoration:none;}
-.source-link:hover{border-color:var(--tc);}
-.source-ic{width:36px;height:36px;border-radius:9px;background:var(--tc-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;}
-.source-link strong{display:block;font-size:14.5px;color:var(--title);}
-.source-link span{font-size:13px;color:var(--text-soft);}
-.source-arrow{margin-left:auto;color:var(--tc);font-weight:700;}
+.kb-article a{color:var(--brand);text-decoration:underline;text-underline-offset:3px;}
+body.dark .kb-article a{color:#7DB4EA;}
+.kb-article code{background:var(--surface-2);padding:1px 6px;border-radius:4px;font-size:16px;}
+.sources{margin-top:36px;border-top:3px solid var(--tc);padding-top:16px;}
+.sources h4{font-size:15px;font-weight:800;text-transform:uppercase;color:var(--tc);margin-bottom:10px;}
+.src{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);}
+.src strong{display:block;font-size:16px;color:var(--title);}
+.src span{font-size:14px;color:var(--text-soft);}
+.src:hover strong{color:var(--brand);text-decoration:underline;}
+.side-sticky{position:sticky;top:76px;}
+.related .art{padding:14px 0;border-bottom:1px solid var(--border);}
+.related .art h3{font-size:16px;font-weight:600;line-height:1.38;margin-top:4px;}
 
 /* ── CHI SIAMO ── */
-.cs-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);border-left:4px solid var(--tc);padding:26px 30px;margin-bottom:18px;}
-.cs-card h3{font-size:20px;font-weight:800;color:var(--title);margin-bottom:10px;}
-.cs-card p{font-size:15px;color:var(--text-soft);line-height:1.7;margin-bottom:10px;}
-.cs-rules{margin-top:14px;background:var(--surface-2);border-radius:10px;padding:16px 18px;}
-.cs-rules-title{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
-.cs-rule{display:flex;gap:10px;font-size:14px;color:var(--text-soft);line-height:1.55;margin-bottom:8px;}
-.cs-rule::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--tc);flex-shrink:0;margin-top:8px;}
+.about{max-width:860px;}
+.about h1{font-size:40px;font-weight:600;color:var(--title);margin-bottom:8px;}
+.about .lead-p{font-size:19px;color:var(--text-soft);margin-bottom:28px;}
+.about h2{font-size:24px;font-weight:600;color:var(--title);margin:30px 0 10px;padding-top:20px;border-top:1px solid var(--border);}
+.about p{font-size:17.5px;line-height:1.75;margin-bottom:14px;}
+.about ul{margin:6px 0 16px 24px;font-size:17px;line-height:1.7;}
+
+/* ── FOOTER ── */
+footer{background:var(--navy);color:rgba(255,255,255,.75);padding:36px 0;font-size:13.5px;}
+footer .wrap{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;}
+footer img{height:40px;border-radius:3px;}
+footer a{color:#fff;cursor:pointer;margin-right:18px;font-weight:600;}
 
 /* ── AI ── */
-.ai-fab{position:fixed;bottom:24px;right:24px;z-index:200;display:flex;flex-direction:column;align-items:flex-end;gap:6px;}
-.ai-fab-label{background:var(--navy);color:#fff;font-size:12px;font-weight:600;padding:5px 12px;border-radius:16px;box-shadow:var(--shadow);}
-.ai-fab-btn{width:54px;height:54px;background:var(--navy);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 16px rgba(15,42,74,.35);position:relative;transition:transform .15s;}
+.ai-fab{position:fixed;bottom:24px;right:24px;z-index:200;}
+.ai-fab-btn{width:58px;height:58px;background:var(--navy);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 20px rgba(15,42,74,.4);position:relative;transition:transform .15s;}
 .ai-fab-btn:hover{transform:scale(1.06);}
-.ai-online{position:absolute;top:2px;right:2px;width:12px;height:12px;background:#22c55e;border-radius:50%;border:2px solid #fff;}
-.ai-panel{position:fixed;bottom:96px;right:24px;width:370px;max-width:calc(100vw - 32px);max-height:calc(100vh - 140px);z-index:200;background:var(--surface);border-radius:14px;border:1px solid var(--border);box-shadow:var(--shadow-lg);overflow:hidden;display:none;flex-direction:column;}
+.ai-online{position:absolute;top:3px;right:3px;width:12px;height:12px;background:#22c55e;border-radius:50%;border:2px solid #fff;}
+.ai-panel{position:fixed;bottom:96px;right:24px;width:380px;max-width:calc(100vw - 32px);max-height:calc(100vh - 140px);z-index:200;background:var(--surface);border-radius:12px;border:1px solid var(--border);box-shadow:0 14px 40px rgba(0,0,0,.18);overflow:hidden;display:none;flex-direction:column;}
 .ai-panel.open{display:flex;}
 .ai-head{background:var(--navy);padding:12px 14px;display:flex;align-items:center;gap:10px;}
 .ai-head-av{width:30px;height:30px;background:rgba(14,165,233,.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;}
-.ai-head strong{font-size:13px;color:#fff;display:block;}
-.ai-head span{font-size:11px;color:rgba(255,255,255,.55);}
-.ai-head-x{margin-left:auto;font-size:15px;cursor:pointer;background:none;border:none;color:rgba(255,255,255,.6);}
-.ai-msgs{flex:1;min-height:200px;max-height:380px;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;}
+.ai-head strong{font-size:13.5px;color:#fff;display:block;}
+.ai-head span{font-size:11px;color:rgba(255,255,255,.6);}
+.ai-head-x{margin-left:auto;font-size:15px;cursor:pointer;background:none;border:none;color:rgba(255,255,255,.65);}
+.ai-msgs{flex:1;min-height:200px;max-height:400px;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;}
 .msg{display:flex;gap:8px;align-items:flex-start;}
 .msg-av{width:26px;height:26px;border-radius:7px;background:var(--blue-bg);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
 .msg-b{background:var(--surface-2);border:1px solid var(--border);border-radius:4px 12px 12px 12px;padding:10px 12px;font-size:13.5px;line-height:1.55;color:var(--text);max-width:88%;word-wrap:break-word;}
@@ -239,427 +255,218 @@ body.sb-collapsed .main{margin-left:0;}
 .ai-q{font-size:12px;padding:5px 10px;border-radius:16px;background:var(--blue-bg);color:var(--blue);cursor:pointer;font-weight:500;}
 .ai-inp{display:flex;gap:8px;padding:10px 12px;border-top:1px solid var(--border);}
 .ai-input{flex:1;border:1.5px solid var(--border);border-radius:20px;padding:9px 14px;font-size:13.5px;outline:none;font-family:inherit;background:var(--surface);color:var(--text);}
-.ai-input:focus{border-color:var(--accent);}
+.ai-input:focus{border-color:var(--brand);}
 .ai-send{width:38px;height:38px;border-radius:50%;background:var(--navy);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;}
 .ai-send:disabled{opacity:.5;}
 .ai-send svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
 .ai-disclaimer{font-size:10.5px;color:var(--muted);padding:0 14px 12px;line-height:1.45;}
 
+/* ── PRINT ── */
+@media print{.topbar,.masthead,.secnav,.ticker,.share,.art-side,footer,.ai-fab,.ai-panel,.in-art,.crumbs{display:none!important;}.art-grid{display:block;}}
+
 /* ── RESPONSIVE ── */
-@media(max-width:1500px){.h-nav{display:none;}}
 @media(max-width:1180px){
-  .areas-grid{grid-template-columns:1fr;}
-  .info-strip{grid-template-columns:repeat(2,minmax(0,1fr));}
-  .btn-chisiamo-txt{display:none;}
+  .home-grid{grid-template-columns:minmax(0,1fr) 300px;}
+  .home-grid .col-left{grid-column:1/-1;order:3;display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .home-sections{grid-template-columns:1fr;}
+  .banner-txt span{display:none;}
+  .art-grid,.area-grid{grid-template-columns:minmax(0,1fr) 280px;gap:36px;}
 }
-@media(max-width:980px){
-  .sidebar{transform:translateX(-100%);box-shadow:var(--shadow-lg);}
-  body.sb-open .sidebar{transform:none;}
-  .main,body.sb-collapsed .main{margin-left:0;}
-  .h-name{display:none;}
-  .temi-grid{grid-template-columns:1fr;}
+@media(max-width:900px){
+  .home-grid,.art-grid,.area-grid{grid-template-columns:1fr;}
+  .home-grid .col-left{grid-template-columns:1fr;}
+  .banner{display:none;}
+  .art-main h1{font-size:32px;}
+  .art-figure{float:none;width:100%;margin:0 0 20px;}
+  .side-sticky{position:static;}
+  .tb-search{width:200px;}
+  .tb-hide{display:none;}
+  .menu-pop .wrap{grid-template-columns:1fr;}
 }
-@media(max-width:700px){
-  .wrap{padding:0 18px;}
-  .hero h1{font-size:32px;}
-  .page-head h1{font-size:30px;}
-  .h-search,.btn-chisiamo,.h-avatar{display:none;}
-  .info-strip{grid-template-columns:1fr;}
+@media(max-width:600px){
+  .wrap{padding:0 16px;}
+  .tb-search{display:none;}
+  .logo img{height:46px;}
+  .logo-txt strong{font-size:22px;}
+  .lead h2{font-size:24px;}
+  .row-art{grid-template-columns:100px minmax(0,1fr);}
+  .row-art h3{font-size:17px;}
+  .row-art p{display:none;}
+  .area-title{flex-direction:column;align-items:flex-start;}
+  .area-title p{text-align:left;}
+  .share{flex-direction:column;align-items:flex-start;}
 }
 </style>
 </head>
 <body>
 
-<header class="header">
-  <button class="icon-btn" onclick="toggleSidebar()" title="Menu">
-    <svg viewBox="0 0 24 24"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
-  </button>
-  <button class="back-btn" id="back-btn" onclick="goBack()">
-    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Indietro
-  </button>
-  <a class="h-brand" onclick="showPage('home');return false;" href="#">
-    <img src="/static/images/Logo HUB Previdenza e Welfare.png" alt="Hub Previdenza e Welfare">
-    <div class="h-name"><strong>Hub Previdenza</strong><span>e Welfare</span></div>
-  </a>
-  <div class="h-search">
-    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-    <input type="text" id="search-input" placeholder="Cerca nella base documentale..." onkeydown="if(event.key==='Enter')doSearch()">
-    <button class="search-go" onclick="doSearch()" title="Cerca"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
-  </div>
-  <nav class="h-nav">
-    <button class="h-nav-item c-prev" data-area="previdenza" onclick="showPage('previdenza')">Previdenza</button>
-    <button class="h-nav-item c-welf" data-area="welfare" onclick="showPage('welfare')">Welfare aziendale</button>
-    <button class="h-nav-item c-san" data-area="sanita" onclick="showPage('sanita')">Sanità integrativa</button>
-  </nav>
-  <div class="h-right">
-    <button class="icon-btn theme-toggle" id="theme-btn" onclick="toggleTheme()" title="Cambia tema">☀️</button>
-    <button class="btn-pill btn-chisiamo" onclick="showPage('chisiamo')">ⓘ <span class="btn-chisiamo-txt">Chi siamo</span></button>
-    <a href="/logout" class="btn-pill btn-logout">Esci</a>
-    <div class="h-avatar">OP</div>
-  </div>
-</header>
-<div id="read-progress"></div>
-
-<aside class="sidebar" id="sidebar">
-  <div class="sb-brand"><img src="/static/images/datahubs_logo.jpg" alt="DataHubs"></div>
-  <div class="sb-nav">
-    <div class="sb-item" data-nav="home" onclick="showPage('home')">
-      <div class="sb-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>Home
-    </div>
-    <div class="sb-label">Aree tematiche</div>
-    <div class="c-prev">
-      <div class="sb-item" data-nav="previdenza" onclick="showPage('previdenza')">
-        <div class="sb-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>Previdenza
-      </div>
-      <div class="sb-sub">
-        <span class="sb-subitem" data-nav="posizione-contributiva" onclick="showPage('posizione-contributiva')">Posizione contributiva</span>
-        <span class="sb-subitem" data-nav="accompagnamento-pensione" onclick="showPage('accompagnamento-pensione')">Accompagnamento alla pensione</span>
-      </div>
-    </div>
-    <div class="c-welf">
-      <div class="sb-item" data-nav="welfare" onclick="showPage('welfare')">
-        <div class="sb-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg></div>Welfare aziendale
-      </div>
-      <div class="sb-sub">
-        <span class="sb-subitem" data-nav="durc-online" onclick="showPage('durc-online')">DURC Online</span>
-        <span class="sb-subitem" data-nav="cigo" onclick="showPage('cigo')">Cassa Integrazione (CIGO)</span>
-      </div>
-    </div>
-    <div class="c-san">
-      <div class="sb-item" data-nav="sanita" onclick="showPage('sanita')">
-        <div class="sb-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>Sanità integrativa
-      </div>
-      <div class="sb-sub">
-        <span class="sb-subitem" data-nav="fondi-sanitari-contrattuali" onclick="showPage('fondi-sanitari-contrattuali')">Fondi sanitari contrattuali</span>
-        <span class="sb-subitem" data-nav="sanita-fiscale" onclick="showPage('sanita-fiscale')">Regime fiscale</span>
-      </div>
-    </div>
-  </div>
-</aside>
-
-<main class="main">
-
-<!-- ═════════ HOME ═════════ -->
-<section class="page active" id="page-home">
-  <div class="hero">
-    <div class="wrap">
-      <div class="hero-eyebrow">Hub Previdenza e Welfare · DataHubs</div>
-      <h1>Previdenza e Welfare,<br><em>più semplici da capire.</em></h1>
-      <p class="hero-desc">Un unico punto di accesso per orientarti tra norme, adempimenti e servizi di INPS, Agenzia delle Entrate e Ministero della Salute.</p>
-      <div class="hero-searchbar">
-        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input id="hero-q" type="text" placeholder="Cerca un tema: DURC, CIGO, isopensione, fondi sanitari…" onkeydown="if(event.key==='Enter')doSearch(this.value)">
-        <button onclick="doSearch(document.getElementById('hero-q').value)">Cerca →</button>
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat"><strong>3</strong><span>Aree tematiche</span></div>
-        <div class="hero-stat"><strong>6</strong><span>Temi certificati</span></div>
-        <div class="hero-stat"><strong>INPS · AE · Min. Salute</strong><span>Fonti ufficiali</span></div>
-        <div class="hero-stat"><strong>AI</strong><span>Assistente integrato</span></div>
-      </div>
-    </div>
-  </div>
-
+<!-- ═════════ TOP BAR ═════════ -->
+<div class="topbar">
   <div class="wrap">
-    <div class="section">
-      <div class="section-head">
-        <div class="section-eyebrow">Esplora</div>
-        <div class="section-title">Le aree tematiche</div>
-        <div class="section-sub">Scegli un'area per vedere tutti i temi, oppure apri direttamente un tema.</div>
-      </div>
-      <div class="areas-grid">
-        <div class="area-card c-prev" onclick="showPage('previdenza')">
-          <div class="area-card-top">
-            <div class="area-num">01</div>
-            <div class="area-ic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
-            <h3>Previdenza</h3>
-            <p>Contributi, posizione contributiva, correttezza dei versamenti e accompagnamento alla pensione.</p>
+    <button class="tb-btn" id="back-btn" onclick="goBack()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Indietro</button>
+    <button class="tb-btn" onclick="toggleMenu(event)"><svg viewBox="0 0 24 24"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>Argomenti</button>
+    <div class="tb-search">
+      <input type="text" id="search-input" placeholder="cerca nel sito" onkeydown="if(event.key==='Enter')doSearch()">
+      <button onclick="doSearch()" title="Cerca"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16" y2="16"/></svg></button>
+    </div>
+    <div class="tb-right">
+      <button class="tb-btn tb-hide" onclick="toggleAI(true)">Assistente AI</button>
+      <div class="tb-sep tb-hide"></div>
+      <button class="tb-btn tb-hide" onclick="showPage('chisiamo')">Chi siamo</button>
+      <div class="tb-sep tb-hide"></div>
+      <button class="tb-btn" id="theme-btn" onclick="toggleTheme()" title="Cambia tema">☀️</button>
+      <div class="tb-sep"></div>
+      <a class="tb-btn" href="/logout"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Esci</a>
+      <div class="tb-avatar">OP</div>
+    </div>
+  </div>
+  <div class="menu-pop" id="menu-pop"><div class="wrap" id="menu-cols"></div></div>
+</div>
+
+<!-- ═════════ MASTHEAD ═════════ -->
+<div class="masthead">
+  <div class="wrap">
+    <div class="logo" onclick="showPage('home')">
+      <img src="/static/images/Logo HUB Previdenza e Welfare.png" alt="Hub Previdenza e Welfare">
+      <div class="logo-txt"><strong>Hub Previdenza e Welfare</strong><span>Il punto di riferimento per il Polo</span></div>
+    </div>
+    <div class="banner" onclick="toggleAI(true)">
+      <div class="banner-txt"><strong>Un dubbio su contributi, DURC o CIGO?</strong><span>Chiedi al P&amp;W Advisor: risposte dalle fonti certificate, con il riferimento normativo.</span></div>
+      <div class="banner-cta">Chiedi ora »</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═════════ SECTION NAV ═════════ -->
+<nav class="secnav">
+  <div class="wrap">
+    <a class="c-prev" data-area="previdenza" onclick="showPage('previdenza')">Previdenza</a>
+    <a class="c-welf" data-area="welfare" onclick="showPage('welfare')">Welfare aziendale</a>
+    <a class="c-san" data-area="sanita" onclick="showPage('sanita')">Sanità integrativa</a>
+    <div class="spacer"></div>
+    <a onclick="toggleAI(true)">Assistente AI</a>
+    <a onclick="showPage('chisiamo')">Chi siamo</a>
+  </div>
+</nav>
+
+<!-- ═════════ TICKER ═════════ -->
+<div class="ticker">
+  <div class="wrap" onclick="showPage('cigo')"><b>Ottobre 2026:</b><span>CIGO per emergenza climatica nei settori edile e lapideo fino al 31 dicembre 2026 (Msg. INPS 2418/2026)</span></div>
+</div>
+
+<main>
+  <div class="wrap">
+    <!-- HOME -->
+    <section class="page active" id="page-home">
+      <div class="home-grid">
+        <aside class="col-left">
+          <div>
+            <div class="box-head">In evidenza</div>
+            <div id="home-left-feature"></div>
           </div>
-          <div class="area-card-body">
-            <div class="area-temi-lbl">Temi</div>
-            <div class="area-tema-link" onclick="event.stopPropagation();showPage('posizione-contributiva')">Posizione contributiva e correttezza versamenti</div>
-            <div class="area-tema-link" onclick="event.stopPropagation();showPage('accompagnamento-pensione')">Prestazioni di accompagnamento alla pensione</div>
-            <div class="area-cta">Esplora Previdenza <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-          </div>
+          <div class="side-list" id="home-left-list"></div>
+        </aside>
+        <div class="col-center">
+          <div id="home-lead"></div>
+          <div id="home-rows"></div>
         </div>
-        <div class="area-card c-welf" onclick="showPage('welfare')">
-          <div class="area-card-top">
-            <div class="area-num">02</div>
-            <div class="area-ic"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg></div>
-            <h3>Welfare aziendale</h3>
-            <p>Regolarità contributiva, DURC e ammortizzatori sociali per le imprese.</p>
+        <aside class="col-right">
+          <div class="promo" onclick="toggleAI(true)">
+            <h4>Il P&amp;W Advisor risponde in pochi secondi</h4>
+            <p>L'assistente AI dell'Hub consulta la base documentale certificata e cita sempre circolare e data.</p>
+            <div class="chips"><span>Fonti ufficiali</span><span>Zero invenzioni</span><span>Sempre attivo</span></div>
+            <span class="btn">Fai una domanda</span>
           </div>
-          <div class="area-card-body">
-            <div class="area-temi-lbl">Temi</div>
-            <div class="area-tema-link" onclick="event.stopPropagation();showPage('durc-online')">DURC Online</div>
-            <div class="area-tema-link" onclick="event.stopPropagation();showPage('cigo')">Cassa Integrazione Guadagni Ordinaria (CIGO)</div>
-            <div class="area-cta">Esplora Welfare aziendale <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+          <div class="prontuario">
+            <div class="box-head blue">Prontuario 2026</div>
+            <a class="pr-item c-welf" onclick="showPage('cigo')"><strong>1.423,69 €</strong><span>Massimale mensile lordo CIGO 2026</span><em>Circ. INPS 4/2026</em></a>
+            <a class="pr-item c-welf" onclick="showPage('cigo')"><strong>80%</strong><span>Integrazione CIGO della retribuzione globale</span><em>D.Lgs. 148/2015</em></a>
+            <a class="pr-item c-san" onclick="showPage('sanita-fiscale')"><strong>3.615,20 €</strong><span>Plafond annuo di deducibilità dei contributi ai fondi sanitari</span><em>Artt. 10 e 51 TUIR</em></a>
+            <a class="pr-item c-san" onclick="showPage('sanita-fiscale')"><strong>10%</strong><span>Contributo di solidarietà sulla quota datore ai fondi sanitari</span><em>Circ. INPS 263/1997</em></a>
           </div>
-        </div>
-        <div class="area-card c-san" onclick="showPage('sanita')">
-          <div class="area-card-top">
-            <div class="area-num">03</div>
-            <div class="area-ic"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
-            <h3>Sanità integrativa</h3>
-            <p>Fondi sanitari contrattuali e regime fiscale della sanità integrativa.</p>
+          <div class="area-links">
+            <div class="box-head navy">Aree tematiche</div>
+            <a class="al c-prev" onclick="showPage('previdenza')"><span>Previdenza</span>›</a>
+            <a class="al c-welf" onclick="showPage('welfare')"><span>Welfare aziendale</span>›</a>
+            <a class="al c-san" onclick="showPage('sanita')"><span>Sanità integrativa</span>›</a>
           </div>
-          <div class="area-card-body">
-            <div class="area-temi-lbl">Temi</div>
-            <div class="area-tema-link" onclick="event.stopPropagation();showPage('fondi-sanitari-contrattuali')">Fondi sanitari contrattuali — contribuzione obbligatoria</div>
-            <div class="area-tema-link" onclick="event.stopPropagation();showPage('sanita-fiscale')">Fondi sanitari — regime fiscale e agevolazioni</div>
-            <div class="area-cta">Esplora Sanità integrativa <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-          </div>
-        </div>
+        </aside>
       </div>
-    </div>
+      <div class="home-sections" id="home-sections"></div>
+    </section>
 
-    <div class="info-strip">
-      <div class="info-item"><strong>Fonti certificate</strong><span>INPS, Agenzia delle Entrate, Ministero della Salute</span></div>
-      <div class="info-item"><strong>Come consultare</strong><span>Naviga per area o cerca un argomento dalla barra in alto</span></div>
-      <div class="info-item"><strong>Servizi collegati</strong><span>In ogni tema i link ai servizi e alle procedure ufficiali</span></div>
-      <div class="info-item"><strong>Assistente AI</strong><span>Domande in linguaggio naturale — in basso a destra</span></div>
-    </div>
-  </div>
-</section>
+    <!-- AREE (popolate da JS) -->
+    <section class="page" id="page-previdenza"></section>
+    <section class="page" id="page-welfare"></section>
+    <section class="page" id="page-sanita"></section>
 
-<!-- ═════════ AREA: PREVIDENZA ═════════ -->
-<section class="page c-prev" id="page-previdenza">
-  <div class="page-head"><div class="wrap">
-    <button class="crumb" onclick="showPage('home')"><svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Home</button>
-    <h1>Previdenza</h1>
-    <p class="lead">Contributi, posizione contributiva, correttezza dei versamenti e adempimenti previdenziali.</p>
-  </div></div>
-  <div class="wrap"><div class="temi-grid">
-    <div class="tema-card" onclick="showPage('posizione-contributiva')">
-      <div class="tema-cat">Previdenza · INPS</div>
-      <h3>Posizione contributiva e correttezza versamenti</h3>
-      <p>Estratto conto contributivo, verifica versamenti, ricorsi amministrativi e unicità della posizione aziendale.</p>
-      <div class="tags"><span class="tag">Estratto conto</span><span class="tag">Ricorsi INPS</span><span class="tag">UniEmens</span><span class="tag">Cassetto Previdenziale</span></div>
-      <div class="tema-foot"><span>3 fonti · Set 2025</span><span class="tema-open">Apri il tema <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></div>
-    </div>
-    <div class="tema-card" onclick="showPage('accompagnamento-pensione')">
-      <div class="tema-cat">Previdenza · INPS</div>
-      <h3>Prestazioni di accompagnamento alla pensione</h3>
-      <p>Isopensione, Fondi di solidarietà, requisiti, accordo aziendale e agevolazioni fiscali 2026.</p>
-      <div class="tags"><span class="tag">Isopensione</span><span class="tag">Fondi solidarietà</span><span class="tag">Esodo</span><span class="tag">Contributivi puri</span></div>
-      <div class="tema-foot"><span>5 fonti · Set 2026</span><span class="tema-open">Apri il tema <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></div>
-    </div>
-  </div></div>
-</section>
+    <!-- ARTICOLI (popolati da JS) -->
+    <section class="page" id="page-posizione-contributiva"></section>
+    <section class="page" id="page-accompagnamento-pensione"></section>
+    <section class="page" id="page-durc-online"></section>
+    <section class="page" id="page-cigo"></section>
+    <section class="page" id="page-fondi-sanitari-contrattuali"></section>
+    <section class="page" id="page-sanita-fiscale"></section>
 
-<!-- ═════════ AREA: WELFARE ═════════ -->
-<section class="page c-welf" id="page-welfare">
-  <div class="page-head"><div class="wrap">
-    <button class="crumb" onclick="showPage('home')"><svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Home</button>
-    <h1>Welfare aziendale</h1>
-    <p class="lead">Regolarità contributiva, DURC e ammortizzatori sociali.</p>
-  </div></div>
-  <div class="wrap"><div class="temi-grid">
-    <div class="tema-card" onclick="showPage('durc-online')">
-      <div class="tema-cat">Welfare aziendale · INPS</div>
-      <h3>DURC Online</h3>
-      <p>Verifica regolarità contributiva, Piattaforma Unica INPS, Ve.R.A., Simulazione DURC, Pre-DURC e Delega Master.</p>
-      <div class="tags"><span class="tag">Ve.R.A.</span><span class="tag">Pre-DURC</span><span class="tag">Delega Master</span><span class="tag">Piattaforma Unica</span></div>
-      <div class="tema-foot"><span>6 fonti · Nov 2024</span><span class="tema-open">Apri il tema <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></div>
-    </div>
-    <div class="tema-card" onclick="showPage('cigo')">
-      <div class="tema-cat">Welfare aziendale · INPS</div>
-      <h3>Cassa Integrazione Guadagni Ordinaria (CIGO)</h3>
-      <p>Datori ammessi, causali, OMNIA IS, massimale 2026 (1.423,69 €), contribuzione addizionale e UniEmens.</p>
-      <div class="tags"><span class="tag">OMNIA IS</span><span class="tag">UniEmens</span><span class="tag">Massimale 2026</span><span class="tag">EONE</span></div>
-      <div class="tema-foot"><span>4 fonti · Lug 2026</span><span class="tema-open">Apri il tema <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></div>
-    </div>
-  </div></div>
-</section>
-
-<!-- ═════════ AREA: SANITÀ ═════════ -->
-<section class="page c-san" id="page-sanita">
-  <div class="page-head"><div class="wrap">
-    <button class="crumb" onclick="showPage('home')"><svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Home</button>
-    <h1>Sanità integrativa</h1>
-    <p class="lead">Fondi sanitari contrattuali e regime fiscale della sanità integrativa.</p>
-  </div></div>
-  <div class="wrap"><div class="temi-grid">
-    <div class="tema-card" onclick="showPage('fondi-sanitari-contrattuali')">
-      <div class="tema-cat">Sanità integrativa · INPS</div>
-      <h3>Fondi sanitari contrattuali — contribuzione obbligatoria</h3>
-      <p>Meccanismo F24/UniEmens per ENFEA Salute, FASIFAR, FONDOSANI, INNOVACARE. Convenzioni al 31/12/2026.</p>
-      <div class="tags"><span class="tag">F24</span><span class="tag">UniEmens</span><span class="tag">ESAL · FAFP · SANI · CARE</span></div>
-      <div class="tema-foot"><span>4 circolari · Set 2026</span><span class="tema-open">Apri il tema <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></div>
-    </div>
-    <div class="tema-card" onclick="showPage('sanita-fiscale')">
-      <div class="tema-cat">Sanità integrativa · AE · Min. Salute</div>
-      <h3>Fondi sanitari — regime fiscale e agevolazioni</h3>
-      <p>Tipologie A e B, deducibilità fino a 3.615,20 € (art. 10 TUIR), non imponibilità (art. 51 TUIR) e Anagrafe Min. Salute.</p>
-      <div class="tags"><span class="tag">Art. 10 TUIR</span><span class="tag">Art. 51 TUIR</span><span class="tag">Anagrafe fondi</span><span class="tag">3.615,20 €</span></div>
-      <div class="tema-foot"><span>AE + Min. Salute · Mag 2025</span><span class="tema-open">Apri il tema <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></div>
-    </div>
-  </div></div>
-</section>
-
-<!-- ═════════ TEMA: POSIZIONE CONTRIBUTIVA ═════════ -->
-<section class="page c-prev article" id="page-posizione-contributiva">
-  <div class="page-head"><div class="wrap">
-    <button class="crumb" onclick="showPage('previdenza')"><svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Previdenza</button>
-    <div class="cat">Previdenza · INPS</div>
-    <h1>Posizione contributiva e correttezza versamenti</h1>
-    <p class="lead">Estratto conto contributivo, verifica versamenti, ricorsi amministrativi e unicità della posizione aziendale.</p>
-  </div></div>
-  <div class="toc-strip"><div class="wrap"><span class="toc-label">In questa guida</span><div class="toc-links" id="toc-links-posizione-contributiva"></div></div></div>
-  <div class="wrap">
-    <div class="article-body"><div class="kb-article" id="kb-posizione-contributiva">{{ kb.posizione_contributiva | safe }}</div></div>
-    <div class="sources">
-      <div class="sources-lbl">Fonti ufficiali</div>
-      <a class="source-link" href="https://www.inps.it" target="_blank" rel="noopener"><div class="source-ic">🔗</div><div><strong>Portale INPS — Estratto conto contributivo</strong><span>inps.it → cerca "estratto conto contributivo"</span></div><span class="source-arrow">→</span></a>
-      <a class="source-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank" rel="noopener"><div class="source-ic">📄</div><div><strong>Archivio circolari e messaggi INPS</strong><span>Cerca: Msg. 2553/2025 · Circ. 48/2023 · Msg. 1900/2023</span></div><span class="source-arrow">→</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- ═════════ TEMA: ACCOMPAGNAMENTO PENSIONE ═════════ -->
-<section class="page c-prev article" id="page-accompagnamento-pensione">
-  <div class="page-head"><div class="wrap">
-    <button class="crumb" onclick="showPage('previdenza')"><svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Previdenza</button>
-    <div class="cat">Previdenza · INPS</div>
-    <h1>Prestazioni di accompagnamento alla pensione</h1>
-    <p class="lead">Isopensione, accordo aziendale, procedura INPS, agevolazioni fiscali 2026 e tutele per nuovi requisiti pensionistici.</p>
-  </div></div>
-  <div class="toc-strip"><div class="wrap"><span class="toc-label">In questa guida</span><div class="toc-links" id="toc-links-accompagnamento-pensione"></div></div></div>
-  <div class="wrap">
-    <div class="article-body"><div class="kb-article" id="kb-accompagnamento-pensione">{{ kb.accompagnamento_pensione | safe }}</div></div>
-    <div class="sources">
-      <div class="sources-lbl">Fonti ufficiali</div>
-      <a class="source-link" href="https://www.inps.it" target="_blank" rel="noopener"><div class="source-ic">🔗</div><div><strong>Portale INPS — Prestazioni di esodo</strong><span>inps.it → cerca "prestazioni di esodo accompagnamento pensione"</span></div><span class="source-arrow">→</span></a>
-      <a class="source-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank" rel="noopener"><div class="source-ic">📄</div><div><strong>Archivio circolari INPS</strong><span>Cerca: Circ. 41/2026 · Msg. 2829/2026 · Circ. 104/2026 · Circ. 119/2013</span></div><span class="source-arrow">→</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- ═════════ TEMA: DURC ═════════ -->
-<section class="page c-welf article" id="page-durc-online">
-  <div class="page-head"><div class="wrap">
-    <button class="crumb" onclick="showPage('welfare')"><svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Welfare aziendale</button>
-    <div class="cat">Welfare aziendale · INPS</div>
-    <h1>DURC Online</h1>
-    <p class="lead">Verifica regolarità contributiva, Piattaforma Unica INPS, Ve.R.A., Simulazione DURC, Pre-DURC e Delega Master.</p>
-  </div></div>
-  <div class="toc-strip"><div class="wrap"><span class="toc-label">In questa guida</span><div class="toc-links" id="toc-links-durc-online"></div></div></div>
-  <div class="wrap">
-    <div class="article-body"><div class="kb-article" id="kb-durc-online">{{ kb.durc_online | safe }}</div></div>
-    <div class="sources">
-      <div class="sources-lbl">Fonti ufficiali</div>
-      <a class="source-link" href="https://www.inps.it" target="_blank" rel="noopener"><div class="source-ic">🔗</div><div><strong>Portale INPS — DURC Online</strong><span>inps.it → Prestazioni e Servizi → cerca "DURC Online"</span></div><span class="source-arrow">→</span></a>
-      <a class="source-link" href="https://www.inail.it/cs/internet/attivita/prevenzione-e-sicurezza/durc-online.html" target="_blank" rel="noopener"><div class="source-ic">🔗</div><div><strong>Portale INAIL — DURC Online</strong><span>Accesso alternativo tramite portale INAIL</span></div><span class="source-arrow">→</span></a>
-      <a class="source-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank" rel="noopener"><div class="source-ic">📄</div><div><strong>Archivio circolari INPS</strong><span>Cerca: Msg. 3662/2024 · Msg. 4693/2023 · Circ. 146/2021</span></div><span class="source-arrow">→</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- ═════════ TEMA: CIGO ═════════ -->
-<section class="page c-welf article" id="page-cigo">
-  <div class="page-head"><div class="wrap">
-    <button class="crumb" onclick="showPage('welfare')"><svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Welfare aziendale</button>
-    <div class="cat">Welfare aziendale · INPS</div>
-    <h1>Cassa Integrazione Guadagni Ordinaria (CIGO)</h1>
-    <p class="lead">Datori ammessi, causali, OMNIA IS, massimali 2026, contribuzione addizionale e conguaglio UniEmens.</p>
-  </div></div>
-  <div class="toc-strip"><div class="wrap"><span class="toc-label">In questa guida</span><div class="toc-links" id="toc-links-cigo"></div></div></div>
-  <div class="wrap">
-    <div class="article-body"><div class="kb-article" id="kb-cigo">{{ kb.cigo | safe }}</div></div>
-    <div class="sources">
-      <div class="sources-lbl">Fonti ufficiali</div>
-      <a class="source-link" href="https://www.inps.it" target="_blank" rel="noopener"><div class="source-ic">🔗</div><div><strong>Portale INPS — Cassa Integrazione</strong><span>inps.it → cerca "CIGO cassa integrazione ordinaria"</span></div><span class="source-arrow">→</span></a>
-      <a class="source-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank" rel="noopener"><div class="source-ic">📄</div><div><strong>Archivio circolari INPS</strong><span>Cerca: Circ. 5/2025 · Circ. 4/2026 · Msg. 2207/2026</span></div><span class="source-arrow">→</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- ═════════ TEMA: FONDI SANITARI CONTRATTUALI ═════════ -->
-<section class="page c-san article" id="page-fondi-sanitari-contrattuali">
-  <div class="page-head"><div class="wrap">
-    <button class="crumb" onclick="showPage('sanita')"><svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Sanità integrativa</button>
-    <div class="cat">Sanità integrativa · INPS</div>
-    <h1>Fondi sanitari contrattuali — contribuzione obbligatoria</h1>
-    <p class="lead">Meccanismo F24/UniEmens per i principali fondi sanitari contrattuali. Convenzioni al 31/12/2026.</p>
-  </div></div>
-  <div class="toc-strip"><div class="wrap"><span class="toc-label">In questa guida</span><div class="toc-links" id="toc-links-fondi-sanitari-contrattuali"></div></div></div>
-  <div class="wrap">
-    <div class="article-body"><div class="kb-article" id="kb-fondi-sanitari-contrattuali">{{ kb.fondi_sanitari_contrattuali | safe }}</div></div>
-    <div class="sources">
-      <div class="sources-lbl">Fonti ufficiali</div>
-      <a class="source-link" href="https://www.inps.it" target="_blank" rel="noopener"><div class="source-ic">🔗</div><div><strong>Portale INPS — UniEmens</strong><span>inps.it → cerca "UniEmens datori di lavoro privati"</span></div><span class="source-arrow">→</span></a>
-      <a class="source-link" href="https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html" target="_blank" rel="noopener"><div class="source-ic">📄</div><div><strong>Archivio circolari INPS</strong><span>Cerca le circolari sui fondi sanitari contrattuali</span></div><span class="source-arrow">→</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- ═════════ TEMA: SANITÀ FISCALE ═════════ -->
-<section class="page c-san article" id="page-sanita-fiscale">
-  <div class="page-head"><div class="wrap">
-    <button class="crumb" onclick="showPage('sanita')"><svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Sanità integrativa</button>
-    <div class="cat">Sanità integrativa · AE · Min. Salute · INPS</div>
-    <h1>Fondi sanitari — regime fiscale e agevolazioni</h1>
-    <p class="lead">Tipologie A e B, deducibilità art. 10 TUIR, non imponibilità art. 51 TUIR e Anagrafe Ministero della Salute.</p>
-  </div></div>
-  <div class="toc-strip"><div class="wrap"><span class="toc-label">In questa guida</span><div class="toc-links" id="toc-links-sanita-fiscale"></div></div></div>
-  <div class="wrap">
-    <div class="article-body"><div class="kb-article" id="kb-sanita-fiscale">{{ kb.sanita_fiscale | safe }}</div></div>
-    <div class="sources">
-      <div class="sources-lbl">Fonti ufficiali</div>
-      <a class="source-link" href="https://www.agenziaentrate.gov.it" target="_blank" rel="noopener"><div class="source-ic">🔗</div><div><strong>Agenzia delle Entrate</strong><span>agenziaentrate.gov.it → cerca "fondi sanitari deducibilità"</span></div><span class="source-arrow">→</span></a>
-      <a class="source-link" href="https://www.salute.gov.it" target="_blank" rel="noopener"><div class="source-ic">🔗</div><div><strong>Ministero della Salute — Anagrafe fondi sanitari</strong><span>salute.gov.it → Temi → Fondi sanitari integrativi</span></div><span class="source-arrow">→</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- ═════════ CHI SIAMO ═════════ -->
-<section class="page c-prev" id="page-chisiamo">
-  <div class="page-head"><div class="wrap">
-    <button class="crumb" onclick="showPage('home')"><svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Home</button>
-    <h1>Chi siamo</h1>
-    <p class="lead">Hub Previdenza e Welfare — un progetto DataHubs S.r.l.</p>
-  </div></div>
-  <div class="wrap" style="padding-top:32px;padding-bottom:64px;max-width:900px;">
-    <div class="cs-card c-prev">
-      <div class="tema-cat">Il progetto</div><h3>Hub Digitale</h3>
-      <p>Ambiente digitale privato, organizzato per macroaree tematiche, che raccoglie e rende fruibili i contenuti certificati prodotti dal Centro Studi. Non è un archivio statico: è un ecosistema cognitivo che si aggiorna e propone contenuti in base al profilo dell'utente.</p>
-      <p>La base documentale è alimentata da circolari e messaggi degli enti previdenziali, testi normativi e decreti, guide operative, output del Centro Studi e buone prassi raccolte dalle imprese. DataHubs S.r.l. ne cura la strutturazione, la semantizzazione e la preparazione per l'ingestione nella base documentale.</p>
-    </div>
-    <div class="cs-card c-welf">
-      <div class="tema-cat">L'assistente</div><h3>P&amp;W Advisor</h3>
-      <p>Sistema che permette agli operatori del Polo di interrogare la base documentale e ottenere risposte accurate, contestualizzate e tracciate alla fonte. Combina assistente conversazionale AI, motore di ricerca semantico e navigazione per categoria.</p>
-      <div class="cs-rules">
-        <div class="cs-rules-title">Regole di comportamento</div>
-        <div class="cs-rule">Risponde esclusivamente sulla base della documentazione certificata — nessuna informazione al di fuori del perimetro.</div>
-        <div class="cs-rule">Non genera mai informazioni non presenti nella base documentale. Se la domanda non è coperta rimanda alla sede territoriale competente.</div>
-        <div class="cs-rule">Indica sempre la fonte e la data di aggiornamento per ogni informazione restituita.</div>
-        <div class="cs-rule">Adatta la lunghezza della risposta: breve per sintesi, dettagliata per approfondimenti.</div>
-        <div class="cs-rule">Mantiene il contesto della conversazione per domande di follow-up.</div>
+    <!-- CHI SIAMO -->
+    <section class="page" id="page-chisiamo">
+      <div class="crumbs"><a onclick="goBack()"><svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></a>/<a onclick="showPage('home')">Home</a>/<span>Chi siamo</span></div>
+      <div class="about">
+        <h1>Chi siamo</h1>
+        <p class="lead-p">Hub Previdenza e Welfare — un progetto DataHubs S.r.l.</p>
+        <h2>L'Hub digitale</h2>
+        <p>Ambiente digitale privato, organizzato per macroaree tematiche, che raccoglie e rende fruibili i contenuti certificati prodotti dal Centro Studi. Non è un archivio statico: è un ecosistema cognitivo che si aggiorna e propone contenuti in base al profilo dell'utente.</p>
+        <p>La base documentale è alimentata da circolari e messaggi degli enti previdenziali, testi normativi e decreti, guide operative, output del Centro Studi e buone prassi raccolte dalle imprese. DataHubs S.r.l. ne cura la strutturazione, la semantizzazione e la preparazione per l'ingestione nella base documentale.</p>
+        <h2>Il P&amp;W Advisor</h2>
+        <p>Sistema che permette agli operatori del Polo di interrogare la base documentale e ottenere risposte accurate, contestualizzate e tracciate alla fonte. Combina assistente conversazionale AI, motore di ricerca e navigazione per categoria.</p>
+        <ul>
+          <li>Risponde esclusivamente sulla base della documentazione certificata.</li>
+          <li>Non genera informazioni non presenti nella base documentale: se la domanda non è coperta rimanda alla sede territoriale competente.</li>
+          <li>Indica sempre la fonte e la data di aggiornamento.</li>
+          <li>Adatta la lunghezza della risposta e mantiene il contesto per le domande di follow-up.</li>
+        </ul>
+        <h2>Il risultato atteso</h2>
+        <p>Un sistema operativo, affidabile e manutenibile che consenta agli operatori del Polo di rispondere a qualsiasi richiesta delle sedi territoriali in materia previdenziale e di welfare, attingendo alla base documentale certificata senza mai uscire dal perimetro validato da DataHubs.</p>
       </div>
-    </div>
-    <div class="cs-card c-san">
-      <div class="tema-cat">Obiettivo</div><h3>Il risultato atteso</h3>
-      <p>Un sistema operativo, affidabile e manutenibile che consenta agli operatori del Polo di rispondere a qualsiasi richiesta da parte delle sedi territoriali in materia previdenziale e di welfare — attingendo alla base documentale certificata, senza mai uscire dal perimetro validato da DataHubs.</p>
-    </div>
+    </section>
   </div>
-</section>
-
 </main>
+
+<footer>
+  <div class="wrap">
+    <div style="display:flex;align-items:center;gap:16px;">
+      <img src="/static/images/datahubs_logo.jpg" alt="DataHubs">
+      <span>© 2026 DataHubs S.r.l. · Hub Previdenza e Welfare</span>
+    </div>
+    <div>
+      <a onclick="showPage('previdenza')">Previdenza</a><a onclick="showPage('welfare')">Welfare aziendale</a><a onclick="showPage('sanita')">Sanità integrativa</a><a onclick="showPage('chisiamo')">Chi siamo</a>
+    </div>
+    <span>Fonti: INPS · Agenzia delle Entrate · Ministero della Salute — Foto: Unsplash</span>
+  </div>
+</footer>
+
+<!-- Contenuti KB renderizzati dal server: spostati negli articoli via JS -->
+<div hidden>
+  <div id="kb-src-posizione-contributiva">{{ kb.posizione_contributiva | safe }}</div>
+  <div id="kb-src-accompagnamento-pensione">{{ kb.accompagnamento_pensione | safe }}</div>
+  <div id="kb-src-durc-online">{{ kb.durc_online | safe }}</div>
+  <div id="kb-src-cigo">{{ kb.cigo | safe }}</div>
+  <div id="kb-src-fondi-sanitari-contrattuali">{{ kb.fondi_sanitari_contrattuali | safe }}</div>
+  <div id="kb-src-sanita-fiscale">{{ kb.sanita_fiscale | safe }}</div>
+</div>
 
 <!-- ═════════ ASSISTENTE AI ═════════ -->
 <div class="ai-fab">
-  <div class="ai-fab-label">Assistente virtuale</div>
-  <button class="ai-fab-btn" onclick="toggleAI()" title="Apri l'assistente">
-    <svg viewBox="0 0 32 32" fill="none" style="width:24px;height:24px;"><circle cx="16" cy="16" r="7" fill="#7DD3FC" opacity=".9"/><circle cx="16" cy="16" r="3.5" fill="#e0f2fe"/><path d="M16 4v4M16 24v4M4 16h4M24 16h4" stroke="#7DD3FC" stroke-width="2" stroke-linecap="round"/></svg>
+  <button class="ai-fab-btn" onclick="toggleAI()" title="Assistente virtuale">
+    <svg viewBox="0 0 32 32" fill="none" style="width:26px;height:26px;"><circle cx="16" cy="16" r="7" fill="#7DD3FC" opacity=".9"/><circle cx="16" cy="16" r="3.5" fill="#e0f2fe"/><path d="M16 4v4M16 24v4M4 16h4M24 16h4" stroke="#7DD3FC" stroke-width="2" stroke-linecap="round"/></svg>
     <div class="ai-online"></div>
   </button>
 </div>
-
 <div class="ai-panel" id="ai-panel">
   <div class="ai-head">
     <div class="ai-head-av">🤖</div>
     <div><strong>P&amp;W Advisor</strong><span>Base documentale certificata · Attivo</span></div>
-    <button class="ai-head-x" onclick="toggleAI()">✕</button>
+    <button class="ai-head-x" onclick="toggleAI(false)">✕</button>
   </div>
   <div class="ai-msgs" id="ai-msgs">
     <div class="msg"><div class="msg-av">🤖</div><div class="msg-b">Ciao! Sono il tuo assistente virtuale dell'Hub Previdenza e Welfare. Posso aiutarti a orientarti tra le informazioni, gli adempimenti e i servizi presenti in questa Knowledge Base. Come posso aiutarti?</div></div>
@@ -679,133 +486,237 @@ body.sb-collapsed .main{margin-left:0;}
 </div>
 
 <script>
-const PAGES={
-  'home':{area:null},
-  'previdenza':{area:'previdenza'},'welfare':{area:'welfare'},'sanita':{area:'sanita'},
-  'posizione-contributiva':{area:'previdenza',article:true},
-  'accompagnamento-pensione':{area:'previdenza',article:true},
-  'durc-online':{area:'welfare',article:true},
-  'cigo':{area:'welfare',article:true},
-  'fondi-sanitari-contrattuali':{area:'sanita',article:true},
-  'sanita-fiscale':{area:'sanita',article:true},
-  'chisiamo':{area:null}
+/* ══════════ DATI ══════════ */
+const IMG=id=>'https://images.unsplash.com/'+id+'?auto=format&fit=crop&w=1200&q=70';
+const AREAS={
+  previdenza:{name:'Previdenza',cls:'c-prev',desc:'Contributi, posizione contributiva, correttezza dei versamenti e accompagnamento alla pensione.'},
+  welfare:{name:'Welfare aziendale',cls:'c-welf',desc:'Regolarità contributiva, DURC e ammortizzatori sociali per le imprese.'},
+  sanita:{name:'Sanità integrativa',cls:'c-san',desc:'Fondi sanitari contrattuali e regime fiscale della sanità integrativa.'}
 };
-let navStack=[];
-let currentPage='home';
+const ARTICLES=[
+  {id:'cigo',area:'welfare',tag:'Ammortizzatori sociali',date:'Ottobre 2026',
+   title:'Cassa integrazione ordinaria 2026: massimale a 1.423,69 €, causali e CIGO per emergenza climatica',
+   summary:'Chi può accedere, per quali causali, come presentare domanda con OMNIA IS e gestire il conguaglio in UniEmens. Fino al 31 dicembre 2026 CIGO per eventi climatici senza contributo addizionale nei settori edile e lapideo.',
+   img:'photo-1589793463357-5fb813435467',caption:'Linea di produzione industriale',
+   sources:[['Portale INPS — Cassa Integrazione','inps.it → cerca "CIGO cassa integrazione ordinaria"','https://www.inps.it'],['Archivio circolari INPS','Circ. 5/2025 · Circ. 4/2026 · Msg. 2418/2026','https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html']]},
+  {id:'sanita-fiscale',area:'sanita',tag:'Fisco',date:'Ottobre 2026',
+   title:'Fondi sanitari integrativi: deducibilità fino a 3.615,20 € e iscrizione all\'Anagrafe del Ministero',
+   summary:'Tipologie A e B, deducibilità (art. 10 TUIR) e non imponibilità (art. 51 TUIR) con plafond unico, trattamento contributivo e iscrizione all\'Anagrafe dei fondi sanitari integrativi.',
+   img:'photo-1554224154-26032ffc0d07',caption:'Documentazione fiscale',
+   sources:[['Agenzia delle Entrate','agenziaentrate.gov.it → cerca "fondi sanitari deducibilità"','https://www.agenziaentrate.gov.it'],['Ministero della Salute — Anagrafe fondi sanitari','salute.gov.it → Temi → Fondi sanitari integrativi','https://www.salute.gov.it']]},
+  {id:'accompagnamento-pensione',area:'previdenza',tag:'Pensioni',date:'Settembre 2026',
+   title:'Accompagnamento alla pensione: isopensione, fondi di solidarietà e agevolazioni 2026',
+   summary:'Requisiti, accordo aziendale, procedura INPS e agevolazioni fiscali 2026 per gli strumenti di uscita anticipata dei lavoratori vicini alla pensione.',
+   img:'photo-1508963493744-76fce69379c0',caption:'Verso la pensione',
+   sources:[['Portale INPS — Prestazioni di esodo','inps.it → cerca "prestazioni di esodo accompagnamento pensione"','https://www.inps.it'],['Archivio circolari INPS','Circ. 41/2026 · Msg. 2829/2026 · Circ. 104/2026 · Circ. 119/2013','https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html']]},
+  {id:'fondi-sanitari-contrattuali',area:'sanita',tag:'Contribuzione',date:'Settembre 2026',
+   title:'Fondi sanitari contrattuali: come versare i contributi obbligatori con F24 e UniEmens',
+   summary:'Il meccanismo di riscossione INPS per ENFEA Salute, FASIFAR, FONDOSANI e INNOVACARE: codici, flussi UniEmens e convenzioni valide fino al 31/12/2026.',
+   img:'photo-1631217868264-e5b90bb7e133',caption:'Assistenza sanitaria integrativa',
+   sources:[['Portale INPS — UniEmens','inps.it → cerca "UniEmens datori di lavoro privati"','https://www.inps.it'],['Archivio circolari INPS','Circ. 77/2025 · 119/2025 · 120/2025 · 95/2026','https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html']]},
+  {id:'durc-online',area:'welfare',tag:'Regolarità contributiva',date:'Ottobre 2026',
+   title:'DURC Online: come verificare la regolarità contributiva con Pre-DURC, Ve.R.A. e Simulazione',
+   summary:'Come funziona la verifica sulla Piattaforma Unica INPS, come anticipare le irregolarità con Simulazione DURC e Pre-DURC e come usare la Delega Master.',
+   img:'photo-1450101499163-c8848c66ca85',caption:'Verifica documentale',
+   sources:[['Portale INPS — DURC Online','inps.it → Prestazioni e Servizi → cerca "DURC Online"','https://www.inps.it'],['Portale INAIL — DURC Online','Accesso alternativo tramite portale INAIL','https://www.inail.it/cs/internet/attivita/prevenzione-e-sicurezza/durc-online.html'],['Archivio circolari INPS','Msg. 3662/2024 · Msg. 4693/2023 · Circ. 146/2021','https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html']]},
+  {id:'posizione-contributiva',area:'previdenza',tag:'Contributi',date:'Ottobre 2026',
+   title:'Posizione contributiva aziendale: come controllare estratto conto e correttezza dei versamenti',
+   summary:'Estratto conto contributivo, verifica dei versamenti, ricorsi amministrativi e unicità della posizione aziendale: cosa controllare e quali servizi INPS usare.',
+   img:'photo-1554224155-6726b3ff858f',caption:'Controllo dei versamenti',
+   sources:[['Portale INPS — Estratto conto contributivo','inps.it → cerca "estratto conto contributivo"','https://www.inps.it'],['Archivio circolari e messaggi INPS','Msg. 2553/2025 · Circ. 48/2023 · Msg. 1900/2023','https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa.html']]}
+];
+const BY_ID=Object.fromEntries(ARTICLES.map(a=>[a.id,a]));
+const AUTHOR='Redazione Hub';
 
-function showPage(name, addToStack=true){
-  if(!PAGES[name]) return;
-  if(addToStack && name!==currentPage) navStack.push(currentPage);
-  currentPage=name;
-  document.querySelectorAll('.page').forEach(el=>el.classList.toggle('active',el.id==='page-'+name));
-  const area=PAGES[name].area;
-  document.querySelectorAll('[data-nav]').forEach(el=>{
-    const k=el.dataset.nav;
-    el.classList.toggle('active', k===name);
+/* ══════════ HELPERS ══════════ */
+function media(a){
+  const ar=AREAS[a.area];
+  return `<div class="media ${ar.cls}" data-label="${ar.name}"><img src="${IMG(a.img)}" alt="${a.caption}" loading="lazy" onerror="this.parentNode.classList.add('noimg');this.remove()"></div>`;
+}
+function kicker(a){return `<span class="kicker">${AREAS[a.area].name} · ${a.tag}</span>`;}
+function go(id){return `onclick="showPage('${id}')"`;}
+const ARROW_BACK='<svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>';
+
+/* ══════════ HOME ══════════ */
+function renderHome(){
+  const [lead,...rest]=ARTICLES;
+  const L=BY_ID['fondi-sanitari-contrattuali'];
+  document.getElementById('home-lead').innerHTML=
+    `<div class="art lead ${AREAS[lead.area].cls}" ${go(lead.id)}>${media(lead)}
+      <h2>${lead.title}</h2>
+      <div class="byline"><span class="badge">Aggiornato</span>${kicker(lead)} · ${AUTHOR} · ${lead.date}</div>
+      <p>${lead.summary}</p></div>`;
+  document.getElementById('home-rows').innerHTML=rest.slice(0,4).map(a=>
+    `<div class="art row-art ${AREAS[a.area].cls}" ${go(a.id)}>${media(a)}
+      <div>${kicker(a)}<h3>${a.title}</h3><p>${a.summary}</p></div></div>`).join('');
+  document.getElementById('home-left-feature').innerHTML=
+    `<div class="art side-feature ${AREAS[L.area].cls}" ${go(L.id)}>${media(L)}<h3>${L.title}</h3><div class="byline">${AUTHOR} · ${L.date}</div></div>`;
+  document.getElementById('home-left-list').innerHTML=[...ARTICLES].reverse().filter(a=>a.id!==L.id).slice(0,4).map(a=>
+    `<div class="art ${AREAS[a.area].cls}" ${go(a.id)}>${kicker(a)}<h3>${a.title}</h3><div class="byline">${AUTHOR} · ${a.date}</div></div>`).join('');
+  document.getElementById('home-sections').innerHTML=Object.entries(AREAS).map(([k,ar])=>{
+    const arts=ARTICLES.filter(a=>a.area===k);
+    return `<div class="${ar.cls}"><div class="sec-head"><h3 ${go(k)}>${ar.name}</h3><a ${go(k)}>Tutti gli articoli ›</a></div>
+      ${arts.map((a,i)=>`<div class="art card-art ${i?'compact':''}" ${go(a.id)}>${media(a)}<div><h3>${a.title}</h3>${i?`<div class="byline">${a.date}</div>`:`<p>${a.summary}</p>`}</div></div>`).join('')}</div>`;
+  }).join('');
+}
+
+/* ══════════ COLONNA DESTRA COMUNE ══════════ */
+function sideColumn(area,excludeId){
+  const ar=AREAS[area];
+  const rel=ARTICLES.filter(a=>a.area===area&&a.id!==excludeId);
+  const oth=ARTICLES.filter(a=>a.area!==area).slice(0,3);
+  return `<div class="side-sticky">
+    <div class="promo" onclick="toggleAI(true)">
+      <h4>Hai un dubbio su questo tema?</h4>
+      <p>Chiedi al P&amp;W Advisor: risponde dalla base documentale certificata e indica circolare e data.</p>
+      <span class="btn">Chiedi all'assistente</span>
+    </div>
+    ${rel.length?`<div class="related ${ar.cls}" style="margin-bottom:26px;"><div class="box-head" style="background:var(--tc)">Altro in ${ar.name}</div>
+      ${rel.map(a=>`<div class="art ${ar.cls}" ${go(a.id)}>${kicker(a)}<h3>${a.title}</h3></div>`).join('')}</div>`:''}
+    <div class="related"><div class="box-head navy">Leggi anche</div>
+      ${oth.map(a=>`<div class="art ${AREAS[a.area].cls}" ${go(a.id)}>${kicker(a)}<h3>${a.title}</h3></div>`).join('')}</div>
+  </div>`;
+}
+
+/* ══════════ AREE ══════════ */
+function renderAreas(){
+  Object.entries(AREAS).forEach(([k,ar])=>{
+    const [first,...others]=ARTICLES.filter(a=>a.area===k);
+    const el=document.getElementById('page-'+k);
+    el.className='page '+ar.cls;
+    el.innerHTML=`
+      <div class="crumbs"><a onclick="goBack()" title="Indietro">${ARROW_BACK}</a>/<a onclick="showPage('home')">Home</a>/<span style="color:var(--tc)">${ar.name}</span></div>
+      <div class="area-title"><h1>${ar.name}</h1><p>${ar.desc}</p></div>
+      <div class="area-grid">
+        <div>
+          <div class="art lead" ${go(first.id)}>${media(first)}<h2>${first.title}</h2>
+            <div class="byline">${kicker(first)} · ${AUTHOR} · ${first.date}</div><p>${first.summary}</p></div>
+          ${others.map(a=>`<div class="art row-art" ${go(a.id)}>${media(a)}<div>${kicker(a)}<h3>${a.title}</h3><p>${a.summary}</p><div class="byline" style="margin-top:8px">${AUTHOR} · ${a.date}</div></div></div>`).join('')}
+        </div>
+        <aside class="art-side">${sideColumn(k,null)}</aside>
+      </div>`;
   });
-  document.querySelectorAll('.h-nav-item').forEach(el=>el.classList.toggle('active',el.dataset.area===area));
+}
+
+/* ══════════ ARTICOLI ══════════ */
+function renderArticles(){
+  ARTICLES.forEach(a=>{
+    const ar=AREAS[a.area];
+    const el=document.getElementById('page-'+a.id);
+    el.className='page '+ar.cls;
+    el.innerHTML=`
+      <div class="crumbs"><a onclick="goBack()" title="Indietro">${ARROW_BACK}</a>/<a ${go(a.area)}>${ar.name}</a>/<a ${go(a.area)}>${a.tag}</a></div>
+      <div class="art-grid">
+        <article class="art-main">
+          <h1>${a.title}</h1>
+          <div class="meta">Autore: <a>${AUTHOR}</a><br>
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Aggiornato a ${a.date.toLowerCase()}</div>
+          <div class="in-art"><div class="lbl">In questo articolo:</div><ul id="toc-${a.id}"></ul></div>
+          <div class="share"><span class="lbl">Condividi l'articolo:</span>
+            <div class="share-btns">
+              <button class="s-mail" title="Invia per email" onclick="shareMail('${a.id}')"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg></button>
+              <button class="s-link" title="Copia link" onclick="copyLink(this)"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></button>
+              <button class="s-print" title="Stampa" onclick="window.print()"><svg viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg></button>
+              <button class="s-ai" title="Chiedi all'assistente" onclick="toggleAI(true)"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></button>
+            </div>
+          </div>
+          <div class="kb-article" id="kb-${a.id}">
+            <figure class="art-figure">${media(a)}<figcaption>${a.caption}</figcaption></figure>
+          </div>
+          <div class="sources"><h4>Fonti ufficiali</h4>
+            ${a.sources.map(s=>`<a class="src" href="${s[2]}" target="_blank" rel="noopener"><div><strong>${s[0]}</strong><span>${s[1]}</span></div><span>→</span></a>`).join('')}
+          </div>
+        </article>
+        <aside class="art-side">${sideColumn(a.area,a.id)}</aside>
+      </div>`;
+    const src=document.getElementById('kb-src-'+a.id);
+    const body=document.getElementById('kb-'+a.id);
+    while(src&&src.firstChild) body.appendChild(src.firstChild);
+    const toc=document.getElementById('toc-'+a.id);
+    body.querySelectorAll('h2').forEach((h,i)=>{
+      h.id='sec-'+a.id+'-'+i;
+      const li=document.createElement('li');
+      const link=document.createElement('a');
+      link.textContent=h.textContent.trim().replace(/^\d+\.\s*/,'');
+      link.onclick=()=>window.scrollTo({top:h.getBoundingClientRect().top+window.scrollY-70,behavior:'smooth'});
+      li.appendChild(link);toc.appendChild(li);
+    });
+  });
+}
+
+/* ══════════ MENU ARGOMENTI ══════════ */
+function renderMenu(){
+  document.getElementById('menu-cols').innerHTML=Object.entries(AREAS).map(([k,ar])=>
+    `<div class="menu-col ${ar.cls}"><h4 ${go(k)}>${ar.name}</h4>${ARTICLES.filter(a=>a.area===k).map(a=>`<a ${go(a.id)}>${a.title.split(':')[0]}</a>`).join('')}</div>`).join('');
+}
+function toggleMenu(e){e.stopPropagation();document.getElementById('menu-pop').classList.toggle('open');}
+document.addEventListener('click',e=>{if(!e.target.closest('#menu-pop'))document.getElementById('menu-pop').classList.remove('open');});
+
+/* ══════════ NAVIGAZIONE ══════════ */
+let navStack=[];let currentPage='home';
+function areaOf(name){return AREAS[name]?name:(BY_ID[name]?BY_ID[name].area:null);}
+function showPage(name,addToStack=true){
+  const el=document.getElementById('page-'+name);
+  if(!el) return;
+  if(addToStack&&name!==currentPage) navStack.push(currentPage);
+  currentPage=name;
+  document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p===el));
+  const area=areaOf(name);
+  document.querySelectorAll('.secnav a[data-area]').forEach(a=>a.classList.toggle('active',a.dataset.area===area));
   document.getElementById('back-btn').style.display=navStack.length?'flex':'none';
-  if(window.innerWidth<=980) document.body.classList.remove('sb-open');
+  document.getElementById('menu-pop').classList.remove('open');
   window.scrollTo(0,0);
-  if(PAGES[name].article) buildToc(name);
-  updateProgress();
 }
-
-function goBack(){
-  if(!navStack.length) return;
-  showPage(navStack.pop(), false);
-}
-
-function toggleSidebar(){
-  if(window.innerWidth<=980) document.body.classList.toggle('sb-open');
-  else document.body.classList.toggle('sb-collapsed');
-}
+function goBack(){if(navStack.length)showPage(navStack.pop(),false);else showPage('home',false);}
 
 function toggleTheme(){
   const dark=document.body.classList.toggle('dark');
   document.getElementById('theme-btn').textContent=dark?'🌙':'☀️';
   try{localStorage.setItem('theme',dark?'dark':'light');}catch(e){}
 }
-(function(){
-  try{
-    if(localStorage.getItem('theme')==='dark'){
-      document.body.classList.add('dark');
-      document.getElementById('theme-btn').textContent='🌙';
-    }
-  }catch(e){}
-})();
+try{if(localStorage.getItem('theme')==='dark'){document.body.classList.add('dark');document.getElementById('theme-btn').textContent='🌙';}}catch(e){}
 
+/* ══════════ RICERCA ══════════ */
 const SEARCH_MAP={
   'pre-durc':'durc-online','durc':'durc-online','vera':'durc-online','ve.r.a':'durc-online','piattaforma unica':'durc-online','regolarità':'durc-online','delega master':'durc-online',
-  'cigo':'cigo','cassa integrazione':'cigo','massimale':'cigo','omnia':'cigo','eone':'cigo','ammortizzator':'cigo',
+  'cigo':'cigo','cassa integrazione':'cigo','massimale':'cigo','omnia':'cigo','eone':'cigo','ammortizzator':'cigo','climatic':'cigo','calore':'cigo',
   'isopensione':'accompagnamento-pensione','esodo':'accompagnamento-pensione','accompagnamento':'accompagnamento-pensione','pensione':'accompagnamento-pensione','solidariet':'accompagnamento-pensione',
   'estratto conto':'posizione-contributiva','ricors':'posizione-contributiva','uniemens':'posizione-contributiva','cassetto':'posizione-contributiva','versament':'posizione-contributiva','posizione contributiva':'posizione-contributiva',
   'deducib':'sanita-fiscale','tuir':'sanita-fiscale','anagrafe':'sanita-fiscale','3615':'sanita-fiscale','3.615':'sanita-fiscale','fiscal':'sanita-fiscale',
   'esal':'fondi-sanitari-contrattuali','fafp':'fondi-sanitari-contrattuali','fondosani':'fondi-sanitari-contrattuali','innovacare':'fondi-sanitari-contrattuali','f24':'fondi-sanitari-contrattuali','fondi sanitari':'fondi-sanitari-contrattuali','fondo sanitario':'fondi-sanitari-contrattuali',
   'previdenza':'previdenza','welfare':'welfare','sanità':'sanita','sanita':'sanita'
 };
-function doSearch(text){
+function doSearch(){
   const input=document.getElementById('search-input');
-  const q=(text!==undefined?text:input.value).trim().toLowerCase();
+  const q=input.value.trim().toLowerCase();
   if(!q) return;
-  for(const [k,v] of Object.entries(SEARCH_MAP)){
-    if(q.includes(k)){showPage(v);input.value='';const h=document.getElementById('hero-q');if(h)h.value='';return;}
-  }
-  alert('Nessun tema trovato per "'+q+'". Prova: DURC, CIGO, isopensione, estratto conto, fondi sanitari — oppure chiedi all\'assistente virtuale.');
+  for(const [k,v] of Object.entries(SEARCH_MAP)){if(q.includes(k)){showPage(v);input.value='';return;}}
+  alert('Nessun articolo trovato per "'+q+'". Prova: DURC, CIGO, isopensione, estratto conto, fondi sanitari — oppure chiedi all\'assistente virtuale.');
 }
 
-/* ── TOC + progress ── */
-function buildToc(pageId){
-  const box=document.getElementById('toc-links-'+pageId);
-  const kb=document.getElementById('kb-'+pageId);
-  if(!box||!kb) return;
-  box.innerHTML='';
-  kb.querySelectorAll('h2').forEach((h,i)=>{
-    if(!h.id) h.id='sec-'+pageId+'-'+i;
-    const t=h.textContent.trim().replace(/^\d+\.\s*/,'');
-    const a=document.createElement('a');
-    a.href='#'+h.id;
-    a.textContent=t.length>38?t.slice(0,36)+'…':t;
-    a.title=t;
-    a.onclick=e=>{e.preventDefault();window.scrollTo({top:h.getBoundingClientRect().top+window.scrollY-130,behavior:'smooth'});};
-    box.appendChild(a);
-  });
+/* ══════════ CONDIVISIONE ══════════ */
+function shareMail(id){
+  const a=BY_ID[id];
+  location.href='mailto:?subject='+encodeURIComponent(a.title)+'&body='+encodeURIComponent(a.summary+'\n\nHub Previdenza e Welfare: '+location.origin);
 }
-function updateToc(){
-  if(!PAGES[currentPage].article) return;
-  const box=document.getElementById('toc-links-'+currentPage);
-  const kb=document.getElementById('kb-'+currentPage);
-  if(!box||!kb) return;
-  let active=null;
-  kb.querySelectorAll('h2').forEach(h=>{if(h.getBoundingClientRect().top<=140) active=h;});
-  box.querySelectorAll('a').forEach(a=>a.classList.toggle('toc-active',!!active&&a.getAttribute('href')==='#'+active.id));
-  const act=box.querySelector('.toc-active');
-  if(act) act.scrollIntoView({block:'nearest',inline:'nearest'});
+function copyLink(btn){
+  const done=()=>{btn.style.background='#22A06B';setTimeout(()=>btn.style.background='',1200);};
+  try{navigator.clipboard.writeText(location.origin).then(done,done);}catch(e){done();}
 }
-function updateProgress(){
-  const bar=document.getElementById('read-progress');
-  if(!PAGES[currentPage].article){bar.style.width='0';return;}
-  const d=document.documentElement;
-  const max=d.scrollHeight-d.clientHeight;
-  bar.style.width=(max>0?Math.min(100,window.scrollY/max*100):0)+'%';
-  const page=document.getElementById('page-'+currentPage);
-  bar.style.background=getComputedStyle(page).getPropertyValue('--tc').trim()||'var(--accent)';
-}
-window.addEventListener('scroll',()=>{updateToc();updateProgress();},{passive:true});
 
-/* ── ASSISTENTE AI ── */
-function toggleAI(){
+/* ══════════ ASSISTENTE AI ══════════ */
+function toggleAI(force){
   const p=document.getElementById('ai-panel');
-  p.classList.toggle('open');
-  if(p.classList.contains('open')) document.getElementById('ai-input').focus();
+  const open=typeof force==='boolean'?force:!p.classList.contains('open');
+  p.classList.toggle('open',open);
+  if(open) document.getElementById('ai-input').focus();
 }
 function escapeHtml(s){return s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function linkify(text){
   return text.replace(/(https?:\/\/[^\s<>"]+|www\.[^\s<>"]+\.[a-z]{2,}[^\s<>"]*)/gi,function(url){
-    const clean=url.replace(/[.,;:)]+$/,'');
-    const tail=url.slice(clean.length);
+    const clean=url.replace(/[.,;:)]+$/,'');const tail=url.slice(clean.length);
     const href=clean.startsWith('http')?clean:'https://'+clean;
-    return '<a href="'+href+'" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline;">'+clean+'</a>'+tail;
+    return '<a href="'+href+'" target="_blank" rel="noopener" style="color:var(--brand);text-decoration:underline;">'+clean+'</a>'+tail;
   });
 }
 let history=[];
@@ -814,8 +725,7 @@ async function sendMsg(txt){
   const q=(txt||input.value).trim();
   if(!q) return;
   input.value='';
-  const panel=document.getElementById('ai-panel');
-  if(!panel.classList.contains('open')) panel.classList.add('open');
+  toggleAI(true);
   const msgs=document.getElementById('ai-msgs');
   msgs.insertAdjacentHTML('beforeend',`<div class="msg user"><div class="msg-b">${escapeHtml(q)}</div></div>`);
   const lid='l'+Date.now();
@@ -852,6 +762,8 @@ async function sendMsg(txt){
   msgs.scrollTop=msgs.scrollHeight;
 }
 
+/* ══════════ AVVIO ══════════ */
+renderHome();renderAreas();renderArticles();renderMenu();
 showPage('home',false);
 </script>
 </body>
