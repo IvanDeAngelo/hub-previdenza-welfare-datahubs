@@ -450,6 +450,12 @@ body.dark .gl-term dd a{color:#7DB4EA;}
 .home-news .news-item p{display:none;}
 @media(max-width:1180px){.res-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:700px){.res-grid{grid-template-columns:1fr;}.news-item{grid-template-columns:1fr;gap:4px;}}
+.rc-chips{display:flex;gap:6px;align-items:center;}
+.res-card.is-plus{border-top-color:var(--dh-green);}
+.res-card.is-plus h3{color:var(--title);}
+.plus-note{font-size:13.5px;font-weight:700;color:var(--dh-green);margin-top:auto;}
+.plus-note a{cursor:pointer;text-decoration:underline;}
+.plus-card .chip-soon{white-space:nowrap;}
 /* ── PRINT ── */
 @media print{.topbar,.masthead,.secnav,.ticker,.share,.art-side,footer,.ai-fab,.ai-panel,.in-art,.crumbs{display:none!important;}.art-grid{display:block;}}
 
@@ -1143,6 +1149,9 @@ const PLUS_SERVICES=[
  {id:'plus-lettera',ic:'✉️',title:'Lettera informativa',tag:'La sintesi mensile del Centro Studi sulle novità che contano per imprese, dirigenti e professionisti.',items:['Novità INPS, Agenzia delle Entrate e Ministero della Salute','Cosa cambia in pratica, in poche righe','Collegamento diretto all\'articolo dell\'Hub'],open:"showPage('plus-lettera')"},
  {id:'plus-quesiti',ic:'💬',title:'Quesiti risolti',tag:'Le domande più frequenti, con risposta breve e fonte normativa.',items:['Casi reali, resi anonimi','Risposta breve e verificata','Fonte normativa per ogni risposta'],open:"showPage('plus-quesiti')"},
  {id:'plus-date',ic:'📅',title:'Date chiave e scadenze',tag:'Lo scadenzario degli adempimenti e delle decorrenze 2026.',items:['Decorrenze e finestre temporali','Riferimento alla circolare','Collegamento al paragrafo dell\'articolo'],open:"showPage('plus-date')"},
+ {id:'plus-dati',soon:true,ic:'📊',title:'Dati e ricerche',tag:'Dashboard tematiche, report trimestrali e infografiche su welfare, previdenza e mercato del lavoro.',items:['Dashboard per area tematica','Report trimestrali e rapporto annuale','Infografiche pronte da condividere']},
+ {id:'plus-tutorial',soon:true,ic:'🎬',title:'Tutorial e video',tag:'Video brevi e guide passo-passo sulle procedure INPS più frequenti.',items:['Video da 1 a 3 minuti','Guide "come fare per"','Un nuovo tutorial ogni mese']},
+ {id:'plus-formazione',soon:true,ic:'🎓',title:'Formazione e webinar',tag:'Percorsi formativi e webinar per HR, manager e aziende.',items:['Calendario di webinar e corsi','Archivio con slide, video e sintesi','Percorsi per profilo']},
  {id:'plus-inoltra',ic:'📨',title:'Inoltra un quesito',tag:'Quando la risposta non è nella base documentale, la passi al Centro Studi.',items:['Modulo dedicato per tema','Presa in carico della redazione','Le risposte alimentano i Quesiti risolti'],open:"showPage('plus-inoltra')"}
 ];
 
@@ -1157,14 +1166,14 @@ function renderPlus(){
     <div class="plus-intro">${LOGGED
       ?`<p><b>Sei connesso.</b> Tutti i Servizi Plus sono attivi sul tuo profilo.</p>`
       :`<p>Articoli e ricerca intelligente sono aperti a tutti. Con l'accesso sblocchi l'assistente completo, la lettera informativa, i quesiti risolti, lo scadenzario e l'invio dei quesiti al Centro Studi.</p><div class="btns"><button class="btn-solid" onclick="openAuth('login','plus')">Accedi</button><button class="btn-ghost" onclick="openAuth('register','plus')">Richiedi l'accesso</button></div>`}</div>
-    <div class="plus-grid">${PLUS_SERVICES.map(s=>`
+    <div class="plus-grid">${[...PLUS_SERVICES.filter(s=>!s.soon),...PLUS_SERVICES.filter(s=>s.soon)].map(s=>`
       <div class="plus-card">
-        <div class="pc-top"><div class="pc-ic">${s.ic}</div>${LOGGED?'<span class="open-chip">Attivo</span>':`<span class="lock">${LOCK_SVG}Riservato</span>`}</div>
+        <div class="pc-top"><div class="pc-ic">${s.ic}</div>${s.soon?'<span class="chip-soon">In arrivo</span>':(LOGGED?'<span class="open-chip">Attivo</span>':`<span class="lock">${LOCK_SVG}Riservato</span>`)}</div>
         <h3>${s.title}</h3><div class="tagline">${s.tag}</div>
         <ul>${s.items.map(i=>`<li>${i}</li>`).join('')}</ul>
-        ${LOGGED?`<button class="btn-solid" onclick="${s.open}">Apri</button>`:`<button class="btn-ghost" onclick="openAuth('lock','${s.id==='advisor'?'plus':s.id}')">Accedi per attivare</button>`}
+        ${s.soon?'<div class="plus-note" style="margin-top:auto">Disponibile a breve per gli utenti registrati</div>':(LOGGED?`<button class="btn-solid" onclick="${s.open}">Apri</button>`:`<button class="btn-ghost" onclick="openAuth('lock','${s.id==='advisor'?'plus':s.id}')">Accedi per attivare</button>`)}
       </div>`).join('')}</div>`;
-  document.getElementById('home-plus-list').innerHTML=PLUS_SERVICES.map(s=>
+  document.getElementById('home-plus-list').innerHTML=PLUS_SERVICES.filter(s=>!s.soon).map(s=>
     `<a class="pl" onclick="${LOGGED?s.open:`openAuth('lock','${s.id==='advisor'?'plus':s.id}')`}"><span>${s.ic} ${s.title}</span><small>${LOGGED?'›':'🔒'}</small></a>`).join('');
   if(!LOGGED) return;
   document.getElementById('page-plus-lettera').innerHTML=`${crumbsPlus('Lettera informativa')}
@@ -1296,9 +1305,9 @@ const RESOURCES=[
  {ic:'📖',title:'Glossario',text:'I termini tecnici di previdenza e welfare spiegati in parole semplici, con il rimando all\'articolo.',page:'glossario'},
  {ic:'🧭',title:'Percorsi guidati',text:'Le situazioni più frequenti in azienda, passo dopo passo: dalla gara d\'appalto alla crisi temporanea.',page:'percorsi'},
  {ic:'✉️',title:'Newsletter',text:'Una volta al mese: editoriale, novità INPS, previdenza complementare, focus del mese e nuovi contenuti.',action:"document.getElementById('nl-main').scrollIntoView({behavior:'smooth'})"},
- {ic:'📊',title:'Dati e ricerche',text:'Dashboard tematiche, report trimestrali e infografiche su welfare, previdenza e mercato del lavoro.',soon:true},
- {ic:'🎬',title:'Tutorial e video',text:'Video brevi e guide passo-passo sulle procedure INPS più frequenti.',soon:true},
- {ic:'🎓',title:'Formazione e webinar',text:'Calendario di webinar e percorsi formativi per HR, manager e aziende, con materiali post-evento.',soon:true},
+ {ic:'📊',title:'Dati e ricerche',text:'Dashboard tematiche, report trimestrali e infografiche su welfare, previdenza e mercato del lavoro.',soon:true,plus:true},
+ {ic:'🎬',title:'Tutorial e video',text:'Video brevi e guide passo-passo sulle procedure INPS più frequenti.',soon:true,plus:true},
+ {ic:'🎓',title:'Formazione e webinar',text:'Calendario di webinar e percorsi formativi per HR, manager e aziende, con materiali post-evento.',soon:true,plus:true},
  {ic:'🎧',title:'Podcast',text:'Episodi brevi con le novità del mese e le interviste agli esperti.',soon:true}
 ];
 const FAQ=[
@@ -1346,11 +1355,12 @@ function nlSideHtml(){return `<div class="nl-side"><h4>Newsletter mensile</h4><p
 function renderResources(){
   document.getElementById('page-risorse').innerHTML=`
     <div class="crumbs"><a onclick="goBack()" title="Indietro">${ARROW_BACK}</a>/<a onclick="showPage('home')">Home</a>/<span style="color:var(--tc)">Risorse</span></div>
-    <div class="area-title"><h1>Risorse</h1><p>Strumenti per orientarsi: domande frequenti, glossario, percorsi guidati, newsletter e le prossime sezioni dell'Hub.</p></div>
+    <div class="area-title"><h1>Risorse</h1><p>Strumenti per orientarsi: domande frequenti, glossario, percorsi guidati, newsletter e le prossime sezioni dell'Hub. Le sezioni contrassegnate con ★ sono riservate agli utenti registrati.</p></div>
     <div class="res-grid">${RESOURCES.map(r=>`
-      <div class="res-card ${r.soon?'soon':''}">
-        <div class="rc-top"><div class="rc-ic">${r.ic}</div>${r.soon?'<span class="chip-soon">In arrivo</span>':'<span class="chip-on">Disponibile</span>'}</div>
-        <h3>${r.title}</h3><p>${r.text}</p>
+      <div class="res-card ${r.soon?'soon':''} ${r.plus?'c-plus is-plus':''}">
+        <div class="rc-top"><div class="rc-ic">${r.ic}</div><div class="rc-chips">${r.plus?`<span class="lock">${LOCK_SVG}Plus</span>`:''}${r.soon?'<span class="chip-soon">In arrivo</span>':'<span class="chip-on">Disponibile</span>'}</div></div>
+        <h3>${r.plus?'★ ':''}${r.title}</h3><p>${r.text}</p>
+        ${r.plus?`<div class="plus-note">Riservato agli utenti registrati${LOGGED?'':` · <a onclick="openAuth('lock','plus')">Accedi</a>`}</div>`:''}
         ${r.soon?'':`<a class="go" onclick="${r.page?`showPage('${r.page}')`:r.action}">${r.page?'Apri':'Iscriviti'} →</a>`}
       </div>`).join('')}</div>
     <div class="nl-box" id="nl-main">
