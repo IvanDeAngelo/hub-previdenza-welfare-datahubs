@@ -261,6 +261,102 @@ footer a{color:#fff;cursor:pointer;margin-right:18px;font-weight:600;}
 .ai-send svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
 .ai-disclaimer{font-size:10.5px;color:var(--muted);padding:0 14px 12px;line-height:1.45;}
 
+/* ── ACCESSO / PLUS ── */
+.c-plus{--tc:#4F7A52;--tc-bg:#EEF5EE;}
+body.dark .c-plus{--tc:#8FBF92;--tc-bg:#1E3322;}
+.tb-auth{display:flex;flex-direction:column;align-items:flex-end;line-height:1.05;}
+.tb-auth .tb-btn{padding:2px 0;}
+.tb-auth small{font-size:11.5px;color:rgba(255,255,255,.85);cursor:pointer;text-decoration:underline;text-underline-offset:2px;}
+.tb-auth small:hover{color:#fff;}
+.tb-user{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;}
+.plus-chip{background:#fff;color:var(--dh-green);font-size:10.5px;font-weight:800;letter-spacing:.6px;padding:2px 7px;border-radius:10px;text-transform:uppercase;}
+.lock{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#fff;background:#4F7A52;padding:3px 8px;border-radius:4px;}
+.lock svg{width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2.5;}
+.open-chip{display:inline-flex;font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#4F7A52;background:#EEF5EE;padding:3px 8px;border-radius:4px;}
+.plus-intro{display:flex;align-items:center;justify-content:space-between;gap:24px;background:var(--tc-bg);border-left:5px solid var(--tc);padding:20px 24px;margin-bottom:28px;}
+.plus-intro p{font-size:16px;color:var(--text);max-width:760px;}
+.plus-intro .btns{display:flex;gap:10px;flex-shrink:0;}
+.btn-solid{background:#4F7A52;color:#fff;border:none;border-radius:24px;padding:11px 22px;font-weight:800;font-size:14px;cursor:pointer;white-space:nowrap;}
+.btn-solid:hover{background:#3F6542;}
+.btn-ghost{background:transparent;color:#4F7A52;border:2px solid #4F7A52;border-radius:24px;padding:9px 20px;font-weight:800;font-size:14px;cursor:pointer;white-space:nowrap;}
+body.dark .btn-ghost{color:#8FBF92;border-color:#8FBF92;}
+.plus-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-bottom:40px;}
+.plus-card{border:1.5px solid var(--border);border-top:5px solid var(--tc);background:var(--surface);padding:24px;display:flex;flex-direction:column;}
+.plus-card .pc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+.plus-card .pc-ic{width:46px;height:46px;border-radius:10px;background:var(--tc-bg);display:flex;align-items:center;justify-content:center;font-size:22px;}
+.plus-card h3{font-size:21px;font-weight:700;color:var(--title);margin-bottom:6px;}
+.plus-card .tagline{font-size:15px;color:var(--text-soft);margin-bottom:14px;line-height:1.55;}
+.plus-card ul{list-style:none;margin-bottom:18px;}
+.plus-card li{position:relative;padding-left:22px;font-size:14.5px;line-height:1.5;margin-bottom:7px;color:var(--text);}
+.plus-card li::before{content:'✓';position:absolute;left:0;color:var(--tc);font-weight:800;}
+.plus-card .btn-solid,.plus-card .btn-ghost{margin-top:auto;align-self:flex-start;}
+.plus-doc{max-width:900px;}
+.plus-doc h1{font-size:40px;font-weight:600;line-height:1.2;color:var(--title);margin-bottom:10px;}
+.plus-doc .lead-p{font-size:18px;color:var(--text-soft);margin-bottom:24px;}
+.plus-doc .demo-note{font-size:13px;color:var(--muted);border:1px dashed var(--border);padding:8px 12px;margin-bottom:22px;}
+.lt-item{border-top:1px solid var(--border);padding:22px 0;}
+.lt-item h2{font-size:24px;font-weight:600;color:var(--title);margin:6px 0 10px;}
+.lt-item p{font-size:17.5px;line-height:1.7;margin-bottom:10px;}
+.lt-item a.more{color:var(--brand);font-weight:600;cursor:pointer;}
+body.dark .lt-item a.more{color:#7DB4EA;}
+.qa{border:1.5px solid var(--border);margin-bottom:12px;background:var(--surface);}
+.qa summary{list-style:none;cursor:pointer;padding:16px 20px;font-size:17px;font-weight:600;color:var(--title);display:flex;gap:12px;align-items:flex-start;}
+.qa summary::-webkit-details-marker{display:none;}
+.qa summary::before{content:'Q';flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--tc-bg);color:var(--tc);font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+.qa[open] summary{border-bottom:1px solid var(--border);}
+.qa .ans{padding:16px 20px 18px 58px;font-size:16.5px;line-height:1.7;}
+.qa .ans .src-line{display:block;font-size:13.5px;color:var(--muted);margin-top:8px;}
+.qa .ans a{color:var(--brand);font-weight:600;cursor:pointer;}
+body.dark .qa .ans a{color:#7DB4EA;}
+.dates{border-left:3px solid var(--tc);margin-left:8px;}
+.date-row{position:relative;padding:0 0 26px 28px;}
+.date-row::before{content:'';position:absolute;left:-8px;top:4px;width:13px;height:13px;border-radius:50%;background:var(--surface);border:3px solid var(--tc);}
+.date-row strong{display:block;font-size:14px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--tc);}
+.date-row span{display:block;font-size:17px;color:var(--title);font-weight:600;margin:3px 0;}
+.date-row em{font-style:normal;font-size:14px;color:var(--muted);}
+.date-row a{color:var(--brand);font-size:14px;font-weight:600;cursor:pointer;margin-left:6px;}
+.form-field{margin-bottom:14px;}
+.form-field label{display:block;font-size:13px;font-weight:700;color:var(--text-soft);margin-bottom:5px;}
+.form-field input,.form-field select,.form-field textarea{width:100%;border:1.5px solid var(--border);background:var(--surface);color:var(--text);border-radius:8px;padding:11px 13px;font-size:15px;font-family:inherit;outline:none;}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{border-color:#4F7A52;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.ok-box{background:#EEF5EE;border-left:4px solid #4F7A52;padding:14px 16px;color:#22402A;font-size:15px;margin-top:12px;}
+.err-box{background:#FEF2F2;border-left:4px solid #DC2626;padding:12px 14px;color:#991B1B;font-size:14px;margin-bottom:12px;}
+.plus-box{margin-top:36px;border:1.5px solid var(--border);border-top:5px solid #4F7A52;padding:20px 22px;background:var(--surface);}
+.plus-box h4{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:700;color:var(--title);margin-bottom:12px;}
+.plus-box .q-teaser{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--border);font-size:16px;color:var(--text);}
+.plus-box .q-teaser::before{content:'🔒';font-size:13px;}
+.plus-box .cta{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;}
+.plus-side .pl{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 0;border-bottom:1px solid var(--border);font-weight:600;font-size:15px;color:var(--title);cursor:pointer;}
+.plus-side .pl:hover{color:#4F7A52;}
+.plus-side .pl small{font-size:15px;}
+/* modal */
+.modal-bg{position:fixed;inset:0;background:rgba(10,20,35,.55);z-index:400;display:none;align-items:center;justify-content:center;padding:16px;}
+.modal-bg.open{display:flex;}
+.modal{background:var(--surface);width:100%;max-width:460px;border-radius:10px;box-shadow:0 24px 60px rgba(0,0,0,.3);overflow:hidden;max-height:calc(100vh - 32px);overflow-y:auto;}
+.modal-head{background:var(--dh-green);color:#fff;padding:18px 22px;display:flex;align-items:center;gap:12px;}
+.modal-head img{height:34px;border-radius:4px;background:#fff;padding:2px;}
+.modal-head strong{font-size:18px;font-weight:800;}
+.modal-head button{margin-left:auto;background:none;border:none;color:#fff;font-size:18px;cursor:pointer;}
+.modal-body{padding:22px;}
+.modal-body .sub{font-size:14.5px;color:var(--text-soft);margin-bottom:16px;line-height:1.55;}
+.modal-body .btn-solid{width:100%;margin-top:4px;}
+.modal-switch{margin-top:16px;padding-top:14px;border-top:1px solid var(--border);font-size:14.5px;color:var(--text-soft);text-align:center;}
+.modal-switch a{color:#4F7A52;font-weight:800;cursor:pointer;}
+body.dark .modal-switch a{color:#8FBF92;}
+.lock-ic{width:56px;height:56px;border-radius:50%;background:#EEF5EE;display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 12px;}
+/* AI tiers */
+.ai-tier{font-size:12px;line-height:1.45;padding:9px 14px;background:#EEF5EE;color:#22402A;border-bottom:1px solid var(--border);}
+body.dark .ai-tier{background:#1E3322;color:#CFE3D0;}
+.ai-tier a{color:#3F6542;font-weight:800;cursor:pointer;text-decoration:underline;}
+body.dark .ai-tier a{color:#8FBF92;}
+.ai-ref{display:flex;align-items:flex-start;gap:8px;margin-top:8px;padding:8px 10px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--title);font-size:12.5px;font-weight:600;cursor:pointer;line-height:1.35;}
+.ai-ref:hover{border-color:var(--brand);}
+.ai-cta{display:block;margin-top:10px;font-size:12.5px;color:var(--text-soft);}
+.ai-cta a{color:#4F7A52;font-weight:800;cursor:pointer;}
+@media(max-width:1180px){.plus-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:700px){.plus-grid,.form-row{grid-template-columns:1fr;}.plus-intro{flex-direction:column;align-items:flex-start;}}
+
 /* ── PRINT ── */
 @media print{.topbar,.masthead,.secnav,.ticker,.share,.art-side,footer,.ai-fab,.ai-panel,.in-art,.crumbs{display:none!important;}.art-grid{display:block;}}
 
@@ -317,8 +413,16 @@ footer a{color:#fff;cursor:pointer;margin-right:18px;font-weight:600;}
       <div class="tb-sep tb-hide"></div>
       <button class="tb-btn" id="theme-btn" onclick="toggleTheme()" title="Cambia tema">☀️</button>
       <div class="tb-sep"></div>
+      {% if user %}
+      <div class="tb-user"><span class="plus-chip">Plus</span><span class="tb-hide">{{ user }}</span></div>
       <a class="tb-btn" href="/logout"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Esci</a>
-      <div class="tb-avatar">OP</div>
+      <div class="tb-avatar">{{ user[:2]|upper }}</div>
+      {% else %}
+      <div class="tb-auth">
+        <button class="tb-btn" onclick="openAuth('login')"><svg viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>Accedi</button>
+        <small onclick="openAuth('register')">oppure registrati</small>
+      </div>
+      {% endif %}
     </div>
   </div>
   <div class="menu-pop" id="menu-pop"><div class="wrap" id="menu-cols"></div></div>
@@ -345,6 +449,7 @@ footer a{color:#fff;cursor:pointer;margin-right:18px;font-weight:600;}
     <a class="c-prev" data-area="previdenza" onclick="showPage('previdenza')">Previdenza</a>
     <a class="c-welf" data-area="welfare" onclick="showPage('welfare')">Welfare aziendale</a>
     <a class="c-san" data-area="sanita" onclick="showPage('sanita')">Sanità integrativa</a>
+    <a class="c-plus" data-area="plus" onclick="showPage('plus')">★ Servizi Plus</a>
     <div class="spacer"></div>
     <a onclick="toggleAI(true)">Assistente AI</a>
     <a onclick="showPage('chisiamo')">Chi siamo</a>
@@ -374,10 +479,17 @@ footer a{color:#fff;cursor:pointer;margin-right:18px;font-weight:600;}
         </div>
         <aside class="col-right">
           <div class="promo" onclick="toggleAI(true)">
+            {% if user %}
             <h4>Il P&amp;W Advisor risponde in pochi secondi</h4>
-            <p>L'assistente AI dell'Hub consulta la base documentale certificata e cita sempre circolare e data.</p>
-            <div class="chips"><span>Fonti ufficiali</span><span>Zero invenzioni</span><span>Sempre attivo</span></div>
+            <p>Risposta operativa completa dalla base documentale certificata, con circolare e data.</p>
+            <div class="chips"><span>Fonti ufficiali</span><span>Follow-up</span><span>Versione Plus</span></div>
             <span class="btn">Fai una domanda</span>
+            {% else %}
+            <h4>Prova la ricerca intelligente</h4>
+            <p>Fai una domanda in linguaggio naturale: ti indichiamo l'articolo e il paragrafo con la risposta. Accedendo hai il P&amp;W Advisor completo.</p>
+            <div class="chips"><span>{{ public_max }} domande gratuite</span><span>Fonti ufficiali</span></div>
+            <span class="btn">Prova ora</span>
+            {% endif %}
           </div>
           <div class="prontuario">
             <div class="box-head blue">Prontuario 2026</div>
@@ -385,6 +497,10 @@ footer a{color:#fff;cursor:pointer;margin-right:18px;font-weight:600;}
             <a class="pr-item c-welf" onclick="showPage('cigo')"><strong>80%</strong><span>Integrazione CIGO della retribuzione globale</span><em>D.Lgs. 148/2015</em></a>
             <a class="pr-item c-san" onclick="showPage('sanita-fiscale')"><strong>3.615,20 €</strong><span>Plafond annuo di deducibilità dei contributi ai fondi sanitari</span><em>Artt. 10 e 51 TUIR</em></a>
             <a class="pr-item c-san" onclick="showPage('sanita-fiscale')"><strong>10%</strong><span>Contributo di solidarietà sulla quota datore ai fondi sanitari</span><em>Circ. INPS 263/1997</em></a>
+          </div>
+          <div class="plus-side c-plus" style="margin-bottom:28px;">
+            <div class="box-head" style="background:#4F7A52">★ Servizi Plus</div>
+            <div id="home-plus-list"></div>
           </div>
           <div class="area-links">
             <div class="box-head navy">Aree tematiche</div>
@@ -411,6 +527,13 @@ footer a{color:#fff;cursor:pointer;margin-right:18px;font-weight:600;}
     <section class="page" id="page-sanita-fiscale"></section>
 
     <!-- CHI SIAMO -->
+    <!-- SERVIZI PLUS (popolati da JS) -->
+    <section class="page c-plus" id="page-plus"></section>
+    <section class="page c-plus" id="page-plus-lettera"></section>
+    <section class="page c-plus" id="page-plus-quesiti"></section>
+    <section class="page c-plus" id="page-plus-date"></section>
+    <section class="page c-plus" id="page-plus-inoltra"></section>
+
     <section class="page" id="page-chisiamo">
       <div class="crumbs"><a onclick="goBack()"><svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></a>/<a onclick="showPage('home')">Home</a>/<span>Chi siamo</span></div>
       <div class="about">
@@ -457,6 +580,53 @@ footer a{color:#fff;cursor:pointer;margin-right:18px;font-weight:600;}
   <div id="kb-src-sanita-fiscale">{{ kb.sanita_fiscale | safe }}</div>
 </div>
 
+<!-- ═════════ ACCESSO ═════════ -->
+<div class="modal-bg" id="auth-modal" onclick="if(event.target===this)closeAuth()">
+  <div class="modal">
+    <div class="modal-head"><img src="/static/images/Logo HUB Previdenza e Welfare.png" alt=""><strong id="auth-title">Accedi</strong><button onclick="closeAuth()">✕</button></div>
+    <div class="modal-body">
+      <!-- contenuto riservato -->
+      <div id="auth-lock" hidden>
+        <div class="lock-ic">🔒</div>
+        <p class="sub" style="text-align:center"><b id="lock-what">Questo contenuto</b> è riservato agli utenti registrati dell'Hub.<br>Accedi con le tue credenziali o richiedi l'accesso.</p>
+        <button class="btn-solid" onclick="openAuth('login',lockTarget)">Accedi</button>
+        <div class="modal-switch">Non hai le credenziali? <a onclick="openAuth('register',lockTarget)">Richiedi l'accesso</a></div>
+      </div>
+      <!-- login -->
+      <form id="auth-login" method="post" action="/login" hidden onsubmit="rememberTarget()">
+        <p class="sub">Accedi per sbloccare il P&amp;W Advisor completo e i Servizi Plus.</p>
+        {% if login_error %}<div class="err-box">Credenziali non valide. Riprova.</div>{% endif %}
+        <div class="form-field"><label>Email</label><input type="email" name="email" required autocomplete="username"></div>
+        <div class="form-field"><label>Password</label><input type="password" name="password" required autocomplete="current-password"></div>
+        <button class="btn-solid" type="submit">Accedi</button>
+        <div class="modal-switch">Non hai le credenziali? <a onclick="openAuth('register',lockTarget)">Registrati</a></div>
+      </form>
+      <!-- registrazione = richiesta di accesso -->
+      <form id="auth-register" hidden onsubmit="submitRegister(event)">
+        <p class="sub">L'Hub è riservato agli operatori del Polo e delle sedi territoriali. Compila la richiesta: riceverai le credenziali via email dopo la verifica.</p>
+        <div id="reg-err" class="err-box" hidden></div>
+        <div class="form-row">
+          <div class="form-field"><label>Nome *</label><input name="nome" required></div>
+          <div class="form-field"><label>Cognome *</label><input name="cognome" required></div>
+        </div>
+        <div class="form-field"><label>Email *</label><input type="email" name="email" required></div>
+        <div class="form-row">
+          <div class="form-field"><label>Ente / sede territoriale</label><input name="ente"></div>
+          <div class="form-field"><label>Ruolo</label><input name="ruolo"></div>
+        </div>
+        <div class="form-field"><label>Note</label><textarea name="note" rows="2"></textarea></div>
+        <button class="btn-solid" type="submit">Invia la richiesta</button>
+        <div class="modal-switch">Hai già le credenziali? <a onclick="openAuth('login',lockTarget)">Accedi</a></div>
+      </form>
+      <div id="auth-done" hidden>
+        <div class="lock-ic">✓</div>
+        <p class="sub" style="text-align:center">Richiesta inviata. Riceverai le credenziali all'indirizzo indicato dopo la verifica da parte della redazione.</p>
+        <button class="btn-solid" onclick="closeAuth()">Torna al sito</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ═════════ ASSISTENTE AI ═════════ -->
 <div class="ai-fab">
   <button class="ai-fab-btn" onclick="toggleAI()" title="Assistente virtuale">
@@ -467,11 +637,14 @@ footer a{color:#fff;cursor:pointer;margin-right:18px;font-weight:600;}
 <div class="ai-panel" id="ai-panel">
   <div class="ai-head">
     <div class="ai-head-av">🤖</div>
-    <div><strong>P&amp;W Advisor</strong><span>Base documentale certificata · Attivo</span></div>
+    {% if user %}<div><strong>P&amp;W Advisor · Plus</strong><span>Versione completa · Base documentale certificata</span></div>
+    {% else %}<div><strong>Ricerca intelligente</strong><span>Versione pubblica · Base documentale certificata</span></div>{% endif %}
     <button class="ai-head-x" onclick="toggleAI(false)">✕</button>
   </div>
+  {% if not user %}<div class="ai-tier">Versione pubblica: ti indico <b>dove trovare la risposta</b> negli articoli. <a onclick="openAuth('login')">Accedi</a> per la risposta operativa completa. Domande rimaste: <b id="ai-rem">{{ public_remaining }}</b>/{{ public_max }}</div>{% endif %}
   <div class="ai-msgs" id="ai-msgs">
-    <div class="msg"><div class="msg-av">🤖</div><div class="msg-b">Ciao! Sono il tuo assistente virtuale dell'Hub Previdenza e Welfare. Posso aiutarti a orientarti tra le informazioni, gli adempimenti e i servizi presenti in questa Knowledge Base. Come posso aiutarti?</div></div>
+    {% if user %}<div class="msg"><div class="msg-av">🤖</div><div class="msg-b">Ciao! Sono il P&amp;W Advisor. Rispondo sulla base della documentazione certificata, con la fonte e i passaggi operativi. Puoi fare anche domande di approfondimento. Come posso aiutarti?</div></div>
+    {% else %}<div class="msg"><div class="msg-av">🔎</div><div class="msg-b">Ciao! Scrivi la tua domanda: ti dico in sintesi cosa prevede la documentazione e in quale articolo e paragrafo trovi la risposta.</div></div>{% endif %}
   </div>
   <div class="ai-qs">
     <span class="ai-q" onclick="sendMsg('Come funziona il Pre-DURC?')">Pre-DURC?</span>
@@ -488,6 +661,11 @@ footer a{color:#fff;cursor:pointer;margin-right:18px;font-weight:600;}
 </div>
 
 <script>
+/* ══════════ SESSIONE (dal server) ══════════ */
+const LOGGED={{ 'true' if user else 'false' }};
+const PUBLIC_MAX={{ public_max }};
+let publicRemaining={{ public_remaining if public_remaining is not none else 0 }};
+const OPEN_LOGIN={{ 'true' if (open_login or login_error) else 'false' }};
 /* ══════════ DATI ══════════ */
 const IMG=id=>'https://images.unsplash.com/'+id+'?auto=format&fit=crop&w=1200&q=70';
 const AREAS={
@@ -570,8 +748,8 @@ function sideColumn(area,excludeId){
   return `<div class="side-sticky">
     <div class="promo" onclick="toggleAI(true)">
       <h4>Hai un dubbio su questo tema?</h4>
-      <p>Chiedi al P&amp;W Advisor: risponde dalla base documentale certificata e indica circolare e data.</p>
-      <span class="btn">Chiedi all'assistente</span>
+      <p>${LOGGED?'Chiedi al P&amp;W Advisor: risposta operativa dalla base documentale certificata, con circolare e data.':'Prova la ricerca intelligente: ti indica dove trovare la risposta. Accedendo hai il P&amp;W Advisor completo.'}</p>
+      <span class="btn">${LOGGED?"Chiedi all'assistente":'Prova ora'}</span>
     </div>
     ${rel.length?`<div class="related ${ar.cls}" style="margin-bottom:26px;"><div class="box-head" style="background:var(--tc)">Altro in ${ar.name}</div>
       ${rel.map(a=>`<div class="art ${ar.cls}" ${go(a.id)}>${kicker(a)}<h3>${a.title}</h3></div>`).join('')}</div>`:''}
@@ -625,6 +803,7 @@ function renderArticles(){
           <div class="kb-article" id="kb-${a.id}">
             <figure class="art-figure">${media(a)}<figcaption>${a.caption}</figcaption></figure>
           </div>
+          ${plusBox(a.id)}
           <div class="sources"><h4>Fonti ufficiali</h4>
             ${a.sources.map(s=>`<a class="src" href="${s[2]}" target="_blank" rel="noopener"><div><strong>${s[0]}</strong><span>${s[1]}</span></div><span>→</span></a>`).join('')}
           </div>
@@ -656,10 +835,11 @@ document.addEventListener('click',e=>{if(!e.target.closest('#menu-pop'))document
 
 /* ══════════ NAVIGAZIONE ══════════ */
 let navStack=[];let currentPage='home';
-function areaOf(name){return AREAS[name]?name:(BY_ID[name]?BY_ID[name].area:null);}
+function areaOf(name){if(name.startsWith('plus'))return 'plus';return AREAS[name]?name:(BY_ID[name]?BY_ID[name].area:null);}
 function showPage(name,addToStack=true){
   const el=document.getElementById('page-'+name);
   if(!el) return;
+  if(!LOGGED&&PLUS_LOCKED[name]){openAuth('lock',name);return;}
   if(addToStack&&name!==currentPage) navStack.push(currentPage);
   currentPage=name;
   document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p===el));
@@ -735,12 +915,15 @@ async function sendMsg(txt){
   msgs.scrollTop=msgs.scrollHeight;
   const sendBtn=document.getElementById('ai-send-btn');
   sendBtn.disabled=true;
+  if(!LOGGED&&publicRemaining<=0){document.getElementById(lid).remove();sendBtn.disabled=false;showLimit(msgs);return;}
   history.push({role:'user',content:q});
   const bubble=document.querySelector('#'+lid+' .msg-b');
   let full='';
   try{
-    const res=await fetch('/ask',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:history})});
+    const res=await fetch('/ask',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:LOGGED?history:[{role:'user',content:q}]})});
+    if(res.status===429){history.pop();publicRemaining=0;updateRem();document.getElementById(lid).remove();showLimit(msgs);sendBtn.disabled=false;return;}
     if(!res.ok||!res.body) throw new Error('HTTP '+res.status);
+    const rem=res.headers.get('X-Remaining');if(rem!==null){publicRemaining=parseInt(rem,10);updateRem();}
     const reader=res.body.getReader();
     const decoder=new TextDecoder();
     let raw='';
@@ -750,10 +933,11 @@ async function sendMsg(txt){
       if(done) break;
       raw+=decoder.decode(value,{stream:true});
       full=parse(raw);
-      bubble.innerHTML=linkify(escapeHtml(full.replace(/^\n+/,''))).replace(/\n/g,'<br>');
+      bubble.innerHTML=renderAnswer(full);
       msgs.scrollTop=msgs.scrollHeight;
     }
     full=parse(raw).trim();
+    bubble.innerHTML=renderAnswer(full)+(LOGGED?'':`<span class="ai-cta">Vuoi la risposta operativa completa e le domande di approfondimento? <a onclick="openAuth('login')">Accedi</a> · <a onclick="openAuth('register')">Registrati</a></span>`);
     if(!full) throw new Error('vuota');
     history.push({role:'assistant',content:full});
   }catch(e){
@@ -765,8 +949,170 @@ async function sendMsg(txt){
 }
 
 /* ══════════ AVVIO ══════════ */
-renderHome();renderAreas();renderArticles();renderMenu();
+/* ══════════ SERVIZI PLUS: DATI ══════════ */
+const PLUS_LOCKED={'plus-lettera':'La Lettera informativa','plus-quesiti':'La raccolta dei Quesiti risolti','plus-date':'Lo scadenzario Date chiave','plus-inoltra':'Il servizio Inoltra un quesito'};
+const QUESITI=[
+ {art:'cigo',sec:2,q:'I dirigenti possono accedere alla CIGO?',a:'No. I dirigenti sono esclusi dalla Cassa integrazione guadagni ordinaria.',src:'Art. 1, c. 1, D.Lgs. 148/2015'},
+ {art:'cigo',sec:2,q:'Per la CIGO legata alle ondate di calore serve il requisito dei 30 giorni di anzianità?',a:'No. Per le richieste connesse a eventi oggettivamente non evitabili (EONE), tra cui le emergenze climatiche, il requisito dei 30 giorni non si applica. Per questi periodi non è dovuto nemmeno il contributo addizionale.',src:'Msg. INPS 2418/2026 · D.Lgs. 148/2015'},
+ {art:'cigo',sec:6,q:'Quanto vale il contributo addizionale CIGO a carico del datore?',a:'9% fino a 52 settimane di CIGO nel biennio mobile, 12% da 53 a 104 settimane, 15% oltre 104 settimane. Non è dovuto per i periodi connessi a EONE.',src:'Circ. INPS 5/2025'},
+ {art:'durc-online',sec:9,q:'Con il Pre-DURC quando arriva l\'avviso?',a:'Il delegato master può scegliere di ricevere la notifica 30 o 15 giorni prima della scadenza del DURC (regolare e in corso di validità), tramite PEC, email o SMS. Dal ticket si verificano le evidenze e si avvia la sistemazione prima della nuova richiesta.',src:'Msg. INPS 3662/2024'},
+ {art:'posizione-contributiva',sec:5,q:'Il termine di 30 giorni del Msg. 1900/2023 vale per tutti i ricorsi contributivi?',a:'No. Riguarda i dinieghi dei trattamenti di integrazione salariale ordinaria. Il termine va verificato in base al provvedimento e all\'organo competente: per i ricorsi ai Comitati della gestione lavoratori privati il termine ordinario indicato è di 90 giorni.',src:'Circ. INPS 48/2023 · Msg. INPS 1900/2023'},
+ {art:'posizione-contributiva',sec:6,q:'Avviare l\'autotutela sospende i termini per il ricorso?',a:'No. L\'avvio dell\'autotutela non interrompe né sospende i termini per proporre il ricorso amministrativo.',src:'Circ. INPS 48/2023'},
+ {art:'sanita-fiscale',sec:6,q:'Basta la registrazione al SIAF per avere la deducibilità dei contributi?',a:'No. Serve l\'attestato di iscrizione all\'Anagrafe, che ha valenza annuale e va rinnovato. Inoltre il fondo deve operare secondo i principi di mutualità e solidarietà: i due requisiti devono esserci entrambi.',src:'Circ. AE 4/E 2025 · D.M. Salute 27/10/2009'},
+ {art:'accompagnamento-pensione',sec:4,q:'L\'isopensione si trasforma automaticamente in pensione?',a:'No. Il pagamento cessa alla scadenza del periodo di esodo e il lavoratore deve presentare in tempo la domanda di pensione. Per chi è colpito dall\'innalzamento dei requisiti 2027-2028 la Circ. 41/2026 prevede il prolungamento della prestazione fino alla nuova data di pensionamento.',src:'Circ. INPS 41/2026'},
+ {art:'fondi-sanitari-contrattuali',sec:4,q:'Qual è il codice F24 per versare a INNOVACARE?',a:'CARE. La convenzione è del 23/03/2026 (Circ. INPS 95 del 10/09/2026) e, come le altre convenzioni con i fondi sanitari contrattuali, vale fino al 31/12/2026, rinnovabile per un triennio.',src:'Circ. INPS 95/2026'}
+];
+const DATES=[
+ {d:'1 gennaio 2026',t:'Massimale unico CIGO a 1.423,69 € lordi mensili',src:'Circ. INPS 4/2026',art:'cigo',sec:5},
+ {d:'1 gennaio – 31 luglio',t:'Finestra annuale per la domanda di iscrizione all\'Anagrafe dei fondi sanitari (SIAF)',src:'D.M. Salute 27/10/2009',art:'sanita-fiscale',sec:6},
+ {d:'1 luglio – 31 dicembre 2026',t:'CIGO per emergenza climatica (EONE) nei settori edile, lapideo ed escavazioni, fuori dal limite di durata e senza contributo addizionale',src:'Msg. INPS 2418/2026',art:'cigo',sec:3},
+ {d:'10 settembre 2026',t:'Convenzione INPS con INNOVACARE: codice F24 CARE',src:'Circ. INPS 95/2026',art:'fondi-sanitari-contrattuali',sec:4},
+ {d:'14 settembre 2026',t:'Istruzioni sulle agevolazioni fiscali 2026 per le prestazioni di accompagnamento alla pensione',src:'Msg. INPS 2829/2026',art:'accompagnamento-pensione',sec:7},
+ {d:'31 dicembre 2026',t:'Scadenza delle convenzioni INPS con i fondi sanitari contrattuali (rinnovabili per un triennio)',src:'Circ. INPS 77, 119, 120/2025 · 95/2026',art:'fondi-sanitari-contrattuali',sec:4},
+ {d:'Ricorrente',t:'Pre-DURC: avviso 30 o 15 giorni prima della scadenza del DURC',src:'Msg. INPS 3662/2024',art:'durc-online',sec:9}
+];
+const LETTERA=[
+ {art:'cigo',sec:3,title:'CIGO e caldo estremo: periodi fuori dal limite fino a fine anno',text:'Dal 1° luglio al 31 dicembre 2026 i datori dei settori edile, lapideo e delle escavazioni possono chiedere la CIGO per eventi climatici senza che i periodi siano computati nel limite massimo di durata e senza contributo addizionale. Per la stessa causale non si applica il requisito dei 30 giorni di anzianità.',src:'Msg. INPS 2418/2026 · D.L. 107/2026, art. 6'},
+ {art:'accompagnamento-pensione',sec:5,title:'Isopensione: tutela per chi è colpito dai nuovi requisiti 2027-2028',text:'Con l\'innalzamento dei requisiti pensionistici per il biennio 2027-2028 alcuni lavoratori in esodo rischiavano un periodo senza assegno. La prestazione viene prolungata fino alla nuova data di pensionamento, anche oltre la durata massima ordinaria.',src:'Circ. INPS 41/2026 · L. 199/2025'},
+ {art:'fondi-sanitari-contrattuali',sec:4,title:'Fondi sanitari contrattuali: arriva INNOVACARE',text:'Si aggiunge il codice CARE ai fondi già convenzionati con INPS per la riscossione tramite F24 e UniEmens (ESAL, FAFP, SANI). Tutte le convenzioni scadono il 31/12/2026, rinnovabili per un triennio.',src:'Circ. INPS 95/2026'},
+ {art:'sanita-fiscale',sec:2,title:'Deducibilità dei fondi sanitari: i due requisiti da verificare',text:'Dal 2025 l\'agevolazione spetta solo se il fondo è iscritto all\'Anagrafe del Ministero della Salute e opera secondo i principi di mutualità e solidarietà. L\'attestato di iscrizione ha valenza annuale.',src:'Circ. AE 4/E 2025 · D.Lgs. 192/2024'}
+];
+const PLUS_SERVICES=[
+ {id:'advisor',ic:'🤖',title:'P&W Advisor completo',tag:'L\'assistente AI nella versione integrale, per rispondere alle sedi in pochi secondi.',items:['Risposta operativa con i passaggi da seguire','Fonte e data per ogni informazione','Domande di approfondimento nella stessa conversazione','Nessun limite di domande'],open:"toggleAI(true)"},
+ {id:'plus-lettera',ic:'✉️',title:'Lettera informativa',tag:'La sintesi mensile del Centro Studi sulle novità che contano per il Polo.',items:['Novità INPS, Agenzia delle Entrate e Ministero della Salute','Cosa cambia in pratica, in poche righe','Collegamento diretto all\'articolo dell\'Hub'],open:"showPage('plus-lettera')"},
+ {id:'plus-quesiti',ic:'💬',title:'Quesiti risolti',tag:'Le domande più frequenti delle sedi territoriali, con risposta e fonte.',items:['Casi reali, resi anonimi','Risposta breve e verificata','Fonte normativa per ogni risposta'],open:"showPage('plus-quesiti')"},
+ {id:'plus-date',ic:'📅',title:'Date chiave e scadenze',tag:'Lo scadenzario degli adempimenti e delle decorrenze 2026.',items:['Decorrenze e finestre temporali','Riferimento alla circolare','Collegamento al paragrafo dell\'articolo'],open:"showPage('plus-date')"},
+ {id:'plus-inoltra',ic:'📨',title:'Inoltra un quesito',tag:'Quando la risposta non è nella base documentale, la passi al Centro Studi.',items:['Modulo dedicato per tema','Presa in carico della redazione','Le risposte alimentano i Quesiti risolti'],open:"showPage('plus-inoltra')"}
+];
+
+/* ══════════ SERVIZI PLUS: RENDER ══════════ */
+const LOCK_SVG='<svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>';
+function crumbsPlus(label){return `<div class="crumbs"><a onclick="goBack()" title="Indietro">${ARROW_BACK}</a>/<a onclick="showPage('home')">Home</a>/<a onclick="showPage('plus')">Servizi Plus</a>${label?`/<span>${label}</span>`:''}</div>`;}
+function secLink(art,sec,label){return `<a class="more" onclick="openSection('${art}',${sec})">${label||'Leggi nell\'articolo'} →</a>`;}
+function renderPlus(){
+  document.getElementById('page-plus').innerHTML=`
+    <div class="crumbs"><a onclick="goBack()" title="Indietro">${ARROW_BACK}</a>/<a onclick="showPage('home')">Home</a>/<span style="color:var(--tc)">Servizi Plus</span></div>
+    <div class="area-title"><h1>★ Servizi Plus</h1><p>Strumenti aggiuntivi riservati agli utenti registrati dell'Hub.</p></div>
+    <div class="plus-intro">${LOGGED
+      ?`<p><b>Sei connesso.</b> Tutti i Servizi Plus sono attivi sul tuo profilo.</p>`
+      :`<p>Articoli e ricerca intelligente sono aperti a tutti. Con l'accesso sblocchi l'assistente completo, la lettera informativa, i quesiti risolti, lo scadenzario e l'invio dei quesiti al Centro Studi.</p><div class="btns"><button class="btn-solid" onclick="openAuth('login','plus')">Accedi</button><button class="btn-ghost" onclick="openAuth('register','plus')">Richiedi l'accesso</button></div>`}</div>
+    <div class="plus-grid">${PLUS_SERVICES.map(s=>`
+      <div class="plus-card">
+        <div class="pc-top"><div class="pc-ic">${s.ic}</div>${LOGGED?'<span class="open-chip">Attivo</span>':`<span class="lock">${LOCK_SVG}Riservato</span>`}</div>
+        <h3>${s.title}</h3><div class="tagline">${s.tag}</div>
+        <ul>${s.items.map(i=>`<li>${i}</li>`).join('')}</ul>
+        ${LOGGED?`<button class="btn-solid" onclick="${s.open}">Apri</button>`:`<button class="btn-ghost" onclick="openAuth('lock','${s.id==='advisor'?'plus':s.id}')">Accedi per attivare</button>`}
+      </div>`).join('')}</div>`;
+  document.getElementById('home-plus-list').innerHTML=PLUS_SERVICES.map(s=>
+    `<a class="pl" onclick="${LOGGED?s.open:`openAuth('lock','${s.id==='advisor'?'plus':s.id}')`}"><span>${s.ic} ${s.title}</span><small>${LOGGED?'›':'🔒'}</small></a>`).join('');
+  if(!LOGGED) return;
+  document.getElementById('page-plus-lettera').innerHTML=`${crumbsPlus('Lettera informativa')}
+    <div class="plus-doc"><h1>Lettera informativa — Ottobre 2026</h1>
+    <p class="lead-p">Le novità del mese selezionate dal Centro Studi per gli operatori del Polo.</p>
+    <div class="demo-note">Contenuto dimostrativo costruito sugli articoli della base documentale.</div>
+    ${LETTERA.map(l=>{const a=BY_ID[l.art];return `<div class="lt-item ${AREAS[a.area].cls}"><span class="kicker">${AREAS[a.area].name} · ${a.tag}</span><h2>${l.title}</h2><p>${l.text}</p><p class="byline">Fonte: ${l.src}</p>${secLink(l.art,l.sec)}</div>`;}).join('')}</div>`;
+  document.getElementById('page-plus-quesiti').innerHTML=`${crumbsPlus('Quesiti risolti')}
+    <div class="plus-doc"><h1>Quesiti risolti</h1>
+    <p class="lead-p">Le domande più frequenti delle sedi territoriali, con risposta breve e fonte.</p>
+    <div class="demo-note">Esempi dimostrativi: risposte tratte dalla base documentale certificata.</div>
+    ${Object.entries(AREAS).map(([k,ar])=>{const qs=QUESITI.filter(x=>BY_ID[x.art].area===k);return qs.length?`<div class="${ar.cls}" style="margin-bottom:22px"><div class="sec-head"><h3>${ar.name}</h3></div>${qs.map(qaHtml).join('')}</div>`:'';}).join('')}</div>`;
+  document.getElementById('page-plus-date').innerHTML=`${crumbsPlus('Date chiave')}
+    <div class="plus-doc"><h1>Date chiave e scadenze 2026</h1>
+    <p class="lead-p">Decorrenze, finestre e scadenze presenti nella base documentale.</p>
+    <div class="dates">${DATES.map(x=>`<div class="date-row ${AREAS[BY_ID[x.art].area].cls}"><strong>${x.d}</strong><span>${x.t}</span><em>${x.src}</em><a onclick="openSection('${x.art}',${x.sec})">Apri →</a></div>`).join('')}</div></div>`;
+  document.getElementById('page-plus-inoltra').innerHTML=`${crumbsPlus('Inoltra un quesito')}
+    <div class="plus-doc" style="max-width:720px"><h1>Inoltra un quesito al Centro Studi</h1>
+    <p class="lead-p">Usa questo modulo quando la risposta non è nella base documentale. La redazione prende in carico il quesito e la risposta confluisce nei Quesiti risolti.</p>
+    <form onsubmit="submitQuesito(event)">
+      <div class="form-field"><label>Tema</label><select name="tema">${Object.values(AREAS).map(a=>`<option>${a.name}</option>`).join('')}<option>Altro</option></select></div>
+      <div class="form-field"><label>Quesito</label><textarea name="testo" rows="6" required placeholder="Descrivi il caso senza dati personali di iscritti o lavoratori"></textarea></div>
+      <div id="q-err" class="err-box" hidden></div>
+      <button class="btn-solid" type="submit">Invia al Centro Studi</button>
+      <div id="q-ok" class="ok-box" hidden>Quesito inviato. La redazione lo prenderà in carico.</div>
+    </form></div>`;
+}
+function qaHtml(x){return `<details class="qa"><summary>${x.q}</summary><div class="ans">${x.a}<span class="src-line">Fonte: ${x.src} · <a onclick="openSection('${x.art}',${x.sec})">Approfondisci nell'articolo</a></span></div></details>`;}
+function plusBox(artId){
+  const qs=QUESITI.filter(x=>x.art===artId);
+  if(!qs.length) return '';
+  if(LOGGED) return `<div class="plus-box"><h4><span class="open-chip">Plus</span>Quesiti risolti su questo tema</h4>${qs.map(qaHtml).join('')}</div>`;
+  return `<div class="plus-box"><h4><span class="lock">${LOCK_SVG}Plus</span>Quesiti risolti su questo tema</h4>
+    ${qs.map(x=>`<div class="q-teaser">${x.q}</div>`).join('')}
+    <div class="cta"><button class="btn-solid" onclick="openAuth('login','${artId}')">Accedi per leggere le risposte</button><button class="btn-ghost" onclick="openAuth('register','${artId}')">Registrati</button></div></div>`;
+}
+
+/* ══════════ ACCESSO ══════════ */
+let lockTarget=null;
+function openAuth(mode,target){
+  if(target!==undefined) lockTarget=target;
+  const views={lock:'auth-lock',login:'auth-login',register:'auth-register',done:'auth-done'};
+  Object.values(views).forEach(id=>document.getElementById(id).hidden=true);
+  document.getElementById(views[mode]).hidden=false;
+  document.getElementById('auth-title').textContent={lock:'Contenuto riservato',login:'Accedi',register:'Richiedi l\'accesso',done:'Richiesta inviata'}[mode];
+  if(mode==='lock') document.getElementById('lock-what').textContent=PLUS_LOCKED[target]||'Questo contenuto';
+  document.getElementById('auth-modal').classList.add('open');
+  document.getElementById('menu-pop').classList.remove('open');
+  const first=document.querySelector('#'+views[mode]+' input');if(first)setTimeout(()=>first.focus(),50);
+}
+function closeAuth(){document.getElementById('auth-modal').classList.remove('open');}
+function rememberTarget(){try{if(lockTarget)sessionStorage.setItem('afterLogin',lockTarget);}catch(e){}}
+async function submitRegister(e){
+  e.preventDefault();
+  const f=e.target;const err=document.getElementById('reg-err');err.hidden=true;
+  const body=Object.fromEntries(new FormData(f).entries());
+  try{
+    const r=await fetch('/registrati',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+    const j=await r.json();
+    if(!j.ok) throw new Error(j.error||'Errore');
+    f.reset();openAuth('done');
+  }catch(ex){err.textContent=ex.message||'Invio non riuscito, riprova.';err.hidden=false;}
+}
+async function submitQuesito(e){
+  e.preventDefault();
+  const f=e.target;const err=document.getElementById('q-err');const ok=document.getElementById('q-ok');err.hidden=true;ok.hidden=true;
+  try{
+    const r=await fetch('/quesito',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.fromEntries(new FormData(f).entries()))});
+    const j=await r.json();
+    if(!j.ok) throw new Error(j.error||'Errore');
+    f.reset();ok.hidden=false;
+  }catch(ex){err.textContent=ex.message||'Invio non riuscito, riprova.';err.hidden=false;}
+}
+
+/* ══════════ APERTURA PARAGRAFO ══════════ */
+function openSection(art,sec){
+  if(!BY_ID[art]) return;
+  showPage(art);
+  if(!sec) return;
+  const h=[...document.querySelectorAll('#kb-'+art+' h2')].find(x=>x.textContent.trim().startsWith(sec+'.'));
+  if(h) setTimeout(()=>window.scrollTo({top:h.getBoundingClientRect().top+window.scrollY-70,behavior:'smooth'}),60);
+}
+
+/* ══════════ ASSISTENTE: RENDER RISPOSTA ══════════ */
+function renderAnswer(text){
+  let t=text.replace(/^\n+/,'');
+  const refs=[];
+  t=t.replace(/\[\[([a-z-]+)(?:#(\d+))?\]\]/g,(m,art,sec)=>{if(BY_ID[art])refs.push([art,sec?parseInt(sec,10):0]);return '';});
+  t=t.replace(/\[\[[^\]]*$/,'');
+  let html=linkify(escapeHtml(t.trim())).replace(/\n{2,}/g,'<br><br>').replace(/\n/g,'<br>');
+  html=html.replace(/(<br>)+$/,'');
+  refs.forEach(([art,sec])=>{
+    const a=BY_ID[art];
+    const h=sec?[...document.querySelectorAll('#kb-'+art+' h2')].find(x=>x.textContent.trim().startsWith(sec+'.')):null;
+    const label=h?h.textContent.trim():'Articolo completo';
+    html+=`<div class="ai-ref" onclick="openSection('${art}',${sec})">📄 <span>${a.title.split(':')[0]}<br><span style="font-weight:400;color:var(--muted)">${escapeHtml(label)}</span></span></div>`;
+  });
+  return html;
+}
+function updateRem(){const el=document.getElementById('ai-rem');if(el)el.textContent=Math.max(0,publicRemaining);}
+function showLimit(msgs){
+  msgs.insertAdjacentHTML('beforeend',`<div class="msg"><div class="msg-av">🔒</div><div class="msg-b">Hai usato le ${PUBLIC_MAX} domande della versione pubblica. Accedi per continuare con il P&amp;W Advisor completo, senza limiti.<span class="ai-cta"><a onclick="openAuth('login')">Accedi</a> · <a onclick="openAuth('register')">Richiedi l'accesso</a></span></div></div>`);
+  msgs.scrollTop=msgs.scrollHeight;
+}
+
+renderHome();renderAreas();renderArticles();renderMenu();renderPlus();
 showPage('home',false);
+if(OPEN_LOGIN) openAuth('login');
+try{const t=sessionStorage.getItem('afterLogin');if(LOGGED&&t){sessionStorage.removeItem('afterLogin');if(t==='plus')showPage('plus');else if(PLUS_LOCKED[t]||document.getElementById('page-'+t))showPage(t);}}catch(e){}
 </script>
 </body>
 </html>
