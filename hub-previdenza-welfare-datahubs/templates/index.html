@@ -394,6 +394,62 @@ body.dark .ai-tier a{color:#8FBF92;}
 .contacts a{color:var(--brand);}
 body.dark .contacts a{color:#7DB4EA;}
 @media(max-width:700px){.six-q,.contacts{grid-template-columns:1fr;}}
+.c-res{--tc:#0E7490;--tc-bg:#E6F6F8;}
+body.dark .c-res{--tc:#5ED3E6;--tc-bg:#0F2F36;}
+.news-item{display:grid;grid-template-columns:120px minmax(0,1fr);gap:22px;padding:20px 0;border-top:1px solid var(--border);cursor:pointer;}
+.news-item:first-child{border-top:none;}
+.news-date{font-size:13px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);padding-top:4px;}
+.news-item h3{font-size:21px;font-weight:600;line-height:1.3;color:var(--title);margin:4px 0 8px;}
+.news-item p{font-size:15.5px;color:var(--text-soft);line-height:1.6;}
+.news-item .byline{margin-top:8px;}
+.news-item:hover h3{color:var(--tc);}
+.alert-badge{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:#fff;background:var(--hot);padding:2px 7px;border-radius:3px;margin-right:8px;vertical-align:2px;}
+.res-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-bottom:36px;}
+.res-card{border:1.5px solid var(--border);border-top:5px solid var(--tc);background:var(--surface);padding:22px 24px;display:flex;flex-direction:column;}
+.res-card .rc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.res-card .rc-ic{width:44px;height:44px;border-radius:10px;background:var(--tc-bg);display:flex;align-items:center;justify-content:center;font-size:21px;}
+.res-card h3{font-size:20px;font-weight:700;color:var(--title);margin-bottom:6px;}
+.res-card p{font-size:14.5px;color:var(--text-soft);line-height:1.6;margin-bottom:14px;}
+.res-card .go{margin-top:auto;font-weight:800;font-size:14px;color:var(--tc);cursor:pointer;}
+.res-card.soon{background:var(--surface-2);}
+.res-card.soon h3{color:var(--text-soft);}
+.chip-on{font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--tc);background:var(--tc-bg);padding:3px 8px;border-radius:4px;}
+.chip-soon{font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);background:var(--border);padding:3px 8px;border-radius:4px;}
+.gl-letters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px;}
+.gl-letters a{width:34px;height:34px;border:1.5px solid var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--tc);cursor:pointer;}
+.gl-letters a:hover{background:var(--tc-bg);}
+.gl-term{padding:16px 0;border-top:1px solid var(--border);scroll-margin-top:70px;}
+.gl-term dt{font-size:18px;font-weight:700;color:var(--title);margin-bottom:4px;}
+.gl-term dd{font-size:16px;color:var(--text);line-height:1.65;}
+.gl-term dd a{color:var(--brand);font-weight:600;cursor:pointer;margin-left:4px;}
+body.dark .gl-term dd a{color:#7DB4EA;}
+.path{border:1.5px solid var(--border);background:var(--surface);padding:22px 24px;margin-bottom:18px;}
+.path h3{font-size:20px;font-weight:700;color:var(--title);margin-bottom:4px;}
+.path .path-sub{font-size:14.5px;color:var(--text-soft);margin-bottom:14px;}
+.path ol{list-style:none;counter-reset:st;}
+.path li{counter-increment:st;display:flex;gap:14px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--border);cursor:pointer;}
+.path li::before{content:counter(st);width:28px;height:28px;border-radius:50%;background:var(--tc);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.path li strong{display:block;font-size:16px;color:var(--title);}
+.path li span{font-size:14px;color:var(--text-soft);}
+.path li:hover strong{color:var(--tc);}
+.nl-box{background:var(--navy);color:#fff;padding:24px 26px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin:10px 0 40px;}
+.nl-box .nl-txt{flex:1;min-width:260px;}
+.nl-box h3{font-size:22px;font-weight:800;color:#fff;margin-bottom:4px;}
+.nl-box p{font-size:14.5px;color:rgba(255,255,255,.8);line-height:1.55;}
+.nl-form{display:flex;gap:8px;flex-wrap:wrap;}
+.nl-form input,.nl-form select{border:none;border-radius:22px;padding:11px 16px;font-size:14px;font-family:inherit;min-width:200px;}
+.nl-form button{border:none;border-radius:22px;padding:11px 22px;font-weight:800;font-size:14px;background:var(--dh-green);color:#fff;cursor:pointer;}
+.nl-msg{width:100%;font-size:14px;margin-top:4px;}
+.nl-side{background:var(--navy);color:#fff;padding:20px 22px;margin-bottom:28px;}
+.nl-side h4{font-size:18px;font-weight:800;margin-bottom:6px;}
+.nl-side p{font-size:13.5px;color:rgba(255,255,255,.8);margin-bottom:12px;line-height:1.5;}
+.nl-side input{width:100%;border:none;border-radius:20px;padding:10px 14px;font-size:14px;font-family:inherit;margin-bottom:8px;}
+.nl-side button{width:100%;border:none;border-radius:20px;padding:10px;font-weight:800;background:var(--dh-green);color:#fff;cursor:pointer;}
+.home-news .news-item{grid-template-columns:90px minmax(0,1fr);padding:14px 0;}
+.home-news .news-item h3{font-size:17px;}
+.home-news .news-item p{display:none;}
+@media(max-width:1180px){.res-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:700px){.res-grid{grid-template-columns:1fr;}.news-item{grid-template-columns:1fr;gap:4px;}}
 /* ── PRINT ── */
 @media print{.topbar,.masthead,.secnav,.ticker,.share,.art-side,footer,.ai-fab,.ai-panel,.in-art,.crumbs{display:none!important;}.art-grid{display:block;}}
 
@@ -483,9 +539,11 @@ body.dark .contacts a{color:#7DB4EA;}
 <nav class="secnav">
   <div class="wrap">
     <a data-area="home" onclick="showPage('home')">Home</a>
+    <a class="c-res" data-area="novita" onclick="showPage('novita')">Novità</a>
     <a class="c-prev" data-area="previdenza" onclick="showPage('previdenza')">Previdenza</a>
     <a class="c-welf" data-area="welfare" onclick="showPage('welfare')">Welfare aziendale</a>
     <a class="c-san" data-area="sanita" onclick="showPage('sanita')">Sanità integrativa</a>
+    <a class="c-res" data-area="risorse" onclick="showPage('risorse')">Risorse</a>
     <a class="c-plus" data-area="plus" onclick="showPage('plus')">★ Servizi Plus</a>
     <div class="spacer"></div>
     <a onclick="toggleAI(true)">Assistente AI</a>
@@ -537,6 +595,16 @@ body.dark .contacts a{color:#7DB4EA;}
             <a class="pr-item c-welf" onclick="openSection('certificazione-parita-genere',3)"><strong>50 dipendenti</strong><span>Oltre questa soglia scatta l'obbligo del rapporto biennale sul personale</span><em>Art. 46, D.Lgs. 198/2006</em></a>
             <a class="pr-item c-san" onclick="showPage('sanita-fiscale')"><strong>10%</strong><span>Contributo di solidarietà sulla quota datore ai fondi sanitari</span><em>Circ. INPS 263/1997</em></a>
           </div>
+          <div class="home-news c-res" style="margin-bottom:28px;">
+            <div class="box-head" style="background:var(--tc)">Novità</div>
+            <div id="home-news-list"></div>
+            <a class="al" style="display:block;padding:10px 0;font-weight:800;color:var(--tc);cursor:pointer" onclick="showPage('novita')">Tutte le novità ›</a>
+          </div>
+          <div class="nl-side">
+            <h4>Newsletter mensile</h4>
+            <p>Le novità INPS, il focus del mese e i nuovi contenuti dell'Hub, una volta al mese.</p>
+            <form onsubmit="subscribeNl(event)"><input type="email" name="email" placeholder="La tua email" required><button type="submit">Iscriviti</button><div class="nl-msg"></div></form>
+          </div>
           <div class="plus-side c-plus" style="margin-bottom:28px;">
             <div class="box-head" style="background:var(--dh-green)">★ Servizi Plus</div>
             <div id="home-plus-list"></div>
@@ -567,6 +635,13 @@ body.dark .contacts a{color:#7DB4EA;}
     <section class="page" id="page-certificazione-parita-genere"></section>
 
     <!-- CHI SIAMO -->
+    <!-- NOVITÀ E RISORSE (popolati da JS) -->
+    <section class="page c-res" id="page-novita"></section>
+    <section class="page c-res" id="page-risorse"></section>
+    <section class="page c-res" id="page-faq"></section>
+    <section class="page c-res" id="page-glossario"></section>
+    <section class="page c-res" id="page-percorsi"></section>
+
     <!-- SERVIZI PLUS (popolati da JS) -->
     <section class="page c-plus" id="page-plus"></section>
     <section class="page c-plus" id="page-plus-lettera"></section>
@@ -636,7 +711,7 @@ body.dark .contacts a{color:#7DB4EA;}
       <span>© 2026 DataHubs S.r.l. · Hub Previdenza e Welfare</span>
     </div>
     <div>
-      <a onclick="showPage('previdenza')">Previdenza</a><a onclick="showPage('welfare')">Welfare aziendale</a><a onclick="showPage('sanita')">Sanità integrativa</a><a onclick="showPage('chisiamo')">Chi siamo</a>
+      <a onclick="showPage('previdenza')">Previdenza</a><a onclick="showPage('welfare')">Welfare aziendale</a><a onclick="showPage('sanita')">Sanità integrativa</a><a onclick="showPage('novita')">Novità</a><a onclick="showPage('risorse')">Risorse</a><a onclick="showPage('chisiamo')">Chi siamo</a>
     </div>
     <span>Fonti: INPS · Agenzia delle Entrate · Ministero della Salute — Foto: Unsplash</span>
   </div>
@@ -913,7 +988,7 @@ document.addEventListener('click',e=>{if(!e.target.closest('#menu-pop'))document
 
 /* ══════════ NAVIGAZIONE ══════════ */
 let navStack=[];let currentPage='home';
-function areaOf(name){if(name.startsWith('plus'))return 'plus';return AREAS[name]?name:(BY_ID[name]?BY_ID[name].area:null);}
+function areaOf(name){if(name.startsWith('plus'))return 'plus';if(name==='novita')return 'novita';if(['risorse','faq','glossario','percorsi'].includes(name))return 'risorse';return AREAS[name]?name:(BY_ID[name]?BY_ID[name].area:null);}
 function showPage(name,addToStack=true){
   const el=document.getElementById('page-'+name);
   if(!el) return;
@@ -946,6 +1021,7 @@ const SEARCH_MAP={
   'esal':'fondi-sanitari-contrattuali','fafp':'fondi-sanitari-contrattuali','fondosani':'fondi-sanitari-contrattuali','innovacare':'fondi-sanitari-contrattuali','f24':'fondi-sanitari-contrattuali','fondi sanitari':'fondi-sanitari-contrattuali','fondo sanitario':'fondi-sanitari-contrattuali',
   'certificazione':'certificazione-parita-genere','parità di genere':'certificazione-parita-genere','parita di genere':'certificazione-parita-genere','pdr 125':'certificazione-parita-genere','par_gen':'certificazione-parita-genere',
   'rapporto biennale':'certificazione-parita-genere','personale maschile':'certificazione-parita-genere','pari opportunità':'certificazione-parita-genere','162/2021':'certificazione-parita-genere','pnrr':'certificazione-parita-genere',
+  'glossario':'glossario','faq':'faq','domande frequenti':'faq','percors':'percorsi','newsletter':'risorse','novità':'novita','novita':'novita','news':'novita',
   'previdenza':'previdenza','welfare':'welfare','sanità':'sanita','sanita':'sanita'
 };
 function doSearch(){
@@ -1194,7 +1270,123 @@ function showLimit(msgs){
   msgs.scrollTop=msgs.scrollHeight;
 }
 
-renderHome();renderAreas();renderArticles();renderMenu();renderPlus();
+/* ══════════ NOVITÀ ══════════ */
+const NEWS=[
+ {d:'29 settembre 2026',art:'accompagnamento-pensione',sec:8,title:'Isopensione: istruzioni per i lavoratori contributivi puri',text:'L\'INPS chiarisce come liquidare la prestazione di accompagnamento ai lavoratori privi di anzianità contributiva al 31 dicembre 1995.',src:'Circ. INPS 104/2026'},
+ {d:'14 settembre 2026',art:'accompagnamento-pensione',sec:7,title:'Accompagnamento alla pensione: somma non imponibile e ulteriore detrazione 2026',text:'Le misure fiscali della Legge di Bilancio 2025 si applicano anche alle prestazioni di accompagnamento alla pensione, riconosciute in automatico dall\'INPS.',src:'Msg. INPS 2829/2026'},
+ {d:'10 settembre 2026',art:'fondi-sanitari-contrattuali',sec:4,title:'Fondi sanitari contrattuali: arriva INNOVACARE (codice CARE)',text:'Firmata la convenzione con INPS per la riscossione tramite F24 e UniEmens. Come le altre convenzioni, vale fino al 31 dicembre 2026.',src:'Circ. INPS 95/2026'},
+ {d:'20 luglio 2026',alert:true,art:'cigo',sec:3,title:'CIGO per emergenza climatica fino al 31 dicembre 2026',text:'Per edilizia, lapideo ed escavazioni, i periodi di CIGO per eventi climatici dal 1° luglio al 31 dicembre 2026 non contano nel limite di durata e non pagano il contributo addizionale.',src:'Msg. INPS 2418/2026'},
+ {d:'30 aprile 2026',alert:true,art:'certificazione-parita-genere',sec:3,title:'Rapporto biennale sul personale: termine prorogato al 15 maggio 2026',text:'Il Ministero del Lavoro concede due settimane in più per l\'invio del rapporto sul biennio 2024-2025.',src:'Ministero del Lavoro, comunicato del 30/4/2026'},
+ {d:'3 aprile 2026',art:'accompagnamento-pensione',sec:5,title:'Isopensione prolungata per chi è colpito dai nuovi requisiti 2027-2028',text:'La prestazione prosegue fino alla nuova data di pensionamento, anche oltre la durata massima ordinaria.',src:'Circ. INPS 41/2026'},
+ {d:'28 gennaio 2026',art:'cigo',sec:5,title:'Massimale CIGO 2026: 1.423,69 € lordi mensili',text:'Dal 1° gennaio 2026 vige un massimale unico, rivalutato in base all\'indice ISTAT.',src:'Circ. INPS 4/2026'},
+ {d:'16 dicembre 2025',art:'certificazione-parita-genere',sec:10,title:'Parità di genere: al via le domande di esonero contributivo',text:'Per le certificazioni rilasciate entro il 31 dicembre 2025, domanda con il modulo SGRAVIO PAR_GEN entro il 30 aprile 2026.',src:'Msg. INPS 3804/2025'}
+];
+function renderNews(){
+  const item=n=>{const a=BY_ID[n.art];return `<div class="news-item ${AREAS[a.area].cls}" onclick="openSection('${n.art}',${n.sec})"><div class="news-date">${n.d}</div><div><span class="kicker">${AREAS[a.area].name}</span><h3>${n.alert?'<span class="alert-badge">Alert</span>':''}${n.title}</h3><p>${n.text}</p><div class="byline">Fonte: ${n.src} · Leggi nell'articolo →</div></div></div>`;};
+  document.getElementById('page-novita').innerHTML=`
+    <div class="crumbs"><a onclick="goBack()" title="Indietro">${ARROW_BACK}</a>/<a onclick="showPage('home')">Home</a>/<span style="color:var(--tc)">Novità</span></div>
+    <div class="area-title"><h1>Novità</h1><p>Le ultime circolari, i messaggi e le scadenze, con il collegamento all'approfondimento.</p></div>
+    <div class="area-grid"><div>${NEWS.map(item).join('')}</div><aside class="art-side">${nlSideHtml()}${sideColumn('welfare',null)}</aside></div>`;
+  document.getElementById('home-news-list').innerHTML=NEWS.slice(0,4).map(item).join('');
+}
+
+/* ══════════ RISORSE ══════════ */
+const RESOURCES=[
+ {ic:'❓',title:'Domande frequenti',text:'Le risposte essenziali alle domande più comuni su contributi, DURC, cassa integrazione, pensione e sanità integrativa.',page:'faq'},
+ {ic:'📖',title:'Glossario',text:'I termini tecnici di previdenza e welfare spiegati in parole semplici, con il rimando all\'articolo.',page:'glossario'},
+ {ic:'🧭',title:'Percorsi guidati',text:'Le situazioni più frequenti in azienda, passo dopo passo: dalla gara d\'appalto alla crisi temporanea.',page:'percorsi'},
+ {ic:'✉️',title:'Newsletter',text:'Una volta al mese: editoriale, novità INPS, previdenza complementare, focus del mese e nuovi contenuti.',action:"document.getElementById('nl-main').scrollIntoView({behavior:'smooth'})"},
+ {ic:'📊',title:'Dati e ricerche',text:'Dashboard tematiche, report trimestrali e infografiche su welfare, previdenza e mercato del lavoro.',soon:true},
+ {ic:'🎬',title:'Tutorial e video',text:'Video brevi e guide passo-passo sulle procedure INPS più frequenti.',soon:true},
+ {ic:'🎓',title:'Formazione e webinar',text:'Calendario di webinar e percorsi formativi per HR, manager e aziende, con materiali post-evento.',soon:true},
+ {ic:'🎧',title:'Podcast',text:'Episodi brevi con le novità del mese e le interviste agli esperti.',soon:true}
+];
+const FAQ=[
+ {art:'durc-online',sec:1,q:'Cos\'è il DURC e quanto dura?',a:'Il Documento Unico di Regolarità Contributiva attesta la regolarità contributiva dell\'impresa nei confronti degli enti. Si ottiene online tramite il codice fiscale e vale 120 giorni dalla data della verifica.'},
+ {art:'durc-online',sec:2,q:'Quando serve il DURC?',a:'Nei rapporti con la Pubblica Amministrazione, nei contratti pubblici e per accedere a benefici o agevolazioni subordinati alla regolarità contributiva.'},
+ {art:'durc-online',sec:3,q:'Chi può verificare la regolarità contributiva di un\'impresa?',a:'Amministrazioni e stazioni appaltanti, organismi SOA, l\'impresa o il lavoratore autonomo per la propria posizione e i soggetti delegati, come previsto dal D.M. 30 gennaio 2015.'},
+ {art:'cigo',sec:1,q:'Cos\'è la cassa integrazione ordinaria (CIGO)?',a:'È l\'ammortizzatore sociale che sostiene il reddito dei lavoratori quando l\'attività è sospesa o ridotta per cause temporanee non imputabili all\'impresa o ai lavoratori. Vale l\'80% della retribuzione per le ore non lavorate, entro un massimale mensile.'},
+ {art:'cigo',sec:4,q:'Per quanto tempo si può usare la CIGO?',a:'Fino a 52 settimane nel biennio mobile; ogni concessione non può superare 13 settimane, prorogabili fino al limite massimo. I periodi per eventi oggettivamente non evitabili non si contano.'},
+ {art:'cigo',sec:7,q:'Dove si presenta la domanda di CIGO?',a:'Dal 2 maggio 2024 esclusivamente sulla piattaforma INPS OMNIA IS, dai servizi per aziende e consulenti.'},
+ {art:'accompagnamento-pensione',sec:1,q:'Cos\'è l\'isopensione?',a:'Uno strumento a carico del datore di lavoro, erogato dall\'INPS, che accompagna all\'uscita anticipata i lavoratori vicini alla pensione nell\'ambito di ristrutturazioni o riorganizzazioni aziendali.'},
+ {art:'posizione-contributiva',sec:2,q:'Dove si controllano i contributi versati?',a:'Nell\'estratto conto contributivo sul sito INPS, che dal 2025 ordina i periodi in modo cronologico e indica per ciascuno la Gestione e il tipo di contribuzione.'},
+ {art:'fondi-sanitari-contrattuali',sec:3,q:'Come si versano i contributi ai fondi sanitari contrattuali convenzionati con INPS?',a:'Con il modello F24, nella sezione INPS, usando la causale del fondo, ed esponendoli nel flusso UniEmens.'},
+ {art:'sanita-fiscale',sec:4,q:'I contributi ai fondi sanitari sono deducibili?',a:'Sì, entro un limite unico di 3.615,20 euro l\'anno, condiviso tra deducibilità (art. 10 TUIR) e non imponibilità (art. 51 TUIR), purché il fondo sia iscritto all\'Anagrafe e operi secondo mutualità e solidarietà.'},
+ {art:'certificazione-parita-genere',sec:4,q:'Chi può ottenere la certificazione della parità di genere?',a:'Tutte le organizzazioni con dipendenti, pubbliche e private, di qualsiasi dimensione. Sono esclusi i titolari di partita IVA senza dipendenti.'}
+];
+const GLOSSARY=[
+ ['Accentramento contributivo','Obbligo di unicità della posizione contributiva dell\'azienda, che riguarda l\'organizzazione della posizione aziendale presso l\'INPS.','posizione-contributiva',3],
+ ['Anagrafe dei fondi sanitari','Registro del Ministero della Salute a cui i fondi sanitari integrativi devono essere iscritti per dare diritto alle agevolazioni fiscali. L\'iscrizione avviene sul sistema SIAF.','sanita-fiscale',6],
+ ['Biennio mobile','Periodo di riferimento di due anni, calcolato a ritroso, entro cui la CIGO non può superare le 52 settimane.','cigo',4],
+ ['Contributo addizionale','Contributo dovuto dal datore che utilizza la CIGO, dal 9% al 15% in base alle settimane utilizzate nel biennio mobile.','cigo',6],
+ ['Delega Master','Delega che consente di gestire in modo trasversale le evidenze contributive di un soggetto nelle diverse Gestioni INPS e di ricevere il Pre-DURC.','durc-online',8],
+ ['DURC','Documento Unico di Regolarità Contributiva: attesta la regolarità dei versamenti dell\'impresa e vale 120 giorni.','durc-online',1],
+ ['EONE','Eventi oggettivamente non evitabili, come le emergenze climatiche: causale di CIGO che non conta nei limiti di durata e non paga il contributo addizionale.','cigo',3],
+ ['Estratto conto contributivo','Documento INPS che riporta la storia contributiva dell\'assicurato, periodo per periodo.','posizione-contributiva',2],
+ ['F24 (sezione INPS)','Modello di pagamento usato anche per versare i contributi ai fondi sanitari contrattuali convenzionati, con la causale del fondo.','fondi-sanitari-contrattuali',3],
+ ['Isopensione','Prestazione di accompagnamento alla pensione, a carico del datore di lavoro, per i lavoratori vicini ai requisiti pensionistici.','accompagnamento-pensione',1],
+ ['OMNIA IS','Piattaforma INPS su cui, dal 2 maggio 2024, si presentano le domande di cassa integrazione.','cigo',7],
+ ['Plafond unico','Limite di 3.615,20 euro l\'anno per le agevolazioni fiscali sui contributi ai fondi sanitari, condiviso tra art. 10 e art. 51 TUIR.','sanita-fiscale',4],
+ ['Pre-DURC','Avviso che segnala in anticipo, 30 o 15 giorni prima della scadenza del DURC, eventuali irregolarità da sistemare.','durc-online',9],
+ ['Rapporto biennale','Rapporto sulla situazione del personale maschile e femminile, obbligatorio per le aziende con più di 50 dipendenti.','certificazione-parita-genere',3],
+ ['Tipologia A e B','Le due categorie di fondi sanitari integrativi: A, fondi integrativi del SSN (art. 10 TUIR); B, enti e casse a fine assistenziale (art. 51 TUIR).','sanita-fiscale',1],
+ ['UNI/PdR 125:2022','Prassi di riferimento che fissa indicatori e requisiti per la certificazione della parità di genere, con soglia minima del 60%.','certificazione-parita-genere',5],
+ ['UniEmens','Flusso telematico mensile con cui il datore di lavoro trasmette all\'INPS i dati retributivi e contributivi dei dipendenti.','fondi-sanitari-contrattuali',5],
+ ['Ve.R.A.','Verifica Regolarità Contributiva: sezione della Piattaforma Unica INPS che mostra le situazioni debitorie da sistemare.','durc-online',6]
+];
+const PATHS=[
+ {title:'Partecipare a una gara d\'appalto',sub:'Arrivare alla gara con la regolarità contributiva in ordine.',steps:[['durc-online',2,'Quando serve il DURC','Rapporti con la PA, contratti pubblici e agevolazioni'],['durc-online',6,'Controllare le evidenze con Ve.R.A.','Individuare in anticipo ciò che può bloccare il DURC'],['durc-online',9,'Attivare il Pre-DURC','Ricevere l\'avviso prima della scadenza'],['posizione-contributiva',4,'Correggere eventuali discordanze','Cosa fare se la posizione presenta errori']]},
+ {title:'Gestire una crisi temporanea',sub:'Sospendere o ridurre l\'attività con la cassa integrazione ordinaria.',steps:[['cigo',2,'Verificare chi può accedere','Settori ammessi e requisiti dei lavoratori'],['cigo',3,'Individuare la causale','Eventi transitori, mercato, EONE'],['cigo',7,'Presentare la domanda su OMNIA IS','Termini e documentazione'],['cigo',8,'Pagamento e conguaglio UniEmens','Come recuperare le somme anticipate']]},
+ {title:'Accompagnare i lavoratori alla pensione',sub:'Uscite anticipate nell\'ambito di una riorganizzazione.',steps:[['accompagnamento-pensione',2,'Chi può accedere','Requisiti di lavoratori e aziende'],['accompagnamento-pensione',3,'Accordo aziendale e garanzie','Modulo SC77, programma di esodo, fideiussione'],['accompagnamento-pensione',6,'Quanto spetta','Calcolo e regime fiscale'],['accompagnamento-pensione',10,'Come fare domanda','Canali e procedura INPS']]},
+ {title:'Avviare la sanità integrativa per i dipendenti',sub:'Contribuzione e vantaggi fiscali dei fondi sanitari.',steps:[['fondi-sanitari-contrattuali',1,'Da dove nasce l\'obbligo','CCNL e accordi aziendali'],['fondi-sanitari-contrattuali',3,'Versare tramite F24','Causale del fondo e periodo'],['sanita-fiscale',2,'Verificare i requisiti fiscali','Anagrafe e mutualità'],['sanita-fiscale',4,'Rispettare il plafond','Limite unico di 3.615,20 €']]},
+ {title:'Ottenere la certificazione della parità di genere',sub:'Dal rapporto biennale all\'esonero contributivo.',steps:[['certificazione-parita-genere',3,'Rapporto biennale sul personale','La base dati di partenza'],['certificazione-parita-genere',5,'Misurare gli indicatori','Le sei aree e la soglia del 60%'],['certificazione-parita-genere',8,'Audit con un organismo accreditato','Rilascio, durata e verifiche'],['certificazione-parita-genere',10,'Chiedere l\'esonero INPS','Modulo SGRAVIO PAR_GEN']]}
+];
+function crumbsRes(label){return `<div class="crumbs"><a onclick="goBack()" title="Indietro">${ARROW_BACK}</a>/<a onclick="showPage('home')">Home</a>/<a onclick="showPage('risorse')">Risorse</a>${label?`/<span>${label}</span>`:''}</div>`;}
+function nlSideHtml(){return `<div class="nl-side"><h4>Newsletter mensile</h4><p>Le novità INPS, il focus del mese e i nuovi contenuti dell'Hub.</p><form onsubmit="subscribeNl(event)"><input type="email" name="email" placeholder="La tua email" required><button type="submit">Iscriviti</button><div class="nl-msg"></div></form></div>`;}
+function renderResources(){
+  document.getElementById('page-risorse').innerHTML=`
+    <div class="crumbs"><a onclick="goBack()" title="Indietro">${ARROW_BACK}</a>/<a onclick="showPage('home')">Home</a>/<span style="color:var(--tc)">Risorse</span></div>
+    <div class="area-title"><h1>Risorse</h1><p>Strumenti per orientarsi: domande frequenti, glossario, percorsi guidati, newsletter e le prossime sezioni dell'Hub.</p></div>
+    <div class="res-grid">${RESOURCES.map(r=>`
+      <div class="res-card ${r.soon?'soon':''}">
+        <div class="rc-top"><div class="rc-ic">${r.ic}</div>${r.soon?'<span class="chip-soon">In arrivo</span>':'<span class="chip-on">Disponibile</span>'}</div>
+        <h3>${r.title}</h3><p>${r.text}</p>
+        ${r.soon?'':`<a class="go" onclick="${r.page?`showPage('${r.page}')`:r.action}">${r.page?'Apri':'Iscriviti'} →</a>`}
+      </div>`).join('')}</div>
+    <div class="nl-box" id="nl-main">
+      <div class="nl-txt"><h3>Iscriviti alla newsletter mensile</h3><p>Editoriale, principali novità INPS, previdenza complementare, focus su welfare e sanità integrativa, nuovi contenuti dell'Hub. Più gli alert sulle novità urgenti.</p></div>
+      <form class="nl-form" onsubmit="subscribeNl(event)">
+        <input type="email" name="email" placeholder="La tua email" required>
+        <select name="profilo"><option>HR / responsabile del personale</option><option>Dirigente / manager</option><option>Azienda</option><option>Consulente / professionista</option><option>Altro</option></select>
+        <button type="submit">Iscriviti</button>
+        <div class="nl-msg"></div>
+      </form>
+    </div>`;
+  document.getElementById('page-faq').innerHTML=`${crumbsRes('Domande frequenti')}
+    <div class="plus-doc"><h1>Domande frequenti</h1><p class="lead-p">Le risposte essenziali, con il collegamento all'articolo per approfondire.</p>
+    ${Object.entries(AREAS).map(([k,ar])=>{const qs=FAQ.filter(x=>BY_ID[x.art].area===k);return qs.length?`<div class="${ar.cls}" style="margin-bottom:22px"><div class="sec-head"><h3>${ar.name}</h3></div>${qs.map(x=>`<details class="qa"><summary>${x.q}</summary><div class="ans">${x.a}<span class="src-line"><a onclick="openSection('${x.art}',${x.sec})">Approfondisci nell'articolo</a></span></div></details>`).join('')}</div>`:'';}).join('')}
+    <p class="byline" style="margin-top:10px">Non trovi la risposta? Chiedi all'<a style="color:var(--brand);cursor:pointer;font-weight:600" onclick="toggleAI(true)">assistente dell'Hub</a>.</p></div>`;
+  const letters=[...new Set(GLOSSARY.map(g=>g[0][0].toUpperCase()))];
+  document.getElementById('page-glossario').innerHTML=`${crumbsRes('Glossario')}
+    <div class="plus-doc"><h1>Glossario</h1><p class="lead-p">I termini tecnici di previdenza e welfare, in parole semplici.</p>
+    <div class="gl-letters">${letters.map(l=>`<a onclick="document.getElementById('gl-${l}').scrollIntoView({behavior:'smooth'})">${l}</a>`).join('')}</div>
+    <dl>${GLOSSARY.map((g,i)=>{const l=g[0][0].toUpperCase();const first=GLOSSARY.findIndex(x=>x[0][0].toUpperCase()===l)===i;return `<div class="gl-term" ${first?`id="gl-${l}"`:''}><dt>${g[0]}</dt><dd>${g[1]}<a onclick="openSection('${g[2]}',${g[3]})">Approfondisci →</a></dd></div>`;}).join('')}</dl></div>`;
+  document.getElementById('page-percorsi').innerHTML=`${crumbsRes('Percorsi guidati')}
+    <div class="plus-doc"><h1>Percorsi guidati</h1><p class="lead-p">Le situazioni più frequenti in azienda, passo dopo passo. Ogni passaggio apre il paragrafo dell'articolo che lo spiega.</p>
+    ${PATHS.map(pa=>`<div class="path"><h3>${pa.title}</h3><div class="path-sub">${pa.sub}</div><ol>${pa.steps.map(st=>`<li onclick="openSection('${st[0]}',${st[1]})"><div><strong>${st[2]}</strong><span>${st[3]}</span></div></li>`).join('')}</ol></div>`).join('')}</div>`;
+}
+async function subscribeNl(e){
+  e.preventDefault();
+  const f=e.target;const msg=f.querySelector('.nl-msg');
+  try{
+    const r=await fetch('/newsletter',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.fromEntries(new FormData(f).entries()))});
+    const j=await r.json();
+    if(!j.ok) throw new Error(j.error||'Errore');
+    f.reset();msg.textContent='Iscrizione registrata. Grazie!';msg.style.color='#B7E4BA';
+  }catch(ex){msg.textContent=ex.message||'Iscrizione non riuscita, riprova.';msg.style.color='#FCA5A5';}
+}
+
+renderHome();renderAreas();renderArticles();renderMenu();renderPlus();renderNews();renderResources();
 showPage('home',false);
 if(OPEN_LOGIN) openAuth('login');
 try{const t=sessionStorage.getItem('afterLogin');if(LOGGED&&t){sessionStorage.removeItem('afterLogin');if(t==='plus')showPage('plus');else if(PLUS_LOCKED[t]||document.getElementById('page-'+t))showPage(t);}}catch(e){}
