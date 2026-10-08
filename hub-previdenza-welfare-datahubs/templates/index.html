@@ -357,6 +357,34 @@ body.dark .ai-tier a{color:#8FBF92;}
 @media(max-width:1180px){.plus-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:700px){.plus-grid,.form-row{grid-template-columns:1fr;}.plus-intro{flex-direction:column;align-items:flex-start;}}
 
+/* architettura chi siamo */
+.arch{margin:30px 0 10px;}
+.arch-kb,.arch-box{border:1.5px solid var(--border);background:var(--surface);padding:18px 20px;border-radius:8px;}
+.arch-kb{background:var(--navy);border-color:var(--navy);color:#fff;text-align:center;}
+.arch-kb strong{color:#fff !important;}
+.arch-kb span:last-child{color:rgba(255,255,255,.75) !important;}
+.arch strong{display:block;font-size:18px;color:var(--title);margin:4px 0;}
+.arch span{display:block;font-size:14px;color:var(--text-soft);line-height:1.5;}
+.arch .arch-tag{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#7DD3FC;}
+.arch-box .arch-tag{color:var(--muted);}
+.arch-box.current{border-color:#22A06B;border-width:2px;}
+.arch-box.current .arch-tag{color:#22A06B;}
+.arch-arrows{display:grid;grid-template-columns:1fr 1fr;height:28px;}
+.arch-arrows span{position:relative;}
+.arch-arrows span::after{content:'';position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--border);}
+.arch-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:700px){.arch-row,.arch-arrows{grid-template-columns:1fr;}.arch-arrows span:last-child{display:none;}}
+/* agente: verde del banner */
+.ai-fab-btn{background:#22A06B !important;box-shadow:0 6px 20px rgba(34,160,107,.4) !important;}
+.ai-fab-btn:hover{background:#1B8A5B !important;}
+.ai-head{background:#22A06B !important;}
+.ai-head-av{background:rgba(255,255,255,.2) !important;}
+.ai-head span{color:rgba(255,255,255,.85) !important;}
+.ai-head-x{color:rgba(255,255,255,.85) !important;}
+.ai-send{background:#22A06B !important;}
+.ai-input:focus{border-color:#22A06B !important;}
+.msg.user .msg-b{background:#1B8A5B !important;border-color:#1B8A5B !important;}
+
 /* ── PRINT ── */
 @media print{.topbar,.masthead,.secnav,.ticker,.share,.art-side,footer,.ai-fab,.ai-panel,.in-art,.crumbs{display:none!important;}.art-grid{display:block;}}
 
@@ -433,10 +461,10 @@ body.dark .ai-tier a{color:#8FBF92;}
   <div class="wrap">
     <div class="logo" onclick="showPage('home')">
       <img src="/static/images/Logo HUB Previdenza e Welfare.png" alt="Hub Previdenza e Welfare">
-      <div class="logo-txt"><strong>Hub Previdenza e Welfare</strong><span>Il punto di riferimento per il Polo</span></div>
+      <div class="logo-txt"><strong>Hub Previdenza e Welfare</strong><span>Fonti ufficiali, spiegate con chiarezza</span></div>
     </div>
     <div class="banner" onclick="toggleAI(true)">
-      <div class="banner-txt"><strong>Un dubbio su contributi, DURC o CIGO?</strong><span>Chiedi al P&amp;W Advisor: risposte dalle fonti certificate, con il riferimento normativo.</span></div>
+      <div class="banner-txt"><strong>Un dubbio su contributi, DURC o CIGO?</strong><span>Chiedi all'assistente dell'Hub: risposte dalle fonti ufficiali, con il riferimento normativo.</span></div>
       <div class="banner-cta">Chiedi ora »</div>
     </div>
   </div>
@@ -538,20 +566,59 @@ body.dark .ai-tier a{color:#8FBF92;}
       <div class="crumbs"><a onclick="goBack()"><svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></a>/<a onclick="showPage('home')">Home</a>/<span>Chi siamo</span></div>
       <div class="about">
         <h1>Chi siamo</h1>
-        <p class="lead-p">Hub Previdenza e Welfare — un progetto DataHubs S.r.l.</p>
-        <h2>L'Hub digitale</h2>
-        <p>Ambiente digitale privato, organizzato per macroaree tematiche, che raccoglie e rende fruibili i contenuti certificati prodotti dal Centro Studi. Non è un archivio statico: è un ecosistema cognitivo che si aggiorna e propone contenuti in base al profilo dell'utente.</p>
-        <p>La base documentale è alimentata da circolari e messaggi degli enti previdenziali, testi normativi e decreti, guide operative, output del Centro Studi e buone prassi raccolte dalle imprese. DataHubs S.r.l. ne cura la strutturazione, la semantizzazione e la preparazione per l'ingestione nella base documentale.</p>
-        <h2>Il P&amp;W Advisor</h2>
-        <p>Sistema che permette agli operatori del Polo di interrogare la base documentale e ottenere risposte accurate, contestualizzate e tracciate alla fonte. Combina assistente conversazionale AI, motore di ricerca e navigazione per categoria.</p>
+        <p class="lead-p">Hub Previdenza e Welfare è un progetto DataHubs S.r.l.: un unico punto di accesso, aperto a tutti, per orientarsi tra norme, adempimenti e servizi di INPS, Agenzia delle Entrate e Ministero della Salute.</p>
+        <p>Si rivolge a dirigenti, aziende, sedi territoriali, consulenti e a chiunque cerchi informazioni affidabili in materia previdenziale, di welfare aziendale e di sanità integrativa. Gli articoli sono consultabili liberamente; con la registrazione si accede all'assistente completo e ai Servizi Plus.</p>
+
+        <div class="arch">
+          <div class="arch-kb">
+            <span class="arch-tag">Fondamenta</span>
+            <strong>Base documentale certificata</strong>
+            <span>Circolari, messaggi, normativa e guide operative, approvate e curate da DataHubs</span>
+          </div>
+          <div class="arch-arrows"><span></span><span></span></div>
+          <div class="arch-row">
+            <div class="arch-box">
+              <span class="arch-tag">Fase 1 · Uso interno</span>
+              <strong>Applicazione Contact Center</strong>
+              <span>Per gli operatori del Polo: gestione dei case, P&amp;W Advisor, gestione della conoscenza</span>
+            </div>
+            <div class="arch-box current">
+              <span class="arch-tag">Fase 2 · Pubblico</span>
+              <strong>Hub Previdenza e Welfare</strong>
+              <span>Questo sito: articoli aperti, ricerca intelligente, area registrata con servizi aggiuntivi</span>
+            </div>
+          </div>
+        </div>
+
+        <h2>Il punto di partenza: la base documentale</h2>
+        <p>Tutto il progetto poggia su un'unica base documentale certificata, alimentata da circolari e messaggi degli enti previdenziali, testi normativi e decreti, guide operative, output del Centro Studi e buone prassi raccolte dalle imprese. DataHubs S.r.l. ne cura la strutturazione, la semantizzazione, l'approvazione e la preparazione per l'indicizzazione.</p>
+        <p>È la stessa fonte per tutti i canali: ciò che l'operatore consulta in Contact Center e ciò che il visitatore legge sull'Hub proviene dagli stessi contenuti validati.</p>
+
+        <h2>Fase 1 — Applicazione Contact Center</h2>
+        <p>Lo strumento di lavoro degli operatori del Polo che assistono le sedi territoriali.</p>
+        <ul>
+          <li><strong>Gestione dei case.</strong> Le richieste confluiscono in una coda ordinata per arrivo e vengono prese in carico dagli operatori. I case sono creati manualmente per i contatti telefonici o provenienti da canali non integrati, automaticamente per le richieste WhatsApp qualificate dai workflow di automazione. Ogni case mantiene i riferimenti alle conversazioni, alle note di lavorazione e alle consultazioni dell'assistente.</li>
+          <li><strong>Assistente P&amp;W Advisor.</strong> Supporta la ricerca di informazioni nella base documentale approvata e la preparazione di risposte e sintesi, con citazioni verificabili e accesso ai passaggi documentali utilizzati. Sono disponibili conversazioni associate ai case e consultazioni libere, con contesti separati.</li>
+          <li><strong>Gestione della conoscenza.</strong> Consultazione diretta dei documenti per area tematica e sincronizzazione dei contenuti approvati dal repository SharePoint, inclusi aggiornamenti e cancellazioni. I casi risolti nel CRM possono alimentare la base documentale, previa approvazione di un validatore, con la generazione di un documento in SharePoint e la sua indicizzazione.</li>
+        </ul>
+
+        <h2>Fase 2 — L'Hub pubblico</h2>
+        <p>Questo sito porta la stessa base documentale verso l'esterno, in forma di articoli chiari e aggiornati.</p>
+        <ul>
+          <li><strong>Accesso libero.</strong> Articoli per area tematica, prontuario e ricerca intelligente, che indica in quale articolo e paragrafo si trova la risposta.</li>
+          <li><strong>Area registrata.</strong> P&amp;W Advisor nella versione completa, con risposta operativa e domande di approfondimento, e Servizi Plus: lettera informativa, quesiti risolti, date chiave e invio dei quesiti al Centro Studi.</li>
+        </ul>
+
+        <h2>Le regole del P&amp;W Advisor</h2>
         <ul>
           <li>Risponde esclusivamente sulla base della documentazione certificata.</li>
-          <li>Non genera informazioni non presenti nella base documentale: se la domanda non è coperta rimanda alla sede territoriale competente.</li>
+          <li>Non genera informazioni non presenti nella base documentale: se la domanda non è coperta, lo dichiara e indica a chi rivolgersi.</li>
           <li>Indica sempre la fonte e la data di aggiornamento.</li>
-          <li>Adatta la lunghezza della risposta e mantiene il contesto per le domande di follow-up.</li>
+          <li>Adatta la lunghezza della risposta e, nella versione completa, mantiene il contesto per le domande di approfondimento.</li>
         </ul>
+
         <h2>Il risultato atteso</h2>
-        <p>Un sistema operativo, affidabile e manutenibile che consenta agli operatori del Polo di rispondere a qualsiasi richiesta delle sedi territoriali in materia previdenziale e di welfare, attingendo alla base documentale certificata senza mai uscire dal perimetro validato da DataHubs.</p>
+        <p>Un ecosistema affidabile e manutenibile, in cui un'unica base documentale validata da DataHubs alimenta sia il lavoro quotidiano degli operatori del Polo sia l'informazione rivolta a dirigenti, aziende e cittadini, senza mai uscire dal perimetro delle fonti certificate.</p>
       </div>
     </section>
   </div>
@@ -603,7 +670,7 @@ body.dark .ai-tier a{color:#8FBF92;}
       </form>
       <!-- registrazione = richiesta di accesso -->
       <form id="auth-register" hidden onsubmit="submitRegister(event)">
-        <p class="sub">L'Hub è riservato agli operatori del Polo e delle sedi territoriali. Compila la richiesta: riceverai le credenziali via email dopo la verifica.</p>
+        <p class="sub">Registrati per accedere al P&amp;W Advisor completo e ai Servizi Plus. Riceverai le credenziali via email dopo la verifica.</p>
         <div id="reg-err" class="err-box" hidden></div>
         <div class="form-row">
           <div class="form-field"><label>Nome *</label><input name="nome" required></div>
@@ -611,8 +678,8 @@ body.dark .ai-tier a{color:#8FBF92;}
         </div>
         <div class="form-field"><label>Email *</label><input type="email" name="email" required></div>
         <div class="form-row">
-          <div class="form-field"><label>Ente / sede territoriale</label><input name="ente"></div>
-          <div class="form-field"><label>Ruolo</label><input name="ruolo"></div>
+          <div class="form-field"><label>Profilo</label><select name="ruolo"><option>Dirigente</option><option>Azienda</option><option>Sede territoriale</option><option>Consulente / professionista</option><option>Altro</option></select></div>
+          <div class="form-field"><label>Azienda / ente</label><input name="ente"></div>
         </div>
         <div class="form-field"><label>Note</label><textarea name="note" rows="2"></textarea></div>
         <button class="btn-solid" type="submit">Invia la richiesta</button>
@@ -978,9 +1045,9 @@ const LETTERA=[
  {art:'sanita-fiscale',sec:2,title:'Deducibilità dei fondi sanitari: i due requisiti da verificare',text:'Dal 2025 l\'agevolazione spetta solo se il fondo è iscritto all\'Anagrafe del Ministero della Salute e opera secondo i principi di mutualità e solidarietà. L\'attestato di iscrizione ha valenza annuale.',src:'Circ. AE 4/E 2025 · D.Lgs. 192/2024'}
 ];
 const PLUS_SERVICES=[
- {id:'advisor',ic:'🤖',title:'P&W Advisor completo',tag:'L\'assistente AI nella versione integrale, per rispondere alle sedi in pochi secondi.',items:['Risposta operativa con i passaggi da seguire','Fonte e data per ogni informazione','Domande di approfondimento nella stessa conversazione','Nessun limite di domande'],open:"toggleAI(true)"},
- {id:'plus-lettera',ic:'✉️',title:'Lettera informativa',tag:'La sintesi mensile del Centro Studi sulle novità che contano per il Polo.',items:['Novità INPS, Agenzia delle Entrate e Ministero della Salute','Cosa cambia in pratica, in poche righe','Collegamento diretto all\'articolo dell\'Hub'],open:"showPage('plus-lettera')"},
- {id:'plus-quesiti',ic:'💬',title:'Quesiti risolti',tag:'Le domande più frequenti delle sedi territoriali, con risposta e fonte.',items:['Casi reali, resi anonimi','Risposta breve e verificata','Fonte normativa per ogni risposta'],open:"showPage('plus-quesiti')"},
+ {id:'advisor',ic:'🤖',title:'P&W Advisor completo',tag:'L\'assistente AI nella versione integrale: risposte operative su previdenza, welfare e sanità integrativa, per dirigenti, aziende, sedi territoriali e professionisti.',items:['Risposta operativa con i passaggi da seguire','Fonte e data per ogni informazione','Domande di approfondimento nella stessa conversazione','Nessun limite di domande'],open:"toggleAI(true)"},
+ {id:'plus-lettera',ic:'✉️',title:'Lettera informativa',tag:'La sintesi mensile del Centro Studi sulle novità che contano per imprese, dirigenti e professionisti.',items:['Novità INPS, Agenzia delle Entrate e Ministero della Salute','Cosa cambia in pratica, in poche righe','Collegamento diretto all\'articolo dell\'Hub'],open:"showPage('plus-lettera')"},
+ {id:'plus-quesiti',ic:'💬',title:'Quesiti risolti',tag:'Le domande più frequenti, con risposta breve e fonte normativa.',items:['Casi reali, resi anonimi','Risposta breve e verificata','Fonte normativa per ogni risposta'],open:"showPage('plus-quesiti')"},
  {id:'plus-date',ic:'📅',title:'Date chiave e scadenze',tag:'Lo scadenzario degli adempimenti e delle decorrenze 2026.',items:['Decorrenze e finestre temporali','Riferimento alla circolare','Collegamento al paragrafo dell\'articolo'],open:"showPage('plus-date')"},
  {id:'plus-inoltra',ic:'📨',title:'Inoltra un quesito',tag:'Quando la risposta non è nella base documentale, la passi al Centro Studi.',items:['Modulo dedicato per tema','Presa in carico della redazione','Le risposte alimentano i Quesiti risolti'],open:"showPage('plus-inoltra')"}
 ];
@@ -1008,12 +1075,12 @@ function renderPlus(){
   if(!LOGGED) return;
   document.getElementById('page-plus-lettera').innerHTML=`${crumbsPlus('Lettera informativa')}
     <div class="plus-doc"><h1>Lettera informativa — Ottobre 2026</h1>
-    <p class="lead-p">Le novità del mese selezionate dal Centro Studi per gli operatori del Polo.</p>
+    <p class="lead-p">Le novità del mese selezionate dal Centro Studi.</p>
     <div class="demo-note">Contenuto dimostrativo costruito sugli articoli della base documentale.</div>
     ${LETTERA.map(l=>{const a=BY_ID[l.art];return `<div class="lt-item ${AREAS[a.area].cls}"><span class="kicker">${AREAS[a.area].name} · ${a.tag}</span><h2>${l.title}</h2><p>${l.text}</p><p class="byline">Fonte: ${l.src}</p>${secLink(l.art,l.sec)}</div>`;}).join('')}</div>`;
   document.getElementById('page-plus-quesiti').innerHTML=`${crumbsPlus('Quesiti risolti')}
     <div class="plus-doc"><h1>Quesiti risolti</h1>
-    <p class="lead-p">Le domande più frequenti delle sedi territoriali, con risposta breve e fonte.</p>
+    <p class="lead-p">Le domande più frequenti, con risposta breve e fonte.</p>
     <div class="demo-note">Esempi dimostrativi: risposte tratte dalla base documentale certificata.</div>
     ${Object.entries(AREAS).map(([k,ar])=>{const qs=QUESITI.filter(x=>BY_ID[x.art].area===k);return qs.length?`<div class="${ar.cls}" style="margin-bottom:22px"><div class="sec-head"><h3>${ar.name}</h3></div>${qs.map(qaHtml).join('')}</div>`:'';}).join('')}</div>`;
   document.getElementById('page-plus-date').innerHTML=`${crumbsPlus('Date chiave')}
