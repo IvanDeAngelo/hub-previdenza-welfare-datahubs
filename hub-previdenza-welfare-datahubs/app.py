@@ -1,4 +1,6 @@
 import os
+import json
+import datetime
 import markdown
 import anthropic
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify, Response, stream_with_context
@@ -6,9 +8,21 @@ from flask import Flask, render_template, request, redirect, url_for, session, j
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', 'hub-previdenza-welfare-2026')
 
+# Utenze abilitate all'area riservata (demo)
 USERS = {
     'admin@datahubs.it': 'Admin2026!'
 }
+ADMINS = {'admin@datahubs.it'}
+
+# Limiti assistente versione pubblica
+PUBLIC_MAX_QUESTIONS = int(os.environ.get('PUBLIC_MAX_QUESTIONS', '5'))
+MODEL_PLUS = os.environ.get('MODEL_PLUS', 'claude-sonnet-4-6')
+MODEL_PUBLIC = os.environ.get('MODEL_PUBLIC', MODEL_PLUS)
+
+# Richieste di accesso e quesiti (demo: memoria + file locale, non persistente su Render)
+DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
+REQUESTS = []
+QUESITI = []
 
 KB_FILES = {
     'posizione_contributiva': 'posizione_contributiva.md',
@@ -40,6 +54,12 @@ def load_kb():
 
 KB, KB_RAW = load_kb()
 
+KB_TEXT = "\n\n---\n\n".join([f"TEMA: {k}\n{v}" for k, v in KB_RAW.items()])
+KB_TEXT_PUBLIC = "\n\n---\n\n".join(
+    [f"ID ARTICOLO: {k.replace('_', '-')}\n{v}" for k, v in KB_RAW.items()]
+)
+
+# ── Versione completa (utenti registrati) ──
 SYSTEM_PROMPT = """Sei il P&W Advisor, l'assistente virtuale dell'Hub Previdenza e Welfare di DataHubs S.r.l.
 Il tuo compito è supportare gli operatori del Polo (secondo livello) che assistono le sedi territoriali su temi previdenziali e welfare.
 
@@ -63,42 +83,115 @@ Riferimenti istituzionali sempre validi (non richiedono verifica documentale):
 
 Documentazione disponibile:
 
-""" + "\n\n---\n\n".join([f"TEMA: {k}\n{v}" for k, v in KB_RAW.items()])
+""" + KB_TEXT
+
+# ── Versione pubblica (visitatori non registrati): ricerca intelligente ──
+SYSTEM_PROMPT_PUBLIC = """Sei la ricerca intelligente pubblica dell'Hub Previdenza e Welfare di DataHubs S.r.l.
+Chi ti scrive è un visitatore non registrato. Il tuo compito NON è dare consulenza: è indicare in quale articolo dell'Hub si trova la risposta, con una sintesi brevissima.
+
+Regole:
+1. Usa SOLO la documentazione fornita. Non aggiungere informazioni esterne.
+2. Rispondi con al massimo 3 frasi brevi che sintetizzano cosa dice la documentazione sul punto chiesto. Se nella documentazione c'è un dato preciso (importo, percentuale, termine) puoi citarlo, con la fonte tra parentesi.
+3. Non fornire procedure passo-passo, casistiche, valutazioni del caso concreto, consigli operativi né rimandi a sedi territoriali.
+4. Dopo la sintesi, su righe separate, indica dove approfondire con uno o due riferimenti nel formato esatto:
+   [[id-articolo#numero-paragrafo]]
+   dove id-articolo è l'ID ARTICOLO indicato nella documentazione e numero-paragrafo è il numero del paragrafo "## N." pertinente. Esempio: [[cigo#5]]
+5. Se la domanda non è coperta dalla documentazione, rispondi solo: "Non trovo questo argomento negli articoli dell'Hub." senza riferimenti.
+6. Testo semplice, senza markdown, in italiano. Non aggiungere saluti o frasi di chiusura.
+
+Documentazione disponibile:
+
+""" + KB_TEXT_PUBLIC
+
+
+def current_user():
+    return session.get('user')
+
+
+def save_record(kind, record):
+    try:
+        os.makedirs(DATA_DIR, exist_ok=True)
+        with open(os.path.join(DATA_DIR, f'{kind}.jsonl'), 'a', encoding='utf-8') as f:
+            f.write(json.dumps(record, ensure_ascii=False) + '\n')
+    except OSError:
+        pass
+    print(f'[{kind}]', json.dumps(record, ensure_ascii=False), flush=True)
 
 
 @app.route('/')
 def index():
-    if 'user' not in session:
-        return redirect(url_for('login'))
-    return render_template('index.html', kb=KB)
+    user = current_user()
+    remaining = None if user else max(0, PUBLIC_MAX_QUESTIONS - session.get('public_q', 0))
+    return render_template(
+        'index.html', kb=KB, user=user,
+        is_admin=user in ADMINS,
+        public_remaining=remaining,
+        public_max=PUBLIC_MAX_QUESTIONS,
+        login_error=request.args.get('err') == '1',
+        open_login=request.args.get('accedi') == '1',
+    )
 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    error = None
     if request.method == 'POST':
-        email = request.form.get('email', '').strip()
+        email = request.form.get('email', '').strip().lower()
         password = request.form.get('password', '')
         if email in USERS and USERS[email] == password:
             session['user'] = email
             return redirect(url_for('index'))
-        else:
-            error = 'Credenziali non valide. Riprova.'
-    return render_template('login.html', error=error)
+        return redirect(url_for('index', accedi='1', err='1'))
+    return redirect(url_for('index', accedi='1'))
 
 
 @app.route('/logout')
 def logout():
     session.clear()
-    return redirect(url_for('login'))
+    return redirect(url_for('index'))
+
+
+@app.route('/registrati', methods=['POST'])
+def registrati():
+    data = request.get_json(silent=True) or request.form
+    record = {k: (data.get(k) or '').strip()[:300] for k in ('nome', 'cognome', 'ente', 'ruolo', 'email', 'note')}
+    if not record['nome'] or not record['cognome'] or '@' not in record['email']:
+        return jsonify({'ok': False, 'error': 'Compila nome, cognome ed email.'}), 400
+    record['data'] = datetime.datetime.now().strftime('%d/%m/%Y %H:%M')
+    REQUESTS.append(record)
+    save_record('richieste_accesso', record)
+    return jsonify({'ok': True})
+
+
+@app.route('/quesito', methods=['POST'])
+def quesito():
+    if not current_user():
+        return jsonify({'ok': False, 'error': 'Accesso richiesto.'}), 401
+    data = request.get_json(silent=True) or request.form
+    testo = (data.get('testo') or '').strip()[:3000]
+    if len(testo) < 10:
+        return jsonify({'ok': False, 'error': 'Descrivi il quesito in qualche riga.'}), 400
+    record = {
+        'utente': current_user(),
+        'tema': (data.get('tema') or '').strip()[:100],
+        'testo': testo,
+        'data': datetime.datetime.now().strftime('%d/%m/%Y %H:%M'),
+    }
+    QUESITI.append(record)
+    save_record('quesiti', record)
+    return jsonify({'ok': True})
+
+
+@app.route('/admin/richieste')
+def admin_richieste():
+    if current_user() not in ADMINS:
+        return redirect(url_for('index', accedi='1'))
+    return jsonify({'richieste_accesso': REQUESTS, 'quesiti': QUESITI})
 
 
 @app.route('/ask', methods=['POST'])
 def ask():
-    if 'user' not in session:
-        return jsonify({'error': 'Non autorizzato'}), 401
-
-    data = request.get_json()
+    user = current_user()
+    data = request.get_json(silent=True) or {}
     messages = data.get('messages', [])
 
     if not messages:
@@ -108,27 +201,38 @@ def ask():
     if not api_key:
         return jsonify({'error': 'API key non configurata'}), 500
 
+    if user:
+        system, model, max_tokens = SYSTEM_PROMPT, MODEL_PLUS, 1024
+        convo = messages[-20:]
+    else:
+        used = session.get('public_q', 0)
+        if used >= PUBLIC_MAX_QUESTIONS:
+            return jsonify({'error': 'limite', 'remaining': 0}), 429
+        session['public_q'] = used + 1
+        system, model, max_tokens = SYSTEM_PROMPT_PUBLIC, MODEL_PUBLIC, 350
+        # Versione pubblica: nessuna memoria di conversazione, solo l'ultima domanda
+        last = next((m for m in reversed(messages) if m.get('role') == 'user'), None)
+        if not last:
+            return jsonify({'error': 'Nessun messaggio'}), 400
+        convo = [{'role': 'user', 'content': str(last.get('content', ''))[:1000]}]
+
     client = anthropic.Anthropic(api_key=api_key)
 
     def generate():
         with client.messages.stream(
-            model="claude-sonnet-4-6",
-            max_tokens=1024,
-            system=SYSTEM_PROMPT,
-            messages=messages
+            model=model,
+            max_tokens=max_tokens,
+            system=system,
+            messages=convo
         ) as stream:
             for text in stream.text_stream:
                 yield f"data: {text}\n\n"
         yield "data: [DONE]\n\n"
 
-    return Response(
-        stream_with_context(generate()),
-        mimetype='text/event-stream',
-        headers={
-            'Cache-Control': 'no-cache',
-            'X-Accel-Buffering': 'no'
-        }
-    )
+    headers = {'Cache-Control': 'no-cache', 'X-Accel-Buffering': 'no', 'X-Tier': 'plus' if user else 'public'}
+    if not user:
+        headers['X-Remaining'] = str(max(0, PUBLIC_MAX_QUESTIONS - session['public_q']))
+    return Response(stream_with_context(generate()), mimetype='text/event-stream', headers=headers)
 
 
 if __name__ == '__main__':
