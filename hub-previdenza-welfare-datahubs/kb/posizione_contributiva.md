@@ -6,9 +6,9 @@
 
 ---
 
-**Perimetro della KB**
+**In sintesi**
 
-La KB ricompone in un unico percorso tre dimensioni collegate ma distinte: consultazione della posizione contributiva, gestione della posizione aziendale e tutela amministrativa contro provvedimenti INPS. Non sostituisce le regole specifiche delle singole gestioni previdenziali o dei singoli provvedimenti.
+Questa guida ricompone in un unico percorso tre dimensioni collegate ma distinte: consultazione della posizione contributiva, gestione della posizione aziendale e tutela amministrativa contro provvedimenti INPS. Non sostituisce le regole specifiche delle singole gestioni previdenziali o dei singoli provvedimenti.
 
 ## 1. Che cosa comprende la posizione contributiva
 
@@ -30,7 +30,7 @@ L'accesso avviene dal sito INPS con identità digitale. Il documento può essere
 
 ## 3. Posizione contributiva del datore di lavoro
 
-Sul versante aziendale, la tematica comprende la corretta identificazione e gestione della posizione contributiva. Il record INPS relativo all'obbligo di unicità della posizione contributiva e all'accentramento contributivo riguarda l'organizzazione della posizione aziendale e va mantenuto come servizio centrale della tematica.
+Sul versante aziendale, la tematica comprende la corretta identificazione e gestione della posizione contributiva. Il servizio INPS dedicato all'obbligo di unicità della posizione contributiva e all'accentramento contributivo riguarda l'organizzazione della posizione aziendale ed è il riferimento centrale di questo tema.
 
 La consultazione dell'estratto conto del lavoratore non sostituisce i controlli aziendali: serve a verificare ciò che risulta accreditato sulla posizione assicurativa individuale. I due piani devono restare distinti.
 
@@ -67,13 +67,13 @@ Può diventare improcedibile se, dopo la presentazione, viene meno l'interesse c
 
 ## 8. Servizi INPS associati alla tematica
 
-| Servizio / record | Ruolo nella KB | Centralità |
+| Servizio | A cosa serve | Rilevanza |
 |---|---|---|
 | Consultazione Estratto conto contributivo/previdenziale | Verifica della posizione assicurativa individuale, periodi e tipologia di contribuzione | Alta — lato lavoratore |
 | Obbligo di unicità della posizione contributiva: accentramento contributivo | Gestione della posizione contributiva aziendale e della sua organizzazione | Alta — lato azienda |
 | Gestione ricorsi amministrativi in materia di inquadramento previdenziale | Tutela contro specifici provvedimenti INPS in materia di inquadramento | Correlata / specialistica |
 
-La tematica è trasversale: nessuno dei tre record, preso singolarmente, copre l'intero percorso. Il valore della KB consiste nel ricomporli in una sequenza logica: verificare → individuare l'anomalia → correggere o gestire la posizione → eventualmente contestare un provvedimento.
+La tematica è trasversale: nessuno dei tre servizi, preso singolarmente, copre l'intero percorso. Conviene usarli in sequenza: verificare → individuare l'anomalia → correggere o gestire la posizione → eventualmente contestare un provvedimento.
 
 ## 9. Percorso operativo
 
@@ -92,18 +92,7 @@ La tematica è trasversale: nessuno dei tre record, preso singolarmente, copre l
 - **Ricorso e autotutela:** il riesame in autotutela non sospende i termini del ricorso.
 - **Termini dei ricorsi:** il termine di 30 giorni richiamato dal Messaggio n. 1900/2023 è specifico per i provvedimenti CIGO; non va esteso a ogni controversia contributiva.
 
-## 11. Copertura della KB e limiti delle fonti
-
-| Informazione | Coperta? | Nota |
-|---|---|---|
-| Consultazione e lettura dell'estratto conto | Sì | Messaggio 2553/2025 |
-| Segnalazione di errori nella posizione assicurativa | Sì | Messaggio 2553/2025 |
-| Regole generali dei ricorsi amministrativi INPS | Sì | Circolare 48/2023 |
-| Termini di ogni possibile ricorso contributivo | Parzialmente | Dipendono da gestione e provvedimento |
-| Regole specifiche sull'inquadramento previdenziale | Parzialmente | Il record servizio è pertinente, ma i documenti disciplinano soprattutto il quadro generale dei ricorsi |
-| Verifica completa di versamenti, debiti, note di rettifica e regolarizzazione aziendale | Non completa | Richiede ulteriori fonti/servizi INPS dedicati |
-
-## 12. Fonti utilizzate
+## 11. Fonti utilizzate
 
 - [INPS — Messaggio n. 2553 del 2 settembre 2025](https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2025.09.messaggio-numero-2553-del-02-09-2025_15013.html) — Evoluzione estratto conto contributivo
 - [INPS — Circolare n. 48 del 17 maggio 2023](https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2023.05.circolare-numero-48-del-17-05-2023_14161.html) — Regolamento in materia di ricorsi amministrativi di competenza dei Comitati dell'INPS
@@ -112,7 +101,7 @@ La tematica è trasversale: nessuno dei tre record, preso singolarmente, copre l
 
 ---
 
-## Servizi INPS collegati
+## Servizi INPS e di altri enti istituzionali
 
 | Servizio | Categoria | Link |
 |---|---|---|

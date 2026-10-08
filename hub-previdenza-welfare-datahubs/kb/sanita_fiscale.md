@@ -4,9 +4,9 @@
 
 ---
 
-**Perimetro della KB**
+**In sintesi**
 
-Questa KB descrive il quadro normativo e fiscale della sanità integrativa per imprese e lavoratori dipendenti: tipologie di fondi, regime fiscale aggiornato (D.Lgs. 192/2024 e L. 207/2024), trattamento contributivo INPS e Anagrafe dei fondi sanitari. Non copre i fondi convenzionati INPS con meccanismo F24/UniEmens, trattati nella KB dedicata ai Fondi sanitari contrattuali.
+Questa guida descrive il quadro normativo e fiscale della sanità integrativa per imprese e lavoratori dipendenti: tipologie di fondi, regime fiscale aggiornato (D.Lgs. 192/2024 e L. 207/2024), trattamento contributivo INPS e Anagrafe dei fondi sanitari. Non copre i fondi convenzionati INPS con meccanismo F24/UniEmens, trattati nell'articolo dedicato ai Fondi sanitari contrattuali.
 
 ## 1. Tipologie di fondi sanitari integrativi
 
@@ -94,7 +94,7 @@ L'Anagrafe è istituita presso il Ministero della Salute con D.M. 31 marzo 2008,
 | Requisito iscrizione Anagrafe | Non sempre richiesto per il meccanismo INPS | Obbligatorio dal 2025 per le agevolazioni fiscali |
 | Controllo INPS | INPS verifica coerenza F24/UniEmens e riversa 98% | INPS non interviene nel rapporto fondo-impresa |
 
-## 8. Cosa deve verificare l'operatore del Polo
+## 8. Cosa verificare in pratica
 
 1. **Il fondo è iscritto all'Anagrafe?** Verificare che il fondo abbia l'attestato di iscrizione valido rilasciato dal Ministero della Salute. Senza attestato, nessuna agevolazione fiscale.
 2. **Il fondo opera per mutualità e solidarietà?** Dal 2025 questo è requisito di legge. I fondi assicurativi puri (polizze individuali) non soddisfano questo requisito.
@@ -103,23 +103,7 @@ L'Anagrafe è istituita presso il Ministero della Salute con D.M. 31 marzo 2008,
 5. **Il versamento passa per INPS?** Solo se il fondo ha una convenzione INPS attiva (ESAL, FAFP, SANI, CARE). Negli altri casi il versamento è diretto al fondo.
 6. **Trattamento contributivo:** quota datore → esclusa dall'imponibile, soggetta al 10% di solidarietà. Quota lavoratore → in imponibile ordinario. Verificare separatamente da quello fiscale.
 
-## 9. Copertura della KB e limiti
-
-| Informazione | Coperta? | Fonte |
-|---|---|---|
-| Tipologie di fondi (A e B) | Sì | AE 4/E 2025 + Min. Salute |
-| Requisiti 2025 (Anagrafe + mutualità) | Sì | AE 4/E 2025 — D.Lgs. 192/2024 |
-| Deducibilità art. 10 TUIR (3.615,20 €) | Sì | AE 4/E 2025 |
-| Non imponibilità art. 51 TUIR (3.615,20 €) | Sì | AE 4/E 2025 |
-| Plafond unico condiviso | Sì | AE 4/E 2025 |
-| Trattamento contributivo INPS | Sì | Circ. INPS 263/1997 |
-| Anagrafe fondi sanitari — iscrizione | Sì | D.M. Salute 31/3/2008 e 27/10/2009 |
-| Differenza fondi contrattuali vs volontari | Sì | KB integrata |
-| Importi dei contributi per singolo fondo | No | Dipendono dal CCNL o accordo aziendale |
-| Dettaglio prestazioni erogabili dai fondi | No | Rinvio al regolamento del singolo fondo |
-| Fondi pensione e previdenza complementare | No | KB dedicata |
-
-## 10. Fonti ufficiali
+## 9. Fonti ufficiali
 
 - [Circolare Agenzia delle Entrate n. 4/E del 16 maggio 2025](https://www.agenziaentrate.gov.it/portale/documents/20143/8410823/Circolare+lavoro+dipendente+LB2025+DD+IRPEF+n.+4+del+16+maggio+2025.pdf/36979eaa-9fc5-a4ec-a7aa-136497c53f91?t=1747405979604) — Novità IRPEF e redditi di lavoro dipendente (D.Lgs. 192/2024 e L. 207/2024), par. 2.1
 - [D.Lgs. 13 dicembre 2024, n. 192](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2024-12-13;192) — Riforma fiscale: modifica artt. 10 e 51 TUIR
@@ -131,7 +115,7 @@ L'Anagrafe è istituita presso il Ministero della Salute con D.M. 31 marzo 2008,
 
 ---
 
-## Servizi INPS collegati
+## Servizi INPS e di altri enti istituzionali
 
 Il regime fiscale dei fondi sanitari integrativi è disciplinato dal TUIR e dall'Agenzia delle Entrate: **non esistono servizi INPS dedicati** a questo tema. L'impatto previdenziale si gestisce tramite UniEmens (esclusione dall'imponibile contributivo).
 

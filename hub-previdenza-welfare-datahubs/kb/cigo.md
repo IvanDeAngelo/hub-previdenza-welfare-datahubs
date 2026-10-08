@@ -4,9 +4,9 @@
 
 ---
 
-**Perimetro della KB**
+**In sintesi**
 
-La KB descrive la CIGO dal punto di vista del datore di lavoro: chi può accedervi, per quali causali, come presentare domanda, come gestire il conguaglio in UniEmens, contribuzione addizionale e massimali aggiornati. Non copre CIGS, FIS o Fondi di solidarietà bilaterali, che richiedono KB dedicate.
+Questa guida descrive la CIGO dal punto di vista del datore di lavoro: chi può accedervi, per quali causali, come presentare domanda, come gestire il conguaglio in UniEmens, contribuzione addizionale e massimali aggiornati. Non tratta CIGS, FIS e Fondi di solidarietà bilaterali.
 
 ## 1. Cos'è la CIGO
 
@@ -115,21 +115,7 @@ Per i periodi CIGO connessi a D.L. 92/2025 (moda, gruppi di imprese) utilizzare 
 7. **Ricevere autorizzazione INPS** — L'INPS comunica l'autorizzazione via Cassetto Previdenziale Aziende con il codice di conguaglio specifico.
 8. **Conguagliare entro 6 mesi** — Recuperare in UniEmens le somme anticipate ai lavoratori usando il codice di conguaglio ricevuto — entro 6 mesi a pena di decadenza.
 
-## 11. Copertura della KB e limiti
-
-| Informazione | Coperta? | Fonte |
-|---|---|---|
-| Datori ammessi e lavoratori beneficiari | Sì | D.Lgs. 148/2015 |
-| Causali ordinarie e EONE | Sì | D.M. 95442/2016 + Msg. 2418/2026 |
-| Durata massima e biennio mobile | Sì | Art. 12 D.Lgs. 148/2015 |
-| Massimale 2026 | Sì | Circ. 4/2026 |
-| Contribuzione addizionale 2025 | Sì | Circ. 5/2025 |
-| Procedura OMNIA IS | Sì | Scheda servizio INPS |
-| Conguaglio UniEmens e codici | Sì | Circ. 121/2025 |
-| CIGO emergenza climatica lug-dic 2026 | Sì | Msg. 2418/2026 |
-| CIGS, FIS, Fondi di solidarietà | No | Richiedono KB dedicate |
-
-## 12. Fonti ufficiali
+## 11. Fonti ufficiali
 
 - [D.Lgs. 14 settembre 2015, n. 148](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2015-09-14;148) — Testo Unico Ammortizzatori Sociali (artt. 10-18 per la CIGO)
 - [D.M. 95442/2016](https://www.lavoro.gov.it/documenti-e-norme/normative/Documents/2016/Decreto-Ministeriale-15-aprile-n-95442.pdf) — Causali CIGO
@@ -141,7 +127,7 @@ Per i periodi CIGO connessi a D.L. 92/2025 (moda, gruppi di imprese) utilizzare 
 
 ---
 
-## Servizi INPS collegati
+## Servizi INPS e di altri enti istituzionali
 
 | Servizio | Categoria | Link |
 |---|---|---|

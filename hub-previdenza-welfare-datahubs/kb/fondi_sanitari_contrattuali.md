@@ -4,9 +4,9 @@
 
 ---
 
-**Perimetro della KB**
+**In sintesi**
 
-Questa KB descrive il meccanismo con cui INPS riscuote i contributi destinati ai fondi sanitari contrattuali, sulla base delle convenzioni stipulate con i singoli fondi. Non costituisce un repertorio completo dei fondi previsti da tutti i CCNL. L'obbligo di contribuzione e la misura del versamento discendono dalla contrattazione collettiva applicata dall'impresa.
+Questa guida descrive il meccanismo con cui INPS riscuote i contributi destinati ai fondi sanitari contrattuali, sulla base delle convenzioni stipulate con i singoli fondi. Non costituisce un repertorio completo dei fondi previsti da tutti i CCNL. L'obbligo di contribuzione e la misura del versamento discendono dalla contrattazione collettiva applicata dall'impresa.
 
 ## 1. Da dove nasce l'obbligo di contribuzione
 
@@ -66,7 +66,7 @@ I rapporti tra fondo e datori di lavoro (restituzione somme, variazioni, omissio
 
 ## 7. Cosa può sapere l'impresa dalle fonti INPS disponibili
 
-| Domanda | Copertura |
+| Domanda | Risposta |
 |---|---|
 | Come si versa il contributo di un fondo convenzionato? | Sì — F24, codice specifico, istruzioni operative |
 | Come si espone in UniEmens? | Sì — CodConv, Importo e Periodo |
@@ -95,7 +95,7 @@ I rapporti tra fondo e datori di lavoro (restituzione somme, variazioni, omissio
 
 ---
 
-## Servizi INPS collegati
+## Servizi INPS e di altri enti istituzionali
 
 Per i fondi sanitari contrattuali con convenzione INPS, il versamento avviene tramite UniEmens. Non esiste un servizio INPS dedicato ai fondi sanitari: il canale operativo è la **trasmissione UniEmens** standard per i datori di lavoro privati.
 

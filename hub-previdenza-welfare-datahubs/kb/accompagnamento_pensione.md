@@ -4,9 +4,9 @@
 
 ---
 
-**Perimetro della KB**
+**In sintesi**
 
-La KB descrive le prestazioni di accompagnamento alla pensione (isopensione) previste dall'art. 4, commi 1-7-ter, della Legge n. 92/2012, gli assegni straordinari dei Fondi di solidarietà bilaterali (art. 26, D.Lgs. 148/2015) e le relative istruzioni operative INPS. Non sostituisce il testo di legge né i contratti collettivi applicabili.
+Questa guida descrive le prestazioni di accompagnamento alla pensione (isopensione) previste dall'art. 4, commi 1-7-ter, della Legge n. 92/2012, gli assegni straordinari dei Fondi di solidarietà bilaterali (art. 26, D.Lgs. 148/2015) e le relative istruzioni operative INPS. Non sostituisce il testo di legge né i contratti collettivi applicabili.
 
 ## 1. Cos'è la prestazione di accompagnamento alla pensione (isopensione)
 
@@ -113,21 +113,7 @@ Dopo l'accettazione della fideiussione, presenta le domande individuali per cias
 6. **Erogazione** — INPS eroga mensilmente la prestazione al lavoratore per 13 mensilità all'anno.
 7. **Domanda di pensione** — Il lavoratore presenta in tempo utile la domanda di pensione — la prestazione NON si trasforma automaticamente.
 
-## 12. Copertura della KB e limiti delle fonti
-
-| Informazione | Coperta? | Fonte |
-|---|---|---|
-| Requisiti di accesso e platea beneficiari | Sì | Circ. 119/2013 |
-| Accordo aziendale e procedura INPS | Sì | Circ. 119/2013 |
-| Calcolo importo e regime fiscale | Sì | Circ. 153/2025 |
-| Agevolazioni fiscali 2026 (bonus + detrazione) | Sì | Msg. 2829/2026 |
-| Prolungamento tutele per nuovi requisiti 2027-28 | Sì | Circ. 41/2026 |
-| Liquidazione per contributivi puri | Sì | Circ. 104/2026 |
-| Gestione prestazioni anno 2026 | Sì | Circ. 153/2025 |
-| Assegni straordinari Fondi solidarietà settoriali | Parziale | Circ. 41/2026 (principi generali) |
-| Gestione Dipendenti Pubblici e Spettacolo | Non coperta | Richiedono circolari dedicate |
-
-## 13. Fonti ufficiali
+## 12. Fonti ufficiali
 
 - [Legge 28 giugno 2012, n. 92](https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2012-06-28;92), art. 4, commi 1-7-ter — Isopensione
 - [Circolare INPS n. 119 del 1/8/2013](https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2013.08.circolare-numero-119-del-01-08-2013_847.html) — Istruzioni operative isopensione
@@ -139,7 +125,7 @@ Dopo l'accettazione della fideiussione, presenta le domande individuali per cias
 
 ---
 
-## Servizi INPS collegati
+## Servizi INPS e di altri enti istituzionali
 
 | Servizio | Categoria | Link |
 |---|---|---|

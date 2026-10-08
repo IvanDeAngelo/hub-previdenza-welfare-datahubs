@@ -120,7 +120,7 @@ Il valore della piattaforma non consiste nel sostituire il DURC Online, ma nel f
 
 ---
 
-## Servizi INPS collegati
+## Servizi INPS e di altri enti istituzionali
 
 | Servizio | Categoria | Link |
 |---|---|---|
