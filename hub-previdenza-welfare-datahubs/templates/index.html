@@ -385,6 +385,15 @@ body.dark .ai-tier a{color:#8FBF92;}
 .ai-input:focus{border-color:var(--dh-green) !important;}
 .msg.user .msg-b{background:#5A8060 !important;border-color:#5A8060 !important;}
 
+.six-q{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0 18px;}
+.six-q div{display:flex;align-items:center;gap:10px;border:1.5px solid var(--border);border-radius:8px;padding:12px 14px;font-size:15.5px;font-weight:600;color:var(--title);background:var(--surface);}
+.six-q b{width:26px;height:26px;border-radius:50%;background:var(--dh-green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
+.contacts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px;}
+.contacts div{border-left:3px solid var(--dh-green);padding:6px 12px;font-size:16px;color:var(--text);}
+.contacts span{display:block;font-size:11.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);}
+.contacts a{color:var(--brand);}
+body.dark .contacts a{color:#7DB4EA;}
+@media(max-width:700px){.six-q,.contacts{grid-template-columns:1fr;}}
 /* ── PRINT ── */
 @media print{.topbar,.masthead,.secnav,.ticker,.share,.art-side,footer,.ai-fab,.ai-panel,.in-art,.crumbs{display:none!important;}.art-grid{display:block;}}
 
@@ -524,6 +533,8 @@ body.dark .ai-tier a{color:#8FBF92;}
             <a class="pr-item c-welf" onclick="showPage('cigo')"><strong>1.423,69 €</strong><span>Massimale mensile lordo CIGO 2026</span><em>Circ. INPS 4/2026</em></a>
             <a class="pr-item c-welf" onclick="showPage('cigo')"><strong>80%</strong><span>Integrazione CIGO della retribuzione globale</span><em>D.Lgs. 148/2015</em></a>
             <a class="pr-item c-san" onclick="showPage('sanita-fiscale')"><strong>3.615,20 €</strong><span>Plafond annuo di deducibilità dei contributi ai fondi sanitari</span><em>Artt. 10 e 51 TUIR</em></a>
+            <a class="pr-item c-welf" onclick="showPage('certificazione-parita-genere')"><strong>50.000 €</strong><span>Tetto annuo dell'esonero contributivo per la certificazione di parità di genere</span><em>Art. 5, L. 162/2021</em></a>
+            <a class="pr-item c-welf" onclick="openSection('certificazione-parita-genere',3)"><strong>50 dipendenti</strong><span>Oltre questa soglia scatta l'obbligo del rapporto biennale sul personale</span><em>Art. 46, D.Lgs. 198/2006</em></a>
             <a class="pr-item c-san" onclick="showPage('sanita-fiscale')"><strong>10%</strong><span>Contributo di solidarietà sulla quota datore ai fondi sanitari</span><em>Circ. INPS 263/1997</em></a>
           </div>
           <div class="plus-side c-plus" style="margin-bottom:28px;">
@@ -553,6 +564,7 @@ body.dark .ai-tier a{color:#8FBF92;}
     <section class="page" id="page-cigo"></section>
     <section class="page" id="page-fondi-sanitari-contrattuali"></section>
     <section class="page" id="page-sanita-fiscale"></section>
+    <section class="page" id="page-certificazione-parita-genere"></section>
 
     <!-- CHI SIAMO -->
     <!-- SERVIZI PLUS (popolati da JS) -->
@@ -566,15 +578,35 @@ body.dark .ai-tier a{color:#8FBF92;}
       <div class="crumbs"><a onclick="goBack()"><svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></a>/<a onclick="showPage('home')">Home</a>/<span>Chi siamo</span></div>
       <div class="about">
         <h1>Chi siamo</h1>
-        <p class="lead-p">Hub Previdenza e Welfare è un progetto DataHubs S.r.l.: un unico punto di accesso, aperto a tutti, per orientarsi tra norme, adempimenti e servizi di INPS, Agenzia delle Entrate e Ministero della Salute.</p>
-        <p>Si rivolge a dirigenti, aziende, sedi territoriali, consulenti e a chiunque cerchi informazioni affidabili in materia previdenziale, di welfare aziendale e di sanità integrativa.</p>
+        <p class="lead-p">Hub Previdenza e Welfare è un progetto DataHubs S.r.l.: un unico punto di accesso per orientarsi tra previdenza, welfare, sanità integrativa e servizi di INPS, Agenzia delle Entrate e Ministero della Salute.</p>
 
-        <h2>Contenuti certificati</h2>
-        <p>Ogni articolo nasce da una base documentale certificata: circolari e messaggi degli enti previdenziali, testi normativi e decreti, guide operative e approfondimenti del Centro Studi. DataHubs S.r.l. ne cura la selezione, la verifica e l'aggiornamento, e ogni contenuto riporta le fonti ufficiali da cui è tratto.</p>
+        <h2>Perché nasce</h2>
+        <p>L'informazione su previdenza e welfare è frammentata: dispersa tra portali istituzionali, circolari e comunicazioni tecniche, con procedure online e aggiornamenti normativi difficili da seguire. Per chi si occupa di personale senza essere uno specialista è complesso capire cosa cambia, cosa fare e quali opportunità cogliere.</p>
+        <p>L'Hub traduce questa complessità in contenuti chiari, aggiornati, verificati e orientati all'uso, organizzati dal punto di vista di aziende e manager.</p>
+
+        <h2>A chi ci rivolgiamo</h2>
+        <ul>
+          <li>HR manager e responsabili del personale delle imprese</li>
+          <li>Dirigenti e manager</li>
+          <li>Aziende e organizzazioni datoriali</li>
+          <li>Sedi territoriali, consulenti del lavoro ed esperti del settore</li>
+        </ul>
+
+        <h2>Come lavoriamo</h2>
+        <p>Tre principi guidano ogni contenuto: <strong>affidabilità delle fonti</strong>, <strong>semplicità di lettura</strong> e <strong>utilità concreta</strong>. Ogni articolo nasce da una base documentale certificata (circolari e messaggi degli enti, testi normativi, guide operative) e risponde a sei domande:</p>
+        <div class="six-q">
+          <div><b>1</b>Cosa cambia</div>
+          <div><b>2</b>Chi è coinvolto</div>
+          <div><b>3</b>Cosa deve fare l'azienda</div>
+          <div><b>4</b>Quali opportunità</div>
+          <div><b>5</b>Quali scadenze</div>
+          <div><b>6</b>Dove trovare il servizio</div>
+        </div>
+        <p>Ogni contenuto riporta le fonti ufficiali da cui è tratto e il collegamento ai servizi online degli enti.</p>
 
         <h2>Cosa trovi sull'Hub</h2>
         <ul>
-          <li><strong>Articoli per area tematica</strong> — Previdenza, Welfare aziendale e Sanità integrativa, scritti in modo chiaro e con i riferimenti normativi.</li>
+          <li><strong>Articoli per area tematica</strong> — guide pratiche su Previdenza, Welfare aziendale e Sanità integrativa, con percorso operativo e riferimenti normativi.</li>
           <li><strong>Prontuario</strong> — importi, percentuali e soglie dell'anno a portata di mano.</li>
           <li><strong>Ricerca intelligente</strong> — fai una domanda in linguaggio naturale e scopri in quale articolo e paragrafo trovi la risposta.</li>
         </ul>
@@ -591,6 +623,7 @@ body.dark .ai-tier a{color:#8FBF92;}
           <li>Non inventa informazioni: se la domanda non è coperta, lo dichiara e indica a chi rivolgersi.</li>
           <li>Indica sempre la fonte e la data di aggiornamento.</li>
         </ul>
+
       </div>
     </section>
   </div>
@@ -617,6 +650,7 @@ body.dark .ai-tier a{color:#8FBF92;}
   <div id="kb-src-cigo">{{ kb.cigo | safe }}</div>
   <div id="kb-src-fondi-sanitari-contrattuali">{{ kb.fondi_sanitari_contrattuali | safe }}</div>
   <div id="kb-src-sanita-fiscale">{{ kb.sanita_fiscale | safe }}</div>
+  <div id="kb-src-certificazione-parita-genere">{{ kb.certificazione_parita_genere | safe }}</div>
 </div>
 
 <!-- ═════════ ACCESSO ═════════ -->
@@ -650,7 +684,7 @@ body.dark .ai-tier a{color:#8FBF92;}
         </div>
         <div class="form-field"><label>Email *</label><input type="email" name="email" required></div>
         <div class="form-row">
-          <div class="form-field"><label>Profilo</label><select name="ruolo"><option>Dirigente</option><option>Azienda</option><option>Sede territoriale</option><option>Consulente / professionista</option><option>Altro</option></select></div>
+          <div class="form-field"><label>Profilo</label><select name="ruolo"><option>HR / responsabile del personale</option><option>Dirigente / manager</option><option>Azienda</option><option>Sede territoriale</option><option>Consulente / professionista</option><option>Altro</option></select></div>
           <div class="form-field"><label>Azienda / ente</label><input name="ente"></div>
         </div>
         <div class="form-field"><label>Note</label><textarea name="note" rows="2"></textarea></div>
@@ -709,7 +743,7 @@ const OPEN_LOGIN={{ 'true' if (open_login or login_error) else 'false' }};
 const IMG=id=>'https://images.unsplash.com/'+id+'?auto=format&fit=crop&w=1200&q=70';
 const AREAS={
   previdenza:{name:'Previdenza',cls:'c-prev',desc:'Contributi, posizione contributiva, correttezza dei versamenti e accompagnamento alla pensione.'},
-  welfare:{name:'Welfare aziendale',cls:'c-welf',desc:'Regolarità contributiva, DURC e ammortizzatori sociali per le imprese.'},
+  welfare:{name:'Welfare aziendale',cls:'c-welf',desc:'Regolarità contributiva, DURC, ammortizzatori sociali e parità di genere per le imprese.'},
   sanita:{name:'Sanità integrativa',cls:'c-san',desc:'Fondi sanitari contrattuali e regime fiscale della sanità integrativa.'}
 };
 const ARTICLES=[
@@ -718,6 +752,11 @@ const ARTICLES=[
    summary:'Chi può accedere, per quali causali, come presentare domanda con OMNIA IS e gestire il conguaglio in UniEmens. Fino al 31 dicembre 2026 CIGO per eventi climatici senza contributo addizionale nei settori edile e lapideo.',
    img:'photo-1589793463357-5fb813435467',caption:'Linea di produzione industriale',
    sources:[['Scheda servizio INPS — Cassa integrazione guadagni ordinaria','Domanda tramite piattaforma OMNIA IS','https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.50599.cassa-integrazione-guadagni-ordinaria.html'],['Circolare INPS n. 4 del 28/1/2026','Massimali dei trattamenti di integrazione salariale 2026','https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2026.01.circolare-numero-4-del-28-01-2026_15147.html'],['Messaggio INPS n. 2418 del 20/7/2026','CIGO per emergenza climatica (D.L. 107/2026)','https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2026.07.messaggio-numero-2418-del-20-07-2026_15325.html']]},
+  {id:'certificazione-parita-genere',area:'welfare',tag:'Parità di genere',date:'Ottobre 2026',
+   title:'Come arrivare alla certificazione della parità di genere: dal PNRR all\'esonero contributivo fino a 50.000 €',
+   summary:'Il percorso completo: la Missione 5 del PNRR, la Legge 162/2021, il rapporto biennale sul personale, la prassi UNI/PdR 125:2022 con la soglia del 60%, il rilascio e i vantaggi, dall\'esonero INPS dell\'1% ai contributi per le PMI.',
+   img:'photo-1573167507387-6b4b98cb7c13',caption:'Parità di genere nelle organizzazioni',
+   sources:[['Prassi di riferimento UNI/PdR 125:2022','Linee guida sul sistema di gestione per la parità di genere','https://certificazione.pariopportunita.gov.it/public/dist/resources/prassi-di-riferimento-unipdr-pdr100866103.pdf'],['Messaggio INPS n. 3804 del 16/12/2025','Domanda di esonero contributivo (modulo SGRAVIO PAR_GEN)','https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2025.12.messaggio-numero-3804-del-16-12-2025_15107.html'],['Circolare INPS n. 137 del 27/12/2022','Istruzioni sull\'esonero contributivo','https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2022.12.circolare-numero-137-del-27-12-2022_14030.html'],['Piattaforma della certificazione','Dipartimento per le pari opportunità','https://certificazione.pariopportunita.gov.it/public/home']]},
   {id:'sanita-fiscale',area:'sanita',tag:'Fisco',date:'Ottobre 2026',
    title:'Fondi sanitari integrativi: deducibilità fino a 3.615,20 € e iscrizione all\'Anagrafe del Ministero',
    summary:'Tipologie A e B, deducibilità (art. 10 TUIR) e non imponibilità (art. 51 TUIR) con plafond unico, trattamento contributivo e iscrizione all\'Anagrafe dei fondi sanitari integrativi.',
@@ -905,6 +944,8 @@ const SEARCH_MAP={
   'estratto conto':'posizione-contributiva','ricors':'posizione-contributiva','uniemens':'posizione-contributiva','cassetto':'posizione-contributiva','versament':'posizione-contributiva','posizione contributiva':'posizione-contributiva',
   'deducib':'sanita-fiscale','tuir':'sanita-fiscale','anagrafe':'sanita-fiscale','3615':'sanita-fiscale','3.615':'sanita-fiscale','fiscal':'sanita-fiscale',
   'esal':'fondi-sanitari-contrattuali','fafp':'fondi-sanitari-contrattuali','fondosani':'fondi-sanitari-contrattuali','innovacare':'fondi-sanitari-contrattuali','f24':'fondi-sanitari-contrattuali','fondi sanitari':'fondi-sanitari-contrattuali','fondo sanitario':'fondi-sanitari-contrattuali',
+  'certificazione':'certificazione-parita-genere','parità di genere':'certificazione-parita-genere','parita di genere':'certificazione-parita-genere','pdr 125':'certificazione-parita-genere','par_gen':'certificazione-parita-genere',
+  'rapporto biennale':'certificazione-parita-genere','personale maschile':'certificazione-parita-genere','pari opportunità':'certificazione-parita-genere','162/2021':'certificazione-parita-genere','pnrr':'certificazione-parita-genere',
   'previdenza':'previdenza','welfare':'welfare','sanità':'sanita','sanita':'sanita'
 };
 function doSearch(){
@@ -999,11 +1040,16 @@ const QUESITI=[
  {art:'posizione-contributiva',sec:6,q:'Avviare l\'autotutela sospende i termini per il ricorso?',a:'No. L\'avvio dell\'autotutela non interrompe né sospende i termini per proporre il ricorso amministrativo.',src:'Circ. INPS 48/2023'},
  {art:'sanita-fiscale',sec:6,q:'Basta la registrazione al SIAF per avere la deducibilità dei contributi?',a:'No. Serve l\'attestato di iscrizione all\'Anagrafe, che ha valenza annuale e va rinnovato. Inoltre il fondo deve operare secondo i principi di mutualità e solidarietà: i due requisiti devono esserci entrambi.',src:'Circ. AE 4/E 2025 · D.M. Salute 27/10/2009'},
  {art:'accompagnamento-pensione',sec:4,q:'L\'isopensione si trasforma automaticamente in pensione?',a:'No. Il pagamento cessa alla scadenza del periodo di esodo e il lavoratore deve presentare in tempo la domanda di pensione. Per chi è colpito dall\'innalzamento dei requisiti 2027-2028 la Circ. 41/2026 prevede il prolungamento della prestazione fino alla nuova data di pensionamento.',src:'Circ. INPS 41/2026'},
+ {art:'certificazione-parita-genere',sec:5,q:'Qual è il punteggio minimo per ottenere la certificazione di parità di genere?',a:'Serve un punteggio complessivo di almeno il 60%, calcolato pesando i punteggi degli indicatori delle sei aree della prassi UNI/PdR 125:2022 (Cultura e strategia 15%, Governance 15%, Processi HR 10%, Opportunità di crescita 20%, Equità remunerativa 20%, Genitorialità e conciliazione 20%).',src:'UNI/PdR 125:2022'},
+ {art:'certificazione-parita-genere',sec:10,q:'Nella domanda di esonero, quale retribuzione media va indicata?',a:'La retribuzione media mensile globale, cioè la somma delle retribuzioni medie mensili di tutti i lavoratori, non quella del singolo. Ad esempio, 50 lavoratori con retribuzione media di 2.000 euro corrispondono a 100.000 euro. Il beneficio riconosciuto dipende da questo dato.',src:'Msg. INPS 3804/2025'},
+ {art:'certificazione-parita-genere',sec:3,q:'Un\'azienda con 40 dipendenti deve inviare il rapporto biennale?',a:'No, l\'obbligo riguarda le aziende con più di 50 dipendenti. Sotto questa soglia il rapporto si può redigere su base volontaria, ed è utile anche in vista della certificazione della parità di genere.',src:'Art. 46, D.Lgs. 198/2006'},
  {art:'fondi-sanitari-contrattuali',sec:4,q:'Qual è il codice F24 per versare a INNOVACARE?',a:'CARE. La convenzione è del 23/03/2026 (Circ. INPS 95 del 10/09/2026) e, come le altre convenzioni con i fondi sanitari contrattuali, vale fino al 31/12/2026, rinnovabile per un triennio.',src:'Circ. INPS 95/2026'}
 ];
 const DATES=[
  {d:'1 gennaio 2026',t:'Massimale unico CIGO a 1.423,69 € lordi mensili',src:'Circ. INPS 4/2026',art:'cigo',sec:5},
  {d:'1 gennaio – 31 luglio',t:'Finestra annuale per la domanda di iscrizione all\'Anagrafe dei fondi sanitari (SIAF)',src:'D.M. Salute 27/10/2009',art:'sanita-fiscale',sec:6},
+ {d:'30 aprile 2026',t:'Termine per la domanda di esonero contributivo per le certificazioni di parità di genere rilasciate entro il 31/12/2025',src:'Msg. INPS 3804/2025',art:'certificazione-parita-genere',sec:10},
+ {d:'15 maggio 2026',t:'Termine (prorogato) per l\'invio del rapporto biennale sul personale maschile e femminile 2024-2025',src:'Ministero del Lavoro, comunicato del 30/4/2026',art:'certificazione-parita-genere',sec:3},
  {d:'1 luglio – 31 dicembre 2026',t:'CIGO per emergenza climatica (EONE) nei settori edile, lapideo ed escavazioni, fuori dal limite di durata e senza contributo addizionale',src:'Msg. INPS 2418/2026',art:'cigo',sec:3},
  {d:'10 settembre 2026',t:'Convenzione INPS con INNOVACARE: codice F24 CARE',src:'Circ. INPS 95/2026',art:'fondi-sanitari-contrattuali',sec:4},
  {d:'14 settembre 2026',t:'Istruzioni sulle agevolazioni fiscali 2026 per le prestazioni di accompagnamento alla pensione',src:'Msg. INPS 2829/2026',art:'accompagnamento-pensione',sec:7},
