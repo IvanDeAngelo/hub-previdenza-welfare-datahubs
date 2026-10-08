@@ -163,6 +163,25 @@ def registrati():
     return jsonify({'ok': True})
 
 
+NEWSLETTER = []
+
+
+@app.route('/newsletter', methods=['POST'])
+def newsletter():
+    data = request.get_json(silent=True) or request.form
+    email = (data.get('email') or '').strip()[:200]
+    if '@' not in email or '.' not in email.split('@')[-1]:
+        return jsonify({'ok': False, 'error': 'Inserisci un indirizzo email valido.'}), 400
+    record = {
+        'email': email,
+        'profilo': (data.get('profilo') or '').strip()[:100],
+        'data': datetime.datetime.now().strftime('%d/%m/%Y %H:%M'),
+    }
+    NEWSLETTER.append(record)
+    save_record('newsletter', record)
+    return jsonify({'ok': True})
+
+
 @app.route('/quesito', methods=['POST'])
 def quesito():
     if not current_user():
@@ -186,7 +205,7 @@ def quesito():
 def admin_richieste():
     if current_user() not in ADMINS:
         return redirect(url_for('index', accedi='1'))
-    return jsonify({'richieste_accesso': REQUESTS, 'quesiti': QUESITI})
+    return jsonify({'richieste_accesso': REQUESTS, 'quesiti': QUESITI, 'newsletter': NEWSLETTER})
 
 
 @app.route('/ask', methods=['POST'])
