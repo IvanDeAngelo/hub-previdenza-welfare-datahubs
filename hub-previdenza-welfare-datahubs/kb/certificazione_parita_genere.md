@@ -1,4 +1,4 @@
-# Come arrivare alla certificazione della parità di genere
+# La certificazione della parità di genere
 
 **Fonti:** PNRR, Missione 5 · L. 162/2021 · D.Lgs. 198/2006, artt. 46 e 46-bis · D.M. 29/4/2022 · UNI/PdR 125:2022 · Circ. INPS 137/2022 · Msg. INPS 3804/2025 | Ottobre 2026
 
