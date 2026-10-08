@@ -31,6 +31,7 @@ KB_FILES = {
     'cigo': 'cigo.md',
     'fondi_sanitari_contrattuali': 'fondi_sanitari_contrattuali.md',
     'sanita_fiscale': 'sanita_fiscale.md',
+    'certificazione_parita_genere': 'certificazione_parita_genere.md',
 }
 
 def load_kb():
