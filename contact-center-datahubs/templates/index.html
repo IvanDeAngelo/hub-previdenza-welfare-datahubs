@@ -221,6 +221,21 @@ svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke
 .toc h6{font-size:10.5px;font-weight:700;letter-spacing:1px;color:var(--muted);text-transform:uppercase;margin-bottom:8px}
 .toc a{display:block;font-size:12px;color:var(--soft);text-decoration:none;padding:4px 0;line-height:1.35;cursor:pointer}
 .toc a:hover{color:var(--g-dd)}
+.toc.links a{color:var(--g-d);font-weight:500;border-bottom:1px solid var(--border);padding:7px 0}
+.toc.links a:last-child{border-bottom:0}
+.ans .txt a{color:var(--g-d);font-weight:500;word-break:break-word}
+.crumbs{display:flex;align-items:center;gap:8px;font-size:15px;flex-wrap:wrap}
+.crumbs a{color:var(--soft);cursor:pointer}
+.crumbs a:hover{color:var(--g-dd);text-decoration:underline}
+.crumbs b{color:var(--dark)}
+.crumbs span{color:var(--muted)}
+.sres{font-size:12px;color:var(--muted);margin:10px 0 2px}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin-top:14px}
+.fcard{background:#fff;border:1px solid var(--border);border-radius:10px;padding:18px;cursor:pointer;display:flex;flex-direction:column;gap:6px}
+.fcard:hover{border-color:var(--g);box-shadow:0 4px 14px rgba(40,60,45,.07)}
+.fcard svg.i{width:26px;height:26px;color:var(--g-d);margin-bottom:4px}
+.fcard b{font-size:14px}
+.fcard small{font-size:11.5px;color:var(--muted)}
 
 /* ── CRM ── */
 .crmwrap{flex:1;overflow-y:auto;padding:18px 24px}
@@ -726,12 +741,16 @@ function confirmCrm(){
 // ───────────────────────── P&W Advisor ─────────────────────────
 function mdAnswer(text){
   // Testo semplice -> paragrafi; marcatori [[id#n]] -> apici numerati
-  const refs = [];
+  const refs = [], links = [];
+  // link markdown [testo](url) e URL nudi -> segnaposto, poi <a> cliccabili
+  text = text.replace(/\[([^\[\]]+)\]\((https?:\/\/[^\s)]+)\)/g, (m,t,u) => { links.push([t,u]); return '\u0000'+(links.length-1)+'\u0000'; });
+  text = text.replace(/https?:\/\/[^\s<>"\u0000]+/g, u => { let tail=''; while(/[.,;:)\]]$/.test(u)){ tail=u.slice(-1)+tail; u=u.slice(0,-1); } links.push([null,u]); return '\u0000'+(links.length-1)+'\u0000'+tail; });
+  const linkHtml = i => { const [t,u] = links[i]; const label = t || (u.replace(/^https?:\/\/(www\.)?/,'').length > 58 ? u.replace(/^https?:\/\/(www\.)?/,'').slice(0,56)+'…' : u.replace(/^https?:\/\/(www\.)?/,'')); return `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(label)}</a>`; };
   const body = esc(text).replace(/\[\[([a-z0-9-]+)#(\d+)\]\]/g, (m,id,n) => {
     const key = id+'#'+n; let i = refs.indexOf(key);
     if(i < 0){ refs.push(key); i = refs.length-1; }
     return `<sup onclick="openDoc('${id}',${n})">${i+1}</sup>`;
-  }).replace(/\[\[[^\]]*$/,'');
+  }).replace(/\[\[[^\]]*$/,'').replace(/\u0000(\d+)\u0000/g, (m,i) => linkHtml(+i));
   const html = body.split(/\n{2,}/).map(p=>p.trim()).filter(Boolean).map(p=>'<p>'+p.replace(/\n/g,'<br>')+'</p>').join('');
   return {html, refs};
 }
@@ -864,28 +883,58 @@ function renderTax(){
   $('kb-count').textContent = 'Base approvata · ' + allDocs().length + ' documenti';
 }
 function selTax(a,s){ kbSel={area:a, sub:s}; renderTax(); renderDocs(); }
+function crumbs(){
+  const parts = [`<a onclick="selTax(null,null)">Tutti i documenti</a>`];
+  if(kbSel.area) parts.push(kbSel.sub ? `<a onclick="selTax('${kbSel.area}',null)">${esc(kbSel.area)}</a>` : `<b>${esc(kbSel.area)}</b>`);
+  if(kbSel.sub) parts.push(`<b>${esc(kbSel.sub)}</b>`);
+  if(!kbSel.area) parts[0] = '<b>Tutti i documenti</b>';
+  return `<div class="crumbs">${parts.join('<span>›</span>')}</div>`;
+}
+function docRow(d){
+  return `<div class="doc" onclick="openDoc('${d.id}')"><span class="di">${ICON.doc}</span><div><b>${esc(d.title)}</b><small>${esc(d.area)} · ${esc(d.sub)} · aggiornato il ${d.upd}</small></div>
+    <div class="rt">${d.crm?'<span class="chip-crm">Da caso CRM</span>':''}<span class="tag-ok">Approvato</span><span class="openbtn">${ICON.go}</span></div></div>`;
+}
 function renderDocs(){
-  const qq = kbQuery.toLowerCase();
-  const list = allDocs().filter(d => (!kbSel.area||d.area===kbSel.area) && (!kbSel.sub||d.sub===kbSel.sub) && (!qq || (d.title+' '+d.fonti+' '+d.area).toLowerCase().includes(qq)));
-  const title = kbSel.sub || kbSel.area || 'Tutti i documenti';
-  $('kbmain').innerHTML = `<div class="lh"><h3>${esc(title)}</h3><div class="search">${ICON.search}<input id="kb-q" placeholder="Cerca per titolo o fonte" value="${esc(kbQuery)}" oninput="kbQuery=this.value;renderDocs();const i=document.getElementById('kb-q');i.focus();i.setSelectionRange(i.value.length,i.value.length)"></div></div>` +
-    (list.length ? list.map(d => `<div class="doc" onclick="openDoc('${d.id}')"><span class="di">${ICON.doc}</span><div><b>${esc(d.title)}</b><small>${esc(d.area)} · ${esc(d.sub)} · aggiornato il ${d.upd}</small></div>
-      <div class="rt">${d.crm?'<span class="chip-crm">Da caso CRM</span>':''}<span class="tag-ok">Approvato</span><span class="openbtn">${ICON.go}</span></div></div>`).join('')
-      : '<p style="color:var(--muted);padding:20px 0">Nessun documento per questa ricerca.</p>');
+  const qq = kbQuery.trim().toLowerCase();
+  const search = `<div class="search">${ICON.search}<input id="kb-q" placeholder="Cerca per titolo o fonte" value="${esc(kbQuery)}" oninput="kbQuery=this.value;renderDocs();const i=document.getElementById('kb-q');i.focus();i.setSelectionRange(i.value.length,i.value.length)"></div>`;
+  let content;
+  if(qq){
+    const list = allDocs().filter(d => (!kbSel.area||d.area===kbSel.area) && (!kbSel.sub||d.sub===kbSel.sub) && (d.title+' '+d.fonti+' '+d.sub).toLowerCase().includes(qq));
+    content = `<div class="sres">Risultati della ricerca${kbSel.area?' in '+esc(kbSel.sub||kbSel.area):''}</div>` + (list.length ? list.map(docRow).join('') : '<p style="color:var(--muted);padding:20px 0">Nessun documento per questa ricerca.</p>');
+  } else if(!kbSel.area){
+    content = `<div class="fgrid">${TAXONOMY.map(([a,subs]) => {
+      const n = allDocs().filter(d=>d.area===a).length;
+      return `<div class="fcard" onclick="selTax('${a}',null)">${ICON.folder}<b>${esc(a)}</b><small>${subs.length} ${subs.length===1?'sottocartella':'sottocartelle'} · ${n} ${n===1?'documento':'documenti'}</small></div>`;
+    }).join('')}</div>`;
+  } else if(!kbSel.sub){
+    const subs = TAXONOMY.find(t=>t[0]===kbSel.area)[1];
+    content = `<div class="fgrid">${subs.map(sb => {
+      const n = allDocs().filter(d=>d.area===kbSel.area && d.sub===sb).length;
+      return `<div class="fcard" onclick="selTax('${kbSel.area}','${sb}')">${ICON.folder}<b>${esc(sb)}</b><small>${n} ${n===1?'documento':'documenti'}</small></div>`;
+    }).join('')}</div>`;
+  } else {
+    const list = allDocs().filter(d => d.area===kbSel.area && d.sub===kbSel.sub);
+    content = list.length ? list.map(docRow).join('') : '<p style="color:var(--muted);padding:20px 0">Nessun documento in questa cartella.</p>';
+  }
+  $('kbmain').innerHTML = `<div class="lh">${crumbs()}${search}</div>` + content;
 }
 function openDoc(id, sec){
   go('kb');
   const d = allDocs().find(x=>x.id===id); if(!d) return;
-  let body, toc = '';
+  kbSel = {area:d.area, sub:d.sub}; kbQuery = ''; renderTax();
+  let body, toc = '', links = '';
   if(d.crm){
     const c = CRM.find(x=>x.id===d.crm);
     body = `<h1>${esc(d.title)}</h1>` + c.text.split('\n').map(l=>{const [k,...v]=l.split(':');return `<p><b>${esc(k)}:</b>${esc(v.join(':'))}</p>`;}).join('') + (c.note?`<p><em>Note di contesto: ${esc(c.note)}</em></p>`:'');
   } else {
     body = $('kbsrc-'+id).innerHTML;
     const secs = docSections(id);
+    const seen = new Set();
+    const anchors = [...$('kbsrc-'+id).querySelectorAll('a[href^="http"]')].filter(a => !seen.has(a.href) && seen.add(a.href));
+    if(anchors.length) links = `<div class="toc links"><h6>Link ufficiali</h6>${anchors.map(a=>{ let t=a.textContent.trim(); const tr=a.closest('tr'); if(tr && tr.cells[0] && !tr.cells[0].contains(a)) t=tr.cells[0].textContent.trim(); return `<a href="${esc(a.href)}" target="_blank" rel="noopener">${esc(t)} ↗</a>`; }).join('')}</div>`;
     toc = `<div class="toc"><h6>Indice</h6>${Object.entries(secs).map(([n,t])=>`<a onclick="scrollSec(${n})">${n}. ${esc(t)}</a>`).join('')}</div>`;
   }
-  $('kbmain').innerHTML = `<button class="vback" onclick="renderDocs()">${ICON.back}Torna all'elenco</button>
+  $('kbmain').innerHTML = `<button class="vback" onclick="renderDocs()">${ICON.back}Torna a ${esc(d.sub)}</button>
     <div class="viewer"><article class="vdoc" id="vdoc">${body}</article>
     <aside class="vmeta">
       <div class="mcard"><div class="mh"><small>SCHEDA DOCUMENTO</small><b>${esc(d.title)}</b></div><table>
@@ -896,8 +945,9 @@ function openDoc(id, sec){
         <tr><td>Aggiornamento</td><td>${d.upd}</td></tr>
         <tr><td>Origine</td><td>${d.crm?'Caso '+d.crm+' · documento generato su SharePoint':'Repository SharePoint · sincronizzato'}</td></tr>
         <tr><td>Hub pubblico</td><td>${d.crm?'Uso interno':'<a href="https://hub-previdenza-welfare-datahubs.onrender.com/" target="_blank">Articolo pubblicato ↗</a>'}</td></tr>
-      </table></div>${toc}
+      </table></div>${links}${toc}
     </aside></div>`;
+  document.querySelectorAll('#vdoc a[href^="http"]').forEach(a => { a.target = '_blank'; a.rel = 'noopener'; });
   $('kbmain').scrollTop = 0;
   if(sec) setTimeout(()=>scrollSec(sec, true), 60);
 }
