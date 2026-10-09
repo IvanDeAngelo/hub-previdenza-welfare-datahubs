@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Applicazione Contact Center · Hub Previdenza e Welfare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --g:#6C946F; --g-d:#4F7A52; --g-dd:#3F6442; --g-l:#EEF4EE; --g-ll:#F6FAF6;
+  --dark:#2C2E3C; --slate:#656D78; --text:#1F2430; --soft:#5B6270; --muted:#8C93A0;
+  --border:#E3E6EC; --border-d:#D3D7DF; --bg:#F4F5F7; --white:#fff;
+  --amber:#B7791F; --amber-l:#FDF4E3; --red:#B4443C; --red-l:#FBECEA; --blue:#3A6EA5; --blue-l:#EAF1F8;
+  --free:#F2F2F8; --free-b:#C9CBDD; --free-t:#5A5D7A;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;font-size:13.5px;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
+button{font-family:inherit;font-size:inherit;cursor:pointer}
+input,textarea,select{font-family:inherit;font-size:inherit;color:var(--text)}
+a{color:var(--g-d)}
+svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+/* ── App shell ── */
+.app{display:grid;grid-template-rows:56px 1fr;height:100vh}
+.top{background:#fff;border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 20px;gap:16px}
+.top .brand{display:flex;align-items:center;gap:14px}
+.top .brand img{height:30px;border-radius:3px}
+.top .brand .sep{width:1px;height:30px;background:var(--border)}
+.top .brand b{display:block;font-size:14px;font-weight:700;color:var(--dark)}
+.top .brand small{display:block;font-size:11.5px;color:var(--muted)}
+.top .right{margin-left:auto;display:flex;align-items:center;gap:12px}
+.chip-demo{background:var(--amber-l);color:var(--amber);border:1px solid #F1DDB4;font-size:11px;font-weight:600;padding:4px 9px;border-radius:5px}
+.avatar{width:32px;height:32px;border-radius:50%;background:var(--g-l);color:var(--g-d);font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center}
+.who b{display:block;font-size:12.5px;font-weight:600}
+.who small{display:block;font-size:11px;color:var(--muted)}
+.top .logout{font-size:12px;color:var(--soft);text-decoration:none;border:1px solid var(--border);padding:5px 10px;border-radius:6px}
+.top .logout:hover{background:var(--bg)}
+
+.body{display:grid;grid-template-columns:212px 1fr;min-height:0}
+.side{background:#fff;border-right:1px solid var(--border);display:flex;flex-direction:column;padding:18px 12px}
+.side h6{font-size:10.5px;font-weight:700;letter-spacing:1px;color:var(--muted);text-transform:uppercase;padding:0 10px 10px}
+.nav{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:7px;color:var(--soft);font-weight:500;border:0;background:none;width:100%;text-align:left}
+.nav:hover{background:var(--bg);color:var(--text)}
+.nav.on{background:var(--g-l);color:var(--g-dd);font-weight:600}
+.nav .cnt{margin-left:auto;font-size:11px;font-weight:700;background:var(--g);color:#fff;border-radius:10px;padding:1px 7px}
+.nav.on .cnt{background:var(--g-d)}
+.side .foot{margin-top:auto;font-size:11px;color:var(--muted);line-height:1.6;padding:0 10px}
+.side .foot .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--g);margin-right:6px}
+.side .foot a{color:var(--g-d);text-decoration:none;font-weight:600}
+
+.main{display:flex;flex-direction:column;min-height:0;min-width:0}
+.ph{display:flex;align-items:flex-end;justify-content:space-between;padding:16px 22px 14px;background:#fff;border-bottom:1px solid var(--border)}
+.ph .crumb{font-size:10.5px;font-weight:700;letter-spacing:1px;color:var(--muted);text-transform:uppercase}
+.ph h1{font-size:19px;font-weight:700;color:var(--dark);margin-top:3px}
+.btn{display:inline-flex;align-items:center;gap:7px;border-radius:7px;font-weight:600;font-size:12.5px;padding:8px 13px;border:1px solid transparent}
+.btn-g{background:var(--g-d);color:#fff}
+.btn-g:hover{background:var(--g-dd)}
+.btn-g:disabled{background:#AFC2B0;cursor:not-allowed}
+.btn-o{background:#fff;color:var(--text);border-color:var(--border-d)}
+.btn-o:hover{background:var(--bg)}
+.btn-s{padding:6px 10px;font-size:12px}
+.tag-ok{font-size:11px;font-weight:600;color:var(--g-d);background:var(--g-l);padding:4px 9px;border-radius:5px}
+.page{display:none;flex:1;min-height:0}
+.page.on{display:flex}
+
+/* ── Status chips ── */
+.st{display:inline-block;font-size:10.5px;font-weight:600;padding:3px 8px;border-radius:5px;white-space:nowrap}
+.st-work{background:var(--g-l);color:var(--g-dd)}
+.st-wait{background:var(--amber-l);color:var(--amber)}
+.st-lock{background:#EEF0F4;color:var(--slate)}
+.st-done{background:var(--blue-l);color:var(--blue)}
+
+/* ── Case page ── */
+.cases{display:grid;grid-template-columns:290px minmax(360px,1fr) 410px;flex:1;min-height:0}
+.queue{background:#fff;border-right:1px solid var(--border);display:flex;flex-direction:column;min-height:0}
+.queue .qh{padding:14px 14px 10px;border-bottom:1px solid var(--border)}
+.queue .qh .t{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:13px}
+.queue .qh .t small{font-size:10.5px;font-weight:600;color:var(--muted);letter-spacing:.6px}
+.search{display:flex;align-items:center;gap:7px;border:1px solid var(--border-d);border-radius:7px;padding:7px 10px;margin-top:10px;color:var(--muted)}
+.search input{border:0;outline:0;flex:1;background:none}
+.filters{display:flex;gap:6px;margin-top:10px}
+.filters button{border:1px solid var(--border);background:#fff;border-radius:6px;padding:4px 9px;font-size:11.5px;color:var(--soft)}
+.filters button.on{background:var(--g-l);border-color:#CFE0D0;color:var(--g-dd);font-weight:600}
+.qlist{overflow-y:auto;flex:1}
+.qi{padding:12px 14px;border-bottom:1px solid var(--border);cursor:pointer;border-left:3px solid transparent}
+.qi:hover{background:var(--g-ll)}
+.qi.on{background:var(--g-ll);border-left-color:var(--g)}
+.qi .r1{display:flex;justify-content:space-between;font-size:10.5px;color:var(--muted)}
+.qi b{display:block;font-size:13px;margin:3px 0 2px}
+.qi .sub{font-size:12px;color:var(--soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.qi .r3{display:flex;justify-content:space-between;align-items:center;margin-top:8px;font-size:10.5px;color:var(--muted)}
+.qempty{padding:30px 14px;text-align:center;color:var(--muted);font-size:12px}
+
+.case{display:flex;flex-direction:column;min-height:0;background:#fff;border-right:1px solid var(--border)}
+.case .ch{padding:14px 18px 12px;border-bottom:1px solid var(--border)}
+.case .ch .r1{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--muted)}
+.case .ch h2{font-size:17px;font-weight:700;margin:4px 0 2px}
+.case .ch .subj{font-size:12.5px;color:var(--soft)}
+.case .ch .r3{display:flex;align-items:center;gap:12px;margin-top:12px;font-size:12px;color:var(--soft)}
+.case .ch .r3 .op{display:flex;align-items:center;gap:6px}
+.lockbar{margin-top:10px;background:#F3F4F7;border:1px solid var(--border);border-radius:7px;padding:8px 11px;font-size:12px;color:var(--slate);display:flex;gap:8px;align-items:center}
+.tabs{display:flex;gap:18px;padding:0 18px;border-bottom:1px solid var(--border)}
+.tabs button{border:0;background:none;padding:10px 0;font-size:12.5px;color:var(--soft);border-bottom:2px solid transparent;margin-bottom:-1px}
+.tabs button.on{color:var(--g-dd);border-bottom-color:var(--g);font-weight:600}
+.tabp{display:none;flex:1;min-height:0;overflow-y:auto;padding:16px 18px}
+.tabp.on{display:block}
+.daysep{text-align:center;font-size:10.5px;color:var(--muted);letter-spacing:.6px;margin:2px 0 14px;text-transform:uppercase}
+.msg{max-width:78%;margin-bottom:14px}
+.msg .meta{font-size:10.5px;color:var(--muted);margin-bottom:4px}
+.msg .bub{padding:10px 13px;border-radius:10px;line-height:1.5;white-space:pre-wrap}
+.msg.in .bub{background:#F1F2F5;border-top-left-radius:3px}
+.msg.out{margin-left:auto}
+.msg.out .meta{text-align:right}
+.msg.out .bub{background:var(--g-l);border:1px solid #D8E6D9;border-top-right-radius:3px}
+.msg.call .bub{background:#fff;border:1px dashed var(--border-d)}
+.compose{border-top:1px solid var(--border);padding:12px 18px}
+.compose textarea{width:100%;border:1px solid var(--border-d);border-radius:8px;padding:10px 12px;resize:vertical;min-height:62px;max-height:220px;outline:0;line-height:1.45}
+.compose textarea:focus{border-color:var(--g)}
+.compose .cf{display:flex;justify-content:space-between;align-items:center;margin-top:8px;font-size:11px;color:var(--muted)}
+.notes-list .note{background:#FFFBEF;border:1px solid #F2E6C4;border-radius:8px;padding:10px 12px;margin-bottom:10px;line-height:1.5}
+.notes-list .note small{display:block;color:var(--muted);font-size:10.5px;margin-bottom:3px}
+.kv{width:100%;border-collapse:collapse}
+.kv td{padding:9px 0;border-bottom:1px solid var(--border);vertical-align:top}
+.kv td:first-child{color:var(--muted);width:42%;font-size:12px}
+.noc{flex:1;display:flex;align-items:center;justify-content:center;color:var(--muted);flex-direction:column;gap:8px;padding:30px;text-align:center}
+
+/* ── Advisor ── */
+.adv{display:flex;flex-direction:column;min-height:0;background:#FBFBFC}
+.adv .ah{display:flex;align-items:center;gap:10px;padding:13px 16px;background:#fff;border-bottom:1px solid var(--border)}
+.adv .ah .ic{width:34px;height:34px;border-radius:8px;background:var(--g-d);color:#fff;display:flex;align-items:center;justify-content:center}
+.adv .ah b{display:block;font-size:13.5px}
+.adv .ah small{display:block;font-size:11px;color:var(--muted)}
+.adv .ah .tag-ok{margin-left:auto}
+.adv .ctx{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--g-d);font-weight:600;padding:10px 16px 0}
+.adv .ctx.free{color:var(--free-t)}
+.adv .stream{flex:1;overflow-y:auto;padding:10px 16px 14px}
+.q{background:#fff;border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin:8px 0 10px;line-height:1.45;font-weight:500}
+.ans{margin-bottom:16px}
+.ans .nsrc{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);margin-bottom:6px}
+.ans .txt p{line-height:1.55;margin-bottom:9px}
+.ans .txt sup{display:inline-flex;align-items:center;justify-content:center;min-width:15px;height:15px;font-size:9.5px;font-weight:700;border-radius:4px;background:#E7ECE8;color:var(--g-dd);margin-left:2px;padding:0 3px;cursor:pointer;vertical-align:2px}
+.src{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--border);border-radius:8px;padding:9px 11px;margin-bottom:7px;cursor:pointer}
+.src:hover{border-color:var(--g)}
+.src .n{font-size:10px;font-weight:700;color:var(--g-dd);background:var(--g-l);border-radius:4px;padding:1px 5px}
+.src b{display:block;font-size:12px;font-weight:600}
+.src small{display:block;font-size:10.5px;color:var(--muted)}
+.src .go{margin-left:auto;color:var(--soft)}
+.ans .acts{display:flex;gap:6px;margin-top:6px}
+.ans .acts .flagged{color:var(--red);border-color:#EBC6C2;background:var(--red-l)}
+.typing{display:inline-flex;gap:4px;padding:8px 0}
+.typing i{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:b 1s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes b{0%,80%,100%{opacity:.3}40%{opacity:1}}
+.sugg{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.sugg button{text-align:left;background:#fff;border:1px solid var(--border);border-radius:7px;padding:8px 10px;font-size:12px;color:var(--soft)}
+.sugg button:hover{border-color:var(--g);color:var(--text)}
+.sugg-h{font-size:11px;color:var(--muted);margin-top:6px}
+.adv .ain{padding:12px 16px;border-top:1px solid var(--border);background:#fff}
+.adv .ain textarea{width:100%;border:1px solid var(--border-d);border-radius:8px;padding:9px 11px;resize:none;height:54px;outline:0;line-height:1.4}
+.adv .ain textarea:focus{border-color:var(--g)}
+.adv .ain .af{display:flex;justify-content:space-between;align-items:center;margin-top:7px;font-size:11px;color:var(--muted)}
+.sendbtn{width:32px;height:32px;border-radius:7px;background:var(--g-d);color:#fff;border:0;display:flex;align-items:center;justify-content:center}
+.sendbtn:disabled{background:#AFC2B0}
+.err{background:var(--red-l);color:var(--red);border-radius:7px;padding:8px 10px;font-size:12px;margin-bottom:12px}
+
+/* ── Free consultation ── */
+.freewrap{flex:1;display:flex;justify-content:center;padding:22px;overflow:hidden;min-height:0}
+.freecard{width:100%;max-width:760px;display:flex;flex-direction:column;border:1px dashed var(--free-b);border-radius:12px;overflow:hidden;background:#fff;min-height:0}
+.freecard .ah{background:var(--free)!important;border-bottom:1px dashed var(--free-b)!important}
+.freecard .ah .ic{background:var(--free-t)!important}
+.badge-free{margin-left:auto;font-size:11px;font-weight:700;color:var(--free-t);background:#fff;border:1px solid var(--free-b);padding:4px 9px;border-radius:5px}
+
+/* ── Knowledge Base ── */
+.kbwrap{display:grid;grid-template-columns:250px 1fr;flex:1;min-height:0}
+.tax{background:#fff;border-right:1px solid var(--border);padding:16px 14px;overflow-y:auto}
+.tax h6{font-size:10.5px;font-weight:700;letter-spacing:1px;color:var(--muted);text-transform:uppercase;margin-bottom:10px}
+.tx{display:flex;align-items:center;gap:8px;width:100%;border:1px solid var(--border);background:#fff;border-radius:7px;padding:8px 10px;margin-bottom:6px;text-align:left;color:var(--soft);font-size:12.5px}
+.tx.sub{border:0;padding:6px 10px 6px 30px;margin-bottom:2px;font-size:12px}
+.tx:hover{color:var(--text);background:var(--bg)}
+.tx.on{background:var(--g-l);border-color:#CFE0D0;color:var(--g-dd);font-weight:600}
+.tx .c{margin-left:auto;font-size:10.5px;color:var(--muted)}
+.tax .info{font-size:11px;color:var(--muted);line-height:1.5;margin-top:14px;padding:10px;border-radius:7px;background:var(--bg)}
+.kbmain{overflow-y:auto;padding:18px 24px}
+.kbmain .lh{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;gap:12px}
+.kbmain .lh h3{font-size:15px}
+.kbmain .lh .search{margin:0;width:280px;background:#fff}
+.doc{display:flex;align-items:center;gap:14px;padding:14px 4px;border-bottom:1px solid var(--border);cursor:pointer}
+.doc:hover{background:#fff}
+.doc .di{color:var(--soft)}
+.doc b{display:block;font-size:13.5px}
+.doc small{display:block;font-size:11.5px;color:var(--muted);margin-top:2px}
+.doc .rt{margin-left:auto;display:flex;gap:8px;align-items:center}
+.openbtn{width:30px;height:30px;border:1px solid var(--border-d);border-radius:7px;display:flex;align-items:center;justify-content:center;background:#fff;color:var(--soft)}
+.chip-crm{font-size:10.5px;font-weight:600;color:var(--blue);background:var(--blue-l);padding:3px 8px;border-radius:5px}
+.viewer{display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start}
+.vback{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--soft);border:0;background:none;margin-bottom:12px}
+.vdoc{background:#fff;border:1px solid var(--border);border-radius:10px;padding:26px 30px}
+.vdoc h1{font-size:21px;color:var(--dark);margin-bottom:8px;line-height:1.25}
+.vdoc h2{font-size:15.5px;color:var(--dark);margin:24px 0 8px;padding-top:6px;scroll-margin-top:16px}
+.vdoc h2.hl{background:var(--g-l);margin-left:-10px;margin-right:-10px;padding:6px 10px;border-radius:6px}
+.vdoc h3{font-size:13.5px;margin:16px 0 6px}
+.vdoc p,.vdoc li{line-height:1.6;color:#2F3542}
+.vdoc p{margin-bottom:9px}
+.vdoc ul,.vdoc ol{margin:0 0 10px 20px}
+.vdoc table{border-collapse:collapse;width:100%;margin:10px 0 14px;font-size:12.5px}
+.vdoc th,.vdoc td{border:1px solid var(--border);padding:7px 9px;text-align:left;vertical-align:top}
+.vdoc th{background:var(--bg)}
+.vdoc blockquote{border-left:3px solid var(--g);background:var(--g-ll);padding:8px 12px;margin:10px 0}
+.vdoc em{color:var(--soft)}
+.vmeta{position:sticky;top:0;display:flex;flex-direction:column;gap:14px}
+.mcard{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.mcard .mh{background:var(--dark);color:#fff;padding:12px 14px}
+.mcard .mh small{display:block;font-size:10px;font-weight:700;letter-spacing:1px;color:#B9D3BB}
+.mcard .mh b{display:block;font-size:13px;margin-top:3px}
+.mcard table{width:100%;border-collapse:collapse;font-size:12px}
+.mcard td{padding:8px 14px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.45}
+.mcard td:first-child{color:var(--muted);width:40%}
+.toc{background:#fff;border:1px solid var(--border);border-radius:10px;padding:12px 14px}
+.toc h6{font-size:10.5px;font-weight:700;letter-spacing:1px;color:var(--muted);text-transform:uppercase;margin-bottom:8px}
+.toc a{display:block;font-size:12px;color:var(--soft);text-decoration:none;padding:4px 0;line-height:1.35;cursor:pointer}
+.toc a:hover{color:var(--g-dd)}
+
+/* ── CRM ── */
+.crmwrap{flex:1;overflow-y:auto;padding:18px 24px}
+.crmwrap .lh{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:6px}
+.crmwrap .lh h3{font-size:15px}
+.crmwrap .lh small{font-size:11.5px;color:var(--muted)}
+.crm{display:flex;align-items:center;gap:14px;padding:14px 4px;border-bottom:1px solid var(--border)}
+.crm b{display:block;font-size:13.5px}
+.crm small{display:block;font-size:11.5px;color:var(--muted);margin-top:2px}
+.crm .rt{margin-left:auto;display:flex;gap:10px;align-items:center}
+.st-sel{background:var(--g-l);color:var(--g-dd)}
+.st-ing{background:var(--amber-l);color:var(--amber)}
+.st-kb{background:var(--blue-l);color:var(--blue)}
+.crm-info{margin-top:18px;font-size:12px;color:var(--soft);line-height:1.55;background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px}
+
+/* ── Modal & toast ── */
+.ov{position:fixed;inset:0;background:rgba(30,35,45,.42);display:none;align-items:center;justify-content:center;z-index:50;padding:20px}
+.ov.on{display:flex}
+.modal{background:#fff;border-radius:10px;width:100%;max-width:520px;box-shadow:0 20px 60px rgba(0,0,0,.25);display:flex;flex-direction:column;max-height:92vh}
+.modal .mh{display:flex;justify-content:space-between;align-items:center;padding:15px 18px;border-bottom:1px solid var(--border)}
+.modal .mh b{font-size:14.5px}
+.modal .mh button{border:0;background:none;color:var(--soft);font-size:18px;line-height:1}
+.modal .mb{padding:16px 18px;overflow-y:auto}
+.modal .mf{padding:12px 18px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px}
+.modal label{display:block;font-size:12px;font-weight:600;margin:12px 0 6px}
+.modal label:first-child{margin-top:0}
+.modal textarea,.modal input[type=text],.modal select{width:100%;border:1px solid var(--border-d);border-radius:7px;padding:9px 11px;outline:0;line-height:1.45;background:#fff}
+.modal textarea{resize:vertical;min-height:110px}
+.modal textarea:focus,.modal input:focus,.modal select:focus{border-color:var(--g)}
+.modal .ref{display:inline-block;font-size:11px;font-weight:600;color:var(--g-dd);background:var(--g-l);padding:3px 8px;border-radius:5px;margin-bottom:12px}
+.modal .chk{display:flex;gap:8px;align-items:flex-start;font-size:12.5px;font-weight:600;margin-top:14px}
+.modal .chk input{margin-top:2px;accent-color:var(--g-d)}
+.modal .hint{font-size:11px;color:var(--muted);margin-top:8px;line-height:1.45}
+.modal .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--dark);color:#fff;padding:11px 16px;border-radius:8px;font-size:12.5px;opacity:0;transition:.25s;z-index:60;display:flex;gap:8px;align-items:center;pointer-events:none}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ── Login ── */
+.login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:var(--bg)}
+.lcard{background:#fff;border:1px solid var(--border);border-radius:12px;width:100%;max-width:390px;padding:30px 30px 26px;box-shadow:0 10px 40px rgba(30,40,50,.06)}
+.lcard img{height:34px;border-radius:3px}
+.lcard h1{font-size:18px;margin:18px 0 4px;color:var(--dark)}
+.lcard p{font-size:12.5px;color:var(--soft);line-height:1.5;margin-bottom:18px}
+.lcard label{display:block;font-size:12px;font-weight:600;margin:12px 0 6px}
+.lcard input{width:100%;border:1px solid var(--border-d);border-radius:7px;padding:10px 12px;outline:0}
+.lcard input:focus{border-color:var(--g)}
+.lcard .btn{width:100%;justify-content:center;margin-top:18px;padding:10px}
+.lcard .foot{font-size:11.5px;color:var(--muted);margin-top:16px;text-align:center}
+.lcard .foot a{color:var(--g-d);font-weight:600;text-decoration:none}
+
+@media (max-width:1180px){
+  .cases{grid-template-columns:250px 1fr 360px}
+}
+@media (max-width:980px){
+  .body{grid-template-columns:1fr}
+  .side{flex-direction:row;padding:8px;overflow-x:auto;gap:4px;border-right:0;border-bottom:1px solid var(--border)}
+  .side h6,.side .foot{display:none}
+  .nav{width:auto;white-space:nowrap}
+  .cases{grid-template-columns:1fr;overflow-y:auto}
+  .queue{max-height:300px}
+  .case,.adv{min-height:520px}
+  .kbwrap,.viewer{grid-template-columns:1fr}
+  .top .who,.chip-demo{display:none}
+}
+</style>
+</head>
+<body>
+{% if not operator %}
+<div class="login">
+  <form class="lcard" method="post" action="/accesso">
+    <img src="/static/images/datahubs_logo.jpg" alt="DataHubs">
+    <h1>Applicazione Contact Center</h1>
+    <p>Hub Previdenza e Welfare · area riservata agli operatori delle sedi territoriali.</p>
+    {% if login_error %}<div class="err">Credenziali non valide o utenza non abilitata al Contact Center.</div>{% endif %}
+    <label for="em">Email</label>
+    <input id="em" type="email" name="email" required autocomplete="username">
+    <label for="pw">Password</label>
+    <input id="pw" type="password" name="password" required autocomplete="current-password">
+    <button class="btn btn-g" type="submit">Accedi</button>
+    <div class="foot">Ambiente demo · <a href="https://hub-previdenza-welfare-datahubs.onrender.com/" target="_blank">Vai all'Hub pubblico</a></div>
+  </form>
+</div>
+{% else %}
+
+<!-- Documenti della base approvata (renderizzati lato server) -->
+<div hidden>
+{% for k, v in kb.items() %}<div id="kbsrc-{{ k|replace('_','-') }}">{{ v|safe }}</div>
+{% endfor %}
+</div>
+
+<div class="app">
+  <header class="top">
+    <div class="brand">
+      <img src="/static/images/datahubs_logo.jpg" alt="DataHubs">
+      <span class="sep"></span>
+      <div><b>Hub Previdenza e Welfare</b><small>DataHubs · Applicazione Contact Center</small></div>
+    </div>
+    <div class="right">
+      <span class="chip-demo">Ambiente demo</span>
+      <div class="avatar">OD</div>
+      <div class="who"><b>Operatore demo</b><small>Operatore · Validatore</small></div>
+      <a class="logout" href="/esci">Esci</a>
+    </div>
+  </header>
+
+  <div class="body">
+    <aside class="side">
+      <h6>Area operativa</h6>
+      <button class="nav on" data-p="case" onclick="go('case')"><svg class="i" viewBox="0 0 24 24"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z"/></svg>Case<span class="cnt" id="nav-cnt">0</span></button>
+      <button class="nav" data-p="kb" onclick="go('kb');renderDocs()"><svg class="i" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>Knowledge Base</button>
+      <button class="nav" data-p="free" onclick="go('free')"><svg class="i" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/><path d="M8 9h8M8 13h5"/></svg>Consultazione libera</button>
+      <button class="nav" data-p="crm" onclick="go('crm')"><svg class="i" viewBox="0 0 24 24"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>Casi CRM</button>
+      <div class="foot">
+        <div><span class="dot"></span>Sessione demo</div>
+        <div>Dati di esempio · documenti della base approvata</div>
+        <div style="margin-top:8px"><a href="https://hub-previdenza-welfare-datahubs.onrender.com/" target="_blank">Hub pubblico ↗</a></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <!-- ═════════ CASE ═════════ -->
+      <section class="page on" id="p-case" style="flex-direction:column">
+        <div class="ph">
+          <div><div class="crumb">Contact Center / Area operativa</div><h1>Case e conversazioni</h1></div>
+          <button class="btn btn-g" onclick="openNewCase()"><svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Nuovo case</button>
+        </div>
+        <div class="cases">
+          <div class="queue">
+            <div class="qh">
+              <div class="t">Coda di lavorazione <small>FIFO</small></div>
+              <div class="search"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><input id="q-search" placeholder="Cerca nome o case" oninput="renderQueue()"></div>
+              <div class="filters">
+                <button class="on" data-f="all" onclick="setFilter('all')">Tutti</button>
+                <button data-f="wait" onclick="setFilter('wait')">In attesa</button>
+                <button data-f="mine" onclick="setFilter('mine')">I miei</button>
+              </div>
+            </div>
+            <div class="qlist" id="qlist"></div>
+          </div>
+
+          <div class="case" id="case-col"></div>
+
+          <div class="adv">
+            <div class="ah">
+              <div class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M12 3l1.9 4.6L18.5 9l-4.6 1.9L12 15.5l-1.9-4.6L5.5 9l4.6-1.4z"/><path d="M19 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg></div>
+              <div><b>P&amp;W Advisor</b><small>Assistente interno</small></div>
+              <span class="tag-ok">Base approvata</span>
+            </div>
+            <div class="ctx" id="adv-ctx"></div>
+            <div class="stream" id="adv-stream"></div>
+            <div class="ain">
+              <textarea id="adv-in" placeholder="Chiedi all'assistente sul case…" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();askCase()}"></textarea>
+              <div class="af"><span>Solo uso interno · risposte dalla base approvata</span><button class="sendbtn" id="adv-send" onclick="askCase()" aria-label="Invia"><svg class="i" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═════════ KNOWLEDGE BASE ═════════ -->
+      <section class="page" id="p-kb" style="flex-direction:column">
+        <div class="ph">
+          <div><div class="crumb">Contact Center / Conoscenza</div><h1>Knowledge Base</h1></div>
+          <span class="tag-ok" id="kb-count">Base approvata</span>
+        </div>
+        <div class="kbwrap">
+          <div class="tax">
+            <h6>Tassonomia</h6>
+            <div id="tax"></div>
+            <div class="info">Documenti sincronizzati dal repository SharePoint. Assistente e consultazione diretta usano lo stesso patrimonio approvato.</div>
+          </div>
+          <div class="kbmain" id="kbmain"></div>
+        </div>
+      </section>
+
+      <!-- ═════════ CONSULTAZIONE LIBERA ═════════ -->
+      <section class="page" id="p-free" style="flex-direction:column">
+        <div class="ph">
+          <div><div class="crumb">Contact Center / Conoscenza</div><h1>Consultazione libera</h1></div>
+          <span class="tag-ok">Base approvata</span>
+        </div>
+        <div class="freewrap">
+          <div class="freecard adv">
+            <div class="ah">
+              <div class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M12 3l1.9 4.6L18.5 9l-4.6 1.9L12 15.5l-1.9-4.6L5.5 9l4.6-1.4z"/></svg></div>
+              <div><b>P&amp;W Advisor</b><small>Consultazione libera</small></div>
+              <span class="badge-free">Senza case</span>
+            </div>
+            <div class="ctx free"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>Nessuna pratica associata</div>
+            <div class="stream" id="free-stream"></div>
+            <div class="ain">
+              <textarea id="free-in" placeholder="Cerca nella conoscenza approvata…" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();askFree()}"></textarea>
+              <div class="af"><span>Solo uso interno · nessun riferimento ad altri case</span><button class="sendbtn" id="free-send" onclick="askFree()" aria-label="Invia"><svg class="i" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═════════ CASI CRM ═════════ -->
+      <section class="page" id="p-crm" style="flex-direction:column">
+        <div class="ph">
+          <div><div class="crumb">Contact Center / Conoscenza</div><h1>Casi CRM</h1></div>
+          <span class="tag-ok">Validatore</span>
+        </div>
+        <div class="crmwrap">
+          <div class="lh"><h3>Selezione editoriale</h3><small>Casi risolti in Microsoft Dynamics · dati demo</small></div>
+          <div id="crmlist"></div>
+          <div class="crm-info">Il validatore seleziona i casi risolti utili a tutti, prepara il contenuto e verifica la rimozione dei dati personali. L'azione <b>Includi in KB</b> costituisce l'approvazione: seguono la generazione del documento su SharePoint e l'ingestion, senza una seconda approvazione.</div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<!-- Modale: sintesi e CRM -->
+<div class="ov" id="m-crm"><div class="modal">
+  <div class="mh"><b>Sintesi e registrazione CRM</b><button onclick="closeM('m-crm')" aria-label="Chiudi">×</button></div>
+  <div class="mb">
+    <span class="ref" id="crm-ref"></span>
+    <label for="crm-sint">Sintesi</label>
+    <textarea id="crm-sint" style="min-height:150px"></textarea>
+    <label for="crm-stato">Stato della pratica</label>
+    <select id="crm-stato">
+      <option>In attesa di informazioni</option>
+      <option>Risolto</option>
+      <option>Inoltrato alla sede territoriale</option>
+      <option>Chiuso senza esito</option>
+    </select>
+    <label class="chk"><input type="checkbox" id="crm-ok" onchange="document.getElementById('crm-go').disabled=!this.checked"> Ho verificato sintesi e stato della pratica</label>
+    <div class="hint">Registrazione simulata in Microsoft Dynamics. La chiusura della sessione non determina automaticamente la risoluzione del caso.</div>
+  </div>
+  <div class="mf"><button class="btn btn-o" onclick="closeM('m-crm')">Annulla</button><button class="btn btn-g" id="crm-go" disabled onclick="confirmCrm()"><svg class="i" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Conferma registrazione</button></div>
+</div></div>
+
+<!-- Modale: nuovo case -->
+<div class="ov" id="m-new"><div class="modal">
+  <div class="mh"><b>Nuovo case manuale</b><button onclick="closeM('m-new')" aria-label="Chiudi">×</button></div>
+  <div class="mb">
+    <div class="row2">
+      <div><label for="n-canale">Canale</label><select id="n-canale"><option>Telefono</option><option>Email</option><option>Sportello</option></select></div>
+      <div><label for="n-area">Area tematica</label><select id="n-area"><option>Previdenza</option><option>Welfare aziendale</option><option>Sanità integrativa</option></select></div>
+    </div>
+    <label for="n-nome">Nome e cognome</label><input type="text" id="n-nome" placeholder="Es. Paolo Gentile">
+    <label for="n-profilo">Profilo</label><select id="n-profilo"><option>HR / responsabile del personale</option><option>Dirigente</option><option>Azienda</option><option>Consulente / professionista</option><option>Altro</option></select>
+    <label for="n-ogg">Oggetto</label><input type="text" id="n-ogg" placeholder="Es. Termine per la domanda di CIGO">
+    <label for="n-note">Elementi utili alla lavorazione</label><textarea id="n-note" placeholder="Cosa ha chiesto l'utente al telefono…" style="min-height:90px"></textarea>
+    <div class="hint">Il case entra nella coda con la data e l'ora di creazione e segue lo stesso flusso delle richieste acquisite automaticamente.</div>
+  </div>
+  <div class="mf"><button class="btn btn-o" onclick="closeM('m-new')">Annulla</button><button class="btn btn-g" onclick="createCase()">Crea e prendi in carico</button></div>
+</div></div>
+
+<!-- Modale: contenuto da caso CRM -->
+<div class="ov" id="m-kb"><div class="modal">
+  <div class="mh"><b>Prepara contenuto per la KB</b><button onclick="closeM('m-kb')" aria-label="Chiudi">×</button></div>
+  <div class="mb">
+    <span class="ref" id="kbm-ref"></span>
+    <label for="kbm-txt">Contenuto approvato</label>
+    <textarea id="kbm-txt" style="min-height:140px"></textarea>
+    <label for="kbm-note">Note di contesto</label>
+    <textarea id="kbm-note" style="min-height:70px" placeholder="Condizioni di applicabilità e informazioni utili"></textarea>
+    <label class="chk"><input type="checkbox" id="kbm-ok" onchange="document.getElementById('kbm-go').disabled=!this.checked"> Contenuto e note verificati, dati personali rimossi</label>
+  </div>
+  <div class="mf"><button class="btn btn-o" onclick="closeM('m-kb')">Annulla</button><button class="btn btn-g" id="kbm-go" disabled onclick="includeKb()"><svg class="i" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Includi in KB</button></div>
+</div></div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ───────────────────────── Dati ─────────────────────────
+const ME = 'Operatore demo';
+const ICON = {
+  go:'<svg class="i" viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg>',
+  doc:'<svg class="i" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h6"/></svg>',
+  user:'<svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/></svg>',
+  lock:'<svg class="i" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>',
+  clip:'<svg class="i" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/></svg>',
+  link:'<svg class="i" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>',
+  check:'<svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>',
+  draft:'<svg class="i" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg>',
+  flag:'<svg class="i" viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22v-7"/></svg>',
+  folder:'<svg class="i" viewBox="0 0 24 24"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>',
+  folderO:'<svg class="i" viewBox="0 0 24 24"><path d="M2 19V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2v2"/><path d="M2 19l3-9h17l-3 9z"/></svg>',
+  back:'<svg class="i" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>',
+  search:'<svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>'
+};
+
+// Documenti della base approvata: metadati (la base è la stessa dell'Hub pubblico)
+const DOCS = [
+  {id:'cigo', title:'Cassa Integrazione Guadagni Ordinaria (CIGO)', area:'Previdenza', sub:'Ammortizzatori sociali', upd:'8 ott 2026', fonti:'Circ. INPS 5/2025 · 121/2025 · 4/2026 · Msg. 2418/2026'},
+  {id:'durc-online', title:'DURC Online, Ve.R.A. e Pre-DURC', area:'Previdenza', sub:'Contributi e regolarità', upd:'24 set 2026', fonti:'D.M. 30/1/2015 · Circ. INPS 126/2015 · 146/2021 · Msg. 4693/2023 · 3662/2024'},
+  {id:'posizione-contributiva', title:'Posizione contributiva e correttezza dei versamenti', area:'Previdenza', sub:'Contributi e regolarità', upd:'22 set 2026', fonti:'Documentazione ufficiale INPS su estratto conto e ricorsi amministrativi'},
+  {id:'accompagnamento-pensione', title:'Prestazioni di accompagnamento alla pensione', area:'Previdenza', sub:'Pensione', upd:'30 set 2026', fonti:'L. 92/2012 · Circ. INPS 119/2013 · 153/2025 · 41/2026 · 104/2026 · Msg. 2829/2026'},
+  {id:'certificazione-parita-genere', title:'La certificazione della parità di genere', area:'Welfare aziendale', sub:'Parità di genere', upd:'6 ott 2026', fonti:'L. 162/2021 · D.Lgs. 198/2006 · D.M. 29/4/2022 · UNI/PdR 125:2022 · Circ. INPS 137/2022 · Msg. 3804/2025'},
+  {id:'fondi-sanitari-contrattuali', title:'Fondi sanitari contrattuali: contribuzione obbligatoria', area:'Sanità integrativa', sub:'Fondi sanitari', upd:'18 set 2026', fonti:'Circ. INPS 77/2025 · 119/2025 · 120/2025 · 95/2026'},
+  {id:'sanita-fiscale', title:'Fondi sanitari e regime fiscale', area:'Sanità integrativa', sub:'Fiscalità', upd:'2 ott 2026', fonti:'Circ. AE 4/E 2025 · D.M. Salute 31/3/2008 e 27/10/2009 · Circ. INPS 263/1997'}
+];
+const TAXONOMY = [
+  ['Previdenza',['Ammortizzatori sociali','Contributi e regolarità','Pensione']],
+  ['Welfare aziendale',['Parità di genere']],
+  ['Sanità integrativa',['Fondi sanitari','Fiscalità']]
+];
+const docById = id => DOCS.find(d => d.id === id);
+
+// Sezioni dei documenti, lette dagli h2 "N. Titolo"
+function docSections(id){
+  const src = document.getElementById('kbsrc-' + id);
+  if(!src) return {};
+  const out = {};
+  src.querySelectorAll('h2').forEach(h => {
+    const m = h.textContent.match(/^(\d+)\.\s*(.*)$/);
+    if(m) out[m[1]] = m[2];
+  });
+  return out;
+}
+
+// Case demo (nomi e dati di fantasia)
+const CASES = [
+  {id:'CC-1042', canale:'WhatsApp', t:'09:12', nome:'Giulia Rossi', profilo:'HR / responsabile del personale', azienda:'Impresa edile, 38 dipendenti', sede:'Sede territoriale di Roma',
+   oggetto:'DURC bloccato in vista di una gara d\'appalto', area:'Previdenza', status:'work', owner:ME, ident:'+39 347 ••• ••12',
+   msgs:[
+     {dir:'in', who:'Giulia Rossi', t:'09:12', text:'Buongiorno, nella piattaforma INPS ci risulta un\'irregolarità e tra tre settimane abbiamo una gara d\'appalto. Come facciamo a capire cosa blocca il DURC e quanto tempo abbiamo per sistemare?'},
+     {dir:'out', who:ME, t:'09:14', text:'Buongiorno Giulia, verifico le informazioni disponibili e le rispondo a breve.'}
+   ],
+   notes:[{t:'09:15', who:ME, text:'Gara tra circa tre settimane. Verificare se l\'azienda ha una Delega Master attiva per il consulente.'}],
+   adv:[
+     {role:'user', content:'Come può l\'azienda individuare cosa blocca il DURC e quanto tempo ha per regolarizzare?'},
+     {role:'assistant', content:'L\'azienda può interrogare la Piattaforma Unica INPS con il proprio codice fiscale: la sezione Simulazione DURC valuta le evidenze secondo i criteri del D.M. 30 gennaio 2015 e mostra quelle che possono impedire la regolarità automatica.[[durc-online#6]]\n\nLa richiesta genera un ticket; le risultanze si consultano in Notifiche e Archivio, con l\'indicatore rosso per le situazioni da regolarizzare e la possibilità di esportarle in Excel o PDF.[[durc-online#7]]\n\nSe la regolarità non può essere attestata subito, l\'ente invita a regolarizzare entro un termine non superiore a 15 giorni dalla notifica: con la gara tra tre settimane conviene muoversi subito.[[durc-online#1]]\n\nDa verificare con l\'utente: se esiste una Delega Master, il consulente può consultare tutte le Gestioni, avviare la regolarizzazione e ricevere il Pre-DURC.[[durc-online#8]]'}
+   ],
+   draft:'Buongiorno Giulia, può verificare subito cosa blocca il DURC dalla Piattaforma Unica INPS, nella sezione Simulazione DURC: inserendo il codice fiscale dell\'azienda le posizioni da regolarizzare vengono evidenziate in rosso. Se la regolarità non può essere attestata subito, INPS invia un invito a regolarizzare con un termine massimo di 15 giorni: con la gara tra tre settimane le consigliamo di procedere oggi stesso. Il vostro consulente ha già una Delega Master attiva sulla posizione?',
+   sugg:['Il Pre-DURC può avvisarci prima della prossima scadenza?','Quanto dura il DURC una volta rilasciato?']},
+  {id:'CC-1043', canale:'WhatsApp', t:'09:16', nome:'Marco Bianchi', profilo:'Consulente del lavoro', azienda:'Studio di consulenza', sede:'Sede territoriale di Napoli',
+   oggetto:'CIGO per caldo eccessivo in un cantiere', area:'Previdenza', status:'wait', owner:null, ident:'+39 333 ••• ••87',
+   msgs:[{dir:'in', who:'Marco Bianchi', t:'09:16', text:'Salve, un cliente edile ha sospeso i lavori per il caldo a fine luglio. Fino a quando può presentare la domanda di CIGO e conta nel limite di durata?'}],
+   notes:[], adv:[], sugg:['Entro quando va presentata la domanda per eventi meteo?','Le sospensioni per caldo eccessivo del 2026 contano nel limite massimo?','Serve il contributo addizionale?']},
+  {id:'CC-1044', canale:'Telefono', t:'09:19', nome:'Sara Conti', profilo:'Dirigente', azienda:'Azienda manifatturiera, 120 dipendenti', sede:'Sede territoriale di Milano',
+   oggetto:'Esonero contributivo per la certificazione di parità', area:'Welfare aziendale', status:'wait', owner:null, ident:'+39 02 •••• ••30',
+   msgs:[{dir:'call', who:'Nota di contatto', t:'09:19', text:'Chiamata ricevuta sulla centrale. L\'azienda ha ottenuto la certificazione della parità di genere a settembre e chiede come richiedere l\'esonero contributivo e a quanto ammonta.'}],
+   notes:[], adv:[], sugg:['Quanto vale l\'esonero contributivo per la certificazione?','Come si compila il modulo SGRAVIO PAR_GEN?','Cos\'è la retribuzione media mensile globale?']},
+  {id:'CC-1045', canale:'WhatsApp', t:'09:23', nome:'Luca Moretti', profilo:'HR / responsabile del personale', azienda:'Gruppo commerciale', sede:'Sede territoriale di Torino',
+   oggetto:'Limite di deducibilità dei contributi al fondo sanitario', area:'Sanità integrativa', status:'wait', owner:null, ident:'+39 349 ••• ••05',
+   msgs:[{dir:'in', who:'Luca Moretti', t:'09:23', text:'Buongiorno, i contributi che versiamo al fondo sanitario per i dipendenti hanno un tetto oltre il quale diventano tassati? Vale anche per i fondi aziendali?'}],
+   notes:[], adv:[], sugg:['Qual è il plafond annuo di non imponibilità?','Che differenza c\'è tra fondi contrattuali e fondi aziendali?']},
+  {id:'CC-1046', canale:'Telefono', t:'09:28', nome:'Anna De Luca', profilo:'Dirigente', azienda:'Società di servizi', sede:'Sede territoriale di Bologna',
+   oggetto:'Accompagnamento alla pensione: requisiti dell\'accordo', area:'Previdenza', status:'lock', owner:'R. Galli', ident:'+39 051 •••• ••18',
+   msgs:[{dir:'call', who:'Nota di contatto', t:'09:28', text:'Richiesta informazioni sull\'isopensione per un gruppo di dipendenti vicini alla pensione.'}],
+   notes:[], adv:[], sugg:[]}
+];
+let caseSeq = 1047;
+let curCase = 'CC-1042';
+let qFilter = 'all';
+
+// Casi CRM risolti (dati di esempio)
+const CRM = [
+  {id:'CRM-2081', title:'Rapporto biennale: soglia dei 50 dipendenti', area:'Welfare aziendale', date:'2 ott 2026', state:'sel',
+   text:'Problema: azienda con 40 dipendenti chiede se è obbligata a inviare il rapporto biennale sul personale.\nRisoluzione: l\'obbligo riguarda le aziende con più di 50 dipendenti; sotto la soglia l\'invio è facoltativo ma utile in vista della certificazione della parità di genere.\nCondizioni: verificare il numero di dipendenti alla data di riferimento del biennio.'},
+  {id:'CRM-2074', title:'Fondo sanitario contrattuale: codice F24 errato', area:'Sanità integrativa', date:'29 set 2026', state:'sel',
+   text:'Problema: versamento al fondo sanitario contrattuale effettuato con la causale di un altro fondo.\nRisoluzione: ogni fondo convenzionato ha una causale F24 propria nella sezione INPS, distinta dai contributi previdenziali; verificare la tabella dei codici prima del versamento.\nCondizioni: indicare matricola, codice sede e periodo di competenza (MM/AAAA).'},
+  {id:'CRM-2069', title:'Pre-DURC: notifica non ricevuta', area:'Previdenza', date:'25 set 2026', state:'sel',
+   text:'Problema: l\'azienda non ha ricevuto la notifica Pre-DURC prima della scadenza del documento.\nRisoluzione: la notifica è prevista per il delegato master, che sceglie se riceverla 30 o 15 giorni prima della scadenza tramite PEC, e-mail o SMS.\nCondizioni: DURC rilasciato con esito regolare e ancora in corso di validità.'},
+  {id:'CRM-2063', title:'CIGO per eventi meteo: termine della domanda', area:'Previdenza', date:'19 set 2026', state:'kb',
+   text:'Problema: dubbio sul termine per la domanda di CIGO dopo una sospensione per maltempo.\nRisoluzione: per gli eventi oggettivamente non evitabili la domanda va presentata su OMNIA IS entro la fine del mese successivo a quello di inizio dell\'evento.\nCondizioni: per gli eventi ordinari il termine resta di 15 giorni dall\'inizio della sospensione.'}
+];
+const DERIVED = [ {id:'crm-2063', title:'CIGO per eventi meteo: termine della domanda', area:'Previdenza', sub:'Ammortizzatori sociali', upd:'19 set 2026', crm:'CRM-2063', fonti:'Derivato da caso CRM risolto'} ];
+let curCrm = null;
+
+// ───────────────────────── Utility ─────────────────────────
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const nowT = () => new Date().toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'});
+const getCase = id => CASES.find(c => c.id === id);
+function toast(msg){ const t=$('toast'); t.innerHTML=ICON.check+esc(msg); t.classList.add('on'); clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove('on'),3200); }
+function closeM(id){ $(id).classList.remove('on'); }
+function openM(id){ $(id).classList.add('on'); }
+
+function go(p){
+  document.querySelectorAll('.page').forEach(x => x.classList.toggle('on', x.id === 'p-' + p));
+  document.querySelectorAll('.nav').forEach(x => x.classList.toggle('on', x.dataset.p === p));
+  if(p === 'kb' && !$('kbmain').dataset.init){ renderTax(); renderDocs(); $('kbmain').dataset.init = 1; }
+}
+
+// ───────────────────────── Coda ─────────────────────────
+const STATUS = {work:['In lavorazione','st-work'], wait:['In attesa','st-wait'], lock:['In carico ad altro operatore','st-lock'], done:['Registrato in CRM','st-done']};
+function setFilter(f){ qFilter=f; document.querySelectorAll('.filters button').forEach(b=>b.classList.toggle('on',b.dataset.f===f)); renderQueue(); }
+function renderQueue(){
+  const s = $('q-search').value.trim().toLowerCase();
+  let list = CASES.filter(c => !s || c.nome.toLowerCase().includes(s) || c.id.toLowerCase().includes(s));
+  if(qFilter === 'wait') list = list.filter(c => c.status === 'wait');
+  if(qFilter === 'mine') list = list.filter(c => c.owner === ME);
+  $('qlist').innerHTML = list.length ? list.map(c => `
+    <div class="qi ${c.id===curCase?'on':''}" onclick="selectCase('${c.id}')">
+      <div class="r1"><span>${c.id}</span><span>${c.t}</span></div>
+      <b>${esc(c.nome)}</b>
+      <div class="sub">${esc(c.oggetto)}</div>
+      <div class="r3"><span class="st ${STATUS[c.status][1]}">${STATUS[c.status][0]}</span><span>${c.canale}</span></div>
+    </div>`).join('') : '<div class="qempty">Nessun case per questo filtro.</div>';
+  $('nav-cnt').textContent = CASES.filter(c => c.status === 'wait').length;
+}
+function selectCase(id){ curCase = id; renderQueue(); renderCase(); renderAdv(); }
+
+// ───────────────────────── Case ─────────────────────────
+let curTab = 'conv';
+function renderCase(){
+  const c = getCase(curCase), col = $('case-col');
+  if(!c){ col.innerHTML = '<div class="noc">Seleziona un case dalla coda.</div>'; return; }
+  const mine = c.owner === ME, locked = c.status === 'lock';
+  let action = '';
+  if(c.status === 'wait') action = `<button class="btn btn-g btn-s" onclick="takeCase()">Prendi in carico</button>`;
+  else if(mine) action = `<button class="btn btn-g btn-s" onclick="openCrm()">${ICON.clip}Sintesi e CRM</button>`;
+  col.innerHTML = `
+    <div class="ch">
+      <div class="r1"><span>${c.id} · ${c.canale}</span><span class="st ${STATUS[c.status][1]}">${STATUS[c.status][0]}</span></div>
+      <h2>${esc(c.nome)}</h2>
+      <div class="subj">${esc(c.oggetto)}</div>
+      <div class="r3">${c.owner ? `<span class="op">${ICON.user}${esc(c.owner)}</span>` : '<span class="op">'+ICON.user+'Non assegnato</span>'}${action}</div>
+      ${locked ? `<div class="lockbar">${ICON.lock}In carico a ${esc(c.owner)} dalle ${c.t}: non è possibile prenderlo in carico contemporaneamente.</div>` : ''}
+    </div>
+    <div class="tabs">
+      <button data-t="conv" onclick="setTab('conv')">Conversazione</button>
+      <button data-t="note" onclick="setTab('note')">Note interne${c.notes.length?' ('+c.notes.length+')':''}</button>
+      <button data-t="det" onclick="setTab('det')">Dettagli</button>
+    </div>
+    <div class="tabp" data-t="conv" id="conv"></div>
+    <div class="tabp" data-t="note"></div>
+    <div class="tabp" data-t="det"></div>
+    <div class="compose" id="compose" ${mine?'':'style="display:none"'}>
+      <textarea id="reply" placeholder="${c.canale==='WhatsApp'?'Scrivi una risposta…':'Registra l\'esito del contatto o la risposta inviata…'}"></textarea>
+      <div class="cf"><span>${c.canale==='WhatsApp'?'Invio sul canale WhatsApp · simulato':'Canale non integrato · la risposta viene registrata nel case'}</span><button class="btn btn-g btn-s" onclick="sendReply()"><svg class="i" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg>${c.canale==='WhatsApp'?'Invia':'Registra'}</button></div>
+    </div>`;
+  renderConv(); renderNotes(); renderDet(); setTab(curTab);
+}
+function setTab(t){ curTab=t; document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('on',b.dataset.t===t)); document.querySelectorAll('.tabp').forEach(p=>p.classList.toggle('on',p.dataset.t===t)); }
+function renderConv(){
+  const c = getCase(curCase), el = document.querySelector('.tabp[data-t=conv]');
+  el.innerHTML = '<div class="daysep">Oggi · sessione demo</div>' + c.msgs.map(m => `
+    <div class="msg ${m.dir}"><div class="meta">${esc(m.who)} · ${m.t}</div><div class="bub">${esc(m.text)}</div></div>`).join('');
+  el.scrollTop = el.scrollHeight;
+}
+function renderNotes(){
+  const c = getCase(curCase), el = document.querySelector('.tabp[data-t=note]');
+  el.innerHTML = `<div class="notes-list">${c.notes.map(n=>`<div class="note"><small>${esc(n.who)} · ${n.t}</small>${esc(n.text)}</div>`).join('') || '<p style="color:var(--muted);font-size:12px;margin-bottom:12px">Nessuna nota interna.</p>'}</div>
+    ${c.owner===ME?`<textarea id="note-in" placeholder="Aggiungi una nota visibile solo agli operatori…" style="width:100%;border:1px solid var(--border-d);border-radius:8px;padding:9px 11px;min-height:70px;outline:0"></textarea>
+    <div style="text-align:right;margin-top:8px"><button class="btn btn-o btn-s" onclick="addNote()">Salva nota</button></div>`:''}`;
+}
+function renderDet(){
+  const c = getCase(curCase), el = document.querySelector('.tabp[data-t=det]');
+  const nCons = c.adv.filter(m=>m.role==='user').length;
+  el.innerHTML = `<table class="kv">
+    <tr><td>Identificativo case</td><td>${c.id}</td></tr>
+    <tr><td>Canale di provenienza</td><td>${c.canale}${c.canale==='WhatsApp'?' · canale integrato':' · case manuale'}</td></tr>
+    <tr><td>Contatto</td><td>${esc(c.ident)}</td></tr>
+    <tr><td>Profilo</td><td>${esc(c.profilo)}</td></tr>
+    <tr><td>Organizzazione</td><td>${esc(c.azienda)}</td></tr>
+    <tr><td>Sede competente</td><td>${esc(c.sede)}</td></tr>
+    <tr><td>Area tematica</td><td>${esc(c.area)}</td></tr>
+    <tr><td>Apertura</td><td>Oggi, ${c.t}</td></tr>
+    <tr><td>Presa in carico</td><td>${c.owner?esc(c.owner):'—'}</td></tr>
+    <tr><td>Consultazioni assistente</td><td>${nCons}</td></tr>
+  </table>`;
+}
+function takeCase(){
+  const c = getCase(curCase); c.status='work'; c.owner=ME;
+  c.notes.push({t:nowT(), who:'Sistema', text:'Case preso in carico da '+ME+'. Assegnazione registrata.'});
+  toast(c.id+' preso in carico'); renderQueue(); renderCase(); renderAdv();
+}
+function sendReply(){
+  const c = getCase(curCase), v = $('reply').value.trim(); if(!v) return;
+  c.msgs.push({dir:'out', who:ME, t:nowT(), text:v}); $('reply').value=''; renderConv();
+  toast(c.canale==='WhatsApp'?'Messaggio inviato sul canale (simulato)':'Risposta registrata nel case');
+}
+function addNote(){
+  const c = getCase(curCase), v = $('note-in').value.trim(); if(!v) return;
+  c.notes.push({t:nowT(), who:ME, text:v}); renderCase(); setTab('note');
+}
+
+// Nuovo case manuale
+function openNewCase(){ ['n-nome','n-ogg','n-note'].forEach(i=>$(i).value=''); openM('m-new'); }
+function createCase(){
+  const nome=$('n-nome').value.trim(), ogg=$('n-ogg').value.trim();
+  if(!nome || !ogg){ $(nome?'n-ogg':'n-nome').focus(); return; }
+  const id='CC-'+(caseSeq++), t=nowT(), canale=$('n-canale').value, note=$('n-note').value.trim();
+  CASES.push({id, canale, t, nome, profilo:$('n-profilo').value, azienda:'—', sede:'Sede territoriale di Roma', oggetto:ogg, area:$('n-area').value,
+    status:'work', owner:ME, ident:'—', msgs:[{dir:'call', who:'Nota di contatto', t, text: note || ogg}], notes:[], adv:[], sugg:[]});
+  closeM('m-new'); selectCase(id); toast(id+' creato e preso in carico');
+}
+
+// Sintesi e CRM
+function openCrm(){
+  const c = getCase(curCase);
+  const nCons = c.adv.filter(m=>m.role==='user').length;
+  const srcs = [...new Set(c.adv.filter(m=>m.role==='assistant').flatMap(m=>[...m.content.matchAll(/\[\[([a-z0-9-]+)#(\d+)\]\]/g)].map(x=>docById(x[1])?docById(x[1]).title:x[1])))];
+  const nOut = c.msgs.filter(m=>m.dir==='out').length;
+  $('crm-ref').textContent = c.id + ' · Revisione operatore';
+  $('crm-sint').value = `${c.oggetto}\n\nAttività: consultazione della base approvata (${nCons} ${nCons===1?'consultazione':'consultazioni'}) e verifica delle informazioni disponibili.` +
+    (srcs.length?`\nFonti consultate: ${srcs.join('; ')}.`:'') + `\nMessaggi operatore: ${nOut}.\nUlteriori dettagli da completare prima della registrazione.`;
+  $('crm-stato').selectedIndex = 0; $('crm-ok').checked=false; $('crm-go').disabled=true; openM('m-crm');
+}
+function confirmCrm(){
+  const c = getCase(curCase), stato = $('crm-stato').value;
+  c.notes.push({t:nowT(), who:'Sistema', text:'Registrazione CRM (simulata): stato "'+stato+'".'});
+  if(stato !== 'In attesa di informazioni') c.status = 'done';
+  closeM('m-crm'); renderQueue(); renderCase(); toast('Registrazione simulata in Microsoft Dynamics');
+}
+
+// ───────────────────────── P&W Advisor ─────────────────────────
+function mdAnswer(text){
+  // Testo semplice -> paragrafi; marcatori [[id#n]] -> apici numerati
+  const refs = [];
+  const body = esc(text).replace(/\[\[([a-z0-9-]+)#(\d+)\]\]/g, (m,id,n) => {
+    const key = id+'#'+n; let i = refs.indexOf(key);
+    if(i < 0){ refs.push(key); i = refs.length-1; }
+    return `<sup onclick="openDoc('${id}',${n})">${i+1}</sup>`;
+  }).replace(/\[\[[^\]]*$/,'');
+  const html = body.split(/\n{2,}/).map(p=>p.trim()).filter(Boolean).map(p=>'<p>'+p.replace(/\n/g,'<br>')+'</p>').join('');
+  return {html, refs};
+}
+function srcCards(refs){
+  return refs.map((k,i) => {
+    const [id,n] = k.split('#'); const d = docById(id); if(!d) return '';
+    const sec = docSections(id)[n] || '';
+    return `<div class="src" onclick="openDoc('${id}',${n})"><span class="n">${i+1}</span>${ICON.doc}<div><b>${esc(d.title)}</b><small>§${n} ${esc(sec)} · ${d.upd}</small></div><span class="go">${ICON.go}</span></div>`;
+  }).join('');
+}
+function renderThread(list, el, opts){
+  let h = '';
+  for(let i=0;i<list.length;i++){
+    const m = list[i];
+    if(m.role==='user'){ h += `<div class="q">${esc(m.content)}</div>`; continue; }
+    if(m.error){ h += `<div class="err">${esc(m.content)}</div>`; continue; }
+    const {html, refs} = mdAnswer(m.content);
+    const n = refs.length;
+    h += `<div class="ans">${n?`<div class="nsrc">${ICON.check}${n} ${n===1?'fonte documentale':'fonti documentali'}</div>`:''}
+      <div class="txt">${html}</div>${srcCards(refs)}
+      ${opts.caseMode && m.done!==false ? `<div class="acts"><button class="btn btn-o btn-s" onclick="prepDraft()">${ICON.draft}Prepara bozza</button><button class="btn btn-o btn-s ${m.flag?'flagged':''}" title="Segnala la risposta al validatore" onclick="flagAns(${i})">${ICON.flag}</button></div>`:''}</div>`;
+  }
+  if(opts.pending) h += '<div class="typing"><i></i><i></i><i></i></div>';
+  if(!list.length && opts.sugg && opts.sugg.length){
+    h += `<div class="sugg-h">Domande suggerite</div><div class="sugg">${opts.sugg.map(s=>`<button onclick="${opts.fn}(this.textContent)">${esc(s)}</button>`).join('')}</div>`;
+  }
+  el.innerHTML = h;
+  // Porta in vista l'ultima domanda con l'inizio della risposta
+  const qs = el.querySelectorAll('.q');
+  el.scrollTop = (qs.length && !opts.pending) ? Math.max(0, qs[qs.length-1].offsetTop - el.offsetTop - 8) : el.scrollHeight;
+}
+let advBusy = false;
+function renderAdv(){
+  const c = getCase(curCase);
+  const ctx = $('adv-ctx'), st = $('adv-stream'), inp = $('adv-in'), sb = $('adv-send');
+  if(!c){ ctx.innerHTML=''; st.innerHTML=''; return; }
+  ctx.innerHTML = `${ICON.link}${c.id} · ${esc(c.area)}`;
+  const usable = c.owner === ME;
+  inp.disabled = !usable || advBusy; sb.disabled = !usable || advBusy;
+  inp.placeholder = usable ? 'Chiedi all\'assistente sul case…' : (c.status==='wait' ? 'Prendi in carico il case per consultare l\'assistente' : 'Case non disponibile');
+  renderThread(c.adv, st, {caseMode:true, pending:c._pending, sugg: usable ? c.sugg : [], fn:'askCase'});
+}
+function flagAns(i){ const c=getCase(curCase); c.adv[i].flag=!c.adv[i].flag; renderAdv(); if(c.adv[i].flag) toast('Risposta segnalata al validatore'); }
+
+async function streamAsk(payload, onText){
+  const r = await fetch('/cc/ask',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+  if(!r.ok){ let e='Assistente non disponibile in questo momento.'; try{const j=await r.json(); if(j.error==='API key non configurata') e='Assistente non configurato (manca la chiave API).';}catch(_){} throw new Error(e); }
+  const rd = r.body.getReader(), dec = new TextDecoder(); let buf='', full='';
+  while(true){
+    const {done, value} = await rd.read(); if(done) break;
+    buf += dec.decode(value,{stream:true});
+    const parts = buf.split('data: '); buf = parts.pop();
+    for(const p of parts){
+      const chunk = p.replace(/\n\n$/,''); if(!chunk) continue;
+      if(chunk.trim()==='[DONE]') return full;
+      full += chunk; onText(full);
+    }
+  }
+  if(buf && !buf.startsWith('[DONE]')) { full += buf.replace(/\n\n$/,''); onText(full); }
+  return full;
+}
+function caseCtx(c){
+  return {id:c.id, canale:c.canale, nome:c.nome, profilo:c.profilo, oggetto:c.oggetto,
+    conversazione:c.msgs.map(m=>(m.dir==='out'?'Operatore':(m.dir==='call'?'Nota di contatto':c.nome))+': '+m.text).join('\n')};
+}
+async function askCase(text){
+  const c = getCase(curCase); if(!c || c.owner!==ME || advBusy) return;
+  const q = (typeof text==='string' ? text : $('adv-in').value).trim(); if(!q) return;
+  $('adv-in').value=''; advBusy=true;
+  c.adv.push({role:'user', content:q}); c._pending=true; renderAdv(); renderDet();
+  const ans = {role:'assistant', content:'', done:false};
+  try{
+    const hist = c.adv.filter(m=>!m.error && m!==ans).map(m=>({role:m.role, content:m.content}));
+    let first = true;
+    await streamAsk({messages:hist, case:caseCtx(c)}, full => {
+      if(first){ c._pending=false; c.adv.push(ans); first=false; }
+      ans.content = full; if(curCase===c.id) renderAdv();
+    });
+    if(first){ c._pending=false; c.adv.push(ans); }
+    ans.done = true;
+  }catch(e){ c._pending=false; c.adv.push({role:'assistant', content:e.message, error:true}); }
+  advBusy=false; if(curCase===c.id) renderAdv();
+}
+async function prepDraft(){
+  const c = getCase(curCase); if(!c || c.owner!==ME) return;
+  setTab('conv'); const box = $('reply'); box.value = 'Preparazione della bozza…'; box.disabled = true;
+  try{
+    let txt = await streamAsk({mode:'bozza', messages:[], case:caseCtx(c)}, full => { box.value = full; });
+    box.value = txt.trim();
+  }catch(e){
+    if(c.draft){ box.value = c.draft; } else { box.value=''; toast(e.message); box.disabled=false; return; }
+  }
+  box.disabled = false; box.focus(); toast('Bozza inserita: rivedi il testo prima di inviarlo');
+}
+
+// Consultazione libera (contesto separato, nessun case)
+const FREE = {adv:[], pending:false, busy:false,
+  sugg:['Quali sono i massimali CIGO 2026?','Chi deve inviare il rapporto biennale sul personale?','Quali codici F24 usano i fondi sanitari convenzionati con INPS?']};
+function renderFree(){
+  $('free-in').disabled = FREE.busy; $('free-send').disabled = FREE.busy;
+  renderThread(FREE.adv, $('free-stream'), {caseMode:false, pending:FREE.pending, sugg:FREE.sugg, fn:'askFree'});
+  if(!FREE.adv.length) $('free-stream').insertAdjacentHTML('afterbegin','<p style="font-size:12.5px;color:var(--soft);line-height:1.5;margin:6px 0 4px">In questa consultazione non è associato alcun case: le risposte non includono messaggi o riferimenti di altre pratiche.</p>');
+}
+async function askFree(text){
+  if(FREE.busy) return;
+  const q = (typeof text==='string' ? text : $('free-in').value).trim(); if(!q) return;
+  $('free-in').value=''; FREE.busy=true; FREE.adv.push({role:'user', content:q}); FREE.pending=true; renderFree();
+  const ans = {role:'assistant', content:''};
+  try{
+    const hist = FREE.adv.filter(m=>!m.error).map(m=>({role:m.role, content:m.content}));
+    let first=true;
+    await streamAsk({messages:hist}, full => { if(first){FREE.pending=false; FREE.adv.push(ans); first=false;} ans.content=full; renderFree(); });
+    if(first){ FREE.pending=false; FREE.adv.push(ans); }
+  }catch(e){ FREE.pending=false; FREE.adv.push({role:'assistant', content:e.message, error:true}); }
+  FREE.busy=false; renderFree();
+}
+
+// ───────────────────────── Knowledge Base ─────────────────────────
+let kbSel = {area:null, sub:null}, kbQuery = '';
+const allDocs = () => DOCS.concat(DERIVED);
+function renderTax(){
+  const cnt = (a,s) => allDocs().filter(d => (!a||d.area===a) && (!s||d.sub===s)).length;
+  let h = `<button class="tx ${!kbSel.area?'on':''}" onclick="selTax(null,null)">${!kbSel.area?ICON.folderO:ICON.folder}Tutti i documenti<span class="c">${cnt()}</span></button>`;
+  TAXONOMY.forEach(([a,subs]) => {
+    const on = kbSel.area===a && !kbSel.sub;
+    h += `<button class="tx ${on?'on':''}" onclick="selTax('${a}',null)">${kbSel.area===a?ICON.folderO:ICON.folder}${a}<span class="c">${cnt(a)}</span></button>`;
+    if(kbSel.area===a) subs.forEach(s => { h += `<button class="tx sub ${kbSel.sub===s?'on':''}" onclick="selTax('${a}','${s}')">${esc(s)}<span class="c">${cnt(a,s)}</span></button>`; });
+  });
+  $('tax').innerHTML = h;
+  $('kb-count').textContent = 'Base approvata · ' + allDocs().length + ' documenti';
+}
+function selTax(a,s){ kbSel={area:a, sub:s}; renderTax(); renderDocs(); }
+function renderDocs(){
+  const qq = kbQuery.toLowerCase();
+  const list = allDocs().filter(d => (!kbSel.area||d.area===kbSel.area) && (!kbSel.sub||d.sub===kbSel.sub) && (!qq || (d.title+' '+d.fonti+' '+d.area).toLowerCase().includes(qq)));
+  const title = kbSel.sub || kbSel.area || 'Tutti i documenti';
+  $('kbmain').innerHTML = `<div class="lh"><h3>${esc(title)}</h3><div class="search">${ICON.search}<input id="kb-q" placeholder="Cerca per titolo o fonte" value="${esc(kbQuery)}" oninput="kbQuery=this.value;renderDocs();const i=document.getElementById('kb-q');i.focus();i.setSelectionRange(i.value.length,i.value.length)"></div></div>` +
+    (list.length ? list.map(d => `<div class="doc" onclick="openDoc('${d.id}')"><span class="di">${ICON.doc}</span><div><b>${esc(d.title)}</b><small>${esc(d.area)} · ${esc(d.sub)} · aggiornato il ${d.upd}</small></div>
+      <div class="rt">${d.crm?'<span class="chip-crm">Da caso CRM</span>':''}<span class="tag-ok">Approvato</span><span class="openbtn">${ICON.go}</span></div></div>`).join('')
+      : '<p style="color:var(--muted);padding:20px 0">Nessun documento per questa ricerca.</p>');
+}
+function openDoc(id, sec){
+  go('kb');
+  const d = allDocs().find(x=>x.id===id); if(!d) return;
+  let body, toc = '';
+  if(d.crm){
+    const c = CRM.find(x=>x.id===d.crm);
+    body = `<h1>${esc(d.title)}</h1>` + c.text.split('\n').map(l=>{const [k,...v]=l.split(':');return `<p><b>${esc(k)}:</b>${esc(v.join(':'))}</p>`;}).join('') + (c.note?`<p><em>Note di contesto: ${esc(c.note)}</em></p>`:'');
+  } else {
+    body = $('kbsrc-'+id).innerHTML;
+    const secs = docSections(id);
+    toc = `<div class="toc"><h6>Indice</h6>${Object.entries(secs).map(([n,t])=>`<a onclick="scrollSec(${n})">${n}. ${esc(t)}</a>`).join('')}</div>`;
+  }
+  $('kbmain').innerHTML = `<button class="vback" onclick="renderDocs()">${ICON.back}Torna all'elenco</button>
+    <div class="viewer"><article class="vdoc" id="vdoc">${body}</article>
+    <aside class="vmeta">
+      <div class="mcard"><div class="mh"><small>SCHEDA DOCUMENTO</small><b>${esc(d.title)}</b></div><table>
+        <tr><td>Area</td><td>${esc(d.area)} › ${esc(d.sub)}</td></tr>
+        <tr><td>Fonti ufficiali</td><td>${esc(d.fonti)}</td></tr>
+        <tr><td>Stato</td><td><span class="tag-ok">Vigente</span></td></tr>
+        <tr><td>Validazione</td><td>Approvato dal validatore</td></tr>
+        <tr><td>Aggiornamento</td><td>${d.upd}</td></tr>
+        <tr><td>Origine</td><td>${d.crm?'Caso '+d.crm+' · documento generato su SharePoint':'Repository SharePoint · sincronizzato'}</td></tr>
+        <tr><td>Hub pubblico</td><td>${d.crm?'Uso interno':'<a href="https://hub-previdenza-welfare-datahubs.onrender.com/" target="_blank">Articolo pubblicato ↗</a>'}</td></tr>
+      </table></div>${toc}
+    </aside></div>`;
+  $('kbmain').scrollTop = 0;
+  if(sec) setTimeout(()=>scrollSec(sec, true), 60);
+}
+function scrollSec(n, hl){
+  const hs = [...document.querySelectorAll('#vdoc h2')];
+  const h = hs.find(x => x.textContent.trim().startsWith(n+'.'));
+  if(!h) return;
+  hs.forEach(x=>x.classList.remove('hl'));
+  if(hl) h.classList.add('hl');
+  $('kbmain').scrollTo({top: h.offsetTop - 70, behavior:'smooth'});
+}
+
+// ───────────────────────── Casi CRM ─────────────────────────
+const CRMST = {sel:['Da selezionare','st-sel'], ing:['Ingestion in corso','st-ing'], kb:['In KB','st-kb']};
+function renderCrm(){
+  $('crmlist').innerHTML = CRM.map(c => `<div class="crm"><span class="di" style="color:var(--soft)">${ICON.folder}</span><div><b>${esc(c.title)}</b><small>${c.id} · ${esc(c.area)} · risolto il ${c.date}</small></div>
+    <div class="rt"><span class="st ${CRMST[c.state][1]}">${CRMST[c.state][0]}</span>${c.state==='sel'?`<button class="btn btn-o btn-s" onclick="openKbPrep('${c.id}')">${ICON.draft}Prepara contenuto</button>`:(c.state==='kb'?`<button class="btn btn-o btn-s" onclick="openDoc('${c.id.toLowerCase()}')">Apri in KB</button>`:'')}</div></div>`).join('');
+}
+function openKbPrep(id){
+  curCrm = CRM.find(c=>c.id===id);
+  $('kbm-ref').textContent = curCrm.id + ' · Documento derivato da case CRM';
+  $('kbm-txt').value = curCrm.text; $('kbm-note').value=''; $('kbm-ok').checked=false; $('kbm-go').disabled=true; openM('m-kb');
+}
+function includeKb(){
+  const c = curCrm; c.text = $('kbm-txt').value.trim(); c.note = $('kbm-note').value.trim(); c.state='ing';
+  closeM('m-kb'); renderCrm(); toast(c.id+' approvato: generazione del documento SharePoint e ingestion');
+  setTimeout(()=>{
+    c.state='kb';
+    const area = c.area, sub = area==='Previdenza'?'Contributi e regolarità':(area==='Welfare aziendale'?'Parità di genere':'Fondi sanitari');
+    DERIVED.push({id:c.id.toLowerCase(), title:c.title, area, sub, upd:'oggi', crm:c.id, fonti:'Derivato da caso CRM risolto'});
+    renderCrm(); if($('kbmain').dataset.init){ renderTax(); }
+    toast(c.id+' disponibile nella Knowledge Base');
+  }, 2600);
+}
+
+// ───────────────────────── Avvio ─────────────────────────
+renderQueue(); renderCase(); renderAdv(); renderFree(); renderCrm();
+document.addEventListener('keydown', e => { if(e.key==='Escape') document.querySelectorAll('.ov.on').forEach(o=>o.classList.remove('on')); });
+</script>
+{% endif %}
+</body>
+</html>
