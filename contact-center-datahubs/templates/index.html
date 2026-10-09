@@ -115,6 +115,7 @@ svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke
 .msg.out .meta{text-align:right}
 .msg.out .bub{background:var(--g-l);border:1px solid #D8E6D9;border-top-right-radius:3px}
 .msg.call .bub{background:#fff;border:1px dashed var(--border-d)}
+.msg .bub .typing{padding:2px 0}
 .compose{border-top:1px solid var(--border);padding:12px 18px}
 .compose textarea{width:100%;border:1px solid var(--border-d);border-radius:8px;padding:10px 12px;resize:vertical;min-height:62px;max-height:220px;outline:0;line-height:1.45}
 .compose textarea:focus{border-color:var(--g)}
@@ -565,11 +566,13 @@ const CASES = [
      {role:'assistant', content:'L\'azienda può interrogare la Piattaforma Unica INPS con il proprio codice fiscale: la sezione Simulazione DURC valuta le evidenze secondo i criteri del D.M. 30 gennaio 2015 e mostra quelle che possono impedire la regolarità automatica.[[durc-online#6]]\n\nLa richiesta genera un ticket; le risultanze si consultano in Notifiche e Archivio, con l\'indicatore rosso per le situazioni da regolarizzare e la possibilità di esportarle in Excel o PDF.[[durc-online#7]]\n\nSe la regolarità non può essere attestata subito, l\'ente invita a regolarizzare entro un termine non superiore a 15 giorni dalla notifica: con la gara tra tre settimane conviene muoversi subito.[[durc-online#1]]\n\nDa verificare con l\'utente: se esiste una Delega Master, il consulente può consultare tutte le Gestioni, avviare la regolarizzazione e ricevere il Pre-DURC.[[durc-online#8]]'}
    ],
    draft:'Buongiorno Giulia, può verificare subito cosa blocca il DURC dalla Piattaforma Unica INPS, nella sezione Simulazione DURC: inserendo il codice fiscale dell\'azienda le posizioni da regolarizzare vengono evidenziate in rosso. Se la regolarità non può essere attestata subito, INPS invia un invito a regolarizzare con un termine massimo di 15 giorni: con la gara tra tre settimane le consigliamo di procedere oggi stesso. Il vostro consulente ha già una Delega Master attiva sulla posizione?',
-   sugg:['Il Pre-DURC può avvisarci prima della prossima scadenza?','Quanto dura il DURC una volta rilasciato?']},
+   sugg:['Il Pre-DURC può avvisarci prima della prossima scadenza?','Quanto dura il DURC una volta rilasciato?'],
+   script:['Grazie! Il nostro consulente ha già la Delega Master sulla posizione: può controllare lui la Simulazione DURC e ricevere un avviso prima della prossima scadenza?','Perfetto. Una volta sistemato, quanto dura il DURC? Dobbiamo richiederlo di nuovo per ogni gara?','Chiarissimo, procediamo subito. Grazie per l\'aiuto!']},
   {id:'CC-1043', canale:'WhatsApp', t:'09:16', nome:'Marco Bianchi', profilo:'Consulente del lavoro', azienda:'Studio di consulenza', sede:'Sede territoriale di Napoli',
    oggetto:'CIGO per caldo eccessivo in un cantiere', area:'Welfare aziendale', status:'wait', owner:null, ident:'+39 333 ••• ••87',
-   msgs:[{dir:'in', who:'Marco Bianchi', t:'09:16', text:'Salve, un cliente edile ha sospeso i lavori per il caldo a fine luglio. Fino a quando può presentare la domanda di CIGO e conta nel limite di durata?'}],
-   notes:[], adv:[], sugg:['Entro quando va presentata la domanda per eventi meteo?','Le sospensioni per caldo eccessivo del 2026 contano nel limite massimo?','Serve il contributo addizionale?']},
+   msgs:[{dir:'in', who:'Marco Bianchi', t:'09:16', text:'Salve, un cliente edile ha sospeso i lavori per il caldo da lunedì 22 settembre. Fino a quando può presentare la domanda di CIGO e conta nel limite di durata?'}],
+   notes:[], adv:[], sugg:['Entro quando va presentata la domanda per eventi meteo?','Le sospensioni per caldo eccessivo del 2026 contano nel limite massimo?','Serve il contributo addizionale?'],
+   script:['Grazie. Quindi la domanda va presentata entro fine ottobre? Sempre su OMNIA IS?','Ultima cosa: per queste giornate l\'azienda deve versare il contributo addizionale?','Perfetto, procedo così. Grazie mille!']},
   {id:'CC-1044', canale:'Telefono', t:'09:19', nome:'Sara Conti', profilo:'Dirigente', azienda:'Azienda manifatturiera, 120 dipendenti', sede:'Sede territoriale di Milano',
    oggetto:'Esonero contributivo per la certificazione di parità', area:'Welfare aziendale', status:'wait', owner:null, ident:'+39 02 •••• ••30',
    msgs:[{dir:'call', who:'Nota di contatto', t:'09:19', text:'Chiamata ricevuta sulla centrale. L\'azienda ha ottenuto la certificazione della parità di genere a settembre e chiede come richiedere l\'esonero contributivo e a quanto ammonta.'}],
@@ -577,7 +580,8 @@ const CASES = [
   {id:'CC-1045', canale:'WhatsApp', t:'09:23', nome:'Luca Moretti', profilo:'HR / responsabile del personale', azienda:'Gruppo commerciale', sede:'Sede territoriale di Torino',
    oggetto:'Limite di deducibilità dei contributi al fondo sanitario', area:'Sanità integrativa', status:'wait', owner:null, ident:'+39 349 ••• ••05',
    msgs:[{dir:'in', who:'Luca Moretti', t:'09:23', text:'Buongiorno, i contributi che versiamo al fondo sanitario per i dipendenti hanno un tetto oltre il quale diventano tassati? Vale anche per i fondi aziendali?'}],
-   notes:[], adv:[], sugg:['Qual è il plafond annuo di non imponibilità?','Che differenza c\'è tra fondi contrattuali e fondi aziendali?']},
+   notes:[], adv:[], sugg:['Qual è il plafond annuo di non imponibilità?','Che differenza c\'è tra fondi contrattuali e fondi aziendali?'],
+   script:['Quindi se un dipendente è iscritto anche a un fondo aziendale il limite di 3.615,20 euro raddoppia?','Capito. E il fondo deve risultare iscritto da qualche parte perché valgano le agevolazioni?','Grazie, molto utile. Verifico con il fondo.']},
   {id:'CC-1046', canale:'Telefono', t:'09:28', nome:'Anna De Luca', profilo:'Dirigente', azienda:'Società di servizi', sede:'Sede territoriale di Bologna',
    oggetto:'Accompagnamento alla pensione: requisiti dell\'accordo', area:'Previdenza', status:'lock', owner:'R. Galli', ident:'+39 051 •••• ••18',
    msgs:[{dir:'call', who:'Nota di contatto', t:'09:28', text:'Richiesta informazioni sull\'isopensione per un gruppo di dipendenti vicini alla pensione.'}],
@@ -676,7 +680,8 @@ function setTab(t){ curTab=t; document.querySelectorAll('.tabs button').forEach(
 function renderConv(){
   const c = getCase(curCase), el = document.querySelector('.tabp[data-t=conv]');
   el.innerHTML = '<div class="daysep">Oggi · sessione demo</div>' + c.msgs.map(m => `
-    <div class="msg ${m.dir}"><div class="meta">${esc(m.who)} · ${m.t}</div><div class="bub">${esc(m.text)}</div></div>`).join('');
+    <div class="msg ${m.dir}"><div class="meta">${esc(m.who)} · ${m.t}</div><div class="bub">${esc(m.text)}</div></div>`).join('')
+    + (c._typing ? `<div class="msg in"><div class="meta">${esc(c.nome)} sta scrivendo…</div><div class="bub"><span class="typing"><i></i><i></i><i></i></span></div></div>` : '');
   el.scrollTop = el.scrollHeight;
 }
 function renderNotes(){
@@ -710,6 +715,22 @@ function sendReply(){
   const c = getCase(curCase), v = $('reply').value.trim(); if(!v) return;
   c.msgs.push({dir:'out', who:ME, t:nowT(), text:v}); $('reply').value=''; renderConv();
   toast(c.canale==='WhatsApp'?'Messaggio inviato sul canale (simulato)':'Risposta registrata nel case');
+  scheduleUserReply(c);
+}
+// Risposte preparate dell'utente (demo): arrivano dopo qualche secondo, una per ogni invio dell'operatore
+function scheduleUserReply(c){
+  if(c.canale !== 'WhatsApp' || !c.script || c._typing) return;
+  c.si = c.si || 0;
+  if(c.si >= c.script.length) return;
+  const text = c.script[c.si++];
+  setTimeout(() => {
+    c._typing = true; if(curCase === c.id) renderConv();
+    setTimeout(() => {
+      c._typing = false;
+      c.msgs.push({dir:'in', who:c.nome, t:nowT(), text});
+      if(curCase === c.id){ renderConv(); } else { toast('Nuovo messaggio da '+c.nome+' ('+c.id+')'); }
+    }, 2200 + Math.min(text.length*12, 1800));
+  }, 900);
 }
 function addNote(){
   const c = getCase(curCase), v = $('note-in').value.trim(); if(!v) return;
