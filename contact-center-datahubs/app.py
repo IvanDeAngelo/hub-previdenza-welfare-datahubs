@@ -125,6 +125,20 @@ def cc_ask():
         if m.get('role') in ('user', 'assistant') and m.get('content')
     ]
     mode = data.get('mode', 'risposta')
+    # Contenuti derivati da casi CRM già approvati dal validatore (nel mockup arrivano dalla pagina)
+    crm_docs = ''
+    for d in (data.get('crm_docs') or [])[:20]:
+        did = str(d.get('id', '')).lower()
+        if not did.startswith('crm-') or not did[4:].isdigit():
+            continue
+        crm_docs += (
+            f"\n\n---\n\nID ARTICOLO: {did}\n# {str(d.get('title', ''))[:200]}\n"
+            f"Area: {str(d.get('area', ''))[:80]} > {str(d.get('sub', ''))[:120]} · Documento derivato da caso CRM risolto\n\n"
+            f"## 1. Contenuto approvato\n{str(d.get('text', ''))[:1500]}\n"
+            + (f"Note di contesto: {str(d.get('note', ''))[:600]}\n" if d.get('note') else '')
+        )
+    crm_block = ('\n\nCONTENUTI DERIVATI DA CASI CRM (approvati dal validatore, fanno parte della documentazione approvata; '
+                 'citali con [[crm-NNNN#1]] quando la risposta si basa su di essi):' + crm_docs) if crm_docs else ''
     case = data.get('case') or {}
     context = ''
     if case:
@@ -137,13 +151,13 @@ def cc_ask():
         )
 
     if mode == 'bozza':
-        system = SYSTEM_PROMPT_DRAFT
+        system = SYSTEM_PROMPT_DRAFT + crm_block
         convo = [{'role': 'user', 'content': context + "Prepara la bozza di risposta all'ultimo messaggio dell'utente."}]
         max_tokens = 400
     else:
         if not messages or messages[-1]['role'] != 'user':
             return jsonify({'error': 'Nessuna domanda'}), 400
-        system = SYSTEM_PROMPT
+        system = SYSTEM_PROMPT + crm_block
         if context:
             messages[-1] = {'role': 'user', 'content': context + "DOMANDA DELL'OPERATORE: " + messages[-1]['content']}
         convo = messages
