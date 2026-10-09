@@ -345,7 +345,7 @@ svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke
     <aside class="side">
       <h6>Area operativa</h6>
       <button class="nav on" data-p="case" onclick="go('case')"><svg class="i" viewBox="0 0 24 24"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z"/></svg>Case<span class="cnt" id="nav-cnt">0</span></button>
-      <button class="nav" data-p="kb" onclick="go('kb');renderDocs()"><svg class="i" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>Knowledge Base</button>
+      <button class="nav" data-p="kb" onclick="go('kb');kbQuery='';selTax(null,null)"><svg class="i" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>Knowledge Base</button>
       <button class="nav" data-p="free" onclick="go('free')"><svg class="i" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/><path d="M8 9h8M8 13h5"/></svg>Consultazione libera</button>
       <button class="nav" data-p="crm" onclick="go('crm')"><svg class="i" viewBox="0 0 24 24"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>Casi CRM</button>
       <div class="foot">
@@ -523,18 +523,19 @@ const ICON = {
 
 // Documenti della base approvata: metadati (la base è la stessa dell'Hub pubblico)
 const DOCS = [
-  {id:'cigo', title:'Cassa Integrazione Guadagni Ordinaria (CIGO)', area:'Previdenza', sub:'Ammortizzatori sociali', upd:'8 ott 2026', fonti:'Circ. INPS 5/2025 · 121/2025 · 4/2026 · Msg. 2418/2026'},
-  {id:'durc-online', title:'DURC Online, Ve.R.A. e Pre-DURC', area:'Previdenza', sub:'Contributi e regolarità', upd:'24 set 2026', fonti:'D.M. 30/1/2015 · Circ. INPS 126/2015 · 146/2021 · Msg. 4693/2023 · 3662/2024'},
-  {id:'posizione-contributiva', title:'Posizione contributiva e correttezza dei versamenti', area:'Previdenza', sub:'Contributi e regolarità', upd:'22 set 2026', fonti:'Documentazione ufficiale INPS su estratto conto e ricorsi amministrativi'},
-  {id:'accompagnamento-pensione', title:'Prestazioni di accompagnamento alla pensione', area:'Previdenza', sub:'Pensione', upd:'30 set 2026', fonti:'L. 92/2012 · Circ. INPS 119/2013 · 153/2025 · 41/2026 · 104/2026 · Msg. 2829/2026'},
-  {id:'certificazione-parita-genere', title:'La certificazione della parità di genere', area:'Welfare aziendale', sub:'Parità di genere', upd:'6 ott 2026', fonti:'L. 162/2021 · D.Lgs. 198/2006 · D.M. 29/4/2022 · UNI/PdR 125:2022 · Circ. INPS 137/2022 · Msg. 3804/2025'},
-  {id:'fondi-sanitari-contrattuali', title:'Fondi sanitari contrattuali: contribuzione obbligatoria', area:'Sanità integrativa', sub:'Fondi sanitari', upd:'18 set 2026', fonti:'Circ. INPS 77/2025 · 119/2025 · 120/2025 · 95/2026'},
-  {id:'sanita-fiscale', title:'Fondi sanitari e regime fiscale', area:'Sanità integrativa', sub:'Fiscalità', upd:'2 ott 2026', fonti:'Circ. AE 4/E 2025 · D.M. Salute 31/3/2008 e 27/10/2009 · Circ. INPS 263/1997'}
+  {id:'accompagnamento-pensione', title:'Accompagnamento alla pensione: isopensione, fondi di solidarietà e agevolazioni 2026', area:'Previdenza', sub:'Accompagnamento alla pensione', upd:'30 set 2026', fonti:'L. 92/2012 · Circ. INPS 119/2013 · 153/2025 · 41/2026 · 104/2026 · Msg. 2829/2026'},
+  {id:'posizione-contributiva', title:'Posizione contributiva aziendale: come controllare estratto conto e correttezza dei versamenti', area:'Previdenza', sub:'Posizione contributiva aziendale', upd:'7 ott 2026', fonti:'Documentazione ufficiale INPS su estratto conto e ricorsi amministrativi'},
+  {id:'cigo', title:'Cassa integrazione ordinaria 2026: massimale a 1.423,69 €, causali e CIGO per emergenza climatica', area:'Welfare aziendale', sub:'Cassa integrazione ordinaria 2026', upd:'8 ott 2026', fonti:'Circ. INPS 5/2025 · 121/2025 · 4/2026 · Msg. 2418/2026'},
+  {id:'certificazione-parita-genere', title:'La certificazione della parità di genere', area:'Welfare aziendale', sub:'La certificazione della parità di genere', upd:'6 ott 2026', fonti:'L. 162/2021 · D.Lgs. 198/2006 · D.M. 29/4/2022 · UNI/PdR 125:2022 · Circ. INPS 137/2022 · Msg. 3804/2025'},
+  {id:'durc-online', title:'DURC Online: come verificare la regolarità contributiva con Pre-DURC, Ve.R.A. e Simulazione', area:'Welfare aziendale', sub:'DURC Online', upd:'3 ott 2026', fonti:'D.M. 30/1/2015 · Circ. INPS 126/2015 · 146/2021 · Msg. 4693/2023 · 3662/2024'},
+  {id:'sanita-fiscale', title:'Fondi sanitari integrativi: deducibilità fino a 3.615,20 € e iscrizione all\'Anagrafe del Ministero', area:'Sanità integrativa', sub:'Fondi sanitari integrativi', upd:'2 ott 2026', fonti:'Circ. AE 4/E 2025 · D.M. Salute 31/3/2008 e 27/10/2009 · Circ. INPS 263/1997'},
+  {id:'fondi-sanitari-contrattuali', title:'Fondi sanitari contrattuali: come versare i contributi obbligatori con F24 e UniEmens', area:'Sanità integrativa', sub:'Fondi sanitari contrattuali', upd:'18 set 2026', fonti:'Circ. INPS 77/2025 · 119/2025 · 120/2025 · 95/2026'}
 ];
+// Stessa struttura del menu "Argomenti" dell'Hub pubblico: area > argomento
 const TAXONOMY = [
-  ['Previdenza',['Ammortizzatori sociali','Contributi e regolarità','Pensione']],
-  ['Welfare aziendale',['Parità di genere']],
-  ['Sanità integrativa',['Fondi sanitari','Fiscalità']]
+  ['Previdenza',['Accompagnamento alla pensione','Posizione contributiva aziendale']],
+  ['Welfare aziendale',['Cassa integrazione ordinaria 2026','La certificazione della parità di genere','DURC Online']],
+  ['Sanità integrativa',['Fondi sanitari integrativi','Fondi sanitari contrattuali']]
 ];
 const docById = id => DOCS.find(d => d.id === id);
 
@@ -553,7 +554,7 @@ function docSections(id){
 // Case demo (nomi e dati di fantasia)
 const CASES = [
   {id:'CC-1042', canale:'WhatsApp', t:'09:12', nome:'Giulia Rossi', profilo:'HR / responsabile del personale', azienda:'Impresa edile, 38 dipendenti', sede:'Sede territoriale di Roma',
-   oggetto:'DURC bloccato in vista di una gara d\'appalto', area:'Previdenza', status:'work', owner:ME, ident:'+39 347 ••• ••12',
+   oggetto:'DURC bloccato in vista di una gara d\'appalto', area:'Welfare aziendale', status:'work', owner:ME, ident:'+39 347 ••• ••12',
    msgs:[
      {dir:'in', who:'Giulia Rossi', t:'09:12', text:'Buongiorno, nella piattaforma INPS ci risulta un\'irregolarità e tra tre settimane abbiamo una gara d\'appalto. Come facciamo a capire cosa blocca il DURC e quanto tempo abbiamo per sistemare?'},
      {dir:'out', who:ME, t:'09:14', text:'Buongiorno Giulia, verifico le informazioni disponibili e le rispondo a breve.'}
@@ -566,7 +567,7 @@ const CASES = [
    draft:'Buongiorno Giulia, può verificare subito cosa blocca il DURC dalla Piattaforma Unica INPS, nella sezione Simulazione DURC: inserendo il codice fiscale dell\'azienda le posizioni da regolarizzare vengono evidenziate in rosso. Se la regolarità non può essere attestata subito, INPS invia un invito a regolarizzare con un termine massimo di 15 giorni: con la gara tra tre settimane le consigliamo di procedere oggi stesso. Il vostro consulente ha già una Delega Master attiva sulla posizione?',
    sugg:['Il Pre-DURC può avvisarci prima della prossima scadenza?','Quanto dura il DURC una volta rilasciato?']},
   {id:'CC-1043', canale:'WhatsApp', t:'09:16', nome:'Marco Bianchi', profilo:'Consulente del lavoro', azienda:'Studio di consulenza', sede:'Sede territoriale di Napoli',
-   oggetto:'CIGO per caldo eccessivo in un cantiere', area:'Previdenza', status:'wait', owner:null, ident:'+39 333 ••• ••87',
+   oggetto:'CIGO per caldo eccessivo in un cantiere', area:'Welfare aziendale', status:'wait', owner:null, ident:'+39 333 ••• ••87',
    msgs:[{dir:'in', who:'Marco Bianchi', t:'09:16', text:'Salve, un cliente edile ha sospeso i lavori per il caldo a fine luglio. Fino a quando può presentare la domanda di CIGO e conta nel limite di durata?'}],
    notes:[], adv:[], sugg:['Entro quando va presentata la domanda per eventi meteo?','Le sospensioni per caldo eccessivo del 2026 contano nel limite massimo?','Serve il contributo addizionale?']},
   {id:'CC-1044', canale:'Telefono', t:'09:19', nome:'Sara Conti', profilo:'Dirigente', azienda:'Azienda manifatturiera, 120 dipendenti', sede:'Sede territoriale di Milano',
@@ -588,16 +589,22 @@ let qFilter = 'all';
 
 // Casi CRM risolti (dati di esempio)
 const CRM = [
-  {id:'CRM-2081', title:'Rapporto biennale: soglia dei 50 dipendenti', area:'Welfare aziendale', date:'2 ott 2026', state:'sel',
+  {id:'CRM-2081', title:'Rapporto biennale: soglia dei 50 dipendenti', area:'Welfare aziendale', sub:'La certificazione della parità di genere', date:'2 ott 2026', state:'sel',
    text:'Problema: azienda con 40 dipendenti chiede se è obbligata a inviare il rapporto biennale sul personale.\nRisoluzione: l\'obbligo riguarda le aziende con più di 50 dipendenti; sotto la soglia l\'invio è facoltativo ma utile in vista della certificazione della parità di genere.\nCondizioni: verificare il numero di dipendenti alla data di riferimento del biennio.'},
-  {id:'CRM-2074', title:'Fondo sanitario contrattuale: codice F24 errato', area:'Sanità integrativa', date:'29 set 2026', state:'sel',
+  {id:'CRM-2074', title:'Fondo sanitario contrattuale: codice F24 errato', area:'Sanità integrativa', sub:'Fondi sanitari contrattuali', date:'29 set 2026', state:'sel',
    text:'Problema: versamento al fondo sanitario contrattuale effettuato con la causale di un altro fondo.\nRisoluzione: ogni fondo convenzionato ha una causale F24 propria nella sezione INPS, distinta dai contributi previdenziali; verificare la tabella dei codici prima del versamento.\nCondizioni: indicare matricola, codice sede e periodo di competenza (MM/AAAA).'},
-  {id:'CRM-2069', title:'Pre-DURC: notifica non ricevuta', area:'Previdenza', date:'25 set 2026', state:'sel',
+  {id:'CRM-2069', title:'Pre-DURC: notifica non ricevuta', area:'Welfare aziendale', sub:'DURC Online', date:'25 set 2026', state:'sel',
    text:'Problema: l\'azienda non ha ricevuto la notifica Pre-DURC prima della scadenza del documento.\nRisoluzione: la notifica è prevista per il delegato master, che sceglie se riceverla 30 o 15 giorni prima della scadenza tramite PEC, e-mail o SMS.\nCondizioni: DURC rilasciato con esito regolare e ancora in corso di validità.'},
-  {id:'CRM-2063', title:'CIGO per eventi meteo: termine della domanda', area:'Previdenza', date:'19 set 2026', state:'kb',
-   text:'Problema: dubbio sul termine per la domanda di CIGO dopo una sospensione per maltempo.\nRisoluzione: per gli eventi oggettivamente non evitabili la domanda va presentata su OMNIA IS entro la fine del mese successivo a quello di inizio dell\'evento.\nCondizioni: per gli eventi ordinari il termine resta di 15 giorni dall\'inizio della sospensione.'}
+  {id:'CRM-2063', title:'CIGO per eventi meteo: termine della domanda', area:'Welfare aziendale', sub:'Cassa integrazione ordinaria 2026', date:'19 set 2026', state:'kb',
+   text:'Problema: dubbio sul termine per la domanda di CIGO dopo una sospensione per maltempo.\nRisoluzione: per gli eventi oggettivamente non evitabili la domanda va presentata su OMNIA IS entro la fine del mese successivo a quello di inizio dell\'evento.\nCondizioni: per gli eventi ordinari il termine resta di 15 giorni dall\'inizio della sospensione.'},
+  {id:'CRM-2058', title:'Isopensione: passaggio alla pensione a fine esodo', area:'Previdenza', sub:'Accompagnamento alla pensione', date:'15 set 2026', state:'kb',
+   text:'Problema: lavoratore in esodo chiede se la prestazione si trasforma da sola in pensione.\nRisoluzione: alla scadenza del periodo di esodo il pagamento cessa e non c\'è trasformazione automatica; la domanda di pensione va presentata in tempo utile.\nCondizioni: per chi è interessato dall\'innalzamento dei requisiti 2027-2028, la Circ. 41/2026 prevede il prolungamento fino alla nuova data di pensionamento.'},
+  {id:'CRM-2052', title:'Plafond 3.615,20 €: contributi a più fondi', area:'Sanità integrativa', sub:'Fondi sanitari integrativi', date:'11 set 2026', state:'kb',
+   text:'Problema: dipendente iscritto a due fondi chiede se il limite di 3.615,20 euro vale per ciascun fondo.\nRisoluzione: il limite è unico e condiviso tra contributi deducibili (art. 10 TUIR) e non imponibili (art. 51 TUIR); gli importi non si sommano.\nCondizioni: verificare la tipologia dei fondi e l\'iscrizione all\'Anagrafe dei fondi sanitari.'},
+  {id:'CRM-2047', title:'Estratto conto: periodi mancanti', area:'Previdenza', sub:'Posizione contributiva aziendale', date:'8 set 2026', state:'kb',
+   text:'Problema: nell\'estratto conto di un dipendente mancano alcuni mesi di contribuzione.\nRisoluzione: il lavoratore può inviare una segnalazione contributiva per chiedere accredito o modifica dei periodi; lato azienda l\'anomalia va letta nel contesto dello specifico adempimento INPS.\nCondizioni: se esiste un provvedimento INPS impugnabile si valuta il ricorso amministrativo nei termini previsti.'}
 ];
-const DERIVED = [ {id:'crm-2063', title:'CIGO per eventi meteo: termine della domanda', area:'Previdenza', sub:'Ammortizzatori sociali', upd:'19 set 2026', crm:'CRM-2063', fonti:'Derivato da caso CRM risolto'} ];
+const DERIVED = CRM.filter(c => c.state==='kb').map(c => ({id:c.id.toLowerCase(), title:c.title, area:c.area, sub:c.sub, upd:c.date, crm:c.id, fonti:'Derivato da caso CRM risolto'}));
 let curCrm = null;
 
 // ───────────────────────── Utility ─────────────────────────
@@ -909,11 +916,11 @@ function renderDocs(){
   } else if(!kbSel.sub){
     const subs = TAXONOMY.find(t=>t[0]===kbSel.area)[1];
     content = `<div class="fgrid">${subs.map(sb => {
-      const n = allDocs().filter(d=>d.area===kbSel.area && d.sub===sb).length;
-      return `<div class="fcard" onclick="selTax('${kbSel.area}','${sb}')">${ICON.folder}<b>${esc(sb)}</b><small>${n} ${n===1?'documento':'documenti'}</small></div>`;
+      const ds = allDocs().filter(d=>d.area===kbSel.area && d.sub===sb), nc = ds.filter(d=>d.crm).length;
+      return `<div class="fcard" onclick="selTax('${kbSel.area}','${sb}')">${ICON.folder}<b>${esc(sb)}</b><small>${ds.length} ${ds.length===1?'documento':'documenti'}${nc?` · ${nc} da casi CRM`:''}</small></div>`;
     }).join('')}</div>`;
   } else {
-    const list = allDocs().filter(d => d.area===kbSel.area && d.sub===kbSel.sub);
+    const list = allDocs().filter(d => d.area===kbSel.area && d.sub===kbSel.sub).sort((x,y) => (x.crm?1:0)-(y.crm?1:0));
     content = list.length ? list.map(docRow).join('') : '<p style="color:var(--muted);padding:20px 0">Nessun documento in questa cartella.</p>';
   }
   $('kbmain').innerHTML = `<div class="lh">${crumbs()}${search}</div>` + content;
@@ -963,7 +970,7 @@ function scrollSec(n, hl){
 // ───────────────────────── Casi CRM ─────────────────────────
 const CRMST = {sel:['Da selezionare','st-sel'], ing:['Ingestion in corso','st-ing'], kb:['In KB','st-kb']};
 function renderCrm(){
-  $('crmlist').innerHTML = CRM.map(c => `<div class="crm"><span class="di" style="color:var(--soft)">${ICON.folder}</span><div><b>${esc(c.title)}</b><small>${c.id} · ${esc(c.area)} · risolto il ${c.date}</small></div>
+  $('crmlist').innerHTML = CRM.map(c => `<div class="crm"><span class="di" style="color:var(--soft)">${ICON.folder}</span><div><b>${esc(c.title)}</b><small>${c.id} · ${esc(c.area)} › ${esc(c.sub)} · risolto il ${c.date}</small></div>
     <div class="rt"><span class="st ${CRMST[c.state][1]}">${CRMST[c.state][0]}</span>${c.state==='sel'?`<button class="btn btn-o btn-s" onclick="openKbPrep('${c.id}')">${ICON.draft}Prepara contenuto</button>`:(c.state==='kb'?`<button class="btn btn-o btn-s" onclick="openDoc('${c.id.toLowerCase()}')">Apri in KB</button>`:'')}</div></div>`).join('');
 }
 function openKbPrep(id){
@@ -976,8 +983,7 @@ function includeKb(){
   closeM('m-kb'); renderCrm(); toast(c.id+' approvato: generazione del documento SharePoint e ingestion');
   setTimeout(()=>{
     c.state='kb';
-    const area = c.area, sub = area==='Previdenza'?'Contributi e regolarità':(area==='Welfare aziendale'?'Parità di genere':'Fondi sanitari');
-    DERIVED.push({id:c.id.toLowerCase(), title:c.title, area, sub, upd:'oggi', crm:c.id, fonti:'Derivato da caso CRM risolto'});
+    DERIVED.push({id:c.id.toLowerCase(), title:c.title, area:c.area, sub:c.sub, upd:'oggi', crm:c.id, fonti:'Derivato da caso CRM risolto'});
     renderCrm(); if($('kbmain').dataset.init){ renderTax(); }
     toast(c.id+' disponibile nella Knowledge Base');
   }, 2600);
