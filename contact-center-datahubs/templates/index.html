@@ -731,7 +731,7 @@ function createCase(){
 function openCrm(){
   const c = getCase(curCase);
   const nCons = c.adv.filter(m=>m.role==='user').length;
-  const srcs = [...new Set(c.adv.filter(m=>m.role==='assistant').flatMap(m=>[...m.content.matchAll(/\[\[([a-z0-9-]+)#(\d+)\]\]/g)].map(x=>docById(x[1])?docById(x[1]).title:x[1])))];
+  const srcs = [...new Set(c.adv.filter(m=>m.role==='assistant').flatMap(m=>[...m.content.matchAll(/\[\[([a-z0-9-]+)#(\d+)\]\]/g)].map(x=>{const d=allDocs().find(y=>y.id===x[1]);return d?d.title:x[1];})))];
   const nOut = c.msgs.filter(m=>m.dir==='out').length;
   $('crm-ref').textContent = c.id + ' · Revisione operatore';
   $('crm-sint').value = `${c.oggetto}\n\nAttività: consultazione della base approvata (${nCons} ${nCons===1?'consultazione':'consultazioni'}) e verifica delle informazioni disponibili.` +
@@ -763,9 +763,9 @@ function mdAnswer(text){
 }
 function srcCards(refs){
   return refs.map((k,i) => {
-    const [id,n] = k.split('#'); const d = docById(id); if(!d) return '';
-    const sec = docSections(id)[n] || '';
-    return `<div class="src" onclick="openDoc('${id}',${n})"><span class="n">${i+1}</span>${ICON.doc}<div><b>${esc(d.title)}</b><small>§${n} ${esc(sec)} · ${d.upd}</small></div><span class="go">${ICON.go}</span></div>`;
+    const [id,n] = k.split('#'); const d = allDocs().find(x=>x.id===id); if(!d) return '';
+    const sub = d.crm ? `<span class="chip-crm" style="padding:1px 6px;margin-right:4px">Da caso CRM</span>${esc(d.crm)} · ${d.upd}` : `§${n} ${esc(docSections(id)[n] || '')} · ${d.upd}`;
+    return `<div class="src" onclick="openDoc('${id}',${d.crm?0:n})"><span class="n">${i+1}</span>${ICON.doc}<div><b>${esc(d.title)}</b><small>${sub}</small></div><span class="go">${ICON.go}</span></div>`;
   }).join('');
 }
 function renderThread(list, el, opts){
@@ -832,7 +832,7 @@ async function askCase(text){
   try{
     const hist = c.adv.filter(m=>!m.error && m!==ans).map(m=>({role:m.role, content:m.content}));
     let first = true;
-    await streamAsk({messages:hist, case:caseCtx(c)}, full => {
+    await streamAsk({messages:hist, case:caseCtx(c), crm_docs:crmDocs()}, full => {
       if(first){ c._pending=false; c.adv.push(ans); first=false; }
       ans.content = full; if(curCase===c.id) renderAdv();
     });
@@ -845,7 +845,7 @@ async function prepDraft(){
   const c = getCase(curCase); if(!c || c.owner!==ME) return;
   setTab('conv'); const box = $('reply'); box.value = 'Preparazione della bozza…'; box.disabled = true;
   try{
-    let txt = await streamAsk({mode:'bozza', messages:[], case:caseCtx(c)}, full => { box.value = full; });
+    let txt = await streamAsk({mode:'bozza', messages:[], case:caseCtx(c), crm_docs:crmDocs()}, full => { box.value = full; });
     box.value = txt.trim();
   }catch(e){
     if(c.draft){ box.value = c.draft; } else { box.value=''; toast(e.message); box.disabled=false; return; }
@@ -869,7 +869,7 @@ async function askFree(text){
   try{
     const hist = FREE.adv.filter(m=>!m.error).map(m=>({role:m.role, content:m.content}));
     let first=true;
-    await streamAsk({messages:hist}, full => { if(first){FREE.pending=false; FREE.adv.push(ans); first=false;} ans.content=full; renderFree(); });
+    await streamAsk({messages:hist, crm_docs:crmDocs()}, full => { if(first){FREE.pending=false; FREE.adv.push(ans); first=false;} ans.content=full; renderFree(); });
     if(first){ FREE.pending=false; FREE.adv.push(ans); }
   }catch(e){ FREE.pending=false; FREE.adv.push({role:'assistant', content:e.message, error:true}); }
   FREE.busy=false; renderFree();
@@ -878,6 +878,7 @@ async function askFree(text){
 // ───────────────────────── Knowledge Base ─────────────────────────
 let kbSel = {area:null, sub:null}, kbQuery = '';
 const allDocs = () => DOCS.concat(DERIVED);
+const crmDocs = () => DERIVED.map(d => { const c = CRM.find(x=>x.id===d.crm); return {id:d.id, title:d.title, area:d.area, sub:d.sub, text:c?c.text:'', note:c&&c.note||''}; });
 function renderTax(){
   const cnt = (a,s) => allDocs().filter(d => (!a||d.area===a) && (!s||d.sub===s)).length;
   let h = `<button class="tx ${!kbSel.area?'on':''}" onclick="selTax(null,null)">${!kbSel.area?ICON.folderO:ICON.folder}Tutti i documenti<span class="c">${cnt()}</span></button>`;
