@@ -315,6 +315,21 @@ body.dark .qa .ans a{color:#7DB4EA;}
 .date-row span{display:block;font-size:17px;color:var(--title);font-weight:600;margin:3px 0;}
 .date-row em{font-style:normal;font-size:14px;color:var(--muted);}
 .date-row a{color:var(--brand);font-size:14px;font-weight:600;cursor:pointer;margin-left:6px;}
+.ap-card{border:1.5px solid var(--border);border-left:5px solid var(--dh-green);background:var(--surface);padding:18px 20px;margin-bottom:14px;}
+.ap-card.st-r{border-left-color:#B7791F;}.ap-card.st-p{border-left-color:#3A6EA5;}.ap-card.st-a{border-left-color:var(--muted);opacity:.8;}
+.ap-card .ap-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
+.ap-card h3{font-size:18px;font-weight:700;color:var(--title);margin:2px 0 4px;}
+.ap-card .ap-meta{font-size:14.5px;color:var(--text-soft);line-height:1.6;}
+.ap-card .ap-when{margin-top:10px;font-size:16px;font-weight:700;color:var(--title);}
+.ap-card .ap-msg{margin-top:10px;font-size:14.5px;color:var(--text);background:var(--tc-bg);padding:10px 12px;line-height:1.55;}
+.ap-card .ap-acts{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;}
+.ap-st{font-size:11.5px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;padding:4px 9px;border-radius:4px;white-space:nowrap;}
+.ap-st.r{background:#FDF4E3;color:#B7791F;}.ap-st.c{background:#EEF5EE;color:var(--dh-green);}.ap-st.p{background:#EAF1F8;color:#3A6EA5;}.ap-st.a{background:var(--border);color:var(--muted);}
+.ap-steps{display:flex;gap:6px;margin-top:12px;font-size:12px;color:var(--muted);flex-wrap:wrap;}
+.ap-steps span{padding:3px 9px;border:1px solid var(--border);border-radius:12px;}
+.ap-steps span.on{border-color:var(--dh-green);color:var(--dh-green);font-weight:700;}
+.ap-h2{font-size:22px;font-weight:700;color:var(--title);margin:30px 0 12px;}
+.fascia-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 .form-field{margin-bottom:14px;}
 .form-field label{display:block;font-size:13px;font-weight:700;color:var(--text-soft);margin-bottom:5px;}
 .form-field input,.form-field select,.form-field textarea{width:100%;border:1.5px solid var(--border);background:var(--surface);color:var(--text);border-radius:8px;padding:11px 13px;font-size:15px;font-family:inherit;outline:none;}
@@ -654,6 +669,7 @@ body.dark .gl-term dd a{color:#7DB4EA;}
     <section class="page c-plus" id="page-plus-quesiti"></section>
     <section class="page c-plus" id="page-plus-date"></section>
     <section class="page c-plus" id="page-plus-inoltra"></section>
+    <section class="page c-plus" id="page-plus-appuntamenti"></section>
 
     <section class="page" id="page-chisiamo">
       <div class="crumbs"><a onclick="goBack()"><svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></a>/<a onclick="showPage('home')">Home</a>/<span>Chi siamo</span></div>
@@ -695,7 +711,7 @@ body.dark .gl-term dd a{color:#7DB4EA;}
         <h2>Con la registrazione</h2>
         <ul>
           <li><strong>P&amp;W Advisor completo</strong> — l'assistente AI che risponde in modo operativo, con fonte e data, e segue le domande di approfondimento.</li>
-          <li><strong>Servizi Plus</strong> — lettera informativa, quesiti risolti, date chiave e invio di quesiti al Centro Studi.</li>
+          <li><strong>Servizi Plus</strong> — lettera informativa, quesiti risolti, date chiave, invio di quesiti al Centro Studi e appuntamenti con un consulente.</li>
         </ul>
 
         <h2>Come risponde l'assistente</h2>
@@ -1112,7 +1128,7 @@ async function sendMsg(txt){
 
 /* ══════════ AVVIO ══════════ */
 /* ══════════ SERVIZI PLUS: DATI ══════════ */
-const PLUS_LOCKED={'plus-lettera':'La Lettera informativa','plus-quesiti':'La raccolta dei Quesiti risolti','plus-date':'Lo scadenzario Date chiave','plus-inoltra':'Il servizio Inoltra un quesito'};
+const PLUS_LOCKED={'plus-lettera':'La Lettera informativa','plus-quesiti':'La raccolta dei Quesiti risolti','plus-date':'Lo scadenzario Date chiave','plus-inoltra':'Il servizio Inoltra un quesito','plus-appuntamenti':'La prenotazione di un appuntamento con un consulente'};
 const QUESITI=[
  {art:'cigo',sec:2,q:'I dirigenti possono accedere alla CIGO?',a:'No. I dirigenti sono esclusi dalla Cassa integrazione guadagni ordinaria.',src:'Art. 1, c. 1, D.Lgs. 148/2015'},
  {art:'cigo',sec:2,q:'Per la CIGO legata alle ondate di calore serve il requisito dei 30 giorni di anzianità?',a:'No. Per le richieste connesse a eventi oggettivamente non evitabili (EONE), tra cui le emergenze climatiche, il requisito dei 30 giorni non si applica. Per questi periodi non è dovuto nemmeno il contributo addizionale.',src:'Msg. INPS 2418/2026 · D.Lgs. 148/2015'},
@@ -1149,6 +1165,7 @@ const PLUS_SERVICES=[
  {id:'plus-lettera',ic:'✉️',title:'Lettera informativa',tag:'La sintesi mensile del Centro Studi sulle novità che contano per imprese, dirigenti e professionisti.',items:['Novità INPS, Agenzia delle Entrate e Ministero della Salute','Cosa cambia in pratica, in poche righe','Collegamento diretto all\'articolo dell\'Hub'],open:"showPage('plus-lettera')"},
  {id:'plus-quesiti',ic:'💬',title:'Quesiti risolti',tag:'Le domande più frequenti, con risposta breve e fonte normativa.',items:['Casi reali, resi anonimi','Risposta breve e verificata','Fonte normativa per ogni risposta'],open:"showPage('plus-quesiti')"},
  {id:'plus-date',ic:'📅',title:'Date chiave e scadenze',tag:'Lo scadenzario degli adempimenti e delle decorrenze 2026.',items:['Decorrenze e finestre temporali','Riferimento alla circolare','Collegamento al paragrafo dell\'articolo'],open:"showPage('plus-date')"},
+ {id:'plus-appuntamenti',ic:'🤝',title:'Appuntamento con un consulente',tag:'Richiedi un incontro con un consulente del Polo Interattivo, in sede, in videochiamata o al telefono.',items:['Scegli tematica, sede e modalità','Indica le fasce orarie che preferisci','Segui qui lo stato: conferma o nuova proposta di orario'],open:"showPage('plus-appuntamenti')"},
  {id:'plus-dati',soon:true,ic:'📊',title:'Dati e ricerche',tag:'Dashboard tematiche, report trimestrali e infografiche su welfare, previdenza e mercato del lavoro.',items:['Dashboard per area tematica','Report trimestrali e rapporto annuale','Infografiche pronte da condividere']},
  {id:'plus-tutorial',soon:true,ic:'🎬',title:'Tutorial e video',tag:'Video brevi e guide passo-passo sulle procedure INPS più frequenti.',items:['Video da 1 a 3 minuti','Guide "come fare per"','Un nuovo tutorial ogni mese']},
  {id:'plus-formazione',soon:true,ic:'🎓',title:'Formazione e webinar',tag:'Percorsi formativi e webinar per HR, manager e aziende.',items:['Calendario di webinar e corsi','Archivio con slide, video e sintesi','Percorsi per profilo']},
@@ -1165,7 +1182,7 @@ function renderPlus(){
     <div class="area-title"><h1>★ Servizi Plus</h1><p>Strumenti aggiuntivi riservati agli utenti registrati dell'Hub.</p></div>
     <div class="plus-intro">${LOGGED
       ?`<p><b>Sei connesso.</b> Tutti i Servizi Plus sono attivi sul tuo profilo.</p>`
-      :`<p>Articoli e ricerca intelligente sono aperti a tutti. Con l'accesso sblocchi l'assistente completo, la lettera informativa, i quesiti risolti, lo scadenzario e l'invio dei quesiti al Centro Studi.</p><div class="btns"><button class="btn-solid" onclick="openAuth('login','plus')">Accedi</button><button class="btn-ghost" onclick="openAuth('register','plus')">Richiedi l'accesso</button></div>`}</div>
+      :`<p>Articoli e ricerca intelligente sono aperti a tutti. Con l'accesso sblocchi l'assistente completo, la lettera informativa, i quesiti risolti, lo scadenzario, l'invio dei quesiti al Centro Studi e la richiesta di appuntamenti con un consulente.</p><div class="btns"><button class="btn-solid" onclick="openAuth('login','plus')">Accedi</button><button class="btn-ghost" onclick="openAuth('register','plus')">Richiedi l'accesso</button></div>`}</div>
     <div class="plus-grid">${[...PLUS_SERVICES.filter(s=>!s.soon),...PLUS_SERVICES.filter(s=>s.soon)].map(s=>`
       <div class="plus-card">
         <div class="pc-top"><div class="pc-ic">${s.ic}</div>${s.soon?'<span class="chip-soon">In arrivo</span>':(LOGGED?'<span class="open-chip">Attivo</span>':`<span class="lock">${LOCK_SVG}Riservato</span>`)}</div>
@@ -1200,6 +1217,7 @@ function renderPlus(){
       <button class="btn-solid" type="submit">Invia al Centro Studi</button>
       <div id="q-ok" class="ok-box" hidden>Quesito inviato. La redazione lo prenderà in carico.</div>
     </form></div>`;
+  renderAppuntamenti();
 }
 function qaHtml(x){return `<details class="qa"><summary>${x.q}</summary><div class="ans">${x.a}<span class="src-line">Fonte: ${x.src} · <a onclick="openSection('${x.art}',${x.sec})">Approfondisci nell'articolo</a></span></div></details>`;}
 function plusBox(artId){
@@ -1245,6 +1263,74 @@ async function submitQuesito(e){
     const j=await r.json();
     if(!j.ok) throw new Error(j.error||'Errore');
     f.reset();ok.hidden=false;
+  }catch(ex){err.textContent=ex.message||'Invio non riuscito, riprova.';err.hidden=false;}
+}
+
+
+/* ══════════ SERVIZI PLUS: APPUNTAMENTI ══════════ */
+const AP_TEMI=[['Previdenza',['Accompagnamento alla pensione','Posizione contributiva aziendale']],['Welfare aziendale',['Cassa integrazione ordinaria 2026','La certificazione della parità di genere','DURC Online']],['Sanità integrativa',['Fondi sanitari integrativi','Fondi sanitari contrattuali']]];
+const AP_SEDI=['Sede territoriale di Roma','Sede territoriale di Milano','Sede territoriale di Napoli','Sede territoriale di Torino','Sede territoriale di Bologna'];
+const AP_ST={'Richiesto':['r','st-r'],'Confermato':['c','st-c'],'Proposto altro orario':['p','st-p'],'Annullato':['a','st-a']};
+// Richieste demo dell'utente connesso (dati di fantasia)
+const MY_APPTS=[
+ {id:'APP-304',inviata:'10 ottobre 2026',tema:'Welfare aziendale › La certificazione della parità di genere',sede:'Sede territoriale di Torino',mod:'Videochiamata',fasce:'15 ott mattina · 16 ott mattina',stato:'Proposto altro orario',quando:'mercoledì 21 ottobre, ore 14:00',cons:'D. Russo · Welfare aziendale',msg:'Le fasce indicate non sono disponibili: il Polo Interattivo ti propone un altro orario.'},
+ {id:'APP-303',inviata:'8 ottobre 2026',tema:'Sanità integrativa › Fondi sanitari integrativi',sede:'Sede territoriale di Milano',mod:'Telefono',fasce:'16 ott mattina',stato:'Confermato',quando:'venerdì 16 ottobre, ore 10:00',cons:'C. Marino · Sanità integrativa',msg:'Riceverai un promemoria via email il giorno prima.'}
+];
+let apSeq=310;
+function apDay(s){if(!s)return '';const d=new Date(s+'T12:00');return d.toLocaleDateString('it-IT',{weekday:'long',day:'numeric',month:'long'});}
+function apCard(a){
+  const [c,cls]=AP_ST[a.stato];
+  const steps=['Richiesto','Presa in carico','Confermato'];const lvl=a.stato==='Richiesto'?0:(a.stato==='Confermato'?2:1);
+  return `<div class="ap-card ${cls}"><div class="ap-top"><div><span class="kicker">${a.id} · inviata il ${a.inviata}</span><h3>${a.tema.split(' › ')[1]}</h3>
+    <div class="ap-meta">${a.tema.split(' › ')[0]} · ${a.mod} · ${a.sede}<br>Fasce indicate: ${a.fasce}</div></div><span class="ap-st ${c}">${a.stato}</span></div>
+    ${a.quando?`<div class="ap-when">${a.stato==='Proposto altro orario'?'Orario proposto: ':''}${a.quando}${a.cons?` · ${a.cons}`:''}</div>`:''}
+    ${a.msg?`<div class="ap-msg">${a.msg}</div>`:''}
+    ${a.stato==='Proposto altro orario'?`<div class="ap-acts"><button class="btn-solid" onclick="apReply('${a.id}',true)">Accetta l'orario</button><button class="btn-ghost" onclick="apReply('${a.id}',false)">Non mi va bene</button></div>`:''}
+    ${a.stato!=='Annullato'?`<div class="ap-steps">${steps.map((s,i)=>`<span class="${i<=lvl?'on':''}">${s}</span>`).join('')}</div>`:''}</div>`;
+}
+function renderAppuntamenti(){
+  const el=document.getElementById('page-plus-appuntamenti'); if(!el||!LOGGED) return;
+  const opts=AP_TEMI.map(([a,subs])=>`<optgroup label="${a}">${subs.map(x=>`<option value="${a} › ${x}">${x}</option>`).join('')}</optgroup>`).join('')+'<option value="Altro › Altro tema">Altro tema</option>';
+  const fx=i=>`<div class="fascia-row"><div class="form-field"><label>Fascia ${i} · giorno${i===1?'':' (facoltativa)'}</label><input type="date" name="giorno${i}" ${i===1?'required':''} min="2026-10-15"></div>
+    <div class="form-field"><label>Fascia ${i} · orario</label><select name="orario${i}"><option>Mattina (9-13)</option><option>Pomeriggio (14-18)</option></select></div></div>`;
+  el.innerHTML=`${crumbsPlus('Appuntamento con un consulente')}
+    <div class="plus-doc" style="max-width:820px"><h1>Appuntamento con un consulente</h1>
+    <p class="lead-p">Richiedi un incontro con un consulente del Polo Interattivo. La richiesta arriva al Polo come ticket: ti confermiamo l'orario o te ne proponiamo un altro, e trovi qui lo stato aggiornato. La conferma arriva anche via email, con un promemoria il giorno prima.</p>
+    <div class="demo-note">Dimostrazione: le richieste e gli stati sono simulati.</div>
+    <h2 class="ap-h2" style="margin-top:6px">Le mie richieste</h2>
+    <div id="ap-list">${MY_APPTS.map(apCard).join('')}</div>
+    <h2 class="ap-h2">Nuova richiesta</h2>
+    <form onsubmit="submitAppuntamento(event)" id="ap-form">
+      <div class="form-field"><label>Tematica</label><select name="tema" required>${opts}</select></div>
+      <div class="form-row"><div class="form-field"><label>Sede di riferimento</label><select name="sede">${AP_SEDI.map(x=>`<option>${x}</option>`).join('')}</select></div>
+        <div class="form-field"><label>Modalità</label><select name="modalita"><option>In sede</option><option>Videochiamata</option><option>Telefono</option></select></div></div>
+      ${fx(1)}${fx(2)}${fx(3)}
+      <div class="form-field"><label>Cosa vuoi approfondire</label><textarea name="note" rows="4" placeholder="Descrivi il tema senza dati personali di iscritti o lavoratori"></textarea></div>
+      <div id="ap-err" class="err-box" hidden></div>
+      <button class="btn-solid" type="submit">Invia la richiesta</button>
+      <div id="ap-ok" class="ok-box" hidden>Richiesta inviata. La trovi in "Le mie richieste" con lo stato aggiornato.</div>
+    </form></div>`;
+}
+function apReply(id,ok){
+  const a=MY_APPTS.find(x=>x.id===id);
+  if(ok){a.stato='Confermato';a.msg='Appuntamento confermato. Riceverai un promemoria via email il giorno prima.';}
+  else{a.stato='Annullato';a.quando='';a.cons='';a.msg='Proposta rifiutata. Puoi inviare una nuova richiesta con altre fasce orarie.';
+    const f=document.getElementById('ap-form'); if(f){f.tema.value=a.tema; setTimeout(()=>f.scrollIntoView({behavior:'smooth'}),50);}}
+  document.getElementById('ap-list').innerHTML=MY_APPTS.map(apCard).join('');
+}
+async function submitAppuntamento(e){
+  e.preventDefault();
+  const f=e.target,err=document.getElementById('ap-err'),ok=document.getElementById('ap-ok');err.hidden=true;ok.hidden=true;
+  const d=Object.fromEntries(new FormData(f).entries());
+  const fasce=[1,2,3].filter(i=>d['giorno'+i]).map(i=>({giorno:d['giorno'+i],orario:d['orario'+i]}));
+  if(fasce.some(x=>[0,6].includes(new Date(x.giorno+'T12:00').getDay()))){err.textContent='Scegli giorni lavorativi (dal lunedì al venerdì).';err.hidden=false;return;}
+  try{
+    const r=await fetch('/appuntamento',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({tema:d.tema,sede:d.sede,modalita:d.modalita,note:d.note,fasce})});
+    const j=await r.json(); if(!j.ok) throw new Error(j.error||'Errore');
+    MY_APPTS.unshift({id:j.id||('APP-'+(apSeq++)),inviata:new Date().toLocaleDateString('it-IT',{day:'numeric',month:'long',year:'numeric'}),tema:d.tema,sede:d.sede,mod:d.modalita,
+      fasce:fasce.map(x=>apDay(x.giorno)+' '+x.orario.split(' ')[0].toLowerCase()).join(' · '),stato:'Richiesto',quando:'',cons:'',msg:'Il Polo Interattivo prenderà in carico la richiesta e ti confermerà l\'orario.'});
+    document.getElementById('ap-list').innerHTML=MY_APPTS.map(apCard).join('');
+    f.reset();ok.hidden=false;document.getElementById('ap-list').scrollIntoView({behavior:'smooth'});
   }catch(ex){err.textContent=ex.message||'Invio non riuscito, riprova.';err.hidden=false;}
 }
 
