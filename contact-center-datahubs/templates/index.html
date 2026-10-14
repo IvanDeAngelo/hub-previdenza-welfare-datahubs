@@ -252,6 +252,65 @@ svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke
 .st-kb{background:var(--blue-l);color:var(--blue)}
 .crm-info{margin-top:18px;font-size:12px;color:var(--soft);line-height:1.55;background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px}
 
+
+/* ── Agenda ── */
+.agwrap{display:grid;grid-template-columns:340px 1fr;flex:1;min-height:0}
+.agl{background:#fff;border-right:1px solid var(--border);overflow-y:auto;padding:16px}
+.cal .chd{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.cal .chd b{font-size:14px;text-transform:capitalize}
+.cal .chd button{border:1px solid var(--border);background:#fff;border-radius:6px;width:28px;height:28px;color:var(--soft);display:flex;align-items:center;justify-content:center}
+.cal .chd button:hover{background:var(--bg)}
+.cal .grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.cal .dow{font-size:10.5px;font-weight:700;color:var(--muted);text-align:center;padding:4px 0}
+.cal .d{aspect-ratio:1;border:1px solid transparent;border-radius:7px;background:none;font-size:12.5px;color:var(--text);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}
+.cal .d:hover{background:var(--g-ll);border-color:#CFE0D0}
+.cal .d.out{visibility:hidden}
+.cal .d.we{color:#B8BDC6;cursor:default}
+.cal .d.we:hover{background:none;border-color:transparent}
+.cal .d.today{font-weight:700;color:var(--g-dd);border-color:#CFE0D0}
+.cal .d.on{background:var(--g-d);color:#fff;font-weight:700;border-color:var(--g-d)}
+.cal .d .dots{display:flex;gap:2px;height:5px}
+.cal .d .dots i{width:5px;height:5px;border-radius:50%;background:var(--g)}
+.cal .d .dots i.r{background:var(--amber)}
+.cal .d.on .dots i{background:#fff}
+.cal .leg{display:flex;gap:14px;font-size:11px;color:var(--muted);margin-top:10px}
+.cal .leg i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--g);margin-right:5px}
+.cal .leg i.r{background:var(--amber)}
+.agl h4{font-size:12.5px;font-weight:700;margin:22px 0 4px;display:flex;justify-content:space-between;align-items:center}
+.agl .hsub{font-size:11px;color:var(--muted);margin-bottom:10px;line-height:1.45}
+.rq{border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:8px;padding:10px 12px;margin-bottom:8px;cursor:pointer;background:#fff}
+.rq:hover{border-color:var(--amber)}
+.rq.done{border-left-color:var(--g);opacity:.75}
+.rq .r1{display:flex;justify-content:space-between;align-items:center;font-size:10.5px;color:var(--muted)}
+.rq b{display:block;font-size:12.5px;margin:4px 0 2px}
+.rq small{display:block;font-size:11.5px;color:var(--soft)}
+.agr{overflow-y:auto;padding:18px 24px}
+.agr .lh{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.agr .lh h3{font-size:15px}
+.agr .lh small{font-size:11.5px;color:var(--muted)}
+.slot{display:grid;grid-template-columns:56px 1fr;gap:12px;margin-bottom:8px}
+.slot .h{font-size:12px;font-weight:600;color:var(--soft);padding-top:11px;text-align:right}
+.slot .col{display:flex;flex-direction:column;gap:6px}
+.slot .free{border:1px dashed var(--border-d);border-radius:8px;padding:10px 14px;color:var(--muted);font-size:12px;background:none;text-align:left;display:flex;align-items:center;gap:8px}
+.slot .free:hover{border-color:var(--g);color:var(--g-dd);background:var(--g-ll)}
+.slot .free.mini{padding:5px 12px;font-size:11.5px}
+.appt{background:#fff;border:1px solid var(--border);border-left:4px solid var(--g);border-radius:8px;padding:10px 14px;display:flex;gap:14px;align-items:center}
+.appt.prop{border-left-color:var(--blue)}
+.appt b{display:block;font-size:13px}
+.appt small{display:block;font-size:11.5px;color:var(--muted);margin-top:2px}
+.appt .rt{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:5px;font-size:11px;color:var(--soft);text-align:right}
+.st-req{background:var(--amber-l);color:var(--amber)}
+.st-conf{background:var(--g-l);color:var(--g-dd)}
+.st-prop{background:var(--blue-l);color:var(--blue)}
+.st-ann{background:#EEF0F4;color:var(--slate)}
+.ag-empty{color:var(--muted);font-size:12.5px;padding:30px 0;text-align:center}
+.modal input[type=date]{width:100%;border:1px solid var(--border-d);border-radius:7px;padding:8px 11px;outline:0;background:#fff}
+.modal .info{background:var(--bg);border-radius:7px;padding:10px 12px;font-size:12px;line-height:1.6;color:var(--soft)}
+.modal .info b{color:var(--text);font-weight:600}
+.fasce label{display:flex!important;gap:9px;align-items:center;font-weight:500!important;border:1px solid var(--border);border-radius:7px;padding:8px 10px;margin:0 0 6px!important;cursor:pointer;font-size:12.5px}
+.fasce label:has(input:checked){border-color:var(--g);background:var(--g-ll)}
+.fasce input{accent-color:var(--g-d)}
+
 /* ── Modal & toast ── */
 .ov{position:fixed;inset:0;background:rgba(30,35,45,.42);display:none;align-items:center;justify-content:center;z-index:50;padding:20px}
 .ov.on{display:flex}
@@ -298,7 +357,7 @@ svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke
   .cases{grid-template-columns:1fr;overflow-y:auto}
   .queue{max-height:300px}
   .case,.adv{min-height:520px}
-  .kbwrap,.viewer{grid-template-columns:1fr}
+  .kbwrap,.viewer,.agwrap{grid-template-columns:1fr}
   .top .who,.chip-demo{display:none}
 }
 </style>
@@ -346,6 +405,7 @@ svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke
     <aside class="side">
       <h6>Area operativa</h6>
       <button class="nav on" data-p="case" onclick="go('case')"><svg class="i" viewBox="0 0 24 24"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z"/></svg>Case<span class="cnt" id="nav-cnt">0</span></button>
+      <button class="nav" data-p="agenda" onclick="go('agenda')"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Agenda<span class="cnt" id="ag-cnt" title="Richieste da confermare">0</span></button>
       <button class="nav" data-p="kb" onclick="go('kb');kbQuery='';selTax(null,null)"><svg class="i" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>Knowledge Base</button>
       <button class="nav" data-p="free" onclick="go('free')"><svg class="i" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/><path d="M8 9h8M8 13h5"/></svg>Consultazione libera</button>
       <button class="nav" data-p="crm" onclick="go('crm')"><svg class="i" viewBox="0 0 24 24"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>Casi CRM</button>
@@ -392,6 +452,23 @@ svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke
               <div class="af"><span>Solo uso interno · risposte dalla base approvata</span><button class="sendbtn" id="adv-send" onclick="askCase()" aria-label="Invia"><svg class="i" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button></div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <!-- ═════════ AGENDA ═════════ -->
+      <section class="page" id="p-agenda" style="flex-direction:column">
+        <div class="ph">
+          <div><div class="crumb">Contact Center / Area operativa</div><h1>Agenda appuntamenti</h1></div>
+          <button class="btn btn-g" onclick="openAppt({date:selDay})"><svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Nuovo appuntamento</button>
+        </div>
+        <div class="agwrap">
+          <div class="agl">
+            <div class="cal" id="cal"></div>
+            <h4>Richieste dai Servizi Plus <span class="st st-req" id="rq-n"></span></h4>
+            <div class="hsub">Arrivano dall'Hub come ticket di tipo Appuntamento: prendile in carico e conferma l'orario o proponine un altro.</div>
+            <div id="rqlist"></div>
+          </div>
+          <div class="agr" id="agday"></div>
         </div>
       </section>
 
@@ -501,6 +578,46 @@ svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke
   <div class="mf"><button class="btn btn-o" onclick="closeM('m-kb')">Annulla</button><button class="btn btn-g" id="kbm-go" disabled onclick="includeKb()"><svg class="i" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Includi in KB</button></div>
 </div></div>
 
+<!-- Modale: appuntamento -->
+<div class="ov" id="m-app"><div class="modal" style="max-width:600px">
+  <div class="mh"><b>Nuovo appuntamento</b><button onclick="closeM('m-app')" aria-label="Chiudi">×</button></div>
+  <div class="mb">
+    <span class="ref" id="app-ref"></span>
+    <div class="row2">
+      <div><label for="a-date">Data</label><input type="date" id="a-date"></div>
+      <div><label for="a-time">Orario</label><select id="a-time"></select></div>
+    </div>
+    <div class="row2">
+      <div><label for="a-nome">Cognome e nome</label><input type="text" id="a-nome"></div>
+      <div><label for="a-tel">Cellulare / WhatsApp</label><input type="text" id="a-tel"></div>
+    </div>
+    <div class="row2">
+      <div><label for="a-email">Email</label><input type="text" id="a-email" placeholder="Per la conferma e il promemoria"></div>
+      <div><label for="a-org">Organizzazione</label><input type="text" id="a-org"></div>
+    </div>
+    <label for="a-tema">Tematica</label><select id="a-tema"></select>
+    <div class="row2">
+      <div><label for="a-sede">Sede</label><select id="a-sede"></select></div>
+      <div><label for="a-mod">Modalità</label><select id="a-mod"><option>In sede</option><option>Videochiamata</option><option>Telefono</option></select></div>
+    </div>
+    <div class="row2">
+      <div><label for="a-cons">Consulente</label><select id="a-cons"></select></div>
+      <div><label for="a-case">Case collegato</label><select id="a-case"></select></div>
+    </div>
+    <label for="a-note">Note per il consulente</label>
+    <textarea id="a-note" style="min-height:70px" placeholder="Cosa vuole approfondire l'utente (senza dati sanitari o identificativi di terzi)"></textarea>
+    <div class="hint">All'utente arrivano la conferma via email o WhatsApp e un promemoria il giorno prima. Invio simulato.</div>
+  </div>
+  <div class="mf"><button class="btn btn-o" onclick="closeM('m-app')">Annulla</button><button class="btn btn-g" onclick="saveAppt()"><svg class="i" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Registra in agenda</button></div>
+</div></div>
+
+<!-- Modale: richiesta dai Servizi Plus -->
+<div class="ov" id="m-req"><div class="modal" style="max-width:600px">
+  <div class="mh"><b>Richiesta di appuntamento</b><button onclick="closeM('m-req')" aria-label="Chiudi">×</button></div>
+  <div class="mb" id="req-body"></div>
+  <div class="mf" id="req-foot"></div>
+</div></div>
+
 <div class="toast" id="toast"></div>
 
 <script>
@@ -519,6 +636,7 @@ const ICON = {
   folder:'<svg class="i" viewBox="0 0 24 24"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>',
   folderO:'<svg class="i" viewBox="0 0 24 24"><path d="M2 19V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2v2"/><path d="M2 19l3-9h17l-3 9z"/></svg>',
   back:'<svg class="i" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>',
+  cal:'<svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>',
   search:'<svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>'
 };
 
@@ -623,6 +741,7 @@ function openM(id){ $(id).classList.add('on'); }
 function go(p){
   document.querySelectorAll('.page').forEach(x => x.classList.toggle('on', x.id === 'p-' + p));
   document.querySelectorAll('.nav').forEach(x => x.classList.toggle('on', x.dataset.p === p));
+  if(p === 'agenda') renderAgenda();
   if(p === 'kb' && !$('kbmain').dataset.init){ renderTax(); renderDocs(); $('kbmain').dataset.init = 1; }
 }
 
@@ -653,7 +772,7 @@ function renderCase(){
   const mine = c.owner === ME, locked = c.status === 'lock';
   let action = '';
   if(c.status === 'wait') action = `<button class="btn btn-g btn-s" onclick="takeCase()">Prendi in carico</button>`;
-  else if(mine) action = `<button class="btn btn-g btn-s" onclick="openCrm()">${ICON.clip}Sintesi e CRM</button>`;
+  else if(mine) action = `<button class="btn btn-o btn-s" onclick="apptFromCase()">${ICON.cal}Fissa appuntamento</button><button class="btn btn-g btn-s" onclick="openCrm()">${ICON.clip}Sintesi e CRM</button>`;
   col.innerHTML = `
     <div class="ch">
       <div class="r1"><span>${c.id} · ${c.canale}</span><span class="st ${STATUS[c.status][1]}">${STATUS[c.status][0]}</span></div>
@@ -704,6 +823,7 @@ function renderDet(){
     <tr><td>Apertura</td><td>Oggi, ${c.t}</td></tr>
     <tr><td>Presa in carico</td><td>${c.owner?esc(c.owner):'—'}</td></tr>
     <tr><td>Consultazioni assistente</td><td>${nCons}</td></tr>
+    <tr><td>Appuntamenti</td><td>${APPTS.filter(a=>a.case===c.id).map(a=>`<a style="cursor:pointer" onclick="showDay('${a.date}')">${a.id} · ${fmtDay(a.date,true)}, ${a.time}</a>`).join('<br>') || '—'}</td></tr>
   </table>`;
 }
 function takeCase(){
@@ -1011,8 +1131,168 @@ function includeKb(){
   }, 2600);
 }
 
+
+// ───────────────────────── Agenda ─────────────────────────
+const TODAY = '2026-10-14';   // data della demo
+const SEDI = ['Sede territoriale di Roma','Sede territoriale di Milano','Sede territoriale di Napoli','Sede territoriale di Torino','Sede territoriale di Bologna'];
+const CONSULENTI = ['E. Ferri · Previdenza','D. Russo · Welfare aziendale','C. Marino · Sanità integrativa'];
+const SLOTS = ['09:00','10:00','11:00','12:00','14:00','15:00','16:00','17:00'];
+const MESI = ['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre'];
+const GG = ['domenica','lunedì','martedì','mercoledì','giovedì','venerdì','sabato'];
+const APST = {'Richiesto':'st-req','Confermato':'st-conf','Proposto altro orario':'st-prop','Annullato':'st-ann'};
+const toDate = s => { const [y,m,d] = s.split('-').map(Number); return new Date(y, m-1, d); };
+const ymd = d => d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const fmtDay = (s, short) => { const d = toDate(s); return short ? `${d.getDate()} ${MESI[d.getMonth()].slice(0,3)}` : `${GG[d.getDay()]} ${d.getDate()} ${MESI[d.getMonth()]}`; };
+const isWe = s => [0,6].includes(toDate(s).getDay());
+const temi = () => TAXONOMY.flatMap(([a,subs]) => subs.map(x => a+' › '+x));
+
+// Appuntamenti e richieste demo (nomi di fantasia)
+const APPTS = [
+  {id:'APP-298', date:'2026-10-12', time:'10:00', nome:'Stefano Greco', tel:'+39 338 ••• ••20', email:'', org:'Società di servizi', tema:'Previdenza › Posizione contributiva aziendale', sede:SEDI[4], mod:'Telefono', cons:CONSULENTI[0], stato:'Confermato', origine:'Telefono', case:null, note:''},
+  {id:'APP-301', date:'2026-10-14', time:'11:00', nome:'Francesca Gallo', tel:'+39 335 ••• ••41', email:'f.gallo@esempio.it', org:'Azienda di logistica, 210 dipendenti', tema:'Previdenza › Accompagnamento alla pensione', sede:SEDI[0], mod:'Videochiamata', cons:CONSULENTI[0], stato:'Confermato', origine:'Telefono', case:null, note:'Valutare l\'isopensione per un gruppo di dipendenti.'},
+  {id:'APP-302', date:'2026-10-14', time:'15:00', nome:'Giorgio Esposito', tel:'+39 340 ••• ••77', email:'', org:'Impresa di costruzioni', tema:'Welfare aziendale › DURC Online', sede:SEDI[2], mod:'In sede', cons:CONSULENTI[1], stato:'Confermato', origine:'WhatsApp', case:null, note:''},
+  {id:'APP-303', date:'2026-10-16', time:'10:00', nome:'Valentina Serra', tel:'', email:'v.serra@esempio.it', org:'Gruppo alimentare', tema:'Sanità integrativa › Fondi sanitari integrativi', sede:SEDI[1], mod:'Telefono', cons:CONSULENTI[2], stato:'Confermato', origine:'Servizi Plus', case:null, note:''},
+  {id:'APP-304', date:'2026-10-21', time:'14:00', nome:'Roberto Fabbri', tel:'', email:'r.fabbri@esempio.it', org:'Studio professionale', tema:'Welfare aziendale › La certificazione della parità di genere', sede:SEDI[3], mod:'Videochiamata', cons:CONSULENTI[1], stato:'Proposto altro orario', origine:'Servizi Plus', case:null, note:'Orario proposto in alternativa alle fasce indicate: in attesa di risposta dell\'utente.'}
+];
+const REQS = [
+  {id:'APP-305', ricevuta:'13 ott, 18:42', nome:'Paolo Gentile', email:'p.gentile@esempio.it', ruolo:'Consulente / professionista', org:'Studio di consulenza del lavoro', tema:'Welfare aziendale › Cassa integrazione ordinaria 2026', sede:SEDI[0], mod:'Videochiamata',
+   fasce:[{date:'2026-10-16', from:'09:00', to:'12:00'},{date:'2026-10-19', from:'14:00', to:'17:00'},{date:'2026-10-20', from:'09:00', to:'12:00'}],
+   note:'Domande di CIGO per eventi meteo su più cantieri dello stesso cliente.', stato:'Richiesto'},
+  {id:'APP-306', ricevuta:'14 ott, 08:15', nome:'Laura Ricci', email:'l.ricci@esempio.it', ruolo:'HR / responsabile del personale', org:'Azienda manifatturiera, 85 dipendenti', tema:'Welfare aziendale › La certificazione della parità di genere', sede:SEDI[1], mod:'In sede',
+   fasce:[{date:'2026-10-15', from:'14:00', to:'17:00'},{date:'2026-10-22', from:'09:00', to:'12:00'}],
+   note:'Percorso per ottenere la certificazione e richiesta dell\'esonero contributivo.', stato:'Richiesto'}
+];
+let apptSeq = 307, selDay = TODAY, calM = toDate(TODAY), apptCtx = null, curReq = null;
+
+function renderAgenda(){ renderCal(); renderDay(); renderReqs(); }
+function updAgCnt(){ $('ag-cnt').textContent = REQS.filter(r => r.stato==='Richiesto').length; }
+function showDay(s){ selDay = s; calM = toDate(s); go('agenda'); }
+function calNav(k){ calM = new Date(calM.getFullYear(), calM.getMonth()+k, 1); renderCal(); }
+function renderCal(){
+  const y = calM.getFullYear(), m = calM.getMonth();
+  const first = new Date(y, m, 1), lead = (first.getDay()+6) % 7, days = new Date(y, m+1, 0).getDate();
+  let h = `<div class="chd"><button onclick="calNav(-1)" aria-label="Mese precedente">‹</button><b>${MESI[m]} ${y}</b><button onclick="calNav(1)" aria-label="Mese successivo">›</button></div><div class="grid">`;
+  h += ['L','M','M','G','V','S','D'].map(x => `<div class="dow">${x}</div>`).join('');
+  for(let i=0;i<lead;i++) h += '<div class="d out"></div>';
+  for(let d=1; d<=days; d++){
+    const s = ymd(new Date(y, m, d)), we = isWe(s);
+    const nA = APPTS.filter(a => a.date===s && a.stato!=='Annullato').length;
+    const nR = REQS.filter(r => r.stato==='Richiesto' && r.fasce.some(f => f.date===s)).length;
+    const dots = '<i></i>'.repeat(Math.min(nA,3)) + (nR ? '<i class="r"></i>' : '');
+    h += `<button class="d ${we?'we':''} ${s===TODAY?'today':''} ${s===selDay?'on':''}" ${we?'disabled':`onclick="selDay='${s}';renderCal();renderDay()"`}>${d}<span class="dots">${dots}</span></button>`;
+  }
+  h += `</div><div class="leg"><span><i></i>Appuntamento</span><span><i class="r"></i>Fascia richiesta da confermare</span></div>`;
+  $('cal').innerHTML = h;
+}
+function apptCard(a){
+  return `<div class="appt ${a.stato==='Proposto altro orario'?'prop':''}"><div><b>${esc(a.nome)} · ${esc(a.org)}</b><small>${esc(a.tema)}</small><small>${esc(a.mod)} · ${esc(a.sede)} · ${esc(a.cons)}</small></div>
+    <div class="rt"><span class="st ${APST[a.stato]}">${a.stato}</span><span>${a.id} · da ${esc(a.origine)}${a.case?` · <a style="cursor:pointer" onclick="go('case');selectCase('${a.case}')">${a.case}</a>`:''}</span></div></div>`;
+}
+function renderDay(){
+  const list = APPTS.filter(a => a.date===selDay);
+  const past = selDay < TODAY;
+  let h = `<div class="lh"><div><h3 style="text-transform:capitalize">${fmtDay(selDay)}</h3><small>${list.length} ${list.length===1?'appuntamento':'appuntamenti'}${past?' · giornata passata':''}</small></div>
+    ${past?'':`<button class="btn btn-o btn-s" onclick="openAppt({date:selDay})">${ICON.cal}Fissa in questa data</button>`}</div>`;
+  if(isWe(selDay)){ $('agday').innerHTML = h + '<div class="ag-empty">Giornata non lavorativa.</div>'; return; }
+  const reqs = REQS.filter(r => r.stato==='Richiesto' && r.fasce.some(f => f.date===selDay));
+  if(reqs.length) h += `<div class="crm-info" style="margin:0 0 14px;border-left:3px solid var(--amber)">${reqs.length===1?'Una richiesta dai Servizi Plus indica':'Alcune richieste dai Servizi Plus indicano'} questa data tra le fasce preferite: ${reqs.map(r=>`<a style="cursor:pointer;font-weight:600" onclick="openReq('${r.id}')">${r.id} · ${esc(r.nome)}</a>`).join(', ')}.</div>`;
+  SLOTS.forEach(t => {
+    const at = list.filter(a => a.time===t);
+    const freeBtn = past ? '' : `<button class="free ${at.length?'mini':''}" onclick="openAppt({date:'${selDay}',time:'${t}'})">+ ${at.length?'Altro consulente':'Disponibile · fissa un appuntamento'}</button>`;
+    h += `<div class="slot"><div class="h">${t}</div><div class="col">${at.map(apptCard).join('')}${freeBtn || (at.length?'':'<div class="free" style="cursor:default">—</div>')}</div></div>`;
+  });
+  $('agday').innerHTML = h;
+}
+function renderReqs(){
+  const open = REQS.filter(r => r.stato==='Richiesto');
+  $('rq-n').textContent = open.length + ' da confermare';
+  $('rqlist').innerHTML = REQS.map(r => `<div class="rq ${r.stato!=='Richiesto'?'done':''}" onclick="openReq('${r.id}')">
+      <div class="r1"><span>${r.id} · ${r.ricevuta}</span><span class="st ${APST[r.stato]}">${r.stato}</span></div>
+      <b>${esc(r.nome)}</b><small>${esc(r.tema.split(' › ')[1])} · ${esc(r.mod)}</small>
+      <small>Fasce: ${r.fasce.map(f => fmtDay(f.date,true)+' '+f.from+'-'+f.to).join(' · ')}</small></div>`).join('') || '<div class="ag-empty">Nessuna richiesta.</div>';
+  updAgCnt();
+}
+
+// Nuovo appuntamento (da agenda o da case)
+function fillSelect(id, opts, val){ $(id).innerHTML = opts.map(o => `<option ${o===val?'selected':''}>${esc(o)}</option>`).join(''); }
+function openAppt(pre){
+  apptCtx = pre;
+  const date = pre.date && !isWe(pre.date) && pre.date >= TODAY ? pre.date : TODAY;
+  $('a-date').value = date; $('a-date').min = TODAY;
+  fillSelect('a-time', SLOTS, pre.time || '10:00');
+  ['nome','tel','email','org','note'].forEach(k => $('a-'+k).value = pre[k] || '');
+  fillSelect('a-tema', temi(), pre.tema);
+  fillSelect('a-sede', SEDI, pre.sede || SEDI[0]);
+  fillSelect('a-cons', CONSULENTI, pre.cons || CONSULENTI[{Previdenza:0,'Welfare aziendale':1,'Sanità integrativa':2}[(pre.tema||'').split(' › ')[0]] || 0]);
+  $('a-mod').value = pre.mod || 'In sede';
+  $('a-case').innerHTML = '<option value="">Nessuno</option>' + CASES.filter(c => c.owner===ME).map(c => `<option value="${c.id}" ${c.id===pre.case?'selected':''}>${c.id} · ${esc(c.nome)}</option>`).join('');
+  $('app-ref').textContent = pre.case ? `Dal case ${pre.case} · Ticket di tipo Appuntamento` : 'Ticket di tipo Appuntamento · inserimento da agenda';
+  openM('m-app'); setTimeout(() => $(pre.nome ? 'a-date' : 'a-nome').focus(), 50);
+}
+function apptFromCase(){
+  const c = getCase(curCase); if(!c) return;
+  const tema = temi().find(t => t.startsWith(c.area+' ›') && DOCS.some(d => d.sub===t.split(' › ')[1] && c.oggetto.toLowerCase().includes(d.sub.split(' ')[0].toLowerCase()))) || temi().find(t => t.startsWith(c.area+' ›'));
+  openAppt({nome:c.nome, tel:c.ident, org:c.azienda, sede:c.sede, tema, case:c.id, mod:c.canale==='WhatsApp'?'Videochiamata':'Telefono', note:c.oggetto});
+}
+function saveAppt(){
+  const v = k => $('a-'+k).value.trim();
+  if(!v('nome')){ $('a-nome').focus(); return; }
+  if(!v('date') || isWe(v('date'))){ toast('Scegli un giorno lavorativo'); $('a-date').focus(); return; }
+  if(APPTS.some(a => a.date===v('date') && a.time===v('time') && a.cons===v('cons') && a.stato!=='Annullato')){ toast('Il consulente ha già un appuntamento in questo orario'); return; }
+  const c = v('case') ? getCase(v('case')) : null;
+  const a = {id:'APP-'+(apptSeq++), date:v('date'), time:v('time'), nome:v('nome'), tel:v('tel'), email:v('email'), org:v('org') || '—', tema:v('tema'), sede:v('sede'), mod:v('mod'), cons:v('cons'), stato:'Confermato', origine:c ? c.canale : 'Telefono', case:c ? c.id : null, note:v('note')};
+  APPTS.push(a); closeM('m-app');
+  if(c){ c.notes.push({t:nowT(), who:'Sistema', text:`Appuntamento ${a.id} fissato per ${fmtDay(a.date)} alle ${a.time} · ${a.mod} · ${a.cons}.`}); if(curCase===c.id) renderCase(); }
+  selDay = a.date; calM = toDate(a.date);
+  if($('p-agenda').classList.contains('on')) renderAgenda();
+  toast(`${a.id} registrato in agenda · conferma inviata all'utente (simulata)`);
+}
+
+// Richieste dai Servizi Plus
+function openReq(id){
+  curReq = REQS.find(r => r.id===id); const r = curReq, open = r.stato==='Richiesto';
+  $('req-body').innerHTML = `<span class="ref">${r.id} · Ticket di tipo Appuntamento · dai Servizi Plus · ${r.ricevuta}</span>
+    <div class="info"><b>${esc(r.nome)}</b> · ${esc(r.ruolo)}<br>${esc(r.org)} · ${esc(r.email)}<br><b>Tematica:</b> ${esc(r.tema)}<br><b>Sede:</b> ${esc(r.sede)} · <b>Modalità:</b> ${esc(r.mod)}${r.note?`<br><b>Note dell'utente:</b> ${esc(r.note)}`:''}</div>
+    ${open ? `<label>Fasce orarie indicate dall'utente</label><div class="fasce">${r.fasce.map((f,i) => `<label><input type="radio" name="fx" ${i===0?'checked':''} onchange="reqPick(${i})">${fmtDay(f.date)}, ${f.from}-${f.to}</label>`).join('')}
+      <label><input type="radio" name="fx" onchange="reqPick(-1)">Nessuna fascia disponibile: proponi un altro orario</label></div>
+    <div class="row2"><div><label for="r-date">Data</label><input type="date" id="r-date" min="${TODAY}"></div><div><label for="r-time">Orario</label><select id="r-time"></select></div></div>
+    <label for="r-cons">Consulente</label><select id="r-cons"></select>
+    <div class="hint" id="r-hint"></div>`
+    : `<div class="info" style="margin-top:10px"><b>Esito:</b> ${r.stato}${r.app?` · ${r.app}, ${fmtDay(APPTS.find(a=>a.id===r.app).date)} alle ${APPTS.find(a=>a.id===r.app).time}`:''}. Lo stato è visibile all'utente nella sezione Appuntamenti dei Servizi Plus.</div>`}`;
+  $('req-foot').innerHTML = open
+    ? `<button class="btn btn-o" style="margin-right:auto" onclick="reqAction('Annullato')">Annulla richiesta</button><button class="btn btn-g" id="r-go" onclick="reqAction()"></button>`
+    : `<button class="btn btn-o" onclick="closeM('m-req')">Chiudi</button>`;
+  if(open){ fillSelect('r-cons', CONSULENTI, CONSULENTI[{Previdenza:0,'Welfare aziendale':1,'Sanità integrativa':2}[r.tema.split(' › ')[0]]]); reqPick(0); }
+  openM('m-req');
+}
+function reqPick(i){
+  const r = curReq; r._pick = i;
+  if(i >= 0){
+    const f = r.fasce[i];
+    $('r-date').value = f.date; fillSelect('r-time', SLOTS.filter(t => t >= f.from && t < f.to), f.from);
+    $('r-go').innerHTML = ICON.check+'Conferma appuntamento';
+    $('r-hint').textContent = 'L\'utente riceve la conferma via email e la vede nei Servizi Plus; il giorno prima arriva il promemoria.';
+  } else {
+    fillSelect('r-time', SLOTS, '10:00');
+    $('r-go').innerHTML = ICON.cal+'Proponi altro orario';
+    $('r-hint').textContent = 'L\'utente vede la proposta nei Servizi Plus e può accettarla o rifiutarla con un clic.';
+  }
+}
+function reqAction(force){
+  const r = curReq;
+  if(force === 'Annullato'){ r.stato = 'Annullato'; closeM('m-req'); renderAgenda(); toast(`${r.id} annullata · l'utente vede lo stato nei Servizi Plus`); return; }
+  const date = $('r-date').value, time = $('r-time').value, cons = $('r-cons').value;
+  if(!date || isWe(date)){ toast('Scegli un giorno lavorativo'); return; }
+  if(APPTS.some(a => a.date===date && a.time===time && a.cons===cons && a.stato!=='Annullato')){ toast('Il consulente ha già un appuntamento in questo orario'); return; }
+  const stato = r._pick >= 0 ? 'Confermato' : 'Proposto altro orario';
+  APPTS.push({id:r.id, date, time, nome:r.nome, tel:'', email:r.email, org:r.org, tema:r.tema, sede:r.sede, mod:r.mod, cons, stato, origine:'Servizi Plus', case:null, note:r.note});
+  r.stato = stato; r.app = r.id; selDay = date; calM = toDate(date);
+  closeM('m-req'); renderAgenda();
+  toast(stato==='Confermato' ? `${r.id} confermato · email all'utente e stato aggiornato nei Servizi Plus (simulato)` : `${r.id}: proposta inviata all'utente (simulata)`);
+}
+
 // ───────────────────────── Avvio ─────────────────────────
-renderQueue(); renderCase(); renderAdv(); renderFree(); renderCrm();
+renderQueue(); renderCase(); renderAdv(); renderFree(); renderCrm(); updAgCnt();
 document.addEventListener('keydown', e => { if(e.key==='Escape') document.querySelectorAll('.ov.on').forEach(o=>o.classList.remove('on')); });
 </script>
 {% endif %}
