@@ -201,11 +201,43 @@ def quesito():
     return jsonify({'ok': True})
 
 
+APPUNTAMENTI = []
+
+
+@app.route('/appuntamento', methods=['POST'])
+def appuntamento():
+    """Richiesta di appuntamento dai Servizi Plus: arriva al Polo Interattivo come ticket di tipo Appuntamento."""
+    if not current_user():
+        return jsonify({'ok': False, 'error': 'Accesso richiesto.'}), 401
+    data = request.get_json(silent=True) or {}
+    fasce = [
+        {'giorno': str(f.get('giorno', ''))[:10], 'orario': str(f.get('orario', ''))[:40]}
+        for f in (data.get('fasce') or [])[:3] if f.get('giorno')
+    ]
+    if not fasce:
+        return jsonify({'ok': False, 'error': 'Indica almeno una fascia oraria.'}), 400
+    record = {
+        'id': f'APP-{310 + len(APPUNTAMENTI)}',
+        'tipo_ticket': 'Appuntamento',
+        'utente': current_user(),
+        'tema': str(data.get('tema') or '')[:150],
+        'sede': str(data.get('sede') or '')[:100],
+        'modalita': str(data.get('modalita') or '')[:40],
+        'fasce': fasce,
+        'note': str(data.get('note') or '')[:1500],
+        'stato': 'Richiesto',
+        'data': datetime.datetime.now().strftime('%d/%m/%Y %H:%M'),
+    }
+    APPUNTAMENTI.append(record)
+    save_record('appuntamenti', record)
+    return jsonify({'ok': True, 'id': record['id']})
+
+
 @app.route('/admin/richieste')
 def admin_richieste():
     if current_user() not in ADMINS:
         return redirect(url_for('index', accedi='1'))
-    return jsonify({'richieste_accesso': REQUESTS, 'quesiti': QUESITI, 'newsletter': NEWSLETTER})
+    return jsonify({'richieste_accesso': REQUESTS, 'quesiti': QUESITI, 'newsletter': NEWSLETTER, 'appuntamenti': APPUNTAMENTI})
 
 
 @app.route('/ask', methods=['POST'])
