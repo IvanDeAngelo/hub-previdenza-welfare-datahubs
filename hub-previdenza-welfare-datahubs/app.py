@@ -33,6 +33,11 @@ KB_FILES = {
     'sanita_fiscale': 'sanita_fiscale.md',
     'certificazione_parita_genere': 'certificazione_parita_genere.md',
 }
+# CCNL: ogni file kb/ccnl_*.md viene caricato automaticamente
+for _f in sorted(os.listdir(os.path.join(os.path.dirname(__file__), 'kb'))):
+    if _f.startswith('ccnl_') and _f.endswith('.md'):
+        KB_FILES[_f[:-3]] = _f
+
 
 def load_kb():
     kb_html = {}
@@ -274,7 +279,8 @@ def ask():
         with client.messages.stream(
             model=model,
             max_tokens=max_tokens,
-            system=system,
+            # base documentale in cache: le domande successive costano meno e partono prima
+            system=[{'type': 'text', 'text': system, 'cache_control': {'type': 'ephemeral'}}],
             messages=convo
         ) as stream:
             for text in stream.text_stream:
