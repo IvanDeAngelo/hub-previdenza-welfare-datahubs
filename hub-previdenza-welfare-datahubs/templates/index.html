@@ -33,6 +33,8 @@ a{color:inherit;text-decoration:none;}
 .c-prev{--tc:var(--blue);--tc-bg:var(--blue-bg);}
 .c-welf{--tc:var(--amber);--tc-bg:var(--amber-bg);}
 .c-san{--tc:var(--green);--tc-bg:var(--green-bg);}
+.c-ccnl{--tc:#6D28D9;--tc-bg:#F3EEFF;}
+body.dark .c-ccnl{--tc:#B794F6;--tc-bg:#2A1F45;}
 
 /* ── TOP BAR ── */
 .topbar{background:var(--dh-green);color:#fff;position:sticky;top:0;z-index:100;}
@@ -53,7 +55,7 @@ a{color:inherit;text-decoration:none;}
 /* dropdown argomenti */
 .menu-pop{position:absolute;top:52px;left:0;right:0;background:var(--surface);border-bottom:1px solid var(--border);box-shadow:0 14px 30px rgba(0,0,0,.12);display:none;color:var(--text);}
 .menu-pop.open{display:block;}
-.menu-pop .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;padding-top:26px;padding-bottom:28px;height:auto;align-items:start;}
+.menu-pop .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;padding-top:26px;padding-bottom:28px;height:auto;align-items:start;}
 .menu-col h4{font-size:13px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--tc);border-bottom:3px solid var(--tc);padding-bottom:8px;margin-bottom:10px;cursor:pointer;}
 .menu-col a{display:block;padding:7px 0;font-size:15px;font-weight:500;color:var(--title);cursor:pointer;border-bottom:1px solid var(--border);}
 .menu-col a:hover{color:var(--tc);}
@@ -73,8 +75,8 @@ a{color:inherit;text-decoration:none;}
 
 /* ── SECTION NAV ── */
 .secnav{background:var(--surface-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
-.secnav .wrap{display:flex;align-items:center;gap:6px;height:62px;overflow-x:auto;scrollbar-width:none;}
-.secnav a{font-size:17px;font-weight:800;text-transform:uppercase;color:var(--title);padding:8px 10px;cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;}
+.secnav .wrap{display:flex;align-items:center;gap:2px;height:62px;overflow-x:auto;scrollbar-width:none;}
+.secnav a{font-size:16px;font-weight:800;text-transform:uppercase;color:var(--title);padding:8px 8px;cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;}
 .secnav a:hover{color:var(--tc,var(--brand));}
 .secnav a.active{color:var(--tc,var(--dh-green));border-bottom-color:var(--tc,var(--dh-green));}
 .secnav .spacer{flex:1;}
@@ -141,7 +143,7 @@ main{padding:24px 0 60px;}
 .area-links .al:hover{color:var(--tc);}
 
 /* sections per area in home */
-.home-sections{margin-top:44px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px;}
+.home-sections{margin-top:44px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:30px;}
 .sec-head{display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid var(--tc);margin-bottom:16px;}
 .sec-head h3{font-size:17px;font-weight:800;text-transform:uppercase;color:#fff;background:var(--tc);padding:6px 12px;cursor:pointer;}
 .sec-head a{font-size:13px;font-weight:700;color:var(--tc);cursor:pointer;}
@@ -330,6 +332,19 @@ body.dark .qa .ans a{color:#7DB4EA;}
 .ap-steps span.on{border-color:var(--dh-green);color:var(--dh-green);font-weight:700;}
 .ap-h2{font-size:22px;font-weight:700;color:var(--title);margin:30px 0 12px;}
 .fascia-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.ccnl-search input{width:100%;border:1.5px solid var(--border);background:var(--surface);color:var(--text);border-radius:24px;padding:12px 18px;font-size:15px;font-family:inherit;outline:none;margin-bottom:16px;}
+.ccnl-search input:focus{border-color:var(--tc);}
+.ccnl-table{width:100%;border-collapse:collapse;font-size:15px;}
+.ccnl-table th{text-align:left;font-size:12px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--tc);border-bottom:3px solid var(--tc);padding:8px 10px;}
+.ccnl-table td{padding:14px 10px;border-bottom:1px solid var(--border);vertical-align:top;color:var(--text);}
+.ccnl-table tr{cursor:pointer;}
+.ccnl-table tbody tr:hover td{background:var(--tc-bg);}
+.ccnl-table td strong{display:block;font-size:16px;color:var(--title);margin-bottom:4px;}
+.ccnl-table td span{display:block;font-size:13.5px;color:var(--text-soft);line-height:1.5;}
+.ccnl-table td:nth-child(3),.ccnl-table td:nth-child(4){font-size:14px;width:150px;}
+.cnel-code{display:inline-block!important;font-weight:800;font-size:13px!important;color:var(--tc)!important;background:var(--tc-bg);padding:3px 8px;border-radius:4px;}
+.ccnl-note{font-size:14px;color:var(--muted);margin-top:14px;}
+@media(max-width:700px){.ccnl-table th:nth-child(3),.ccnl-table th:nth-child(4),.ccnl-table td:nth-child(3),.ccnl-table td:nth-child(4){display:none;}}
 .form-field{margin-bottom:14px;}
 .form-field label{display:block;font-size:13px;font-weight:700;color:var(--text-soft);margin-bottom:5px;}
 .form-field input,.form-field select,.form-field textarea{width:100%;border:1.5px solid var(--border);background:var(--surface);color:var(--text);border-radius:8px;padding:11px 13px;font-size:15px;font-family:inherit;outline:none;}
@@ -564,6 +579,7 @@ body.dark .gl-term dd a{color:#7DB4EA;}
     <a class="c-prev" data-area="previdenza" onclick="showPage('previdenza')">Previdenza</a>
     <a class="c-welf" data-area="welfare" onclick="showPage('welfare')">Welfare aziendale</a>
     <a class="c-san" data-area="sanita" onclick="showPage('sanita')">Sanità integrativa</a>
+    <a class="c-ccnl" data-area="ccnl" onclick="showPage('ccnl')">CCNL</a>
     <a class="c-res" data-area="risorse" onclick="showPage('risorse')">Risorse</a>
     <a class="c-plus" data-area="plus" onclick="showPage('plus')">★ Servizi Plus</a>
     <div class="spacer"></div>
@@ -645,6 +661,7 @@ body.dark .gl-term dd a{color:#7DB4EA;}
     <section class="page" id="page-previdenza"></section>
     <section class="page" id="page-welfare"></section>
     <section class="page" id="page-sanita"></section>
+    <section class="page" id="page-ccnl"></section>
 
     <!-- ARTICOLI (popolati da JS) -->
     <section class="page" id="page-posizione-contributiva"></section>
@@ -654,6 +671,8 @@ body.dark .gl-term dd a{color:#7DB4EA;}
     <section class="page" id="page-fondi-sanitari-contrattuali"></section>
     <section class="page" id="page-sanita-fiscale"></section>
     <section class="page" id="page-certificazione-parita-genere"></section>
+    {% for k in kb.keys() if k.startswith('ccnl_') %}<section class="page" id="page-{{ k|replace('_','-') }}"></section>
+    {% endfor %}
 
     <!-- CHI SIAMO -->
     <!-- NOVITÀ E RISORSE (popolati da JS) -->
@@ -748,6 +767,8 @@ body.dark .gl-term dd a{color:#7DB4EA;}
   <div id="kb-src-fondi-sanitari-contrattuali">{{ kb.fondi_sanitari_contrattuali | safe }}</div>
   <div id="kb-src-sanita-fiscale">{{ kb.sanita_fiscale | safe }}</div>
   <div id="kb-src-certificazione-parita-genere">{{ kb.certificazione_parita_genere | safe }}</div>
+  {% for k, v in kb.items() if k.startswith('ccnl_') %}<div id="kb-src-{{ k|replace('_','-') }}">{{ v | safe }}</div>
+  {% endfor %}
 </div>
 
 <!-- ═════════ ACCESSO ═════════ -->
@@ -841,8 +862,10 @@ const IMG=id=>'https://images.unsplash.com/'+id+'?auto=format&fit=crop&w=1200&q=
 const AREAS={
   previdenza:{name:'Previdenza',cls:'c-prev',desc:'Contributi, posizione contributiva, correttezza dei versamenti e accompagnamento alla pensione.'},
   welfare:{name:'Welfare aziendale',cls:'c-welf',desc:'Regolarità contributiva, DURC, ammortizzatori sociali e parità di genere per le imprese.'},
-  sanita:{name:'Sanità integrativa',cls:'c-san',desc:'Fondi sanitari contrattuali e regime fiscale della sanità integrativa.'}
+  sanita:{name:'Sanità integrativa',cls:'c-san',desc:'Fondi sanitari contrattuali e regime fiscale della sanità integrativa.'},
+  ccnl:{name:'CCNL',cls:'c-ccnl',desc:'I contratti collettivi nazionali dei settori Confindustria spiegati in modo semplice: fondo pensione, fondo sanitario e welfare contrattuale.'}
 };
+const CNEL_URL=c=>'https://www.cnel.it/archivio-contratti/entra-nell-archivio/contratti-collettivi-del-settore-privato/contratti-nazionali-di-settore-vigenti-o-ultrattivi#ccnl/'+c;
 const ARTICLES=[
   {id:'cigo',area:'welfare',tag:'Ammortizzatori sociali',date:'Ottobre 2026',
    title:'Cassa integrazione ordinaria 2026: massimale a 1.423,69 €, causali e CIGO per emergenza climatica',
@@ -878,9 +901,40 @@ const ARTICLES=[
    title:'Posizione contributiva aziendale: come controllare estratto conto e correttezza dei versamenti',
    summary:'Estratto conto contributivo, verifica dei versamenti, ricorsi amministrativi e unicità della posizione aziendale: cosa controllare e quali servizi INPS usare.',
    img:'photo-1554224155-6726b3ff858f',caption:'Controllo dei versamenti',
-   sources:[['Scheda servizio INPS — Estratto conto contributivo','Consultazione dell\'estratto conto contributivo/previdenziale','https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.consultazione-estratto-conto-contributivo-previdenziale-50119.consultazione-estratto-conto-contributivo-previdenziale.html'],['Circolare INPS n. 48 del 17/5/2023','Regolamento dei ricorsi amministrativi','https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2023.05.circolare-numero-48-del-17-05-2023_14161.html'],['Messaggio INPS n. 2553 del 2/9/2025','Evoluzione dell\'estratto conto contributivo','https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2025.09.messaggio-numero-2553-del-02-09-2025_15013.html']]}
+   sources:[['Scheda servizio INPS — Estratto conto contributivo','Consultazione dell\'estratto conto contributivo/previdenziale','https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.consultazione-estratto-conto-contributivo-previdenziale-50119.consultazione-estratto-conto-contributivo-previdenziale.html'],['Circolare INPS n. 48 del 17/5/2023','Regolamento dei ricorsi amministrativi','https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2023.05.circolare-numero-48-del-17-05-2023_14161.html'],['Messaggio INPS n. 2553 del 2/9/2025','Evoluzione dell\'estratto conto contributivo','https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2025.09.messaggio-numero-2553-del-02-09-2025_15013.html']]},
+  {id:'ccnl-c021-orafi',area:'ccnl',tag:'CCNL C021',cnel:'C021',fpens:'Cometa',fsan:'mètaSalute',date:'Ottobre 2026',
+   title:'CCNL Orafi, argentieri e gioiellieri (industria): previdenza, sanità integrativa e welfare',
+   summary:'Il contratto del settore orafo in sintesi: fondo pensione Cometa con contributo aziendale al 2%, fondo sanitario mètaSalute da 156 euro l\'anno a carico dell\'azienda, welfare da 200 euro (220 dal 2028) e le novità del rinnovo 2026.',
+   img:'photo-1515562141207-7a88fb7ce338',caption:'Lavorazione orafa',
+   sources:[['Fondo Cometa','Fondo pensione negoziale: adesione e contribuzione','https://www.cometafondo.it'],['Fondo mètaSalute','Fondo di assistenza sanitaria integrativa: iscrizione e prestazioni','https://www.fondometasalute.it']]},
+  {id:'ccnl-g091-radiotelevisione',area:'ccnl',tag:'CCNL G091',cnel:'G091',fpens:'Byblos o Mediafond',fsan:'SaluteSempre',date:'Ottobre 2026',
+   title:'CCNL Radiotelevisione (emittenti private): previdenza e sanità integrativa',
+   summary:'Il contratto delle aziende radiotelevisive private rinnovato l\'8 gennaio 2026: fondi pensione Byblos e Mediafond con contributo aziendale dell\'1,2%, sanità integrativa di settore da 10 euro al mese (13 dal 2027) e le novità del rinnovo 2025-2027.',
+   img:'photo-1478737270239-2f02b77fc618',caption:'Studio radiotelevisivo',
+   sources:[]},
+  {"id": "ccnl-c011-metalmeccanica", "area": "ccnl", "tag": "CCNL C011", "cnel": "C011", "date": "Ottobre 2026", "title": "CCNL Metalmeccanica (industria): previdenza, sanità integrativa e welfare", "summary": "Il contratto dei metalmeccanici rinnovato a novembre 2025: Cometa con contributo aziendale al 2%, mètaSalute da 156 euro l'anno a carico dell'azienda e welfare salito a 250 euro dal 2026.", "img": "", "caption": "Metalmeccanica (C011)", "fpens": "Cometa", "fsan": "mètaSalute", "sources": [["Fondo Cometa", "Fondo pensione negoziale", "https://www.cometafondo.it"], ["Fondo mètaSalute", "Fondo sanitario integrativo", "https://www.fondometasalute.it"]]},
+  {"id": "ccnl-b101-concerie", "area": "ccnl", "tag": "CCNL B101", "cnel": "B101", "date": "Ottobre 2026", "title": "CCNL Concerie (industria): previdenza, sanità integrativa e welfare", "summary": "Il contratto delle concerie: Previmoda con contributo aziendale al 2%, Sanimoda a 15 euro al mese dal 2026 con assicurazione LTC, contratto scaduto a giugno 2026 e in attesa di rinnovo.", "img": "", "caption": "Concerie (B101)", "fpens": "Previmoda", "fsan": "Sanimoda", "sources": [["Fondo Previmoda", "Fondo pensione del settore moda", "https://www.previmoda.it"]]},
+  {"id": "ccnl-b132-vetro", "area": "ccnl", "tag": "CCNL B132", "cnel": "B132", "date": "Ottobre 2026", "title": "CCNL Vetro, lampade e display (industria): previdenza e sanità integrativa", "summary": "Il contratto del vetro, delle lampade e dei display rinnovato ad aprile 2026: Fonchim con contributo aziendale in aumento dal 2027 e fondo sanitario da 14 euro al mese a carico dell'azienda.", "img": "", "caption": "Vetro, lampade e display (B132)", "fpens": "Fonchim", "fsan": "FASIE (fondo condiviso individuato per il 2024-2025)", "sources": [["Fondo Fonchim", "Fondo pensione dell'industria chimica e dei settori affini", "https://www.fonchim.it"]]},
+  {"id": "ccnl-b371-gomma-plastica", "area": "ccnl", "tag": "CCNL B371", "cnel": "B371", "date": "Ottobre 2026", "title": "CCNL Gomma, cavi elettrici e plastica (industria): previdenza e sanità integrativa", "summary": "Il contratto della gomma e plastica rinnovato a dicembre 2025: contributo aziendale a Fondogommaplastica che sale al 2% nel 2028 e fondo sanitario FASG&P da 14 euro al mese a carico dell'azienda.", "img": "", "caption": "Gomma e plastica (B371)", "fpens": "Fondogommaplastica", "fsan": "FASG&P", "sources": []},
+  {"id": "ccnl-d014-tessile-abbigliamento", "area": "ccnl", "tag": "CCNL D014", "cnel": "D014", "date": "Ottobre 2026", "title": "CCNL Tessile, abbigliamento e moda (industria): previdenza e sanità integrativa", "summary": "Il contratto del tessile, abbigliamento e moda: Previmoda con contributo aziendale al 2,30% da luglio 2026 e Sanimoda a 18 euro al mese dal 2026, più l'assicurazione LTC.", "img": "", "caption": "Tessile, abbigliamento, moda (D014)", "fpens": "Previmoda", "fsan": "Sanimoda", "sources": [["Fondo Previmoda", "Fondo pensione del settore moda", "https://www.previmoda.it"]]},
+  {"id": "ccnl-d111-pelli-cuoio", "area": "ccnl", "tag": "CCNL D111", "cnel": "D111", "date": "Ottobre 2026", "title": "CCNL Pelli, cuoio e ombrelli (industria): previdenza e sanità integrativa", "summary": "Il contratto della pelletteria e degli ombrelli: Previmoda con contributo aziendale al 2,30% da luglio 2025 e Sanimoda a 15 euro al mese più l'assicurazione LTC; contratto scaduto a marzo 2026.", "img": "", "caption": "Pelli, cuoio e ombrelli (D111)", "fpens": "Previmoda", "fsan": "Sanimoda", "sources": [["Fondo Previmoda", "Fondo pensione del settore moda", "https://www.previmoda.it"]]},
+  {"id": "ccnl-d121-calzature", "area": "ccnl", "tag": "CCNL D121", "cnel": "D121", "date": "Ottobre 2026", "title": "CCNL Calzature (industria): previdenza e sanità integrativa", "summary": "Il contratto delle calzature valido fino a fine 2026: Previmoda con contributo paritetico dell'1,5% e Sanimoda a 15 euro al mese dal 2026, più l'assicurazione LTC.", "img": "", "caption": "Calzature (D121)", "fpens": "Previmoda", "fsan": "Sanimoda", "sources": [["Fondo Previmoda", "Fondo pensione del settore moda", "https://www.previmoda.it"]]},
+  {"id": "ccnl-e012-alimentari", "area": "ccnl", "tag": "CCNL E012", "cnel": "E012", "date": "Ottobre 2026", "title": "CCNL Industria alimentare: previdenza, sanità integrativa e welfare", "summary": "Il contratto dell'industria alimentare fino a novembre 2027: Alifond con contributo aziendale all'1,5%, FASA a 16 euro al mese, copertura rischio vita e cassa maternità.", "img": "", "caption": "Alimentari (E012)", "fpens": "Alifond", "fsan": "FASA", "sources": []},
+  {"id": "ccnl-g011-grafica-editoria", "area": "ccnl", "tag": "CCNL G011", "cnel": "G011", "date": "Ottobre 2026", "title": "CCNL Grafica, editoria e digitale (industria): previdenza e sanità integrativa", "summary": "Il contratto della grafica e dell'editoria fino a fine 2026: Byblos con contributo aziendale fino all'1,7% e Salute Sempre a 13 euro al mese a carico dell'azienda, che dal 2027 diventa condiviso.", "img": "", "caption": "Grafica ed editoria (G011)", "fpens": "Byblos", "fsan": "Salute Sempre", "sources": []},
+  {"id": "ccnl-g111-cinematografia", "area": "ccnl", "tag": "CCNL G111", "cnel": "G111", "date": "Ottobre 2026", "title": "CCNL Industria cineaudiovisiva (produzione): previdenza, sanità integrativa e welfare", "summary": "Il contratto dell'industria cineaudiovisiva rinnovato a luglio 2025: Byblos con contributo aziendale dell'1%, Salute Sempre a 10 euro al mese e quota welfare mensile di 50 euro.", "img": "", "caption": "Cinematografia – produzione (G111)", "fpens": "Byblos", "fsan": "Salute Sempre", "sources": []},
+  {"id": "ccnl-g121-troupes", "area": "ccnl", "tag": "CCNL G121", "cnel": "G121", "date": "Ottobre 2026", "title": "CCNL Addetti alle troupes (cinema e audiovisivo): cosa prevede su previdenza e welfare", "summary": "Il contratto degli addetti alle troupes risale al 1999 e non prevede fondo pensione né fondo sanitario di categoria: valgono le regole di legge e gli eventuali accordi aziendali.", "img": "", "caption": "Cinema – addetti alle troupes (G121)", "fpens": "Non previsto dal CCNL", "fsan": "Non previsto dal CCNL", "sources": []},
+  {"id": "ccnl-i320-attivita-ferroviarie", "area": "ccnl", "tag": "CCNL I320", "cnel": "I320", "date": "Ottobre 2026", "title": "CCNL Mobilità – Attività ferroviarie: previdenza, sanità integrativa e welfare", "summary": "Il contratto delle attività ferroviarie fino a fine 2026: adesione contrattuale a Eurofer con somma annua definita in azienda, sanità integrativa e welfare demandati agli accordi aziendali.", "img": "", "caption": "Mobilità – attività ferroviarie (I320)", "fpens": "Eurofer", "fsan": "Piani aziendali (promossi dal CCNL)", "sources": []},
+  {"id": "ccnl-i391-marittimi", "area": "ccnl", "tag": "CCNL I391", "cnel": "I391", "date": "Ottobre 2026", "title": "CCNL Industria armatoriale – personale degli uffici: previdenza complementare", "summary": "La sezione per il personale di terra dell'industria armatoriale: fondo pensione Priamo con contributo aziendale salito al 2,5% da luglio 2024, contratto valido fino a fine 2026.", "img": "", "caption": "Industria armatoriale – personale di terra (I391)", "fpens": "Priamo", "fsan": "Non previsto dalla sezione", "sources": [["Fondo Priamo", "Fondo pensione dei trasporti", "https://www.fondopriamo.it"]]},
+  {"id": "ccnl-i810-trasporto-aereo", "area": "ccnl", "tag": "CCNL I810", "cnel": "I810", "date": "Ottobre 2026", "title": "CCNL Trasporto aereo: previdenza complementare e welfare", "summary": "Il contratto del trasporto aereo: Parte Generale 2025-2027 comune a tutta la filiera, fondi pensione Prevaer e Fondaereo, aliquote e sanità integrativa definite nelle Parti Specifiche.", "img": "", "caption": "Trasporto aereo (I810)", "fpens": "Prevaer o Fondaereo", "fsan": "Da definire nelle Parti Specifiche", "sources": []},
+  {"id": "ccnl-i8c2-piloti-elicotteri", "area": "ccnl", "tag": "CCNL I8C2", "cnel": "I8C2", "date": "Ottobre 2026", "title": "CCNL Piloti di elicottero: previdenza obbligatoria e integrativa", "summary": "Il contratto dei piloti di elicottero del 2001, confermato con l'accordo del 2024: Fondo Volo INPS obbligatorio, Previvolo integrativo al 2% + 2% e indennità di volo in anticipo sul rinnovo.", "img": "", "caption": "Piloti di elicotteri (I8C2)", "fpens": "Fondo Volo INPS (obbligatorio); Previvolo (integrativo)", "fsan": "Non previsto dal CCNL", "sources": []},
+  {"id": "ccnl-k051-elettrici", "area": "ccnl", "tag": "CCNL K051", "cnel": "K051", "date": "Ottobre 2026", "title": "CCNL Settore elettrico: previdenza complementare e sanità integrativa", "summary": "Il contratto del settore elettrico 2025-2027: fondi pensione Fopen e Pegaso con 20 euro mensili aggiuntivi a carico dell'azienda e sanità integrativa con onere minimo in aumento nel 2026 e 2027.", "img": "", "caption": "Settore elettrico (K051)", "fpens": "Fopen o Pegaso", "fsan": "Fondi aziendali o polizze (onere minimo fissato dal CCNL)", "sources": []},
+  {"id": "ccnl-k411-telecomunicazioni", "area": "ccnl", "tag": "CCNL K411", "cnel": "K411", "date": "Ottobre 2026", "title": "CCNL Telecomunicazioni: previdenza complementare e sanità integrativa", "summary": "Il contratto delle telecomunicazioni rinnovato a novembre 2025: Telemaco con contributo aziendale all'1,6% dal 2026 e nuovo fondo sanitario di categoria da 120 euro l'anno.", "img": "", "caption": "Telecomunicazioni (K411)", "fpens": "Telemaco", "fsan": "Fondo sanitario di categoria (in avvio dal 1° luglio 2026)", "sources": []},
+  {"id": "ccnl-k461-terme", "area": "ccnl", "tag": "CCNL K461", "cnel": "K461", "date": "Ottobre 2026", "title": "CCNL Aziende termali: previdenza complementare e sanità integrativa", "summary": "Il contratto delle aziende termali rinnovato a ottobre 2024: fondo pensione Marco Polo e nuova sanità integrativa dal 2025 con 10 euro azienda e 2 euro lavoratore al mese.", "img": "", "caption": "Aziende termali (K461)", "fpens": "Fondo Marco Polo", "fsan": "Sistema di sanità integrativa di settore (dal 2025; percorso di adesione a FONTUR)", "sources": []},
+  {"id": "ccnl-t231-scuole-private", "area": "ccnl", "tag": "CCNL T231", "cnel": "T231", "date": "Ottobre 2026", "title": "CCNL Scuole non statali (ANINSEI): previdenza complementare e sanità integrativa", "summary": "Il contratto delle scuole non statali ANINSEI 2024-2027: sanità integrativa FASIOPEN dal 2025 con 120 euro l'anno e previdenza complementare negoziale all'1% + 1% dal 2027.", "img": "", "caption": "Scuole private laiche (T231)", "fpens": "Fondo negoziale da individuare entro il 31/10/2026", "fsan": "FASIOPEN", "sources": []}
 ];
 const BY_ID=Object.fromEntries(ARTICLES.map(a=>[a.id,a]));
+const CCNL_LIST=ARTICLES.filter(a=>a.area==='ccnl').sort((x,y)=>x.cnel.localeCompare(y.cnel));
+const ccnlName=a=>a.title.split(':')[0].replace(/^CCNL\s+/,'');
 const AUTHOR='Redazione Hub';
 
 /* ══════════ HELPERS ══════════ */
@@ -909,7 +963,7 @@ function renderHome(){
   document.getElementById('home-left-list').innerHTML=[...ARTICLES].reverse().filter(a=>a.id!==L.id).slice(0,4).map(a=>
     `<div class="art ${AREAS[a.area].cls}" ${go(a.id)}>${kicker(a)}<h3>${a.title}</h3><div class="byline">${AUTHOR} · ${a.date}</div></div>`).join('');
   document.getElementById('home-sections').innerHTML=Object.entries(AREAS).map(([k,ar])=>{
-    const arts=ARTICLES.filter(a=>a.area===k);
+    const arts=k==='ccnl'?CCNL_LIST.slice(0,4):ARTICLES.filter(a=>a.area===k);
     return `<div class="${ar.cls}"><div class="sec-head"><h3 ${go(k)}>${ar.name}</h3><a ${go(k)}>Tutti gli articoli ›</a></div>
       ${arts.map((a,i)=>`<div class="art card-art ${i?'compact':''}" ${go(a.id)}>${media(a)}<div><h3>${a.title}</h3>${i?`<div class="byline">${a.date}</div>`:`<p>${a.summary}</p>`}</div></div>`).join('')}</div>`;
   }).join('');
@@ -918,7 +972,7 @@ function renderHome(){
 /* ══════════ COLONNA DESTRA COMUNE ══════════ */
 function sideColumn(area,excludeId){
   const ar=AREAS[area];
-  const rel=ARTICLES.filter(a=>a.area===area&&a.id!==excludeId);
+  const rel=ARTICLES.filter(a=>a.area===area&&a.id!==excludeId).slice(0,area==='ccnl'?6:99);
   const oth=ARTICLES.filter(a=>a.area!==area).slice(0,3);
   return `<div class="side-sticky">
     <div class="promo" onclick="toggleAI(true)">
@@ -934,8 +988,27 @@ function sideColumn(area,excludeId){
 }
 
 /* ══════════ AREE ══════════ */
+function ccnlRows(q){
+  q=(q||'').trim().toLowerCase();
+  const list=CCNL_LIST.filter(a=>!q||(a.cnel+' '+a.title+' '+(a.fpens||'')+' '+(a.fsan||'')).toLowerCase().includes(q));
+  return list.length?list.map(a=>`<tr ${go(a.id)}><td><span class="cnel-code">${a.cnel}</span></td><td><strong>${ccnlName(a)}</strong><span>${a.summary}</span></td><td>${a.fpens||'—'}</td><td>${a.fsan||'—'}</td></tr>`).join(''):'<tr><td colspan="4" style="color:var(--muted)">Nessun contratto per questa ricerca.</td></tr>';
+}
+function renderCcnlArea(el,ar){
+  el.innerHTML=`
+      <div class="crumbs"><a onclick="goBack()" title="Indietro">${ARROW_BACK}</a>/<a onclick="showPage('home')">Home</a>/<span style="color:var(--tc)">${ar.name}</span></div>
+      <div class="area-title"><h1>${ar.name}</h1><p>${ar.desc}</p></div>
+      <div class="area-grid">
+        <div>
+          <div class="ccnl-search"><input type="search" placeholder="Cerca per codice CNEL, settore o fondo (es. C011, Cometa, alimentari)" oninput="document.getElementById('ccnl-tbody').innerHTML=ccnlRows(this.value)"></div>
+          <table class="ccnl-table"><thead><tr><th>Codice</th><th>Contratto</th><th>Fondo pensione</th><th>Fondo sanitario</th></tr></thead><tbody id="ccnl-tbody">${ccnlRows('')}</tbody></table>
+          <p class="ccnl-note">${CCNL_LIST.length} contratti collettivi nazionali dei settori Confindustria. Ogni scheda spiega in modo semplice previdenza complementare, sanità integrativa e welfare; con i Servizi Plus si accede ai testi ufficiali depositati al CNEL.</p>
+        </div>
+        <aside class="art-side">${sideColumn('ccnl',null)}</aside>
+      </div>`;
+}
 function renderAreas(){
   Object.entries(AREAS).forEach(([k,ar])=>{
+    if(k==='ccnl'){const el=document.getElementById('page-ccnl');el.className='page '+ar.cls;renderCcnlArea(el,ar);return;}
     const [first,...others]=ARTICLES.filter(a=>a.area===k);
     const el=document.getElementById('page-'+k);
     el.className='page '+ar.cls;
@@ -979,9 +1052,9 @@ function renderArticles(){
             <figure class="art-figure">${media(a)}<figcaption>${a.caption}</figcaption></figure>
           </div>
           ${plusBox(a.id)}
-          <div class="sources"><h4>Fonti ufficiali</h4>
+          ${!a.sources.length?'':`<div class="sources"><h4>Fonti ufficiali</h4>
             ${a.sources.map(s=>`<a class="src" href="${s[2]}" target="_blank" rel="noopener"><div><strong>${s[0]}</strong><span>${s[1]}</span></div><span>→</span></a>`).join('')}
-          </div>
+          </div>`}
         </article>
         <aside class="art-side">${sideColumn(a.area,a.id)}</aside>
       </div>`;
@@ -1002,8 +1075,9 @@ function renderArticles(){
 
 /* ══════════ MENU ARGOMENTI ══════════ */
 function renderMenu(){
-  document.getElementById('menu-cols').innerHTML=Object.entries(AREAS).map(([k,ar])=>
-    `<div class="menu-col ${ar.cls}"><h4 ${go(k)}>${ar.name}</h4>${ARTICLES.filter(a=>a.area===k).map(a=>`<a ${go(a.id)}>${a.title.split(':')[0]}</a>`).join('')}</div>`).join('');
+  document.getElementById('menu-cols').innerHTML=Object.entries(AREAS).map(([k,ar])=>{
+    const list=k==='ccnl'?CCNL_LIST.slice(0,7):ARTICLES.filter(a=>a.area===k);
+    return `<div class="menu-col ${ar.cls}"><h4 ${go(k)}>${ar.name}</h4>${list.map(a=>`<a ${go(a.id)}>${k==='ccnl'?a.cnel+' · '+ccnlName(a):a.title.split(':')[0]}</a>`).join('')}${k==='ccnl'?`<a ${go('ccnl')} style="color:var(--tc);font-weight:700">Tutti i ${CCNL_LIST.length} contratti ›</a>`:''}</div>`;}).join('');
 }
 function toggleMenu(e){e.stopPropagation();document.getElementById('menu-pop').classList.toggle('open');}
 document.addEventListener('click',e=>{if(!e.target.closest('#menu-pop'))document.getElementById('menu-pop').classList.remove('open');});
@@ -1220,11 +1294,22 @@ function renderPlus(){
   renderAppuntamenti();
 }
 function qaHtml(x){return `<details class="qa"><summary>${x.q}</summary><div class="ans">${x.a}<span class="src-line">Fonte: ${x.src} · <a onclick="openSection('${x.art}',${x.sec})">Approfondisci nell'articolo</a></span></div></details>`;}
+function ccnlBox(a){
+  if(LOGGED) return `<div class="plus-box"><h4><span class="open-chip">Plus</span>Testi ufficiali del contratto</h4>
+    <p style="font-size:16px;line-height:1.6;margin-bottom:6px">Gli accordi del CCNL ${a.cnel} depositati nell'archivio del CNEL: testo base, rinnovi e accordi economici, in PDF.</p>
+    <div class="cta"><a class="btn-solid" href="${CNEL_URL(a.cnel)}" target="_blank" rel="noopener">Apri i testi ufficiali su CNEL ↗</a></div></div>`;
+  return `<div class="plus-box"><h4><span class="lock">${LOCK_SVG}Plus</span>Testi ufficiali del contratto (PDF)</h4>
+    <div class="q-teaser">Accordi del CCNL ${a.cnel} depositati al CNEL: testo base, rinnovi e accordi economici</div>
+    <p style="font-size:15px;color:var(--text-soft);margin-top:8px">L'articolo è consultabile da tutti. L'accesso ai testi ufficiali è un Servizio Plus.</p>
+    <div class="cta"><button class="btn-solid" onclick="openAuth('login','${a.id}')">Accedi per i testi ufficiali</button><button class="btn-ghost" onclick="openAuth('register','${a.id}')">Registrati</button></div></div>`;
+}
 function plusBox(artId){
+  const a=BY_ID[artId];
+  const cb=a&&a.cnel?ccnlBox(a):'';
   const qs=QUESITI.filter(x=>x.art===artId);
-  if(!qs.length) return '';
-  if(LOGGED) return `<div class="plus-box"><h4><span class="open-chip">Plus</span>Quesiti risolti su questo tema</h4>${qs.map(qaHtml).join('')}</div>`;
-  return `<div class="plus-box"><h4><span class="lock">${LOCK_SVG}Plus</span>Quesiti risolti su questo tema</h4>
+  if(!qs.length) return cb;
+  if(LOGGED) return cb+`<div class="plus-box"><h4><span class="open-chip">Plus</span>Quesiti risolti su questo tema</h4>${qs.map(qaHtml).join('')}</div>`;
+  return cb+`<div class="plus-box"><h4><span class="lock">${LOCK_SVG}Plus</span>Quesiti risolti su questo tema</h4>
     ${qs.map(x=>`<div class="q-teaser">${x.q}</div>`).join('')}
     <div class="cta"><button class="btn-solid" onclick="openAuth('login','${artId}')">Accedi per leggere le risposte</button><button class="btn-ghost" onclick="openAuth('register','${artId}')">Registrati</button></div></div>`;
 }
