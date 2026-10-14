@@ -863,7 +863,7 @@ const AREAS={
   previdenza:{name:'Previdenza',cls:'c-prev',desc:'Contributi, posizione contributiva, correttezza dei versamenti e accompagnamento alla pensione.'},
   welfare:{name:'Welfare aziendale',cls:'c-welf',desc:'Regolarità contributiva, DURC, ammortizzatori sociali e parità di genere per le imprese.'},
   sanita:{name:'Sanità integrativa',cls:'c-san',desc:'Fondi sanitari contrattuali e regime fiscale della sanità integrativa.'},
-  ccnl:{name:'CCNL',cls:'c-ccnl',desc:'I contratti collettivi nazionali dei settori Confindustria spiegati in modo semplice: fondo pensione, fondo sanitario e welfare contrattuale.'}
+  ccnl:{name:'CCNL',cls:'c-ccnl',desc:'I contratti collettivi nazionali del sistema Confindustria, a partire da quello dei dirigenti industriali, spiegati in modo semplice: fondo pensione, fondo sanitario e welfare contrattuale.'}
 };
 const CNEL_URL=c=>'https://www.cnel.it/archivio-contratti/entra-nell-archivio/contratti-collettivi-del-settore-privato/contratti-nazionali-di-settore-vigenti-o-ultrattivi#ccnl/'+c;
 const ARTICLES=[
@@ -930,10 +930,11 @@ const ARTICLES=[
   {"id": "ccnl-k051-elettrici", "area": "ccnl", "tag": "CCNL K051", "cnel": "K051", "date": "Ottobre 2026", "title": "CCNL Settore elettrico: previdenza complementare e sanità integrativa", "summary": "Il contratto del settore elettrico 2025-2027: fondi pensione Fopen e Pegaso con 20 euro mensili aggiuntivi a carico dell'azienda e sanità integrativa con onere minimo in aumento nel 2026 e 2027.", "img": "", "caption": "Settore elettrico (K051)", "fpens": "Fopen o Pegaso", "fsan": "Fondi aziendali o polizze (onere minimo fissato dal CCNL)", "sources": []},
   {"id": "ccnl-k411-telecomunicazioni", "area": "ccnl", "tag": "CCNL K411", "cnel": "K411", "date": "Ottobre 2026", "title": "CCNL Telecomunicazioni: previdenza complementare e sanità integrativa", "summary": "Il contratto delle telecomunicazioni rinnovato a novembre 2025: Telemaco con contributo aziendale all'1,6% dal 2026 e nuovo fondo sanitario di categoria da 120 euro l'anno.", "img": "", "caption": "Telecomunicazioni (K411)", "fpens": "Telemaco", "fsan": "Fondo sanitario di categoria (in avvio dal 1° luglio 2026)", "sources": []},
   {"id": "ccnl-k461-terme", "area": "ccnl", "tag": "CCNL K461", "cnel": "K461", "date": "Ottobre 2026", "title": "CCNL Aziende termali: previdenza complementare e sanità integrativa", "summary": "Il contratto delle aziende termali rinnovato a ottobre 2024: fondo pensione Marco Polo e nuova sanità integrativa dal 2025 con 10 euro azienda e 2 euro lavoratore al mese.", "img": "", "caption": "Aziende termali (K461)", "fpens": "Fondo Marco Polo", "fsan": "Sistema di sanità integrativa di settore (dal 2025; percorso di adesione a FONTUR)", "sources": []},
-  {"id": "ccnl-t231-scuole-private", "area": "ccnl", "tag": "CCNL T231", "cnel": "T231", "date": "Ottobre 2026", "title": "CCNL Scuole non statali (ANINSEI): previdenza complementare e sanità integrativa", "summary": "Il contratto delle scuole non statali ANINSEI 2024-2027: sanità integrativa FASIOPEN dal 2025 con 120 euro l'anno e previdenza complementare negoziale all'1% + 1% dal 2027.", "img": "", "caption": "Scuole private laiche (T231)", "fpens": "Fondo negoziale da individuare entro il 31/10/2026", "fsan": "FASIOPEN", "sources": []}
+  {"id": "ccnl-t231-scuole-private", "area": "ccnl", "tag": "CCNL T231", "cnel": "T231", "date": "Ottobre 2026", "title": "CCNL Scuole non statali (ANINSEI): previdenza complementare e sanità integrativa", "summary": "Il contratto delle scuole non statali ANINSEI 2024-2027: sanità integrativa FASIOPEN dal 2025 con 120 euro l'anno e previdenza complementare negoziale all'1% + 1% dal 2027.", "img": "", "caption": "Scuole private laiche (T231)", "fpens": "Fondo negoziale da individuare entro il 31/10/2026", "fsan": "FASIOPEN", "sources": []},
+  {"id": "ccnl-v012-dirigenti-industria", "area": "ccnl", "tag": "CCNL V012", "cnel": "V012", "date": "Ottobre 2026", "title": "CCNL Dirigenti industria: Previndai, FASI, coperture assicurative e welfare", "summary": "Il contratto dei dirigenti industriali 2025-2027: Previndai con contributo aziendale al 6%, FASI, polizze fino a 400.000 euro, trattamento minimo di 85.000 euro dal 2026 e il ruolo di 4.Manager.", "img": "", "caption": "Dirigenti industria (V012)", "fpens": "Previndai", "fsan": "FASI", "sources": [["Previndai", "Fondo pensione dei dirigenti industriali", "https://www.previndai.it"], ["FASI", "Fondo sanitario dei dirigenti industriali", "https://www.fasi.it"], ["4.Manager", "Associazione Confindustria – Federmanager", "https://www.4manager.org"]]}
 ];
 const BY_ID=Object.fromEntries(ARTICLES.map(a=>[a.id,a]));
-const CCNL_LIST=ARTICLES.filter(a=>a.area==='ccnl').sort((x,y)=>x.cnel.localeCompare(y.cnel));
+const CCNL_LIST=ARTICLES.filter(a=>a.area==='ccnl').sort((x,y)=>(x.cnel==='V012'?-1:y.cnel==='V012'?1:x.cnel.localeCompare(y.cnel)));
 const ccnlName=a=>a.title.split(':')[0].replace(/^CCNL\s+/,'');
 const AUTHOR='Redazione Hub';
 
@@ -1001,7 +1002,7 @@ function renderCcnlArea(el,ar){
         <div>
           <div class="ccnl-search"><input type="search" placeholder="Cerca per codice CNEL, settore o fondo (es. C011, Cometa, alimentari)" oninput="document.getElementById('ccnl-tbody').innerHTML=ccnlRows(this.value)"></div>
           <table class="ccnl-table"><thead><tr><th>Codice</th><th>Contratto</th><th>Fondo pensione</th><th>Fondo sanitario</th></tr></thead><tbody id="ccnl-tbody">${ccnlRows('')}</tbody></table>
-          <p class="ccnl-note">${CCNL_LIST.length} contratti collettivi nazionali dei settori Confindustria. Ogni scheda spiega in modo semplice previdenza complementare, sanità integrativa e welfare; con i Servizi Plus si accede ai testi ufficiali depositati al CNEL.</p>
+          <p class="ccnl-note">${CCNL_LIST.length} contratti collettivi nazionali del sistema Confindustria. Ogni scheda spiega in modo semplice previdenza complementare, sanità integrativa e welfare; con i Servizi Plus si accede ai testi ufficiali depositati al CNEL.</p>
         </div>
         <aside class="art-side">${sideColumn('ccnl',null)}</aside>
       </div>`;
