@@ -28,6 +28,11 @@ KB_FILES = {
     'sanita_fiscale': 'sanita_fiscale.md',
     'certificazione_parita_genere': 'certificazione_parita_genere.md',
 }
+# CCNL: ogni file kb/ccnl_*.md viene caricato automaticamente
+for _f in sorted(os.listdir(os.path.join(os.path.dirname(__file__), 'kb'))):
+    if _f.startswith('ccnl_') and _f.endswith('.md'):
+        KB_FILES[_f[:-3]] = _f
+
 
 
 def load_kb():
@@ -151,18 +156,21 @@ def cc_ask():
         )
 
     if mode == 'bozza':
-        system = SYSTEM_PROMPT_DRAFT + crm_block
+        system = [{'type': 'text', 'text': SYSTEM_PROMPT_DRAFT, 'cache_control': {'type': 'ephemeral'}}]
         convo = [{'role': 'user', 'content': context + "Prepara la bozza di risposta all'ultimo messaggio dell'utente."}]
         max_tokens = 400
     else:
         if not messages or messages[-1]['role'] != 'user':
             return jsonify({'error': 'Nessuna domanda'}), 400
-        system = SYSTEM_PROMPT + crm_block
+        system = [{'type': 'text', 'text': SYSTEM_PROMPT, 'cache_control': {'type': 'ephemeral'}}]
         if context:
             messages[-1] = {'role': 'user', 'content': context + "DOMANDA DELL'OPERATORE: " + messages[-1]['content']}
         convo = messages
         max_tokens = 900
 
+    # la base documentale resta in cache; i contenuti CRM (variabili) vanno in un blocco separato
+    if crm_block:
+        system.append({'type': 'text', 'text': crm_block})
     client = anthropic.Anthropic(api_key=api_key)
 
     def generate():
