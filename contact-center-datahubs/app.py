@@ -1,7 +1,7 @@
 """Applicazione Contact Center — Hub Previdenza e Welfare (Fase 1, uso interno).
 
-Mockup per gli operatori delle sedi territoriali: coda dei case, P&W Advisor
-collegato al case, Knowledge Base, consultazione libera e casi CRM.
+Mockup per gli operatori delle sedi territoriali: coda dei ticket, P&W Advisor
+collegato al ticket, Knowledge Base, consultazione libera e ticket CRM.
 Usa la stessa base documentale dell'Hub pubblico (cartella kb/).
 """
 import os
@@ -93,11 +93,11 @@ SYSTEM_PROMPT = """Sei il P&W Advisor, l'assistente interno dell'Applicazione Co
 Supporti gli operatori delle sedi territoriali che gestiscono le richieste di aziende, HR, dirigenti e professionisti su previdenza, welfare aziendale e sanità integrativa.
 
 Regole:
-1. Usa SOLO la documentazione approvata fornita sotto. Il contesto del case (messaggi dell'utente, note dell'operatore) serve a interpretare la domanda, ma NON è una fonte: non ricavarne indicazioni previdenziali o di welfare.
+1. Usa SOLO la documentazione approvata fornita sotto. Il contesto del ticket (messaggi dell'utente, note dell'operatore) serve a interpretare la domanda, ma NON è una fonte: non ricavarne indicazioni previdenziali o di welfare.
 2. Rispondi in modo operativo e sintetico: brevi paragrafi separati da una riga vuota, al massimo 4 paragrafi. Testo semplice, senza markdown (no #, no **, no elenchi puntati con trattini).
 3. Alla fine della frase che si basa su un paragrafo della documentazione, inserisci il riferimento nel formato esatto [[id-articolo#numero-paragrafo]], dove id-articolo è l'ID ARTICOLO della documentazione e numero-paragrafo è il numero del paragrafo "## N.". Usa da 1 a 3 riferimenti diversi in tutto.
 4. Se la documentazione non consente di rispondere, dillo chiaramente, indica quali informazioni chiedere all'utente oppure suggerisci il rinvio alla sede territoriale competente. Non inventare importi, termini o riferimenti normativi.
-5. Se manca un dato del case necessario per rispondere (ad esempio il piano, la matricola, la data dell'evento), segnalalo come informazione da verificare con l'utente.
+5. Se manca un dato del ticket necessario per rispondere (ad esempio il piano, la matricola, la data dell'evento), segnalalo come informazione da verificare con l'utente.
 6. Se l'operatore chiede link, fonti o dove consultare un atto o un servizio, riporta gli URL ufficiali presenti nella documentazione (sezioni "Fonti ufficiali" e "Servizi INPS e di altri enti istituzionali"): una riga per atto, con il nome dell'atto seguito dall'URL completo (https://...). Usa solo URL presenti nella documentazione, non inventarli e non dire che i link non sono disponibili se sono presenti.
 7. Se la domanda riguarda un istituto contrattuale (trasferta, ferie, orario, malattia, preavviso, ecc.) e la sezione "SINTESI ARTICOLO PER ARTICOLO" contiene la risposta, rispondi con quella indicando il CCNL a cui si riferisce. Se l'utente non ha precisato il contratto, aggiungi in fondo, senza premesse negative, di verificare con l'utente quale CCNL si applica.
 8. Rispondi in italiano. Non aggiungere saluti o frasi di chiusura.
@@ -107,10 +107,10 @@ Documentazione approvata:
 """ + KB_TEXT
 
 SYSTEM_PROMPT_DRAFT = """Sei il P&W Advisor dell'Applicazione Contact Center dell'Hub Previdenza e Welfare (DataHubs S.r.l.).
-Prepari una BOZZA di risposta che l'operatore rivedrà e invierà all'utente sul canale del case.
+Prepari una BOZZA di risposta che l'operatore rivedrà e invierà all'utente sul canale del ticket.
 
 Regole:
-1. Basati SOLO sulla documentazione approvata fornita sotto e sulla conversazione del case.
+1. Basati SOLO sulla documentazione approvata fornita sotto e sulla conversazione del ticket.
 2. Tono cortese e professionale, dai del Lei, rivolgiti all'utente per nome se presente. Massimo 110 parole.
 3. Testo semplice, senza markdown, senza riferimenti tra parentesi quadre e senza citare l'assistente o la documentazione interna. Puoi citare atti ufficiali (es. "Circolare INPS n. 4/2026") e, se utile all'utente, il link ufficiale al servizio o all'atto presente nella documentazione (URL completo).
 4. Se servono informazioni aggiuntive dall'utente, chiudi con una domanda precisa.
@@ -164,7 +164,7 @@ def cc_ask():
         if m.get('role') in ('user', 'assistant') and m.get('content')
     ]
     mode = data.get('mode', 'risposta')
-    # Contenuti derivati da casi CRM già approvati dal validatore (nel mockup arrivano dalla pagina)
+    # Contenuti derivati da ticket CRM già approvati dal validatore (nel mockup arrivano dalla pagina)
     crm_docs = ''
     for d in (data.get('crm_docs') or [])[:20]:
         did = str(d.get('id', '')).lower()
@@ -172,18 +172,18 @@ def cc_ask():
             continue
         crm_docs += (
             f"\n\n---\n\nID ARTICOLO: {did}\n# {str(d.get('title', ''))[:200]}\n"
-            f"Area: {str(d.get('area', ''))[:80]} > {str(d.get('sub', ''))[:120]} · Documento derivato da caso CRM risolto\n\n"
+            f"Area: {str(d.get('area', ''))[:80]} > {str(d.get('sub', ''))[:120]} · Documento derivato da ticket CRM risolto\n\n"
             f"## 1. Contenuto approvato\n{str(d.get('text', ''))[:1500]}\n"
             + (f"Note di contesto: {str(d.get('note', ''))[:600]}\n" if d.get('note') else '')
         )
-    crm_block = ('\n\nCONTENUTI DERIVATI DA CASI CRM (approvati dal validatore, fanno parte della documentazione approvata; '
+    crm_block = ('\n\nCONTENUTI DERIVATI DA TICKET CRM (approvati dal validatore, fanno parte della documentazione approvata; '
                  'citali con [[crm-NNNN#1]] quando la risposta si basa su di essi):' + crm_docs) if crm_docs else ''
     case = data.get('case') or {}
     context = ''
     if case:
         context = (
-            "CONTESTO DEL CASE (non è una fonte certificata)\n"
-            f"Case: {case.get('id', '')} · canale {case.get('canale', '')}\n"
+            "CONTESTO DEL TICKET (non è una fonte certificata)\n"
+            f"Ticket: {case.get('id', '')} · canale {case.get('canale', '')}\n"
             f"Utente: {case.get('nome', '')} · {case.get('profilo', '')}\n"
             f"Oggetto: {case.get('oggetto', '')}\n"
             f"Conversazione con l'utente:\n{str(case.get('conversazione', ''))[:3000]}\n\n"
@@ -205,7 +205,7 @@ def cc_ask():
     # la base documentale resta in cache; i contenuti CRM (variabili) vanno in un blocco separato
     if crm_block:
         system.append({'type': 'text', 'text': crm_block})
-    # sintesi articolo per articolo dei CCNL citati nel case o nella domanda
+    # sintesi articolo per articolo dei CCNL citati nel ticket o nella domanda
     recent = ' '.join(m['content'] for m in messages[-4:] if m['role'] == 'user') + ' ' + str(case.get('oggetto', '')) + ' ' + str(case.get('conversazione', ''))[:3000]
     extra = ccnl_articolato(recent)
     if extra:
