@@ -82,7 +82,8 @@ def ccnl_articolato(text, limit=2):
             'documentazione approvata e copre TUTTI gli articoli del contratto (non solo previdenza, sanità e welfare: '
             'anche retribuzione, trasferte, orario, ferie, malattia, preavviso, ecc.). Se la risposta è qui, usala '
             'direttamente senza dire che la documentazione non copre l\'argomento, e indica a quale CCNL ti riferisci. '
-            'Cita la sezione con il suo numero, es. [[id#N]]:' +
+            'Cita la sezione con il suo numero, es. [[id#N]], dove N è il numero della sezione "## N. Il contratto articolo per articolo" '
+            'della scheda, NON il numero dell\'articolo del contratto:' +
             ''.join(f"\n\n---\n\nID ARTICOLO: {k.replace('_', '-')}\n{CCNL_ART[k]['text']}" for k in hits[:limit]))
 KB_TEXT = "\n\n---\n\n".join(
     [f"ID ARTICOLO: {k.replace('_', '-')}\n{v}" for k, v in KB_PROMPT.items()]
