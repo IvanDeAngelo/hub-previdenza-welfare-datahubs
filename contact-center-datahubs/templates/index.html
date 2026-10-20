@@ -699,12 +699,12 @@ const CASES = [
   {id:'CC-1042', canale:'WhatsApp', t:'09:12', nome:'Giulia Rossi', profilo:'HR / responsabile del personale', azienda:'Impresa edile, 38 dipendenti', sede:'Sede territoriale di Roma',
    oggetto:'DURC bloccato in vista di una gara d\'appalto', area:'Welfare aziendale', status:'work', owner:ME, ident:'+39 347 ••• ••12',
    msgs:[
-     {dir:'in', who:'Giulia Rossi', t:'09:12', text:'Buongiorno, nella piattaforma INPS ci risulta un\'irregolarità e tra tre settimane abbiamo una gara d\'appalto. Come facciamo a capire cosa blocca il DURC e quanto tempo abbiamo per sistemare?'},
+     {dir:'in', who:'Giulia Rossi', t:'09:12', text:'Buongiorno, nella piattaforma INPS ci risulterebbe un\'irregolarità e tra tre settimane avremmo una gara d\'appalto. Come potremmo capire cosa bloccherebbe il DURC e quanto tempo avremmo per sistemare?'},
      {dir:'out', who:ME, t:'09:14', text:'Buongiorno Giulia, verifico le informazioni disponibili e le rispondo a breve.'}
    ],
    notes:[{t:'09:15', who:ME, text:'Gara tra circa tre settimane. Verificare se l\'azienda ha una Delega Master attiva per il consulente.'}],
    adv:[
-     {role:'user', content:'Come può l\'azienda individuare cosa blocca il DURC e quanto tempo ha per regolarizzare?'},
+     {role:'user', content:'Come potrebbe l\'azienda individuare cosa bloccherebbe il DURC e quanto tempo avrebbe per regolarizzare?'},
      {role:'assistant', content:'L\'azienda può interrogare la Piattaforma Unica INPS con il proprio codice fiscale: la sezione Simulazione DURC valuta le evidenze secondo i criteri del D.M. 30 gennaio 2015 e mostra quelle che possono impedire la regolarità automatica.[[durc-online#6]]\n\nLa richiesta genera un ticket; le risultanze si consultano in Notifiche e Archivio, con l\'indicatore rosso per le situazioni da regolarizzare e la possibilità di esportarle in Excel o PDF.[[durc-online#7]]\n\nSe la regolarità non può essere attestata subito, l\'ente invita a regolarizzare entro un termine non superiore a 15 giorni dalla notifica: con la gara tra tre settimane conviene muoversi subito.[[durc-online#1]]\n\nDa verificare con l\'utente: se esiste una Delega Master, il consulente può consultare tutte le Gestioni, avviare la regolarizzazione e ricevere il Pre-DURC.[[durc-online#8]]'}
    ],
    draft:'Buongiorno Giulia, può verificare subito cosa blocca il DURC dalla Piattaforma Unica INPS, nella sezione Simulazione DURC: inserendo il codice fiscale dell\'azienda le posizioni da regolarizzare vengono evidenziate in rosso. Se la regolarità non può essere attestata subito, INPS invia un invito a regolarizzare con un termine massimo di 15 giorni: con la gara tra tre settimane le consigliamo di procedere oggi stesso. Il vostro consulente ha già una Delega Master attiva sulla posizione?',
