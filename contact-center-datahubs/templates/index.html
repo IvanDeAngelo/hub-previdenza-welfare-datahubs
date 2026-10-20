@@ -72,7 +72,7 @@ svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke
 .st-lock{background:#EEF0F4;color:var(--slate)}
 .st-done{background:var(--blue-l);color:var(--blue)}
 
-/* ── Case page ── */
+/* ── Ticket page ── */
 .cases{display:grid;grid-template-columns:290px minmax(360px,1fr) 410px;flex:1;min-height:0}
 .queue{background:#fff;border-right:1px solid var(--border);display:flex;flex-direction:column;min-height:0}
 .queue .qh{padding:14px 14px 10px;border-bottom:1px solid var(--border)}
@@ -404,11 +404,11 @@ svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke
   <div class="body">
     <aside class="side">
       <h6>Area operativa</h6>
-      <button class="nav on" data-p="case" onclick="go('case')"><svg class="i" viewBox="0 0 24 24"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z"/></svg>Case<span class="cnt" id="nav-cnt">0</span></button>
+      <button class="nav on" data-p="case" onclick="go('case')"><svg class="i" viewBox="0 0 24 24"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z"/></svg>Ticket<span class="cnt" id="nav-cnt">0</span></button>
       <button class="nav" data-p="agenda" onclick="go('agenda')"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Agenda<span class="cnt" id="ag-cnt" title="Richieste da confermare">0</span></button>
       <button class="nav" data-p="kb" onclick="go('kb');kbQuery='';selTax(null,null)"><svg class="i" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>Knowledge Base</button>
       <button class="nav" data-p="free" onclick="go('free')"><svg class="i" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/><path d="M8 9h8M8 13h5"/></svg>Consultazione libera</button>
-      <button class="nav" data-p="crm" onclick="go('crm')"><svg class="i" viewBox="0 0 24 24"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>Casi CRM</button>
+      <button class="nav" data-p="crm" onclick="go('crm')"><svg class="i" viewBox="0 0 24 24"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>Ticket CRM</button>
       <div class="foot">
         <div><span class="dot"></span>Sessione demo</div>
         <div>Dati di esempio · documenti della base approvata</div>
@@ -420,14 +420,14 @@ svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke
       <!-- ═════════ CASE ═════════ -->
       <section class="page on" id="p-case" style="flex-direction:column">
         <div class="ph">
-          <div><div class="crumb">Contact Center / Area operativa</div><h1>Case e conversazioni</h1></div>
-          <button class="btn btn-g" onclick="openNewCase()"><svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Nuovo case</button>
+          <div><div class="crumb">Contact Center / Area operativa</div><h1>Ticket e conversazioni</h1></div>
+          <button class="btn btn-g" onclick="openNewCase()"><svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Nuovo ticket</button>
         </div>
         <div class="cases">
           <div class="queue">
             <div class="qh">
               <div class="t">Coda di lavorazione <small>FIFO</small></div>
-              <div class="search"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><input id="q-search" placeholder="Cerca nome o case" oninput="renderQueue()"></div>
+              <div class="search"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><input id="q-search" placeholder="Cerca nome o ticket" oninput="renderQueue()"></div>
               <div class="filters">
                 <button class="on" data-f="all" onclick="setFilter('all')">Tutti</button>
                 <button data-f="wait" onclick="setFilter('wait')">In attesa</button>
@@ -448,7 +448,7 @@ svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke
             <div class="ctx" id="adv-ctx"></div>
             <div class="stream" id="adv-stream"></div>
             <div class="ain">
-              <textarea id="adv-in" placeholder="Chiedi all'assistente sul case…" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();askCase()}"></textarea>
+              <textarea id="adv-in" placeholder="Chiedi all'assistente sul ticket…" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();askCase()}"></textarea>
               <div class="af"><span>Solo uso interno · risposte dalla base approvata</span><button class="sendbtn" id="adv-send" onclick="askCase()" aria-label="Invia"><svg class="i" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button></div>
             </div>
           </div>
@@ -499,28 +499,28 @@ svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke
             <div class="ah">
               <div class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M12 3l1.9 4.6L18.5 9l-4.6 1.9L12 15.5l-1.9-4.6L5.5 9l4.6-1.4z"/></svg></div>
               <div><b>P&amp;W Advisor</b><small>Consultazione libera</small></div>
-              <span class="badge-free">Senza case</span>
+              <span class="badge-free">Senza ticket</span>
             </div>
             <div class="ctx free"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>Nessuna pratica associata</div>
             <div class="stream" id="free-stream"></div>
             <div class="ain">
               <textarea id="free-in" placeholder="Cerca nella conoscenza approvata…" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();askFree()}"></textarea>
-              <div class="af"><span>Solo uso interno · nessun riferimento ad altri case</span><button class="sendbtn" id="free-send" onclick="askFree()" aria-label="Invia"><svg class="i" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button></div>
+              <div class="af"><span>Solo uso interno · nessun riferimento ad altri ticket</span><button class="sendbtn" id="free-send" onclick="askFree()" aria-label="Invia"><svg class="i" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button></div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ═════════ CASI CRM ═════════ -->
+      <!-- ═════════ TICKET CRM ═════════ -->
       <section class="page" id="p-crm" style="flex-direction:column">
         <div class="ph">
-          <div><div class="crumb">Contact Center / Conoscenza</div><h1>Casi CRM</h1></div>
+          <div><div class="crumb">Contact Center / Conoscenza</div><h1>Ticket CRM</h1></div>
           <span class="tag-ok">Validatore</span>
         </div>
         <div class="crmwrap">
-          <div class="lh"><h3>Selezione editoriale</h3><small>Casi risolti in Microsoft Dynamics · dati demo</small></div>
+          <div class="lh"><h3>Selezione editoriale</h3><small>Ticket risolti nel CRM · dati demo</small></div>
           <div id="crmlist"></div>
-          <div class="crm-info">Il validatore seleziona i casi risolti utili a tutti, prepara il contenuto e verifica la rimozione dei dati personali. L'azione <b>Includi in KB</b> costituisce l'approvazione: seguono la generazione del documento su SharePoint e l'ingestion, senza una seconda approvazione.</div>
+          <div class="crm-info">Il validatore seleziona i ticket risolti utili a tutti, prepara il contenuto e verifica la rimozione dei dati personali. L'azione <b>Includi in KB</b> costituisce l'approvazione: seguono la generazione del documento su SharePoint e l'ingestion, senza una seconda approvazione.</div>
         </div>
       </section>
     </main>
@@ -542,14 +542,14 @@ svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke
       <option>Chiuso senza esito</option>
     </select>
     <label class="chk"><input type="checkbox" id="crm-ok" onchange="document.getElementById('crm-go').disabled=!this.checked"> Ho verificato sintesi e stato della pratica</label>
-    <div class="hint">Registrazione simulata in Microsoft Dynamics. La chiusura della sessione non determina automaticamente la risoluzione del caso.</div>
+    <div class="hint">Registrazione simulata in Microsoft Dynamics. La chiusura della sessione non determina automaticamente la risoluzione del ticket.</div>
   </div>
   <div class="mf"><button class="btn btn-o" onclick="closeM('m-crm')">Annulla</button><button class="btn btn-g" id="crm-go" disabled onclick="confirmCrm()"><svg class="i" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Conferma registrazione</button></div>
 </div></div>
 
 <!-- Modale: nuovo case -->
 <div class="ov" id="m-new"><div class="modal">
-  <div class="mh"><b>Nuovo case manuale</b><button onclick="closeM('m-new')" aria-label="Chiudi">×</button></div>
+  <div class="mh"><b>Nuovo ticket manuale</b><button onclick="closeM('m-new')" aria-label="Chiudi">×</button></div>
   <div class="mb">
     <div class="row2">
       <div><label for="n-canale">Canale</label><select id="n-canale"><option>Telefono</option><option>Email</option><option>Sportello</option></select></div>
@@ -559,12 +559,12 @@ svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke
     <label for="n-profilo">Profilo</label><select id="n-profilo"><option>HR / responsabile del personale</option><option>Dirigente</option><option>Azienda</option><option>Consulente / professionista</option><option>Altro</option></select>
     <label for="n-ogg">Oggetto</label><input type="text" id="n-ogg" placeholder="Es. Termine per la domanda di CIGO">
     <label for="n-note">Elementi utili alla lavorazione</label><textarea id="n-note" placeholder="Cosa ha chiesto l'utente al telefono…" style="min-height:90px"></textarea>
-    <div class="hint">Il case entra nella coda con la data e l'ora di creazione e segue lo stesso flusso delle richieste acquisite automaticamente.</div>
+    <div class="hint">Il ticket entra nella coda con la data e l'ora di creazione e segue lo stesso flusso delle richieste acquisite automaticamente.</div>
   </div>
   <div class="mf"><button class="btn btn-o" onclick="closeM('m-new')">Annulla</button><button class="btn btn-g" onclick="createCase()">Crea e prendi in carico</button></div>
 </div></div>
 
-<!-- Modale: contenuto da caso CRM -->
+<!-- Modale: contenuto da ticket CRM -->
 <div class="ov" id="m-kb"><div class="modal">
   <div class="mh"><b>Prepara contenuto per la KB</b><button onclick="closeM('m-kb')" aria-label="Chiudi">×</button></div>
   <div class="mb">
@@ -602,7 +602,7 @@ svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke
     </div>
     <div class="row2">
       <div><label for="a-cons">Consulente</label><select id="a-cons"></select></div>
-      <div><label for="a-case">Case collegato</label><select id="a-case"></select></div>
+      <div><label for="a-case">Ticket collegato</label><select id="a-case"></select></div>
     </div>
     <label for="a-note">Note per il consulente</label>
     <textarea id="a-note" style="min-height:70px" placeholder="Cosa vuole approfondire l'utente (senza dati sanitari o identificativi di terzi)"></textarea>
@@ -694,7 +694,7 @@ function docSections(id){
   return out;
 }
 
-// Case demo (nomi e dati di fantasia)
+// Ticket demo (nomi e dati di fantasia)
 const CASES = [
   {id:'CC-1042', canale:'WhatsApp', t:'09:12', nome:'Giulia Rossi', profilo:'HR / responsabile del personale', azienda:'Impresa edile, 38 dipendenti', sede:'Sede territoriale di Roma',
    oggetto:'DURC bloccato in vista di una gara d\'appalto', area:'Welfare aziendale', status:'work', owner:ME, ident:'+39 347 ••• ••12',
@@ -733,7 +733,7 @@ let caseSeq = 1047;
 let curCase = 'CC-1042';
 let qFilter = 'all';
 
-// Casi CRM risolti (dati di esempio)
+// Ticket CRM risolti (dati di esempio)
 const CRM = [
   {id:'CRM-2081', title:'Rapporto biennale: soglia dei 50 dipendenti', area:'Welfare aziendale', sub:'La certificazione della parità di genere', date:'2 ott 2026', state:'sel',
    text:'Problema: azienda con 40 dipendenti chiede se è obbligata a inviare il rapporto biennale sul personale.\nRisoluzione: l\'obbligo riguarda le aziende con più di 50 dipendenti; sotto la soglia l\'invio è facoltativo ma utile in vista della certificazione della parità di genere.\nCondizioni: verificare il numero di dipendenti alla data di riferimento del biennio.'},
@@ -750,7 +750,7 @@ const CRM = [
   {id:'CRM-2047', title:'Estratto conto: periodi mancanti', area:'Previdenza', sub:'Posizione contributiva aziendale', date:'8 set 2026', state:'kb',
    text:'Problema: nell\'estratto conto di un dipendente mancano alcuni mesi di contribuzione.\nRisoluzione: il lavoratore può inviare una segnalazione contributiva per chiedere accredito o modifica dei periodi; lato azienda l\'anomalia va letta nel contesto dello specifico adempimento INPS.\nCondizioni: se esiste un provvedimento INPS impugnabile si valuta il ricorso amministrativo nei termini previsti.'}
 ];
-const DERIVED = CRM.filter(c => c.state==='kb').map(c => ({id:c.id.toLowerCase(), title:c.title, area:c.area, sub:c.sub, upd:c.date, crm:c.id, fonti:'Derivato da caso CRM risolto'}));
+const DERIVED = CRM.filter(c => c.state==='kb').map(c => ({id:c.id.toLowerCase(), title:c.title, area:c.area, sub:c.sub, upd:c.date, crm:c.id, fonti:'Derivato da ticket CRM risolto'}));
 let curCrm = null;
 
 // ───────────────────────── Utility ─────────────────────────
@@ -783,7 +783,7 @@ function renderQueue(){
       <b>${esc(c.nome)}</b>
       <div class="sub">${esc(c.oggetto)}</div>
       <div class="r3"><span class="st ${STATUS[c.status][1]}">${STATUS[c.status][0]}</span><span>${c.canale}</span></div>
-    </div>`).join('') : '<div class="qempty">Nessun case per questo filtro.</div>';
+    </div>`).join('') : '<div class="qempty">Nessun ticket per questo filtro.</div>';
   $('nav-cnt').textContent = CASES.filter(c => c.status === 'wait').length;
 }
 function selectCase(id){ curCase = id; renderQueue(); renderCase(); renderAdv(); }
@@ -792,7 +792,7 @@ function selectCase(id){ curCase = id; renderQueue(); renderCase(); renderAdv();
 let curTab = 'conv';
 function renderCase(){
   const c = getCase(curCase), col = $('case-col');
-  if(!c){ col.innerHTML = '<div class="noc">Seleziona un case dalla coda.</div>'; return; }
+  if(!c){ col.innerHTML = '<div class="noc">Seleziona un ticket dalla coda.</div>'; return; }
   const mine = c.owner === ME, locked = c.status === 'lock';
   let action = '';
   if(c.status === 'wait') action = `<button class="btn btn-g btn-s" onclick="takeCase()">Prendi in carico</button>`;
@@ -815,7 +815,7 @@ function renderCase(){
     <div class="tabp" data-t="det"></div>
     <div class="compose" id="compose" ${mine?'':'style="display:none"'}>
       <textarea id="reply" placeholder="${c.canale==='WhatsApp'?'Scrivi una risposta…':'Registra l\'esito del contatto o la risposta inviata…'}"></textarea>
-      <div class="cf"><span>${c.canale==='WhatsApp'?'Invio sul canale WhatsApp · simulato':'Canale non integrato · la risposta viene registrata nel case'}</span><button class="btn btn-g btn-s" onclick="sendReply()"><svg class="i" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg>${c.canale==='WhatsApp'?'Invia':'Registra'}</button></div>
+      <div class="cf"><span>${c.canale==='WhatsApp'?'Invio sul canale WhatsApp · simulato':'Canale non integrato · la risposta viene registrata nel ticket'}</span><button class="btn btn-g btn-s" onclick="sendReply()"><svg class="i" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg>${c.canale==='WhatsApp'?'Invia':'Registra'}</button></div>
     </div>`;
   renderConv(); renderNotes(); renderDet(); setTab(curTab);
 }
@@ -837,8 +837,8 @@ function renderDet(){
   const c = getCase(curCase), el = document.querySelector('.tabp[data-t=det]');
   const nCons = c.adv.filter(m=>m.role==='user').length;
   el.innerHTML = `<table class="kv">
-    <tr><td>Identificativo case</td><td>${c.id}</td></tr>
-    <tr><td>Canale di provenienza</td><td>${c.canale}${c.canale==='WhatsApp'?' · canale integrato':' · case manuale'}</td></tr>
+    <tr><td>Identificativo ticket</td><td>${c.id}</td></tr>
+    <tr><td>Canale di provenienza</td><td>${c.canale}${c.canale==='WhatsApp'?' · canale integrato':' · ticket manuale'}</td></tr>
     <tr><td>Contatto</td><td>${esc(c.ident)}</td></tr>
     <tr><td>Profilo</td><td>${esc(c.profilo)}</td></tr>
     <tr><td>Organizzazione</td><td>${esc(c.azienda)}</td></tr>
@@ -852,13 +852,13 @@ function renderDet(){
 }
 function takeCase(){
   const c = getCase(curCase); c.status='work'; c.owner=ME;
-  c.notes.push({t:nowT(), who:'Sistema', text:'Case preso in carico da '+ME+'. Assegnazione registrata.'});
+  c.notes.push({t:nowT(), who:'Sistema', text:'Ticket preso in carico da '+ME+'. Assegnazione registrata.'});
   toast(c.id+' preso in carico'); renderQueue(); renderCase(); renderAdv();
 }
 function sendReply(){
   const c = getCase(curCase), v = $('reply').value.trim(); if(!v) return;
   c.msgs.push({dir:'out', who:ME, t:nowT(), text:v}); $('reply').value=''; renderConv();
-  toast(c.canale==='WhatsApp'?'Messaggio inviato sul canale (simulato)':'Risposta registrata nel case');
+  toast(c.canale==='WhatsApp'?'Messaggio inviato sul canale (simulato)':'Risposta registrata nel ticket');
   scheduleUserReply(c);
 }
 // Risposte preparate dell'utente (demo): arrivano dopo qualche secondo, una per ogni invio dell'operatore
@@ -881,7 +881,7 @@ function addNote(){
   c.notes.push({t:nowT(), who:ME, text:v}); renderCase(); setTab('note');
 }
 
-// Nuovo case manuale
+// Nuovo ticket manuale
 function openNewCase(){ ['n-nome','n-ogg','n-note'].forEach(i=>$(i).value=''); openM('m-new'); }
 function createCase(){
   const nome=$('n-nome').value.trim(), ogg=$('n-ogg').value.trim();
@@ -929,7 +929,7 @@ function mdAnswer(text){
 function srcCards(refs){
   return refs.map((k,i) => {
     const [id,n] = k.split('#'); const d = allDocs().find(x=>x.id===id); if(!d) return '';
-    const sub = d.crm ? `<span class="chip-crm" style="padding:1px 6px;margin-right:4px">Da caso CRM</span>${esc(d.crm)} · ${d.upd}` : `§${n} ${esc(docSections(id)[n] || '')} · ${d.upd}`;
+    const sub = d.crm ? `<span class="chip-crm" style="padding:1px 6px;margin-right:4px">Da ticket CRM</span>${esc(d.crm)} · ${d.upd}` : `§${n} ${esc(docSections(id)[n] || '')} · ${d.upd}`;
     return `<div class="src" onclick="openDoc('${id}',${d.crm?0:n})"><span class="n">${i+1}</span>${ICON.doc}<div><b>${esc(d.title)}</b><small>${sub}</small></div><span class="go">${ICON.go}</span></div>`;
   }).join('');
 }
@@ -962,7 +962,7 @@ function renderAdv(){
   ctx.innerHTML = `${ICON.link}${c.id} · ${esc(c.area)}`;
   const usable = c.owner === ME;
   inp.disabled = !usable || advBusy; sb.disabled = !usable || advBusy;
-  inp.placeholder = usable ? 'Chiedi all\'assistente sul case…' : (c.status==='wait' ? 'Prendi in carico il case per consultare l\'assistente' : 'Case non disponibile');
+  inp.placeholder = usable ? 'Chiedi all\'assistente sul ticket…' : (c.status==='wait' ? 'Prendi in carico il ticket per consultare l\'assistente' : 'Ticket non disponibile');
   renderThread(c.adv, st, {caseMode:true, pending:c._pending, sugg: usable ? c.sugg : [], fn:'askCase'});
 }
 function flagAns(i){ const c=getCase(curCase); c.adv[i].flag=!c.adv[i].flag; renderAdv(); if(c.adv[i].flag) toast('Risposta segnalata al validatore'); }
@@ -1018,13 +1018,13 @@ async function prepDraft(){
   box.disabled = false; box.focus(); toast('Bozza inserita: rivedi il testo prima di inviarlo');
 }
 
-// Consultazione libera (contesto separato, nessun case)
+// Consultazione libera (contesto separato, nessun ticket)
 const FREE = {adv:[], pending:false, busy:false,
   sugg:['Quali sono i massimali CIGO 2026?','Chi deve inviare il rapporto biennale sul personale?','Quali codici F24 usano i fondi sanitari convenzionati con INPS?']};
 function renderFree(){
   $('free-in').disabled = FREE.busy; $('free-send').disabled = FREE.busy;
   renderThread(FREE.adv, $('free-stream'), {caseMode:false, pending:FREE.pending, sugg:FREE.sugg, fn:'askFree'});
-  if(!FREE.adv.length) $('free-stream').insertAdjacentHTML('afterbegin','<p style="font-size:12.5px;color:var(--soft);line-height:1.5;margin:6px 0 4px">In questa consultazione non è associato alcun case: le risposte non includono messaggi o riferimenti di altre pratiche.</p>');
+  if(!FREE.adv.length) $('free-stream').insertAdjacentHTML('afterbegin','<p style="font-size:12.5px;color:var(--soft);line-height:1.5;margin:6px 0 4px">In questa consultazione non è associato alcun ticket: le risposte non includono messaggi o riferimenti di altre pratiche.</p>');
 }
 async function askFree(text){
   if(FREE.busy) return;
@@ -1065,7 +1065,7 @@ function crumbs(){
 }
 function docRow(d){
   return `<div class="doc" onclick="openDoc('${d.id}')"><span class="di">${ICON.doc}</span><div><b>${esc(d.title)}</b><small>${esc(d.area)} · ${esc(d.sub)} · aggiornato il ${d.upd}</small></div>
-    <div class="rt">${d.crm?'<span class="chip-crm">Da caso CRM</span>':''}<span class="tag-ok">Approvato</span><span class="openbtn">${ICON.go}</span></div></div>`;
+    <div class="rt">${d.crm?'<span class="chip-crm">Da ticket CRM</span>':''}<span class="tag-ok">Approvato</span><span class="openbtn">${ICON.go}</span></div></div>`;
 }
 function renderDocs(){
   const qq = kbQuery.trim().toLowerCase();
@@ -1083,7 +1083,7 @@ function renderDocs(){
     const subs = TAXONOMY.find(t=>t[0]===kbSel.area)[1];
     content = `<div class="fgrid">${subs.map(sb => {
       const ds = allDocs().filter(d=>d.area===kbSel.area && d.sub===sb), nc = ds.filter(d=>d.crm).length;
-      return `<div class="fcard" onclick="selTax('${kbSel.area}','${sb}')">${ICON.folder}<b>${esc(sb)}</b><small>${ds.length} ${ds.length===1?'documento':'documenti'}${nc?` · ${nc} da casi CRM`:''}</small></div>`;
+      return `<div class="fcard" onclick="selTax('${kbSel.area}','${sb}')">${ICON.folder}<b>${esc(sb)}</b><small>${ds.length} ${ds.length===1?'documento':'documenti'}${nc?` · ${nc} da ticket CRM`:''}</small></div>`;
     }).join('')}</div>`;
   } else {
     const list = allDocs().filter(d => d.area===kbSel.area && d.sub===kbSel.sub).sort((x,y) => (x.crm?1:0)-(y.crm?1:0));
@@ -1118,7 +1118,7 @@ function openDoc(id, sec){
         <tr><td>Stato</td><td><span class="tag-ok">Vigente</span></td></tr>
         <tr><td>Validazione</td><td>Approvato dal validatore</td></tr>
         <tr><td>Aggiornamento</td><td>${d.upd}</td></tr>
-        <tr><td>Origine</td><td>${d.crm?'Caso '+d.crm+' · documento generato su SharePoint':'Repository SharePoint · sincronizzato'}</td></tr>
+        <tr><td>Origine</td><td>${d.crm?'Ticket '+d.crm+' · documento generato su SharePoint':'Repository SharePoint · sincronizzato'}</td></tr>
         <tr><td>Hub pubblico</td><td>${d.crm?'Uso interno':'<a href="https://hub-previdenza-welfare-datahubs.onrender.com/" target="_blank">Articolo pubblicato ↗</a>'}</td></tr>
       </table></div>${links}${toc}
     </aside></div>`;
@@ -1135,7 +1135,7 @@ function scrollSec(n, hl){
   $('kbmain').scrollTo({top: h.offsetTop - 70, behavior:'smooth'});
 }
 
-// ───────────────────────── Casi CRM ─────────────────────────
+// ───────────────────────── Ticket CRM ─────────────────────────
 const CRMST = {sel:['Da selezionare','st-sel'], ing:['Ingestion in corso','st-ing'], kb:['In KB','st-kb']};
 function renderCrm(){
   $('crmlist').innerHTML = CRM.map(c => `<div class="crm"><span class="di" style="color:var(--soft)">${ICON.folder}</span><div><b>${esc(c.title)}</b><small>${c.id} · ${esc(c.area)} › ${esc(c.sub)} · risolto il ${c.date}</small></div>
@@ -1143,7 +1143,7 @@ function renderCrm(){
 }
 function openKbPrep(id){
   curCrm = CRM.find(c=>c.id===id);
-  $('kbm-ref').textContent = curCrm.id + ' · Documento derivato da case CRM';
+  $('kbm-ref').textContent = curCrm.id + ' · Documento derivato da ticket CRM';
   $('kbm-txt').value = curCrm.text; $('kbm-note').value=''; $('kbm-ok').checked=false; $('kbm-go').disabled=true; openM('m-kb');
 }
 function includeKb(){
@@ -1151,7 +1151,7 @@ function includeKb(){
   closeM('m-kb'); renderCrm(); toast(c.id+' approvato: generazione del documento SharePoint e ingestion');
   setTimeout(()=>{
     c.state='kb';
-    DERIVED.push({id:c.id.toLowerCase(), title:c.title, area:c.area, sub:c.sub, upd:'oggi', crm:c.id, fonti:'Derivato da caso CRM risolto'});
+    DERIVED.push({id:c.id.toLowerCase(), title:c.title, area:c.area, sub:c.sub, upd:'oggi', crm:c.id, fonti:'Derivato da ticket CRM risolto'});
     renderCrm(); if($('kbmain').dataset.init){ renderTax(); }
     toast(c.id+' disponibile nella Knowledge Base');
   }, 2600);
@@ -1239,7 +1239,7 @@ function renderReqs(){
   updAgCnt();
 }
 
-// Nuovo appuntamento (da agenda o da case)
+// Nuovo appuntamento (da agenda o da ticket)
 function fillSelect(id, opts, val){ $(id).innerHTML = opts.map(o => `<option ${o===val?'selected':''}>${esc(o)}</option>`).join(''); }
 function openAppt(pre){
   apptCtx = pre;
@@ -1252,7 +1252,7 @@ function openAppt(pre){
   fillSelect('a-cons', CONSULENTI, pre.cons || CONSULENTI[{Previdenza:0,'Welfare aziendale':1,'Sanità integrativa':2}[(pre.tema||'').split(' › ')[0]] || 0]);
   $('a-mod').value = pre.mod || 'In sede';
   $('a-case').innerHTML = '<option value="">Nessuno</option>' + CASES.filter(c => c.owner===ME).map(c => `<option value="${c.id}" ${c.id===pre.case?'selected':''}>${c.id} · ${esc(c.nome)}</option>`).join('');
-  $('app-ref').textContent = pre.case ? `Dal case ${pre.case} · Ticket di tipo Appuntamento` : 'Ticket di tipo Appuntamento · inserimento da agenda';
+  $('app-ref').textContent = pre.case ? `Dal ticket ${pre.case} · Ticket di tipo Appuntamento` : 'Ticket di tipo Appuntamento · inserimento da agenda';
   openM('m-app'); setTimeout(() => $(pre.nome ? 'a-date' : 'a-nome').focus(), 50);
 }
 function apptFromCase(){
