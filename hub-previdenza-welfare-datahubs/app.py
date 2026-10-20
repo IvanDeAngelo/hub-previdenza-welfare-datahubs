@@ -1,4 +1,5 @@
 import os
+import re
 import json
 import datetime
 import markdown
@@ -60,9 +61,37 @@ def load_kb():
 
 KB, KB_RAW = load_kb()
 
-KB_TEXT = "\n\n---\n\n".join([f"TEMA: {k}\n{v}" for k, v in KB_RAW.items()])
+
+# ── CCNL: la sintesi articolo per articolo non va nel prompt fisso (sarebbe troppo grande);
+#    si aggiunge solo quando la domanda cita quel contratto (codice CNEL o nome).
+ART_RE = re.compile(r'\n## \d+\. Il contratto articolo per articolo\n.*?(?=\n## \d+\. |\Z)', re.S)
+CCNL_ART = {}
+_GENERIC = {'industria', 'private', 'attivita', 'settore', 'servizi'}
+for _k in list(KB_RAW):
+    _m = ART_RE.search(KB_RAW[_k]) if _k.startswith('ccnl_') else None
+    if _m:
+        _parts = _k.split('_')
+        CCNL_ART[_k] = {'code': _parts[1].upper(),
+                        'words': [w for w in _parts[2:] if len(w) >= 5 and w not in _GENERIC],
+                        'text': _m.group(0).strip()}
+KB_PROMPT = {k: (ART_RE.sub('\n', v) if k in CCNL_ART else v) for k, v in KB_RAW.items()}
+
+
+def ccnl_articolato(text, limit=2):
+    """Blocco con la sintesi articolo per articolo dei CCNL citati nel testo (max `limit`)."""
+    t = (text or '')
+    up, low = t.upper(), t.lower()
+    hits = [k for k, c in CCNL_ART.items()
+            if re.search(r'\b' + c['code'] + r'\b', up) or any(w[:-1] in low for w in c['words'])]
+    if not hits:
+        return ''
+    return ('\n\nSINTESI ARTICOLO PER ARTICOLO DEI CCNL CITATI NELLA DOMANDA (fa parte della documentazione; '
+            'cita la sezione con il suo numero, es. [[id#N]]):' +
+            ''.join(f"\n\n---\n\nID ARTICOLO: {k.replace('_', '-')}\n{CCNL_ART[k]['text']}" for k in hits[:limit]))
+
+KB_TEXT = "\n\n---\n\n".join([f"TEMA: {k}\n{v}" for k, v in KB_PROMPT.items()])
 KB_TEXT_PUBLIC = "\n\n---\n\n".join(
-    [f"ID ARTICOLO: {k.replace('_', '-')}\n{v}" for k, v in KB_RAW.items()]
+    [f"ID ARTICOLO: {k.replace('_', '-')}\n{v}" for k, v in KB_PROMPT.items()]
 )
 
 # ── Versione completa (utenti registrati) ──
@@ -274,13 +303,19 @@ def ask():
         convo = [{'role': 'user', 'content': str(last.get('content', ''))[:1000]}]
 
     client = anthropic.Anthropic(api_key=api_key)
+    # base documentale in cache: le domande successive costano meno e partono prima
+    system_blocks = [{'type': 'text', 'text': system, 'cache_control': {'type': 'ephemeral'}}]
+    # sintesi articolo per articolo dei CCNL citati (ultime domande dell'utente)
+    recent = ' '.join(str(m.get('content', '')) for m in convo[-4:] if m.get('role') == 'user')
+    extra = ccnl_articolato(recent)
+    if extra:
+        system_blocks.append({'type': 'text', 'text': extra})
 
     def generate():
         with client.messages.stream(
             model=model,
             max_tokens=max_tokens,
-            # base documentale in cache: le domande successive costano meno e partono prima
-            system=[{'type': 'text', 'text': system, 'cache_control': {'type': 'ephemeral'}}],
+            system=system_blocks,
             messages=convo
         ) as stream:
             for text in stream.text_stream:
