@@ -1433,7 +1433,7 @@ function openSection(art,sec){
 function renderAnswer(text){
   let t=text.replace(/^\n+/,'');
   const refs=[];
-  t=t.replace(/\[\[([a-z0-9-]+)(?:#(\d+))?\]\]/g,(m,art,sec)=>{if(BY_ID[art])refs.push([art,sec?parseInt(sec,10):0]);return '';});
+  t=t.replace(/\[\[?([a-z0-9-]+)(?:#(\d+))?\]\]?/g,(m,art,sec)=>{if(!BY_ID[art])return m.startsWith('[[')?'':m;refs.push([art,sec?parseInt(sec,10):0]);return '';});
   t=t.replace(/\[\[[^\]]*$/,'');
   let html=linkify(escapeHtml(t.trim())).replace(/\n{2,}/g,'<br><br>').replace(/\n/g,'<br>');
   html=html.replace(/(<br>)+$/,'');
