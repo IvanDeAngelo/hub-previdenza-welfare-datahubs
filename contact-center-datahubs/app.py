@@ -78,8 +78,11 @@ def ccnl_articolato(text, limit=2):
             if re.search(r'\b' + c['code'] + r'\b', up) or any(w[:-1] in low for w in c['words'])]
     if not hits:
         return ''
-    return ('\n\nSINTESI ARTICOLO PER ARTICOLO DEI CCNL CITATI NELLA DOMANDA (fa parte della documentazione; '
-            'cita la sezione con il suo numero, es. [[id#N]]):' +
+    return ('\n\nSINTESI ARTICOLO PER ARTICOLO DEI CCNL PERTINENTI ALLA DOMANDA. Fa parte a pieno titolo della '
+            'documentazione approvata e copre TUTTI gli articoli del contratto (non solo previdenza, sanità e welfare: '
+            'anche retribuzione, trasferte, orario, ferie, malattia, preavviso, ecc.). Se la risposta è qui, usala '
+            'direttamente senza dire che la documentazione non copre l\'argomento, e indica a quale CCNL ti riferisci. '
+            'Cita la sezione con il suo numero, es. [[id#N]]:' +
             ''.join(f"\n\n---\n\nID ARTICOLO: {k.replace('_', '-')}\n{CCNL_ART[k]['text']}" for k in hits[:limit]))
 KB_TEXT = "\n\n---\n\n".join(
     [f"ID ARTICOLO: {k.replace('_', '-')}\n{v}" for k, v in KB_PROMPT.items()]
@@ -95,7 +98,8 @@ Regole:
 4. Se la documentazione non consente di rispondere, dillo chiaramente, indica quali informazioni chiedere all'utente oppure suggerisci il rinvio alla sede territoriale competente. Non inventare importi, termini o riferimenti normativi.
 5. Se manca un dato del case necessario per rispondere (ad esempio il piano, la matricola, la data dell'evento), segnalalo come informazione da verificare con l'utente.
 6. Se l'operatore chiede link, fonti o dove consultare un atto o un servizio, riporta gli URL ufficiali presenti nella documentazione (sezioni "Fonti ufficiali" e "Servizi INPS e di altri enti istituzionali"): una riga per atto, con il nome dell'atto seguito dall'URL completo (https://...). Usa solo URL presenti nella documentazione, non inventarli e non dire che i link non sono disponibili se sono presenti.
-7. Rispondi in italiano. Non aggiungere saluti o frasi di chiusura.
+7. Se la domanda riguarda un istituto contrattuale (trasferta, ferie, orario, malattia, preavviso, ecc.) e la sezione "SINTESI ARTICOLO PER ARTICOLO" contiene la risposta, rispondi con quella indicando il CCNL a cui si riferisce. Se l'utente non ha precisato il contratto, aggiungi in fondo, senza premesse negative, di verificare con l'utente quale CCNL si applica.
+8. Rispondi in italiano. Non aggiungere saluti o frasi di chiusura.
 
 Documentazione approvata:
 
