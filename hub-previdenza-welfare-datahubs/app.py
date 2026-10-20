@@ -85,8 +85,11 @@ def ccnl_articolato(text, limit=2):
             if re.search(r'\b' + c['code'] + r'\b', up) or any(w[:-1] in low for w in c['words'])]
     if not hits:
         return ''
-    return ('\n\nSINTESI ARTICOLO PER ARTICOLO DEI CCNL CITATI NELLA DOMANDA (fa parte della documentazione; '
-            'cita la sezione con il suo numero, es. [[id#N]]):' +
+    return ('\n\nSINTESI ARTICOLO PER ARTICOLO DEI CCNL PERTINENTI ALLA DOMANDA. Fa parte a pieno titolo della '
+            'documentazione approvata e copre TUTTI gli articoli del contratto (non solo previdenza, sanità e welfare: '
+            'anche retribuzione, trasferte, orario, ferie, malattia, preavviso, ecc.). Se la risposta è qui, usala '
+            'direttamente senza dire che la documentazione non copre l\'argomento, e indica a quale CCNL ti riferisci. '
+            'Cita la sezione con il suo numero, es. [[id#N]]:' +
             ''.join(f"\n\n---\n\nID ARTICOLO: {k.replace('_', '-')}\n{CCNL_ART[k]['text']}" for k in hits[:limit]))
 
 KB_TEXT = "\n\n---\n\n".join([f"TEMA: {k}\n{v}" for k, v in KB_PROMPT.items()])
