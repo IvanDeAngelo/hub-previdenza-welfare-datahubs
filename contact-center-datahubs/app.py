@@ -5,6 +5,7 @@ collegato al case, Knowledge Base, consultazione libera e casi CRM.
 Usa la stessa base documentale dell'Hub pubblico (cartella kb/).
 """
 import os
+import re
 import markdown
 import anthropic
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify, Response, stream_with_context
@@ -52,8 +53,36 @@ def load_kb():
 
 
 KB, KB_RAW = load_kb()
+
+
+# ── CCNL: la sintesi articolo per articolo non va nel prompt fisso (sarebbe troppo grande);
+#    si aggiunge solo quando la domanda cita quel contratto (codice CNEL o nome).
+ART_RE = re.compile(r'\n## \d+\. Il contratto articolo per articolo\n.*?(?=\n## \d+\. |\Z)', re.S)
+CCNL_ART = {}
+_GENERIC = {'industria', 'private', 'attivita', 'settore', 'servizi'}
+for _k in list(KB_RAW):
+    _m = ART_RE.search(KB_RAW[_k]) if _k.startswith('ccnl_') else None
+    if _m:
+        _parts = _k.split('_')
+        CCNL_ART[_k] = {'code': _parts[1].upper(),
+                        'words': [w for w in _parts[2:] if len(w) >= 5 and w not in _GENERIC],
+                        'text': _m.group(0).strip()}
+KB_PROMPT = {k: (ART_RE.sub('\n', v) if k in CCNL_ART else v) for k, v in KB_RAW.items()}
+
+
+def ccnl_articolato(text, limit=2):
+    """Blocco con la sintesi articolo per articolo dei CCNL citati nel testo (max `limit`)."""
+    t = (text or '')
+    up, low = t.upper(), t.lower()
+    hits = [k for k, c in CCNL_ART.items()
+            if re.search(r'\b' + c['code'] + r'\b', up) or any(w[:-1] in low for w in c['words'])]
+    if not hits:
+        return ''
+    return ('\n\nSINTESI ARTICOLO PER ARTICOLO DEI CCNL CITATI NELLA DOMANDA (fa parte della documentazione; '
+            'cita la sezione con il suo numero, es. [[id#N]]):' +
+            ''.join(f"\n\n---\n\nID ARTICOLO: {k.replace('_', '-')}\n{CCNL_ART[k]['text']}" for k in hits[:limit]))
 KB_TEXT = "\n\n---\n\n".join(
-    [f"ID ARTICOLO: {k.replace('_', '-')}\n{v}" for k, v in KB_RAW.items()]
+    [f"ID ARTICOLO: {k.replace('_', '-')}\n{v}" for k, v in KB_PROMPT.items()]
 )
 
 SYSTEM_PROMPT = """Sei il P&W Advisor, l'assistente interno dell'Applicazione Contact Center dell'Hub Previdenza e Welfare (DataHubs S.r.l.).
@@ -171,6 +200,11 @@ def cc_ask():
     # la base documentale resta in cache; i contenuti CRM (variabili) vanno in un blocco separato
     if crm_block:
         system.append({'type': 'text', 'text': crm_block})
+    # sintesi articolo per articolo dei CCNL citati nel case o nella domanda
+    recent = ' '.join(m['content'] for m in messages[-4:] if m['role'] == 'user') + ' ' + str(case.get('oggetto', '')) + ' ' + str(case.get('conversazione', ''))[:3000]
+    extra = ccnl_articolato(recent)
+    if extra:
+        system.append({'type': 'text', 'text': extra})
     client = anthropic.Anthropic(api_key=api_key)
 
     def generate():
