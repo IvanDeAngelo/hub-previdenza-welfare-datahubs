@@ -96,6 +96,7 @@ main{padding:24px 0 60px;}
 /* ── MEDIA ── */
 .media{position:relative;overflow:hidden;background:var(--tc-bg);display:block;}
 .media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;}
+.sub-head{margin:26px 0 4px;padding-bottom:6px;border-bottom:2px solid var(--tc);color:var(--tc);font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;}
 .media.noimg{background:linear-gradient(135deg,var(--tc) 0%,var(--navy) 120%);}
 .media.noimg::after{content:attr(data-label);position:absolute;left:16px;bottom:12px;color:rgba(255,255,255,.9);font-weight:800;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
 .art:hover .media img{transform:scale(1.03);}
@@ -665,6 +666,8 @@ body.dark .gl-term dd a{color:#7DB4EA;}
 
     <!-- ARTICOLI (popolati da JS) -->
     <section class="page" id="page-posizione-contributiva"></section>
+    <section class="page" id="page-previdenza-complementare-2026"></section>
+    <section class="page" id="page-fondi-pensione"></section>
     <section class="page" id="page-accompagnamento-pensione"></section>
     <section class="page" id="page-durc-online"></section>
     <section class="page" id="page-cigo"></section>
@@ -754,13 +757,15 @@ body.dark .gl-term dd a{color:#7DB4EA;}
     <div>
       <a onclick="showPage('previdenza')">Previdenza</a><a onclick="showPage('welfare')">Welfare aziendale</a><a onclick="showPage('sanita')">Sanità integrativa</a><a onclick="showPage('novita')">Novità</a><a onclick="showPage('risorse')">Risorse</a><a onclick="showPage('chisiamo')">Chi siamo</a>
     </div>
-    <span>Fonti: INPS · Agenzia delle Entrate · Ministero della Salute — Foto: Unsplash</span>
+    <span>Fonti: INPS · Agenzia delle Entrate · Ministero della Salute · COVIP — Foto: Unsplash</span>
   </div>
 </footer>
 
 <!-- Contenuti KB renderizzati dal server: spostati negli articoli via JS -->
 <div hidden>
   <div id="kb-src-posizione-contributiva">{{ kb.posizione_contributiva | safe }}</div>
+  <div id="kb-src-previdenza-complementare-2026">{{ kb.previdenza_complementare_2026 | safe }}</div>
+  <div id="kb-src-fondi-pensione">{{ kb.fondi_pensione | safe }}</div>
   <div id="kb-src-accompagnamento-pensione">{{ kb.accompagnamento_pensione | safe }}</div>
   <div id="kb-src-durc-online">{{ kb.durc_online | safe }}</div>
   <div id="kb-src-cigo">{{ kb.cigo | safe }}</div>
@@ -860,7 +865,7 @@ const OPEN_LOGIN={{ 'true' if (open_login or login_error) else 'false' }};
 /* ══════════ DATI ══════════ */
 const IMG=id=>'https://images.unsplash.com/'+id+'?auto=format&fit=crop&w=1200&q=70';
 const AREAS={
-  previdenza:{name:'Previdenza',cls:'c-prev',desc:'Contributi, posizione contributiva, correttezza dei versamenti e accompagnamento alla pensione.'},
+  previdenza:{name:'Previdenza',cls:'c-prev',desc:'Previdenza obbligatoria e complementare: contributi, posizione contributiva, accompagnamento alla pensione, fondi pensione e destinazione del TFR.',subs:['Previdenza obbligatoria','Previdenza complementare']},
   welfare:{name:'Welfare aziendale',cls:'c-welf',desc:'Regolarità contributiva, DURC, ammortizzatori sociali e parità di genere per le imprese.'},
   sanita:{name:'Sanità integrativa',cls:'c-san',desc:'Fondi sanitari contrattuali e regime fiscale della sanità integrativa.'},
   ccnl:{name:'CCNL',cls:'c-ccnl',desc:'I contratti collettivi nazionali del sistema Confindustria, a partire da quello dei dirigenti industriali, spiegati in modo semplice: fondo pensione, fondo sanitario e welfare contrattuale.'}
@@ -872,6 +877,16 @@ const ARTICLES=[
    summary:'Chi può accedere, per quali causali, come presentare domanda con OMNIA IS e gestire il conguaglio in UniEmens. Fino al 31 dicembre 2026 CIGO per eventi climatici senza contributo addizionale nei settori edile e lapideo.',
    img:'photo-1589793463357-5fb813435467',caption:'Linea di produzione industriale',
    sources:[['Scheda servizio INPS — Cassa integrazione guadagni ordinaria','Domanda tramite piattaforma OMNIA IS','https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.50599.cassa-integrazione-guadagni-ordinaria.html'],['Circolare INPS n. 4 del 28/1/2026','Massimali dei trattamenti di integrazione salariale 2026','https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2026.01.circolare-numero-4-del-28-01-2026_15147.html'],['Messaggio INPS n. 2418 del 20/7/2026','CIGO per emergenza climatica (D.L. 107/2026)','https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2026.07.messaggio-numero-2418-del-20-07-2026_15325.html']]},
+  {id:'previdenza-complementare-2026',area:'previdenza',sub:'Previdenza complementare',tag:'Previdenza complementare',date:'Ottobre 2026',
+   title:'Previdenza complementare 2026: adesione automatica dei neoassunti e nuove prestazioni',
+   summary:'Dal 1° luglio i neoassunti del settore privato aderiscono in automatico al fondo pensione, salvo rinuncia entro 60 giorni. Cosa deve fare il datore di lavoro, le nuove soglie del Fondo di Tesoreria INPS, la deducibilità a 5.300 € e le nuove prestazioni, con l\'erogazione frazionata dal 31 ottobre.',
+   img:'',caption:'Previdenza complementare',
+   sources:[['Istruzioni COVIP del 25/6/2026','Nuove prestazioni pensionistiche','https://www.covip.it/sites/default/files/provvedimenti/istruzioni_prestazioni_25_06_2026.pdf'],['Direttive COVIP del 19/6/2026','Adesione automatica dei neoassunti','https://lavoro.gov.it/previdenza-complementare/le-direttive-covip-materia-di-adesione-automatica'],['Legge 30 dicembre 2025, n. 199','Legge di Bilancio 2026','https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:2025-12-30;199'],['INPS — Fondo di Tesoreria','Nuove soglie dimensionali dal 2026 (Circ. 12/2026)','https://www.inps.it/it/it/inps-comunica/notizie/dettaglio-news-page.news.2026.02.fondo-di-tesoreria-nuove-soglie-dimensionali-dal-2026.html']]},
+  {id:'fondi-pensione',area:'previdenza',sub:'Previdenza complementare',tag:'Previdenza complementare',date:'Ottobre 2026',
+   title:'Fondi pensione: come funzionano, dal TFR alla prestazione',
+   summary:'Fondi negoziali, aperti e PIP, TFR e contributi, vantaggi fiscali, prestazione in capitale e rendita, anticipazioni, riscatti, RITA e trasferimenti: le regole di base della previdenza complementare.',
+   img:'',caption:'Fondi pensione',
+   sources:[['D.Lgs. 5 dicembre 2005, n. 252','Disciplina delle forme pensionistiche complementari','https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2005-12-05;252'],['COVIP','Albo dei fondi pensione e guide per gli aderenti','https://www.covip.it']]},
   {id:'certificazione-parita-genere',area:'welfare',tag:'Parità di genere',date:'Ottobre 2026',
    title:'La certificazione della parità di genere',
    summary:'Il percorso completo: la Missione 5 del PNRR, la Legge 162/2021, il rapporto biennale sul personale, la prassi UNI/PdR 125:2022 con la soglia del 60%, il rilascio e i vantaggi, dall\'esonero INPS dell\'1% ai contributi per le PMI.',
@@ -882,7 +897,7 @@ const ARTICLES=[
    summary:'Tipologie A e B, deducibilità (art. 10 TUIR) e non imponibilità (art. 51 TUIR) con plafond unico, trattamento contributivo e iscrizione all\'Anagrafe dei fondi sanitari integrativi.',
    img:'photo-1554224154-26032ffc0d07',caption:'Documentazione fiscale',
    sources:[['Circolare Agenzia delle Entrate n. 4/E del 16/5/2025','Redditi di lavoro dipendente — par. 2.1 fondi sanitari','https://www.agenziaentrate.gov.it/portale/documents/20143/8410823/Circolare+lavoro+dipendente+LB2025+DD+IRPEF+n.+4+del+16+maggio+2025.pdf/36979eaa-9fc5-a4ec-a7aa-136497c53f91?t=1747405979604'],['Ministero della Salute — Fondi sanitari integrativi','Anagrafe dei fondi e iscrizione','https://www.salute.gov.it/new/it/tema/programmazione-e-finanziamento-del-ssn/fondi-sanitari-integrativi/']]},
-  {id:'accompagnamento-pensione',area:'previdenza',tag:'Pensioni',date:'Settembre 2026',
+  {id:'accompagnamento-pensione',area:'previdenza',sub:'Previdenza obbligatoria',tag:'Pensioni',date:'Settembre 2026',
    title:'Accompagnamento alla pensione: isopensione, fondi di solidarietà e agevolazioni 2026',
    summary:'Requisiti, accordo aziendale, procedura INPS e agevolazioni fiscali 2026 per gli strumenti di uscita anticipata dei lavoratori vicini alla pensione.',
    img:'photo-1508963493744-76fce69379c0',caption:'Verso la pensione',
@@ -897,7 +912,7 @@ const ARTICLES=[
    summary:'Come funziona la verifica sulla Piattaforma Unica INPS, come anticipare le irregolarità con Simulazione DURC e Pre-DURC e come usare la Delega Master.',
    img:'photo-1450101499163-c8848c66ca85',caption:'Verifica documentale',
    sources:[['Scheda servizio INPS — DURC Online','Descrizione e accesso al servizio','https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.50130.durc-online.html'],['Messaggio INPS n. 3662 del 5/11/2024','Piattaforma Unica Ve.R.A., Simulazione DURC e Pre-DURC','https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2024.11.messaggio-numero-3662-del-05-11-2024_14691.html']]},
-  {id:'posizione-contributiva',area:'previdenza',tag:'Contributi',date:'Ottobre 2026',
+  {id:'posizione-contributiva',area:'previdenza',sub:'Previdenza obbligatoria',tag:'Contributi',date:'Ottobre 2026',
    title:'Posizione contributiva aziendale: come controllare estratto conto e correttezza dei versamenti',
    summary:'Estratto conto contributivo, verifica dei versamenti, ricorsi amministrativi e unicità della posizione aziendale: cosa controllare e quali servizi INPS usare.',
    img:'photo-1554224155-6726b3ff858f',caption:'Controllo dei versamenti',
@@ -1007,6 +1022,7 @@ function renderCcnlArea(el,ar){
         <aside class="art-side">${sideColumn('ccnl',null)}</aside>
       </div>`;
 }
+function rowArt(a){return `<div class="art row-art" ${go(a.id)}>${media(a)}<div>${kicker(a)}<h3>${a.title}</h3><p>${a.summary}</p><div class="byline" style="margin-top:8px">${AUTHOR} · ${a.date}</div></div></div>`;}
 function renderAreas(){
   Object.entries(AREAS).forEach(([k,ar])=>{
     if(k==='ccnl'){const el=document.getElementById('page-ccnl');el.className='page '+ar.cls;renderCcnlArea(el,ar);return;}
@@ -1020,7 +1036,7 @@ function renderAreas(){
         <div>
           <div class="art lead" ${go(first.id)}>${media(first)}<h2>${first.title}</h2>
             <div class="byline">${kicker(first)} · ${AUTHOR} · ${first.date}</div><p>${first.summary}</p></div>
-          ${others.map(a=>`<div class="art row-art" ${go(a.id)}>${media(a)}<div>${kicker(a)}<h3>${a.title}</h3><p>${a.summary}</p><div class="byline" style="margin-top:8px">${AUTHOR} · ${a.date}</div></div></div>`).join('')}
+          ${ar.subs?ar.subs.map(sb=>{const l=others.filter(a=>a.sub===sb);return l.length?`<div class="sub-head">${sb}</div>`+l.map(rowArt).join(''):'';}).join(''):others.map(rowArt).join('')}
         </div>
         <aside class="art-side">${sideColumn(k,null)}</aside>
       </div>`;
@@ -1114,6 +1130,8 @@ const SEARCH_MAP={
   'cigo':'cigo','cassa integrazione':'cigo','massimale':'cigo','omnia':'cigo','eone':'cigo','ammortizzator':'cigo','climatic':'cigo','calore':'cigo',
   'isopensione':'accompagnamento-pensione','esodo':'accompagnamento-pensione','accompagnamento':'accompagnamento-pensione','pensione':'accompagnamento-pensione','solidariet':'accompagnamento-pensione',
   'estratto conto':'posizione-contributiva','ricors':'posizione-contributiva','uniemens':'posizione-contributiva','cassetto':'posizione-contributiva','versament':'posizione-contributiva','posizione contributiva':'posizione-contributiva',
+  'previdenza complementare':'previdenza-complementare-2026','adesione automatica':'previdenza-complementare-2026','silenzio-assenso':'previdenza-complementare-2026','fondo di tesoreria':'previdenza-complementare-2026','covip':'previdenza-complementare-2026','frazionata':'previdenza-complementare-2026','life cycle':'previdenza-complementare-2026','neoassunt':'previdenza-complementare-2026',
+  'fondo pension':'fondi-pensione','fondi pension':'fondi-pensione','rita':'fondi-pensione','riscatt':'fondi-pensione','anticipazion':'fondi-pensione','pip':'fondi-pensione','tfr':'fondi-pensione',
   'deducib':'sanita-fiscale','tuir':'sanita-fiscale','anagrafe':'sanita-fiscale','3615':'sanita-fiscale','3.615':'sanita-fiscale','fiscal':'sanita-fiscale',
   'esal':'fondi-sanitari-contrattuali','fafp':'fondi-sanitari-contrattuali','fondosani':'fondi-sanitari-contrattuali','innovacare':'fondi-sanitari-contrattuali','f24':'fondi-sanitari-contrattuali','fondi sanitari':'fondi-sanitari-contrattuali','fondo sanitario':'fondi-sanitari-contrattuali',
   'certificazione':'certificazione-parita-genere','parità di genere':'certificazione-parita-genere','parita di genere':'certificazione-parita-genere','pdr 125':'certificazione-parita-genere','par_gen':'certificazione-parita-genere',
@@ -1205,6 +1223,8 @@ async function sendMsg(txt){
 /* ══════════ SERVIZI PLUS: DATI ══════════ */
 const PLUS_LOCKED={'plus-lettera':'La Lettera informativa','plus-quesiti':'La raccolta dei Quesiti risolti','plus-date':'Lo scadenzario Date chiave','plus-inoltra':'Il servizio Inoltra un quesito','plus-appuntamenti':'La prenotazione di un appuntamento con un consulente'};
 const QUESITI=[
+ {art:'previdenza-complementare-2026',sec:2,q:'Un neoassunto con contratto a termine di 45 giorni rientra nell\'adesione automatica?',a:'No. L\'adesione automatica non si applica ai contratti a tempo determinato di durata inferiore a 60 giorni e decade se il rapporto cessa prima dei 60 giorni.',src:'Direttive COVIP 19/6/2026'},
+ {art:'previdenza-complementare-2026',sec:3,q:'Se il CCNL prevede più fondi pensione, a quale va il TFR del neoassunto?',a:'Al fondo indicato dall\'accordo aziendale; in mancanza, a quello con il maggior numero di dipendenti dell\'azienda iscritti alla data di assunzione. Senza accordi o contratti si applica il fondo residuale previsto dalla legge.',src:'Art. 8, c. 9-bis, D.Lgs. 252/2005 · Direttive COVIP 19/6/2026'},
  {art:'cigo',sec:2,q:'I dirigenti possono accedere alla CIGO?',a:'No. I dirigenti sono esclusi dalla Cassa integrazione guadagni ordinaria.',src:'Art. 1, c. 1, D.Lgs. 148/2015'},
  {art:'cigo',sec:2,q:'Per la CIGO legata alle ondate di calore serve il requisito dei 30 giorni di anzianità?',a:'No. Per le richieste connesse a eventi oggettivamente non evitabili (EONE), tra cui le emergenze climatiche, il requisito dei 30 giorni non si applica. Per questi periodi non è dovuto nemmeno il contributo addizionale.',src:'Msg. INPS 2418/2026 · D.Lgs. 148/2015'},
  {art:'cigo',sec:6,q:'Quanto vale il contributo addizionale CIGO a carico del datore?',a:'9% fino a 52 settimane di CIGO nel biennio mobile, 12% da 53 a 104 settimane, 15% oltre 104 settimane. Non è dovuto per i periodi connessi a EONE.',src:'Circ. INPS 5/2025'},
@@ -1219,6 +1239,8 @@ const QUESITI=[
  {art:'fondi-sanitari-contrattuali',sec:4,q:'Qual è il codice F24 per versare a INNOVACARE?',a:'CARE. La convenzione è del 23/03/2026 (Circ. INPS 95 del 10/09/2026) e, come le altre convenzioni con i fondi sanitari contrattuali, vale fino al 31/12/2026, rinnovabile per un triennio.',src:'Circ. INPS 95/2026'}
 ];
 const DATES=[
+ {d:'31 ottobre 2026',t:'Previdenza complementare: al via l\'erogazione frazionata e il trasferimento con il contributo del datore',src:'L. 112/2026 · Istruzioni COVIP 25/6/2026',art:'previdenza-complementare-2026',sec:8},
+ {d:'31 dicembre 2026',t:'Fine del periodo transitorio dei fondi pensione per le nuove prestazioni',src:'Istruzioni COVIP 25/6/2026',art:'previdenza-complementare-2026',sec:9},
  {d:'1 gennaio 2026',t:'Massimale unico CIGO a 1.423,69 € lordi mensili',src:'Circ. INPS 4/2026',art:'cigo',sec:5},
  {d:'1 gennaio – 31 luglio',t:'Finestra annuale per la domanda di iscrizione all\'Anagrafe dei fondi sanitari (SIAF)',src:'D.M. Salute 27/10/2009',art:'sanita-fiscale',sec:6},
  {d:'30 aprile 2026',t:'Termine per la domanda di esonero contributivo per le certificazioni di parità di genere rilasciate entro il 31/12/2025',src:'Msg. INPS 3804/2025',art:'certificazione-parita-genere',sec:10},
@@ -1230,6 +1252,7 @@ const DATES=[
  {d:'Ricorrente',t:'Pre-DURC: avviso 30 o 15 giorni prima della scadenza del DURC',src:'Msg. INPS 3662/2024',art:'durc-online',sec:9}
 ];
 const LETTERA=[
+ {art:'previdenza-complementare-2026',sec:2,title:'Neoassunti iscritti in automatico al fondo pensione',text:'Dal 1° luglio 2026 i lavoratori del settore privato assunti da quella data aderiscono automaticamente al fondo pensione previsto dal contratto, con TFR e contributi, salvo rinuncia scritta entro 60 giorni. Il datore deve consegnare l\'informativa all\'assunzione e avviare i versamenti dal mese successivo alla scadenza dei 60 giorni.',src:'L. 199/2025 · Direttive COVIP 19/6/2026'},
  {art:'cigo',sec:3,title:'CIGO e caldo estremo: periodi fuori dal limite fino a fine anno',text:'Dal 1° luglio al 31 dicembre 2026 i datori dei settori edile, lapideo e delle escavazioni possono chiedere la CIGO per eventi climatici senza che i periodi siano computati nel limite massimo di durata e senza contributo addizionale. Per la stessa causale non si applica il requisito dei 30 giorni di anzianità.',src:'Msg. INPS 2418/2026 · D.L. 107/2026, art. 6'},
  {art:'accompagnamento-pensione',sec:5,title:'Isopensione: tutela per chi è colpito dai nuovi requisiti 2027-2028',text:'Con l\'innalzamento dei requisiti pensionistici per il biennio 2027-2028 alcuni lavoratori in esodo rischiavano un periodo senza assegno. La prestazione viene prolungata fino alla nuova data di pensionamento, anche oltre la durata massima ordinaria.',src:'Circ. INPS 41/2026 · L. 199/2025'},
  {art:'fondi-sanitari-contrattuali',sec:4,title:'Fondi sanitari contrattuali: arriva INNOVACARE',text:'Si aggiunge il codice CARE ai fondi già convenzionati con INPS per la riscossione tramite F24 e UniEmens (ESAL, FAFP, SANI). Tutte le convenzioni scadono il 31/12/2026, rinnovabili per un triennio.',src:'Circ. INPS 95/2026'},
@@ -1354,7 +1377,7 @@ async function submitQuesito(e){
 
 
 /* ══════════ SERVIZI PLUS: APPUNTAMENTI ══════════ */
-const AP_TEMI=[['Previdenza',['Accompagnamento alla pensione','Posizione contributiva aziendale']],['Welfare aziendale',['Cassa integrazione ordinaria 2026','La certificazione della parità di genere','DURC Online']],['Sanità integrativa',['Fondi sanitari integrativi','Fondi sanitari contrattuali']]];
+const AP_TEMI=[['Previdenza',['Accompagnamento alla pensione','Posizione contributiva aziendale','Previdenza complementare']],['Welfare aziendale',['Cassa integrazione ordinaria 2026','La certificazione della parità di genere','DURC Online']],['Sanità integrativa',['Fondi sanitari integrativi','Fondi sanitari contrattuali']]];
 const AP_SEDI=['Sede territoriale di Roma','Sede territoriale di Milano','Sede territoriale di Napoli','Sede territoriale di Torino','Sede territoriale di Bologna'];
 const AP_ST={'Richiesto':['r','st-r'],'Confermato':['c','st-c'],'Proposto altro orario':['p','st-p'],'Annullato':['a','st-a']};
 // Richieste demo dell'utente connesso (dati di fantasia)
@@ -1453,6 +1476,7 @@ function showLimit(msgs){
 
 /* ══════════ NOVITÀ ══════════ */
 const NEWS=[
+ {d:'21 ottobre 2026',art:'previdenza-complementare-2026',sec:9,title:'Fondi pensione: dal 31 ottobre l\'erogazione frazionata del montante',text:'Gli aderenti potranno chiedere di ricevere la posizione a rate per almeno 5 anni; dalla stessa data chi cambia fondo porta con sé anche il contributo del datore di lavoro.',src:'L. 112/2026 · Istruzioni COVIP 25/6/2026'},
  {d:'29 settembre 2026',art:'accompagnamento-pensione',sec:8,title:'Isopensione: istruzioni per i lavoratori contributivi puri',text:'L\'INPS chiarisce come liquidare la prestazione di accompagnamento ai lavoratori privi di anzianità contributiva al 31 dicembre 1995.',src:'Circ. INPS 104/2026'},
  {d:'14 settembre 2026',art:'accompagnamento-pensione',sec:7,title:'Accompagnamento alla pensione: somma non imponibile e ulteriore detrazione 2026',text:'Le misure fiscali della Legge di Bilancio 2025 si applicano anche alle prestazioni di accompagnamento alla pensione, riconosciute in automatico dall\'INPS.',src:'Msg. INPS 2829/2026'},
  {d:'10 settembre 2026',art:'fondi-sanitari-contrattuali',sec:4,title:'Fondi sanitari contrattuali: arriva INNOVACARE (codice CARE)',text:'Firmata la convenzione con INPS per la riscossione tramite F24 e UniEmens. Come le altre convenzioni, vale fino al 31 dicembre 2026.',src:'Circ. INPS 95/2026'},
@@ -1483,6 +1507,8 @@ const RESOURCES=[
  {ic:'🎧',title:'Podcast',text:'Episodi brevi con le novità del mese e le interviste agli esperti.',soon:true}
 ];
 const FAQ=[
+ {art:'fondi-pensione',sec:5,q:'Quanto si può prendere in capitale dal fondo pensione?',a:'Fino al 50% del montante; il resto viene erogato come rendita o con le nuove modalità del 2026. Si può prendere tutto in capitale se la rendita del 70% del montante sarebbe inferiore alla metà dell\'assegno sociale.'},
+ {art:'previdenza-complementare-2026',sec:7,q:'Qual è il limite di deducibilità dei contributi ai fondi pensione nel 2026?',a:'5.300 € l\'anno, sommando i contributi del lavoratore e del datore; il TFR non concorre al limite. Per i giovani di prima occupazione dopo il 2007 si arriva fino a 7.950 €.'},
  {art:'durc-online',sec:1,q:'Cos\'è il DURC e quanto dura?',a:'Il Documento Unico di Regolarità Contributiva attesta la regolarità contributiva dell\'impresa nei confronti degli enti. Si ottiene online tramite il codice fiscale e vale 120 giorni dalla data della verifica.'},
  {art:'durc-online',sec:2,q:'Quando serve il DURC?',a:'Nei rapporti con la Pubblica Amministrazione, nei contratti pubblici e per accedere a benefici o agevolazioni subordinati alla regolarità contributiva.'},
  {art:'durc-online',sec:3,q:'Chi può verificare la regolarità contributiva di un\'impresa?',a:'Amministrazioni e stazioni appaltanti, organismi SOA, l\'impresa o il lavoratore autonomo per la propria posizione e i soggetti delegati, come previsto dal D.M. 30 gennaio 2015.'},
@@ -1496,6 +1522,8 @@ const FAQ=[
  {art:'certificazione-parita-genere',sec:4,q:'Chi può ottenere la certificazione della parità di genere?',a:'Tutte le organizzazioni con dipendenti, pubbliche e private, di qualsiasi dimensione. Sono esclusi i titolari di partita IVA senza dipendenti.'}
 ];
 const GLOSSARY=[
+ ['Adesione automatica','Iscrizione al fondo pensione del contratto, con TFR e contributi, dei lavoratori del settore privato assunti dal 1° luglio 2026, salvo rinuncia entro 60 giorni.','previdenza-complementare-2026',2],
+ ['RITA','Rendita integrativa temporanea anticipata: la posizione del fondo pensione erogata a rate negli anni che precedono la pensione di vecchiaia.','fondi-pensione',8],
  ['Accentramento contributivo','Obbligo di unicità della posizione contributiva dell\'azienda, che riguarda l\'organizzazione della posizione aziendale presso l\'INPS.','posizione-contributiva',3],
  ['Anagrafe dei fondi sanitari','Registro del Ministero della Salute a cui i fondi sanitari integrativi devono essere iscritti per dare diritto alle agevolazioni fiscali. L\'iscrizione avviene sul sistema SIAF.','sanita-fiscale',6],
  ['Biennio mobile','Periodo di riferimento di due anni, calcolato a ritroso, entro cui la CIGO non può superare le 52 settimane.','cigo',4],
@@ -1515,6 +1543,7 @@ const GLOSSARY=[
  ['UniEmens','Flusso telematico mensile con cui il datore di lavoro trasmette all\'INPS i dati retributivi e contributivi dei dipendenti.','fondi-sanitari-contrattuali',5],
  ['Ve.R.A.','Verifica Regolarità Contributiva: sezione della Piattaforma Unica INPS che mostra le situazioni debitorie da sistemare.','durc-online',6]
 ];
+GLOSSARY.sort((a,b)=>a[0].localeCompare(b[0],'it'));
 const PATHS=[
  {title:'Partecipare a una gara d\'appalto',sub:'Arrivare alla gara con la regolarità contributiva in ordine.',steps:[['durc-online',2,'Quando serve il DURC','Rapporti con la PA, contratti pubblici e agevolazioni'],['durc-online',6,'Controllare le evidenze con Ve.R.A.','Individuare in anticipo ciò che può bloccare il DURC'],['durc-online',9,'Attivare il Pre-DURC','Ricevere l\'avviso prima della scadenza'],['posizione-contributiva',4,'Correggere eventuali discordanze','Cosa fare se la posizione presenta errori']]},
  {title:'Gestire una crisi temporanea',sub:'Sospendere o ridurre l\'attività con la cassa integrazione ordinaria.',steps:[['cigo',2,'Verificare chi può accedere','Settori ammessi e requisiti dei lavoratori'],['cigo',3,'Individuare la causale','Eventi transitori, mercato, EONE'],['cigo',7,'Presentare la domanda su OMNIA IS','Termini e documentazione'],['cigo',8,'Pagamento e conguaglio UniEmens','Come recuperare le somme anticipate']]},
