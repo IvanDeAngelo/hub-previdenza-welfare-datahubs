@@ -96,7 +96,12 @@ main{padding:24px 0 60px;}
 /* ── MEDIA ── */
 .media{position:relative;overflow:hidden;background:var(--tc-bg);display:block;}
 .media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;}
-.plus-partner{margin:-4px 0 14px;font-size:12.5px;font-style:italic;color:var(--muted);}
+.plus-partner{margin:2px 0 16px;}
+.plus-partner .pp-lbl{display:block;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.plus-partner .pp-box{display:flex;align-items:center;gap:14px;padding:12px 14px;border:1px solid var(--line,#e2e6ea);border-left:4px solid var(--dh-green,#6A9A69);border-radius:8px;background:var(--bg-soft,#f6f8f7);}
+.plus-partner .pp-logo{font-size:22px;font-weight:900;letter-spacing:.5px;color:var(--navy,#12305a);white-space:nowrap;}
+.plus-partner .pp-desc{font-size:12.5px;line-height:1.35;color:var(--text-soft,#555);}
+.plus-partner .pp-note{display:block;margin-top:6px;font-size:11.5px;font-style:italic;color:var(--muted);}
 .menu-sub{margin:14px 0 2px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--muted);}
 .menu-sub:first-of-type{margin-top:6px;}
 .sub-head{margin:26px 0 4px;padding-bottom:6px;border-bottom:2px solid var(--tc);color:var(--tc);font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;}
@@ -1271,7 +1276,7 @@ const PLUS_SERVICES=[
  {id:'plus-appuntamenti',ic:'🤝',title:'Appuntamento con un consulente',tag:'Richiedi un incontro con un consulente del Polo Interattivo, in sede, in videochiamata o al telefono.',items:['Scegli tematica, sede e modalità','Indica le fasce orarie che preferisci','Segui qui lo stato: conferma o nuova proposta di orario'],open:"showPage('plus-appuntamenti')"},
  {id:'plus-dati',soon:true,ic:'📊',title:'Dati e ricerche',tag:'Dashboard tematiche, report trimestrali e infografiche su welfare, previdenza e mercato del lavoro.',items:['Dashboard per area tematica','Report trimestrali e rapporto annuale','Infografiche pronte da condividere']},
  {id:'plus-tutorial',soon:true,ic:'🎬',title:'Tutorial e video',tag:'Video brevi e guide passo-passo sulle procedure INPS più frequenti.',items:['Video da 1 a 3 minuti','Guide "come fare per"','Un nuovo tutorial ogni mese']},
- {id:'plus-formazione',soon:true,ic:'🎓',title:'Formazione e webinar',tag:'Percorsi formativi e webinar per HR, manager e aziende, anche sulla previdenza complementare.',items:['Webinar sulla riforma 2026 della previdenza complementare: adesione automatica dei neoassunti, adempimenti del datore, nuove prestazioni','L\'esperto risponde: quesiti sulla previdenza complementare con revisione tecnica specialistica','Percorsi avanzati per chi siede negli organi dei fondi pensione o vuole specializzarsi','Archivio con slide, video e sintesi'],partner:'In collaborazione con Mefop (proposta)'},
+ {id:'plus-formazione',soon:true,ic:'🎓',title:'Formazione e webinar',tag:'Percorsi formativi e webinar per HR, manager e aziende, anche sulla previdenza complementare.',items:['Webinar sulla riforma 2026 della previdenza complementare: adesione automatica dei neoassunti, adempimenti del datore, nuove prestazioni','L\'esperto risponde: quesiti sulla previdenza complementare con revisione tecnica specialistica','Percorsi avanzati per chi siede negli organi dei fondi pensione o vuole specializzarsi','Archivio con slide, video e sintesi'],partner:{name:'Mefop',desc:'Società per lo sviluppo del mercato dei fondi pensione',note:'Collaborazione in fase di proposta'}},
  {id:'plus-inoltra',ic:'📨',title:'Inoltra un quesito',tag:'Quando la risposta non è nella base documentale, la passi al Centro Studi.',items:['Modulo dedicato per tema','Presa in carico della redazione','Le risposte alimentano i Quesiti risolti'],open:"showPage('plus-inoltra')"}
 ];
 
@@ -1291,7 +1296,7 @@ function renderPlus(){
         <div class="pc-top"><div class="pc-ic">${s.ic}</div>${s.soon?'<span class="chip-soon">In arrivo</span>':(LOGGED?'<span class="open-chip">Attivo</span>':`<span class="lock">${LOCK_SVG}Riservato</span>`)}</div>
         <h3>${s.title}</h3><div class="tagline">${s.tag}</div>
         <ul>${s.items.map(i=>`<li>${i}</li>`).join('')}</ul>
-        ${s.partner?`<div class="plus-partner">${s.partner}</div>`:''}
+        ${s.partner?`<div class="plus-partner"><span class="pp-lbl">In collaborazione con</span><div class="pp-box"><div class="pp-logo">${s.partner.name}</div><div class="pp-desc">${s.partner.desc}</div></div><span class="pp-note">${s.partner.note}</span></div>`:''}
         ${s.soon?'<div class="plus-note" style="margin-top:auto">Disponibile a breve per gli utenti registrati</div>':(LOGGED?`<button class="btn-solid" onclick="${s.open}">Apri</button>`:`<button class="btn-ghost" onclick="openAuth('lock','${s.id==='advisor'?'plus':s.id}')">Accedi per attivare</button>`)}
       </div>`).join('')}</div>`;
   document.getElementById('home-plus-list').innerHTML=PLUS_SERVICES.filter(s=>!s.soon).map(s=>
