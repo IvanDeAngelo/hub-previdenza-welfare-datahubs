@@ -29,6 +29,26 @@ QUESITI = []
 # stesso codice, due servizi con contenuti diversi a video e nella base dell'assistente.
 HIDE_AREAS = {a.strip() for a in os.environ.get('HUB_HIDE_AREAS', '').split(',') if a.strip()}
 AREA_OF_KB = {'fondi_sanitari_contrattuali': 'sanita', 'sanita_fiscale': 'sanita'}
+# Versione "base" dello stesso indirizzo: link che termina con ?versione=base
+BASE_HIDE = {'sanita', 'ccnl'}
+
+
+def kb_area(key):
+    return 'ccnl' if key.startswith('ccnl_') else AREA_OF_KB.get(key)
+
+
+def is_base():
+    data = request.get_json(silent=True) if request.is_json else None
+    v = request.args.get('versione') or request.form.get('versione') or (data or {}).get('versione')
+    return v == 'base'
+
+
+def hidden_areas():
+    return HIDE_AREAS | (BASE_HIDE if is_base() else set())
+
+
+def vq():
+    return {'versione': 'base'} if is_base() else {}
 
 KB_FILES = {
     'posizione_contributiva': 'posizione_contributiva.md',
@@ -48,7 +68,7 @@ for _f in sorted(os.listdir(os.path.join(os.path.dirname(__file__), 'kb'))):
     if _f.startswith('ccnl_') and _f.endswith('.md'):
         KB_FILES[_f[:-3]] = _f
 KB_FILES = {k: v for k, v in KB_FILES.items()
-            if ('ccnl' if k.startswith('ccnl_') else AREA_OF_KB.get(k)) not in HIDE_AREAS}
+            if kb_area(k) not in HIDE_AREAS}
 
 
 def load_kb():
@@ -107,6 +127,11 @@ def ccnl_articolato(text, limit=2):
 KB_TEXT = "\n\n---\n\n".join([f"TEMA: {k}\n{v}" for k, v in KB_PROMPT.items()])
 KB_TEXT_PUBLIC = "\n\n---\n\n".join(
     [f"ID ARTICOLO: {k.replace('_', '-')}\n{v}" for k, v in KB_PROMPT.items()]
+)
+KB_PROMPT_BASE = {k: v for k, v in KB_PROMPT.items() if kb_area(k) not in BASE_HIDE}
+KB_TEXT_BASE = "\n\n---\n\n".join([f"TEMA: {k}\n{v}" for k, v in KB_PROMPT_BASE.items()])
+KB_TEXT_PUBLIC_BASE = "\n\n---\n\n".join(
+    [f"ID ARTICOLO: {k.replace('_', '-')}\n{v}" for k, v in KB_PROMPT_BASE.items()]
 )
 
 # ── Versione completa (utenti registrati) ──
@@ -186,8 +211,8 @@ TEXT_SWAPS = {
 }
 
 
-def swap_text(text):
-    for area in HIDE_AREAS:
+def swap_text(text, hide=None):
+    for area in (HIDE_AREAS if hide is None else hide):
         for old, new in TEXT_SWAPS.get(area, []):
             text = text.replace(old, new)
     return text
@@ -197,15 +222,17 @@ def swap_text(text):
 def index():
     user = current_user()
     remaining = None if user else max(0, PUBLIC_MAX_QUESTIONS - session.get('public_q', 0))
+    hide = hidden_areas()
     return swap_text(render_template(
-        'index.html', kb=KB, user=user,
+        'index.html', kb={k: v for k, v in KB.items() if kb_area(k) not in hide}, user=user,
+        vq=('?versione=base' if is_base() else ''),
         is_admin=user in ADMINS,
         public_remaining=remaining,
         public_max=PUBLIC_MAX_QUESTIONS,
-        hide=sorted(HIDE_AREAS),
+        hide=sorted(hide),
         login_error=request.args.get('err') == '1',
         open_login=request.args.get('accedi') == '1',
-    ))
+    ), hide)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -215,15 +242,15 @@ def login():
         password = request.form.get('password', '')
         if email in USERS and USERS[email] == password:
             session['user'] = email
-            return redirect(url_for('index'))
-        return redirect(url_for('index', accedi='1', err='1'))
-    return redirect(url_for('index', accedi='1'))
+            return redirect(url_for('index', **vq()))
+        return redirect(url_for('index', accedi='1', err='1', **vq()))
+    return redirect(url_for('index', accedi='1', **vq()))
 
 
 @app.route('/logout')
 def logout():
     session.clear()
-    return redirect(url_for('index'))
+    return redirect(url_for('index', **vq()))
 
 
 @app.route('/registrati', methods=['POST'])
@@ -329,26 +356,31 @@ def ask():
         return jsonify({'error': 'API key non configurata'}), 500
 
     if user:
-        system, model, max_tokens = swap_text(SYSTEM_PROMPT), MODEL_PLUS, 1024
+        system, model, max_tokens = SYSTEM_PROMPT, MODEL_PLUS, 1024
         convo = messages[-20:]
     else:
         used = session.get('public_q', 0)
         if used >= PUBLIC_MAX_QUESTIONS:
             return jsonify({'error': 'limite', 'remaining': 0}), 429
         session['public_q'] = used + 1
-        system, model, max_tokens = swap_text(SYSTEM_PROMPT_PUBLIC), MODEL_PUBLIC, 350
+        system, model, max_tokens = SYSTEM_PROMPT_PUBLIC, MODEL_PUBLIC, 350
         # Versione pubblica: nessuna memoria di conversazione, solo l'ultima domanda
         last = next((m for m in reversed(messages) if m.get('role') == 'user'), None)
         if not last:
             return jsonify({'error': 'Nessun messaggio'}), 400
         convo = [{'role': 'user', 'content': str(last.get('content', ''))[:1000]}]
 
+    hide = hidden_areas()
+    if BASE_HIDE <= hide and not BASE_HIDE <= HIDE_AREAS:
+        # versione base: base documentale senza le aree nascoste
+        system = (system[:-len(KB_TEXT)] + KB_TEXT_BASE) if user else (system[:-len(KB_TEXT_PUBLIC)] + KB_TEXT_PUBLIC_BASE)
+    system = swap_text(system, hide)
     client = anthropic.Anthropic(api_key=api_key)
     # base documentale in cache: le domande successive costano meno e partono prima
     system_blocks = [{'type': 'text', 'text': system, 'cache_control': {'type': 'ephemeral'}}]
     # sintesi articolo per articolo dei CCNL citati (ultime domande dell'utente)
     recent = ' '.join(str(m.get('content', '')) for m in convo[-4:] if m.get('role') == 'user')
-    extra = ccnl_articolato(recent)
+    extra = '' if 'ccnl' in hide else ccnl_articolato(recent)
     if extra:
         system_blocks.append({'type': 'text', 'text': extra})
 

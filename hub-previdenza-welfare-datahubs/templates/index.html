@@ -553,7 +553,7 @@ body.dark .gl-term dd a{color:#7DB4EA;}
       <div class="tb-sep"></div>
       {% if user %}
       <div class="tb-user"><span class="plus-chip">Plus</span><span class="tb-hide">{{ user }}</span></div>
-      <a class="tb-btn" href="/logout"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Esci</a>
+      <a class="tb-btn" href="/logout{{ vq }}"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Esci</a>
       <div class="tb-avatar">{{ user[:2]|upper }}</div>
       {% else %}
       <div class="tb-auth">
@@ -801,7 +801,7 @@ body.dark .gl-term dd a{color:#7DB4EA;}
         <div class="modal-switch">Non hai le credenziali? <a onclick="openAuth('register',lockTarget)">Richiedi l'accesso</a></div>
       </div>
       <!-- login -->
-      <form id="auth-login" method="post" action="/login" hidden onsubmit="rememberTarget()">
+      <form id="auth-login" method="post" action="/login{{ vq }}" hidden onsubmit="rememberTarget()">
         <p class="sub">Accedi per sbloccare il P&amp;W Advisor completo e i Servizi Plus.</p>
         {% if login_error %}<div class="err-box">Credenziali non valide. Riprova.</div>{% endif %}
         <div class="form-field"><label>Email</label><input type="email" name="email" required autocomplete="username"></div>
@@ -1181,11 +1181,11 @@ function doSearch(){
 /* ══════════ CONDIVISIONE ══════════ */
 function shareMail(id){
   const a=BY_ID[id];
-  location.href='mailto:?subject='+encodeURIComponent(a.title)+'&body='+encodeURIComponent(a.summary+'\n\nHub Previdenza e Welfare: '+location.origin);
+  location.href='mailto:?subject='+encodeURIComponent(a.title)+'&body='+encodeURIComponent(a.summary+'\n\nHub Previdenza e Welfare: '+location.origin+'{{ vq }}');
 }
 function copyLink(btn){
   const done=()=>{btn.style.background='var(--dh-green)';setTimeout(()=>btn.style.background='',1200);};
-  try{navigator.clipboard.writeText(location.origin).then(done,done);}catch(e){done();}
+  try{navigator.clipboard.writeText(location.origin+'{{ vq }}').then(done,done);}catch(e){done();}
 }
 
 /* ══════════ ASSISTENTE AI ══════════ */
@@ -1222,7 +1222,7 @@ async function sendMsg(txt){
   const bubble=document.querySelector('#'+lid+' .msg-b');
   let full='';
   try{
-    const res=await fetch('/ask',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:LOGGED?history:[{role:'user',content:q}]})});
+    const res=await fetch('/ask{{ vq }}',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:LOGGED?history:[{role:'user',content:q}]})});
     if(res.status===429){history.pop();publicRemaining=0;updateRem();document.getElementById(lid).remove();showLimit(msgs);sendBtn.disabled=false;return;}
     if(!res.ok||!res.body) throw new Error('HTTP '+res.status);
     const rem=res.headers.get('X-Remaining');if(rem!==null){publicRemaining=parseInt(rem,10);updateRem();}
