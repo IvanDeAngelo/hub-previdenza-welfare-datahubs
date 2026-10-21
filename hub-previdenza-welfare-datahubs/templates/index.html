@@ -96,6 +96,8 @@ main{padding:24px 0 60px;}
 /* ── MEDIA ── */
 .media{position:relative;overflow:hidden;background:var(--tc-bg);display:block;}
 .media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;}
+.menu-sub{margin:14px 0 2px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--muted);}
+.menu-sub:first-of-type{margin-top:6px;}
 .sub-head{margin:26px 0 4px;padding-bottom:6px;border-bottom:2px solid var(--tc);color:var(--tc);font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;}
 .media.noimg{background:linear-gradient(135deg,var(--tc) 0%,var(--navy) 120%);}
 .media.noimg::after{content:attr(data-label);position:absolute;left:16px;bottom:12px;color:rgba(255,255,255,.9);font-weight:800;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
@@ -1094,7 +1096,9 @@ function renderArticles(){
 function renderMenu(){
   document.getElementById('menu-cols').innerHTML=Object.entries(AREAS).map(([k,ar])=>{
     const list=k==='ccnl'?CCNL_LIST.slice(0,7):ARTICLES.filter(a=>a.area===k);
-    return `<div class="menu-col ${ar.cls}"><h4 ${go(k)}>${ar.name}</h4>${list.map(a=>`<a ${go(a.id)}>${k==='ccnl'?a.cnel+' · '+ccnlName(a):a.title.split(':')[0]}</a>`).join('')}${k==='ccnl'?`<a ${go('ccnl')} style="color:var(--tc);font-weight:700">Tutti i ${CCNL_LIST.length} contratti ›</a>`:''}</div>`;}).join('');
+    const link=a=>`<a ${go(a.id)}>${k==='ccnl'?a.cnel+' · '+ccnlName(a):a.title.split(':')[0]}</a>`;
+    const body=ar.subs?ar.subs.map(sb=>{const l=list.filter(a=>a.sub===sb);return l.length?`<div class="menu-sub">${sb}</div>`+l.map(link).join(''):'';}).join(''):list.map(link).join('');
+    return `<div class="menu-col ${ar.cls}"><h4 ${go(k)}>${ar.name}</h4>${body}${k==='ccnl'?`<a ${go('ccnl')} style="color:var(--tc);font-weight:700">Tutti i ${CCNL_LIST.length} contratti ›</a>`:''}</div>`;}).join('');
 }
 function toggleMenu(e){e.stopPropagation();document.getElementById('menu-pop').classList.toggle('open');}
 document.addEventListener('click',e=>{if(!e.target.closest('#menu-pop'))document.getElementById('menu-pop').classList.remove('open');});
