@@ -35,6 +35,8 @@ KB_FILES = {
     'certificazione_parita_genere': 'certificazione_parita_genere.md',
     'previdenza_complementare_2026': 'previdenza_complementare_2026.md',
     'fondi_pensione': 'fondi_pensione.md',
+    'pianificare_pensione': 'pianificare_pensione.md',
+    'fondo_pensione_costi_rischio': 'fondo_pensione_costi_rischio.md',
 }
 # CCNL: ogni file kb/ccnl_*.md viene caricato automaticamente
 for _f in sorted(os.listdir(os.path.join(os.path.dirname(__file__), 'kb'))):

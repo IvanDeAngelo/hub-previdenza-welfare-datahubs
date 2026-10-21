@@ -676,6 +676,8 @@ body.dark .gl-term dd a{color:#7DB4EA;}
     <section class="page" id="page-posizione-contributiva"></section>
     <section class="page" id="page-previdenza-complementare-2026"></section>
     <section class="page" id="page-fondi-pensione"></section>
+    <section class="page" id="page-pianificare-pensione"></section>
+    <section class="page" id="page-fondo-pensione-costi-rischio"></section>
     <section class="page" id="page-accompagnamento-pensione"></section>
     <section class="page" id="page-durc-online"></section>
     <section class="page" id="page-cigo"></section>
@@ -774,6 +776,8 @@ body.dark .gl-term dd a{color:#7DB4EA;}
   <div id="kb-src-posizione-contributiva">{{ kb.posizione_contributiva | safe }}</div>
   <div id="kb-src-previdenza-complementare-2026">{{ kb.previdenza_complementare_2026 | safe }}</div>
   <div id="kb-src-fondi-pensione">{{ kb.fondi_pensione | safe }}</div>
+  <div id="kb-src-pianificare-pensione">{{ kb.pianificare_pensione | safe }}</div>
+  <div id="kb-src-fondo-pensione-costi-rischio">{{ kb.fondo_pensione_costi_rischio | safe }}</div>
   <div id="kb-src-accompagnamento-pensione">{{ kb.accompagnamento_pensione | safe }}</div>
   <div id="kb-src-durc-online">{{ kb.durc_online | safe }}</div>
   <div id="kb-src-cigo">{{ kb.cigo | safe }}</div>
@@ -873,7 +877,7 @@ const OPEN_LOGIN={{ 'true' if (open_login or login_error) else 'false' }};
 /* ══════════ DATI ══════════ */
 const IMG=id=>'https://images.unsplash.com/'+id+'?auto=format&fit=crop&w=1200&q=70';
 const AREAS={
-  previdenza:{name:'Previdenza',cls:'c-prev',desc:'Previdenza obbligatoria e complementare: contributi, posizione contributiva, accompagnamento alla pensione, fondi pensione e destinazione del TFR.',subs:['Previdenza obbligatoria','Previdenza complementare']},
+  previdenza:{name:'Previdenza',cls:'c-prev',desc:'Previdenza obbligatoria e complementare ed educazione finanziaria: contributi, accompagnamento alla pensione, fondi pensione, TFR e come pianificare la pensione.',subs:['Previdenza obbligatoria','Previdenza complementare','Educazione finanziaria']},
   welfare:{name:'Welfare aziendale',cls:'c-welf',desc:'Regolarità contributiva, DURC, ammortizzatori sociali e parità di genere per le imprese.'},
   sanita:{name:'Sanità integrativa',cls:'c-san',desc:'Fondi sanitari contrattuali e regime fiscale della sanità integrativa.'},
   ccnl:{name:'CCNL',cls:'c-ccnl',desc:'I contratti collettivi nazionali del sistema Confindustria, a partire da quello dei dirigenti industriali, spiegati in modo semplice: fondo pensione, fondo sanitario e welfare contrattuale.'}
@@ -895,6 +899,16 @@ const ARTICLES=[
    summary:'Fondi negoziali, aperti e PIP, TFR e contributi, vantaggi fiscali, prestazione in capitale e rendita, anticipazioni, riscatti, RITA e trasferimenti: le regole di base della previdenza complementare.',
    img:'',caption:'Fondi pensione',
    sources:[['D.Lgs. 5 dicembre 2005, n. 252','Disciplina delle forme pensionistiche complementari','https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2005-12-05;252'],['COVIP','Albo dei fondi pensione e guide per gli aderenti','https://www.covip.it']]},
+  {id:'pianificare-pensione',menu:'Quanto avrò di pensione?',area:'previdenza',sub:'Educazione finanziaria',tag:'Educazione finanziaria',date:'Ottobre 2026',
+   title:'Quanto avrò di pensione? Il divario previdenziale e come stimarlo',
+   summary:'Il tasso di sostituzione, il divario tra reddito da lavoro e pensione pubblica, gli strumenti ufficiali per stimarlo (INPS, Ministero del Lavoro, fondi pensione) e le leve per ridurlo, a partire dal tempo.',
+   img:'',caption:'Pianificare la pensione',
+   sources:[['INPS — La mia pensione futura','Simulazione della propria pensione','https://www.inps.it/content/inps-site/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.la-mia-pensione-futura-simulazione-della-propria-pensione-50033.la-mia-pensione-futura-simulazione-della-propria-pensione.html'],['Ministero del Lavoro — Portale sulla previdenza complementare','Simulatore della pensione futura, guide e FAQ','https://lavoro.gov.it/previdenza-complementare/']]},
+  {id:'fondo-pensione-costi-rischio',menu:'Costi e rischio: come scegliere il fondo',area:'previdenza',sub:'Educazione finanziaria',tag:'Educazione finanziaria',date:'Ottobre 2026',
+   title:'Fondo pensione: costi e rischio, come scegliere',
+   summary:'Come confrontare i fondi con l\'Indicatore sintetico dei costi (ISC), quali voci di costo guardare, come scegliere il comparto in base all\'orizzonte e quali documenti leggere prima di aderire.',
+   img:'',caption:'Costi e rischio',
+   sources:[['COVIP','ISC delle forme pensionistiche e guide per gli aderenti','https://www.covip.it'],['Ministero del Lavoro — Portale sulla previdenza complementare','Guide, FAQ e glossario','https://lavoro.gov.it/previdenza-complementare/']]},
   {id:'certificazione-parita-genere',area:'welfare',tag:'Parità di genere',date:'Ottobre 2026',
    title:'La certificazione della parità di genere',
    summary:'Il percorso completo: la Missione 5 del PNRR, la Legge 162/2021, il rapporto biennale sul personale, la prassi UNI/PdR 125:2022 con la soglia del 60%, il rilascio e i vantaggi, dall\'esonero INPS dell\'1% ai contributi per le PMI.',
@@ -1102,7 +1116,7 @@ function renderArticles(){
 function renderMenu(){
   document.getElementById('menu-cols').innerHTML=Object.entries(AREAS).map(([k,ar])=>{
     const list=k==='ccnl'?CCNL_LIST.slice(0,7):ARTICLES.filter(a=>a.area===k);
-    const link=a=>`<a ${go(a.id)}>${k==='ccnl'?a.cnel+' · '+ccnlName(a):a.title.split(':')[0]}</a>`;
+    const link=a=>`<a ${go(a.id)}>${k==='ccnl'?a.cnel+' · '+ccnlName(a):(a.menu||a.title.split(':')[0])}</a>`;
     const body=ar.subs?ar.subs.map(sb=>{const l=list.filter(a=>a.sub===sb);return l.length?`<div class="menu-sub">${sb}</div>`+l.map(link).join(''):'';}).join(''):list.map(link).join('');
     return `<div class="menu-col ${ar.cls}"><h4 ${go(k)}>${ar.name}</h4>${body}${k==='ccnl'?`<a ${go('ccnl')} style="color:var(--tc);font-weight:700">Tutti i ${CCNL_LIST.length} contratti ›</a>`:''}</div>`;}).join('');
 }
@@ -1142,6 +1156,8 @@ const SEARCH_MAP={
   'estratto conto':'posizione-contributiva','ricors':'posizione-contributiva','uniemens':'posizione-contributiva','cassetto':'posizione-contributiva','versament':'posizione-contributiva','posizione contributiva':'posizione-contributiva',
   'previdenza complementare':'previdenza-complementare-2026','adesione automatica':'previdenza-complementare-2026','silenzio-assenso':'previdenza-complementare-2026','fondo di tesoreria':'previdenza-complementare-2026','covip':'previdenza-complementare-2026','frazionata':'previdenza-complementare-2026','life cycle':'previdenza-complementare-2026','neoassunt':'previdenza-complementare-2026',
   'fondo pension':'fondi-pensione','fondi pension':'fondi-pensione','rita':'fondi-pensione','riscatt':'fondi-pensione','anticipazion':'fondi-pensione','pip':'fondi-pensione','tfr':'fondi-pensione',
+  'educazione finanziaria':'pianificare-pensione','tasso di sostituzione':'pianificare-pensione','pensione futura':'pianificare-pensione','simulat':'pianificare-pensione','divario':'pianificare-pensione',
+  'isc':'fondo-pensione-costi-rischio','costi del fondo':'fondo-pensione-costi-rischio','indicatore sintetico':'fondo-pensione-costi-rischio','comparto':'fondo-pensione-costi-rischio',
   'deducib':'sanita-fiscale','tuir':'sanita-fiscale','anagrafe':'sanita-fiscale','3615':'sanita-fiscale','3.615':'sanita-fiscale','fiscal':'sanita-fiscale',
   'esal':'fondi-sanitari-contrattuali','fafp':'fondi-sanitari-contrattuali','fondosani':'fondi-sanitari-contrattuali','innovacare':'fondi-sanitari-contrattuali','f24':'fondi-sanitari-contrattuali','fondi sanitari':'fondi-sanitari-contrattuali','fondo sanitario':'fondi-sanitari-contrattuali',
   'certificazione':'certificazione-parita-genere','parità di genere':'certificazione-parita-genere','parita di genere':'certificazione-parita-genere','pdr 125':'certificazione-parita-genere','par_gen':'certificazione-parita-genere',
@@ -1388,7 +1404,7 @@ async function submitQuesito(e){
 
 
 /* ══════════ SERVIZI PLUS: APPUNTAMENTI ══════════ */
-const AP_TEMI=[['Previdenza',['Previdenza obbligatoria','Previdenza complementare']],['Welfare aziendale',['Cassa integrazione ordinaria 2026','La certificazione della parità di genere','DURC Online']],['Sanità integrativa',['Fondi sanitari integrativi','Fondi sanitari contrattuali']]];
+const AP_TEMI=[['Previdenza',['Previdenza obbligatoria','Previdenza complementare','Educazione finanziaria']],['Welfare aziendale',['Cassa integrazione ordinaria 2026','La certificazione della parità di genere','DURC Online']],['Sanità integrativa',['Fondi sanitari integrativi','Fondi sanitari contrattuali']]];
 const AP_SEDI=['Sede territoriale di Roma','Sede territoriale di Milano','Sede territoriale di Napoli','Sede territoriale di Torino','Sede territoriale di Bologna'];
 const AP_ST={'Richiesto':['r','st-r'],'Confermato':['c','st-c'],'Proposto altro orario':['p','st-p'],'Annullato':['a','st-a']};
 // Richieste demo dell'utente connesso (dati di fantasia)
@@ -1518,6 +1534,8 @@ const RESOURCES=[
  {ic:'🎧',title:'Podcast',text:'Episodi brevi con le novità del mese e le interviste agli esperti.',soon:true}
 ];
 const FAQ=[
+ {art:'fondo-pensione-costi-rischio',sec:2,q:'Come si confrontano i costi dei fondi pensione?',a:'Con l\'Indicatore sintetico dei costi (ISC), calcolato con regole COVIP uguali per tutti i fondi e riportato nella Scheda "I costi" della Nota informativa. Per un orizzonte lungo conviene guardare l\'ISC a 35 anni.'},
+ {art:'pianificare-pensione',sec:4,q:'Come posso stimare la mia pensione futura?',a:'Con il servizio "La mia pensione futura" dell\'INPS per la pensione pubblica, con il simulatore del Portale sulla previdenza complementare del Ministero del Lavoro e con il progetto esemplificativo del proprio fondo pensione.'},
  {art:'fondi-pensione',sec:5,q:'Quanto si può prendere in capitale dal fondo pensione?',a:'Fino al 50% del montante; il resto viene erogato come rendita o con le nuove modalità del 2026. Si può prendere tutto in capitale se la rendita del 70% del montante sarebbe inferiore alla metà dell\'assegno sociale.'},
  {art:'previdenza-complementare-2026',sec:7,q:'Qual è il limite di deducibilità dei contributi ai fondi pensione nel 2026?',a:'5.300 € l\'anno, sommando i contributi del lavoratore e del datore; il TFR non concorre al limite. Per i giovani di prima occupazione dopo il 2007 si arriva fino a 7.950 €.'},
  {art:'durc-online',sec:1,q:'Cos\'è il DURC e quanto dura?',a:'Il Documento Unico di Regolarità Contributiva attesta la regolarità contributiva dell\'impresa nei confronti degli enti. Si ottiene online tramite il codice fiscale e vale 120 giorni dalla data della verifica.'},
@@ -1533,6 +1551,8 @@ const FAQ=[
  {art:'certificazione-parita-genere',sec:4,q:'Chi può ottenere la certificazione della parità di genere?',a:'Tutte le organizzazioni con dipendenti, pubbliche e private, di qualsiasi dimensione. Sono esclusi i titolari di partita IVA senza dipendenti.'}
 ];
 const GLOSSARY=[
+ ['Indicatore sintetico dei costi (ISC)','Percentuale annua di cui i costi riducono il rendimento della posizione in un fondo pensione, calcolata con regole COVIP per 2, 5, 10 e 35 anni di partecipazione.','fondo-pensione-costi-rischio',2],
+ ['Tasso di sostituzione','Rapporto tra la prima rata di pensione e l\'ultima retribuzione: indica quanta parte del reddito da lavoro viene coperta dalla pensione.','pianificare-pensione',2],
  ['Adesione automatica','Iscrizione al fondo pensione del contratto, con TFR e contributi, dei lavoratori del settore privato assunti dal 1° luglio 2026, salvo rinuncia entro 60 giorni.','previdenza-complementare-2026',2],
  ['RITA','Rendita integrativa temporanea anticipata: la posizione del fondo pensione erogata a rate negli anni che precedono la pensione di vecchiaia.','fondi-pensione',8],
  ['Accentramento contributivo','Obbligo di unicità della posizione contributiva dell\'azienda, che riguarda l\'organizzazione della posizione aziendale presso l\'INPS.','posizione-contributiva',3],
