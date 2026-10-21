@@ -970,6 +970,11 @@ const ARTICLES=[
   {"id": "ccnl-t231-scuole-private", "area": "ccnl", "tag": "CCNL T231", "cnel": "T231", "date": "Ottobre 2026", "title": "CCNL Scuole non statali (ANINSEI): previdenza complementare e sanità integrativa", "summary": "Il contratto delle scuole non statali ANINSEI 2024-2027: sanità integrativa FASIOPEN dal 2025 con 120 euro l'anno e previdenza complementare negoziale all'1% + 1% dal 2027.", "img": "", "caption": "Scuole private laiche (T231)", "fpens": "Fondo negoziale da individuare entro il 31/10/2026", "fsan": "FASIOPEN", "sources": []},
   {"id": "ccnl-v012-dirigenti-industria", "area": "ccnl", "tag": "CCNL V012", "cnel": "V012", "date": "Ottobre 2026", "title": "CCNL Dirigenti industria: Previndai, FASI, coperture assicurative e welfare", "summary": "Il contratto dei dirigenti industriali 2025-2027: Previndai con contributo aziendale al 6%, FASI, polizze fino a 400.000 euro, trattamento minimo di 85.000 euro dal 2026 e il ruolo di 4.Manager.", "img": "", "caption": "Dirigenti industria (V012)", "fpens": "Previndai", "fsan": "FASI", "sources": [["Previndai", "Fondo pensione dei dirigenti industriali", "https://www.previndai.it"], ["FASI", "Fondo sanitario dei dirigenti industriali", "https://www.fasi.it"], ["4.Manager", "Associazione Confindustria – Federmanager", "https://www.4manager.org"]]}
 ];
+/* Aree nascoste in questa installazione (variabile HUB_HIDE_AREAS) */
+const HIDE={{ hide|tojson }};
+const HIDDEN_IDS=new Set([...HIDE,...ARTICLES.filter(a=>HIDE.includes(a.area)).map(a=>a.id)]);
+HIDE.forEach(k=>delete AREAS[k]);
+for(let i=ARTICLES.length-1;i>=0;i--) if(HIDDEN_IDS.has(ARTICLES[i].id)) ARTICLES.splice(i,1);
 const BY_ID=Object.fromEntries(ARTICLES.map(a=>[a.id,a]));
 const CCNL_LIST=ARTICLES.filter(a=>a.area==='ccnl').sort((x,y)=>(x.cnel==='V012'?-1:y.cnel==='V012'?1:x.cnel.localeCompare(y.cnel)));
 const ccnlName=a=>a.title.split(':')[0].replace(/^CCNL\s+/,'');
@@ -987,7 +992,7 @@ const ARROW_BACK='<svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/
 /* ══════════ HOME ══════════ */
 function renderHome(){
   const [lead,...rest]=ARTICLES;
-  const L=BY_ID['fondi-sanitari-contrattuali'];
+  const L=BY_ID['fondi-sanitari-contrattuali']||BY_ID['durc-online']||ARTICLES[ARTICLES.length-1];
   document.getElementById('home-lead').innerHTML=
     `<div class="art lead ${AREAS[lead.area].cls}" ${go(lead.id)}>${media(lead)}
       <h2>${lead.title}</h2>
@@ -1628,7 +1633,21 @@ async function subscribeNl(e){
   }catch(ex){msg.textContent=ex.message||'Iscrizione non riuscita, riprova.';msg.style.color='#FCA5A5';}
 }
 
+if(HIDE.length){
+  const drop=(arr,ref)=>{for(let i=arr.length-1;i>=0;i--) if(ref(arr[i])) arr.splice(i,1);};
+  [QUESITI,DATES,LETTERA,NEWS,FAQ].forEach(arr=>drop(arr,x=>HIDDEN_IDS.has(x.art)));
+  drop(GLOSSARY,g=>HIDDEN_IDS.has(g[2]));
+  drop(PATHS,p=>p.steps.some(s=>HIDDEN_IDS.has(s[0])));
+  const hiddenNames=HIDE.map(k=>({sanita:'Sanità integrativa',ccnl:'CCNL'})[k]);
+  drop(AP_TEMI,t=>hiddenNames.includes(t[0]));
+  drop(MY_APPTS,a=>hiddenNames.some(n=>(a.tema||'').startsWith(n)));
+  Object.keys(SEARCH_MAP).forEach(k=>{if(HIDDEN_IDS.has(SEARCH_MAP[k])) delete SEARCH_MAP[k];});
+}
 renderHome();renderAreas();renderArticles();renderMenu();renderPlus();renderNews();renderResources();
+if(HIDE.length){
+  /* via dal menu, dal footer e dal prontuario i collegamenti alle aree nascoste */
+  document.querySelectorAll('[onclick*="showPage(\'"]').forEach(el=>{const m=el.getAttribute('onclick').match(/showPage\('([^']+)'\)/);if(m&&HIDDEN_IDS.has(m[1]))el.remove();});
+}
 showPage('home',false);
 if(OPEN_LOGIN) openAuth('login');
 try{const t=sessionStorage.getItem('afterLogin');if(LOGGED&&t){sessionStorage.removeItem('afterLogin');if(t==='plus')showPage('plus');else if(PLUS_LOCKED[t]||document.getElementById('page-'+t))showPage(t);}}catch(e){}

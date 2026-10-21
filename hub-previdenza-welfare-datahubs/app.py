@@ -25,6 +25,11 @@ DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
 REQUESTS = []
 QUESITI = []
 
+# Aree da nascondere in questa installazione (es. HUB_HIDE_AREAS=sanita,ccnl):
+# stesso codice, due servizi con contenuti diversi a video e nella base dell'assistente.
+HIDE_AREAS = {a.strip() for a in os.environ.get('HUB_HIDE_AREAS', '').split(',') if a.strip()}
+AREA_OF_KB = {'fondi_sanitari_contrattuali': 'sanita', 'sanita_fiscale': 'sanita'}
+
 KB_FILES = {
     'posizione_contributiva': 'posizione_contributiva.md',
     'accompagnamento_pensione': 'accompagnamento_pensione.md',
@@ -42,6 +47,8 @@ KB_FILES = {
 for _f in sorted(os.listdir(os.path.join(os.path.dirname(__file__), 'kb'))):
     if _f.startswith('ccnl_') and _f.endswith('.md'):
         KB_FILES[_f[:-3]] = _f
+KB_FILES = {k: v for k, v in KB_FILES.items()
+            if ('ccnl' if k.startswith('ccnl_') else AREA_OF_KB.get(k)) not in HIDE_AREAS}
 
 
 def load_kb():
@@ -162,18 +169,43 @@ def save_record(kind, record):
     print(f'[{kind}]', json.dumps(record, ensure_ascii=False), flush=True)
 
 
+# Frasi da adattare quando un'area è nascosta (pagina e prompt)
+TEXT_SWAPS = {
+    'sanita': [
+        ("tra previdenza, welfare, sanità integrativa e servizi di INPS", "tra previdenza, welfare e servizi di INPS"),
+        ("Previdenza, Welfare aziendale e Sanità integrativa", "Previdenza e Welfare aziendale"),
+        ("previdenza, welfare e sanità integrativa", "previdenza e welfare"),
+        (", pensione e sanità integrativa", " e pensione"),
+        ("focus su welfare e sanità integrativa", "focus sul welfare"),
+        ("INPS, Agenzia delle Entrate e Ministero della Salute", "INPS e Agenzia delle Entrate"),
+        (" · Ministero della Salute", ""),
+        (", fondi sanitari —", " —"),
+        ('<span class="ai-q" onclick="sendMsg(\'Deducibilità fondi sanitari?\')">Deducibilità?</span>', ""),
+        ("su temi previdenziali, di welfare aziendale e di sanità integrativa", "su temi previdenziali e di welfare aziendale"),
+    ],
+}
+
+
+def swap_text(text):
+    for area in HIDE_AREAS:
+        for old, new in TEXT_SWAPS.get(area, []):
+            text = text.replace(old, new)
+    return text
+
+
 @app.route('/')
 def index():
     user = current_user()
     remaining = None if user else max(0, PUBLIC_MAX_QUESTIONS - session.get('public_q', 0))
-    return render_template(
+    return swap_text(render_template(
         'index.html', kb=KB, user=user,
         is_admin=user in ADMINS,
         public_remaining=remaining,
         public_max=PUBLIC_MAX_QUESTIONS,
+        hide=sorted(HIDE_AREAS),
         login_error=request.args.get('err') == '1',
         open_login=request.args.get('accedi') == '1',
-    )
+    ))
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -297,14 +329,14 @@ def ask():
         return jsonify({'error': 'API key non configurata'}), 500
 
     if user:
-        system, model, max_tokens = SYSTEM_PROMPT, MODEL_PLUS, 1024
+        system, model, max_tokens = swap_text(SYSTEM_PROMPT), MODEL_PLUS, 1024
         convo = messages[-20:]
     else:
         used = session.get('public_q', 0)
         if used >= PUBLIC_MAX_QUESTIONS:
             return jsonify({'error': 'limite', 'remaining': 0}), 429
         session['public_q'] = used + 1
-        system, model, max_tokens = SYSTEM_PROMPT_PUBLIC, MODEL_PUBLIC, 350
+        system, model, max_tokens = swap_text(SYSTEM_PROMPT_PUBLIC), MODEL_PUBLIC, 350
         # Versione pubblica: nessuna memoria di conversazione, solo l'ultima domanda
         last = next((m for m in reversed(messages) if m.get('role') == 'user'), None)
         if not last:

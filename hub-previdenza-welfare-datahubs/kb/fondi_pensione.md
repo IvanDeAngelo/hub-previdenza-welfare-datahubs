@@ -23,7 +23,7 @@ La previdenza complementare affianca la pensione pubblica obbligatoria: il lavor
 | **PIP** (piani individuali pensionistici) | Compagnie di assicurazione | Adesione individuale |
 | **Fondi preesistenti** | Già operanti prima della riforma del 1993 | Dipendenti di specifiche aziende o gruppi |
 
-Nei fondi negoziali il **contributo del datore di lavoro** previsto dal contratto collettivo spetta di norma solo se il lavoratore versa a sua volta il contributo minimo. Le schede CCNL dell'Hub indicano per ogni contratto il fondo di categoria e le aliquote.
+Nei fondi negoziali il **contributo del datore di lavoro** previsto dal contratto collettivo spetta di norma solo se il lavoratore versa a sua volta il contributo minimo. Il contratto collettivo indica il fondo di categoria e le aliquote dei contributi.
 
 ## 3. Come si finanzia la posizione
 
